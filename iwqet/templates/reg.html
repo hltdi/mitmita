@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<link rel="stylesheet" type=text/css href="{{url_for('static', filename='style.css')}}" />
+
+<script>
+function ShowHelp() {
+    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    helpWin.document.write('<html><head>' +
+'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
+"<title>Mainumby: Ayuda</title></head><body>" +
+"<h4 class='help'>Ayuda para crear una cuenta</h4>" +
+"<p class='help'>Sólo si ten&eacute;s una cuenta pod&eacute;s participar en el desarrollo de " +
+"Mainumby. Crear una cuenta es fácil; solamente es necesario introducir un nombre " +
+"de usuario, una contraseña, y tu dirección electrónica. " +
+"Opcionalmente pod&eacute;s tambi&eacute;n registrar tu nombre y " +
+"tu autoevalución de tu competencia en guaraní.</p>" +
+"<p class='help'>La información que prove&eacute;s queda protegida; " +
+"no la damos a nadie. " +
+"Como el sistema no recuerda las contraseñas, no se puede recuperar " +
+"tu contraseña si la olvidás. Por eso, guardala bien.</p>" +
+"</body></html>");
+}
+function OnSalir() {
+    document.Form1.action = "fin"
+    document.Form1.target = "_self";     // Same window
+    document.Form1.submit();             // Submit the page
+    return true;
+}
+</script>
+
+<title>Mainumby: un Ayudante para la Traducción Castellano-Guaraní</title>
+
+</head>
+
+<body>
+
+<table class="center">
+  <tr>
+    <td class="title">
+    <img class='banner' src="{{url_for('static',
+      filename='banner_logo_short.png')}}" alt="" width="500px" height="90px" />
+    </td>
+    <td class="menu" style="width: 250px"><input class="menu"
+      type="submit" value="SALIR" name="salir" onclick="return OnSalir();"></td>
+    <td class="menu" style="width: 250px"><button class="menu"
+      onclick="ShowHelp();">AYUDA</button></td>
+  </tr>
+
+<tr>
+<td colspan="3" style="width:1000px">  
+
+<h2>Creación de una cuenta
+</h2>
+
+{% if error %}
+<p class="error">
+{% if error == "password" %}
+Error: ¡contraseñas no coinciden!
+{% elif error == "username" %}
+Error: ¡ten&eacute;s que introducir un nombre de usuario!
+{% elif error == "email" %}
+Error: ¡ten&eacute;s que introducir tu email!
+{% endif %}
+</p>
+{% endif %}
+
+<form name="Form1" action="reg" method="post">
+
+<p>
+<span class='label'>Nombre de usuario</span><br/>
+<input type="text" name="username" id="medtext">
+</p>
+
+<p>
+<span class='label'>Contraseña</span><br/>
+<input type="password" name="password" id="medtext">
+</p>
+
+<p>
+<span class='label'>Confirmá la contraseña</span><br/>
+<input type="password" name="password2" id="medtext">
+</p>
+
+<p>
+<span class='label'>Dirección de correo electrónico</span><br/>
+<input type="text" name="email" id="medtext">
+</p>
+
+<p>
+<span class='label'>Nombre (opcional)</span><br/>
+<input type="text" name="name" id="medtext">
+</p>
+
+<p>
+<span class='label'>Nivel de conocomiento del guaraní (opcional)</span><br/>
+  <input type="radio" name="level" value="1"> intermedio<br/>
+  <input type="radio" name="level" value="2"> excelente<br/>
+  <input type="radio" name="level" value="3"> nativo
+</p>
+
+<hr>
+
+<p>
+<input type="submit" value="Crear" name="create" id="button">
+</p>
+
+  </form>
+
+</td>
+</tr>
+</table>
+
+<!--  
+<p>
+<button id="help" onclick="ShowHelp();">Ayuda</button>
+  </p>
+-->
+
+</body>
+
+</html>

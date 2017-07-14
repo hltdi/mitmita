@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+
+<title>Mainumby: un Ayudante para la Traducción Castellano-Guaraní</title>
+
+</head>
+
+<body>
+
+<form method=POST action='login'>
+
+<table class="center">
+  <tr>
+    <td class="title">
+    <a href="base">
+    <img class='banner' src="{{url_for('static',
+      filename='banner_logo_short.png')}}" alt="" width="500px"
+      height="90px" />
+    </a>
+    </td>
+    <td class="menu" style="width: 500px">
+      <input type="submit" action="reiniciar" name="reiniciar"
+      value="REINICIAR" class="menu">
+      </td>
+  </tr>
+
+<tr>
+<td colspan="2" style="width:1000px">  
+
+<h1>¡Gracias por usar Mainumby!</h1>
+
+</form>
+
+</body>
+
+</html>

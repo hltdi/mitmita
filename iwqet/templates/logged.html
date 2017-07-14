@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+
+<script>
+function ShowHelp() {
+    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    helpWin.document.write('<html><head>' +
+'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
+"<title>Mainumby: Ayuda</title></head><body>" +
+"<h4 class='help'>Ayuda sobre tu nueva cuenta</h4>" +
+"<p class='help'>" +
+"</p></body></html>");
+}
+function OnSalir() {
+    document.Form1.action = "fin"
+    document.Form1.target = "_self";     // Same window
+    document.Form1.submit();             // Submit the page
+    return true;
+}
+function loading() {
+    document.getElementById("loading").innerHTML = "<span class='cargando'>Cargando base de datos (podría tardarse)...</span>";
+    window.location.assign("doc");
+}
+</script>
+
+<title>Mainumby: un Ayudante para la Traducción Castellano-Guaraní</title>
+
+</head>
+
+<body>
+
+<table class="center">
+  <tr>
+    <td class="title">
+    <img class='banner' src="{{url_for('static',
+      filename='banner_logo_short.png')}}" alt="" width="500px" height="90px" />
+    </td>
+    <td class="menu" style="width: 250px"><input class="menu"
+      type="submit" value="SALIR" name="salir" onclick="return OnSalir();"></td>
+    <td class="menu" style="width: 250px"><button class="menu"
+      onclick="ShowHelp();">AYUDA</button></td>
+  </tr>
+
+<tr>
+<td colspan="3" style="width:1000px">
+
+<p class='center'>
+Ingresaste como <span class="username">{{ username }}</span>.
+</p>
+
+<hr>
+
+<p class="center">
+<button onclick="loading()" id="button">Continuar</button><br/>
+</p>
+
+<p class="center" id="loading">
+  </p>
+
+</td>
+</tr>
+</table>
+
+</body>
+
+</html>

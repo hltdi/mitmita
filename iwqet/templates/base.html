@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+
+<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+
+<script>
+function ShowHelp() {
+    var helpWin = window.open("", "Mit'mit'a: Help", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    helpWin.document.write('<html><head>' +
+'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
+"<title>Mainumby: Ayuda</title></head><body>" +
+"<h4 class='help'>Ayuda general para la aplicación</h4>" +
+"</body></html>");
+}
+</script>
+
+</head>
+
+<body>
+
+<form action='login' method="post">
+
+<table class="center">
+  <tr>
+    <td class="title">
+    <img class='banner' src="{{url_for('static', filename='banner_logo_short.png')}}" alt=""/>
+    </td>
+    <!--
+    <td></td><td></td><td></td>
+    -->
+    <td class="menu" style="width: 166px">
+      <a href="proyecto">PROJECT</a>
+    </td>
+    <td class="menu" style="width: 167px">
+      <a href="contacto">CONTACT</a>
+    </td>
+    <td class="menu" style="width: 167px">
+      <input type="submit" value="START SESSION" class="menu">
+    </td>
+    <td></td>
+  </tr>
+<tr>
+<td colspan="5" style="width:1000px">  
+<h2><b>Welcome to Mit'mit'a!</b> ወደ ሚጥሚጣ እንኳን ደህና መጣችሁ!
+  </h2>
+
+<h3>What is it?
+</h3>
+
+<p>
+Mainumby es una aplicación experimental que ayuda a traducir del
+castellano al guaraní.
+En su forma final, tendrá dos componentes: un traductor automático
+rudimentario (Mbojereha) y una memoria de traducción (Mandu'a).
+En la versión actual, consiste sólo del traductor.
+  </p>
+<p>
+Mainumby no ha sido diseñado para estudiantes del guaraní sino para
+  personas que manejan tanto el castellano como el guaraní.
+  Un usuario del sistema introduce un texto que quiere traducir, y
+  Mbojereha le propone traducciones para frases en el texto.
+  Entonces el usuario puede aceptar o rechazar las sugerencias del
+  sistema, introduciendo sus propias traducciones si quiere.
+  El sistema mantiene una memoria del texto y la traducción creada por
+  el usuario, y el usuario puede guardar este texto en cada momento
+  durante el proceso.
+  </p>
+  <p>
+  <a href="proyecto">Aprender más sobre el proyecto.</a>
+  </p>  
+
+<h3>How does it work?
+</h3>
+
+<p>
+  El traductor Mbojereha tiene un diccionario bilingue de frases y
+  conocimiento básico de la gramática castellana, la
+  gramática guaraní, y las relaciones entre ellas.
+  Para cada oración castellana que introduce el usuario, primero
+  analiza las palabras, extrayendo las raices y las propiedades gramáticas.
+  Entonces busca frases en la oración analizada
+  que coinciden con frases en su diccionario.
+  Finalmente, para cada frase genera una traducción guaraní, usando
+  su conocimiento de la gramática y ortografía guaraní (por ejemplo,
+  de la concordancia nasal).
+  En la interfaz de Mainumby, se le muestran estos resultados al
+  usuario.
+  Cuando el usuario corrige la salida del sistema o reemplaza una
+  traducción de una diferente, Mbojereha aprende de esta
+  retroalimentación, mejorando su diccionario y talvez su conocimiento
+  gramatical.
+  Además Mainumby añade la traducción dada por el usuario a Mandu'a, su
+  memoria de traducción de manera que se use en sesiones futuras cuando
+  otro usuario traduzca una oración semejante.
+</p>
+<p>
+<a href="proyecto">Aprender más sobre la teoría detrás de Mainumby.</a>
+</p>
+
+<hr/>
+
+<p>
+<input type="submit" value="Start session" id="button">
+</p>
+
+</td>
+</tr>
+
+</table>  
+
+  </form>
+
+</body>
+</html>

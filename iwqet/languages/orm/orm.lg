@@ -1,0 +1,47 @@
+name: afaan oromoo
+abbrev: orm
+source: False
+target: True
+
+groups:
+  nyaate_:
+  - words: [$food, nyaate_]
+    features: [{case: acc}, False]
+  beeke_:
+  - words: [$vb, hin, beeke_]
+    features: [{tam: cnt}, false, {tam: prs, pol: neg}]
+    name: ^godhe.hin^beeku
+  - words: [$fact, beeke]
+  qurxummii_:
+  - words: [qurxummii_]
+  kalluuna_:
+  - words: [kalluuna_]
+forms:
+  beeka:
+    root: beeke_
+    features: {tam: prs, pol: aff, prs: 3, num: 0, gen: 0}
+    cats: [$vb]
+  beeku:
+    root: beeke_
+    features: {tam: prs, pol: neg, prs: 3, num: 0, gen: 0}
+    cats: [$vb]
+  nyaate:
+    root: nyaate_
+    features: {tam: cnt, prs: 3, num: 0, gen: 0}
+    cats: [$vb]
+  nyaatani:
+    root: nyaate_
+    features: {tam: cnt, prs: 3, num: 1}
+    cats: [$vb]
+  dinnicha:
+    root: dinnicha_
+    features: {num: 0, case: acc}
+    cats: [$food, $thing]
+  qurxummii:
+    root: qurxummii_
+    features: {num: 0, case: acc}
+    cats: [$food, $animal, $thing]
+  kalluuna:
+    root: kalluuna_
+    features: {num: 0, case: acc}
+    cats: [$food, $animal, $thing]

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+
+<style type="text/css">
+
+table.login
+{
+        width: 100%;
+        border: 2px solid black;
+}
+</style>
+
+<script>
+function ShowHelp() {
+    var helpWin = window.open("", "Mit'mit'a: Help", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    helpWin.document.write('<html><head>' +
+'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
+"<title>Mainumby: Ayuda</title></head><body>" +
+"<h4 class='help'>Ayuda para ingresar a Mainumby</h4>" +
+"<p class='help'>Pod&eacute;s usar Mainumby como usuario registrado o como usuario no registrado.</p>" +
+"<p class='help'>Si sos un usuario registrado, tu interacción con la aplicación se " +
+"incorpora en la base de datos del sistema, y usando la información " +
+"que obtiene de ti, la aplicación puede mejorar su desempeño " +
+"y aumentar su memoria de traducción. Aun sin registrarte, pod&eacute;s usar la aplicación, " +
+"pero tu interacción con la aplicación no se registrará de manera que nadie se aprovechará de tu conocimiento de las lenguas.</p>" +
+"<p class='help'>Si ya ten&eacute;s una cuenta, te pod&eacute;s registrar en esta página. " +
+"Si no, hac&eacute; clic en el botón 'Crear cuenta'. " +
+"Si ten&eacute;s una cuenta y se te olvidó tu contraseña, desafortunadamente no " +
+"es posible recuperarla porque la aplicación no almacena las contraseñas. " +
+"En este caso, lo único que pod&eacute;s hacer " +
+"es crear otra cuenta.</p>" +
+"</body></html>");
+}
+function OnSalir()
+{
+    document.Form1.action = "fin"
+    document.Form1.target = "_self";     // Same window
+    document.Form1.submit();             // Submit the page
+    return true;
+}
+function loading() {
+    document.getElementById("loading").innerHTML = "<span class='cargando'>Loading database (could take awhile)...</span>";
+    window.location.assign("doc");
+}
+function account() {
+    window.location.assign("reg");
+}
+</script>
+
+<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+
+</head>
+
+<body>
+
+<table class="center">
+  <tr>
+    <td class="title">
+    <a href="base">
+    <img class='banner' src="{{url_for('static',
+      filename='banner_logo_short.png')}}" alt="" width="500px"
+      height="90px" />
+    </a>
+    </td>
+    <td class="menu" style="width: 270px">
+      <button class="menu" onclick="loading()">CONTINUE WITHOUT LOGGING IN</button></td>
+    <td class="menu" style="width: 115px"><input class="menu"
+      type="submit" value="QUIT" name="salir" onclick="return OnSalir();">
+    <td class="menu" style="width: 125px"><button class="menu"
+      onclick="ShowHelp();">HELP</button></td>
+  </tr>
+
+<tr>
+<td colspan="4" style="width:1000px">  
+<h2>Start session</h2>
+
+{% if error %}
+<p class="error">
+{% if error == "password" %}
+  Error: the password you entered is not correct! Please enter another.
+  {% elif error == "user" %}
+  Error: the user name you entered is not correct! Please enter
+  another, or continue without logging in.
+{% endif %}
+</p>
+{% endif %}
+
+<table class="login">
+<tr>
+<td class="text" colspan="3">
+<form name="Form1" action="login" method="post">
+
+<p>
+<span class='label'>User name</span><br/>
+<input type="text" name="username" class="text">
+</p>
+
+<p>
+<span class='label'>Password</span><br/>
+<input type="password" name="password" class="text">
+</p>
+
+<p>
+<input type="submit" name="login" id="widebutton" value="Enter">
+</p>
+
+</form>
+
+<p>
+<span class="instruction">Don't have an account?</span><br/>
+<button id="altbutton" onclick="account()">Create account</button>
+</p>
+</td>  
+
+</tr>
+
+</table>
+
+</td>
+</tr>
+
+<tr>
+  <td colspan="3">
+    <p id="loading">
+    </p>
+  </td>
+</tr>
+</table>  
+
+</body>
+
+</html>

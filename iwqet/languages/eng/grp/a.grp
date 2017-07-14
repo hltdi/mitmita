@@ -1,0 +1,2670 @@
+#### Features common to almost all translations
++t == ; 0==0 plr:plr,def:def,poss:poss,acc:acc
+*** American_a ; ^ American_a 0
+->amh 'amErikawi_n
+*** Russian_a ; ^ Russian_a 0
+->amh meskobawi_n
+*** Turkish_a ; ^ Turkish_a 0
+->amh turk_n
+*** abandoned_a ; ^ abandoned_a 0
+->amh lq__n
+->amh qnTu_n
+*** abhorrent_a ; ^ abhorrent_a 0
+->amh 'asTey__n
+*** absent_a ; ^ absent_a 0
+->amh qeri_n
+*** absolute_a ; ^ absolute_a 0
+->amh fS_um_n
+*** acceptable_a ; ^ acceptable_a 0
+->amh malefiya_n
+*** accountable_a ; ^ accountable_a 0
+->amh teTey_aqi_n
+*** acid_a ; ^ acid_a 0
+->amh homTaT_a_n
+*** acting_a ; ^ acting_a 0
+->amh mkt_l_n
+->amh teTebabaqi_n
+*** active_a ; ^ active_a 0
+->amh nqu_n
+*** additional_a ; ^ additional_a 0
+->amh teCem_ari_n
+*** adequate_a ; ^ adequate_a 0
+->amh 'aTgabi_n
+*** admirable_a ; ^ admirable_a 0
+->amh ziqeN_a_n
+->amh 'asden_aqi_n
+*** adolescent_a ; ^ adolescent_a 0
+->amh goremsa_n
+*** adroit_a ; ^ adroit_a 0
+->amh feliTeN_a_n
+*** adulterous_a ; ^ adulterous_a 0
+->amh 'amenzari_n
+->amh zm_uteN_a_n
+*** advanced_a ; ^ advanced_a 0
+->amh kef_teN_a_n
+*** advantageous_a ; ^ advantageous_a 0
+->amh Teqami_n
+*** adventurous_a ; ^ adventurous_a 0
+->amh jebdeN_a_n
+->amh def_ar_n
+*** aged_a ; ^ aged_a 0
+->amh gerjaf_a_n
+*** aggressive_a ; ^ aggressive_a 0
+->amh gulbeteN_a_n
+->amh tnkuxt_n
+->amh dul_eN_a_n
+->amh tedebadabi_n
+*** agile_a ; ^ agile_a 0
+->amh nqu_n
+*** agreeable_a ; ^ agreeable_a 0
+->amh tegbabi_n
+->amh qen_a_n
+*** alcoholic_a ; ^ alcoholic_a 0
+->amh mexeteN_a_n
+->amh 'askari_n
+*** alien_a ; ^ alien_a 0
+->amh bada_n
+*** alike_a ; ^ alike_a 0
+->amh 'k_ul_n
+*** alive_a ; ^ alive_a 0
+->amh nWari_n
+->amh teqem_aC_n
+*** all_a ; ^ all_a 0
+->amh hul_u_n
+*** alone_a ; ^ alone_a 0
+->amh bc_a_n
+*** amazing_a ; ^ amazing_a 0
+->amh 'asger_ami_n
+->amh tngrt_n
+*** ambiguous_a ; ^ ambiguous_a 0
+->amh defenfan_a_n
+->amh debesbas_a_n
+->amh dfnfn_n
+*** ambitious_a ; ^ ambitious_a 0
+->amh tatari_n
+*** amenable_a ; ^ amenable_a 0
+->amh dnguT_n
+->amh dengaT_a_n
+*** amiable_a ; ^ amiable_a 0
+->amh welansa_n
+*** amusing_a ; ^ amusing_a 0
+->amh 'as_qiN__n
+*** annoying_a ; ^ annoying_a 0
+->amh 'abxaqi_n
+*** another_a ; ^ another_a 0
+->amh lEla_n
+*** antagonistic_a ; ^ antagonistic_a 0
+->amh teTarari_n
+*** anxious_a ; ^ anxious_a 0
+->amh bub_u_n
+*** appropriate_a ; ^ appropriate_a 0
+->amh tegeb_i_n
+->amh tegeb_i_n
+*** arch_a ; ^ arch_a 0
+->amh tekleflafi_n
+->amh keleflaf_a_n
+->amh klflf_n
+*** arrogant_a ; ^ arrogant_a 0
+->amh tebeTaTax_n
+->amh 'briteN_a_n
+->amh TgabeN_a_n
+->amh bT_axam_n
+->amh bTsTs_n
+->amh tbiteN_a_n
+*** artful_a ; ^ artful_a 0
+->amh tenkoleN_a_n
+->amh feliTeN_a_n
+*** artificial_a ; ^ artificial_a 0
+->amh kunsns_n
+->amh tekunesnax_n
+*** assiduous_a ; ^ assiduous_a 0
+->amh tgu_n
+*** associate_a ; ^ associate_a 0
+->amh tebabari_n
+*** astonishing_a ; ^ astonishing_a 0
+->amh dnq_n
+->amh 'asger_ami_n
+->amh demami_n
+->amh teden_aqi_n
+*** astute_a ; ^ astute_a 0
+->amh blT_n
+*** atrocious_a ; ^ atrocious_a 0
+->amh gfeN_a_n
+*** attractive_a ; ^ attractive_a 0
+->amh demam_n
+*** automatic_a ; ^ automatic_a 0
+->amh 'atomatik_n
+*** average_a ; ^ average_a 0
+->amh meTeneN_a_n
+->amh mekak_eleN_a_n
+*** awkward_a ; ^ awkward_a 0
+->amh kerfaf_a_n
+*** bad_a ; ^ bad_a 0
+->amh meTfo_n
+->amh kfateN_a_n
+->amh kfu_n
+*** bald_a ; ^ bald_a 0
+->amh melaTa_n
+*** bare_a ; ^ bare_a 0
+->amh melaTa_n
+*** barren_a ; ^ barren_a 0
+->amh mek_an_n
+->amh melaTa_n
+*** base_a ; ^ base_a 0
+->amh Sey_af_n
+->amh 'aS_ey_afi_n
+*** bashful_a ; ^ bashful_a 0
+->amh qlsls_n
+*** beautiful_a ; ^ beautiful_a 0
+->amh qonjo_n
+->amh wezenam_n
+*** bedraggled_a ; ^ bedraggled_a 0
+->amh Cemel_eq_n
+->amh Cemlaq_a_n
+*** beneficial_a ; ^ beneficial_a 0
+->amh Teqami_n
+*** bent_a ; ^ bent_a 0
+->amh Temama_n
+->amh gWebaTa_n
+->amh leb_aq_a_n
+->amh ged_ada_n
+*** best_a ; ^ best_a 0
+->amh mrT_n
+*** big_a ; ^ big_a 0
+->amh tal_aq_n
+->amh tl_q_n
+*** biting_a ; ^ biting_a 0
+->amh nedafi_n
+*** bitter_a ; ^ bitter_a 0
+->amh mer_ar_n
+*** black_a ; ^ black_a 0
+->amh gur_ac_a_n
+->amh Tqur_n
+*** blackish_a ; ^ blackish_a 0
+->amh keselm_a_n
+*** blank_a ; ^ blank_a 0
+->amh bado_n
+*** blessed_a ; ^ blessed_a 0
+->amh buruk_n
+->amh temer_aqi_n
+*** blunt_a ; ^ blunt_a 0
+->amh TrTs_n
+->amh denez_n
+->amh duldum_n
+->amh doldWam_a_n
+*** boastful_a ; ^ boastful_a 0
+->amh tmkhteN_a_n
+->amh lT_T_n
+*** boggy_a ; ^ boggy_a 0
+->amh maTam_n
+*** bold_a ; ^ bold_a 0
+->amh def_ar_n
+*** bony_a ; ^ bony_a 0
+->amh jm_atam_n
+*** boorish_a ; ^ boorish_a 0
+->amh 'r_eN_a_n
+*** boring_a ; ^ boring_a 0
+->amh mozaza_n
+->amh mencak_a_n
+->amh teseleci_n
+->amh ck_o_n
+->amh 'atakac_n
+->amh 'aselci_n
+*** brave_a ; ^ brave_a 0
+->amh jegna_n
+->amh wend_n
+->amh gobez_n
+*** breakable_a ; ^ breakable_a 0
+->amh sebari_n
+->amh teseb_ari_n
+*** bright_a ; ^ bright_a 0
+->amh dmq_n
+->amh dem_aq_n
+->amh dem_aqa_n
+->amh kft_n
+->amh fk_n
+->amh wez_am_n
+*** brilliant_a ; ^ brilliant_a 0
+->amh 'anSebaraqi_n
+->amh 'sat_n
+*** broad_a ; ^ broad_a 0
+->amh sef_i_n
+->amh werdam_n
+*** brown_a ; ^ brown_a 0
+->amh bun_am_a_n
+*** brutal_a ; ^ brutal_a 0
+->amh Cek_aN_n
+*** bum_a ; ^ bum_a 0
+->amh zeTezeT_n
+*** buoyant_a ; ^ buoyant_a 0
+->amh sf_afi_n
+*** burning_a ; ^ burning_a 0
+->amh remoCa_n
+*** bushy_a ; ^ bushy_a 0
+->amh cf_g_n
+*** busy_a ; ^ busy_a 0
+->amh batelE_n
+*** capricious_a ; ^ capricious_a 0
+->amh wereteN_a_n
+*** careful_a ; ^ careful_a 0
+->amh Tenqaq_a_n
+*** careless_a ; ^ careless_a 0
+->amh zelzal_a_n
+*** cautious_a ; ^ cautious_a 0
+->amh Tnquq_n
+->amh Tenqaq_a_n
+->amh sebsab_a_n
+*** celebrated_a ; ^ celebrated_a 0
+->amh zn_eN_a_n
+*** central_a ; ^ central_a 0
+->amh mehak_eleN_a_n
+->amh 'amakay_n
+->amh mekak_el_n
+*** changeable_a ; ^ changeable_a 0
+->amh telewawaC_n
+*** charming_a ; ^ charming_a 0
+->amh demegbu_n
+->amh wezenam_n
+->amh demam_n
+*** cheap_a ; ^ cheap_a 0
+->amh rk_ax_n
+*** cheerful_a ; ^ cheerful_a 0
+->amh tedes_ac_n
+->amh folefol_n
+->amh folfWal_a_n
+->amh flqlq_n
+*** chilly_a ; ^ chilly_a 0
+->amh ber_ad_n
+*** circular_a ; ^ circular_a 0
+->amh kb__n
+*** clean_a ; ^ clean_a 0
+->amh Sdu_n
+->amh Tdu_n
+*** clear_a ; ^ clear_a 0
+->amh gWlh_n
+->amh gehad_n
+->amh glT_n
+*** clever_a ; ^ clever_a 0
+->amh TbebeN_a_n
+->amh feliTeN_a_n
+*** cloudy_a ; ^ cloudy_a 0
+->amh damen_am_a_n
+*** clumsy_a ; ^ clumsy_a 0
+->amh menCar_a_n
+->amh menqar_a_n
+->amh kerfaf_a_n
+->amh ftltl_n
+*** coarse_a ; ^ coarse_a 0
+->amh kerdad_a_n
+*** cold_a ; ^ cold_a 0
+->amh qezqaz_a_n
+->amh brdam_n
+*** coloured_a ; ^ coloured_a 0
+->amh bur_abur_E_n
+*** comfortable_a ; ^ comfortable_a 0
+->amh mc_u_n
+->amh 'amec_i_n
+*** comic_a ; ^ comic_a 0
+->amh 'as_qiN__n
+*** common_a ; ^ common_a 0
+->amh wel_n
+->amh 'alb_alE_a
+->amh tera_a
+*** comparable_a ; ^ comparable_a 0
+->amh teneSaSari_a
+->amh temezazaN_a
+*** compassionate_a ; ^ compassionate_a 0
+->amh rgbgbit_a
+->amh 'azaN_a
+*** complementary_a ; ^ complementary_a 0
+->amh 'ag_olamax_n
+*** complete_a ; ^ complete_a 0
+->amh fS_um_n
+*** complicated_a ; ^ complicated_a 0
+->amh TaTeN_a_n
+*** compound_a ; ^ compound_a 0
+->amh dbl_q_n
+->amh dr_b_n
+*** comprehensible_a ; ^ comprehensible_a 0
+->amh teCeb_aC_n
+*** comprehensive_a ; ^ comprehensive_a 0
+->amh 'aT_eqalay_n
+*** conceited_a ; ^ conceited_a 0
+->amh 'briteN_a_n
+->amh wT_r_n
+->amh TgabeN_a_n
+->amh kurateN_a_n
+->amh gx_r_n
+->amh jn_n_n
+->amh tenTebarari_n
+->amh tbiteN_a_n
+->amh tezebanay_n
+*** concentrated_a ; ^ concentrated_a 0
+->amh kt_r_n
+*** concrete_a ; ^ concrete_a 0
+->amh teCeb_aC_n
+*** conflicting_a ; ^ conflicting_a 0
+->amh teqarani_n
+*** conscientious_a ; ^ conscientious_a 0
+->amh lb_am_n
+*** consecutive_a ; ^ consecutive_a 0
+->amh teketatay_n
+*** considerate_a ; ^ considerate_a 0
+->amh 'as_abi_n
+*** contagious_a ; ^ contagious_a 0
+->amh telal_afi_n
+->amh tezamac_n
+*** contemptuous_a ; ^ contemptuous_a 0
+->amh ganTiT_n
+*** continuous_a ; ^ continuous_a 0
+->amh zelaqi_n
+*** controversial_a ; ^ controversial_a 0
+->amh 'ak_erakari_n
+*** convalescent_a ; ^ convalescent_a 0
+->amh 'ageg_ami_n
+*** convenient_a ; ^ convenient_a 0
+->amh 'amec_i_n
+*** convincing_a ; ^ convincing_a 0
+->amh 'aTgabi_n
+*** cool_a ; ^ cool_a 0
+->amh qezqaz_a_n
+*** cooperative_a ; ^ cooperative_a 0
+->amh tebabari_n
+->amh qen_a_n
+*** coral_a ; ^ coral_a 0
+->amh zagolm_a_n
+*** corpulent_a ; ^ corpulent_a 0
+->amh wedel_a_n
+->amh wedel_n
+->amh ferTam_a_n
+*** correct_a ; ^ correct_a 0
+->amh dembeN_a_n
+->amh denbeN_a_n
+*** corrupt_a ; ^ corrupt_a 0
+->amh blx_u_n
+*** countable_a ; ^ countable_a 0
+->amh teqWeT_ari_n
+*** courageous_a ; ^ courageous_a 0
+->amh jegna_n
+->amh def_ar_n
+*** courteous_a ; ^ courteous_a 0
+->amh lC_eN_a_n
+*** covering_a ; ^ covering_a 0
+->amh mexeN_a_n
+*** cowardly_a ; ^ cowardly_a 0
+->amh xntam_n
+->amh boCbWaC_a_n
+->amh zr_aC_n
+->amh 'amotebis_n
+->amh leb_aq_a_n
+*** coy_a ; ^ coy_a 0
+->amh texkormami_n
+*** crafty_a ; ^ crafty_a 0
+->amh tenkoleN_a_n
+->amh blT_n
+->amh Col_E_n
+*** cramped_a ; ^ cramped_a 0
+->amh 'f_g_n
+*** criminal_a ; ^ criminal_a 0
+->amh wenjeleN_a_n
+*** critical_a ; ^ critical_a 0
+->amh 'asas_abi_n
+->amh 'algum_n
+*** crooked_a ; ^ crooked_a 0
+->amh Temama_n
+->amh ged_ada_n
+*** crossbred_a ; ^ crossbred_a 0
+->amh meTiqa_n
+*** cruel_a ; ^ cruel_a 0
+->amh 'aremenE_n
+->amh CeqW_aN_n
+->amh 'awrE_n
+->amh gfeN_a_n
+->amh Cek_aN_n
+*** cunning_a ; ^ cunning_a 0
+->amh mlaC__n
+->amh tebleTlaC_n
+->amh blT_n
+*** cursed_a ; ^ cursed_a 0
+->amh rgum_n
+*** customary_a ; ^ customary_a 0
+->amh lmadeN_a_n
+->amh telem_aj_n
+*** damp_a ; ^ damp_a 0
+->amh 'rTb_n
+*** dandified_a ; ^ dandified_a 0
+->amh zen_aC_n
+*** dangerous_a ; ^ dangerous_a 0
+->amh 'adegeN_a_n
+*** daring_a ; ^ daring_a 0
+->amh wend_n
+->amh qWer_aT_n
+->amh kWestar_a_n
+*** dark_a ; ^ dark_a 0
+->amh TeqWara_n
+->amh Tqur_n
+*** dead_a ; ^ dead_a 0
+->amh dolez_n
+*** deaf_a ; ^ deaf_a 0
+->amh denqoro_n
+*** dear_a ; ^ dear_a 0
+->amh wd__n
+->amh tewed_aj_n
+*** debatable_a ; ^ debatable_a 0
+->amh 'ak_erakari_n
+*** deceitful_a ; ^ deceitful_a 0
+->amh welewelda_n
+->amh samuna_n
+->amh 'ad_enabari_n
+*** deceptive_a ; ^ deceptive_a 0
+->amh 'as_ac_a_n
+->amh 'ad_enabari_n
+*** decisive_a ; ^ decisive_a 0
+->amh wes_aN_n
+->amh qWer_aT_n
+*** deep_a ; ^ deep_a 0
+->amh teraqaqi_n
+->amh gWedgWad_a_n
+->amh Tlq_n
+*** deformed_a ; ^ deformed_a 0
+->amh Cermad_a_n
+->amh Cermat_a_n
+->amh Cermam_a_n
+*** delicate_a ; ^ delicate_a 0
+->amh reqiq_n
+*** delicious_a ; ^ delicious_a 0
+->amh TafaC_n
+->amh TafaTa_n
+*** dependable_a ; ^ dependable_a 0
+->amh wleN_a_n
+*** dependent_a ; ^ dependent_a 0
+->amh wex_aq_a_n
+->amh Tg_eN_a_n
+*** desert_a ; ^ desert_a 0
+->amh bereham_a_n
+*** desirable_a ; ^ desirable_a 0
+->amh tefel_agi_n
+*** destitute_a ; ^ destitute_a 0
+->amh mulC_n
+*** diagonal_a ; ^ diagonal_a 0
+->amh sey_af_n
+*** different_a ; ^ different_a 0
+->amh ly_u_n
+*** difficult_a ; ^ difficult_a 0
+->amh 'aw_aki_n
+->amh 'adagac_n
+->amh 'asceg_ari_n
+->amh keb_ad_n
+->amh gra_n
+*** digestive_a ; ^ digestive_a 0
+->amh qulEtam_n
+*** dilapidated_a ; ^ dilapidated_a 0
+->amh frsrs_n
+->amh flsls_n
+*** diligent_a ; ^ diligent_a 0
+->amh tgu_n
+*** dim_a ; ^ dim_a 0
+->amh debsas_a_n
+->amh debzaz_a_n
+*** dirty_a ; ^ dirty_a 0
+->amh qoxaxa_n
+->amh bk_ac_n
+->amh lksks_n
+->amh Cqq_tam_n
+->amh nfTam_n
+->amh gelefetam_n
+->amh kWsam_n
+->amh kk_am_n
+->amh Cemlaq_a_n
+->amh tewteftafi_n
+->amh bekt_n
+->amh weteftaf_a_n
+*** discourteous_a ; ^ discourteous_a 0
+->amh sd__n
+*** disdainful_a ; ^ disdainful_a 0
+->amh teqWen_aN_n
+*** disgraceful_a ; ^ disgraceful_a 0
+->amh wer_ad_a_n
+->amh 'asaf_ari_n
+*** disgusting_a ; ^ disgusting_a 0
+->amh Sey_af_n
+->amh 'asTey__n
+->amh 'askef_i_n
+->amh 'aS_ey_afi_n
+->amh 'angefgafi_n
+->amh 'asTey_afi_n
+*** dishonest_a ; ^ dishonest_a 0
+->amh welewelda_n
+->amh welkaf_a_n
+->amh weslat_a_n
+->amh xef_aC_n
+*** dishonourable_a ; ^ dishonourable_a 0
+->amh wer_ad_a_n
+->amh 'aS_ey_afi_n
+*** disjointed_a ; ^ disjointed_a 0
+->amh wlqlq_n
+*** disobedient_a ; ^ disobedient_a 0
+->amh 'mbiteN_a_n
+*** disrespectful_a ; ^ disrespectful_a 0
+->amh ql_Etam_n
+->amh qel_al_n
+->amh def_ar_n
+*** distasteful_a ; ^ distasteful_a 0
+->amh Tey_af_n
+*** distrustful_a ; ^ distrustful_a 0
+->amh teTeraTari_n
+->amh TerTari_n
+*** divisible_a ; ^ divisible_a 0
+->amh tekef_ay_n
+*** domestic_a ; ^ domestic_a 0
+->amh lem_ada_n
+*** domineering_a ; ^ domineering_a 0
+->amh CeqW_aN_n
+*** double_a ; ^ double_a 0
+->amh dubl_n
+->amh dr_b_n
+*** doubtful_a ; ^ doubtful_a 0
+->amh 'amenci_n
+->amh 'aT_eyayaqi_n
+->amh 'aT_eraTari_n
+->amh TerTari_n
+*** drastic_a ; ^ drastic_a 0
+->amh Tbq_n
+*** drunken_a ; ^ drunken_a 0
+->amh sek_aram_n
+*** dry_a ; ^ dry_a 0
+->amh kecar_a_n
+->amh kecaca_n
+->amh kecero_n
+->amh dereq_n
+*** dull_a ; ^ dull_a 0
+->amh denez_n
+->amh kecaca_n
+->amh duldum_n
+->amh kecero_n
+->amh doldWam_a_n
+->amh ded_eb_n
+*** dumb_a ; ^ dumb_a 0
+->amh dida_n
+->amh dda_n
+->amh duda_n
+*** dusty_a ; ^ dusty_a 0
+->amh 'abWaram_a_n
+*** dwarfish_a ; ^ dwarfish_a 0
+->amh Cngaf_n
+->amh 'r_ari_n
+->amh db_ano_n
+->amh kecar_a_n
+->amh kecero_n
+->amh kerara_n
+*** eccentric_a ; ^ eccentric_a 0
+->amh wefefteN_a_n
+->amh wefef_E_n
+*** edible_a ; ^ edible_a 0
+->amh tebeyi_n
+*** effeminate_a ; ^ effeminate_a 0
+->amh sEtasEt_n
+*** efficacious_a ; ^ efficacious_a 0
+->amh ftun_n
+*** efficient_a ; ^ efficient_a 0
+->amh bqu_n
+->amh ftun_n
+*** eight_a ; ^ eight_a 0
+->amh sm_nt_n
+*** eighth_a ; ^ eighth_a 0
+->amh smnteN_a_n
+*** elastic_a ; ^ elastic_a 0
+->amh teleT_aC_n
+*** elegant_a ; ^ elegant_a 0
+->amh Zergad_a_n
+*** eminent_a ; ^ eminent_a 0
+->amh zn_eN_a_n
+*** emotionless_a ; ^ emotionless_a 0
+->amh 'amotebis_n
+*** empty_a ; ^ empty_a 0
+->amh bado_n
+*** energetic_a ; ^ energetic_a 0
+->amh tatari_n
+*** enjoyable_a ; ^ enjoyable_a 0
+->amh 'asdes_ac_n
+*** enterprising_a ; ^ enterprising_a 0
+->amh teTaTari_n
+*** entertaining_a ; ^ entertaining_a 0
+->amh 'aznaN_n
+*** entire_a ; ^ entire_a 0
+->amh mel_a_n
+->amh dfn_n
+*** envious_a ; ^ envious_a 0
+->amh qen_ateN_a_n
+*** equal_a ; ^ equal_a 0
+->amh 'k_ul_n
+*** equivalent_a ; ^ equivalent_a 0
+->amh temezazaN_n
+*** equivocal_a ; ^ equivocal_a 0
+->amh 'aT_eraTari_n
+*** errant_a ; ^ errant_a 0
+->amh tezewawari_n
+*** essential_a ; ^ essential_a 0
+->amh wan_a_n
+->amh tefel_agi_n
+*** every_a ; ^ every_a 0
+->amh hul_u_n
+*** evident_a ; ^ evident_a 0
+->amh gWlh_n
+*** evil_a ; ^ evil_a 0
+->amh meTfo_n
+->amh kfateN_a_n
+->amh kfu_n
+*** excitable_a ; ^ excitable_a 0
+->amh denbar_a_n
+*** expensive_a ; ^ expensive_a 0
+->amh wd__n
+*** experimental_a ; ^ experimental_a 0
+->amh mefet_eNa_n
+*** expert_a ; ^ expert_a 0
+->amh balemoya_n
+->amh Tlq_n
+*** express_a ; ^ express_a 0
+->amh berari_n
+*** extensive_a ; ^ extensive_a 0
+->amh sef_i_n
+*** extra_a ; ^ extra_a 0
+->amh teCem_ari_n
+*** extraordinary_a ; ^ extraordinary_a 0
+->amh ly_u_n
+*** extravagant_a ; ^ extravagant_a 0
+->amh zerekrak_a_n
+->amh 'adfafi_n
+->amh zekzak_a_n
+*** exuberant_a ; ^ exuberant_a 0
+->amh zenfal_a_n
+*** famous_a ; ^ famous_a 0
+->amh tawaqi_n
+->amh zn_eN_a_n
+->amh tarikeN_a_n
+->amh genana_n
+*** fanatic_a ; ^ fanatic_a 0
+->amh 'akrari_n
+*** far_a ; ^ far_a 0
+->amh ruq_n
+*** fastidious_a ; ^ fastidious_a 0
+->amh teTey_afi_n
+->amh Ty_uf_n
+->amh Ty_fteN_a_n
+*** fat_a ; ^ fat_a 0
+->amh dendan_a_n
+->amh wedel_a_n
+->amh wefram_n
+->amh wedel_n
+->amh Tebdel_n
+->amh Coma_n
+*** fattish_a ; ^ fattish_a 0
+->amh dofedof_n
+->amh dofdWaf_a_n
+->amh zerkat_a_n
+*** faulty_a ; ^ faulty_a 0
+->amh steteN_a_n
+*** fearful_a ; ^ fearful_a 0
+->amh terbedbaj_n
+->amh bergagi_n
+->amh qeTqaT_a_n
+->amh feri_n
+->amh 'asfer_i_n
+*** fearless_a ; ^ fearless_a 0
+->amh def_ar_n
+*** feeble_a ; ^ feeble_a 0
+->amh fezaz_a_n
+->amh Tmlml__n
+->amh degdag_a_n
+->amh deqaqa_n
+->amh deqosqWas_a_n
+->amh senef_n
+->amh ftltl_n
+*** feeble-minded_a ; ^ feeble-minded_a 0
+->amh Zebrar_a_n
+->amh dekam_a_n
+*** female_a ; ^ female_a 0
+->amh 'nst_n
+->amh sEtE_n
+*** ferocious_a ; ^ ferocious_a 0
+->amh 'asfer_i_n
+*** fertile_a ; ^ fertile_a 0
+->amh lem_n
+*** fetid_a ; ^ fetid_a 0
+->amh Tnb_n
+->amh Tnbatam_n
+*** feudal_a ; ^ feudal_a 0
+->amh fiwdal_n
+*** fickle_a ; ^ fickle_a 0
+->amh wereteN_a_n
+*** fierce_a ; ^ fierce_a 0
+->amh 'asfer_i_n
+*** fifth_a ; ^ fifth_a 0
+->amh 'am_steN_a_n
+*** fiftieth_a ; ^ fiftieth_a 0
+->amh 'amsaN_a_n
+*** filthy_a ; ^ filthy_a 0
+->amh besbas_a_n
+->amh qoxaxa_n
+->amh Cemel_eq_n
+->amh bk_ac_n
+->amh lksks_n
+->amh Cqq_tam_n
+->amh tewsakam_n
+->amh Cemlaq_a_n
+->amh lf_aCam_n
+->amh bekt_n
+->amh xeqenam_n
+*** fine_a ; ^ fine_a 0
+->amh deq_aqa_n
+->amh deq_aq_n
+->amh reqiq_n
+->amh Tru_n
+->amh deg__n
+*** firm_a ; ^ firm_a 0
+->amh Tnu_n
+*** first_a ; ^ first_a 0
+->amh qedamawit_n
+->amh qedami_n
+->amh teqed_ami_n
+->amh qedamawi_n
+->amh 'andeN_a_n
+*** fit_a ; ^ fit_a 0
+->amh xenqaT_a_n
+*** fitting_a ; ^ fitting_a 0
+->amh tegeb_i_n
+*** five_a ; ^ five_a 0
+->amh 'am_st_n
+*** flamboyant_a ; ^ flamboyant_a 0
+->amh blClC_n
+*** flammable_a ; ^ flammable_a 0
+->amh nedaj_n
+*** flashy_a ; ^ flashy_a 0
+->amh blClC_n
+*** flat_a ; ^ flat_a 0
+->amh zrg_n
+->amh TefTaf_a_n
+*** fleet_a ; ^ fleet_a 0
+->amh TolTWal_a_n
+*** flexible_a ; ^ flexible_a 0
+->amh telem_aC_n
+->amh lb_q_n
+->amh teleb_aqi_n
+->amh leb_aq_a_n
+*** flirtatious_a ; ^ flirtatious_a 0
+->amh texkormami_n
+*** floating_a ; ^ floating_a 0
+->amh sefafi_n
+*** flowery_a ; ^ flowery_a 0
+->amh 'abebam_a_n
+*** flying_a ; ^ flying_a 0
+->amh berari_n
+*** foggy_a ; ^ foggy_a 0
+->amh Cgagam_n
+->amh gumam_n
+*** following_a ; ^ following_a 0
+->amh teket_ay_n
+->amh qeT_ay_n
+*** foolish_a ; ^ foolish_a 0
+->amh 'ankola_n
+->amh qilaqil_n
+->amh moN_n
+*** foremost_a ; ^ foremost_a 0
+->amh qedami_n
+*** forgetful_a ; ^ forgetful_a 0
+->amh zngu_n
+->amh telala_n
+->amh rexi_n
+*** fortunate_a ; ^ fortunate_a 0
+->amh balegmbar_n
+*** forty_a ; ^ forty_a 0
+->amh 'arba_n
+*** four_a ; ^ four_a 0
+->amh 'arat__n
+*** fourth_a ; ^ fourth_a 0
+->amh 'arat_eN_a_n
+*** fragile_a ; ^ fragile_a 0
+->amh teseb_ari_n
+*** fraudulent_a ; ^ fraudulent_a 0
+->amh 'ad_enagari_n
+*** frequent_a ; ^ frequent_a 0
+->amh tedegagami_n
+*** fresh_a ; ^ fresh_a 0
+->amh lega_n
+*** frisky_a ; ^ frisky_a 0
+->amh 'alelE_n
+*** frivolous_a ; ^ frivolous_a 0
+->amh kewkaw_a_n
+*** frizzy_a ; ^ frizzy_a 0
+->amh kefrar_a_n
+*** fruitful_a ; ^ fruitful_a 0
+->amh frEyam_a_n
+*** full_a ; ^ full_a 0
+->amh mulu_n
+*** funny_a ; ^ funny_a 0
+->amh 'as_qiN__n
+*** futile_a ; ^ futile_a 0
+->amh kentu_n
+*** gallant_a ; ^ gallant_a 0
+->amh jegna_n
+*** general_a ; ^ general_a 0
+->amh 'aT_eqalay_n
+->amh Teqlal_a_n
+*** generous_a ; ^ generous_a 0
+->amh doldWal_E_n
+->amh doldWal_a_n
+->amh cer_n
+->amh leg_as_n
+->amh deg_adeg__n
+*** gentle_a ; ^ gentle_a 0
+->amh SeT_teN_a_n
+->amh welansa_n
+->amh kuru_n
+->amh ger_am_n
+->amh lz_b_n
+->amh derbab_a_n
+*** genuine_a ; ^ genuine_a 0
+->amh denbeN_a_n
+*** gigantic_a ; ^ gigantic_a 0
+->amh gzuf_n
+*** glamorous_a ; ^ glamorous_a 0
+->amh zenfal_a_n
+*** glaring_a ; ^ glaring_a 0
+->amh 'anSebaraqi_n
+*** glib_a ; ^ glib_a 0
+->amh 'afeqbE_n
+*** gloomy_a ; ^ gloomy_a 0
+->amh Cefgag_a_n
+->amh Terzaz_a_n
+->amh 'ayTedax_n
+->amh debzaz_a_n
+*** glowing_a ; ^ glowing_a 0
+->amh derkak_a_n
+*** gluttonous_a ; ^ gluttonous_a 0
+->amh hodam_n
+*** golden_a ; ^ golden_a 0
+->amh werqam_a_n
+*** good_a ; ^ good_a 0
+->amh melkam_n
+->amh Tru_n
+->amh qen_a_n
+->amh deg__n
+*** good-natured_a ; ^ good-natured_a 0
+->amh ger_n
+->amh qn_n
+*** graceful_a ; ^ graceful_a 0
+->amh zenkat_a_n
+->amh Zergad_a_n
+->amh zenfal_a_n
+->amh gomlal_a_n
+->amh gWedada_n
+->amh derbab_a_n
+*** graceless_a ; ^ graceless_a 0
+->amh Teg_abis_n
+->amh kel_ab_a_n
+->amh neTela_n
+->amh qelqal_a_n
+*** grand_a ; ^ grand_a 0
+->amh tal_aq_n
+*** grateful_a ; ^ grateful_a 0
+->amh lC_eN_a_n
+*** grave_a ; ^ grave_a 0
+->amh keb_ad_n
+*** greedy_a ; ^ greedy_a 0
+->amh hodam_n
+->amh Cuq_n
+->amh gebgab_a_n
+->amh segelE_n
+*** green_a ; ^ green_a 0
+->amh 'nCC_n
+->amh lemlem_n
+->amh 'arengWadE_n
+*** greenish_a ; ^ greenish_a 0
+->amh qTely_a_n
+*** grey_a ; ^ grey_a 0
+->amh graC_a_n
+->amh bul_a_n
+->amh dalec_a_n
+*** grimy_a ; ^ grimy_a 0
+->amh lf_aCam_n
+*** gross_a ; ^ gross_a 0
+->amh Sey_af_n
+->amh gWlh_n
+*** grotesque_a ; ^ grotesque_a 0
+->amh 'asqey_ami_n
+*** grouchy_a ; ^ grouchy_a 0
+->amh neCnaC_a_n
+*** guilty_a ; ^ guilty_a 0
+->amh 'aTfi_n
+->amh TfateN_a_n
+*** gullible_a ; ^ gullible_a 0
+->amh dl_l_n
+*** habitual_a ; ^ habitual_a 0
+->amh lmadeN_a_n
+->amh telem_aj_n
+*** hairless_a ; ^ hairless_a 0
+->amh mlT_n
+*** hairy_a ; ^ hairy_a 0
+->amh Cgeram_n
+->amh Teguram_n
+*** half-hearted_a ; ^ half-hearted_a 0
+->amh 'aqmami_n
+*** halfway_a ; ^ halfway_a 0
+->amh 'ag_amax_n
+*** handsome_a ; ^ handsome_a 0
+->amh demegbu_n
+*** happy_a ; ^ happy_a 0
+->amh tedes_ac_n
+->amh des_teN_a_n
+*** hard_a ; ^ hard_a 0
+->amh TT_r_n
+->amh gWerbaT_a_n
+->amh dd_r_n
+->amh gg_r_n
+*** harmful_a ; ^ harmful_a 0
+->amh TenqeN_a_n
+->amh goji_n
+->amh tetenakWay_n
+*** hasty_a ; ^ hasty_a 0
+->amh ck_ul_n
+*** haughty_a ; ^ haughty_a 0
+->amh teqWen_aN__n
+*** hazardous_a ; ^ hazardous_a 0
+->amh 'adegeN_a_n
+*** hazy_a ; ^ hazy_a 0
+->amh Cgagam_n
+*** healthy_a ; ^ healthy_a 0
+->amh TEnam_a_n
+->amh TEneN_a_n
+*** heavy_a ; ^ heavy_a 0
+->amh tekabaj_n
+->amh keb_ad_n
+->amh keb_ada_n
+*** hefty_a ; ^ hefty_a 0
+->amh TunceN_a_n
+*** heretical_a ; ^ heretical_a 0
+->amh menafq_n
+*** hesitant_a ; ^ hesitant_a 0
+->amh gengaN_n
+->amh 'aqmami_n
+->amh welaway_n
+*** hideous_a ; ^ hideous_a 0
+->amh masTel_o_n
+*** high_a ; ^ high_a 0
+->amh kef_teN_a_n
+*** high-spirited_a ; ^ high-spirited_a 0
+->amh kuru_n
+->amh goremsa_n
+*** higher_a ; ^ higher_a 0
+->amh kef_teN_a_n
+*** hilly_a ; ^ hilly_a 0
+->amh korebtam_a_n
+->amh dagetam_n
+*** hoarse_a ; ^ hoarse_a 0
+->amh gWernan_a_n
+*** hollow_a ; ^ hollow_a 0
+->amh gWedgWad_a_n
+*** holy_a ; ^ holy_a 0
+->amh qd_us_n
+->amh qd_st_n
+*** honest_a ; ^ honest_a 0
+->amh qen_a_n
+*** honourable_a ; ^ honourable_a 0
+->amh teferi_n
+*** horizontal_a ; ^ horizontal_a 0
+->amh 'agdm_n
+->amh gadm_n
+->amh 'agdami_n
+*** hornless_a ; ^ hornless_a 0
+->amh goda_n
+*** hot_a ; ^ hot_a 0
+->amh remoCa_n
+->amh muq_n
+->amh moq_at_n
+*** hot-blooded_a ; ^ hot-blooded_a 0
+->amh glfteN_a_n
+*** hot-tempered_a ; ^ hot-tempered_a 0
+->amh seyTanam_n
+*** humorous_a ; ^ humorous_a 0
+->amh 'as_qiN__n
+*** hundred_a ; ^ hundred_a 0
+->amh meto_n
+*** hundredth_a ; ^ hundredth_a 0
+->amh metoN_a_n
+*** hurried_a ; ^ hurried_a 0
+->amh cekW_ay_n
+*** husky_a ; ^ husky_a 0
+->amh gWernan_a_n
+*** hypocritical_a ; ^ hypocritical_a 0
+->amh 'algWami_n
+->amh temeSadaqi_n
+->amh gb_z_n
+*** idiotic_a ; ^ idiotic_a 0
+->amh 'nkef_n
+->amh 'ankola_n
+*** idle_a ; ^ idle_a 0
+->amh magaC_n
+->amh magaTa_n
+->amh senef_n
+->amh zerfaT_a_n
+->amh wz_f_n
+*** ignoble_a ; ^ ignoble_a 0
+->amh wer_ad_a_n
+*** ignorant_a ; ^ ignorant_a 0
+->amh denqoro_n
+->amh geltu_n
+*** ill-mannered_a ; ^ ill-mannered_a 0
+->amh besbas_a_n
+->amh yalteger_a_n
+->amh bexqaT_a_n
+->amh 'r_eN_a_n
+*** ill-natured_a ; ^ ill-natured_a 0
+->amh meteteN_a_n
+->amh glfteN_a_n
+*** illegitimate_a ; ^ illegitimate_a 0
+->amh diqala_n
+*** illustrious_a ; ^ illustrious_a 0
+->amh genana_n
+*** imbecile_a ; ^ imbecile_a 0
+->amh 'nkef_n
+*** immature_a ; ^ immature_a 0
+->amh Corqa_n
+->amh CerqWa_n
+*** impatient_a ; ^ impatient_a 0
+->amh qnznz_n
+*** imperfect_a ; ^ imperfect_a 0
+->amh 'nkenam_n
+*** impolite_a ; ^ impolite_a 0
+->amh Tfram_n
+->amh zel_an_n
+->amh newreN_a_n
+->amh newr_n
+->amh 'r_eN_a_n
+->amh sd__n
+->amh balegE_n
+*** important_a ; ^ important_a 0
+->amh Teqami_n
+->amh kef_teN_a_n
+*** importunate_a ; ^ importunate_a 0
+->amh mozaza_n
+->amh wetwac_n
+->amh neznaz_a_n
+->amh neznaZ_n
+->amh zebzab_a_n
+->amh tensefsafi_n
+->amh 'asceg_ari_n
+->amh wetw_ata_n
+*** impossible_a ; ^ impossible_a 0
+->amh 'adagac_n
+*** impressive_a ; ^ impressive_a 0
+->amh 'asger_ami_n
+->amh 'asden_aqi_n
+*** improper_a ; ^ improper_a 0
+->amh 'asneq_afi_n
+->amh 'agWagul_n
+*** impudent_a ; ^ impudent_a 0
+->amh tekleflafi_n
+->amh tedafari_n
+->amh belTaT_a_n
+*** inactive_a ; ^ inactive_a 0
+->amh 'nqlfam_n
+->amh mutc_a_n
+->amh gtc_a_n
+->amh zmbam_n
+->amh wet_af_a_n
+->amh wt_f_n
+*** inclusive_a ; ^ inclusive_a 0
+->amh 'aT_eqalay_n
+*** incomplete_a ; ^ incomplete_a 0
+->amh godelo_n
+*** inconsistent_a ; ^ inconsistent_a 0
+->amh telewawaC_n
+->amh wereteN_a_n
+*** incontinent_a ; ^ incontinent_a 0
+->amh xntam_n
+*** incorrect_a ; ^ incorrect_a 0
+->amh 'agWagul_n
+*** indecent_a ; ^ indecent_a 0
+->amh newreN_a_n
+->amh newr_n
+->amh 'agWagul_n
+->amh 'asnew_ari_n
+*** indefinite_a ; ^ indefinite_a 0
+->amh yaltewes_ene_n
+*** indifferent_a ; ^ indifferent_a 0
+->amh 'amotebis_n
+*** indistinct_a ; ^ indistinct_a 0
+->amh debzaz_a_n
+*** individualistic_a ; ^ individualistic_a 0
+->amh gl_eN_a_n
+*** indolent_a ; ^ indolent_a 0
+->amh senef_n
+*** indulgent_a ; ^ indulgent_a 0
+->amh 'andelaqaqi_n
+*** industrious_a ; ^ industrious_a 0
+->amh batelE_n
+*** inexpensive_a ; ^ inexpensive_a 0
+->amh rk_ax_n
+*** infectious_a ; ^ infectious_a 0
+->amh tezamac_n
+*** inferior_a ; ^ inferior_a 0
+->amh zq_teN_a_n
+->amh tewer_aj_n
+*** inflammable_a ; ^ inflammable_a 0
+->amh nedaj_n
+*** influential_a ; ^ influential_a 0
+->amh tedem_aC_n
+->amh balewegen_n
+*** ingenious_a ; ^ ingenious_a 0
+->amh feliTeN_a_n
+->amh 'aj_rE_n
+*** inhuman_a ; ^ inhuman_a 0
+->amh 'awrE_n
+*** injurious_a ; ^ injurious_a 0
+->amh tetenakWay_n
+*** inquisitive_a ; ^ inquisitive_a 0
+->amh TolTWal_a_n
+->amh tostWas_a_n
+->amh xol_aka_n
+->amh 'atostWax_n
+*** insincere_a ; ^ insincere_a 0
+->amh lem_aTa_n
+*** insolent_a ; ^ insolent_a 0
+->amh Tfram_n
+->amh tedafari_n
+->amh def_ar_n
+*** insoluble_a ; ^ insoluble_a 0
+->amh 'aC_eqaCaqi_n
+*** insubstantial_a ; ^ insubstantial_a 0
+->amh 'asidam_n
+*** intelligent_a ; ^ intelligent_a 0
+->amh 'angWelam_n
+->amh 'sat_n
+->amh 'asteway_n
+->amh 'am_ezazaN_n
+->amh Ty_t_n
+->amh blhateN_a_n
+->amh blh_n
+*** irascible_a ; ^ irascible_a 0
+->amh 'akurafi_n
+->amh tekor_afi_n
+*** irresolute_a ; ^ irresolute_a 0
+->amh 'aqmami_n
+->amh wlmTmT_n
+*** jealous_a ; ^ jealous_a 0
+->amh qena'i_n
+->amh qen_ateN_a_n
+*** jellied_a ; ^ jellied_a 0
+->amh zlglg_n
+*** jocund_a ; ^ jocund_a 0
+->amh saq_it_a_n
+*** jovial_a ; ^ jovial_a 0
+->amh folfWal_a_n
+->amh flqlq_n
+*** joyful_a ; ^ joyful_a 0
+->amh des_teN_a_n
+*** judicious_a ; ^ judicious_a 0
+->amh 'am_ezazaN_n
+*** jumpy_a ; ^ jumpy_a 0
+->amh terbedbaj_n
+->amh xemqaq_a_n
+->amh 'rbdbd_n
+*** just_a ; ^ just_a 0
+->amh Sadq_n
+*** kind_a ; ^ kind_a 0
+->amh deg__n
+*** kind-hearted_a ; ^ kind-hearted_a 0
+->amh rgbgbit_n
+->amh rgb_n
+*** kinky_a ; ^ kinky_a 0
+->amh kerdad_a_n
+->amh qWrnCaC_n
+*** lame_a ; ^ lame_a 0
+->amh 'ankal_a_n
+->amh xba_n
+->amh sel_ala_n
+*** large_a ; ^ large_a 0
+->amh sef_i_n
+->amh tal_aq_n
+->amh tl_q_n
+->amh Tebdel_n
+*** lascivious_a ; ^ lascivious_a 0
+->amh bdatam_n
+*** lasting_a ; ^ lasting_a 0
+->amh zelaqi_n
+*** latter_a ; ^ latter_a 0
+->amh hWaleN_a_n
+*** laughable_a ; ^ laughable_a 0
+->amh 'as_qiN__n
+*** lawless_a ; ^ lawless_a 0
+->amh zel_an_n
+->amh sd__n
+*** lax_a ; ^ lax_a 0
+->amh zelzal_a_n
+*** lay_a ; ^ lay_a 0
+->amh geltu_n
+*** lazy_a ; ^ lazy_a 0
+->amh mutc_a_n
+->amh magaC_n
+->amh wex_aq_a_n
+->amh takac_n
+->amh 'amotebis_n
+->amh reheT_n
+->amh senef_n
+->amh zerfaT_a_n
+->amh wet_af_a_n
+->amh gm_l_n
+->amh telkas_a_n
+->amh wt_f_n
+->amh 'algum_n
+*** lean_a ; ^ lean_a 0
+->amh wesfatam_n
+->amh deraqa_n
+->amh gWfay_a_n
+->amh degdag_a_n
+*** learned_a ; ^ learned_a 0
+->amh mhur_n
+->amh liq_n
+*** left_a ; ^ left_a 0
+->amh gra_n
+*** left-handed_a ; ^ left-handed_a 0
+->amh graN__n
+*** legible_a ; ^ legible_a 0
+->amh teneb_abi_n
+*** less_a ; ^ less_a 0
+->amh bis_n
+*** level_a ; ^ level_a 0
+->amh TefTaf_a_n
+*** light_a ; ^ light_a 0
+->amh kewkaw_a_n
+->amh qel_al_n
+*** little_a ; ^ little_a 0
+->amh tn_x_n
+*** lively_a ; ^ lively_a 0
+->amh dem_aq_n
+->amh wez_am_n
+*** living_a ; ^ living_a 0
+->amh nWari_n
+*** loathsome_a ; ^ loathsome_a 0
+->amh 'aS_ey_afi_n
+*** lone_a ; ^ lone_a 0
+->amh bc_eN_a_n
+*** lonely_a ; ^ lonely_a 0
+->amh bc_eN_a_n
+*** lonesome_a ; ^ lonesome_a 0
+->amh bc_eN_a_n
+*** long_a ; ^ long_a 0
+->amh reZ_m_n
+*** loose_a ; ^ loose_a 0
+->amh zkzk_n
+->amh zerzar_a_n
+->amh ll_n
+*** loud_a ; ^ loud_a 0
+->amh dem_aq_n
+*** lovely_a ; ^ lovely_a 0
+->amh 'asdes_ac_n
+*** loyal_a ; ^ loyal_a 0
+->amh tam_aN_n
+*** lucky_a ; ^ lucky_a 0
+->amh ged_am_n
+->amh gmbaram_n
+->amh ged_am_a_n
+->amh balegmbar_n
+*** luminous_a ; ^ luminous_a 0
+->amh 'abreqraqi_n
+*** lustful_a ; ^ lustful_a 0
+->amh sEseN_a_n
+->amh ftweteN_a_n
+->amh zazaN_n
+*** magnificent_a ; ^ magnificent_a 0
+->amh grum_n
+->amh 'asden_aqi_n
+*** main_a ; ^ main_a 0
+->amh wan_a_n
+*** major_a ; ^ major_a 0
+->amh wan_a_n
+*** male_a ; ^ male_a 0
+->amh wend_n
+->amh tebat_n
+->amh wendE_n
+*** malevolent_a ; ^ malevolent_a 0
+->amh meteteN_a_n
+->amh maxnk_n
+*** malicious_a ; ^ malicious_a 0
+->amh TenqeN_a_n
+->amh tenkoleN_a_n
+*** malignant_a ; ^ malignant_a 0
+->amh maxnk_n
+*** malodorous_a ; ^ malodorous_a 0
+->amh Tnbatam_n
+*** mangy_a ; ^ mangy_a 0
+->amh kukniyam_n
+*** many_a ; ^ many_a 0
+->amh bzu_n
+*** married_a ; ^ married_a 0
+->amh balebal_n
+->amh baletdar_n
+*** marvellous_a ; ^ marvellous_a 0
+->amh dnq_n
+->amh teden_aqi_n
+*** masculine_a ; ^ masculine_a 0
+->amh tebatay_n
+->amh tebat_n
+*** massive_a ; ^ massive_a 0
+->amh gzuf_n
+*** mature_a ; ^ mature_a 0
+->amh bsl_n
+*** maximum_a ; ^ maximum_a 0
+->amh kef_teN_a_n
+*** mean_a ; ^ mean_a 0
+->amh qWenqWan_a_n
+->amh qnqnam_n
+->amh kfu_n
+->amh qoTqWaT_a_n
+*** meddlesome_a ; ^ meddlesome_a 0
+->amh TolTWal_a_n
+*** mediocre_a ; ^ mediocre_a 0
+->amh tera_n
+*** medium_a ; ^ medium_a 0
+->amh mehak_eleN_a_n
+->amh 'anesteN_a_n
+->amh mekak_eleN_a_n
+->amh mekak_el_n
+*** melancholic_a ; ^ melancholic_a 0
+->amh 'ayTedax_n
+->amh tek_aZ_n
+*** melting_a ; ^ melting_a 0
+->amh qelaC_n
+*** mendacious_a ; ^ mendacious_a 0
+->amh qeTafi_n
+*** merciful_a ; ^ merciful_a 0
+->amh tad_agi_n
+*** merciless_a ; ^ merciless_a 0
+->amh Cek_aN_n
+*** messy_a ; ^ messy_a 0
+->amh zrkrk_n
+*** methodical_a ; ^ methodical_a 0
+->amh xk_f_n
+*** meticulous_a ; ^ meticulous_a 0
+->amh Tenqaq_a_n
+*** million_a ; ^ million_a 0
+->amh mil_iyon_n
+*** mindful_a ; ^ mindful_a 0
+->amh lb_am_n
+*** minor_a ; ^ minor_a 0
+->amh Tqaq_n_n
+*** minute_a ; ^ minute_a 0
+->amh deq_aq_n
+->amh Tqaq_n_n
+->amh 'm_r_n
+*** miraculous_a ; ^ miraculous_a 0
+->amh tam_reN_a_n
+->amh balegedl_n
+->amh te'am_reN_a_n
+->amh gedleN_a_n
+*** mischievous_a ; ^ mischievous_a 0
+->amh tekleflafi_n
+->amh tenkoleN_a_n
+->amh mekereN_a_n
+->amh qebaC_n
+->amh melti_n
+->amh beTbaC_n
+->amh xer_eN_a_n
+->amh keleflaf_a_n
+->amh klflf_n
+*** miserable_a ; ^ miserable_a 0
+->amh mekereN_a_n
+->amh 'kekam_n
+->amh gWesqWal_a_n
+*** miserly_a ; ^ miserly_a 0
+->amh qebqab_a_n
+->amh qeTqaT_a_n
+->amh qWenqWan_a_n
+->amh gengebet_n
+*** misty_a ; ^ misty_a 0
+->amh Cgagam_n
+->amh gumam_n
+*** mixed_a ; ^ mixed_a 0
+->amh qy_T_n
+->amh qlq_l_n
+->amh dbl_q_n
+*** mobile_a ; ^ mobile_a 0
+->amh teneqanaqi_n
+->amh tenqesaqax_n
+->amh tezawari_n
+->amh tezewawari_n
+*** moderate_a ; ^ moderate_a 0
+->amh lez_ebteN_a_n
+->amh meTeneN_a_n
+*** modern_a ; ^ modern_a 0
+->amh zebenay_n
+*** moist_a ; ^ moist_a 0
+->amh 'rTb_n
+*** moody_a ; ^ moody_a 0
+->amh 'ameleN_a_n
+->amh ganEnam_n
+*** morbid_a ; ^ morbid_a 0
+->amh muqmuq_n
+*** more_a ; ^ more_a 0
+->amh teCem_ari_n
+*** moronic_a ; ^ moronic_a 0
+->amh nefelel_n
+*** mortal_a ; ^ mortal_a 0
+->amh regafi_n
+*** most_a ; ^ most_a 0
+->amh 'abzaN_aw_n
+*** moth-eaten_a ; ^ moth-eaten_a 0
+->amh qnqnam_n
+*** motherly_a ; ^ motherly_a 0
+->amh rgbgbit_n
+*** mountainous_a ; ^ mountainous_a 0
+->amh teraram_a_n
+->amh garam_a_n
+*** movable_a ; ^ movable_a 0
+->amh tenqesaqax_n
+*** much_a ; ^ much_a 0
+->amh bzu_n
+*** muddy_a ; ^ muddy_a 0
+->amh Cqam_a_n
+->amh dfrs_n
+*** mum_a ; ^ mum_a 0
+->amh mrg_n
+*** muscular_a ; ^ muscular_a 0
+->amh Tuncam_a_n
+*** mushy_a ; ^ mushy_a 0
+->amh bukbuk_n
+*** mute_a ; ^ mute_a 0
+->amh dida_n
+->amh dda_n
+->amh duda_n
+*** naive_a ; ^ naive_a 0
+->amh jlajl_n
+->amh gerager_n
+*** naked_a ; ^ naked_a 0
+->amh raqut_n
+*** narrow_a ; ^ narrow_a 0
+->amh Teb_ab_n
+*** nasty_a ; ^ nasty_a 0
+->amh 'asTey_afi_n
+*** nauseous_a ; ^ nauseous_a 0
+->amh 'aTwelway_n
+*** near_a ; ^ near_a 0
+->amh qrb_n
+*** neat_a ; ^ neat_a 0
+->amh Tdu_n
+->amh st_r_n
+*** necessary_a ; ^ necessary_a 0
+->amh tefel_agi_n
+*** needy_a ; ^ needy_a 0
+->amh cg_reN_a_n
+*** negligent_a ; ^ negligent_a 0
+->amh cel_teN_a_n
+*** nervous_a ; ^ nervous_a 0
+->amh terbedbaj_n
+->amh xemqaq_a_n
+->amh 'rbdbd_n
+*** neurotic_a ; ^ neurotic_a 0
+->amh wefefteN_a_n
+->amh wefef_E_n
+*** new_a ; ^ new_a 0
+->amh 'ad_is_n
+*** nice_a ; ^ nice_a 0
+->amh welansa_n
+->amh deg__n
+->amh Tru_n
+*** nine_a ; ^ nine_a 0
+->amh zeTeN__n
+*** ninety_a ; ^ ninety_a 0
+->amh zeTena_n
+*** ninth_a ; ^ ninth_a 0
+->amh zeTeneN_a_n
+*** nonsensical_a ; ^ nonsensical_a 0
+->amh qbTrTr_n
+*** nosey_a ; ^ nosey_a 0
+->amh TolTWal_a_n
+->amh xol_aka_n
+*** nostalgic_a ; ^ nostalgic_a 0
+->amh nafaqi_n
+*** obedient_a ; ^ obedient_a 0
+->amh taz_aZ_n
+*** obese_a ; ^ obese_a 0
+->amh zfzf_n
+->amh zefazefo_n
+*** obscene_a ; ^ obscene_a 0
+->amh Sey_af_n
+*** obscure_a ; ^ obscure_a 0
+->amh defenfan_a_n
+->amh dfnfn_n
+*** obsequious_a ; ^ obsequious_a 0
+->amh 'adegdagi_n
+*** observant_a ; ^ observant_a 0
+->amh 'asteway_n
+*** obstinate_a ; ^ obstinate_a 0
+->amh gergar_a_n
+->amh get_ara_n
+->amh gt_r_n
+->amh dereq_n
+->amh 'l_keN_a_n
+->amh 'angeragari_n
+*** obtuse_a ; ^ obtuse_a 0
+->amh dnfef_n
+*** obvious_a ; ^ obvious_a 0
+->amh gWlh_n
+*** odd_a ; ^ odd_a 0
+->amh 'ngda_n
+*** offensive_a ; ^ offensive_a 0
+->amh 'askef_i_n
+->amh 'asqey_ami_n
+*** old_a ; ^ old_a 0
+->amh 'arogE_n
+*** one_a ; ^ one_a 0
+->amh 'andit_n
+->amh 'and_n
+*** one-eyed_a ; ^ one-eyed_a 0
+->amh 'andayna_n
+->amh Tenbar_a_n
+*** only_a ; ^ only_a 0
+->amh bc_a_n
+*** open_a ; ^ open_a 0
+->amh gelaTa_n
+->amh kft_n
+->amh gehad_n
+->amh glT_n
+*** open-eyed_a ; ^ open-eyed_a 0
+->amh belTaT_a_n
+*** open-handed_a ; ^ open-handed_a 0
+->amh cer_n
+*** opposite_a ; ^ opposite_a 0
+->amh teqarani_n
+*** oppressive_a ; ^ oppressive_a 0
+->amh mozaza_n
+*** orderly_a ; ^ orderly_a 0
+->amh xk_f_n
+->amh st_r_n
+*** ordinary_a ; ^ ordinary_a 0
+->amh 'alb_alE_n
+->amh tera_n
+*** other_a ; ^ other_a 0
+->amh lEla_n
+*** oval_a ; ^ oval_a 0
+->amh molala_n
+->amh debelbal_a_n
+->amh mulmul_n
+*** overall_a ; ^ overall_a 0
+->amh Teqlal_a_n
+*** pale_a ; ^ pale_a 0
+->amh 'amedam_n
+*** parsimonious_a ; ^ parsimonious_a 0
+->amh gebgab_a_n
+*** passive_a ; ^ passive_a 0
+->amh teder_agi_n
+*** patchy_a ; ^ patchy_a 0
+->amh dr_t_n
+*** pathetic_a ; ^ pathetic_a 0
+->amh 'asaz_aN__n
+->amh 'askWen_aN_n
+->amh mskin_n
+*** patient_a ; ^ patient_a 0
+->amh tag_ax_n
+->amh cay_n
+*** paunchy_a ; ^ paunchy_a 0
+->amh borCam_n
+*** peaceful_a ; ^ peaceful_a 0
+->amh ger_am_n
+*** penniless_a ; ^ penniless_a 0
+->amh mskin_n
+*** perfect_a ; ^ perfect_a 0
+->amh fS_um_n
+*** perilous_a ; ^ perilous_a 0
+->amh 'adegeN_a_n
+*** permanent_a ; ^ permanent_a 0
+->amh qWami_n
+*** perpetual_a ; ^ perpetual_a 0
+->amh zelaqi_n
+*** perplexed_a ; ^ perplexed_a 0
+->amh dengar_a_n
+*** persistent_a ; ^ persistent_a 0
+->amh mencak_a_n
+->amh gt_r_n
+->amh dereq_n
+*** personal_a ; ^ personal_a 0
+->amh gl__n
+*** perspicacious_a ; ^ perspicacious_a 0
+->amh 'am_ezazaN_n
+*** persuadable_a ; ^ persuadable_a 0
+->amh dl_l_n
+*** pessimistic_a ; ^ pessimistic_a 0
+->amh mWarteN_a_n
+*** piebald_a ; ^ piebald_a 0
+->amh bur_E_n
+*** pimply_a ; ^ pimply_a 0
+->amh bguram_n
+*** pious_a ; ^ pious_a 0
+->amh SeloteN_a_n
+->amh Sadq_n
+*** pitiable_a ; ^ pitiable_a 0
+->amh 'asaz_aN__n
+*** plain_a ; ^ plain_a 0
+->amh goda_n
+->amh lmuT__n
+*** plastered_a ; ^ plastered_a 0
+->amh mrg_n
+->amh ls_n_n
+*** playful_a ; ^ playful_a 0
+->amh teCawac_n
+*** pleasing_a ; ^ pleasing_a 0
+->amh 'asdes_ac_n
+*** plentiful_a ; ^ plentiful_a 0
+->amh berkat_a_n
+*** pliant_a ; ^ pliant_a 0
+->amh ml_s_n
+*** plump_a ; ^ plump_a 0
+->amh dendan_a_n
+->amh dmbux_n
+*** pointed_a ; ^ pointed_a 0
+->amh xul_n
+->amh dg_n_n
+*** poisonous_a ; ^ poisonous_a 0
+->amh merzeN_a_n
+*** polite_a ; ^ polite_a 0
+->amh lC_eN_a_n
+->amh lq_m_n
+*** poor_a ; ^ poor_a 0
+->amh deha_n
+->amh dha_n
+*** possessive_a ; ^ possessive_a 0
+->amh 'ag_enazabi_n
+*** potbellied_a ; ^ potbellied_a 0
+->amh zereTeT__n
+->amh zerTaT_a_n
+->amh zefTaT_a_n
+->amh zefeTeT_n
+*** powdered_a ; ^ powdered_a 0
+->amh wqT_n
+*** powdery_a ; ^ powdery_a 0
+->amh lm_n
+*** powerful_a ; ^ powerful_a 0
+->amh tedem_aC_n
+*** precious_a ; ^ precious_a 0
+->amh werqam_a_n
+->amh brq_n
+*** precipitous_a ; ^ precipitous_a 0
+->amh gedelam_a_n
+*** pregnant_a ; ^ pregnant_a 0
+->amh 'rguz_n
+*** pressing_a ; ^ pressing_a 0
+->amh 'aT_adafi_n
+*** presumptuous_a ; ^ presumptuous_a 0
+->amh wegeN_a_n
+*** pretentious_a ; ^ pretentious_a 0
+->amh kunsns_n
+->amh gederdar_a_n
+->amh gdrdr_n
+->amh tekbesbax_n
+->amh kbsbs_n
+->amh tegderdari_n
+*** pretty_a ; ^ pretty_a 0
+->amh dnbul_o_n
+*** principal_a ; ^ principal_a 0
+->amh wan_a_n
+*** prior_a ; ^ prior_a 0
+->amh teqed_ami_n
+*** private_a ; ^ private_a 0
+->amh ly_u_n
+*** problematic_a ; ^ problematic_a 0
+->amh TaTeN_a_n
+->amh 'aC_eqaCaqi_n
+*** profitable_a ; ^ profitable_a 0
+->amh Teqami_n
+*** profligate_a ; ^ profligate_a 0
+->amh lq__n
+*** profound_a ; ^ profound_a 0
+->amh Tlq_n
+*** progressive_a ; ^ progressive_a 0
+->amh teramaj_n
+*** promiscuous_a ; ^ promiscuous_a 0
+->amh bdatam_n
+*** proper_a ; ^ proper_a 0
+->amh tegeb_i_n
+*** proportionate_a ; ^ proportionate_a 0
+->amh meTeneN_a_n
+*** protuberant_a ; ^ protuberant_a 0
+->amh gefeTeT_n
+->amh gefTaT_a_n
+*** proud_a ; ^ proud_a 0
+->amh teqWen_aN_n
+->amh kuru_n
+->amh kurateN_a_n
+->amh jn_n_n
+->amh lT_T_n
+*** provocative_a ; ^ provocative_a 0
+->amh tenkoleN_a_n
+->amh tetenakWay_n
+*** prudent_a ; ^ prudent_a 0
+->amh Tnquq_n
+->amh qelbam_n
+->amh Tenqaq_a_n
+->amh zedEN_a_n
+->amh 'asteway_n
+->amh blhateN_a_n
+->amh blh_n
+*** puny_a ; ^ puny_a 0
+->amh Cngaf_n
+*** putrid_a ; ^ putrid_a 0
+->amh gmatam_n
+*** quarrelsome_a ; ^ quarrelsome_a 0
+->amh TebeN_a_n
+->amh TunceN_a_n
+->amh 'akrari_n
+->amh dul_eN_a_n
+->amh tedebadabi_n
+*** queer_a ; ^ queer_a 0
+->amh 'ngda_n
+*** questionable_a ; ^ questionable_a 0
+->amh 'aT_eraTari_n
+*** quick_a ; ^ quick_a 0
+->amh qelTaf_a_n
+->amh nqu_n
+->amh feT_an_n
+*** quick-tempered_a ; ^ quick-tempered_a 0
+->amh TebeN_a_n
+*** quiet_a ; ^ quiet_a 0
+->amh SeT_teN_a_n
+*** radical_a ; ^ radical_a 0
+->amh 'akrari_n
+*** ragged_a ; ^ ragged_a 0
+->amh bttW_am_n
+->amh zt_etam_n
+->amh dritWam_n
+->amh bTsTs_n
+->amh Crnqusam_n
+*** rainy_a ; ^ rainy_a 0
+->amh znabam_n
+*** rapid_a ; ^ rapid_a 0
+->amh feT_an_n
+*** rare_a ; ^ rare_a 0
+->amh brq_n
+*** ravenous_a ; ^ ravenous_a 0
+->amh 'asefsafi_n
+->amh sgbgb_n
+->amh sefsaf_a_n
+*** ready_a ; ^ ready_a 0
+->amh zgj_u_n
+*** real_a ; ^ real_a 0
+->amh 'wnet_n
+->amh wn_n
+*** rebellious_a ; ^ rebellious_a 0
+->amh xf_ac_n
+*** recalcitrant_a ; ^ recalcitrant_a 0
+->amh 'mbiteN_a_n
+*** red_a ; ^ red_a 0
+->amh qey__n
+*** reddish_a ; ^ reddish_a 0
+->amh qey_atE_n
+*** redundant_a ; ^ redundant_a 0
+->amh tederarabi_n
+*** refractory_a ; ^ refractory_a 0
+->amh 'mbiteN_a_n
+*** refreshing_a ; ^ refreshing_a 0
+->amh 'anqi_n
+*** regular_a ; ^ regular_a 0
+->amh dembeN_a_n
+->amh denbeN_a_n
+*** reliable_a ; ^ reliable_a 0
+->amh tam_aN_n
+*** religious_a ; ^ religious_a 0
+->amh SeloteN_a_n
+->amh haymanoteN_a_n
+*** remiss_a ; ^ remiss_a 0
+->amh dateN_a_n
+*** remorseful_a ; ^ remorseful_a 0
+->amh SeSeteN_a_n
+*** renowned_a ; ^ renowned_a 0
+->amh zn_eN_a_n
+*** repeated_a ; ^ repeated_a 0
+->amh dg_ami_n
+*** repellent_a ; ^ repellent_a 0
+->amh 'asTey_afi_n
+*** reproachful_a ; ^ reproachful_a 0
+->amh tezalafi_n
+*** repugnant_a ; ^ repugnant_a 0
+->amh Tey_af_n
+*** repulsive_a ; ^ repulsive_a 0
+->amh 'askef_i_n
+->amh 'angefgafi_n
+*** reputable_a ; ^ reputable_a 0
+->amh zn_eN_a_n
+*** reserved_a ; ^ reserved_a 0
+->amh quT_b_n
+->amh set_ara_n
+->amh Cm_t_n
+->amh sebsab_a_n
+*** residual_a ; ^ residual_a 0
+->amh qeri_n
+*** resilient_a ; ^ resilient_a 0
+->amh cay_n
+*** resistant_a ; ^ resistant_a 0
+->amh tekelakay_n
+*** resolute_a ; ^ resolute_a 0
+->amh qWer_aT_n
+*** resourceful_a ; ^ resourceful_a 0
+->amh feliTeN_a_n
+->amh zedEN_a_n
+*** respectable_a ; ^ respectable_a 0
+->amh balegrma_n
+*** respectful_a ; ^ respectful_a 0
+->amh tesemi_n
+->amh kbur_n
+*** responsible_a ; ^ responsible_a 0
+->amh teTey_aqi_n
+->amh 'alafi_n
+*** restive_a ; ^ restive_a 0
+->amh gergar_a_n
+*** restless_a ; ^ restless_a 0
+->amh weswas_a_n
+->amh 'greN_a_n
+->amh denbar_a_n
+*** revengeful_a ; ^ revengeful_a 0
+->amh beqeleN_a_n
+*** rich_a ; ^ rich_a 0
+->amh baleTeg_a_n
+->amh balehabt_n
+->amh lem_n
+->amh habtam_n
+*** right_a ; ^ right_a 0
+->amh tegeb_i_n
+*** righteous_a ; ^ righteous_a 0
+->amh Sadq_n
+*** rigid_a ; ^ rigid_a 0
+->amh Tbq_n
+*** ripe_a ; ^ ripe_a 0
+->amh 'xet_n
+*** roguish_a ; ^ roguish_a 0
+->amh melti_n
+*** rotten_a ; ^ rotten_a 0
+->amh besbas_a_n
+->amh muqmuq_n
+->amh moqmWaq_a_n
+*** rough_a ; ^ rough_a 0
+->amh gWernan_a_n
+->amh Teqlal_a_n
+->amh gurangur_n
+*** round_a ; ^ round_a 0
+->amh kb__n
+->amh debolbWal_a_n
+->amh qulm__n
+->amh dbulbul_n
+*** rude_a ; ^ rude_a 0
+->amh tedafari_n
+->amh 'r_eN_a_n
+->amh balegE_n
+->amh def_ar_n
+*** rugged_a ; ^ rugged_a 0
+->amh gurangur_n
+*** ruthless_a ; ^ ruthless_a 0
+->amh Cek_aN_n
+*** sagacious_a ; ^ sagacious_a 0
+->amh TbebeN_a_n
+->amh feliTeN_a_n
+*** sandy_a ; ^ sandy_a 0
+->amh 'axewam_a_n
+*** sarcastic_a ; ^ sarcastic_a 0
+->amh 'algWami_n
+->amh 'algum_n
+*** sardonic_a ; ^ sardonic_a 0
+->amh 'agWrT_n
+*** satisfactory_a ; ^ satisfactory_a 0
+->amh 'aTgabi_n
+->amh beqi_n
+*** savage_a ; ^ savage_a 0
+->amh yalteger_a_n
+*** saving_a ; ^ saving_a 0
+->amh teqem_aC_n
+*** scandalous_a ; ^ scandalous_a 0
+->amh ql_Etam_n
+*** scatterbrained_a ; ^ scatterbrained_a 0
+->amh zngu_n
+*** scattered_a ; ^ scattered_a 0
+->amh bt_n_n
+*** sceptical_a ; ^ sceptical_a 0
+->amh teTeraTari_n
+*** scholarly_a ; ^ scholarly_a 0
+->amh liq_n
+*** scorching_a ; ^ scorching_a 0
+->amh gerara_n
+->amh leblabi_n
+*** scornful_a ; ^ scornful_a 0
+->amh 'agWrT_n
+->amh ganTiT_n
+*** scrawny_a ; ^ scrawny_a 0
+->amh wCmdmd_n
+->amh weCmad_a_n
+*** scrupulous_a ; ^ scrupulous_a 0
+->amh Tnquq_n
+*** second_a ; ^ second_a 0
+->amh dagm_n
+->amh kal'_n
+*** secret_a ; ^ secret_a 0
+->amh db_q_n
+*** select_a ; ^ select_a 0
+->amh mrT_n
+*** selfish_a ; ^ selfish_a 0
+->amh 'angWelebis_n
+->amh segelE_n
+*** senile_a ; ^ senile_a 0
+->amh Zebrar_a_n
+->amh Zeberer_n
+->amh 'nkef_n
+*** sequential_a ; ^ sequential_a 0
+->amh teketatay_n
+*** serious_a ; ^ serious_a 0
+->amh 'asas_abi_n
+->amh kWestar_a_n
+->amh keb_ad_n
+*** servile_a ; ^ servile_a 0
+->amh 'adegdagi_n
+*** seven_a ; ^ seven_a 0
+->amh sebat__n
+*** seventh_a ; ^ seventh_a 0
+->amh sebat_eN_a_n
+*** seventieth_a ; ^ seventieth_a 0
+->amh sebaN_a_n
+*** seventy_a ; ^ seventy_a 0
+->amh seb_a_n
+*** severe_a ; ^ severe_a 0
+->amh Tbq_n
+->amh keb_ad_n
+*** sexy_a ; ^ sexy_a 0
+->amh qulEtam_n
+*** shabby_a ; ^ shabby_a 0
+->amh qril_a_n
+->amh desasa_n
+*** shady_a ; ^ shady_a 0
+->amh Tlam_a_n
+*** shaky_a ; ^ shaky_a 0
+->amh werekrak_a_n
+*** shallow_a ; ^ shallow_a 0
+->amh qrb_n
+*** shameful_a ; ^ shameful_a 0
+->amh 'asaf_ari_n
+->amh 'asnew_ari_n
+*** shameless_a ; ^ shameless_a 0
+->amh belTaT_a_n
+*** sharp_a ; ^ sharp_a 0
+->amh sl_n
+*** short_a ; ^ short_a 0
+->amh 'aC_r_n
+*** showy_a ; ^ showy_a 0
+->amh blClC_n
+*** shrewd_a ; ^ shrewd_a 0
+->amh blT_n
+*** shy_a ; ^ shy_a 0
+->amh gergari_n
+->amh 'af_ar_n
+->amh quT_b_n
+->amh dnguT_n
+->amh dengaT_a_n
+->amh texkormami_n
+->amh qlsls_n
+->amh 'afari_n
+->amh denbari_n
+*** silly_a ; ^ silly_a 0
+->amh jlajl_n
+->amh moN_n
+*** simple-hearted_a ; ^ simple-hearted_a 0
+->amh ger_n
+*** sincere_a ; ^ sincere_a 0
+->amh glT_n
+*** single_a ; ^ single_a 0
+->amh neTela_n
+*** singular_a ; ^ singular_a 0
+->amh neTela_n
+*** sinuous_a ; ^ sinuous_a 0
+->amh Temezmaz_a_n
+*** six_a ; ^ six_a 0
+->amh sd_st_n
+*** sixth_a ; ^ sixth_a 0
+->amh sd_steN_a_n
+*** sixtieth_a ; ^ sixtieth_a 0
+->amh sdsaN_a_n
+*** sixty_a ; ^ sixty_a 0
+->amh sdsa_n
+->amh slsa_n
+*** skinny_a ; ^ skinny_a 0
+->amh jm_atam_n
+->amh wCmdmd_n
+->amh qeCaCa_n
+->amh kosman_a_n
+->amh weba_n
+*** skittish_a ; ^ skittish_a 0
+->amh gergari_n
+->amh denbari_n
+*** slack_a ; ^ slack_a 0
+->amh magaC_n
+->amh dateN_a_n
+->amh magaTa_n
+->amh qerfaf_a_n
+*** sleepy_a ; ^ sleepy_a 0
+->amh 'nqlfam_n
+*** slender_a ; ^ slender_a 0
+->amh qeC_n_n
+*** slick_a ; ^ slick_a 0
+->amh tebleTlaC_n
+*** slim_a ; ^ slim_a 0
+->amh loga_n
+*** slippery_a ; ^ slippery_a 0
+->amh mWal_aTa_n
+->amh 'anxatac_n
+->amh 'amWalaC_n
+->amh mulT_n
+*** slothful_a ; ^ slothful_a 0
+->amh takac_n
+->amh 'abaya_n
+*** slovenly_a ; ^ slovenly_a 0
+->amh nfTam_n
+->amh reheT_n
+->amh Cemlaq_a_n
+->amh tewteftafi_n
+->amh zrfrf_n
+->amh 'awtertari_n
+*** slow_a ; ^ slow_a 0
+->amh zg_teN_a_n
+->amh dnfef_n
+->amh gWt_t_n
+->amh fezaz_a_n
+->amh dafntam_n
+->amh gWetata_n
+*** sluggish_a ; ^ sluggish_a 0
+->amh wex_aq_a_n
+->amh dafntam_n
+->amh kerfaf_a_n
+->amh gWetata_n
+->amh gm_l_n
+->amh 'abaya_n
+->amh telkas_a_n
+*** small_a ; ^ small_a 0
+->amh n'us_n
+->amh Tqit_n
+->amh tn_x_n
+*** smart_a ; ^ smart_a 0
+->amh tebleTlaC_n
+->amh TzT_azE_n
+->amh blT_n
+->amh gobez_n
+->amh 'aj_rE_n
+->amh TzTaza_n
+*** smelly_a ; ^ smelly_a 0
+->amh qrnatam_n
+*** smoky_a ; ^ smoky_a 0
+->amh Tisam_n
+*** smooth_a ; ^ smooth_a 0
+->amh leslas_a_n
+->amh lsls_n
+->amh lz_b_n
+*** sneaky_a ; ^ sneaky_a 0
+->amh tenkoleN_a_n
+*** sniffy_a ; ^ sniffy_a 0
+->amh ganTiT_n
+*** snobbish_a ; ^ snobbish_a 0
+->amh tebeTaTax_n
+->amh bTsTs_n
+->amh tezebanay_n
+*** sociable_a ; ^ sociable_a 0
+->amh teCawac_n
+*** soft_a ; ^ soft_a 0
+->amh leslas_a_n
+->amh lsls_n
+->amh ll_n
+->amh lemlem_n
+->amh lz_b_n
+->amh bukbuk_n
+*** soft-hearted_a ; ^ soft-hearted_a 0
+->amh 'rgbgb_n
+*** solid_a ; ^ solid_a 0
+->amh TT_r_n
+->amh dd_r_n
+->amh gg_r_n
+->amh dfn_n
+*** solitary_a ; ^ solitary_a 0
+->amh bc_eN_a_n
+*** some_a ; ^ some_a 0
+->amh Tqit_n
+->amh 'andand_n
+*** sophisticated_a ; ^ sophisticated_a 0
+->amh zemenay_n
+->amh zebenay_n
+*** sorrowful_a ; ^ sorrowful_a 0
+->amh SeSeteN_a_n
+*** sour_a ; ^ sour_a 0
+->amh gomz_aza_n
+->amh homTaT_a_n
+*** sparkling_a ; ^ sparkling_a 0
+->amh kWer_efE_n
+->amh 'abreqraqi_n
+*** special_a ; ^ special_a 0
+->amh ly_u_n
+*** spherical_a ; ^ spherical_a 0
+->amh dbulbul_n
+*** spiral_a ; ^ spiral_a 0
+->amh Temzaz_a_n
+*** spiritless_a ; ^ spiritless_a 0
+->amh 'amotebis_n
+*** spiteful_a ; ^ spiteful_a 0
+->amh 'sst_n
+->amh maxnk_n
+*** splendid_a ; ^ splendid_a 0
+->amh grum_n
+*** spotted_a ; ^ spotted_a 0
+->amh zngurgur_n
+->amh nebrm_a_n
+->amh bur_abur_E_n
+*** springy_a ; ^ springy_a 0
+->amh 'aregragi_n
+*** squalid_a ; ^ squalid_a 0
+->amh desasa_n
+*** square_a ; ^ square_a 0
+->amh mereb_a_n
+*** squeamish_a ; ^ squeamish_a 0
+->amh teTey_afi_n
+->amh Ty_uf_n
+->amh Ty_fteN_a_n
+*** stable_a ; ^ stable_a 0
+->amh drj_u_n
+*** standard_a ; ^ standard_a 0
+->amh temeTaTaN_n
+*** standing_a ; ^ standing_a 0
+->amh qum_n
+*** staring_a ; ^ staring_a 0
+->amh blTT_n
+*** stately_a ; ^ stately_a 0
+->amh gWelmam_a_n
+*** steady_a ; ^ steady_a 0
+->amh qWami_n
+*** sterile_a ; ^ sterile_a 0
+->amh mek_an_n
+*** sticky_a ; ^ sticky_a 0
+->amh malaga_n
+*** stiff_a ; ^ stiff_a 0
+->amh dereq_n
+*** stilted_a ; ^ stilted_a 0
+->amh kunsns_n
+->amh tekunesnax_n
+*** stimulating_a ; ^ stimulating_a 0
+->amh 'anqi_n
+*** stingy_a ; ^ stingy_a 0
+->amh qeTqaT_a_n
+->amh qnqnam_n
+->amh gengebet_n
+->amh gebgab_a_n
+->amh qoTqWaT_a_n
+*** stout_a ; ^ stout_a 0
+->amh zereTeT__n
+->amh zerTaT_a_n
+->amh wedel_a_n
+->amh wedel_n
+->amh zefTaT_a_n
+->amh zrTT_n
+*** straightforward_a ; ^ straightforward_a 0
+->amh qn_n
+*** strange_a ; ^ strange_a 0
+->amh tngrt_n
+*** strict_a ; ^ strict_a 0
+->amh Tbq_n
+*** strong_a ; ^ strong_a 0
+->amh gulbeteN_a_n
+->amh Tnu_n
+->amh TunceN_a_n
+->amh brtu_n
+->amh ferTam_a_n
+*** strong-minded_a ; ^ strong-minded_a 0
+->amh qWer_aT_n
+*** stubborn_a ; ^ stubborn_a 0
+->amh Temama_n
+->amh get_ara_n
+->amh gt_r_n
+->amh dereq_n
+->amh 'l_keN_a_n
+->amh gezgaz_a_n
+*** stupid_a ; ^ stupid_a 0
+->amh dnfef_n
+->amh denez_n
+->amh denqoro_n
+->amh gtc_a_n
+->amh reheT_n
+->amh berE_n
+->amh nehWelel_n
+->amh ded_eb_n
+*** sturdy_a ; ^ sturdy_a 0
+->amh gulbeteN_a_n
+->amh dendan_a_n
+->amh leglag_a_n
+->amh TemTam_a_n
+*** stylish_a ; ^ stylish_a 0
+->amh zen_aC_n
+->amh zEnTeN_a_n
+->amh qEnTeN_a_n
+*** suave_a ; ^ suave_a 0
+->amh 'afeqbE_n
+*** submissive_a ; ^ submissive_a 0
+->amh xquTquT_n
+->amh qlsls_n
+->amh texqoTqWaC_n
+*** subservient_a ; ^ subservient_a 0
+->amh wlmTmT_n
+->amh 'adegdagi_n
+*** subtle_a ; ^ subtle_a 0
+->amh teraqaqi_n
+->amh ziqeN_a_n
+*** successful_a ; ^ successful_a 0
+->amh gobez_n
+*** successive_a ; ^ successive_a 0
+->amh teketatay_n
+*** sudden_a ; ^ sudden_a 0
+->amh dngeteN_a_n
+->amh yaltas_ebe_n
+*** sufficient_a ; ^ sufficient_a 0
+->amh temeTaTaN_n
+->amh beqi_n
+*** sulky_a ; ^ sulky_a 0
+->amh Terbab_a_n
+->amh tekor_afi_n
+*** superb_a ; ^ superb_a 0
+->amh teden_aqi_n
+*** superficial_a ; ^ superficial_a 0
+->amh glb_n
+->amh geleba_n
+*** superior_a ; ^ superior_a 0
+->amh mrT_n
+*** sure_a ; ^ sure_a 0
+->amh 'rgT_n
+->amh 'rgTeN_a_n
+*** surly_a ; ^ surly_a 0
+->amh quT_u_n
+*** surpassing_a ; ^ surpassing_a 0
+->amh belaC_n
+*** surprised_a ; ^ surprised_a 0
+->amh tedenagaC_n
+*** surprising_a ; ^ surprising_a 0
+->amh teden_aqi_n
+*** surrounding_a ; ^ surrounding_a 0
+->amh kebabi_n
+*** suspicious_a ; ^ suspicious_a 0
+->amh gengaN_n
+->amh TerTari_n
+*** swampy_a ; ^ swampy_a 0
+->amh maTam_n
+*** sweet_a ; ^ sweet_a 0
+->amh TafaC_n
+->amh TafaTa_n
+*** swift_a ; ^ swift_a 0
+->amh feT_an_n
+*** symmetrical_a ; ^ symmetrical_a 0
+->amh temezazaN_n
+*** taboo_a ; ^ taboo_a 0
+->amh Tey_af_n
+*** taciturn_a ; ^ taciturn_a 0
+->amh Cm_t_n
+*** tactful_a ; ^ tactful_a 0
+->amh feliTeN_a_n
+->amh zedEN_a_n
+*** talkative_a ; ^ talkative_a 0
+->amh muTi_n
+->amh 'afeN_a_n
+->amh mlaseN_a_n
+->amh werEN_a_n
+->amh tenagari_n
+->amh mlasam_n
+*** tall_a ; ^ tall_a 0
+->amh reZ_m_n
+->amh zeleglag_a_n
+->amh melala_n
+*** tame_a ; ^ tame_a 0
+->amh lem_ada_n
+*** tardy_a ; ^ tardy_a 0
+->amh zg_teN_a_n
+*** tart_a ; ^ tart_a 0
+->amh homTaT_a_n
+*** tasty_a ; ^ tasty_a 0
+->amh TafaC_n
+->amh TafaTa_n
+*** tattered_a ; ^ tattered_a 0
+->amh zt_etam_n
+*** tender_a ; ^ tender_a 0
+->amh leslas_a_n
+*** that_a ; ^ that_a 0
+->amh ya_n
+*** thick_a ; ^ thick_a 0
+->amh wefram_n
+*** thin_a ; ^ thin_a 0
+->amh qeC_n_n
+->amh mnmn_n
+->amh gWfay_a_n
+->amh reqiq_n
+->amh qWaqWatiyam_n
+*** this_a ; ^ this_a 0
+->amh yh_n
+*** thorny_a ; ^ thorny_a 0
+->amh 'xoham_n
+*** thorough_a ; ^ thorough_a 0
+->amh Tnquq_n
+*** thoughtful_a ; ^ thoughtful_a 0
+->amh qelbam_n
+->amh kWestar_a_n
+->amh 'as_abi_n
+->amh 'asteway_n
+*** thoughtless_a ; ^ thoughtless_a 0
+->amh telala_n
+->amh 'angWelebis_n
+*** thousand_a ; ^ thousand_a 0
+->amh xi_n
+*** threadbare_a ; ^ threadbare_a 0
+->amh zt_etam_n
+*** tight_a ; ^ tight_a 0
+->amh Teb_ab_n
+*** timid_a ; ^ timid_a 0
+->amh dnguT_n
+->amh feri_n
+->amh dengaT_a_n
+*** tiny_a ; ^ tiny_a 0
+->amh Tqaq_n_n
+->amh 'm_r_n
+*** tortuous_a ; ^ tortuous_a 0
+->amh Temzaz_a_n
+*** total_a ; ^ total_a 0
+->amh Teqlal_a_n
+*** tottery_a ; ^ tottery_a 0
+->amh wetabo_n
+*** touchy_a ; ^ touchy_a 0
+->amh ndEteN_a_n
+->amh nd_Etam_n
+*** tough_a ; ^ tough_a 0
+->amh gerjaf_a_n
+->amh cay_n
+*** towering_a ; ^ towering_a 0
+->amh gobaba_n
+*** transferable_a ; ^ transferable_a 0
+->amh tezawari_n
+*** transverse_a ; ^ transverse_a 0
+->amh 'agdm_n
+*** tricky_a ; ^ tricky_a 0
+->amh 'ad_enabari_n
+*** tried_a ; ^ tried_a 0
+->amh ftun_n
+*** triumphant_a ; ^ triumphant_a 0
+->amh baledl_n
+*** troublesome_a ; ^ troublesome_a 0
+->amh mezezeN_a_n
+->amh 'aw_aki_n
+->amh TaTeN_a_n
+->amh ToseN_a_n
+*** true_a ; ^ true_a 0
+->amh 'wnet_n
+*** trustworthy_a ; ^ trustworthy_a 0
+->amh tam_aN_n
+->amh wleN_a_n
+*** truthful_a ; ^ truthful_a 0
+->amh wneteN_a_n
+->amh nebay_n
+->amh 'wneteN_a_n
+*** twentieth_a ; ^ twentieth_a 0
+->amh hayaN_a_n
+*** twenty_a ; ^ twenty_a 0
+->amh haya_n
+*** two_a ; ^ two_a 0
+->amh hulet__n
+*** twofold_a ; ^ twofold_a 0
+->amh 'aTefEta_n
+*** ugly_a ; ^ ugly_a 0
+->amh funga_n
+->amh masTel_o_n
+->amh 'askef_i_n
+->amh derefoC_n
+->amh 'asqey_ami_n
+*** unbecoming_a ; ^ unbecoming_a 0
+->amh 'agWagul_n
+->amh Tey_af_n
+*** unbelievable_a ; ^ unbelievable_a 0
+->amh tngrt_n
+*** uncertain_a ; ^ uncertain_a 0
+->amh 'aqmami_n
+*** unclean_a ; ^ unclean_a 0
+->amh qoxaxa_n
+*** uncomfortable_a ; ^ uncomfortable_a 0
+->amh gWerbaT_a_n
+->amh kWeskWas_a_n
+*** uncommunicative_a ; ^ uncommunicative_a 0
+->amh lg_um_n
+*** uncouth_a ; ^ uncouth_a 0
+->amh yalteger_a_n
+->amh def_ar_n
+*** uncultured_a ; ^ uncultured_a 0
+->amh mededE_n
+*** undersized_a ; ^ undersized_a 0
+->amh db_ano_n
+->amh kerara_n
+*** uneducated_a ; ^ uneducated_a 0
+->amh mededE_n
+*** unexpected_a ; ^ unexpected_a 0
+->amh dngeteN_a_n
+->amh yaltas_ebe_n
+*** unfair_a ; ^ unfair_a 0
+->amh Cb_oN_a_n
+*** unfinished_a ; ^ unfinished_a 0
+->amh jm_r_n
+->amh wT_n_n
+*** ungainly_a ; ^ ungainly_a 0
+->amh menCar_a_n
+*** unguarded_a ; ^ unguarded_a 0
+->amh zelzal_a_n
+*** uniform_a ; ^ uniform_a 0
+->amh 'k_ul_n
+*** unimportant_a ; ^ unimportant_a 0
+->amh 'imnt_n
+*** unique_a ; ^ unique_a 0
+->amh brq_n
+*** unjust_a ; ^ unjust_a 0
+->amh Cb_oN_a_n
+*** unkempt_a ; ^ unkempt_a 0
+->amh Ceberer_n
+->amh kefrar_a_n
+->amh Cefrar_a_n
+*** unlimited_a ; ^ unlimited_a 0
+->amh yaltewes_ene_n
+*** unnatural_a ; ^ unnatural_a 0
+->amh kunsns_n
+->amh tekunesnax_n
+*** unoccupied_a ; ^ unoccupied_a 0
+->amh bado_n
+*** unrelated_a ; ^ unrelated_a 0
+->amh bada_n
+*** unremarkable_a ; ^ unremarkable_a 0
+->amh 'alb_alE_n
+*** unrestricted_a ; ^ unrestricted_a 0
+->amh yaltewes_ene_n
+*** unripe_a ; ^ unripe_a 0
+->amh 'nCC_n
+*** unsafe_a ; ^ unsafe_a 0
+->amh 'adegeN_a_n
+*** unskilled_a ; ^ unskilled_a 0
+->amh geltu_n
+*** unsociable_a ; ^ unsociable_a 0
+->amh gl_eN_a_n
+*** unsteady_a ; ^ unsteady_a 0
+->amh werekrak_a_n
+->amh wlmTmT_n
+->amh walala_n
+->amh fengal_a_n
+*** unsuccessful_a ; ^ unsuccessful_a 0
+->amh mena_n
+*** unsuspected_a ; ^ unsuspected_a 0
+->amh 'alb_alE_n
+*** untidy_a ; ^ untidy_a 0
+->amh zerekrak_a_n
+->amh zerefef_n
+->amh nfTam_n
+->amh gelefetam_n
+->amh kk_am_n
+->amh zrkrk_n
+->amh weteftaf_a_n
+->amh zerfaf_a_n
+*** unusual_a ; ^ unusual_a 0
+->amh gud_n
+->amh 'ngda_n
+->amh tngrt_n
+*** up-to-date_a ; ^ up-to-date_a 0
+->amh zemenay_n
+*** uphill_a ; ^ uphill_a 0
+->amh xq_b_n
+*** upper_a ; ^ upper_a 0
+->amh layN_a_n
+*** urgent_a ; ^ urgent_a 0
+->amh 'ac_akWay_n
+->amh 'ascekW_ay_n
+->amh 'af_aTaN_n
+->amh 'aT_adafi_n
+*** useful_a ; ^ useful_a 0
+->amh Teqami_n
+*** useless_a ; ^ useless_a 0
+->amh kentu_n
+->amh mena_n
+->amh blax_n
+*** vacant_a ; ^ vacant_a 0
+->amh bado_n
+*** vagabond_a ; ^ vagabond_a 0
+->amh wem_etE_n
+->amh 'awdelday_n
+->amh dury_E_n
+->amh 'afadax_n
+->amh 'adezdaZ_n
+*** vagrant_a ; ^ vagrant_a 0
+->amh wem_etE_n
+->amh kertat_a_n
+*** vague_a ; ^ vague_a 0
+->amh defenfan_a_n
+->amh debzaz_a_n
+->amh dfnfn_n
+*** vain_a ; ^ vain_a 0
+->amh kentu_n
+*** valorous_a ; ^ valorous_a 0
+->amh jegna_n
+*** valuable_a ; ^ valuable_a 0
+->amh Teqami_n
+*** valueless_a ; ^ valueless_a 0
+->amh blax_n
+*** variable_a ; ^ variable_a 0
+->amh telewawaC_n
+*** vengeful_a ; ^ vengeful_a 0
+->amh qimeN_a_n
+*** vicious_a ; ^ vicious_a 0
+->amh rkus_n
+->amh 'sst_n
+->amh kfu_n
+->amh maxnk_n
+*** victorious_a ; ^ victorious_a 0
+->amh baledl_n
+*** vigilant_a ; ^ vigilant_a 0
+->amh tgu_n
+*** vindictive_a ; ^ vindictive_a 0
+->amh qimeN_a_n
+*** violent_a ; ^ violent_a 0
+->amh temac_n
+*** viscous_a ; ^ viscous_a 0
+->amh malaga_n
+*** visible_a ; ^ visible_a 0
+->amh gehad_n
+*** vivacious_a ; ^ vivacious_a 0
+->amh folfWal_a_n
+*** voluble_a ; ^ voluble_a 0
+->amh qlblb_n
+->amh qeleblab_a_n
+*** voluminous_a ; ^ voluminous_a 0
+->amh wefram_n
+*** vulgar_a ; ^ vulgar_a 0
+->amh 'r_eN_a_n
+->amh Tey_af_n
+->amh 'asTey_afi_n
+*** warm_a ; ^ warm_a 0
+->amh muq_n
+->amh moq_at_n
+*** washable_a ; ^ washable_a 0
+->amh taTabi_n
+*** wasteful_a ; ^ wasteful_a 0
+->amh bkun_n
+->amh 'abakaN_n
+->amh 'abakaN__n
+*** watery_a ; ^ watery_a 0
+->amh wham_a_n
+*** weak_a ; ^ weak_a 0
+->amh deqaqa_n
+->amh deqosqWas_a_n
+->amh qoxmad_a_n
+->amh ftltl_n
+*** wealthy_a ; ^ wealthy_a 0
+->amh baleTeg_a_n
+->amh balehabt_n
+->amh habtam_n
+->amh keb_ertE_n
+*** wearisome_a ; ^ wearisome_a 0
+->amh 'aselci_n
+*** weary_a ; ^ weary_a 0
+->amh dekama_n
+->amh Tewlag_a_n
+*** well-balanced_a ; ^ well-balanced_a 0
+->amh deldal_a_n
+*** well-behaved_a ; ^ well-behaved_a 0
+->amh Cewa_n
+*** well-knit_a ; ^ well-knit_a 0
+->amh gWerdad_a_n
+*** wet_a ; ^ wet_a 0
+->amh 'rTb_n
+*** white_a ; ^ white_a 0
+->amh xaxo_n
+*** whole_a ; ^ whole_a 0
+->amh mel_a_n
+*** wicked_a ; ^ wicked_a 0
+->amh rgum_n
+->amh meTfo_n
+->amh gfeN_a_n
+->amh kfateN_a_n
+->amh xer_eN_a_n
+->amh 'b_uy_n
+->amh kfu_n
+->amh ganEn_n
+*** wide_a ; ^ wide_a 0
+->amh sef_i_n
+->amh werdam_n
+*** willful_a ; ^ willful_a 0
+->amh gentar_a_n
+->amh gergar_a_n
+->amh 'angeragari_n
+*** winged_a ; ^ winged_a 0
+->amh knfam_n
+*** wise_a ; ^ wise_a 0
+->amh liq_n
+->amh 'asteway_n
+->amh blhateN_a_n
+*** wishy-washy_a ; ^ wishy-washy_a 0
+->amh leb_aq_a_n
+*** wobbly_a ; ^ wobbly_a 0
+->amh denqaf_a_n
+*** womanish_a ; ^ womanish_a 0
+->amh sEtasEt_n
+*** wonderful_a ; ^ wonderful_a 0
+->amh dnq_n
+->amh grum_n
+*** wooded_a ; ^ wooded_a 0
+->amh Cak_am_a_n
+->amh den_am_a_n
+*** worthless_a ; ^ worthless_a 0
+->amh mnamntE_n
+*** wretched_a ; ^ wretched_a 0
+->amh qmalam_n
+->amh mekereN_a_n
+->amh 'kekam_n
+->amh gWesqWal_a_n
+*** yellow_a ; ^ yellow_a 0
+->amh bCa_n
+*** yellowish_a ; ^ yellowish_a 0
+->amh weyba_n
+*** young_a ; ^ young_a 0
+->amh weT_at_n

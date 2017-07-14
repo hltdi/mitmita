@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+
+<style type="text/css">
+table.example
+{
+    border: 1px solid black;
+    padding: 5px;
+    width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+table.example tr td,th
+{
+    border: 1px solid black;
+    padding: 3px;
+}
+</style>
+
+<title>Mit'mit'a: an Assistant for English-Amharic Translation: Project</title>
+
+</script>
+
+</head>
+
+<body>
+
+<form action='login' method="post">
+
+<table class="center">
+  <tr>
+    <td class="title">
+    <a href="base">
+    <img class='banner' src="{{url_for('static',
+      filename='banner_logo_short.png')}}" alt="" width="500"
+      height="90" />
+    </a>
+    </td>
+    <td class="menu" style="width: 250px"><a href="contact">CONTACT</a></td>
+    <td class="menu" style="width: 250px"><input type="submit" value="START SESSION" class="menu"></td>
+
+</tr>
+<tr>
+<td colspan="5" style="width:1000px">  
+<h1>Mit'mit'a: the project</h1>
+
+  <p>
+  Mainumby es un componente del proyecto <a href="http://homes.soic.indiana.edu/gasser/plogs_es.html">
+  <strong>Procesamiento de Idiomas del
+  Sur Global</strong></a> (PISur), dirigido por Michael Gasser, profesor
+  asociado em&eacute;rito de la <a href="http://www.soic.indiana.edu/">Escuela de Informática y Ciencia
+  Computacional</a> de la <a href="https://www.indiana.edu/">Universidad de Indiana</a> en Estados
+  Unidos de Am&eacute;rica.
+  </p>
+
+  <h2>Motivation</h2>
+
+<p>
+Aunque el Paraguay tiene dos lenguas oficiales y un índice de
+  bilingüismo más alta que en todos los demás países americanos, en
+  otros sentidos falla en realizar el ideal de un país bilingüe.
+  Esto resulta sobre todo por la asimetría que caracteriza la
+  situación sociolingüística de sus lenguas oficiales.
+  Mientras que el castellano se beneficia de todos los recursos y
+  materiales de una lengua internacional,
+  el guaraní padece de una carencia de recursos y materiales. Esta
+  situación tiene dos consecuencias significativas:
+  los guaraní-hablantes monolingües se quedan a menudo sin acceso a la
+  información necesaria para participar en la sociedad
+  y para aprovecharse de los beneficios de ser ciudadanos, y el
+  alfabetismo guaraní,
+  un gran objetivo de la educación primaria paraguaya,
+  resulta ser de poca utilidad porque no existen muchos materiales
+  para leer en guaraní,
+  y los que hay no motivan a los estudiantes a practicar la lengua <a
+  href="#ref1">[1]</a><a href="ref2">[2]</a>.
+  </p>
+
+  <p>
+  Aunque no puede ser una solución completa a la crisis al que se
+  enfrenta el guaraní, el aumento del material en la lengua podría
+  tener un gran papel en el acceso a mejores oportunidades para las personas que manejan
+  mejor el guaraní.
+  Este aumento podría manifestarse en forma de escritura independiente
+  por autores guaraní-hablantes o de traducciones de material al guaraní de otras lenguas.
+  En otras situaciones comparables — en países que alcanzaron su
+  independencia durante el siglo XX como Israel,
+  Indonesia, y Eslovenia, y en otros países o regiones bilingües como Irlanda,
+  el País Vasco, y Gales — la traducción ha posibilitado el uso en la educación,
+  el gobierno, y el comercio de lenguas que habían carecido de textos.
+  </p>
+
+<h2>Theoretical background</h2>
+  <p>
+  La traducción es una tarea, aun cuando la hacen expertos, que
+  necesita muchas horas de trabajo.
+  En el mundo actual, la mayoría de los traductores utilizan computadoras en su trabajo,
+no sólo para guardar sus traducciones en forma digital sino también
+para facilitar la tarea misma.
+No cabe duda de que el uso de herramientas computacionales haya
+acelerado la producción de traducciones <a href="#ref3">[3]</a>,
+que irá en aumento y que de esta manera podría servir para el
+  fortalecimiento de las lenguas indígenas <a href="ref4">[4]</a>.
+</p>
+
+<p>
+Las herramientas, a menudo integradas en sistemas de
+<a href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_asistida_por_computadora"><strong>traducción
+asistida por computadora</strong></a> (TAC), pertenecen a tres categorías:
+diccionarios, memorias de traducción, y traducción automática. Una
+<a href="https://es.wikipedia.org/wiki/Memoria_de_traducci%C3%B3n">
+<strong>memoria de traducción</strong></a> (MT) es un conjunto de “unidades de traducción”
+(UT): cada unidad consiste en una oración (u otro segmento de texto)
+en una lengua (digamos L1) y su traducción en otra (L2). Supongamos
+que un usuario est&eacute; traduciendo un documento de L1 a L2.
+Introduce el documento en el sistema TAC.
+Primero el sistema segmenta el documento en oraciones.
+Enseguida busca para cada oración en su MT UTs cuya oración de L1
+coincide con la del documento.
+Finalmente le muestran los resultados al usuario.
+En el ejemplo fijado abajo,
+el usuario quiere traducir la oración castellana a la izquierda (la
+“oración fuente”), y el sistema TAC le ha mostrado una UT que coincide
+con la oración fuente en ocho palabras.
+</p>
+
+<table class="example">
+  <tr>
+    <th>Documento:
+    </th>
+    <th>Resultados de la búsqueda de la MT:
+      </th>
+    </tr>
+    <tr>
+      <td>...<br/>
+      <strong>En</strong> la montaña <strong>vivieron</strong> los
+	inmigrantes
+	<strong>por mucho tiempo en paz y</strong> armonía con la naturaleza.</br>
+      ...
+
+      </td>
+      <td>
+	<span style="color: #AA0000"><strong>En</strong></span> esas
+	comunidades
+	<span style="color: #009900"><strong>vivieron</strong></span>
+	<span style="color: #0000AA"><strong>por mucho
+	tiempo</strong></span>
+	<span style="color: #888800"><strong>en paz y</strong></span>
+	amistad, juntos y solidariamente.<br/>
+	Umi táva <span style="color: #AA0000"><strong>rupi</strong></span>
+	<span style="color: #009900"><strong>oiko</strong></span>
+	<span style="color: #0000AA"><strong>heta ára</strong></span>
+	<span style="color: #888800"><strong>teko marangatu
+	ha</strong></span> mborayhu
+	pa'ũ<span style="color: #888800"><strong>me</strong></span>,
+	oñondivepa, jekupytýpe.
+      </td>
+    </tr>
+  </table>
+
+  <p>
+Algunos sistemas presentan además el alineamiento entre las palabras
+  en las dos oraciones de las UTs que coinciden; esto se fija en el
+  ejemplo por la coloración de las palabras.
+  Por ejemplo, el color verde muestra la correspondencia entre la
+  palabra castellana <i>vivieron</i> y la palabra guaraní <i>oiko</i>.
+</p>  
+<p>  
+El usuario puede usar las sugerencias que le da el sistema o
+  rechazarlas. Su traducción final se registra en la MT; es decir,
+  cuánto más se usa el sistema TAC, más aumenta la MT.
+</p>
+  <p>  
+La utilidad de una MT depende de su tamaño y de la concordancia entre
+  su contenido y el del documento fuente. Obviamente los pocos corpus
+  bilingües castellano-guaraní que existen en la actualidad no sirven para una MT
+  adecuada.
+</p>  
+<p>  
+  Los sistemas de
+  <a href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_autom%C3%A1tica">
+  <strong>traducción automática</strong></a> (TA) se clasifican en dos tipos:
+  sistemas basados en reglas (TABR) y sistemas estadísticos (TAE). Los
+  sistemas <strong>basados en reglas</strong> (p.ej., Systran, Apertium) se componen de
+  diccionarios bilingües y reglas que implementan correspondencias
+  gramaticales entre las lenguas. Dependen del conocimiento
+  lingüístico de expertos; no aprenden automáticamente. Los sistemas
+  <strong>estadísticos</strong> (p.ej., Traductor de Google), como las memorias de
+  traducción, se basan en <i>corpus</i> bilingües grandes. Utilizando el
+  <strong>aprendizaje automático</strong>, se construyen diccionarios bilingües de
+  frases y se descubren tendencias estadísticas a diferencias en el
+  orden de palabras de las dos lenguas. No incluyen conocimiento
+  gramatical explícito. Para pares de lenguas para las que existen
+  corpus bilingües adecuados, domina la traducción estadística, pero
+  aún en tales casos, el estado del arte se centra cada vez más en
+  sistemas <strong>híbridos</strong> que pretenden superar los errores gramaticales de
+  sistemas estadísticos puros.
+</p>
+  <p>
+En resumen, los sistemas TAC incluyen herramientas (MT, TAE) que sólo
+  se pueden implementar a través de corpus bilingües grandes de las
+  lenguas en cuestión. En falta de un corpus adecuado, sólo se pueden
+  incorporar diccionarios y TABR.
+</p>
+
+<h2>Goals</h2>
+
+<p>
+El objetivo principal del proyecto es ayudar en la tarea de la
+traducción castellano-guaraní a través del desarrollo de una serie de
+herramientas computacionales integradas en una aplicación web, es
+decir, un sistema de traducción asistida por computadora (TAC).
+Como en los sistemas TAC convencionales, se planea integrar una
+memoria de traducción (MT) y un traductor automático (TA) en la
+aplicación.
+Aunque se ha desarrollado una versión inicial de un sistema de
+traducción automática basada en reglas, incluso un diccionario
+bilingüe digital
+(Mbojereha), ya sabemos que padece de muchas lagunas en su cobertura
+de las lenguas.
+Por otro lado, una MT usable todavía no existe por causa de la falta
+de corpus bilingües.
+Pretendemos complementar los pocos
+recursos disponibles con datos que solicitaremos de los usuarios del
+sistema, específicamente para llenar lagunas que se han identificado
+en la MT y el TA.
+</p>
+<p>
+Creemos que Mainumby va a representar un logro importante no solo para la
+traducción castellano-guaraní sino tambi&eacute;n para los ámbitos de investigaciones
+computacionales dedicados a la traducción automática híbrida y la
+traducción asistida por computadora en el contexto de lenguas sin recursos
+suficientes.
+</p>
+<h2>How Mit'mit'a translates</h2>
+<p>
+Como otros sistemas para la traducción automática,
+Mainumby no es capaz de garantizar traducciones fiables
+o gramáticamente correctas.
+A diferencia de la mayoría de otros sistemas,
+Mainumby no pretende servir como traductor independiente
+sino como ayudante para alguien que est&eacute; traduciendo
+una palabra, una frase, una oración, o un documento del castellano
+al guaraní.
+</p>
+<h3>Los pasos en la traducción de una oración</h3>
+<p>
+Cuando le das una oración a Mainumby para traducir, se ejecutan
+los pasos siguientes.
+</p>
+<dl>
+  <dt>Identificación de puntuación y nombres</dt>
+  <dd>Así se ejecuta...</dd>
+  <dt>Análisis morfológico</dt>
+  <dd>...</dd>
+  <dt>Guaranización</dt>
+  <dd>El programa busca...</dd>
+  <dt>Selección de grupos candidatos</dt>
+  <dd>...</dd>
+  <dt>Análisis sintáctico</dt>
+  <dd>...</dd>
+  <dt>Traducción de grupos seleccionados</dt>
+  <dd>...</dd>
+  <dt>Realización morfológica de palabra</dt>
+  <dd>...</dd>
+</dl>
+<h3>The components of Mit'mit'a</h3>
+
+<h2>Bibliography</h2>
+
+<p id="ref1">
+[1] De Granda, G. (1988). <i>Sociedad, historia y lengua del Paraguay</i>. Bogotá: lnstituto Garo y Guervo.
+</p>
+<p id="ref2">
+[2] Melià, B. (2007). La crisis del bilingüismo en Paraguay. <i>IV Congreso Internacional de la Lengua Española</i>. Cartagena, Colombia.
+</p>
+<p id="ref3">
+[3] <a
+href="http://www.sciencedirect.com/science/article/pii/S1877042815044213">Candel-Mora,
+M. A. (2015).</a>
+Comparable corpus approach to explore
+the influence of computer-assisted translation systems on
+textuality. <i>Procedia: Social and Behavioral Sciences</i>, <i>198</i>, 67-73.
+</p>
+<p id="ref4">
+[4] <a href="ftp://ftp.cs.indiana.edu/pub/gasser/cilli.pdf">Gasser, M. (2006).</a> Machine translation and the future of
+indigenous languages. <i>I Congreso Internacional de Lenguas y
+Literaturas Indoamericanas</i>, October, 2006, Temuco, Chile.
+</p>
+
+</td>
+</tr>
+
+</table>  
+
+</form>
+
+</body>
+</html>

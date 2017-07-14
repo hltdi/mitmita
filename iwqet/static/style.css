@@ -1,0 +1,422 @@
+/*
+Colors:
+mit'mit'a red: #CB6027
+background blue: #C8E6FF
+*/
+
+body
+{
+	margin-left: 0pt;
+	margin-right: 0pt;
+	margin-top: 20pt;
+	margin-bottom: 20pt;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+        font-size: 14px;
+	font-family: verdana, geneva, arial, sans-serif;
+	background-color: #FFF;
+}
+a:link { color: #4B2B17; text-decoration: underline}
+span.fuzzy a:link { color: #66BB66; }
+a:visited { color: #4B2B17 }
+span.fuzzy a:visited { color: #558855; }
+a:active { color: #000000; }
+a:hover { color: #338888; }
+span.fuzzy a:hover { background-color: #66FF66; color: #FFFFFF; }
+h1,h2,h3 { clear: left; }
+h1
+{
+	font-size: 150%;
+	margin-top: .25em;
+	margin-bottom: 0;
+        border: thin solid;
+	text-align: left;
+	font-weight: bold;
+	color: #4B2B17;
+	background-color: #F5E754;
+}
+h2
+{
+	font-size: 130%;
+        font-weight: normal;
+	margin-top: .75em;
+	margin-bottom: .35em;
+	color: #FFF;
+	background-color: #000;
+}
+div.user
+{
+    font-size: 110%;
+    margin-top: .75em;
+    margin-bottom: .35em;
+}
+h3
+{
+        background-color: #C8E6FF;
+/*        color: #CB6027;*/
+ 	font-size: 110%;
+	font-weight: bold;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+h4
+{
+ 	font-size: 110%;
+	font-weight: bold;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+p
+{
+	margin-top: .5em;
+	margin-bottom: .5em;
+        clear: left;
+}
+p.center
+{
+        margin-top: .5em;
+        margin-bottom: .5em;
+        text-align: center;
+}
+p.error
+{
+    color: #f00;
+    font-style: italic;
+}
+table.center
+{
+	table-layout: fixed;
+	margin-left: auto;
+	margin-right: auto;
+	border: 0;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+table.center tr
+{
+/*	background-color: #C8E6FF; */
+    /*	border-bottom: 6pt solid #003; */
+    padding: 0pt;
+    border: 0pt;
+    margin: 0pt;
+}
+
+table.center tr td.title
+{
+    padding: 0pt;
+    border: 0pt;
+    margin: 0pt;
+    background-color: #C8E6FF;
+}
+table.center tr td
+{
+/*	background-color: #C8E6FF; */
+	vertical-align: bottom;
+	padding: 0pt;
+	border: 0pt;
+}
+
+table.center td p,h1,h2,h3,h4,ul
+{
+	margin-top: 10pt;
+	margin-bottom: 10pt;
+	margin-left: 0pt;
+	margin-right: 0pt;
+	width: auto;
+}
+
+table.center tr td img.banner
+{
+    vertical-align: center;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    width: 500px;
+    height: 80px;
+}
+th.TM
+{
+   max-width: 35%;
+   color: silver;
+}
+td.mbojereha
+{
+   text-align: center;
+   padding: 20px;
+}
+td.text
+{
+        vertical-align: top;
+        text-align: center;
+        width: 100%;
+        border: 1px solid black;
+}
+#help
+{
+        background-color: #c00;
+        color: #fff;
+        font-family: "Verdana";
+        font-size: 100%;
+        width: 20%
+}
+#help:hover
+{
+        background-color: #f00;
+}
+span.label
+{
+        font-weight: bold;
+}
+span.document
+{
+   font-size: 100%;
+   font-weight: bold;
+   color: #F00;
+   border: thin solid;
+}
+span.cargando
+{
+    font-size: 110%;
+    font-weight: bold;
+    font-style: italic;
+}
+span.username
+{
+/*    background-color: #f00;
+    color: #fff;
+*/
+    font-style: italic;
+}
+span.root
+{
+   font-weight: bold;
+   color: #900;
+   border: thin solid;
+}
+span.sentence
+{
+   font-size: 100%;
+   font-weight: bold;
+   border: thin solid;
+}
+span.choice
+{
+   font-size: 80%;
+}
+span.instruction
+{
+   font-size: 100%;
+   font-style: italic;
+}
+input.text
+{
+        font-family: "Verdana";
+        font-size: 100%;
+        height: 20px;
+	width: 500px;
+}
+#medtext
+{
+        font-family: "Verdana";
+        font-size: 100%;
+        width: 40%
+}
+#button
+{
+        background-color: #C8E6FF;
+        color: #4B2B17;
+        font-family: "Verdana";
+        font-size: 100%;
+/*        align: center; */
+        width: 200px
+}
+#button:hover, #button:active
+{
+    background-color: #000;
+    color: #C8E6FF;
+}
+#medbutton
+{
+        background-color: #00a;
+        color: #fff;
+        font-family: "Verdana";
+        font-size: 100%;
+        width: 30%
+}
+#medbutton:hover
+{
+        background-color: #00f;
+}
+#widebutton
+{
+        background-color: #C8E6FF;
+        color: #000;
+        font-family: "Verdana";
+        font-size: 100%;
+        align: center;
+        width: 250px;
+}
+#narrowbutton
+{
+        background-color: #C8E6FF;
+        color: #000;
+        font-family: "Verdana";
+        font-size: 100%;
+        align: center;
+        width: 100px;
+}
+#widebutton:hover, #narrowbutton:hover
+{
+    color: #8DFFEE;
+    background-color: #000;
+}
+#altbutton
+{
+        color: #fff;
+        background-color: #CB6027;
+        font-family: "Verdana";
+        font-size: 100%;
+        width: 250px;
+        align: center;
+}
+#altbutton:hover
+{
+    background-color: #000;
+    color: #CB6027;
+}
+#narrowlbbutton
+{
+        color: #00f;
+        font-family: "Verdana";
+        font-size: 100%;
+        width: 20%;
+        align: center;
+}
+#narrowlbbutton:hover
+{
+        background-color: #ccf;
+}
+table.center tr td.menu
+{
+/*    height: 0px;*/
+    background-color: #C8E6FF;
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 5px;
+    padding-top: 0px;
+    border: 0;
+}
+table.center tr td.menu a
+{
+    color: #CB6027;
+/*    font-weight: bold; */
+    font-size: 100%;
+    text-decoration: none;
+}
+table.center tr td.menu a:hover
+{
+    color: #000000;
+    background-color: #C8E6FF;
+}
+table.title
+{
+    margin-top: .75em;
+    margin-bottom: .25em;
+    margin-right: 0px;
+    margin-left: 0px;
+    border: 0px;
+    padding: 0px;
+    width: 100%;
+    border-spacing: 0;
+}
+table.title tr
+{
+    border: 0px;
+}
+td.titleleft
+{
+    text-align: left;
+    padding: 0px;
+    border: 0px;
+    width: 70%;
+    color: #000;
+    background-color: #C8E6FF;
+    font-size: 130%;
+    font-weight: bold;
+}
+td.titleright
+{
+    text-align: center;
+    font-size: 110%;
+    padding: 0px;
+    border: 0px;
+    width: 30%;
+    background-color: #000;
+    color: #8DEDCD;
+}
+input.menu
+{
+    background-color: #C8E6FF;
+    color: #CB6027;
+    font-family: "Verdana";
+    font-size: 100%;
+/*    font-weight: bold; */
+    text-align: right;
+    padding-right: 4pt;
+    padding-bottom: 0;
+    border: 0;
+}
+input.menu:hover, input.menu:active, input.menu:focus
+{
+    color: #000000;
+    outline: none;
+}
+button.menu
+{
+    background-color: #C8E6FF;
+    color: #CB6027;
+    font-family: "Verdana";
+/*    font-weight: bold; */
+    font-size: 100%;
+    text-align: right;
+    padding-right: 4pt;
+    padding-bottom: 0;
+    border: 0;
+}
+button.menu:hover, button.menu:active, button.menu:focus
+{
+    color: #000000;
+    border: 0;
+    outline: none;
+}
+/* Help windows */
+h4.help
+{
+    font-size: 110%;
+    font-weight: bold;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+p.help
+{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: 2em;
+    margin-right: 2em;
+    clear: left;
+}
+textarea.doc
+{
+    font-family: "Verdana";
+    font-size: 100%;
+    width: 998px;
+    height: 300px;
+    margin: 0;
+    padding: 0;
+/*    border: 0; */
+}

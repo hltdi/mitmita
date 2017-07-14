@@ -1,0 +1,466 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+<link rel="stylesheet" type=text/css href="{{url_for('static', filename='style.css')}}" />
+
+<style type="text/css">
+table.transmeta
+{
+    border: 0;
+    padding: 5px;
+    width: 985px;
+}
+table.trans
+{
+    border: 2px solid black;
+    border-spacing: 10px;
+/*    border-collapse: collapse; */
+    width: 525px;
+}
+table.transdoc
+{
+      border: 2px solid black;
+      border-spacing: 10px;
+      width: 40%;
+/*    border-collapse: collapse; */
+}
+th.trans
+{
+    text-align: left;
+    font-style: italic;
+    padding: 3px;
+    border: 1px solid black;
+}
+tr.trans
+{
+    padding: 5px;
+}
+tr.transtitle
+{
+    padding: 5px;
+}
+td.transtitle
+{
+   text-align: left;
+   vertical-align: top;
+   padding: 0px;
+   font-size: 105%;
+/*   font-style: italic; */
+/*   border: 1px solid black; */
+}
+th.transtitle
+{
+   text-align: left;
+   vertical-align: top;
+   padding: 0px;
+   font-size: 105%;
+}
+td.trans
+{
+   text-align: left;
+   vertical-align: top;
+   padding: 5px;
+/*   font-style: italic; */
+   border-bottom: 1px solid black;
+   font-size: 100%;
+}
+td.transbutton
+{
+   text-align: right;
+   vertical-align: top;
+   padding: 5px;
+/*   font-style: italic; */
+/*   border: 1px solid black; */
+}
+td.transtext
+{
+   text-align: left;
+   vertical-align: top;
+   padding: 5px;
+}
+td.transchoice
+{
+   text-align: left;
+   vertical-align: top;
+   padding: 5px;
+/*   border: 1px solid black; */
+}
+td.segsent
+{
+   text-align: left;
+   vertical-align: top;
+   padding: 5px;
+/*   font-style: italic; */
+}
+td.button
+{
+   text-align: center;
+   padding: 5px;
+}
+td.other
+{
+   text-align: left;
+   padding: 5px;
+/*   border: 1px solid black; */
+   font-style: italic;
+   font-size: 80%;
+}
+textarea#sentence
+{
+   font-family: "Verdana";
+   font-size: 100%;
+   width: 495px;
+   height: 50px;
+}
+textarea#document
+{
+   font-family: "Verdana";
+   font-size: 85%;
+   width: 425px;
+   height: 300px;
+   resize: none;
+   overflow-y: scroll;
+}
+textarea#segment
+{
+   font-family: "Verdana";
+   font-size: 100%;
+   width: 495px;
+   height: 20px;
+}
+span#doctrans
+{
+   color: #00a;
+}
+input.button
+{
+   background-color: #00a;
+   color: #fff;
+   font-family: "Verdana";
+   font-size: 100%;
+   align: center;
+   width: 100%;
+}
+input.button:hover
+{
+   background-color: #00f;
+}
+input.filename
+{
+   width: 50pt;
+}
+</style>
+
+<script>
+function EmptyDoc() {
+   document.getElementById("document").value = "";
+}
+function ShowHelp() {
+    var helpWin = window.open("", "Mit'mit'a: Help", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    helpWin.document.write('<html><head>' +
+'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
+"<title>Mit'mit'a: Help</title></head><body>" +
+"<h4 class='help'>Ayuda para seleccionar y registrar traducciones</h4>" +
+"<p class='help'>En la ventana 'Selección de oraciones' " +
+"se presenta una oración y varias opciones para traducirla. " +
+"Debajo de 'Actual oración', se despliega " +
+"la oración dividida en frases, cada una representada por un color. " +
+"(Palabras que Mbojereha no sabe traducir aparecen en gris.) " +
+"Para ver las opciones que ofrece Mbojereha como traducciones de una frase, " +
+"hac&eacute; clic en esa frase. " +
+"Abajo se presentan las opciones a la izquierda en el espacio llamado " +
+"'Sugerencias'. " +
+"</p><p class='help'>" +
+"En este espacio pod&eacute;s seleccionar una de las opciones, " +
+"haciendo clic en la casilla correspondiente. " +
+"Las opciones incluyen la palabra o frase castellana sin cambio " +
+"y además la posibilidad de introducir 'otra traducción' " +
+"(seleccionada por defecto). " +
+"Si has seleccionado 'otra traducción', deb&eacute;s escribir " +
+"tu traducción en el espacio abajo: 'Introducir otra traducción'. " +
+"Una vez que est&eacute;s satisfecho con tu selección (o una " +
+"de las presentadas u otra que introdujiste) " +
+"hac&eacute; clic en 'Registrar traducción' a la derecha de " +
+"'Frase'. " +
+"Enseguida aparece la frase que seleccionaste en en el espacio " +
+"para la 'Oración entera' abajo. " +
+"</p><p class='help'>" +
+"Fijate que el programa no tiene conocimiento del orden correcto de " +
+"las traducciones de las frases, lo que puede diferir del orden " +
+"castellano. " +
+"Pod&eacute;s controlar el orden de las frases guaraníes en la " +
+"traducción al seleccionar las frases castellanos para traducir " +
+"en el orden preferido. " +
+"</p><p class='help'>" +
+"Despu&eacute;s de que hayas traducido las frases en la oración " +
+"castellana, deberías ver una traducción de la oración entera " +
+"en el espacio llamado 'Oración entera'. " +
+"Si aún no estás satisfecho con la traducción, " +
+"pod&eacute;s editarla en este espacio. " +
+"Una vez que est&eacute;s satisfecho con la traducción, " +
+"hac&eacute; clic en 'Registrar traducción' a la derecha de " +
+"'Oración entera'. " +
+"Enseguida aparece la traducción al final " +
+"del espacio llamado 'Documento', " +
+"donde se agrega cada nueva traducción " +
+"una vez que la hayas registrado. " +
+"</p><p class='help'>" +
+"Para instrucciones más detalladas incluso ejemplos, ... " +
+"</p></body></html>");
+    document.Form1.help.value = true;
+}
+function OnRegOra(raw, punc) {
+    var sentval = document.getElementById("sentence").value;
+    var sentend = sentval.charAt(sentval.length-1);
+    if ('.?!'.indexOf(sentend) == -1) {
+        sentval += punc;
+        document.getElementById("sentence").value += punc;
+    }
+    // Add the sentence and its translation to the doc textarea
+    document.getElementById("document").value += raw + "\n"+ sentval + "\n"
+    document.Form2.oratra.value = sentval;
+}
+function OnRegFrase() {
+    var sentval = document.getElementById("sentence").value;
+    var segtrans = document.getElementById("segment").value;
+    var segment = document.Form2.seg.value;
+    var radio = document.Form2.choice;
+    var choice = "";
+    var fratra = document.Form2.fratra.value;
+    document.getElementById("segtra2").innerHTML = "Selected translation";
+    if (segtrans != "") {
+        segtrans = limpiarGrn(segtrans);
+        document.Form2.fratra.value += "||" + segment + "=" + segtrans;
+        if (segtrans == "0") {
+            // User wants no translation for this segment.
+            return true;
+        } else if (sentval == "") {
+           // Beginning of the sentence.
+            segtrans = capitalize(segtrans);
+        } else {
+            segtrans = " " + segtrans;
+        }
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("sentence").value += segtrans;
+    } else {
+        for (var i = 0; i < radio.length; i++) {
+            if(radio[i].checked) {
+                choice = radio[i].value;
+                if (choice == "other") {
+                    document.getElementById("error").innerHTML = "You have to select an option or enter another translation!";
+                    return false;
+                }
+            }
+        }
+        document.getElementById("error").innerHTML = "";
+        document.getElementById("segment").value = choice;
+        document.Form2.fratra.value += "||" + segment + "=" + choice;
+        if (sentval == "") {
+            choice = capitalize(choice);
+        } else {
+            choice = " " + choice;
+        }
+        document.getElementById("sentence").value += choice;
+    }
+    return true;
+}
+function Segment(text, segment, color) {
+    var fratra = document.Form2.fratra.value;
+    var formatted = "<font color=" + color + ">" + text + "</font>";
+    // Clear error space.
+    document.getElementById("error").innerHTML = "";
+    if (fratra.includes(segment)) {
+        document.getElementById("error").innerHTML = "You already selected a translation for " + segment + "!";
+        return false;        
+    }
+    document.getElementById('segtra').innerHTML = formatted;
+    document.getElementById('segtra2').innerHTML = "Enter another translation";
+    document.Form2.seg.value = segment;
+    document.getElementById("segment").value = '';
+}
+function OnSalir()
+{
+    document.Form1.action = "fin"
+    document.Form1.target = "_self";     // Same window
+    document.Form1.submit();             // Submit the page
+    return true;
+}
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function limpiarGrn(string) {
+    string = string.replace(/[âä]/, "ã");
+    string = string.replace(/à/, "á");
+    string = string.replace(/[êë]/, "ẽ");
+    string = string.replace(/è/, "é");
+    string = string.replace(/[îï]/, "ĩ");
+    string = string.replace(/ì/, "í");
+    string = string.replace(/[ôö]/, "õ");
+    string = string.replace(/ò/, "ó");
+    string = string.replace(/[ûü]/, "ũ");
+    string = string.replace(/ù/, "ú");
+    string = string.replace(/[ŷÿ]/, "ỹ");
+    string = string.replace(/ỳ/, "ý");
+    string = string.replace(/[’`´°‘]/, "'");
+    string = string.replace(/ĝ/, "g̃");
+    return string;
+}
+</script>
+
+<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+
+</head>
+
+<body>
+
+<table class="center">
+<form name="Form1" method=POST>
+
+  <tr>
+    <td class="title">
+    <a href="base">
+    <img class='banner' src="{{url_for('static',
+      filename='banner_logo_short.png')}}" alt="" width="500px"
+      height="90px" />
+    </a>
+    </td>
+    <td class="menu" style="width: 200px">
+      <input type="submit" class="menu" action="sent" name="sent" value="NEXT SENTENCE">
+    </td>
+    <td class="menu" style="width: 150px">
+      <input class="menu" type="submit" value="QUIT" name="salir" onclick="return OnSalir();">
+    </td>
+    <td class="menu" style="width: 150px">
+      <button class="menu" onclick="ShowHelp();">HELP</button>
+    </td>
+    <input type="hidden" name="help" value="">
+    </tr>
+</form>
+
+<tr>
+<td colspan="4" style="width:1000px">  
+
+{% if user %}
+<table class="title">
+<tr>
+<td class="titleleft">Selecting and recording translations</td>
+<td class="titleright">
+Usuario: <span class="username">{{ user.username }}</span>
+</td>
+</tr>
+</table>
+{% else %}
+<h2>Selecting and recording translations</h2>
+{% endif %}
+
+<p id="error" class="error">
+</p>
+
+{% if sentence %}
+<p></p><p></p>
+
+{# Write the sentence with colors representing different translated segments #}
+<h3>Actual oración</h3>
+<span class="sentence">
+{% for seg in sentence %}
+{# Each segment responds to mouse clicks which replace the segtra
+section with a table of translations and sets the value of the seg form variable #}
+<span onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
+onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|format(seg[1])|e}});">
+  <span style='color:{{ seg[1] }};'> {{ seg[0] }} </span></span>
+{% endfor %}
+</span>
+<p></p>
+
+{% endif %}
+
+<h3>Translation</h3>
+
+<form name="Form2" method=POST action='sent'>
+
+<table class="transmeta">
+<tr class="trans">
+<td class="segsent">
+<table class="trans">
+<tr class="transtitle">
+  <th class="transtitle">Frase</th>
+  <td class="transbutton">
+  <input type="button" id="button" name="freg" onclick="OnRegFrase();" value="Registrar traducción">
+  </td>
+</tr>
+<tr class="transtitle">
+  <td class="trans" colspan='2'>Suggestions from ተርጓሚ</td>
+</tr>
+<tr class="trans">
+  <td class="transchoice" colspan='2'>
+    <p id="segtra"></p>
+  </td>
+</tr>
+<tr class="transtitle">
+<td class="trans" colspan='2'><span id="segtra2">Enter another translation</span></td>
+</tr>
+<tr class="trans">
+  <td class="transtext" colspan='2'>
+    <textarea name="UTraSeg" id="segment"></textarea>
+  </td>
+</tr>
+</table>
+<p></p>
+<table class="trans">
+<tr class="trans">
+  <th class="transtitle">Whole sentence</th>
+  <td class="transbutton">
+    <input type="button" id="button" name="oreg"
+    onclick="OnRegOra({{'%r'|format(raw)|e}}, {{'%r'|format(punc)|e}});" value="Record translation">
+    </td>
+</tr>  
+<tr class="trans">
+  <td class="transtext" colspan="2">
+    <textarea name="UTraOra" id="sentence" value=""></textarea>
+  </td>
+</tr>
+</table>
+</td>
+<td class="transtitle">
+  <table class="transdoc">
+  <tr class="trans">
+    <th class="transtitle">Document</th>
+  </tr>
+  <tr class="trans">
+  <td class="transtext">
+  <textarea name="UTraDoc" id="document" value=""></textarea>
+  </td>
+  </tr>
+  <input type="hidden" name="seg" value="">
+  <input type="hidden" name="oratra" value="">
+  <input type="hidden" name="fratra" value="">
+</form>
+
+<form name="Form3" id="text-options">
+<tr class="trans">
+  <td>
+    <input type="submit" value="Save" id="narrowbutton"/>
+    <label>File name:<input type="text" class="filename" id="text-filename" placeholder="doc.txt" size="50"/></label>
+  </td>
+</tr>
+<tr class="trans">
+  <td>
+    <input type="button" id="narrowbutton" onclick="EmptyDoc();" value="Delete"/>
+  </td>
+</tr>
+</form>  
+</table>    
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<script async="" src="{{url_for('static', filename='FileSaver.js')}}"></script>
+<script async="" src="{{url_for('static', filename='Blob.js')}}"></script>
+<script async="" src="{{url_for('static', filename='SaveDoc.js')}}"></script>
+
+</body>
+
+</html>

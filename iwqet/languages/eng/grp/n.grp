@@ -1,0 +1,7887 @@
+#### Features common to almost all translations
++t == ; 0==0 plr:plr,def:def,poss:poss,cs:cs,gen:gen
+*** Amharic_n ; ^ Amharic_n 0
+->amh 'amarN_a_n
+*** Bedouin_n ; ^ Bedouin_n 0
+->amh bedew_n
+*** Catholic_n ; ^ Catholic_n 0
+->amh katolikawit_n
+->amh katolik_n
+->amh katolikawi_n
+*** Christian_n ; ^ Christian_n 0
+->amh krstiyan_n
+*** Christianity_n ; ^ Christianity_n 0
+->amh krstn_a_n
+*** Christmas_n ; ^ Christmas_n 0
+->amh gen_a_n
+->amh ldet_n
+*** Easter_n ; ^ Easter_n 0
+->amh fasika_n
+*** English_n ; ^ English_n 0
+->amh 'ngliz_n
+*** Englishman_n ; ^ Englishman_n 0
+->amh 'ngliz_n
+*** Eritrean_n ; ^ Eritrean_n 0
+->amh 'Ertrawi_n
+*** Ethiopian_n ; ^ Ethiopian_n 0
+->amh 'ityoP_yawi_n
+->amh 'ityoP_yawit_n
+*** February_n ; ^ February_n 0
+->amh yek_atit_n
+*** French_n ; ^ French_n 0
+->amh ferensayN_a_n
+*** January_n ; ^ January_n 0
+->amh Tr__n
+*** Jew_n ; ^ Jew_n 0
+->amh 'ayhud_n
+->amh yhudi_n
+*** Jews_n ; ^ Jews_n 0
+->amh 'ayhud_n
+*** June_n ; ^ June_n 0
+->amh senE_n
+*** Latin_n ; ^ Latin_n 0
+->amh romaysT_n
+->amh latin_n
+*** March_n ; ^ March_n 0
+->amh meg_abit_n
+*** Monday_n ; ^ Monday_n 0
+->amh seN_o_n
+*** Muslim_n ; ^ Muslim_n 0
+->amh 'slam_n
+*** October_n ; ^ October_n 0
+->amh Tqmt_n
+*** Pentecost_n ; ^ Pentecost_n 0
+->amh PenTeqosTE_n
+*** Russian_n ; ^ Russian_n 0
+->amh meskobN_a_n
+->amh rusN_a_n
+*** Sabbath_n ; ^ Sabbath_n 0
+->amh senbet_n
+*** Satan_n ; ^ Satan_n 0
+->amh seyTan_n
+->amh saTna'El_n
+*** Saturday_n ; ^ Saturday_n 0
+->amh qdamE_n
+*** Somali_n ; ^ Somali_n 0
+->amh sumalE_n
+->amh somalE_n
+*** Spanish_n ; ^ Spanish_n 0
+->amh 'spanN_a_n
+*** Sunday_n ; ^ Sunday_n 0
+->amh senbet_n
+*** Swedish_n ; ^ Swedish_n 0
+->amh swidn_n
+*** Thursday_n ; ^ Thursday_n 0
+->amh 'amus_n
+*** Tuesday_n ; ^ Tuesday_n 0
+->amh magseN_o_n
+*** Turk_n ; ^ Turk_n 0
+->amh turk_n
+*** Wednesday_n ; ^ Wednesday_n 0
+->amh rob_n
+*** abandon_n ; ^ abandon_n 0
+->amh lq_n_et_n
+*** abattoir_n ; ^ abattoir_n 0
+->amh qEra_n
+*** abdomen_n ; ^ abdomen_n 0
+->amh hod_n
+*** abduction_n ; ^ abduction_n 0
+->amh Tlfiya_n
+->amh Telefa_n
+*** ability_n ; ^ ability_n 0
+->amh clota_n
+->amh moya_n
+*** abortion_n ; ^ abortion_n 0
+->amh wrja_n
+*** absolution_n ; ^ absolution_n 0
+->amh sryet_n
+*** abundance_n ; ^ abundance_n 0
+->amh bzat_n
+->amh brk_atE_n
+->amh bereket_n
+->amh rzq_n
+->amh mulat_n
+*** abyss_n ; ^ abyss_n 0
+->amh meqemeq_n
+->amh 'azeqt_n
+*** accent_n ; ^ accent_n 0
+->amh Cret_n
+*** accident_n ; ^ accident_n 0
+->amh 'adega_n
+*** acclaim_n ; ^ acclaim_n 0
+->amh hota_n
+*** accompaniment_n ; ^ accompaniment_n 0
+->amh Cfra_n
+*** accomplice_n ; ^ accomplice_n 0
+->amh teder_abi_n
+->amh 'aC_afari_n
+->amh teCafari_n
+*** accomplishment_n ; ^ accomplishment_n 0
+->amh knw_n_n
+*** accord_n ; ^ accord_n 0
+->amh smmn_et_n
+*** accumulator_n ; ^ accumulator_n 0
+->amh sebsabi_n
+*** accusation_n ; ^ accusation_n 0
+->amh ks__n
+->amh wnjela_n
+*** accuser_n ; ^ accuser_n 0
+->amh kesax_n
+->amh wenjay_n
+*** acid_n ; ^ acid_n 0
+->amh 'asid_n
+*** act_n ; ^ act_n 0
+->amh tegbar_n
+*** action_n ; ^ action_n 0
+->amh drg_it__n
+->amh 'adragot_n
+*** actor_n ; ^ actor_n 0
+->amh 'adragi_n
+*** addict_n ; ^ addict_n 0
+->amh suseN_a_n
+*** addiction_n ; ^ addiction_n 0
+->amh sus_n
+*** addition_n ; ^ addition_n 0
+->amh dm_era_n
+*** address_n ; ^ address_n 0
+->amh 'adrax_a_n
+*** adhesive_n ; ^ adhesive_n 0
+->amh maT_abeqiya_n
+*** adjective_n ; ^ adjective_n 0
+->amh qS_l_n
+*** administrator_n ; ^ administrator_n 0
+->amh 'astedadari_n
+*** admiration_n ; ^ admiration_n 0
+->amh 'adnaqot_n
+*** adolescence_n ; ^ adolescence_n 0
+->amh gurms_n_a_n
+*** adolescent_n ; ^ adolescent_n 0
+->amh goremsa_n
+*** adoration_n ; ^ adoration_n 0
+->amh sgdet_n
+*** adornment_n ; ^ adornment_n 0
+->amh gET_n
+*** adult_n ; ^ adult_n 0
+->amh golmas_a_n
+*** adulterer_n ; ^ adulterer_n 0
+->amh 'amenzari_n
+->amh qnzreN_a_n
+->amh zm_uteN_a_n
+->amh 'amenzra_n
+*** adulteress_n ; ^ adulteress_n 0
+->amh zem_a_n
+*** adultery_n ; ^ adultery_n 0
+->amh mnzr_n
+->amh qnzr_n
+->amh zm_ut_n
+*** advantage_n ; ^ advantage_n 0
+->amh TeqemEta_n
+*** adventure_n ; ^ adventure_n 0
+->amh Zebdu_n
+->amh jebdu_n
+*** adversary_n ; ^ adversary_n 0
+->amh Telat_n
+->amh tegaTami_n
+->amh balanTa_n
+*** advice_n ; ^ advice_n 0
+->amh mkr_n
+*** advocacy_n ; ^ advocacy_n 0
+->amh Tbqn_a_n
+*** advocate_n ; ^ advocate_n 0
+->amh Tebeqa_n
+*** affirmative_n ; ^ affirmative_n 0
+->amh 'awenta_n
+*** affliction_n ; ^ affliction_n 0
+->amh Tenq_n
+*** age_n ; ^ age_n 0
+->amh 'dmE_n
+*** agenda_n ; ^ agenda_n 0
+->amh 'ajenda_n
+*** agent_n ; ^ agent_n 0
+->amh 'adragi_n
+*** aggressor_n ; ^ aggressor_n 0
+->amh 'aTqi_n
+*** agility_n ; ^ agility_n 0
+->amh nqat_n
+*** agitation_n ; ^ agitation_n 0
+->amh qsqesa_n
+->amh nqneqa_n
+*** agitator_n ; ^ agitator_n 0
+->amh qesqax_n
+->amh 'asnex_i_n
+->amh 'an_eqanaqi_n
+*** agony_n ; ^ agony_n 0
+->amh sqay_n
+*** agreement_n ; ^ agreement_n 0
+->amh smmn_et_n
+->amh wl_n
+->amh smm__n
+*** agriculture_n ; ^ agriculture_n 0
+->amh gbrn_a_n
+->amh 'rxa_n
+*** aim_n ; ^ aim_n 0
+->amh gb_n
+*** air_n ; ^ air_n 0
+->amh nefas_n
+*** airplane_n ; ^ airplane_n 0
+->amh 'awrop_lan_n
+*** alarm_n ; ^ alarm_n 0
+->amh dng_aTE_n
+->amh masTenqeqiya_n
+*** alcohol_n ; ^ alcohol_n 0
+->amh 'alkol_n
+*** alliance_n ; ^ alliance_n 0
+->amh 'ag_ar_n
+*** allotment_n ; ^ allotment_n 0
+->amh md_eba_n
+*** allowance_n ; ^ allowance_n 0
+->amh 'abel__n
+*** alms_n ; ^ alms_n 0
+->amh mTwat_n
+*** aloes_n ; ^ aloes_n 0
+->amh rEt_n
+*** alphabet_n ; ^ alphabet_n 0
+->amh 'abugida_n
+->amh hahu_n
+->amh fidel_n
+*** altar_n ; ^ altar_n 0
+->amh menber_n
+*** altercation_n ; ^ altercation_n 0
+->amh 'xkolelE_n
+*** alternative_n ; ^ alternative_n 0
+->amh 'am_araC_n
+*** altitude_n ; ^ altitude_n 0
+->amh kef_ta_n
+*** ambassador_n ; ^ ambassador_n 0
+->amh 'ambasader_n
+*** ambulance_n ; ^ ambulance_n 0
+->amh 'ambulans_n
+*** ambush_n ; ^ ambush_n 0
+->amh defeTa_n
+*** ammunition_n ; ^ ammunition_n 0
+->amh Ty_t_n
+*** amount_n ; ^ amount_n 0
+->amh meTen_n
+*** amulet_n ; ^ amulet_n 0
+->amh Telsem_n
+->amh 'axenktab_n
+*** amusement_n ; ^ amusement_n 0
+->amh Cewata_n
+*** analysis_n ; ^ analysis_n 0
+->amh tntena_n
+*** anarchism_n ; ^ anarchism_n 0
+->amh dblqlq_n
+*** angel_n ; ^ angel_n 0
+->amh mel'ak_n
+*** anger_n ; ^ anger_n 0
+->amh quT_a_n
+*** angle_n ; ^ angle_n 0
+->amh zewE_n
+*** anguish_n ; ^ anguish_n 0
+->amh Cnqet_n
+*** animal_n ; ^ animal_n 0
+->amh kebt_n
+->amh 'nssa_n
+*** animosity_n ; ^ animosity_n 0
+->amh Tlac_a_n
+*** anise_n ; ^ anise_n 0
+->amh 'nslal_n
+*** ankle_n ; ^ ankle_n 0
+->amh terekez_n
+->amh qWrCmCmit_n
+*** annex_n ; ^ annex_n 0
+->amh qeT_ay_n
+->amh zanigab_a_n
+*** annihilation_n ; ^ annihilation_n 0
+->amh dmsesa_n
+*** annoyance_n ; ^ annoyance_n 0
+->amh bsC_t_n
+*** answer_n ; ^ answer_n 0
+->amh mels_n
+->amh ml_ax_n
+*** ant_n ; ^ ant_n 0
+->amh gundan_n
+->amh quCaC_n
+*** antagonism_n ; ^ antagonism_n 0
+->amh Tlac_a_n
+*** antenna_n ; ^ antenna_n 0
+->amh 'antEna_n
+*** antiquity_n ; ^ antiquity_n 0
+->amh qrs_n
+*** anus_n ; ^ anus_n 0
+->amh finTiT_a_n
+*** anvil_n ; ^ anvil_n 0
+->amh mesf_n
+*** anxiety_n ; ^ anxiety_n 0
+->amh gug_ut_n
+*** apartment_n ; ^ apartment_n 0
+->amh 'ap_artma_n
+*** ape_n ; ^ ape_n 0
+->amh znjero_n
+->amh ToTa_n
+->amh jnjero_n
+*** aperture_n ; ^ aperture_n 0
+->amh kftet_n
+*** appeal_n ; ^ appeal_n 0
+->amh 'abEtuta_n
+->amh Cuhet_n
+->amh ygbaN__n
+*** appearance_n ; ^ appearance_n 0
+->amh melk_n
+->amh geS_ta_n
+*** appendicitis_n ; ^ appendicitis_n 0
+->amh buqa_n
+*** appendix_n ; ^ appendix_n 0
+->amh 'abari_n
+*** appetite_n ; ^ appetite_n 0
+->amh 'amrot_n
+*** applause_n ; ^ applause_n 0
+->amh CbCeba_n
+*** applicant_n ; ^ applicant_n 0
+->amh 'amelkac_n
+*** application_n ; ^ application_n 0
+->amh mamelkeca_n
+*** appointment_n ; ^ appointment_n 0
+->amh qeTero_n
+*** appraisal_n ; ^ appraisal_n 0
+->amh gmgema_n
+*** appreciation_n ; ^ appreciation_n 0
+->amh 'adnaqot_n
+->amh moges_n
+*** approach_n ; ^ approach_n 0
+->amh 'aqWam_n
+*** apron_n ; ^ apron_n 0
+->amh xr_T_n
+*** arbitration_n ; ^ arbitration_n 0
+->amh daN_n_et_n
+*** arbitrator_n ; ^ arbitrator_n 0
+->amh 'amW_agac_n
+*** arch_n ; ^ arch_n 0
+->amh qs_t_n
+*** archbishop_n ; ^ archbishop_n 0
+->amh 'abun_n
+*** archer_n ; ^ archer_n 0
+->amh qesteN_a_n
+*** architect_n ; ^ architect_n 0
+->amh mehandis_n
+*** ardour_n ; ^ ardour_n 0
+->amh wl_ta_n
+*** area_n ; ^ area_n 0
+->amh sefer_n
+->amh bota_n
+->amh sfat_n
+*** argument_n ; ^ argument_n 0
+->amh krk_r_n
+->amh mug_t_n
+->amh CqCq_n
+*** aristocracy_n ; ^ aristocracy_n 0
+->amh balab_atn_et_n
+*** aristocrat_n ; ^ aristocrat_n 0
+->amh balab_at_n
+->amh mesfn_n
+*** arithmetic_n ; ^ arithmetic_n 0
+->amh 'aritmEtik_n
+*** arm_n ; ^ arm_n 0
+->amh knd_n
+*** armpit_n ; ^ armpit_n 0
+->amh bb_t_n
+->amh guy_a_n
+*** army_n ; ^ army_n 0
+->amh Tor_n
+*** aroma_n ; ^ aroma_n 0
+->amh qana_n
+*** arrangement_n ; ^ arrangement_n 0
+->amh zgj_t_n
+->amh mes_enado_n
+*** arrival_n ; ^ arrival_n 0
+->amh medrexa_n
+*** arrogance_n ; ^ arrogance_n 0
+->amh tmkht_n
+->amh 'brit_n
+->amh tbit_n
+->amh Tgab_n
+*** art_n ; ^ art_n 0
+->amh kinet_n
+*** article_n ; ^ article_n 0
+->amh 'qa_n
+*** artillery_n ; ^ artillery_n 0
+->amh medf_n
+*** artisan_n ; ^ artisan_n 0
+->amh Tebib_n
+*** ascent_n ; ^ ascent_n 0
+->amh daget_n
+*** ashes_n ; ^ ashes_n 0
+->amh 'amed_n
+*** aspect_n ; ^ aspect_n 0
+->amh 'anSar_n
+->amh geS_ta_n
+->amh reged_n
+*** asphalt_n ; ^ asphalt_n 0
+->amh rEnj_n
+*** ass_n ; ^ ass_n 0
+->amh 'ahy_a_n
+*** assault_n ; ^ assault_n 0
+->amh Tqat_n
+*** assembly_n ; ^ assembly_n 0
+->amh xengo_n
+->amh sbseba_n
+->amh guba'E_n
+*** assessment_n ; ^ assessment_n 0
+->amh gmgema_n
+->amh gm_t_n
+*** assessor_n ; ^ assessor_n 0
+->amh gemgami_n
+*** assignment_n ; ^ assignment_n 0
+->amh dld_l_n
+->amh dldela_n
+*** assistant_n ; ^ assistant_n 0
+->amh red_at_n
+->amh reji_n
+*** associate_n ; ^ associate_n 0
+->amh tebabari_n
+*** association_n ; ^ association_n 0
+->amh gnN_un_et_n
+*** assumption_n ; ^ assumption_n 0
+->amh gm_t_n
+*** asthma_n ; ^ asthma_n 0
+->amh 'asma_n
+*** astonishment_n ; ^ astonishment_n 0
+->amh dnq_n
+->amh 'adnaqot_n
+*** astronaut_n ; ^ astronaut_n 0
+->amh TefereteN_a_n
+*** athletics_n ; ^ athletics_n 0
+->amh jmnastik_n
+*** atrocity_n ; ^ atrocity_n 0
+->amh Ck_anE_n
+->amh gf_n
+*** attachment_n ; ^ attachment_n 0
+->amh 'abari_n
+*** attacker_n ; ^ attacker_n 0
+->amh 'aTqi_n
+*** attorney_n ; ^ attorney_n 0
+->amh Tebeqa_n
+*** auctioneer_n ; ^ auctioneer_n 0
+->amh 'aC_arac_n
+*** aunt_n ; ^ aunt_n 0
+->amh 'akst_n
+*** author_n ; ^ author_n 0
+->amh derasi_n
+*** authorship_n ; ^ authorship_n 0
+->amh derasin_et_n
+*** automobile_n ; ^ automobile_n 0
+->amh 'otomobil_n
+*** autumn_n ; ^ autumn_n 0
+->amh meker_n
+*** avarice_n ; ^ avarice_n 0
+->amh nfget_n
+*** average_n ; ^ average_n 0
+->amh 'am_akaN_n
+*** award_n ; ^ award_n 0
+->amh frd_n
+*** awareness_n ; ^ awareness_n 0
+->amh gnz_abE_n
+*** axe_n ; ^ axe_n 0
+->amh mesenTeqiya_n
+->amh ms_ar_n
+->amh fas_n
+->amh meTrabiya_n
+*** axis_n ; ^ axis_n 0
+->amh zeng_n
+*** baboon_n ; ^ baboon_n 0
+->amh znjero_n
+->amh jnjero_n
+*** baby_n ; ^ baby_n 0
+->amh Ceqla_n
+*** babyhood_n ; ^ babyhood_n 0
+->amh Ceqlan_et_n
+*** back_n ; ^ back_n 0
+->amh jerba_n
+->amh hWala_n
+*** backbiter_n ; ^ backbiter_n 0
+->amh welewelda_n
+->amh 'amEteN_a_n
+->amh xerdaj_n
+->amh sebaqi_n
+*** backbone_n ; ^ backbone_n 0
+->amh 'akerkari_n
+->amh dendes__n
+*** backer_n ; ^ backer_n 0
+->amh deg_afi_n
+*** backing_n ; ^ backing_n 0
+->amh dgaf_n
+*** badge_n ; ^ badge_n 0
+->amh 'arma_n
+->amh mel_ey_o_n
+*** baggage_n ; ^ baggage_n 0
+->amh 'qa_n
+*** bail_n ; ^ bail_n 0
+->amh medn_n
+->amh masyaZa_n
+*** balance_n ; ^ balance_n 0
+->amh mizan_n
+*** balcony_n ; ^ balcony_n 0
+->amh segen_et_n
+*** baldness_n ; ^ baldness_n 0
+->amh melaTan_et_n
+*** ball_n ; ^ ball_n 0
+->amh kWas_n
+*** balloon_n ; ^ balloon_n 0
+->amh fiN_a_n
+*** balm_n ; ^ balm_n 0
+->amh maxa_n
+->amh met_axa_n
+*** bamboo_n ; ^ bamboo_n 0
+->amh xmel_n
+->amh qerqaha_n
+*** ban_n ; ^ ban_n 0
+->amh 'g_eda_n
+->amh gz_t_n
+*** banana_n ; ^ banana_n 0
+->amh muz_n
+*** banishment_n ; ^ banishment_n 0
+->amh gzot_n
+*** bank_n ; ^ bank_n 0
+->amh bank_n
+->amh dar_n
+*** bankruptcy_n ; ^ bankruptcy_n 0
+->amh kes_ara_n
+*** banquet_n ; ^ banquet_n 0
+->amh dg_s_n
+->amh gbr_n
+*** banter_n ; ^ banter_n 0
+->amh tereb_n
+->amh zebet_n
+*** baptism_n ; ^ baptism_n 0
+->amh Tmqet_n
+*** bar_n ; ^ bar_n 0
+->amh bar_n
+*** barbarity_n ; ^ barbarity_n 0
+->amh 'aremenEn_et_n
+*** bargain_n ; ^ bargain_n 0
+->amh gZ__n
+*** bark_n ; ^ bark_n 0
+->amh lT_n
+->amh gelefet_n
+*** barley_n ; ^ barley_n 0
+->amh gebs_n
+*** barn_n ; ^ barn_n 0
+->amh beret_n
+*** barrage_n ; ^ barrage_n 0
+->amh gd_b_n
+->amh 'r_omta_n
+*** barrel_n ; ^ barrel_n 0
+->amh bermil_n
+*** barrenness_n ; ^ barrenness_n 0
+->amh mek_ann_et_n
+*** barricade_n ; ^ barricade_n 0
+->amh meketa_n
+->amh mx_g_n
+*** basin_n ; ^ basin_n 0
+->amh weCt_n
+->amh menkeriya_n
+->amh met_aTebiya_n
+*** basket_n ; ^ basket_n 0
+->amh zembil_n
+->amh qrCat_n
+->amh zenbil_n
+*** bastard_n ; ^ bastard_n 0
+->amh diqala_n
+*** bat_n ; ^ bat_n 0
+->amh gen_a_n
+->amh bet_r_n
+->amh xmel_n
+*** bathtub_n ; ^ bathtub_n 0
+->amh baN_o_n
+*** battery_n ; ^ battery_n 0
+->amh batri_n
+*** battle_n ; ^ battle_n 0
+->amh Torn_et_n
+*** battlefield_n ; ^ battlefield_n 0
+->amh gora_n
+*** bay_n ; ^ bay_n 0
+->amh dama_n
+*** bayonet_n ; ^ bayonet_n 0
+->amh sanja_n
+*** beams_n ; ^ beams_n 0
+->amh kenc_n
+*** bear_n ; ^ bear_n 0
+->amh db__n
+*** beard_n ; ^ beard_n 0
+->amh Tim_n
+->amh mrq_n
+*** bearer_n ; ^ bearer_n 0
+->amh texek_ami_n
+*** beat_n ; ^ beat_n 0
+->amh tr_ta_n
+->amh mt_n
+*** beating_n ; ^ beating_n 0
+->amh dbdeba_n
+*** beauty_n ; ^ beauty_n 0
+->amh qunjn_a_n
+->amh wezena_n
+*** bed_n ; ^ bed_n 0
+->amh qind_n
+->amh 'alga_n
+*** bedding_n ; ^ bedding_n 0
+->amh guzgWaz_n
+*** bee_n ; ^ bee_n 0
+->amh nb_n
+*** beehive_n ; ^ beehive_n 0
+->amh qefo_n
+*** beer_n ; ^ beer_n 0
+->amh bira_n
+*** beeswax_n ; ^ beeswax_n 0
+->amh sem_n
+*** beetle_n ; ^ beetle_n 0
+->amh 'nzz_n
+*** beggary_n ; ^ beggary_n 0
+->amh lem_aNn_et_n
+*** beginner_n ; ^ beginner_n 0
+->amh jemari_n
+->amh lemaj_n
+->amh weT_aN_n
+*** beginning_n ; ^ beginning_n 0
+->amh mejem_eriya_n
+*** behaviour_n ; ^ behaviour_n 0
+->amh Tebay_n
+->amh 'ay_ayaz_n
+->amh drg_it__n
+*** being_n ; ^ being_n 0
+->amh fTur_n
+*** belch_n ; ^ belch_n 0
+->amh bsna_n
+->amh bsnat_n
+*** belief_n ; ^ belief_n 0
+->amh 'mnet_n
+*** believer_n ; ^ believer_n 0
+->amh 'amaN_n
+*** bell_n ; ^ bell_n 0
+->amh merew_a_n
+->amh dewel_n
+*** bellows_n ; ^ bellows_n 0
+->amh wenaf_n
+*** belly_n ; ^ belly_n 0
+->amh qefet_n
+->amh hod_n
+*** belongings_n ; ^ belongings_n 0
+->amh gWaz_n
+*** belt_n ; ^ belt_n 0
+->amh qebet_o_n
+->amh seq__n
+->amh met_aTeqiya_n
+*** benefactor_n ; ^ benefactor_n 0
+->amh tezek_ari_n
+->amh deg_afi_n
+*** beneficiary_n ; ^ beneficiary_n 0
+->amh teTeq_ami_n
+*** benefit_n ; ^ benefit_n 0
+->amh TeqemEta_n
+->amh Tqm_n
+*** berry_n ; ^ berry_n 0
+->amh frE_n
+*** bet_n ; ^ bet_n 0
+->amh wrr_d_n
+*** betrayal_n ; ^ betrayal_n 0
+->amh kdat_n
+*** beverage_n ; ^ beverage_n 0
+->amh meTeT__n
+*** bias_n ; ^ bias_n 0
+->amh 'adlwo_n
+*** biceps_n ; ^ biceps_n 0
+->amh nebro_n
+*** bid_n ; ^ bid_n 0
+->amh 'agana_n
+*** bidder_n ; ^ bidder_n 0
+->amh teCarac_n
+*** bile_n ; ^ bile_n 0
+->amh 'amot_n
+*** bill_n ; ^ bill_n 0
+->amh faktur_n
+*** bird_n ; ^ bird_n 0
+->amh wef_n
+*** birth_n ; ^ birth_n 0
+->amh ldet_n
+*** birthday_n ; ^ birthday_n 0
+->amh ldet_n
+*** bishop_n ; ^ bishop_n 0
+->amh 'abun_n
+->amh PaP_as_n
+*** bite_n ; ^ bite_n 0
+->amh nkxa_n
+->amh nk_sat_n
+*** bitter_n ; ^ bitter_n 0
+->amh rEt_n
+*** bitterness_n ; ^ bitterness_n 0
+->amh mer_arn_et_n
+*** blacksmith_n ; ^ blacksmith_n 0
+->amh debenansa_n
+->amh balej__n
+->amh qeTqaC_n
+*** bladder_n ; ^ bladder_n 0
+->amh fiN_a_n
+*** blade_n ; ^ blade_n 0
+->amh mlaC__n
+*** blame_n ; ^ blame_n 0
+->amh zlfiya_n
+->amh zlfet_n
+->amh zelefa_n
+*** blandishment_n ; ^ blandishment_n 0
+->amh medel_eya_n
+*** blaze_n ; ^ blaze_n 0
+->amh qaTelo_n
+*** blemish_n ; ^ blemish_n 0
+->amh 'nken_n
+*** blessing_n ; ^ blessing_n 0
+->amh bur_akE_n
+->amh bereket_n
+->amh mr_qat_n
+*** block_n ; ^ block_n 0
+->amh gnd_n
+*** blockhead_n ; ^ blockhead_n 0
+->amh 'ankola_n
+*** blood_n ; ^ blood_n 0
+->amh dem_n
+*** bloom_n ; ^ bloom_n 0
+->amh 'abeba_n
+*** blotter_n ; ^ blotter_n 0
+->amh maTmiya_n
+*** blowfly_n ; ^ blowfly_n 0
+->amh qmburs_n
+*** board_n ; ^ board_n 0
+->amh Terb_n
+->amh qel_eb_n
+->amh sanqa_n
+*** boarder_n ; ^ boarder_n 0
+->amh qel_ebteN_a_n
+->amh teqel_abi_n
+*** boast_n ; ^ boast_n 0
+->amh tmkht_n
+->amh xl_ela_n
+*** boaster_n ; ^ boaster_n 0
+->amh xel_ay_n
+->amh temeSadaqi_n
+->amh gur_eN_a_n
+*** bob_n ; ^ bob_n 0
+->amh cebceb_o_n
+*** body_n ; ^ body_n 0
+->amh 'askerEn_n
+->amh sewn_et_n
+->amh 'akal_n
+->amh gela_n
+*** bodyguard_n ; ^ bodyguard_n 0
+->amh 'angac_n
+*** boil_n ; ^ boil_n 0
+->amh bgunj_n
+*** boldness_n ; ^ boldness_n 0
+->amh dfret_n
+*** bolt_n ; ^ bolt_n 0
+->amh meqerqeriya_n
+->amh mewerweriya_n
+*** book_n ; ^ book_n 0
+->amh meShaf_n
+*** bookmark_n ; ^ bookmark_n 0
+->amh 'l_bat_n
+*** boorishness_n ; ^ boorishness_n 0
+->amh 'r_eN_n_et_n
+*** booth_n ; ^ booth_n 0
+->amh kiyosk_n
+->amh das_n
+->amh goj_o_n
+*** booty_n ; ^ booty_n 0
+->amh gd_ay_n
+->amh mrko_n
+*** border_n ; ^ border_n 0
+->amh 'aTnaf_n
+->amh Teref_n
+->amh Terz_n
+->amh dar_n
+->amh Tenf_n
+->amh dnber_n
+*** borderline_n ; ^ borderline_n 0
+->amh dnber_n
+*** bore_n ; ^ bore_n 0
+->amh mebxa_n
+->amh 'atakac_n
+->amh 'aselci_n
+*** borer_n ; ^ borer_n 0
+->amh borbWari_n
+*** borrower_n ; ^ borrower_n 0
+->amh tewax_n
+*** bottom_n ; ^ bottom_n 0
+->amh meq_emeCa_n
+->amh qiT_n
+*** bough_n ; ^ bough_n 0
+->amh znT_afi_n
+*** boulder_n ; ^ boulder_n 0
+->amh nada_n
+*** boundary_n ; ^ boundary_n 0
+->amh dnber_n
+->amh kl_l_n
+->amh wes_en_n
+*** bounty_n ; ^ bounty_n 0
+->amh rzq_n
+*** bow_n ; ^ bow_n 0
+->amh qest_n
+->amh mendefiya_n
+->amh wesfenTr_n
+*** bowman_n ; ^ bowman_n 0
+->amh qesteN_a_n
+*** box_n ; ^ box_n 0
+->amh pak_o_n
+->amh senduq_n
+->amh saTn_n
+*** boxing_n ; ^ boxing_n 0
+->amh buT_i_n
+*** boy_n ; ^ boy_n 0
+->amh lj_n
+*** bracelet_n ; ^ bracelet_n 0
+->amh 'ambar_n
+->amh sndd_n
+*** brackets_n ; ^ brackets_n 0
+->amh qn_f_n
+*** braggart_n ; ^ braggart_n 0
+->amh gur_eN_a_n
+*** bragging_n ; ^ bragging_n 0
+->amh dnfata_n
+->amh tmkht_n
+->amh fuk_era_n
+->amh gur_a_n
+*** braid_n ; ^ braid_n 0
+->amh gWngWn_n
+*** brain_n ; ^ brain_n 0
+->amh nala_n
+->amh 'angWel_n
+*** bran_n ; ^ bran_n 0
+->amh fruska_n
+*** branch_n ; ^ branch_n 0
+->amh znTl_n
+->amh qrnCaf_n
+*** brass_n ; ^ brass_n 0
+->amh nas_n
+*** bravery_n ; ^ bravery_n 0
+->amh jegnn_et_n
+->amh wendn_et_n
+->amh gubzn_a_n
+*** brawl_n ; ^ brawl_n 0
+->amh rebxa_n
+*** brazier_n ; ^ brazier_n 0
+->amh 'nkr_t_n
+*** bread_n ; ^ bread_n 0
+->amh rm_iTo_n
+->amh dab_o_n
+->amh furno_n
+*** breadth_n ; ^ breadth_n 0
+->amh werd_n
+->amh sfat_n
+->amh 'agdmet_n
+*** breakfast_n ; ^ breakfast_n 0
+->amh qurs_n
+*** breast_n ; ^ breast_n 0
+->amh Tut_n
+*** breath_n ; ^ breath_n 0
+->amh tnfax_n
+->amh 'stnfas_n
+*** breathing_n ; ^ breathing_n 0
+->amh 'stnfas_n
+*** breeding_n ; ^ breeding_n 0
+->amh 'astedadeg_n
+*** bribe_n ; ^ bribe_n 0
+->amh med_eleya_n
+->amh gub_o_n
+*** brick_n ; ^ brick_n 0
+->amh Tub_n
+*** bricklayer_n ; ^ bricklayer_n 0
+->amh gnbeN_a_n
+*** bride_n ; ^ bride_n 0
+->amh muxr_it_n
+*** bridge_n ; ^ bridge_n 0
+->amh dldy_n
+*** bridle_n ; ^ bridle_n 0
+->amh lgWam_n
+*** brigand_n ; ^ brigand_n 0
+->amh qem_aN_a_n
+->amh wenbedE_n
+*** brightness_n ; ^ brightness_n 0
+->amh fkat_n
+->amh dmqet_n
+*** brilliance_n ; ^ brilliance_n 0
+->amh wzat_n
+->amh wez_n
+*** broker_n ; ^ broker_n 0
+->amh 'ax_axaC_n
+->amh del_ala_n
+*** brook_n ; ^ brook_n 0
+->amh Zret_n
+->amh fefa_n
+*** broom_n ; ^ broom_n 0
+->amh meTregiya_n
+*** broth_n ; ^ broth_n 0
+->amh mereq_n
+*** brother_n ; ^ brother_n 0
+->amh wendm__n
+*** brother-in-law_n ; ^ brother-in-law_n 0
+->amh warsa_n
+->amh 'amac_n
+*** brotherhood_n ; ^ brotherhood_n 0
+->amh wendm_amacn_et_n
+*** brow_n ; ^ brow_n 0
+->amh gmbar_n
+*** bruise_n ; ^ bruise_n 0
+->amh sember_n
+*** brush_n ; ^ brush_n 0
+->amh brux_n
+->amh murE_n
+*** brutality_n ; ^ brutality_n 0
+->amh Ck_anE_n
+*** bucket_n ; ^ bucket_n 0
+->amh baldi_n
+->amh xenkel_o_n
+->amh senkel_o_n
+*** buckle_n ; ^ buckle_n 0
+->amh zelebet_n
+*** budget_n ; ^ budget_n 0
+->amh bajet_n
+*** bug_n ; ^ bug_n 0
+->amh thWan_n
+*** bull_n ; ^ bull_n 0
+->amh weyfen_n
+->amh korma_n
+*** bullet_n ; ^ bullet_n 0
+->amh 'arer_n
+->amh Ty_t_n
+*** bully_n ; ^ bully_n 0
+->amh temac_n
+*** bum_n ; ^ bum_n 0
+->amh 'azeTzaC_n
+->amh 'adesdax_n
+*** bunch_n ; ^ bunch_n 0
+->amh Cb_T_n
+->amh zelela_n
+*** bundle_n ; ^ bundle_n 0
+->amh 'q_f_n
+*** burden_n ; ^ burden_n 0
+->amh qenber_n
+->amh Cnet_n
+*** burglar_n ; ^ burglar_n 0
+->amh sersari_n
+*** burial_n ; ^ burial_n 0
+->amh qebr_n
+*** bus_n ; ^ bus_n 0
+->amh 'awtobus_n
+*** bush_n ; ^ bush_n 0
+->amh Txa_n
+*** business_n ; ^ business_n 0
+->amh gud_ay_n
+*** busybody_n ; ^ busybody_n 0
+->amh tostWas_a_n
+->amh 'atostWax_n
+*** butt_n ; ^ butt_n 0
+->amh qum_aC_n
+->amh sedef_n
+->amh meqel_eja_n
+*** butter_n ; ^ butter_n 0
+->amh qbE_n
+*** butterfly_n ; ^ butterfly_n 0
+->amh br_abir_o_n
+->amh bir_abir_o_n
+*** buttocks_n ; ^ buttocks_n 0
+->amh qiT_n
+->amh rEb_n
+*** button_n ; ^ button_n 0
+->amh 'azrar_n
+*** buy_n ; ^ buy_n 0
+->amh gZ__n
+*** buyer_n ; ^ buyer_n 0
+->amh geZ_n
+*** buzz_n ; ^ buzz_n 0
+->amh cacata_n
+*** buzzard_n ; ^ buzzard_n 0
+->amh ged_E_n
+*** cactus_n ; ^ cactus_n 0
+->amh qWlqWal_n
+->amh beles_n
+*** calamity_n ; ^ calamity_n 0
+->amh wrjb_N__n
+->amh frja_n
+*** calculation_n ; ^ calculation_n 0
+->amh qWeTera_n
+->amh sl_Et_n
+*** calf_n ; ^ calf_n 0
+->amh bat_n
+->amh Tj_a_n
+->amh 'mbos_a_n
+*** calico_n ; ^ calico_n 0
+->amh 'abujedi_n
+*** call_n ; ^ call_n 0
+->amh Tr_i_n
+*** calm_n ; ^ calm_n 0
+->amh SeT_ta_n
+->amh Tm_ona_n
+*** calmness_n ; ^ calmness_n 0
+->amh Cr_ta_n
+->amh 'rgata_n
+*** camel_n ; ^ camel_n 0
+->amh gemel_n
+->amh gmel_n
+*** camera_n ; ^ camera_n 0
+->amh kamEra_n
+*** campaign_n ; ^ campaign_n 0
+->amh tegadlo_n
+*** campaigner_n ; ^ campaigner_n 0
+->amh zemac_n
+*** camphor_n ; ^ camphor_n 0
+->amh kamfur_n
+*** can_n ; ^ can_n 0
+->amh Tasa_n
+->amh tanika_n
+*** canal_n ; ^ canal_n 0
+->amh boy_n
+*** cancellation_n ; ^ cancellation_n 0
+->amh sr_eza_n
+*** candidate_n ; ^ candidate_n 0
+->amh texWami_n
+->amh tefet_aN_n
+*** candidature_n ; ^ candidature_n 0
+->amh temer_aCn_et_n
+*** candle_n ; ^ candle_n 0
+->amh xama_n
+->amh TWaf_n
+*** candlestick_n ; ^ candlestick_n 0
+->amh meqrez_n
+*** cane_n ; ^ cane_n 0
+->amh gomed_n
+->amh kezera_n
+->amh xenbeq_o_n
+->amh 'ageda_n
+->amh xmel_n
+->amh xembeq_o_n
+->amh 'arCum_E_n
+*** cannibal_n ; ^ cannibal_n 0
+->amh Craq_n
+*** cannon_n ; ^ cannon_n 0
+->amh medf_n
+*** canoe_n ; ^ canoe_n 0
+->amh tankWa_n
+*** canon_n ; ^ canon_n 0
+->amh qen_ona_n
+*** canopy_n ; ^ canopy_n 0
+->amh 'agober_n
+*** canteen_n ; ^ canteen_n 0
+->amh kod_a_n
+*** canvas_n ; ^ canvas_n 0
+->amh xera_n
+*** cap_n ; ^ cap_n 0
+->amh gunina_n
+->amh kdan_n
+->amh qob_n
+*** capital_n ; ^ capital_n 0
+->amh weret_n
+*** captain_n ; ^ captain_n 0
+->amh xambel__n
+->amh 'ambel__n
+*** captive_n ; ^ captive_n 0
+->amh temaraki_n
+->amh mrko_n
+->amh mrkoN_a_n
+*** captor_n ; ^ captor_n 0
+->amh maraki_n
+*** car_n ; ^ car_n 0
+->amh mekina_n
+*** carbon_n ; ^ carbon_n 0
+->amh karbon_n
+*** cardboard_n ; ^ cardboard_n 0
+->amh karton_n
+*** care_n ; ^ care_n 0
+->amh denta_n
+->amh Tnq_aqE_n
+*** carefulness_n ; ^ carefulness_n 0
+->amh Tnq_aqE_n
+*** cargo_n ; ^ cargo_n 0
+->amh Cnet_n
+*** carpenter_n ; ^ carpenter_n 0
+->amh 'anaTi_n
+*** carpet_n ; ^ carpet_n 0
+->amh mnTaf_n
+*** carriage_n ; ^ carriage_n 0
+->amh seregel_a_n
+->amh gari_n
+*** carrier_n ; ^ carrier_n 0
+->amh texek_ami_n
+*** carrot_n ; ^ carrot_n 0
+->amh karot_n
+*** cart_n ; ^ cart_n 0
+->amh gari_n
+*** cartridge_n ; ^ cartridge_n 0
+->amh qeleh_n
+->amh Ty_t_n
+*** case_n ; ^ case_n 0
+->amh neger_n
+*** casing_n ; ^ casing_n 0
+->amh xfan_n
+*** castration_n ; ^ castration_n 0
+->amh kulx_t_n
+*** cat_n ; ^ cat_n 0
+->amh dm_et_n
+*** catalogue_n ; ^ catalogue_n 0
+->amh katalog_n
+*** cataract_n ; ^ cataract_n 0
+->amh fWafWatE_n
+*** caterpillar_n ; ^ caterpillar_n 0
+->amh 'ab_aCegW_ar_E_n
+*** cause_n ; ^ cause_n 0
+->amh mknyat_n
+*** cavalry_n ; ^ cavalry_n 0
+->amh fereseN_a_n
+*** cave_n ; ^ cave_n 0
+->amh wax_a_n
+*** cavern_n ; ^ cavern_n 0
+->amh wax_a_n
+*** cavity_n ; ^ cavity_n 0
+->amh gWdgWad_n
+*** celebration_n ; ^ celebration_n 0
+->amh 'ak_ebaber_n
+*** celibacy_n ; ^ celibacy_n 0
+->amh dngln_a_n
+->amh kbrn_a_n
+*** celibate_n ; ^ celibate_n 0
+->amh dnglay_n
+*** cement_n ; ^ cement_n 0
+->amh siminto_n
+*** cent_n ; ^ cent_n 0
+->amh santim_n
+*** centre_n ; ^ centre_n 0
+->amh mehal_n
+->amh mehak_el_n
+->amh 'mbrt_n
+->amh mekak_el_n
+*** cereals_n ; ^ cereals_n 0
+->amh TraTrE_n
+*** ceremony_n ; ^ ceremony_n 0
+->amh 'ak_ebaber_n
+*** chaff_n ; ^ chaff_n 0
+->amh nf_ax_n
+->amh geleba_n
+->amh bT_ari_n
+*** chain_n ; ^ chain_n 0
+->amh senselet_n
+*** chair_n ; ^ chair_n 0
+->amh kursi_n
+->amh wember_n
+->amh wenber_n
+*** chairman_n ; ^ chairman_n 0
+->amh sebsabi_n
+*** chalice_n ; ^ chalice_n 0
+->amh Sw_a_n
+*** chalk_n ; ^ chalk_n 0
+->amh TemenE_n
+*** chamber_n ; ^ chamber_n 0
+->amh qata_n
+*** chameleon_n ; ^ chameleon_n 0
+->amh 'sst_n
+*** change_n ; ^ change_n 0
+->amh zrz_ari_n
+->amh mels_n
+->amh zrzr_n
+->amh lewT_n
+->amh ml_ax_n
+*** chant_n ; ^ chant_n 0
+->amh zEma_n
+->amh wereb_n
+*** chaos_n ; ^ chaos_n 0
+->amh trm_s_n
+*** chap_n ; ^ chap_n 0
+->amh Coq_n
+*** character_n ; ^ character_n 0
+->amh Tebay_n
+->amh 'amel_n
+->amh fidel_n
+*** charcoal_n ; ^ charcoal_n 0
+->amh kesel_n
+*** charge_n ; ^ charge_n 0
+->amh ks__n
+*** chariot_n ; ^ chariot_n 0
+->amh seregel_a_n
+*** charisma_n ; ^ charisma_n 0
+->amh lez_a_n
+->amh kerama_n
+*** charity_n ; ^ charity_n 0
+->amh lg_sn_a_n
+->amh trufat_n
+*** charlatan_n ; ^ charlatan_n 0
+->amh 'aw_enab_aj_n
+*** charm_n ; ^ charm_n 0
+->amh ktab_n
+->amh wezena_n
+*** chastisement_n ; ^ chastisement_n 0
+->amh qTat_n
+*** chat_n ; ^ chat_n 0
+->amh weg_n
+*** chatter_n ; ^ chatter_n 0
+->amh tereb_n
+*** cheat_n ; ^ cheat_n 0
+->amh 'at_alay_n
+->amh 'aCberbari_n
+*** check_n ; ^ check_n 0
+->amh cEk_n
+*** cheek_n ; ^ cheek_n 0
+->amh gWnC_n
+*** cheering_n ; ^ cheering_n 0
+->amh hota_n
+*** chest_n ; ^ chest_n 0
+->amh frmb_a_n
+->amh senduq_n
+->amh saTn_n
+*** chewing-gum_n ; ^ chewing-gum_n 0
+->amh mestika_n
+*** chic_n ; ^ chic_n 0
+->amh zEnT_n
+->amh zn_eTa_n
+*** chick_n ; ^ chick_n 0
+->amh CaCut__n
+*** chicken_n ; ^ chicken_n 0
+->amh doro_n
+*** chickenpox_n ; ^ chickenpox_n 0
+->amh kuf_N__n
+*** chickpea_n ; ^ chickpea_n 0
+->amh xmbr_a_n
+->amh xnbra_n
+*** chief_n ; ^ chief_n 0
+->amh wan_eN_a_n
+->amh 'aleqa_n
+->amh 'awra_n
+*** child_n ; ^ child_n 0
+->amh lj_n
+*** childhood_n ; ^ childhood_n 0
+->amh ljn_et_n
+*** chin_n ; ^ chin_n 0
+->amh 'ageC_n
+*** chisel_n ; ^ chisel_n 0
+->amh mero_n
+*** choice_n ; ^ choice_n 0
+->amh mrCa_n
+->amh mereTa_n
+*** choir_n ; ^ choir_n 0
+->amh mezem_ran_n
+*** chopper_n ; ^ chopper_n 0
+->amh meqerTefiya_n
+*** chrysalis_n ; ^ chrysalis_n 0
+->amh deg_oba_n
+*** chunk_n ; ^ chunk_n 0
+->amh gum_aj_n
+->amh gm_aC_n
+*** church_n ; ^ church_n 0
+->amh bEtekhnet_n
+->amh bEtekrstiyan_n
+*** churchgoers_n ; ^ churchgoers_n 0
+->amh 'asqed_ax_n
+*** churchyard_n ; ^ churchyard_n 0
+->amh 'dmo_n
+*** churn_n ; ^ churn_n 0
+->amh menaCa_n
+*** cigarettes_n ; ^ cigarettes_n 0
+->amh sigara_n
+*** cinder_n ; ^ cinder_n 0
+->amh 'amed_n
+*** cinema_n ; ^ cinema_n 0
+->amh sinima_n
+*** cinnamon_n ; ^ cinnamon_n 0
+->amh qerefa_n
+*** circle_n ; ^ circle_n 0
+->amh kbeb_n
+*** circuit_n ; ^ circuit_n 0
+->amh zuriya_n
+*** circulation_n ; ^ circulation_n 0
+->amh srC_t_n
+*** circumcision_n ; ^ circumcision_n 0
+->amh gr_zat_n
+->amh grzet_n
+*** circumference_n ; ^ circumference_n 0
+->amh zuriya_n
+*** citation_n ; ^ citation_n 0
+->amh Tqs_n
+*** citizen_n ; ^ citizen_n 0
+->amh zEga_n
+*** city_n ; ^ city_n 0
+->amh ketema_n
+*** civet_n ; ^ civet_n 0
+->amh zbad_n
+*** clamour_n ; ^ clamour_n 0
+->amh gagata_n
+->amh Cuhet_n
+*** clamp_n ; ^ clamp_n 0
+->amh morsa_n
+*** clan_n ; ^ clan_n 0
+->amh gosa_n
+*** clapper_n ; ^ clapper_n 0
+->amh qWla_n
+*** clash_n ; ^ clash_n 0
+->amh gC_t_n
+*** class_n ; ^ class_n 0
+->amh med_eb_n
+*** classroom_n ; ^ classroom_n 0
+->amh kfl_n
+*** claw_n ; ^ claw_n 0
+->amh mebWaTeCa_n
+->amh Tfr_n
+*** clay_n ; ^ clay_n 0
+->amh xekla_n
+*** cleanliness_n ; ^ cleanliness_n 0
+->amh Sdat_n
+->amh nSat_n
+*** clergy_n ; ^ clergy_n 0
+->amh bEtekhnet_n
+*** clergyman_n ; ^ clergyman_n 0
+->amh kahn_n
+->amh TemTami_n
+*** cleverness_n ; ^ cleverness_n 0
+->amh clota_n
+*** client_n ; ^ client_n 0
+->amh dembeN_a_n
+->amh denbeN_a_n
+*** clientele_n ; ^ clientele_n 0
+->amh tegelgay_n
+*** cliff_n ; ^ cliff_n 0
+->amh 'afaf_n
+->amh gedel_n
+*** climax_n ; ^ climax_n 0
+->amh maktemiya_n
+*** clinic_n ; ^ clinic_n 0
+->amh klinik_n
+*** clip_n ; ^ clip_n 0
+->amh maf_eNa_n
+->amh qum_aC_n
+*** clitoris_n ; ^ clitoris_n 0
+->amh qinTr_n
+*** clod_n ; ^ clod_n 0
+->amh gWal_n
+*** clot_n ; ^ clot_n 0
+->amh gWagW_ala_n
+*** cloth_n ; ^ cloth_n 0
+->amh Cerq_n
+->amh lbas_n
+*** clothes_n ; ^ clothes_n 0
+->amh lbs_n
+*** cloud_n ; ^ cloud_n 0
+->amh dam_ena_n
+*** clove_n ; ^ clove_n 0
+->amh qrnfud_n
+*** clown_n ; ^ clown_n 0
+->amh ter_abi_n
+*** club_n ; ^ club_n 0
+->amh kbeb_n
+->amh dul_a_n
+*** clue_n ; ^ clue_n 0
+->amh fnC_n
+*** cluster_n ; ^ cluster_n 0
+->amh zelela_n
+*** coach_n ; ^ coach_n 0
+->amh seregel_a_n
+*** coast_n ; ^ coast_n 0
+->amh Teref_n
+*** coat_n ; ^ coat_n 0
+->amh kot_n
+*** cockroach_n ; ^ cockroach_n 0
+->amh berero_n
+*** cockscomb_n ; ^ cockscomb_n 0
+->amh koken_n
+->amh kWank_n
+*** coffee_n ; ^ coffee_n 0
+->amh kWskWst_n
+->amh bun_a_n
+*** coherence_n ; ^ coherence_n 0
+->amh qnb_r_n
+*** coil_n ; ^ coil_n 0
+->amh Tq_l_n
+*** coin_n ; ^ coin_n 0
+->amh bEsa_n
+*** cold_n ; ^ cold_n 0
+->amh brd_n
+*** collaborator_n ; ^ collaborator_n 0
+->amh tebabari_n
+*** collar_n ; ^ collar_n 0
+->amh 'angetgE_n
+->amh ksad_n
+*** collateral_n ; ^ collateral_n 0
+->amh meb_ederiya_n
+*** colleague_n ; ^ colleague_n 0
+->amh gWad_eN_a_n
+*** collection_n ; ^ collection_n 0
+->amh Trq_m_n
+->amh sbsb_n
+->amh kmc_t_n
+*** collision_n ; ^ collision_n 0
+->amh gC_t_n
+*** colony_n ; ^ colony_n 0
+->amh qN__n
+*** colour_n ; ^ colour_n 0
+->amh qelem_n
+*** colouring_n ; ^ colouring_n 0
+->amh 'aq_elal_n
+*** comb_n ; ^ comb_n 0
+->amh mabeT_eriya_n
+->amh mido_n
+*** comfort_n ; ^ comfort_n 0
+->amh dlot_n
+->amh mc_ot_n
+*** commander_n ; ^ commander_n 0
+->amh 'az_aZ_n
+*** commemoration_n ; ^ commemoration_n 0
+->amh met_asebiya_n
+*** comment_n ; ^ comment_n 0
+->amh tc_t_n
+*** commentary_n ; ^ commentary_n 0
+->amh trgWamE_n
+*** commentator_n ; ^ commentator_n 0
+->amh tec_i_n
+*** committee_n ; ^ committee_n 0
+->amh komitE_n
+->amh derg_n
+*** commotion_n ; ^ commotion_n 0
+->amh wakata_n
+->amh wkata_n
+->amh gr_gr__n
+->amh xb_r_n
+*** communication_n ; ^ communication_n 0
+->amh gnN_un_et_n
+*** companion_n ; ^ companion_n 0
+->amh gWad_eN_a_n
+*** comparison_n ; ^ comparison_n 0
+->amh glas_n
+*** compass_n ; ^ compass_n 0
+->amh kompas__n
+->amh bsol_n
+*** compensation_n ; ^ compensation_n 0
+->amh kasa_n
+*** competence_n ; ^ competence_n 0
+->amh bq_un_et_n
+*** competition_n ; ^ competition_n 0
+->amh fukk_r_n
+->amh wdd_r_n
+*** competitor_n ; ^ competitor_n 0
+->amh texqedadami_n
+->amh teqenaqaN_n
+->amh tewedadari_n
+*** compiler_n ; ^ compiler_n 0
+->amh 'aq_enabari_n
+->amh 'aq_enebab_ari_n
+->amh 'aq_enebabari_n
+*** complaint_n ; ^ complaint_n 0
+->amh 'abEtuta_n
+->amh smota_n
+*** complement_n ; ^ complement_n 0
+->amh mamW_aya_n
+*** completion_n ; ^ completion_n 0
+->amh fS_amE_n
+*** complexion_n ; ^ complexion_n 0
+->amh 'aq_elal_n
+*** complication_n ; ^ complication_n 0
+->amh TaTa_n
+*** composer_n ; ^ composer_n 0
+->amh derasi_n
+*** composition_n ; ^ composition_n 0
+->amh drset_n
+*** compost_n ; ^ compost_n 0
+->amh bsb_ax_n
+*** compound_n ; ^ compound_n 0
+->amh gb_i_n
+->amh dbl_q_n
+*** compulsion_n ; ^ compulsion_n 0
+->amh gd__n
+*** comrade_n ; ^ comrade_n 0
+->amh gWad__n
+*** concealment_n ; ^ concealment_n 0
+->amh db_eqa_n
+*** conceit_n ; ^ conceit_n 0
+->amh kurat_n
+->amh 'brit_n
+->amh tbit_n
+->amh Tgab_n
+*** concentration_n ; ^ concentration_n 0
+->amh kmc_t_n
+*** concern_n ; ^ concern_n 0
+->amh Cnqet_n
+*** conclusion_n ; ^ conclusion_n 0
+->amh dmdema_n
+->amh maT_eqaleya_n
+->amh medemdemiya_n
+*** concrete_n ; ^ concrete_n 0
+->amh siminto_n
+*** concubine_n ; ^ concubine_n 0
+->amh qm_T_n
+->amh qWbat_n
+->amh qubat_n
+->amh wxm_a_n
+*** condemnation_n ; ^ condemnation_n 0
+->amh kWenenE_n
+*** condition_n ; ^ condition_n 0
+->amh gd_Eta_n
+->amh 'akW_ahWan_n
+->amh hunEta_n
+->amh 'aqWam_n
+*** conduct_n ; ^ conduct_n 0
+->amh Tebay_n
+->amh mgbar_n
+*** conference_n ; ^ conference_n 0
+->amh sbseba_n
+->amh guba'E_n
+*** confidant_n ; ^ confidant_n 0
+->amh balemWal_n
+*** confinement_n ; ^ confinement_n 0
+->amh gzot_n
+*** confines_n ; ^ confines_n 0
+->amh kl_l_n
+*** conflict_n ; ^ conflict_n 0
+->amh teqarno_n
+->amh gC_t_n
+*** confrontation_n ; ^ confrontation_n 0
+->amh gTmiya_n
+*** confusion_n ; ^ confusion_n 0
+->amh msqlql_n
+->amh bTb_T_n
+->amh dblqlq_n
+->amh qelamaj_n_et_n
+->amh bTbeTa_n
+*** congregation_n ; ^ congregation_n 0
+->amh guba'E_n
+*** congress_n ; ^ congress_n 0
+->amh sbseba_n
+*** conjunction_n ; ^ conjunction_n 0
+->amh wawE_n
+*** conscience_n ; ^ conscience_n 0
+->amh lb_una_n
+*** consent_n ; ^ consent_n 0
+->amh smmn_et_n
+*** conservation_n ; ^ conservation_n 0
+->amh Tb_eqa_n
+*** consonant_n ; ^ consonant_n 0
+->amh tenababi_n
+*** conspiracy_n ; ^ conspiracy_n 0
+->amh sEra_n
+->amh dulet_n
+*** conspirator_n ; ^ conspirator_n 0
+->amh 'admeN_a_n
+->amh sEreN_a_n
+->amh 'ad_ami_n
+*** constitution_n ; ^ constitution_n 0
+->amh sewn_et_n
+*** constriction_n ; ^ constriction_n 0
+->amh Tb_et_n
+*** consul_n ; ^ consul_n 0
+->amh qonsil_n
+*** consulate_n ; ^ consulate_n 0
+->amh qonsla_n
+*** consumer_n ; ^ consumer_n 0
+->amh xem_ac_n
+*** consumption_n ; ^ consumption_n 0
+->amh fjota_n
+*** contact_n ; ^ contact_n 0
+->amh nkk_it_n
+->amh nkk__n
+->amh gnN_un_et_n
+*** container_n ; ^ container_n 0
+->amh meyaZa_n
+*** contamination_n ; ^ contamination_n 0
+->amh nkk_it_n
+->amh bklet_n
+*** contempt_n ; ^ contempt_n 0
+->amh 'lfit__n
+*** content_n ; ^ content_n 0
+->amh yzet_n
+*** contestant_n ; ^ contestant_n 0
+->amh tegaTami_n
+*** continuation_n ; ^ continuation_n 0
+->amh teket_ay_n
+*** continuity_n ; ^ continuity_n 0
+->amh zeleqEta_n
+*** contraband_n ; ^ contraband_n 0
+->amh kontroband_n
+*** contract_n ; ^ contract_n 0
+->amh wl_n
+->amh kontrat_n
+*** contractor_n ; ^ contractor_n 0
+->amh tekonatari_n
+->amh teqWar_aC_n
+->amh teqWaraC_n
+->amh tewaway_n
+*** contribution_n ; ^ contribution_n 0
+->amh mew_aCo_n
+->amh 'astewaS'o_n
+*** contributor_n ; ^ contributor_n 0
+->amh reTabi_n
+->amh 'aw_aC_n
+*** control_n ; ^ control_n 0
+->amh quTT_r_n
+*** controller_n ; ^ controller_n 0
+->amh teqoTaTari_n
+*** convalescent_n ; ^ convalescent_n 0
+->amh 'ageg_ami_n
+->amh gegemteN_a_n
+*** convention_n ; ^ convention_n 0
+->amh sbseba_n
+*** conversation_n ; ^ conversation_n 0
+->amh Cewata_n
+*** cook_n ; ^ cook_n 0
+->amh 'absay_n
+->amh qeq_ay_n
+*** coolie_n ; ^ coolie_n 0
+->amh kuli_n
+*** coolness_n ; ^ coolness_n 0
+->amh qzq_azE_n
+->amh 'aq_ezaqez_n
+*** cooperation_n ; ^ cooperation_n 0
+->amh tbb_r_n
+*** coordination_n ; ^ coordination_n 0
+->amh qnb_r_n
+->amh tbb_r_n
+*** coordinator_n ; ^ coordinator_n 0
+->amh 'aq_enebabari_n
+*** copper_n ; ^ copper_n 0
+->amh medab_n
+*** copulation_n ; ^ copulation_n 0
+->amh bd_n
+*** copy_n ; ^ copy_n 0
+->amh gl_b_aC_n
+->amh qj__n
+*** coral_n ; ^ coral_n 0
+->amh zagol_n
+*** core_n ; ^ core_n 0
+->amh 'mbrt_n
+*** cork_n ; ^ cork_n 0
+->amh wtaf_n
+->amh bux_n
+->amh qorkE_n
+*** corpse_n ; ^ corpse_n 0
+->amh 'askerEn_n
+->amh rEsa_n
+*** correction_n ; ^ correction_n 0
+->amh 'r_mat_n
+*** corridor_n ; ^ corridor_n 0
+->amh malefiya_n
+*** corrosion_n ; ^ corrosion_n 0
+->amh meb_elat_n
+*** cosmonaut_n ; ^ cosmonaut_n 0
+->amh TefereteN_a_n
+*** cost_n ; ^ cost_n 0
+->amh waga_n
+*** costs_n ; ^ costs_n 0
+->amh kisara_n
+*** cottage_n ; ^ cottage_n 0
+->amh goj_o_n
+->amh seqela_n
+*** cotton_n ; ^ cotton_n 0
+->amh TT_n
+->amh 'abujedi_n
+*** countenance_n ; ^ countenance_n 0
+->amh moges_n
+*** counter_n ; ^ counter_n 0
+->amh bankoni_n
+->amh qWeTari_n
+*** country_n ; ^ country_n 0
+->amh mdr_n
+->amh 'ager_n
+->amh balager_n
+->amh hager_n
+*** countryman_n ; ^ countryman_n 0
+->amh balager_n
+->amh geTerE_n
+*** countryside_n ; ^ countryside_n 0
+->amh geTer_n
+*** couple_n ; ^ couple_n 0
+->amh Tnd_n
+*** courage_n ; ^ courage_n 0
+->amh dfret_n
+->amh jegnn_et_n
+->amh gubzn_a_n
+->amh lb__n
+*** courier_n ; ^ courier_n 0
+->amh telalaki_n
+*** court_n ; ^ court_n 0
+->amh 'ad_ebabay_n
+*** courtier_n ; ^ courtier_n 0
+->amh balemWal_n
+*** cover_n ; ^ cover_n 0
+->amh tegen_n
+->amh kelela_n
+->amh mexef_eNa_n
+->amh kdan_n
+->amh kelay_n
+->amh xfan_n
+->amh xfan_n
+*** covering_n ; ^ covering_n 0
+->amh kdan_n
+->amh lbas_n
+->amh knbnb_n
+*** cow_n ; ^ cow_n 0
+->amh lam_n
+*** coward_n ; ^ coward_n 0
+->amh fes_n
+->amh boCbWaC_a_n
+->amh 'aram_n
+->amh fesam_n
+*** cowardice_n ; ^ cowardice_n 0
+->amh ferin_et_n
+*** crab_n ; ^ crab_n 0
+->amh gormT_n
+->amh serTan_n
+*** crack_n ; ^ crack_n 0
+->amh nqat_n
+->amh snTq_n
+*** craft_n ; ^ craft_n 0
+->amh moya_n
+*** craftsman_n ; ^ craftsman_n 0
+->amh balej__n
+->amh Teg_aN_n
+*** crash_n ; ^ crash_n 0
+->amh gC_t_n
+*** cream_n ; ^ cream_n 0
+->amh slbabot_n
+*** crease_n ; ^ crease_n 0
+->amh 'T_fat_n
+*** creator_n ; ^ creator_n 0
+->amh feTari_n
+*** creature_n ; ^ creature_n 0
+->amh fTret_n
+->amh fTur_n
+*** credit_n ; ^ credit_n 0
+->amh dubE_n
+*** creditor_n ; ^ creditor_n 0
+->amh tesasabi_n
+->amh baleda_n
+*** creek_n ; ^ creek_n 0
+->amh Zret_n
+*** creeper_n ; ^ creeper_n 0
+->amh 'areg_n
+*** crest_n ; ^ crest_n 0
+->amh guty_a_n
+->amh qar_E_n
+->amh kWank_n
+*** cricket_n ; ^ cricket_n 0
+->amh fEnTa_n
+*** crime_n ; ^ crime_n 0
+->amh wenjel_n
+*** criminal_n ; ^ criminal_n 0
+->amh wenjeleN_a_n
+*** cripple_n ; ^ cripple_n 0
+->amh snkul_n
+*** crisis_n ; ^ crisis_n 0
+->amh bTb_T_n
+*** critic_n ; ^ critic_n 0
+->amh neqafi_n
+->amh tec_i_n
+*** criticism_n ; ^ criticism_n 0
+->amh 'aqaqir_n
+->amh weq_esa_n
+->amh his_n
+->amh tc_t_n
+*** critique_n ; ^ critique_n 0
+->amh tc_t_n
+*** crock_n ; ^ crock_n 0
+->amh sal_E_n
+*** crocodile_n ; ^ crocodile_n 0
+->amh 'az_o_n
+*** crook_n ; ^ crook_n 0
+->amh 'ad_enabari_n
+->amh 'aCberbari_n
+*** crop_n ; ^ crop_n 0
+->amh mrt_n
+->amh sebl_n
+*** crops_n ; ^ crops_n 0
+->amh 'hl_n
+*** cross_n ; ^ cross_n 0
+->amh mesqel_n
+*** crossbreed_n ; ^ crossbreed_n 0
+->amh meTiqa_n
+*** crow_n ; ^ crow_n 0
+->amh qura_n
+*** crowbar_n ; ^ crowbar_n 0
+->amh djno_n
+*** crown_n ; ^ crown_n 0
+->amh zewd_n
+->amh 'aklil_n
+*** crucible_n ; ^ crucible_n 0
+->amh kewr_n
+*** crucifixion_n ; ^ crucifixion_n 0
+->amh sqlet_n
+*** cruelty_n ; ^ cruelty_n 0
+->amh Ck_anE_n
+->amh 'aremenEn_et_n
+->amh Ck_ena_n
+*** crumb_n ; ^ crumb_n 0
+->amh muT_aC_n
+*** crumbs_n ; ^ crumbs_n 0
+->amh frf_ari_n
+*** crush_n ; ^ crush_n 0
+->amh gf_iya_n
+*** cry_n ; ^ cry_n 0
+->amh Cuhet_n
+*** crystal_n ; ^ crystal_n 0
+->amh balCut__n
+*** cub_n ; ^ cub_n 0
+->amh deb_ol_n
+->amh glgel_n
+*** cube_n ; ^ cube_n 0
+->amh 'ankWar_n
+*** cucumber_n ; ^ cucumber_n 0
+->amh kiyar_n
+*** cultivator_n ; ^ cultivator_n 0
+->amh tekay_n
+*** cunning_n ; ^ cunning_n 0
+->amh blTet_n
+*** cup_n ; ^ cup_n 0
+->amh kub_ay_a_n
+->amh sini_n
+->amh Sw_a_n
+*** cure_n ; ^ cure_n 0
+->amh xret_n
+->amh medhanit_n
+*** currency_n ; ^ currency_n 0
+->amh genzeb_n
+*** curse_n ; ^ curse_n 0
+->amh 'rgman_n
+*** curtain_n ; ^ curtain_n 0
+->amh meg_areja_n
+*** curve_n ; ^ curve_n 0
+->amh meT_emzeZa_n
+*** cushion_n ; ^ cushion_n 0
+->amh mek_ed_a_n
+*** custodian_n ; ^ custodian_n 0
+->amh Teb_aqi_n
+*** custom_n ; ^ custom_n 0
+->amh weg_n
+->amh lmad_n
+->amh bahl_n
+->amh lmd_n
+*** customer_n ; ^ customer_n 0
+->amh dembeN_a_n
+->amh denbeN_a_n
+*** cut_n ; ^ cut_n 0
+->amh qur_n
+*** cutter_n ; ^ cutter_n 0
+->amh qWeraC_n
+*** cutting_n ; ^ cutting_n 0
+->amh qWereTa_n
+*** dam_n ; ^ dam_n 0
+->amh gd_b_n
+*** damage_n ; ^ damage_n 0
+->amh Tfat_n
+->amh gudat_n
+*** damnation_n ; ^ damnation_n 0
+->amh kWenenE_n
+*** dampness_n ; ^ dampness_n 0
+->amh 'rTbet_n
+*** dance_n ; ^ dance_n 0
+->amh dlqiya_n
+->amh dans_n
+->amh dankira_n
+->amh Cf_era_n
+->amh wzw_azE_n
+*** dancer_n ; ^ dancer_n 0
+->amh danseN_a_n
+->amh Cef_ari_n
+->amh den_ax_n
+*** dandruff_n ; ^ dandruff_n 0
+->amh forefor_n
+*** danger_n ; ^ danger_n 0
+->amh 'adega_n
+*** daring_n ; ^ daring_n 0
+->amh wendn_et_n
+*** darkness_n ; ^ darkness_n 0
+->amh Slmet_n
+*** dash_n ; ^ dash_n 0
+->amh Cret_n
+->amh serez_n
+*** date_n ; ^ date_n 0
+->amh zemen_n
+->amh temr_n
+*** daughter-in-law_n ; ^ daughter-in-law_n 0
+->amh mrat_n
+*** dawn_n ; ^ dawn_n 0
+->amh ngat_n
+->amh goh_n
+*** day_n ; ^ day_n 0
+->amh qen_n
+*** daybreak_n ; ^ daybreak_n 0
+->amh goh_n
+*** deacon_n ; ^ deacon_n 0
+->amh qed_ax_n
+->amh diyaqon_n
+*** deafness_n ; ^ deafness_n 0
+->amh dnqurn_a_n
+*** death_n ; ^ death_n 0
+->amh mot_n
+*** debate_n ; ^ debate_n 0
+->amh krk_r_n
+*** debt_n ; ^ debt_n 0
+->amh 'da_n
+*** debtor_n ; ^ debtor_n 0
+->amh baleda_n
+*** deceiver_n ; ^ deceiver_n 0
+->amh 'amtac_n
+*** decency_n ; ^ decency_n 0
+->amh Cewan_et_n
+*** deception_n ; ^ deception_n 0
+->amh xefT_n
+*** decision_n ; ^ decision_n 0
+->amh ws_anE_n
+*** declaration_n ; ^ declaration_n 0
+->amh megleCa_n
+*** decoration_n ; ^ decoration_n 0
+->amh gET_n
+->amh lxan_n
+*** decorator_n ; ^ decorator_n 0
+->amh xel_ami_n
+*** decrease_n ; ^ decrease_n 0
+->amh qn_esa_n
+*** deduction_n ; ^ deduction_n 0
+->amh qn_esa_n
+->amh qn_ax_n
+->amh teqen_ax_n
+*** deed_n ; ^ deed_n 0
+->amh 'adragot_n
+*** defect_n ; ^ defect_n 0
+->amh gud_let_n
+->amh 'nken_n
+*** defendant_n ; ^ defendant_n 0
+->amh teneTaT_ari_n
+->amh tekesax_n
+->amh tekes_ax_n
+*** defender_n ; ^ defender_n 0
+->amh tekelakay_n
+*** deficiency_n ; ^ deficiency_n 0
+->amh gud_let_n
+*** deficit_n ; ^ deficit_n 0
+->amh kisara_n
+*** degradation_n ; ^ degradation_n 0
+->amh wdqet_n
+->amh wrdet_n
+*** degree_n ; ^ degree_n 0
+->amh 'rken_n
+->amh digri_n
+*** delegate_n ; ^ delegate_n 0
+->amh wek_il_n
+->amh tewek_ay_n
+*** deletion_n ; ^ deletion_n 0
+->amh dl_z_n
+*** delight_n ; ^ delight_n 0
+->amh des_ta_n
+*** deliverer_n ; ^ deliverer_n 0
+->amh 'asrek_abi_n
+*** demon_n ; ^ demon_n 0
+->amh ganEn_n
+*** demonstration_n ; ^ demonstration_n 0
+->amh megleCa_n
+*** demonstrator_n ; ^ demonstrator_n 0
+->amh selfeN_a_n
+*** den_n ; ^ den_n 0
+->amh gurE_n
+->amh gorE_n
+->amh wax_a_n
+*** denial_n ; ^ denial_n 0
+->amh kdat_n
+->amh kdet_n
+*** dependency_n ; ^ dependency_n 0
+->amh Tg_eN_n_et_n
+*** deposit_n ; ^ deposit_n 0
+->amh qebd_n
+->amh qabd_n
+*** depression_n ; ^ depression_n 0
+->amh gWedgWad_a_n
+->amh gWdgWad_n
+->amh smT_n
+->amh zebT_n
+->amh sgudet_n
+->amh qzzta_n
+->amh zebaTa_n
+*** depth_n ; ^ depth_n 0
+->amh rq_et_n
+->amh smTet_n
+->amh Tlqet_n
+*** deputy_n ; ^ deputy_n 0
+->amh tofa_n
+->amh mtk__n
+*** derision_n ; ^ derision_n 0
+->amh lgCa_n
+*** desert_n ; ^ desert_n 0
+->amh mdre_n
+->amh wdma_n
+->amh bereha_n
+*** deserter_n ; ^ deserter_n 0
+->amh ferTaC_n
+->amh kedateN_a_n
+->amh koblay_n
+*** desertion_n ; ^ desertion_n 0
+->amh kublela_n
+->amh kdat_n
+->amh frTeTa_n
+*** design_n ; ^ design_n 0
+->amh ndf_n
+->amh modEl_n
+*** desire_n ; ^ desire_n 0
+->amh fl_agot_n
+->amh 'amrot_n
+*** desk_n ; ^ desk_n 0
+->amh TereP_Eza_n
+*** destination_n ; ^ destination_n 0
+->amh medrexa_n
+*** destruction_n ; ^ destruction_n 0
+->amh Tfat_n
+->amh dmsesa_n
+*** detritus_n ; ^ detritus_n 0
+->amh rg_afi_n
+*** developer_n ; ^ developer_n 0
+->amh 'almi_n
+->amh 'aqNi_n
+*** development_n ; ^ development_n 0
+->amh lmat_n
+*** devil_n ; ^ devil_n 0
+->amh seyTan_n
+->amh diyablos_n
+->amh keysi_n
+*** dew_n ; ^ dew_n 0
+->amh wrba_n
+->amh TEza_n
+->amh Tel__n
+*** dialect_n ; ^ dialect_n 0
+->amh qebelEN_a_n
+*** dialogue_n ; ^ dialogue_n 0
+->amh ngg_r_n
+*** diamond_n ; ^ diamond_n 0
+->amh 'almaz_n
+*** diet_n ; ^ diet_n 0
+->amh 'am_egageb_n
+*** difference_n ; ^ difference_n 0
+->amh ferq_n
+->amh ly_un_et_n
+*** difficulty_n ; ^ difficulty_n 0
+->amh cg_r_n
+->amh 'wket_n
+->amh Cnq_n
+*** digger_n ; ^ digger_n 0
+->amh qof_ari_n
+*** digging_n ; ^ digging_n 0
+->amh quf_aro_n
+->amh quf_era_n
+*** dignitary_n ; ^ dignitary_n 0
+->amh baleweg_n
+*** dignity_n ; ^ dignity_n 0
+->amh grma_n
+*** dike_n ; ^ dike_n 0
+->amh gd_b_n
+*** dilemma_n ; ^ dilemma_n 0
+->amh wTret_n
+*** diligence_n ; ^ diligence_n 0
+->amh tgat_n
+*** diminution_n ; ^ diminution_n 0
+->amh qn_esa_n
+*** dimple_n ; ^ dimple_n 0
+->amh seg_ud_at_n
+*** din_n ; ^ din_n 0
+->amh gagata_n
+*** dining-table_n ; ^ dining-table_n 0
+->amh gebeta_n
+*** dinner_n ; ^ dinner_n 0
+->amh rat_n
+*** dip_n ; ^ dip_n 0
+->amh sljo_n
+*** diploma_n ; ^ diploma_n 0
+->amh diploma_n
+*** dipper_n ; ^ dipper_n 0
+->amh Clfa_n
+*** direction_n ; ^ direction_n 0
+->amh wegen_n
+->amh 'anSar_n
+->amh 'azmam_iya_n
+->amh geT_ta_n
+*** dirge_n ; ^ dirge_n 0
+->amh muxo_n
+*** dirt_n ; ^ dirt_n 0
+->amh qoxaxa_n
+->amh nf_ax_n
+->amh 'df_n
+->amh Cqq_t_n
+->amh tewsak_n
+*** disadvantage_n ; ^ disadvantage_n 0
+->amh gudat_n
+*** disappointment_n ; ^ disappointment_n 0
+->amh qr_Eta_n
+*** disaster_n ; ^ disaster_n 0
+->amh Tenq_n
+->amh frja_n
+*** disc_n ; ^ disc_n 0
+->amh mTad_n
+*** disciple_n ; ^ disciple_n 0
+->amh deq_emezmur_n
+*** disciples_n ; ^ disciples_n 0
+->amh 'ard't_n
+*** disclaimer_n ; ^ disclaimer_n 0
+->amh mastebabeya_n
+*** discontent_n ; ^ discontent_n 0
+->amh qr_Eta_n
+*** discount_n ; ^ discount_n 0
+->amh qn_ax_n
+*** discourse_n ; ^ discourse_n 0
+->amh ngg_r_n
+*** discoverer_n ; ^ discoverer_n 0
+->amh felsafi_n
+->amh 'asgeNi_n
+*** discovery_n ; ^ discovery_n 0
+->amh flsefa_n
+->amh gN_t_n
+*** discussion_n ; ^ discussion_n 0
+->amh 'ateta_n
+*** disease_n ; ^ disease_n 0
+->amh 'mem_n
+->amh bex_ta_n
+->amh dewE_n
+*** disgrace_n ; ^ disgrace_n 0
+->amh wrdet_n
+*** dishonesty_n ; ^ dishonesty_n 0
+->amh wsltn_a_n
+*** dishonour_n ; ^ dishonour_n 0
+->amh wer_ad_an_et_n
+*** dislike_n ; ^ dislike_n 0
+->amh Tlac_a_n
+*** disorder_n ; ^ disorder_n 0
+->amh qews_n
+->amh msqlql_n
+->amh trm_s_n
+*** displeasure_n ; ^ displeasure_n 0
+->amh qr_Eta_n
+*** disputant_n ; ^ disputant_n 0
+->amh tekerakari_n
+*** dispute_n ; ^ dispute_n 0
+->amh krk_r_n
+->amh mug_t_n
+->amh CqCq_n
+*** disruption_n ; ^ disruption_n 0
+->amh qews_n
+*** dissatisfaction_n ; ^ dissatisfaction_n 0
+->amh qr_Eta_n
+*** dissident_n ; ^ dissident_n 0
+->amh teqawami_n
+*** distance_n ; ^ distance_n 0
+->amh rqet_n
+*** distinction_n ; ^ distinction_n 0
+->amh ly_un_et_n
+*** distress_n ; ^ distress_n 0
+->amh Cnq_n
+->amh mekera_n
+*** distribution_n ; ^ distribution_n 0
+->amh srC_t_n
+->amh dld_l_n
+->amh dldela_n
+*** distributor_n ; ^ distributor_n 0
+->amh 'ak_efafay_n
+->amh 'ak_afay_n
+*** district_n ; ^ district_n 0
+->amh 'amba_n
+->amh wereda_n
+->amh sefer_n
+*** distrust_n ; ^ distrust_n 0
+->amh TrT_arE_n
+*** disturbance_n ; ^ disturbance_n 0
+->amh 'wket_n
+->amh bsC_t_n
+->amh bTb_T_n
+->amh Cnqet_n
+->amh gr_gr__n
+->amh trm_s_n
+->amh fj_t_n
+->amh bTbeTa_n
+*** ditch_n ; ^ ditch_n 0
+->amh gWdgWad_n
+->amh gudba_n
+*** diver_n ; ^ diver_n 0
+->amh Telaqi_n
+*** divinity_n ; ^ divinity_n 0
+->amh melekot_n
+*** division_n ; ^ division_n 0
+->amh kfl_n
+->amh mak_afel_n
+->amh ly_un_et_n
+*** divorce_n ; ^ divorce_n 0
+->amh fc__n
+*** doctor_n ; ^ doctor_n 0
+->amh hakim_n
+->amh dokter_n
+*** document_n ; ^ document_n 0
+->amh sened_n
+*** doer_n ; ^ doer_n 0
+->amh 'adragi_n
+*** dog_n ; ^ dog_n 0
+->amh wx_a_n
+*** doll_n ; ^ doll_n 0
+->amh 'axangul_it_n
+*** dollar_n ; ^ dollar_n 0
+->amh br__n
+*** dome_n ; ^ dome_n 0
+->amh gul_lat_n
+*** domicile_n ; ^ domicile_n 0
+->amh menoriya_n
+*** donation_n ; ^ donation_n 0
+->amh daregot_n
+*** donkey_n ; ^ donkey_n 0
+->amh 'ahy_a_n
+*** door_n ; ^ door_n 0
+->amh ber__n
+->amh mezgiya_n
+*** doorway_n ; ^ doorway_n 0
+->amh dej_af_n
+->amh ber_af_n
+*** dot_n ; ^ dot_n 0
+->amh neTb_n
+*** dots_n ; ^ dots_n 0
+->amh neTebTab_n
+*** double_n ; ^ double_n 0
+->amh biTE_n
+*** doubt_n ; ^ doubt_n 0
+->amh TrT_r_n
+->amh TrT_arE_n
+*** dough_n ; ^ dough_n 0
+->amh buho_n
+->amh buko_n
+->amh liT_n
+*** dove_n ; ^ dove_n 0
+->amh rgb_n
+*** dowry_n ; ^ dowry_n 0
+->amh Tlox_n
+->amh maCa_n
+->amh met_aCa_n
+*** doze_n ; ^ doze_n 0
+->amh xelebta_n
+*** draft_n ; ^ draft_n 0
+->amh reqiq_n
+*** dragon_n ; ^ dragon_n 0
+->amh deragon_n
+*** drama_n ; ^ drama_n 0
+->amh drama_n
+*** drawback_n ; ^ drawback_n 0
+->amh maneqo_n
+*** dream_n ; ^ dream_n 0
+->amh 'lm_n
+*** dreamer_n ; ^ dreamer_n 0
+->amh 'al_ami_n
+*** dregs_n ; ^ dregs_n 0
+->amh 'atela_n
+*** dress_n ; ^ dress_n 0
+->amh qemis_n
+*** dresser_n ; ^ dresser_n 0
+->amh 'albax_n
+*** drill_n ; ^ drill_n 0
+->amh mebxa_n
+->amh melmeja_n
+->amh lmm_d_n
+->amh meserseriya_n
+*** drink_n ; ^ drink_n 0
+->amh meTeT__n
+*** drinker_n ; ^ drinker_n 0
+->amh TeC__n
+->amh qemqami_n
+->amh mexeteN_a_n
+*** drinking_n ; ^ drinking_n 0
+->amh qmqema_n
+*** drips_n ; ^ drips_n 0
+->amh TefeTef_n
+*** driver_n ; ^ driver_n 0
+->amh neji_n
+->amh 'axkerkari_n
+*** drizzle_n ; ^ drizzle_n 0
+->amh kaf_iya_n
+->amh kaf_ya_n
+*** drop_n ; ^ drop_n 0
+->amh Teb_ta_n
+*** drought_n ; ^ drought_n 0
+->amh drq_n
+*** drug_n ; ^ drug_n 0
+->amh medhanit_n
+*** drum_n ; ^ drum_n 0
+->amh kebero_n
+->amh tambur_n
+->amh bermil_n
+*** drumstick_n ; ^ drumstick_n 0
+->amh melalaCa_n
+*** drunkard_n ; ^ drunkard_n 0
+->amh sek_aram_n
+->amh TeC__n
+->amh Tenbaz_a_n
+->amh qemqami_n
+*** drunkenness_n ; ^ drunkenness_n 0
+->amh skar_n
+*** dryness_n ; ^ dryness_n 0
+->amh drqet_n
+*** duck_n ; ^ duck_n 0
+->amh ybra_n
+->amh dak_y_E_n
+*** duel_n ; ^ duel_n 0
+->amh flmiya_n
+*** dullness_n ; ^ dullness_n 0
+->amh mozazan_et_n
+*** dung_n ; ^ dung_n 0
+->amh 'azaba_n
+->amh fg_n
+->amh 'b_et_n
+*** dust_n ; ^ dust_n 0
+->amh 'awara_n
+->amh 'abWara_n
+->amh tb_iya_n
+*** duty_n ; ^ duty_n 0
+->amh gd_Eta_n
+->amh gd_aj_n
+->amh fanta_n
+*** dwarf_n ; ^ dwarf_n 0
+->amh kur_az_n
+->amh zafu_n
+->amh dnk_n
+*** dye_n ; ^ dye_n 0
+->amh maqlemiya_n
+*** dynamite_n ; ^ dynamite_n 0
+->amh demamit_n
+->amh dinamit_n
+*** dynamo_n ; ^ dynamo_n 0
+->amh dinamo_n
+*** eagle_n ; ^ eagle_n 0
+->amh nsr_n
+*** ear_n ; ^ ear_n 0
+->amh Zoro_n
+->amh joro_n
+*** earring_n ; ^ earring_n 0
+->amh gutc_a_n
+*** earth_n ; ^ earth_n 0
+->amh 'afer_n
+->amh merEt_n
+->amh mdr_n
+*** earwax_n ; ^ earwax_n 0
+->amh kuk_n
+*** echo_n ; ^ echo_n 0
+->amh mam_ito_n
+*** eclipse_n ; ^ eclipse_n 0
+->amh grdox_n
+*** ecstasy_n ; ^ ecstasy_n 0
+->amh fndeqa_n
+*** eczema_n ; ^ eczema_n 0
+->amh cfE_n
+*** edge_n ; ^ edge_n 0
+->amh Caf_n
+->amh 'aTnaf_n
+->amh krkm_n
+->amh Terz_n
+->amh dar_n
+->amh krkmat_n
+->amh kfef_n
+->amh Tenf_n
+*** edition_n ; ^ edition_n 0
+->amh 't_m_n
+*** education_n ; ^ education_n 0
+->amh 'astedadeg_n
+*** effect_n ; ^ effect_n 0
+->amh wT_Et_n
+*** effects_n ; ^ effects_n 0
+->amh 'qa_n
+*** efficacy_n ; ^ efficacy_n 0
+->amh ftunn_et_n
+*** efficiency_n ; ^ efficiency_n 0
+->amh bq_un_et_n
+*** effort_n ; ^ effort_n 0
+->amh Tret_n
+*** eggplant_n ; ^ eggplant_n 0
+->amh bedrejan_n
+*** eight_n ; ^ eight_n 0
+->amh sm_nt_n
+*** eighty_n ; ^ eighty_n 0
+->amh semanya_n
+*** elbow_n ; ^ elbow_n 0
+->amh krn_n
+*** election_n ; ^ election_n 0
+->amh mrCa_n
+->amh mereTa_n
+*** elector_n ; ^ elector_n 0
+->amh meraC_n
+*** elephant_n ; ^ elephant_n 0
+->amh zhon_n
+->amh zehon_n
+*** elephantiasis_n ; ^ elephantiasis_n 0
+->amh zhonE_n
+*** elopement_n ; ^ elopement_n 0
+->amh kublela_n
+*** emaciation_n ; ^ emaciation_n 0
+->amh kWesasan_et_n
+*** embarrassment_n ; ^ embarrassment_n 0
+->amh 'fret_n
+*** embassy_n ; ^ embassy_n 0
+->amh 'Embasi_n
+*** ember_n ; ^ ember_n 0
+->amh trkW_ax_n
+->amh fm_n
+*** emblem_n ; ^ emblem_n 0
+->amh 'arma_n
+*** embrocation_n ; ^ embrocation_n 0
+->amh maxa_n
+*** embroidery_n ; ^ embroidery_n 0
+->amh zmzmat_n
+->amh Tlf_n
+*** embryo_n ; ^ embryo_n 0
+->amh xl_n
+->amh xil_n
+*** emerald_n ; ^ emerald_n 0
+->amh meregd_n
+*** employee_n ; ^ employee_n 0
+->amh teqeT_ari_n
+->amh qTreN_a_n
+->amh baledemewez_n
+->amh demewezteN_a_n
+*** employer_n ; ^ employer_n 0
+->amh qeTari_n
+*** encirclement_n ; ^ encirclement_n 0
+->amh kebeba_n
+*** enclosure_n ; ^ enclosure_n 0
+->amh 'abari_n
+->amh guren_o_n
+->amh qTr_n
+->amh gb_i_n
+*** end_n ; ^ end_n 0
+->amh fS_amE_n
+*** endeavour_n ; ^ endeavour_n 0
+->amh Tret_n
+*** ending_n ; ^ ending_n 0
+->amh fS_amE_n
+*** endorsement_n ; ^ endorsement_n 0
+->amh dgaf_n
+*** endowment_n ; ^ endowment_n 0
+->amh drgo_n
+->amh sTota_n
+*** enemy_n ; ^ enemy_n 0
+->amh demeN_a_n
+->amh Telat_n
+*** energy_n ; ^ energy_n 0
+->amh gulbet_n
+*** engagement_n ; ^ engagement_n 0
+->amh fTmTm_n
+->amh gTmiya_n
+*** engineer_n ; ^ engineer_n 0
+->amh mehandis_n
+*** enmity_n ; ^ enmity_n 0
+->amh Tl_n
+->amh balanTan_et_n
+*** entanglement_n ; ^ entanglement_n 0
+->amh Tlflf_n
+*** entertainer_n ; ^ entertainer_n 0
+->amh 'aC_awac_n
+*** entertainment_n ; ^ entertainment_n 0
+->amh Cw_wt_n
+->amh Cewata_n
+->amh meznaNa_n
+*** entourage_n ; ^ entourage_n 0
+->amh 'aj_abi_n
+->amh 'ajeb_n
+*** entrails_n ; ^ entrails_n 0
+->amh hodqa_n
+*** entrance_n ; ^ entrance_n 0
+->amh dej__n
+->amh mezgiya_n
+->amh dej_af_n
+->amh megbiya_n
+*** envelope_n ; ^ envelope_n 0
+->amh 'ambolk__n
+->amh posta_n
+*** envy_n ; ^ envy_n 0
+->amh mq_eN_n_et_n
+*** epidemic_n ; ^ epidemic_n 0
+->amh wererxN__n
+->amh cenefer_n
+->amh tesbo_n
+*** episode_n ; ^ episode_n 0
+->amh drg_it__n
+*** epoch_n ; ^ epoch_n 0
+->amh zemen_n
+->amh zeben_n
+*** equipment_n ; ^ equipment_n 0
+->amh tTq_n
+->amh 'qa_n
+*** era_n ; ^ era_n 0
+->amh zemen_n
+->amh zeben_n
+*** error_n ; ^ error_n 0
+->amh seha_n
+->amh gdfet_n
+*** escarpment_n ; ^ escarpment_n 0
+->amh xenterer_n
+*** escort_n ; ^ escort_n 0
+->amh 'aC_afari_n
+->amh 'aj_abi_n
+->amh Cfra_n
+->amh 'ajeb_n
+*** espionage_n ; ^ espionage_n 0
+->amh sl_ela_n
+*** essay_n ; ^ essay_n 0
+->amh drset_n
+*** esteem_n ; ^ esteem_n 0
+->amh moges_n
+*** estimation_n ; ^ estimation_n 0
+->amh gm_t_n
+*** eulogy_n ; ^ eulogy_n 0
+->amh wd_asE_n
+*** eunuch_n ; ^ eunuch_n 0
+->amh slb_n
+->amh Zandereba_n
+*** evaluation_n ; ^ evaluation_n 0
+->amh gmgema_n
+->amh gm_t_n
+*** eve_n ; ^ eve_n 0
+->amh wazEma_n
+*** evening_n ; ^ evening_n 0
+->amh mx_t_n
+->amh mata_n
+*** evidence_n ; ^ evidence_n 0
+->amh mer_eja_n
+->amh masrej_a_n
+->amh mastemameNa_n
+*** evil_n ; ^ evil_n 0
+->amh kfat_n
+*** exaltation_n ; ^ exaltation_n 0
+->amh fndeqa_n
+->amh fenTezy_a_n
+*** examination_n ; ^ examination_n 0
+->amh fetena_n
+*** examiner_n ; ^ examiner_n 0
+->amh fet_aN_n
+*** example_n ; ^ example_n 0
+->amh ms_alE_n
+->amh feleg_n
+->amh 'abn_et_n
+*** excess_n ; ^ excess_n 0
+->amh bzat_n
+->amh bl_Ca_n
+*** exchange_n ; ^ exchange_n 0
+->amh lww_T_n
+->amh lewT_n
+*** excrement_n ; ^ excrement_n 0
+->amh kus_n
+->amh kak_a_n
+->amh 'ar_n
+->amh kWs_n
+->amh fandy_a_n
+*** excuse_n ; ^ excuse_n 0
+->amh mknyat_n
+->amh yqrta_n
+*** executioner_n ; ^ executioner_n 0
+->amh sey_afi_n
+*** executor_n ; ^ executor_n 0
+->amh 'asfeSami_n
+*** exercise_n ; ^ exercise_n 0
+->amh melmeja_n
+*** exhaustion_n ; ^ exhaustion_n 0
+->amh dkam_n
+*** exile_n ; ^ exile_n 0
+->amh sd_et_n
+*** existence_n ; ^ existence_n 0
+->amh hl_awE_n
+*** expansiveness_n ; ^ expansiveness_n 0
+->amh wd_n_et_n
+*** expenditure_n ; ^ expenditure_n 0
+->amh kisara_n
+*** expenses_n ; ^ expenses_n 0
+->amh weC_n
+->amh kisara_n
+*** experience_n ; ^ experience_n 0
+->amh lmm_d_n
+->amh temek_ro_n
+*** expert_n ; ^ expert_n 0
+->amh balemoya_n
+*** explanation_n ; ^ explanation_n 0
+->amh geleTa_n
+->amh masrej_a_n
+->amh megleCa_n
+*** exploitation_n ; ^ exploitation_n 0
+->amh gefef_a_n
+->amh mzbera_n
+*** explosion_n ; ^ explosion_n 0
+->amh fndata_n
+*** express_n ; ^ express_n 0
+->amh berari_n
+*** expression_n ; ^ expression_n 0
+->amh zeybE_n
+*** extension_n ; ^ extension_n 0
+->amh qT_ay_n
+->amh qeT_ay_n
+->amh qT_l_n
+*** extermination_n ; ^ extermination_n 0
+->amh dmsesa_n
+->amh CfCefa_n
+->amh 'lqit__n
+*** eyebrow_n ; ^ eyebrow_n 0
+->amh xfal_n
+->amh qndb_n
+*** eyeglasses_n ; ^ eyeglasses_n 0
+->amh meneT_r_n
+->amh meneS_r_n
+*** eyelashes_n ; ^ eyelashes_n 0
+->amh qndb_n
+*** fabric_n ; ^ fabric_n 0
+->amh Cerq_n
+*** face_n ; ^ face_n 0
+->amh fit_n
+->amh melk_n
+->amh geS__n
+*** fact_n ; ^ fact_n 0
+->amh masam_eNa_n
+*** faction_n ; ^ faction_n 0
+->amh tegenTay_n
+*** factory_n ; ^ factory_n 0
+->amh fabrika_n
+*** faculty_n ; ^ faculty_n 0
+->amh fakelti_n
+*** failure_n ; ^ failure_n 0
+->amh wdqet_n
+->amh furx_n
+*** faith_n ; ^ faith_n 0
+->amh 'mnet_n
+*** falcon_n ; ^ falcon_n 0
+->amh Clat_n
+*** fallout_n ; ^ fallout_n 0
+->amh rzr_aZ_n
+*** falls_n ; ^ falls_n 0
+->amh fWafWatE_n
+*** falsehood_n ; ^ falsehood_n 0
+->amh 'as_et_n
+*** fame_n ; ^ fame_n 0
+->amh zn_a_n
+*** family_n ; ^ family_n 0
+->amh bEteseb_n
+->amh zer_n
+*** famine_n ; ^ famine_n 0
+->amh qeTena_n
+*** fan_n ; ^ fan_n 0
+->amh maToya_n
+->amh mar_agebiya_n
+->amh 'adnaqi_n
+->amh deg_afi_n
+*** fanatic_n ; ^ fanatic_n 0
+->amh 'akrari_n
+*** farm_n ; ^ farm_n 0
+->amh masa_n
+*** farmer_n ; ^ farmer_n 0
+->amh geberE_n
+->amh 'arax_n
+*** fart_n ; ^ fart_n 0
+->amh fes_n
+*** fashion_n ; ^ fashion_n 0
+->amh qEnT_n
+*** fast_n ; ^ fast_n 0
+->amh Tom_n
+->amh Som_n
+*** fat_n ; ^ fat_n 0
+->amh lat_n
+->amh sb_n
+->amh qbat_n
+*** father_n ; ^ father_n 0
+->amh 'ab_at_n
+*** father-in-law_n ; ^ father-in-law_n 0
+->amh 'amac_n
+*** fatness_n ; ^ fatness_n 0
+->amh sbat_n
+->amh wfret_n
+->amh gzfet_n
+->amh wf_arE_n
+->amh gzef_n
+*** fault_n ; ^ fault_n 0
+->amh seha_n
+->amh Tfat_n
+->amh gud_let_n
+->amh mezez_n
+*** fault-finder_n ; ^ fault-finder_n 0
+->amh neqafi_n
+*** faults_n ; ^ faults_n 0
+->amh gemena_n
+*** fauna_n ; ^ fauna_n 0
+->amh 'nssat_n
+*** favour_n ; ^ favour_n 0
+->amh wleta_n
+*** favouritism_n ; ^ favouritism_n 0
+->amh 'adlwo_n
+*** fear_n ; ^ fear_n 0
+->amh frac_a_n
+*** feast_n ; ^ feast_n 0
+->amh gbZ_a_n
+->amh gbr_n
+*** feather_n ; ^ feather_n 0
+->amh laba_n
+*** features_n ; ^ features_n 0
+->amh geS_ta_n
+*** fee_n ; ^ fee_n 0
+->amh waga_n
+*** feebleness_n ; ^ feebleness_n 0
+->amh qesesteN_an_et_n
+*** feeling_n ; ^ feeling_n 0
+->amh sm_Et_n
+*** fellowship_n ; ^ fellowship_n 0
+->amh gWad_eN_n_et_n
+*** femininity_n ; ^ femininity_n 0
+->amh 'nstn_et_n
+->amh sEtn_et_n
+*** fence_n ; ^ fence_n 0
+->amh 'dmo_n
+->amh 'aTr_n
+*** ferocity_n ; ^ ferocity_n 0
+->amh 'awrEn_et_n
+*** fertility_n ; ^ fertility_n 0
+->amh lemn_et_n
+*** fertilizer_n ; ^ fertilizer_n 0
+->amh madaberiya_n
+*** festival_n ; ^ festival_n 0
+->amh bal_n
+*** fever_n ; ^ fever_n 0
+->amh tk_usat_n
+*** field_n ; ^ field_n 0
+->amh mesk_n
+->amh mEda_n
+*** fifty_n ; ^ fifty_n 0
+->amh 'amsa_n
+*** fig_n ; ^ fig_n 0
+->amh xola_n
+*** fight_n ; ^ fight_n 0
+->amh Tl_n
+->amh tnqnq_n
+*** fighter_n ; ^ fighter_n 0
+->amh ToreN_a_n
+->amh tewagi_n
+->amh 'aw_agi_n
+*** fighting_n ; ^ fighting_n 0
+->amh tegadlo_n
+*** file_n ; ^ file_n 0
+->amh klaser_n
+->amh mor_ed_n
+*** film_n ; ^ film_n 0
+->amh sinima_n
+*** filter_n ; ^ filter_n 0
+->amh maT_ariya_n
+->amh maTleya_n
+*** filth_n ; ^ filth_n 0
+->amh qoxaxa_n
+->amh 'df_n
+->amh xeqen_n
+->amh Cqq_t_n
+->amh tewsak_n
+*** filthiness_n ; ^ filthiness_n 0
+->amh wx_an_et_n
+*** finance_n ; ^ finance_n 0
+->amh finans_n
+*** finder_n ; ^ finder_n 0
+->amh 'asgeNi_n
+*** fine_n ; ^ fine_n 0
+->amh meq_eCa_n
+->amh meq_eCo_n
+->amh qTat_n
+*** fineness_n ; ^ fineness_n 0
+->amh reqiqn_et_n
+->amh 'al_alam_n
+->amh rq_et_n
+*** finger_n ; ^ finger_n 0
+->amh Tat_n
+*** fingernail_n ; ^ fingernail_n 0
+->amh Tfr_n
+*** fingerprint_n ; ^ fingerprint_n 0
+->amh 'axara_n
+*** fire_n ; ^ fire_n 0
+->amh 'sat_n
+*** firearm_n ; ^ firearm_n 0
+->amh nefT_n
+*** fireplace_n ; ^ fireplace_n 0
+->amh mdj_a_n
+*** firewood_n ; ^ firewood_n 0
+->amh magedo_n
+*** fireworks_n ; ^ fireworks_n 0
+->amh rc_t_n
+*** firm_n ; ^ firm_n 0
+->amh drj_t_n
+*** firmament_n ; ^ firmament_n 0
+->amh Tefer_n
+*** firmness_n ; ^ firmness_n 0
+->amh Tnk_arE_n
+->amh Snun_et_n
+*** first_n ; ^ first_n 0
+->amh mejem_eriya_n
+*** fissure_n ; ^ fissure_n 0
+->amh snTq_n
+*** fist_n ; ^ fist_n 0
+->amh buT_i_n
+->amh TuC_a_n
+*** fitting_n ; ^ fitting_n 0
+->amh proba_n
+*** flag_n ; ^ flag_n 0
+->amh bandira_n
+*** flame_n ; ^ flame_n 0
+->amh bog_ta_n
+->amh nebelbal_n
+*** flare_n ; ^ flare_n 0
+->amh nebelbal_n
+*** flash_n ; ^ flash_n 0
+->amh tntag_n
+->amh bl_Cta_n
+->amh bog_ta_n
+*** flashlight_n ; ^ flashlight_n 0
+->amh batri_n
+*** flask_n ; ^ flask_n 0
+->amh faxko_n
+*** flatness_n ; ^ flatness_n 0
+->amh zrgn_et_n
+*** flatterer_n ; ^ flatterer_n 0
+->amh del_ay_n
+->amh sebaki_n
+->amh 'aqolamaC_n
+*** flattery_n ; ^ flattery_n 0
+->amh qulmC_a_n
+*** flavour_n ; ^ flavour_n 0
+->amh qana_n
+*** flea_n ; ^ flea_n 0
+->amh qWnC_a_n
+*** flight_n ; ^ flight_n 0
+->amh beqet_n
+->amh berera_n
+*** flint_n ; ^ flint_n 0
+->amh balCut__n
+*** flirt_n ; ^ flirt_n 0
+->amh 'axkormami_n
+*** flirtation_n ; ^ flirtation_n 0
+->amh dr_iya_n
+*** flock_n ; ^ flock_n 0
+->amh menga_n
+*** flood_n ; ^ flood_n 0
+->amh gWerf_n
+*** floor_n ; ^ floor_n 0
+->amh fjota_n
+*** flour_n ; ^ flour_n 0
+->amh doqEt_n
+->amh duqEt_n
+*** flower_n ; ^ flower_n 0
+->amh 'abeba_n
+*** fluid_n ; ^ fluid_n 0
+->amh fesax_n
+*** flute_n ; ^ flute_n 0
+->amh waxnt_n
+*** fly_n ; ^ fly_n 0
+->amh zmb_n
+*** fly-swatter_n ; ^ fly-swatter_n 0
+->amh Cra_n
+*** fodder_n ; ^ fodder_n 0
+->amh men_o_n
+*** foe_n ; ^ foe_n 0
+->amh demeN_a_n
+->amh Telat_n
+->amh balanTa_n
+*** fog_n ; ^ fog_n 0
+->amh gum_n
+->amh Cgag_n
+*** fold_n ; ^ fold_n 0
+->amh ms_g_n
+*** follower_n ; ^ follower_n 0
+->amh leT_aqi_n
+->amh teket_ay_n
+*** food_n ; ^ food_n 0
+->amh mebl_n
+->amh mgb_n
+->amh 'hl_n
+*** fool_n ; ^ fool_n 0
+->amh 'ankola_n
+*** foot_n ; ^ foot_n 0
+->amh 'gr_n
+->amh Cam_a_n
+->amh grgE_n
+*** football_n ; ^ football_n 0
+->amh futbol_n
+*** foothold_n ; ^ foothold_n 0
+->amh mer_egageCa_n
+->amh mer_egeCa_n
+*** footprint_n ; ^ footprint_n 0
+->amh rg_aC_n
+->amh duka_n
+*** footsteps_n ; ^ footsteps_n 0
+->amh kot_E_n
+*** forehead_n ; ^ forehead_n 0
+->amh gmbar_n
+*** foreman_n ; ^ foreman_n 0
+->amh kab_o_n
+*** foreskin_n ; ^ foreskin_n 0
+->amh xelefet_n
+*** forest_n ; ^ forest_n 0
+->amh wdma_n
+->amh Cak_a_n
+->amh dur_n
+->amh den__n
+*** forgetfulness_n ; ^ forgetfulness_n 0
+->amh zngata_n
+*** forgiveness_n ; ^ forgiveness_n 0
+->amh mhret_n
+*** fork_n ; ^ fork_n 0
+->amh menx_n
+->amh xuk_a_n
+*** form_n ; ^ form_n 0
+->amh qrS_n
+->amh qS__n
+*** fornication_n ; ^ fornication_n 0
+->amh mnzr_n
+->amh qnzr_n
+->amh zm_ut_n
+*** fortieth_n ; ^ fortieth_n 0
+->amh 'arbaN_a_n
+*** fortification_n ; ^ fortification_n 0
+->amh mx_g_n
+*** fortune_n ; ^ fortune_n 0
+->amh sisay_n
+*** forum_n ; ^ forum_n 0
+->amh xengo_n
+->amh medrek_n
+*** fossil_n ; ^ fossil_n 0
+->amh qr_it_n
+*** fox_n ; ^ fox_n 0
+->amh qebero_n
+*** fraction_n ; ^ fraction_n 0
+->amh kflfay_n
+*** fractions_n ; ^ fractions_n 0
+->amh sbrbari_n
+*** fracture_n ; ^ fracture_n 0
+->amh sb_rat_n
+*** fragments_n ; ^ fragments_n 0
+->amh sbrbari_n
+*** framework_n ; ^ framework_n 0
+->amh mewaqr_n
+->amh rbrab_n
+*** fraternity_n ; ^ fraternity_n 0
+->amh wendm_amacn_et_n
+*** freckle_n ; ^ freckle_n 0
+->amh TeqaTeqo_n
+*** freedom_n ; ^ freedom_n 0
+->amh neSan_et_n
+->amh 'arn_et_n
+*** freight_n ; ^ freight_n 0
+->amh Cnet_n
+*** friction_n ; ^ friction_n 0
+->amh gC_t_n
+*** friend_n ; ^ friend_n 0
+->amh wedaj_n
+->amh balnjera_n
+->amh xerik_n
+->amh gWad_eN_a_n
+->amh gWad__n
+*** friendship_n ; ^ friendship_n 0
+->amh xrka_n
+->amh wedajn_et_n
+->amh balnjern_et_n
+->amh gWad_eN_n_et_n
+*** fright_n ; ^ fright_n 0
+->amh dng_aTE_n
+*** fringe_n ; ^ fringe_n 0
+->amh Terz_n
+->amh 'aTq_n
+*** frivolity_n ; ^ frivolity_n 0
+->amh zebet_n
+*** frog_n ; ^ frog_n 0
+->amh gWrT_n
+*** front_n ; ^ front_n 0
+->amh gmbar_n
+->amh fit_n
+->amh mejem_eriya_n
+*** frontier_n ; ^ frontier_n 0
+->amh Teref_n
+->amh darager_n
+*** frost_n ; ^ frost_n 0
+->amh qur__n
+->amh 'ameday_n
+->amh wrC_n
+*** froth_n ; ^ froth_n 0
+->amh 'arefa_n
+*** fruit_n ; ^ fruit_n 0
+->amh frE_n
+*** fruits_n ; ^ fruits_n 0
+->amh frafrE_n
+*** fucker_n ; ^ fucker_n 0
+->amh beji_n
+*** fugitive_n ; ^ fugitive_n 0
+->amh teqbezbaZ_n
+->amh xexi_n
+->amh koblay_n
+->amh tebarari_n
+*** fume_n ; ^ fume_n 0
+->amh Tis_n
+*** fumigation_n ; ^ fumigation_n 0
+->amh 'Tnet_n
+*** fur_n ; ^ fur_n 0
+->amh Segur_n
+*** furnace_n ; ^ furnace_n 0
+->amh 'ton_n
+*** furrow_n ; ^ furrow_n 0
+->amh tlm_n
+->amh fer_n
+*** fury_n ; ^ fury_n 0
+->amh nd_Et_n
+*** gag_n ; ^ gag_n 0
+->amh maf_eNa_n
+*** gain_n ; ^ gain_n 0
+->amh trf_n
+->amh reb_n
+*** gambler_n ; ^ gambler_n 0
+->amh qumarteN_a_n
+*** gambling_n ; ^ gambling_n 0
+->amh qumar_n
+*** gander_n ; ^ gander_n 0
+->amh zy__n
+*** gap_n ; ^ gap_n 0
+->amh mex_egaxegiya_n
+*** garage_n ; ^ garage_n 0
+->amh garaj_n
+*** gardener_n ; ^ gardener_n 0
+->amh 'atklteN_a_n
+*** gargoyle_n ; ^ gargoyle_n 0
+->amh 'axenda_n
+*** garment_n ; ^ garment_n 0
+->amh zerf_n
+->amh lbs_n
+*** gas_n ; ^ gas_n 0
+->amh gaz_n
+*** gash_n ; ^ gash_n 0
+->amh brqs_n
+*** gasoline_n ; ^ gasoline_n 0
+->amh bEnzin_n
+*** gate_n ; ^ gate_n 0
+->amh ber__n
+->amh mezgiya_n
+*** gatherer_n ; ^ gatherer_n 0
+->amh sebsabi_n
+*** gathering_n ; ^ gathering_n 0
+->amh sbseba_n
+->amh leqema_n
+*** gauge_n ; ^ gauge_n 0
+->amh gEj__n
+*** gauze_n ; ^ gauze_n 0
+->amh xax_n
+*** gear_n ; ^ gear_n 0
+->amh marx_n
+*** gender_n ; ^ gender_n 0
+->amh Sota_n
+*** general_n ; ^ general_n 0
+->amh jEnEral_n
+*** generation_n ; ^ generation_n 0
+->amh twld__n
+*** generosity_n ; ^ generosity_n 0
+->amh crota_n
+->amh cern_et_n
+->amh lg_sn_a_n
+->amh leg_asn_et_n
+*** genitals_n ; ^ genitals_n 0
+->amh bl_t_n
+->amh 'qa_n
+*** geography_n ; ^ geography_n 0
+->amh ji'ografi_n
+*** geometry_n ; ^ geometry_n 0
+->amh ji'omEtri_n
+*** germs_n ; ^ germs_n 0
+->amh nefsat_n
+*** ghost_n ; ^ ghost_n 0
+->amh menfes_n
+*** gift_n ; ^ gift_n 0
+->amh sTota_n
+->amh mem_aleja_n
+*** ginger_n ; ^ ginger_n 0
+->amh znjbl__n
+*** girdle_n ; ^ girdle_n 0
+->amh qebet_o_n
+->amh seq__n
+->amh met_aTeqiya_n
+*** girl_n ; ^ girl_n 0
+->amh ljagered_n
+*** gist_n ; ^ gist_n 0
+->amh 'ankWar_n
+*** gland_n ; ^ gland_n 0
+->amh 'Ti_n
+*** glass_n ; ^ glass_n 0
+->amh mestewat_n
+->amh brCq_o_n
+*** gleam_n ; ^ gleam_n 0
+->amh ClanCl_n
+*** gleaner_n ; ^ gleaner_n 0
+->amh qarami_n
+->amh marari_n
+*** gleanings_n ; ^ gleanings_n 0
+->amh qarmiya_n
+*** glimmer_n ; ^ glimmer_n 0
+->amh ClanCl_n
+*** glimpse_n ; ^ glimpse_n 0
+->amh Cerefta_n
+*** globe_n ; ^ globe_n 0
+->amh lul_n
+*** gloss_n ; ^ gloss_n 0
+->amh wezena_n
+*** glue_n ; ^ glue_n 0
+->amh meTabq_n
+->amh meleT_efiya_n
+->amh max_egiya_n
+->amh maT_abeqiya_n
+*** gnat_n ; ^ gnat_n 0
+->amh tnN__n
+*** go-between_n ; ^ go-between_n 0
+->amh 'am_aC_n
+->amh 'am_alaj_n
+*** goad_n ; ^ goad_n 0
+->amh zeng_n
+->amh menja_n
+*** goal_n ; ^ goal_n 0
+->amh gb_n
+*** goblet_n ; ^ goblet_n 0
+->amh wanCa_n
+*** gold_n ; ^ gold_n 0
+->amh werq_n
+*** goodness_n ; ^ goodness_n 0
+->amh deg_n_et_n
+*** goods_n ; ^ goods_n 0
+->amh 'qa_n
+*** goose_n ; ^ goose_n 0
+->amh zy__n
+*** gossip_n ; ^ gossip_n 0
+->amh werEN_a_n
+->amh werE_n
+->amh 'alubalta_n
+->amh 'anxWak_aki_n
+->amh 'an_ekaki_n
+*** gourd_n ; ^ gourd_n 0
+->amh ql_n
+->amh Tul_E_n
+->amh qmCana_n
+->amh 'aborE_n
+*** grace_n ; ^ grace_n 0
+->amh Seg_a_n
+*** grade_n ; ^ grade_n 0
+->amh mark_n
+->amh kfl_n
+*** graduate_n ; ^ graduate_n 0
+->amh temer_aqi_n
+->amh mr_uq_n
+*** graduation_n ; ^ graduation_n 0
+->amh mr_eqa_n
+*** grain_n ; ^ grain_n 0
+->amh qnTat_n
+->amh 'hl_n
+*** gram_n ; ^ gram_n 0
+->amh gram_n
+*** granary_n ; ^ granary_n 0
+->amh gotera_n
+*** grandfather_n ; ^ grandfather_n 0
+->amh 'ayat_n
+*** grandmother_n ; ^ grandmother_n 0
+->amh 'ayat_n
+*** grandstand_n ; ^ grandstand_n 0
+->amh segen_et_n
+*** grape_n ; ^ grape_n 0
+->amh weyn_n
+*** grasshopper_n ; ^ grasshopper_n 0
+->amh fEnTa_n
+*** gravel_n ; ^ gravel_n 0
+->amh TeTer_n
+*** gravitation_n ; ^ gravitation_n 0
+->amh sbet_n
+*** gravity_n ; ^ gravity_n 0
+->amh sbet_n
+*** green_n ; ^ green_n 0
+->amh TrE_n
+*** greens_n ; ^ greens_n 0
+->amh gom_en_n
+*** greetings_n ; ^ greetings_n 0
+->amh selamta_n
+*** griddle_n ; ^ griddle_n 0
+->amh mTad_n
+*** grief_n ; ^ grief_n 0
+->amh qeC_nE_n
+*** grievance_n ; ^ grievance_n 0
+->amh bsot_n
+*** grimace_n ; ^ grimace_n 0
+->amh kWrfiya_n
+*** grinder_n ; ^ grinder_n 0
+->amh feCay_n
+*** gristle_n ; ^ gristle_n 0
+->amh lf_aC_n
+*** groove_n ; ^ groove_n 0
+->amh xntr_n
+*** ground_n ; ^ ground_n 0
+->amh merEt_n
+*** groundnut_n ; ^ groundnut_n 0
+->amh lewz_n
+*** group_n ; ^ group_n 0
+->amh sbsb_n
+*** growth_n ; ^ growth_n 0
+->amh 'dget_n
+*** grudge_n ; ^ grudge_n 0
+->amh qim_n
+->amh qy_amE_n
+*** grumbler_n ; ^ grumbler_n 0
+->amh 'am_arari_n
+->amh 'algWemgWami_n
+*** guarantee_n ; ^ guarantee_n 0
+->amh medn_n
+->amh met_ameNa_n
+->amh met_emameNa_n
+->amh wabi_n
+*** guarantor_n ; ^ guarantor_n 0
+->amh teyaZ_n
+->amh was_n
+->amh wabi_n
+*** guard_n ; ^ guard_n 0
+->amh zebeN_a_n
+*** guardian_n ; ^ guardian_n 0
+->amh Teb_aqi_n
+->amh mogzit_n
+*** guess_n ; ^ guess_n 0
+->amh gm_t_n
+*** guest_n ; ^ guest_n 0
+->amh 'ngda_n
+*** guideline_n ; ^ guideline_n 0
+->amh mem_eriya_n
+*** guilt_n ; ^ guilt_n 0
+->amh Tfat_n
+*** gull_n ; ^ gull_n 0
+->amh sabisa_n
+*** gum_n ; ^ gum_n 0
+->amh dd__n
+->amh maT_abeqiya_n
+->amh muC_a_n
+*** gun_n ; ^ gun_n 0
+->amh nefT_n
+*** gunpowder_n ; ^ gunpowder_n 0
+->amh barud_n
+*** gusset_n ; ^ gusset_n 0
+->amh wexmeT_n
+*** guts_n ; ^ guts_n 0
+->amh hodqa_n
+*** gutter_n ; ^ gutter_n 0
+->amh xenda_n
+->amh feses_n
+*** gymnastics_n ; ^ gymnastics_n 0
+->amh jmnastik_n
+*** gypsum_n ; ^ gypsum_n 0
+->amh jes_o_n
+*** habit_n ; ^ habit_n 0
+->amh lmad_n
+->amh 'amel_n
+->amh lmd_n
+*** hair_n ; ^ hair_n 0
+->amh Tegur_n
+->amh Segur_n
+*** half_n ; ^ half_n 0
+->amh 'k_ulEta_n
+->amh 'k_ul_n
+->amh 'ag_amax_n
+*** half-caste_n ; ^ half-caste_n 0
+->amh kl_s_n
+*** hall_n ; ^ hall_n 0
+->amh 'ad_arax_n
+*** halter_n ; ^ halter_n 0
+->amh mexeb_ebiya_n
+*** hammer_n ; ^ hammer_n 0
+->amh medoxa_n
+->amh meqWerqWeriya_n
+*** hand_n ; ^ hand_n 0
+->amh 'j__n
+*** handbag_n ; ^ handbag_n 0
+->amh borsa_n
+*** handful_n ; ^ handful_n 0
+->amh Cb_aC_n
+->amh Cb_T_n
+->amh 'f_N__n
+*** handicap_n ; ^ handicap_n 0
+->amh cg_r_n
+*** handle_n ; ^ handle_n 0
+->amh 'j_eta_n
+->amh joro_n
+->amh manTelTeya_n
+*** hangar_n ; ^ hangar_n 0
+->amh garaj_n
+*** hanger_n ; ^ hanger_n 0
+->amh mesqeya_n
+*** hanging_n ; ^ hanging_n 0
+->amh sq_lat_n
+*** hangman_n ; ^ hangman_n 0
+->amh seqay_n
+*** happening_n ; ^ happening_n 0
+->amh drg_it__n
+*** happiness_n ; ^ happiness_n 0
+->amh des_ta_n
+->amh dlot_n
+*** harassment_n ; ^ harassment_n 0
+->amh wekeba_n
+*** harbour_n ; ^ harbour_n 0
+->amh wedeb_n
+*** hardship_n ; ^ hardship_n 0
+->amh Cnq_n
+->amh fd_a_n
+->amh mekera_n
+*** hare_n ; ^ hare_n 0
+->amh Tncel_n
+*** harlot_n ; ^ harlot_n 0
+->amh xermuTa_n
+*** harm_n ; ^ harm_n 0
+->amh gudat_n
+*** harness_n ; ^ harness_n 0
+->amh lbab_n
+*** harp_n ; ^ harp_n 0
+->amh begena_n
+*** harrow_n ; ^ harrow_n 0
+->amh mekeskexa_n
+*** harvest_n ; ^ harvest_n 0
+->amh sebl_n
+*** haste_n ; ^ haste_n 0
+->amh Tdfiya_n
+->amh gagata_n
+*** hat_n ; ^ hat_n 0
+->amh barnETa_n
+*** hatchet_n ; ^ hatchet_n 0
+->amh mecefcefiya_n
+->amh meTrabiya_n
+*** hatred_n ; ^ hatred_n 0
+->amh Tlac_a_n
+*** haven_n ; ^ haven_n 0
+->amh medrexa_n
+->amh wedeb_n
+*** hawk_n ; ^ hawk_n 0
+->amh Clat_n
+->amh Clfit__n
+*** hay_n ; ^ hay_n 0
+->amh drqox_n
+*** haystack_n ; ^ haystack_n 0
+->amh km_r_n
+*** haze_n ; ^ haze_n 0
+->amh Cgag_n
+*** head_n ; ^ head_n 0
+->amh 'aleqa_n
+->amh 'anat_n
+->amh 'awra_n
+->amh ras_n
+*** headband_n ; ^ headband_n 0
+->amh TmTam_n
+*** heading_n ; ^ heading_n 0
+->amh 'ar'st_n
+*** headline_n ; ^ headline_n 0
+->amh 'ar'st_n
+*** headphones_n ; ^ headphones_n 0
+->amh mesmiya_n
+*** headrest_n ; ^ headrest_n 0
+->amh brkum_a_n
+*** healer_n ; ^ healer_n 0
+->amh medhaniteN_a_n
+->amh few_ax_n
+->amh 'ak_ami_n
+*** health_n ; ^ health_n 0
+->amh TEna_n
+*** heap_n ; ^ heap_n 0
+->amh km_r_n
+*** hearsay_n ; ^ hearsay_n 0
+->amh 'alubalta_n
+*** heart_n ; ^ heart_n 0
+->amh lb__n
+->amh qelb_n
+*** heat_n ; ^ heat_n 0
+->amh glet_n
+->amh muqet_n
+*** heater_n ; ^ heater_n 0
+->amh mamoqiya_n
+*** heaven_n ; ^ heaven_n 0
+->amh semay_n
+*** heifer_n ; ^ heifer_n 0
+->amh xhr_n
+->amh gider_n
+*** height_n ; ^ height_n 0
+->amh kef_ta_n
+->amh qumet_n
+*** heir_n ; ^ heir_n 0
+->amh werax_n
+*** hell_n ; ^ hell_n 0
+->amh si'ol_n
+*** helmet_n ; ^ helmet_n 0
+->amh kel_ec_a_n
+*** helper_n ; ^ helper_n 0
+->amh red_at_n
+->amh reji_n
+->amh 'ag_aZ_n
+->amh 'ag_ar_n
+*** helping_n ; ^ helping_n 0
+->amh 'g_eza_n
+*** hem_n ; ^ hem_n 0
+->amh Terz_n
+->amh derz_n
+*** hen_n ; ^ hen_n 0
+->amh doro_n
+*** henchman_n ; ^ henchman_n 0
+->amh 'aCebCabi_n
+*** herald_n ; ^ herald_n 0
+->amh lefafi_n
+*** herdsman_n ; ^ herdsman_n 0
+->amh 'r_eN_a_n
+->amh 'ag_aj_n
+*** heretic_n ; ^ heretic_n 0
+->amh menafq_n
+*** heritage_n ; ^ heritage_n 0
+->amh qrs_n
+*** hermit_n ; ^ hermit_n 0
+->amh men_aN_n
+*** hermitage_n ; ^ hermitage_n 0
+->amh memen_eNa_n
+*** hiccup_n ; ^ hiccup_n 0
+->amh sr_qta_n
+*** hide_n ; ^ hide_n 0
+->amh lETo_n
+->amh qoda_n
+->amh qurbet_n
+*** hide-and-seek_n ; ^ hide-and-seek_n 0
+->amh dbb_qox_n
+*** highland_n ; ^ highland_n 0
+->amh dega_n
+*** hijacker_n ; ^ hijacker_n 0
+->amh Telafi_n
+*** hill_n ; ^ hill_n 0
+->amh korebta_n
+*** hillock_n ; ^ hillock_n 0
+->amh dib_n
+->amh gub_ta_n
+*** hindrance_n ; ^ hindrance_n 0
+->amh 'k_l_n
+->amh mesenakl_n
+*** hinge_n ; ^ hinge_n 0
+->amh maTefiya_n
+*** hint_n ; ^ hint_n 0
+->amh Tqoma_n
+->amh fnC_n
+*** hip_n ; ^ hip_n 0
+->amh tafa_n
+*** hips_n ; ^ hips_n 0
+->amh dal_E_n
+*** historian_n ; ^ historian_n 0
+->amh ter_aki_n
+*** history_n ; ^ history_n 0
+->amh tarik_n
+*** hitch_n ; ^ hitch_n 0
+->amh qrqab_n
+*** hodgepodge_n ; ^ hodgepodge_n 0
+->amh gs_angs_n
+->amh Trqmqm_n
+*** hoe_n ; ^ hoe_n 0
+->amh mekotkoca_n
+*** hole_n ; ^ hole_n 0
+->amh bs_n
+->amh gWdgWad_n
+->amh qedada_n
+*** holiness_n ; ^ holiness_n 0
+->amh bqat_n
+->amh qd_sn_a_n
+->amh qd_usn_et_n
+*** holocaust_n ; ^ holocaust_n 0
+->amh 'lqit__n
+*** honey_n ; ^ honey_n 0
+->amh mar_n
+->amh welela_n
+->amh malaxa_n
+*** honour_n ; ^ honour_n 0
+->amh keberEta_n
+->amh kbr_n
+->amh 'akbrot_n
+*** hoof_n ; ^ hoof_n 0
+->amh xekona_n
+->amh kot_E_n
+->amh sekona_n
+*** hook_n ; ^ hook_n 0
+->amh menTo_n
+->amh manTelTeya_n
+->amh mesqeya_n
+->amh mEnTo_n
+*** hookworm_n ; ^ hookworm_n 0
+->amh wesfat_n
+*** hoop_n ; ^ hoop_n 0
+->amh xkrkrit_n
+->amh bonda_n
+*** hope_n ; ^ hope_n 0
+->amh tesfa_n
+*** horizon_n ; ^ horizon_n 0
+->amh 'admas_n
+*** horn_n ; ^ horn_n 0
+->amh qend_n
+*** horse_n ; ^ horse_n 0
+->amh feres_n
+*** horseman_n ; ^ horseman_n 0
+->amh fereseN_a_n
+*** host_n ; ^ host_n 0
+->amh 'akW_etEt_n
+->amh 'astenagaj_n
+->amh gabaZ_n
+*** hostage_n ; ^ hostage_n 0
+->amh meyaZa_n
+*** hostess_n ; ^ hostess_n 0
+->amh 'astenagaj_n
+->amh gabaZ_n
+*** hostility_n ; ^ hostility_n 0
+->amh balanTan_et_n
+->amh Tlac_a_n
+*** hotchpotch_n ; ^ hotchpotch_n 0
+->amh Trqmqm_n
+*** hotel_n ; ^ hotel_n 0
+->amh hotEl_n
+*** house_n ; ^ house_n 0
+->amh bEt_n
+*** household_n ; ^ household_n 0
+->amh bEteseb_n
+*** housekeeper_n ; ^ housekeeper_n 0
+->amh qel_abi_n
+*** housemaid_n ; ^ housemaid_n 0
+->amh gered_n
+*** howl_n ; ^ howl_n 0
+->amh Cuhet_n
+*** hull_n ; ^ hull_n 0
+->amh geleba_n
+*** hum_n ; ^ hum_n 0
+->amh cacata_n
+*** humiliation_n ; ^ humiliation_n 0
+->amh wrdet_n
+->amh 'fret_n
+*** hump_n ; ^ hump_n 0
+->amh xaN_a_n
+*** humpback_n ; ^ humpback_n 0
+->amh gWebiT_n
+*** hundred_n ; ^ hundred_n 0
+->amh meto_n
+*** hunger_n ; ^ hunger_n 0
+->amh rab_n
+*** hunt_n ; ^ hunt_n 0
+->amh 'ad_en_n
+*** hunter_n ; ^ hunter_n 0
+->amh 'ad_aN_n
+*** hunting_n ; ^ hunting_n 0
+->amh 'ad_en_n
+*** hurry_n ; ^ hurry_n 0
+->amh Tdfiya_n
+*** husband_n ; ^ husband_n 0
+->amh 'ab_awer_a_n
+->amh bal_n
+->amh balebEt_n
+*** husk_n ; ^ husk_n 0
+->amh lamfa_n
+->amh gWl_ay_n
+*** hyena_n ; ^ hyena_n 0
+->amh jb_n
+->amh Zb_n
+*** hymn_n ; ^ hymn_n 0
+->amh mezmur_n
+->amh zm_arE_n
+*** hyphen_n ; ^ hyphen_n 0
+->amh serez_n
+*** hypocrite_n ; ^ hypocrite_n 0
+->amh gb_z_n
+*** identification_n ; ^ identification_n 0
+->amh met_aweqiya_n
+*** idiom_n ; ^ idiom_n 0
+->amh feliT_n
+*** idiot_n ; ^ idiot_n 0
+->amh nehWelel_n
+*** idleness_n ; ^ idleness_n 0
+->amh snfn_a_n
+->amh magaTan_et_n
+*** idol_n ; ^ idol_n 0
+->amh Ta'ot_n
+*** ignorance_n ; ^ ignorance_n 0
+->amh dnqurn_a_n
+*** illiteracy_n ; ^ illiteracy_n 0
+->amh mehay_mn_et_n
+*** illness_n ; ^ illness_n 0
+->amh bex_ta_n
+->amh dewE_n
+*** illumination_n ; ^ illumination_n 0
+->amh brhan_n
+*** imbecile_n ; ^ imbecile_n 0
+->amh delago_n
+->amh kebt_n
+->amh nehWelel_n
+*** imitation_n ; ^ imitation_n 0
+->amh qj__n
+*** imp_n ; ^ imp_n 0
+->amh keysi_n
+*** imperfection_n ; ^ imperfection_n 0
+->amh dkmet_n
+*** implements_n ; ^ implements_n 0
+->amh 'qa_n
+*** impoliteness_n ; ^ impoliteness_n 0
+->amh 'r_eN_n_et_n
+->amh 'asnew_ari_n
+->amh blgn_a_n
+->amh balegEn_et_n
+*** importance_n ; ^ importance_n 0
+->amh fayda_n
+*** importer_n ; ^ importer_n 0
+->amh 'asmeC_i_n
+*** importunity_n ; ^ importunity_n 0
+->amh mozazan_et_n
+->amh zbz_b_n
+*** impostor_n ; ^ impostor_n 0
+->amh 'asmes_ay_n
+->amh 'aCberbari_n
+*** impudence_n ; ^ impudence_n 0
+->amh dfret_n
+*** impulse_n ; ^ impulse_n 0
+->amh gf_it_n
+*** in_n ; ^ in_n 0
+->amh 'azmud_n
+*** inaction_n ; ^ inaction_n 0
+->amh snfn_a_n
+*** incarnation_n ; ^ incarnation_n 0
+->amh tsb't_n
+*** incense_n ; ^ incense_n 0
+->amh 'Tan_n
+*** incident_n ; ^ incident_n 0
+->amh drg_it__n
+*** incision_n ; ^ incision_n 0
+->amh bT_n
+->amh bTat_n
+*** inclination_n ; ^ inclination_n 0
+->amh fl_agot_n
+->amh 'azmam_iya_n
+->amh znb_alE_n
+*** income_n ; ^ income_n 0
+->amh gebi_n
+->amh 'alaba_n
+*** increase_n ; ^ increase_n 0
+->amh Cm_ari_n
+*** increment_n ; ^ increment_n 0
+->amh Cm_ari_n
+*** indecency_n ; ^ indecency_n 0
+->amh newr_n
+->amh 'asnew_ari_n
+*** indemnity_n ; ^ indemnity_n 0
+->amh kasa_n
+*** independence_n ; ^ independence_n 0
+->amh neSan_et_n
+*** indication_n ; ^ indication_n 0
+->amh mlk_t_n
+*** indignity_n ; ^ indignity_n 0
+->amh wrdet_n
+*** indolence_n ; ^ indolence_n 0
+->amh snfn_a_n
+*** infancy_n ; ^ infancy_n 0
+->amh Ceqlan_et_n
+*** infant_n ; ^ infant_n 0
+->amh Ceqla_n
+*** infestation_n ; ^ infestation_n 0
+->amh werera_n
+*** inflation_n ; ^ inflation_n 0
+->amh gxbet_n
+*** information_n ; ^ information_n 0
+->amh mastaweqiya_n
+->amh Tqoma_n
+*** informer_n ; ^ informer_n 0
+->amh TeqWami_n
+->amh foqaqa_n
+->amh 'anfWaq_aqi_n
+*** ingredients_n ; ^ ingredients_n 0
+->amh maqulaya_n
+*** inhabitant_n ; ^ inhabitant_n 0
+->amh nWari_n
+*** injection_n ; ^ injection_n 0
+->amh merfE_n
+*** injury_n ; ^ injury_n 0
+->amh gudat_n
+*** injustice_n ; ^ injustice_n 0
+->amh gf_n
+->amh Cb_o_n
+*** ink_n ; ^ ink_n 0
+->amh qelem_n
+*** insect_n ; ^ insect_n 0
+->amh tebay_n
+->amh tl_n
+*** insects_n ; ^ insects_n 0
+->amh nefsat_n
+*** inside_n ; ^ inside_n 0
+->amh wsT_n
+*** insignia_n ; ^ insignia_n 0
+->amh 'arma_n
+->amh mel_ey_o_n
+*** insolence_n ; ^ insolence_n 0
+->amh dfret_n
+*** inspection_n ; ^ inspection_n 0
+->amh ft_exa_n
+*** inspector_n ; ^ inspector_n 0
+->amh fet_ax_n
+*** institution_n ; ^ institution_n 0
+->amh drj_t_n
+*** instructor_n ; ^ instructor_n 0
+->amh 'astemari_n
+*** insult_n ; ^ insult_n 0
+->amh sdb_n
+*** intellectual_n ; ^ intellectual_n 0
+->amh mhur_n
+*** intelligence_n ; ^ intelligence_n 0
+->amh mer_eja_n
+->amh blhat_n
+->amh gubzn_a_n
+*** interaction_n ; ^ interaction_n 0
+->amh mestegabr_n
+*** intercession_n ; ^ intercession_n 0
+->amh 'am_alajn_et_n
+->amh mlja_n
+*** intercourse_n ; ^ intercourse_n 0
+->amh gnN_un_et_n
+*** interest_n ; ^ interest_n 0
+->amh fl_agot_n
+->amh wel_ed_n
+*** interior_n ; ^ interior_n 0
+->amh wsT_n
+*** interpretation_n ; ^ interpretation_n 0
+->amh fc__n
+->amh trgum_n
+*** interpreter_n ; ^ interpreter_n 0
+->amh trjuman_n
+->amh tergWami_n
+->amh 'an_egagari_n
+*** interrogation_n ; ^ interrogation_n 0
+->amh Ty_aqE_n
+*** intestine_n ; ^ intestine_n 0
+->amh 'anjet_n
+*** intrigue_n ; ^ intrigue_n 0
+->amh deba_n
+*** invader_n ; ^ invader_n 0
+->amh werari_n
+*** invasion_n ; ^ invasion_n 0
+->amh werera_n
+*** invention_n ; ^ invention_n 0
+->amh feTera_n
+->amh flsefa_n
+*** inventor_n ; ^ inventor_n 0
+->amh felsafi_n
+*** investigation_n ; ^ investigation_n 0
+->amh mrm_r_n
+->amh mrmera_n
+*** investigator_n ; ^ investigator_n 0
+->amh temeramari_n
+->amh mermari_n
+*** invigilator_n ; ^ invigilator_n 0
+->amh fet_aN_n
+*** invitation_n ; ^ invitation_n 0
+->amh Tr_i_n
+->amh gbZ_a_n
+*** invoice_n ; ^ invoice_n 0
+->amh faktur_n
+*** iodine_n ; ^ iodine_n 0
+->amh yod_n
+*** irascibility_n ; ^ irascibility_n 0
+->amh kurfiya_n
+*** iris_n ; ^ iris_n 0
+->amh blEn_n
+*** iron_n ; ^ iron_n 0
+->amh kawy_a_n
+->amh bret_n
+*** irony_n ; ^ irony_n 0
+->amh mS_et_n
+*** irrigation_n ; ^ irrigation_n 0
+->amh mesno_n
+*** island_n ; ^ island_n 0
+->amh desEt_n
+*** issue_n ; ^ issue_n 0
+->amh 't_m_n
+*** itch_n ; ^ itch_n 0
+->amh foket__n
+->amh 'kek_n
+*** itinerary_n ; ^ itinerary_n 0
+->amh gWzo_n
+*** jacket_n ; ^ jacket_n 0
+->amh jak_Et_n
+*** jail_n ; ^ jail_n 0
+->amh wehni_n
+*** jam_n ; ^ jam_n 0
+->amh marmelata_n
+*** jasmine_n ; ^ jasmine_n 0
+->amh Tembelel_n
+*** jaw_n ; ^ jaw_n 0
+->amh gnCl_n
+*** jealousy_n ; ^ jealousy_n 0
+->amh qnat_n
+*** jerk_n ; ^ jerk_n 0
+->amh gWn_eTa_n
+*** jest_n ; ^ jest_n 0
+->amh bWalt_n
+->amh fEz_n
+->amh waza_n
+*** jester_n ; ^ jester_n 0
+->amh 'aC_awac_n
+*** jet_n ; ^ jet_n 0
+->amh bul_qta_n
+*** jewelry_n ; ^ jewelry_n 0
+->amh gETagET_n
+->amh gET_n
+*** jinx_n ; ^ jinx_n 0
+->amh ToseN_a_n
+->amh Tos_n
+*** joint_n ; ^ joint_n 0
+->amh 'angWa_n
+->amh 'aSq_n
+->amh meg_eTaTemiya_n
+*** joke_n ; ^ joke_n 0
+->amh fEz_n
+->amh qeld_n
+*** joker_n ; ^ joker_n 0
+->amh ter_abi_n
+->amh 'afyaZ_n
+->amh qeldeN_a_n
+->amh fEz_eN_a_n
+*** jokes_n ; ^ jokes_n 0
+->amh bWalt_n
+*** joss-stick_n ; ^ joss-stick_n 0
+->amh sendel_n
+*** journey_n ; ^ journey_n 0
+->amh gWzo_n
+*** joy_n ; ^ joy_n 0
+->amh 'ad_uN_a_n
+*** jubilee_n ; ^ jubilee_n 0
+->amh 'iy_obElyu_n
+*** judge_n ; ^ judge_n 0
+->amh daN_a_n
+->amh feraj_n
+->amh wember_n
+->amh wenber_n
+*** juice_n ; ^ juice_n 0
+->amh Cm_aqi_n
+*** jumble_n ; ^ jumble_n 0
+->amh wTnqT_n
+->amh Trqmqm_n
+*** jump_n ; ^ jump_n 0
+->amh zl_iya_n
+*** jumper_n ; ^ jumper_n 0
+->amh zelay_n
+*** jungle_n ; ^ jungle_n 0
+->amh Cak_a_n
+*** juniper_n ; ^ juniper_n 0
+->amh dedeho_n
+*** junk_n ; ^ junk_n 0
+->amh gs_angs_n
+*** justification_n ; ^ justification_n 0
+->amh mknyat_n
+*** keeper_n ; ^ keeper_n 0
+->amh Teb_aqi_n
+*** kerosene_n ; ^ kerosene_n 0
+->amh gaz_n
+->amh lamb_a_n
+*** kettle_n ; ^ kettle_n 0
+->amh jebena_n
+*** key_n ; ^ key_n 0
+->amh mefca_n
+->amh mekfeca_n
+->amh fnC_n
+*** khaki_n ; ^ khaki_n 0
+->amh kaki_n
+*** kick_n ; ^ kick_n 0
+->amh 'rgC_a_n
+*** kid_n ; ^ kid_n 0
+->amh wri_n
+->amh glgel_n
+*** kidnapper_n ; ^ kidnapper_n 0
+->amh Telafi_n
+->amh 'af_aN_n
+*** kidney_n ; ^ kidney_n 0
+->amh kulalit_n
+*** killer_n ; ^ killer_n 0
+->amh geday_n
+*** killing_n ; ^ killing_n 0
+->amh gdy_a_n
+*** kilo_n ; ^ kilo_n 0
+->amh kilo_n
+*** kin_n ; ^ kin_n 0
+->amh tewel_aj_n
+*** kindness_n ; ^ kindness_n 0
+->amh deg_n_et_n
+*** kingship_n ; ^ kingship_n 0
+->amh 'alga_n
+*** kink_n ; ^ kink_n 0
+->amh qWrnCaC_n
+*** kinsman_n ; ^ kinsman_n 0
+->amh zemed_n
+*** kiosk_n ; ^ kiosk_n 0
+->amh kiyosk_n
+*** knack_n ; ^ knack_n 0
+->amh slt_n
+*** knapsack_n ; ^ knapsack_n 0
+->amh 'akofada_n
+*** knee_n ; ^ knee_n 0
+->amh gulbet_n
+*** knife_n ; ^ knife_n 0
+->amh bil_awa_n
+*** knot_n ; ^ knot_n 0
+->amh qWTr_n
+*** knowledge_n ; ^ knowledge_n 0
+->amh 'a'mro_n
+*** knuckle_n ; ^ knuckle_n 0
+->amh 'aSq_n
+*** laboratory_n ; ^ laboratory_n 0
+->amh laboratWar_n
+*** labour_n ; ^ labour_n 0
+->amh mT_n
+*** lack_n ; ^ lack_n 0
+->amh 'Tot_n
+->amh cg_r_n
+->amh gud_let_n
+*** ladder_n ; ^ ladder_n 0
+->amh meselal_n
+*** ladle_n ; ^ ladle_n 0
+->amh Clfa_n
+*** lady_n ; ^ lady_n 0
+->amh 'm_ebEt_n
+*** lady-in-waiting_n ; ^ lady-in-waiting_n 0
+->amh dengeTur_n
+*** lair_n ; ^ lair_n 0
+->amh gurE_n
+->amh gorE_n
+*** lamb_n ; ^ lamb_n 0
+->amh glgel_n
+->amh Tb_ot_n
+*** lamentation_n ; ^ lamentation_n 0
+->amh wey_ota_n
+->amh lqso_n
+*** lamp_n ; ^ lamp_n 0
+->amh fanos_n
+->amh mebrat_n
+->amh lamb_a_n
+*** lance_n ; ^ lance_n 0
+->amh 'afoqE_n
+->amh Tor_n
+*** land_n ; ^ land_n 0
+->amh merEt_n
+->amh mdr_n
+*** landlady_n ; ^ landlady_n 0
+->amh qel_abi_n
+*** landlord_n ; ^ landlord_n 0
+->amh balab_at_n
+->amh melkeN_a_n
+*** landslide_n ; ^ landslide_n 0
+->amh nada_n
+*** language_n ; ^ language_n 0
+->amh ls_an_n
+->amh qWanqWa_n
+->amh 'af_n
+*** lantern_n ; ^ lantern_n 0
+->amh fanos_n
+*** lap_n ; ^ lap_n 0
+->amh Cn_n
+->amh guy_a_n
+*** larder_n ; ^ larder_n 0
+->amh majet_n
+*** larva_n ; ^ larva_n 0
+->amh 'C_n
+*** lashing_n ; ^ lashing_n 0
+->amh grfiya_n
+*** lasso_n ; ^ lasso_n 0
+->amh xemqeq_o_n
+*** lather_n ; ^ lather_n 0
+->amh 'arefa_n
+*** latitude_n ; ^ latitude_n 0
+->amh kEkros_n
+*** lattice_n ; ^ lattice_n 0
+->amh rbrab_n
+*** laughing-stock_n ; ^ laughing-stock_n 0
+->amh mez_ebabeca_n
+*** laughter_n ; ^ laughter_n 0
+->amh saq_n
+*** lavatory_n ; ^ lavatory_n 0
+->amh meS_edaja_n
+*** law_n ; ^ law_n 0
+->amh dng_agE_n
+->amh demb_n
+*** lawyer_n ; ^ lawyer_n 0
+->amh Tebeqa_n
+*** layman_n ; ^ layman_n 0
+->amh mehay_m_n
+*** laziness_n ; ^ laziness_n 0
+->amh reheTn_et_n
+->amh snfn_a_n
+*** lazybones_n ; ^ lazybones_n 0
+->amh telkas_a_n
+*** lead_n ; ^ lead_n 0
+->amh rsas_n
+*** leader_n ; ^ leader_n 0
+->amh meri_n
+->amh 'awra_n
+*** leadership_n ; ^ leadership_n 0
+->amh merin_et_n
+->amh 'am_erar_n
+*** leaf_n ; ^ leaf_n 0
+->amh qTel_n
+*** lean-to_n ; ^ lean-to_n 0
+->amh zanigab_a_n
+*** leap_n ; ^ leap_n 0
+->amh zl_iya_n
+*** learner_n ; ^ learner_n 0
+->amh lemaj_n
+->amh temari_n
+*** learning_n ; ^ learning_n 0
+->amh liqn_et_n
+*** leather_n ; ^ leather_n 0
+->amh qoda_n
+->amh Tefr_n
+*** lectern_n ; ^ lectern_n 0
+->amh 'atrons_n
+*** ledger_n ; ^ ledger_n 0
+->amh mezgeb_n
+*** left_n ; ^ left_n 0
+->amh gra_n
+*** legacy_n ; ^ legacy_n 0
+->amh qrs_n
+*** legend_n ; ^ legend_n 0
+->amh 'afetarik_n
+*** lemonade_n ; ^ lemonade_n 0
+->amh lominat_n
+*** lender_n ; ^ lender_n 0
+->amh 'awax_n
+->amh 'abed_ari_n
+*** length_n ; ^ length_n 0
+->amh 'rzmanE_n
+*** lens_n ; ^ lens_n 0
+->amh ms_rit_n
+*** leopard_n ; ^ leopard_n 0
+->amh nebr_n
+*** leprosy_n ; ^ leprosy_n 0
+->amh qumTn_a_n
+*** lesson_n ; ^ lesson_n 0
+->amh tmhrt_n
+*** lethargy_n ; ^ lethargy_n 0
+->amh qzzta_n
+*** letter_n ; ^ letter_n 0
+->amh debdab_E_n
+->amh wereqet_n
+->amh posta_n
+->amh fidel_n
+*** lettuce_n ; ^ lettuce_n 0
+->amh selaTa_n
+*** levy_n ; ^ levy_n 0
+->amh qereT_n
+*** liar_n ; ^ liar_n 0
+->amh politikeN_a_n
+->amh 'abay_n
+->amh qeTafi_n
+->amh weslat_a_n
+->amh qesafac_n
+*** libertine_n ; ^ libertine_n 0
+->amh meren_n
+->amh lq__n
+->amh hiyaj_n
+*** liberty_n ; ^ liberty_n 0
+->amh neSan_et_n
+*** lid_n ; ^ lid_n 0
+->amh mexef_eNa_n
+->amh 'f_iya_n
+*** lie_n ; ^ lie_n 0
+->amh wsltn_a_n
+->amh 'as_et_n
+*** lies_n ; ^ lies_n 0
+->amh wxet_n
+*** life_n ; ^ life_n 0
+->amh nuro_n
+*** light_n ; ^ light_n 0
+->amh brhan_n
+->amh mebrat_n
+*** lightning_n ; ^ lightning_n 0
+->amh braq_n
+*** lime_n ; ^ lime_n 0
+->amh lomi_n
+*** limit_n ; ^ limit_n 0
+->amh gedeb_n
+->amh dik_a_n
+->amh wes_en_n
+*** limitation_n ; ^ limitation_n 0
+->amh gedeb_n
+*** line_n ; ^ line_n 0
+->amh redf_n
+*** linseed_n ; ^ linseed_n 0
+->amh telba_n
+*** lion_n ; ^ lion_n 0
+->amh 'anbes_a_n
+*** lip_n ; ^ lip_n 0
+->amh kenfer_n
+*** liquid_n ; ^ liquid_n 0
+->amh fesax_n
+->amh weret_n
+*** liquor_n ; ^ liquor_n 0
+->amh meTeT__n
+*** listener_n ; ^ listener_n 0
+->amh 'admaC_n
+*** litany_n ; ^ litany_n 0
+->amh liTon_n
+*** litigant_n ; ^ litigant_n 0
+->amh mog_ac_n
+->amh tekerakari_n
+*** litre_n ; ^ litre_n 0
+->amh litr_n
+*** litter_n ; ^ litter_n 0
+->amh qoxaxa_n
+*** liturgy_n ; ^ liturgy_n 0
+->amh qd_asE_n
+*** liver_n ; ^ liver_n 0
+->amh gub_et_n
+*** livestock_n ; ^ livestock_n 0
+->amh kebt_n
+*** living-room_n ; ^ living-room_n 0
+->amh 'lfN__n
+*** lizard_n ; ^ lizard_n 0
+->amh 'nxlalit_n
+*** load_n ; ^ load_n 0
+->amh xekm_n
+->amh Cnet_n
+*** loafer_n ; ^ loafer_n 0
+->amh gelwad_a_n
+*** loan_n ; ^ loan_n 0
+->amh bd_r_n
+*** lock_n ; ^ lock_n 0
+->amh kWelkWel_o_n
+*** locust_n ; ^ locust_n 0
+->amh 'anbeTa_n
+*** lodger_n ; ^ lodger_n 0
+->amh temeg_abi__n
+*** lodging_n ; ^ lodging_n 0
+->amh maderya_n
+->amh mr_it_n
+*** log_n ; ^ log_n 0
+->amh gndil_a_n
+*** loiterer_n ; ^ loiterer_n 0
+->amh 'areTraC_n
+->amh 'adesdax_n
+*** loneliness_n ; ^ loneliness_n 0
+->amh bc_eN_n_et_n
+*** longing_n ; ^ longing_n 0
+->amh nafqot_n
+*** longitude_n ; ^ longitude_n 0
+->amh kEntros_n
+*** look_n ; ^ look_n 0
+->amh geS_ta_n
+*** loop_n ; ^ loop_n 0
+->amh qndil_a_n
+->amh qrqab_n
+*** looter_n ; ^ looter_n 0
+->amh mezbari_n
+*** lord_n ; ^ lord_n 0
+->amh gEta_n
+*** lorry_n ; ^ lorry_n 0
+->amh kamiwon_n
+*** loser_n ; ^ loser_n 0
+->amh tebeyi_n
+->amh texen_afi_n
+*** lottery_n ; ^ lottery_n 0
+->amh loteri_n
+*** louse_n ; ^ louse_n 0
+->amh qmal_n
+*** love_n ; ^ love_n 0
+->amh zEro_n
+->amh fqr_n
+*** lover_n ; ^ lover_n 0
+->amh wedad_n
+->amh wedaj_n
+->amh fqreN_a_n
+->amh tefaqari_n
+->amh wxm_a_n
+*** luck_n ; ^ luck_n 0
+->amh gmbar_n
+->amh 'd_l_n
+*** luggage_n ; ^ luggage_n 0
+->amh gWaz_n
+*** lull_n ; ^ lull_n 0
+->amh fata_n
+*** lullaby_n ; ^ lullaby_n 0
+->amh 'x_ruru_n
+*** lumber_n ; ^ lumber_n 0
+->amh Terb_n
+*** lump_n ; ^ lump_n 0
+->amh 'ankWar_n
+*** lunch_n ; ^ lunch_n 0
+->amh msa_n
+*** lust_n ; ^ lust_n 0
+->amh ftwet_n
+->amh zm_ut_n
+*** luxury_n ; ^ luxury_n 0
+->amh dlot_n
+*** lynx_n ; ^ lynx_n 0
+->amh neberart_n
+*** machine_n ; ^ machine_n 0
+->amh mekina_n
+*** magic_n ; ^ magic_n 0
+->amh metet_n
+->amh Tnqola_n
+*** magician_n ; ^ magician_n 0
+->amh TenqWay_n
+*** magnet_n ; ^ magnet_n 0
+->amh megneTis_n
+*** magnitude_n ; ^ magnitude_n 0
+->amh meTen_n
+*** maiden_n ; ^ maiden_n 0
+->amh kWered_a_n
+*** mail_n ; ^ mail_n 0
+->amh posta_n
+*** mailman_n ; ^ mailman_n 0
+->amh posteN_a_n
+*** main_n ; ^ main_n 0
+->amh wan_eN_a_n
+*** mainstay_n ; ^ mainstay_n 0
+->amh 'al_eNta_n
+*** maize_n ; ^ maize_n 0
+->amh beq_ol_o_n
+*** majesty_n ; ^ majesty_n 0
+->amh grma_n
+*** major_n ; ^ major_n 0
+->amh xaleqa_n
+*** malaria_n ; ^ malaria_n 0
+->amh weba_n
+->amh ndad_n
+*** malice_n ; ^ malice_n 0
+->amh tenkol_n
+*** malingerer_n ; ^ malingerer_n 0
+->amh sebebeN_a_n
+*** maltreatment_n ; ^ maltreatment_n 0
+->amh Tqat_n
+*** man_n ; ^ man_n 0
+->amh sew_n
+->amh seb'_n
+*** management_n ; ^ management_n 0
+->amh 'ay_ayaz_n
+*** mandate_n ; ^ mandate_n 0
+->amh wk_ln_a_n
+->amh wk_ela_n
+*** mane_n ; ^ mane_n 0
+->amh gam_a_n
+*** mangle_n ; ^ mangle_n 0
+->amh meCmeqiya_n
+*** manner_n ; ^ manner_n 0
+->amh geS_ta_n
+->amh slt_n
+->amh reged_n
+->amh 'akW_ahWan_n
+->amh qT_n
+*** manners_n ; ^ manners_n 0
+->amh Tebay_n
+*** mantle_n ; ^ mantle_n 0
+->amh kab_a_n
+*** manure_n ; ^ manure_n 0
+->amh fg_n
+*** map_n ; ^ map_n 0
+->amh karta_n
+*** marbles_n ; ^ marbles_n 0
+->amh by__n
+*** mare_n ; ^ mare_n 0
+->amh bazra_n
+*** mark_n ; ^ mark_n 0
+->amh wT_Et_n
+->amh mlk_t_n
+*** market_n ; ^ market_n 0
+->amh xem_eta_n
+->amh gebeya_n
+*** marketplace_n ; ^ marketplace_n 0
+->amh gebeya_n
+*** marks_n ; ^ marks_n 0
+->amh 'ar_ami_n
+*** marksman_n ; ^ marksman_n 0
+->amh 'an_eTaTari_n
+*** marksmanship_n ; ^ marksmanship_n 0
+->amh tekWaxn_et_n
+*** marmalade_n ; ^ marmalade_n 0
+->amh marmelata_n
+*** marriage_n ; ^ marriage_n 0
+->amh gabc_a_n
+*** marrow_n ; ^ marrow_n 0
+->amh qlTm_n
+*** marvel_n ; ^ marvel_n 0
+->amh dnq_n
+*** mason_n ; ^ mason_n 0
+->amh gnbeN_a_n
+*** mass_n ; ^ mass_n 0
+->amh qd_asE_n
+*** massacre_n ; ^ massacre_n 0
+->amh fj_t_n
+->amh 'lqit__n
+*** masseur_n ; ^ masseur_n 0
+->amh wegEx_a_n
+*** massiveness_n ; ^ massiveness_n 0
+->amh gzfet_n
+->amh gzef_n
+*** master_n ; ^ master_n 0
+->amh geZ_n
+->amh gEta_n
+*** mat_n ; ^ mat_n 0
+->amh mnTaf_n
+*** match_n ; ^ match_n 0
+->amh gTmiya_n
+*** matches_n ; ^ matches_n 0
+->amh kbrit_n
+*** mathematics_n ; ^ mathematics_n 0
+->amh matEmatik_n
+*** matrimony_n ; ^ matrimony_n 0
+->amh gabc_a_n
+*** matter_n ; ^ matter_n 0
+->amh qoxaxa_n
+->amh neger_n
+->amh gud_ay_n
+*** mattress_n ; ^ mattress_n 0
+->amh frax_n
+*** mayor_n ; ^ mayor_n 0
+->amh kentiba_n
+*** meadow_n ; ^ meadow_n 0
+->amh mesk_n
+*** meal_n ; ^ meal_n 0
+->amh mgb_n
+*** meaning_n ; ^ meaning_n 0
+->amh fc__n
+*** means_n ; ^ means_n 0
+->amh zedE_n
+*** measles_n ; ^ measles_n 0
+->amh kuf_N__n
+*** measure_n ; ^ measure_n 0
+->amh meTen_n
+*** measurement_n ; ^ measurement_n 0
+->amh lk__n
+*** mechanic_n ; ^ mechanic_n 0
+->amh mEkanik_n
+*** medal_n ; ^ medal_n 0
+->amh mEday_n
+*** mediator_n ; ^ mediator_n 0
+->amh xmagl_E_n
+*** medicament_n ; ^ medicament_n 0
+->amh medhanit_n
+*** medicine_n ; ^ medicine_n 0
+->amh medhanit_n
+*** medley_n ; ^ medley_n 0
+->amh wTnqT_n
+*** meeting_n ; ^ meeting_n 0
+->amh xengo_n
+->amh sbseba_n
+*** melancholy_n ; ^ melancholy_n 0
+->amh tk_azE_n
+*** melting-pot_n ; ^ melting-pot_n 0
+->amh kewr_n
+*** member_n ; ^ member_n 0
+->amh 'abal_n
+->amh 'akal_n
+*** membership_n ; ^ membership_n 0
+->amh 'abaln_et_n
+*** membrane_n ; ^ membrane_n 0
+->amh krtas_n
+*** memorandum_n ; ^ memorandum_n 0
+->amh mastawexa_n
+*** memories_n ; ^ memories_n 0
+->amh tz_ta_n
+*** memory_n ; ^ memory_n 0
+->amh tz_ta_n
+*** menace_n ; ^ menace_n 0
+->amh zac_a_n
+*** merchant_n ; ^ merchant_n 0
+->amh 'atrafi_n
+->amh neg_adE_n
+*** mercury_n ; ^ mercury_n 0
+->amh bazEqa_n
+*** merrymaking_n ; ^ merrymaking_n 0
+->amh fenTezy_a_n
+*** mess_n ; ^ mess_n 0
+->amh zbrqrq_n
+*** message_n ; ^ message_n 0
+->amh melakt_n
+->amh melkt_n
+*** messenger_n ; ^ messenger_n 0
+->amh telalaki_n
+->amh melakteN_a_n
+->amh telaki_n
+->amh mel'kteN_a_n
+*** metal_n ; ^ metal_n 0
+->amh bret_n
+*** meter_n ; ^ meter_n 0
+->amh qWeTari_n
+*** method_n ; ^ method_n 0
+->amh zedE_n
+->amh menged_n
+->amh feliT_n
+->amh qT_n
+*** metre_n ; ^ metre_n 0
+->amh mEtr_n
+*** metropolis_n ; ^ metropolis_n 0
+->amh medina_n
+*** metropolitan_n ; ^ metropolitan_n 0
+->amh ketemE_n
+*** microscope_n ; ^ microscope_n 0
+->amh maykroskop__n
+*** middle_n ; ^ middle_n 0
+->amh mehak_el_n
+->amh 'ag_amax_n
+->amh mekak_el_n
+*** middleman_n ; ^ middleman_n 0
+->amh del_ala_n
+*** midget_n ; ^ midget_n 0
+->amh CebaT_a_n
+->amh dnk_n
+*** midwife_n ; ^ midwife_n 0
+->amh 'aw_alaj_n
+*** mile_n ; ^ mile_n 0
+->amh mayl_n
+*** milk_n ; ^ milk_n 0
+->amh wetet_n
+*** milk-teeth_n ; ^ milk-teeth_n 0
+->amh gg__n
+*** milkmaid_n ; ^ milkmaid_n 0
+->amh 'alabi_n
+*** milksop_n ; ^ milksop_n 0
+->amh qesesteN_a_n
+*** mill_n ; ^ mill_n 0
+->amh wefCo_n
+->amh babur_n
+*** million_n ; ^ million_n 0
+->amh mil_iyon_n
+*** millstone_n ; ^ millstone_n 0
+->amh medeq_oxa_n
+*** mind_n ; ^ mind_n 0
+->amh 'a'mro_n
+->amh qelb_n
+*** minister_n ; ^ minister_n 0
+->amh ministr_n
+*** ministry_n ; ^ ministry_n 0
+->amh ministEr_n
+->amh qs_n_a_n
+*** minority_n ; ^ minority_n 0
+->amh 'anasa_n
+*** minute_n ; ^ minute_n 0
+->amh deqiqa_n
+*** miracle_n ; ^ miracle_n 0
+->amh tam_r_n
+->amh te'am_r_n
+*** mire_n ; ^ mire_n 0
+->amh Cqa_n
+*** mirror_n ; ^ mirror_n 0
+->amh mestewat_n
+*** misbehaviour_n ; ^ misbehaviour_n 0
+->amh wsltn_a_n
+*** mischief_n ; ^ mischief_n 0
+->amh xer__n
+->amh tenkol_n
+->amh qbTet_n
+*** mischievousness_n ; ^ mischievousness_n 0
+->amh meltin_et_n
+->amh xer_eN_n_et_n
+*** miser_n ; ^ miser_n 0
+->amh nefagi_n
+->amh qWenqWan_a_n
+*** miserliness_n ; ^ miserliness_n 0
+->amh nfget_n
+*** misery_n ; ^ misery_n 0
+->amh fd_a_n
+->amh gWsqWel_a_n
+*** misfortune_n ; ^ misfortune_n 0
+->amh 'abesa_n
+->amh Tos_n
+->amh mezez_n
+->amh mekera_n
+*** mist_n ; ^ mist_n 0
+->amh gum_n
+->amh Cgag_n
+*** mistake_n ; ^ mistake_n 0
+->amh seha_n
+->amh Tfat_n
+->amh gud_let_n
+*** mistakes_n ; ^ mistakes_n 0
+->amh gemena_n
+*** mister_n ; ^ mister_n 0
+->amh 'ato_n
+*** mistress_n ; ^ mistress_n 0
+->amh qm_T_n
+->amh qubat_n
+->amh wxm_a_n
+*** misunderstanding_n ; ^ misunderstanding_n 0
+->amh gC_t_n
+*** mixture_n ; ^ mixture_n 0
+->amh qlq_l_n
+->amh dbl_q_n
+*** mobilization_n ; ^ mobilization_n 0
+->amh ktet_n
+*** mocker_n ; ^ mocker_n 0
+->amh 'al_agaC_n
+->amh xerdaj_n
+->amh 'almaC_n
+->amh qel_aj_n
+->amh fEz_eN_a_n
+*** mockery_n ; ^ mockery_n 0
+->amh lgCa_n
+->amh fEz_n
+->amh meqel_eja_n
+*** mode_n ; ^ mode_n 0
+->amh slt_n
+->amh feliT_n
+*** model_n ; ^ model_n 0
+->amh msl_n
+->amh 'ar'aya_n
+->amh modEl_n
+*** moisture_n ; ^ moisture_n 0
+->amh 'rTbet_n
+*** molestation_n ; ^ molestation_n 0
+->amh wekeba_n
+*** moment_n ; ^ moment_n 0
+->amh qSbet_n
+*** monarch_n ; ^ monarch_n 0
+->amh balalga_n
+*** money_n ; ^ money_n 0
+->amh genzeb_n
+->amh nway_n
+*** monkey_n ; ^ monkey_n 0
+->amh znjero_n
+->amh ToTa_n
+->amh jnjero_n
+*** monologue_n ; ^ monologue_n 0
+->amh menebanb_n
+*** month_n ; ^ month_n 0
+->amh wer_n
+*** moon_n ; ^ moon_n 0
+->amh Cereqa_n
+*** mop_n ; ^ mop_n 0
+->amh mewelweya_n
+*** morale_n ; ^ morale_n 0
+->amh moral_n
+*** morals_n ; ^ morals_n 0
+->amh moral_n
+*** morning_n ; ^ morning_n 0
+->amh TWat_n
+*** moron_n ; ^ moron_n 0
+->amh 'ankola_n
+*** mortar_n ; ^ mortar_n 0
+->amh 'ad_afnE_n
+->amh muqeC_a_n
+->amh siminto_n
+*** mortgage_n ; ^ mortgage_n 0
+->amh meyaZa_n
+*** mosque_n ; ^ mosque_n 0
+->amh mesgid_n
+*** moth_n ; ^ moth_n 0
+->amh qnqn_n
+*** mother_n ; ^ mother_n 0
+->amh 'n_at_n
+*** motherhood_n ; ^ motherhood_n 0
+->amh 'n_atn_et_n
+*** motion_n ; ^ motion_n 0
+->amh nqn_aqE_n
+*** motorcycle_n ; ^ motorcycle_n 0
+->amh deqdeq_it_n
+*** mountain_n ; ^ mountain_n 0
+->amh gara_n
+->amh terara_n
+->amh gora_n
+*** mourner_n ; ^ mourner_n 0
+->amh 'azenteN_a_n
+->amh 'argaj_n
+->amh leq_esteN_a_n
+->amh qebari_n
+*** mourning_n ; ^ mourning_n 0
+->amh lqso_n
+*** mouse_n ; ^ mouse_n 0
+->amh 'ayT_n
+*** moustache_n ; ^ moustache_n 0
+->amh riz_n
+*** mouth_n ; ^ mouth_n 0
+->amh 'af_n
+*** mouthful_n ; ^ mouthful_n 0
+->amh gur_ax_n
+->amh gurxa_n
+*** movie_n ; ^ movie_n 0
+->amh sinima_n
+*** mower_n ; ^ mower_n 0
+->amh 'aCaj_n
+*** mucus_n ; ^ mucus_n 0
+->amh nfT_n
+*** mud_n ; ^ mud_n 0
+->amh Cqa_n
+*** mug_n ; ^ mug_n 0
+->amh kub_ay_a_n
+*** mule_n ; ^ mule_n 0
+->amh beqlo_n
+*** multitude_n ; ^ multitude_n 0
+->amh mat_n
+*** murmur_n ; ^ murmur_n 0
+->amh gWrmrmta_n
+*** muscle_n ; ^ muscle_n 0
+->amh Tunca_n
+*** mushroom_n ; ^ mushroom_n 0
+->amh 'nguday_n
+*** music_n ; ^ music_n 0
+->amh muziqa_n
+*** musician_n ; ^ musician_n 0
+->amh muziqeN_a_n
+*** muslin_n ; ^ muslin_n 0
+->amh gmja_n
+*** mustard_n ; ^ mustard_n 0
+->amh senafC__n
+*** mutter_n ; ^ mutter_n 0
+->amh gWrmrmta_n
+*** muzzle_n ; ^ muzzle_n 0
+->amh mexeb_ebiya_n
+->amh 'afemuz_n
+*** myrrh_n ; ^ myrrh_n 0
+->amh kerbE_n
+*** mythology_n ; ^ mythology_n 0
+->amh 'afetarik_n
+*** nagger_n ; ^ nagger_n 0
+->amh tenetaraki_n
+->amh 'aselci_n
+*** nail_n ; ^ nail_n 0
+->amh msmar_n
+*** nakedness_n ; ^ nakedness_n 0
+->amh 'rqan_n
+*** name_n ; ^ name_n 0
+->amh sm_n
+*** namesake_n ; ^ namesake_n 0
+->amh mokxE_n
+*** narrator_n ; ^ narrator_n 0
+->amh 'awgi_n
+->amh 'awri_n
+->amh ter_aki_n
+*** natives_n ; ^ natives_n 0
+->amh 'agerE_n
+*** nature_n ; ^ nature_n 0
+->amh Tebay_n
+->amh tefeTro_n
+*** naught_n ; ^ naught_n 0
+->amh zEro_n
+*** naughtiness_n ; ^ naughtiness_n 0
+->amh qbTet_n
+*** nausea_n ; ^ nausea_n 0
+->amh kl_bxta_n
+*** navel_n ; ^ navel_n 0
+->amh 'mbrt_n
+*** necessity_n ; ^ necessity_n 0
+->amh gd__n
+*** neck_n ; ^ neck_n 0
+->amh 'anget_n
+*** necklace_n ; ^ necklace_n 0
+->amh dri_n
+*** necktie_n ; ^ necktie_n 0
+->amh kravat_n
+*** need_n ; ^ need_n 0
+->amh 'Tot_n
+*** needle_n ; ^ needle_n 0
+->amh merfE_n
+*** needlework_n ; ^ needlework_n 0
+->amh Tlf_n
+*** negation_n ; ^ negation_n 0
+->amh 'aluta_n
+*** negative_n ; ^ negative_n 0
+->amh 'aluta_n
+*** negligence_n ; ^ negligence_n 0
+->amh cel_ta_n
+*** negotiation_n ; ^ negotiation_n 0
+->amh drd_r_n
+*** negotiator_n ; ^ negotiator_n 0
+->amh tederadari_n
+*** neighbour_n ; ^ neighbour_n 0
+->amh gorebEt_n
+->amh wesenteN_a_n
+*** neighbourhood_n ; ^ neighbourhood_n 0
+->amh gurbtn_a_n
+->amh 'aqrab_iya_n
+*** neighbours_n ; ^ neighbours_n 0
+->amh gorebEtam_n
+*** nerve_n ; ^ nerve_n 0
+->amh jm_at_n
+*** net_n ; ^ net_n 0
+->amh merbeb_n
+*** nettle_n ; ^ nettle_n 0
+->amh 'aleblabit_n
+*** neutrality_n ; ^ neutrality_n 0
+->amh gelelteN_an_et_n
+*** news_n ; ^ news_n 0
+->amh zEna_n
+->amh werE_n
+*** nickel_n ; ^ nickel_n 0
+->amh nikEl_n
+*** night_n ; ^ night_n 0
+->amh lElit_n
+*** nightmare_n ; ^ nightmare_n 0
+->amh qZet_n
+*** nil_n ; ^ nil_n 0
+->amh zEro_n
+*** nine_n ; ^ nine_n 0
+->amh zeTeN__n
+*** ninety_n ; ^ ninety_n 0
+->amh zeTena_n
+*** ninth_n ; ^ ninth_n 0
+->amh zeTeneN_a_n
+*** nipper_n ; ^ nipper_n 0
+->amh kutara_n
+*** nits_n ; ^ nits_n 0
+->amh qCam_n
+*** nobody_n ; ^ nobody_n 0
+->amh kutara_n
+*** noise_n ; ^ noise_n 0
+->amh CaCata_n
+->amh Cuhet_n
+->amh cacata_n
+*** nomad_n ; ^ nomad_n 0
+->amh zel_an_n
+*** nomenclature_n ; ^ nomenclature_n 0
+->amh sy_amE_n
+*** nomination_n ; ^ nomination_n 0
+->amh Tqoma_n
+*** nominee_n ; ^ nominee_n 0
+->amh Tq_um_n
+*** noose_n ; ^ noose_n 0
+->amh xemqeq_o_n
+*** north_n ; ^ north_n 0
+->amh semEn_n
+*** nose_n ; ^ nose_n 0
+->amh 'afnCa_n
+*** nostalgia_n ; ^ nostalgia_n 0
+->amh nafqot_n
+->amh wl_ta_n
+->amh tz_ta_n
+*** nostrils_n ; ^ nostrils_n 0
+->amh sern_n
+*** note_n ; ^ note_n 0
+->amh mastawexa_n
+*** nothing_n ; ^ nothing_n 0
+->amh 'imnt_n
+*** notice_n ; ^ notice_n 0
+->amh mastaweqiya_n
+->amh masTenqeqiya_n
+*** noun_n ; ^ noun_n 0
+->amh zer_n
+*** nourishment_n ; ^ nourishment_n 0
+->amh mgb_n
+*** novice_n ; ^ novice_n 0
+->amh jemari_n
+*** nudge_n ; ^ nudge_n 0
+->amh gWs_ema_n
+*** nudity_n ; ^ nudity_n 0
+->amh 'rqan_n
+*** nuisance_n ; ^ nuisance_n 0
+->amh TaTa_n
+->amh denqara_n
+*** number_n ; ^ number_n 0
+->amh qWTr_n
+*** nun_n ; ^ nun_n 0
+->amh mebel_et_n
+*** nurse_n ; ^ nurse_n 0
+->amh ners_n
+->amh mogzit_n
+*** nut_n ; ^ nut_n 0
+->amh dado_n
+->amh gewz_n
+->amh bulon_n
+*** oak_n ; ^ oak_n 0
+->amh bel_uT_n
+*** oar_n ; ^ oar_n 0
+->amh meqzefiya_n
+*** oarsman_n ; ^ oarsman_n 0
+->amh qezafi_n
+*** oath_n ; ^ oath_n 0
+->amh mal_a_n
+*** oats_n ; ^ oats_n 0
+->amh 'aj_a_n
+*** object_n ; ^ object_n 0
+->amh tesabi_n
+->amh 'qa_n
+*** objection_n ; ^ objection_n 0
+->amh teqawmo_n
+*** objective_n ; ^ objective_n 0
+->amh gb_n
+*** objector_n ; ^ objector_n 0
+->amh teqawami_n
+*** obligation_n ; ^ obligation_n 0
+->amh gd_Eta_n
+->amh gd_aj_n
+->amh gd__n
+*** observer_n ; ^ observer_n 0
+->amh temelkac_n
+*** obstacle_n ; ^ obstacle_n 0
+->amh 'k_l_n
+->amh denqara_n
+*** obstinacy_n ; ^ obstinacy_n 0
+->amh 'l_k_n
+*** obstruction_n ; ^ obstruction_n 0
+->amh mag_eja_n
+*** occupation_n ; ^ occupation_n 0
+->amh tegbar_n
+*** ocean_n ; ^ ocean_n 0
+->amh wqyanos_n
+*** offender_n ; ^ offender_n 0
+->amh 'aTfi_n
+->amh TfateN_a_n
+*** office_n ; ^ office_n 0
+->amh biro_n
+*** officer_n ; ^ officer_n 0
+->amh mekWen_n_n
+*** official_n ; ^ official_n 0
+->amh xum_n
+*** oil_n ; ^ oil_n 0
+->amh zeyt_n
+*** ointment_n ; ^ ointment_n 0
+->amh met_axa_n
+->amh qbat_n
+*** omission_n ; ^ omission_n 0
+->amh gdfet_n
+*** onion_n ; ^ onion_n 0
+->amh xnkurt_n
+*** opener_n ; ^ opener_n 0
+->amh mekfeca_n
+*** opening_n ; ^ opening_n 0
+->amh mexWalekiya_n
+->amh qedada_n
+*** opium_n ; ^ opium_n 0
+->amh 'afyon_n
+*** opponent_n ; ^ opponent_n 0
+->amh teqawami_n
+*** opposite_n ; ^ opposite_n 0
+->amh teqarani_n
+*** opposition_n ; ^ opposition_n 0
+->amh teqarno_n
+->amh teqawmo_n
+->amh teqawami_n
+*** oppression_n ; ^ oppression_n 0
+->amh Cq_ona_n
+->amh Tqat_n
+*** oppressor_n ; ^ oppressor_n 0
+->amh CeqW_aN_n
+->amh 'aTqi_n
+*** opulence_n ; ^ opulence_n 0
+->amh dlot_n
+*** orange_n ; ^ orange_n 0
+->amh brtukan_n
+*** orator_n ; ^ orator_n 0
+->amh tenagari_n
+*** order_n ; ^ order_n 0
+->amh t'zaz_n
+->amh mazeZa_n
+*** ordination_n ; ^ ordination_n 0
+->amh khnet_n
+*** organ_n ; ^ organ_n 0
+->amh 'arganon_n
+->amh 'akal_n
+*** organization_n ; ^ organization_n 0
+->amh drj_t_n
+*** organizer_n ; ^ organizer_n 0
+->amh 'aq_enebabari_n
+*** origin_n ; ^ origin_n 0
+->amh men_exo_n
+*** ornament_n ; ^ ornament_n 0
+->amh gET_n
+*** ounce_n ; ^ ounce_n 0
+->amh weqEt_n
+*** outbreak_n ; ^ outbreak_n 0
+->amh fndata_n
+*** outcome_n ; ^ outcome_n 0
+->amh wT_Et_n
+*** outlet_n ; ^ outlet_n 0
+->amh mewCa_n
+*** output_n ; ^ output_n 0
+->amh wT_Et_n
+*** outside_n ; ^ outside_n 0
+->amh dej__n
+->amh wC__n
+*** oven_n ; ^ oven_n 0
+->amh mdj_a_n
+*** overcoat_n ; ^ overcoat_n 0
+->amh kap_ort_n
+*** overflow_n ; ^ overflow_n 0
+->amh mulat_n
+*** owl_n ; ^ owl_n 0
+->amh gug_ut_n
+*** owner_n ; ^ owner_n 0
+->amh gEta_n
+->amh balebEt_n
+*** ox_n ; ^ ox_n 0
+->amh berE_n
+*** package_n ; ^ package_n 0
+->amh Tq_l_n
+*** packet_n ; ^ packet_n 0
+->amh pak_o_n
+*** packhorse_n ; ^ packhorse_n 0
+->amh 'agas_es_n
+->amh megaZa_n
+*** pact_n ; ^ pact_n 0
+->amh kidan_n
+*** pad_n ; ^ pad_n 0
+->amh lT_fat_n
+*** page_n ; ^ page_n 0
+->amh geS__n
+*** pair_n ; ^ pair_n 0
+->amh Tnd_n
+*** pajamas_n ; ^ pajamas_n 0
+->amh pijama_n
+*** palace_n ; ^ palace_n 0
+->amh gb_i_n
+*** palate_n ; ^ palate_n 0
+->amh tn_aga_n
+*** palm_n ; ^ palm_n 0
+->amh medaf_n
+*** pancake_n ; ^ pancake_n 0
+->amh qiT_a_n
+*** panic_n ; ^ panic_n 0
+->amh gr_gr__n
+->amh xb_r_n
+*** panther_n ; ^ panther_n 0
+->amh gs_l_a_n
+*** paper_n ; ^ paper_n 0
+->amh wereqet_n
+->amh max_egiya_n
+*** parable_n ; ^ parable_n 0
+->amh ms_alE_n
+*** parachute_n ; ^ parachute_n 0
+->amh janTla_n
+*** parade_n ; ^ parade_n 0
+->amh self_n
+*** paradise_n ; ^ paradise_n 0
+->amh gen_et_n
+*** paragraph_n ; ^ paragraph_n 0
+->amh 'anqeS_n
+*** parakeet_n ; ^ parakeet_n 0
+->amh beqbeq_a_n
+*** parasite_n ; ^ parasite_n 0
+->amh tewsak_n
+*** parasol_n ; ^ parasol_n 0
+->amh janTla_n
+*** parcel_n ; ^ parcel_n 0
+->amh Tq_l_n
+*** parchment_n ; ^ parchment_n 0
+->amh bran_a_n
+*** pardon_n ; ^ pardon_n 0
+->amh mhret_n
+->amh yqrta_n
+*** parentheses_n ; ^ parentheses_n 0
+->amh qn_f_n
+*** parish_n ; ^ parish_n 0
+->amh sebeka_n
+*** parliament_n ; ^ parliament_n 0
+->amh xengo_n
+->amh parlama_n
+*** parrot_n ; ^ parrot_n 0
+->amh beqbeq_a_n
+*** partiality_n ; ^ partiality_n 0
+->amh 'adlwo_n
+*** participant_n ; ^ participant_n 0
+->amh tekafay_n
+->amh tesatafi_n
+*** partisan_n ; ^ partisan_n 0
+->amh 'arbeN_a_n
+*** partner_n ; ^ partner_n 0
+->amh xerik_n
+*** partnership_n ; ^ partnership_n 0
+->amh xrka_n
+*** partridge_n ; ^ partridge_n 0
+->amh qoq_n
+*** party_n ; ^ party_n 0
+->amh wegen_n
+->amh parti_n
+->amh gbZ_a_n
+*** pass_n ; ^ pass_n 0
+->amh qbb_l_n
+*** passage_n ; ^ passage_n 0
+->amh malefiya_n
+->amh mnbab_n
+*** passageway_n ; ^ passageway_n 0
+->amh met_elalefiya_n
+*** passenger_n ; ^ passenger_n 0
+->amh 'alafi_n
+->amh tegWaZ_n
+*** passive_n ; ^ passive_n 0
+->amh teder_agi_n
+*** pastor_n ; ^ pastor_n 0
+->amh kahn_n
+*** pasture_n ; ^ pasture_n 0
+->amh mag_eja_n
+->amh gTox_n
+*** path_n ; ^ path_n 0
+->amh feleg_n
+*** patient_n ; ^ patient_n 0
+->amh tamami_n
+->amh tak_ami_n
+*** patriarch_n ; ^ patriarch_n 0
+->amh 'abun_n
+->amh betreyark_n
+->amh patryak_n
+*** patriot_n ; ^ patriot_n 0
+->amh 'arbeN_a_n
+*** patriotism_n ; ^ patriotism_n 0
+->amh 'arbeN_n_et_n
+*** patron_n ; ^ patron_n 0
+->amh teTeri_n
+*** paunch_n ; ^ paunch_n 0
+->amh borC_n
+*** pawn_n ; ^ pawn_n 0
+->amh meyaZa_n
+*** pay_n ; ^ pay_n 0
+->amh kfy_a_n
+*** payee_n ; ^ payee_n 0
+->amh tekef_ay_n
+*** payment_n ; ^ payment_n 0
+->amh kfy_a_n
+*** pea_n ; ^ pea_n 0
+->amh 'ater_n
+*** peace_n ; ^ peace_n 0
+->amh 'aman_n
+*** peacefulness_n ; ^ peacefulness_n 0
+->amh 'rgata_n
+->amh selamawin_et_n
+*** peacemaker_n ; ^ peacemaker_n 0
+->amh 'astaraqi_n
+->amh gelagay_n
+*** peach_n ; ^ peach_n 0
+->amh kok_n
+*** peacock_n ; ^ peacock_n 0
+->amh Ta'os_n
+*** peanut_n ; ^ peanut_n 0
+->amh lewz_n
+*** pearl_n ; ^ pearl_n 0
+->amh lul_n
+*** peasant_n ; ^ peasant_n 0
+->amh geberE_n
+*** pebble_n ; ^ pebble_n 0
+->amh kWeret_n
+->amh TeTer_n
+*** pedal_n ; ^ pedal_n 0
+->amh meweswexa_n
+*** peddler_n ; ^ peddler_n 0
+->amh 'azWari_n
+*** pedestrian_n ; ^ pedestrian_n 0
+->amh 'greN_a_n
+*** peel_n ; ^ peel_n 0
+->amh glf_afi_n
+->amh lT_aC_n
+*** peephole_n ; ^ peephole_n 0
+->amh maxol_eqiya_n
+*** peer_n ; ^ peer_n 0
+->amh baleweg_n
+*** peg_n ; ^ peg_n 0
+->amh manTelTeya_n
+->amh mesqeya_n
+*** pelican_n ; ^ pelican_n 0
+->amh sabisa_n
+->amh Pelqan_n
+*** penalty_n ; ^ penalty_n 0
+->amh meq_eCa_n
+->amh meq_eCo_n
+->amh qTat_n
+*** pencil_n ; ^ pencil_n 0
+->amh rsas_n
+*** pendulum_n ; ^ pendulum_n 0
+->amh Zw_aZw_E_n
+*** penis_n ; ^ penis_n 0
+->amh murT_n
+->amh qWla_n
+*** penitentiary_n ; ^ penitentiary_n 0
+->amh wehni_n
+*** pension_n ; ^ pension_n 0
+->amh Tureta_n
+*** penury_n ; ^ penury_n 0
+->amh dhn_et_n
+*** perfection_n ; ^ perfection_n 0
+->amh fS_umn_et_n
+*** perfidy_n ; ^ perfidy_n 0
+->amh qTfet_n
+->amh qeTafin_et_n
+*** perfume_n ; ^ perfume_n 0
+->amh xt_o_n
+*** peril_n ; ^ peril_n 0
+->amh 'adega_n
+*** period_n ; ^ period_n 0
+->amh weqt_n
+->amh zemen_n
+*** permanence_n ; ^ permanence_n 0
+->amh zeleqEta_n
+*** permission_n ; ^ permission_n 0
+->amh feqad_n
+*** permit_n ; ^ permit_n 0
+->amh feqad_n
+*** perpetuity_n ; ^ perpetuity_n 0
+->amh zeleqEta_n
+*** persecutor_n ; ^ persecutor_n 0
+->amh 'as_adaj_n
+*** perseverance_n ; ^ perseverance_n 0
+->amh tgat_n
+*** person_n ; ^ person_n 0
+->amh sew_n
+*** personality_n ; ^ personality_n 0
+->amh sewn_et_n
+*** perspiration_n ; ^ perspiration_n 0
+->amh lab_n
+->amh labot_n
+*** pessimism_n ; ^ pessimism_n 0
+->amh mWart_n
+*** pessimist_n ; ^ pessimist_n 0
+->amh xeq_abi_n
+*** petition_n ; ^ petition_n 0
+->amh ygbaN__n
+*** petrol_n ; ^ petrol_n 0
+->amh bEnzin_n
+*** petroleum_n ; ^ petroleum_n 0
+->amh gaz_n
+*** pharmacy_n ; ^ pharmacy_n 0
+->amh farmasi_n
+*** philosopher_n ; ^ philosopher_n 0
+->amh felasfa_n
+*** philosophy_n ; ^ philosophy_n 0
+->amh flsfn_a_n
+*** phonograph_n ; ^ phonograph_n 0
+->amh gramafon_n
+*** physician_n ; ^ physician_n 0
+->amh hakim_n
+->amh dokter_n
+*** physiotherapy_n ; ^ physiotherapy_n 0
+->amh 'ax_ta_n
+*** pickaxe_n ; ^ pickaxe_n 0
+->amh doma_n
+*** picking_n ; ^ picking_n 0
+->amh leqema_n
+*** piece_n ; ^ piece_n 0
+->amh xrafi_n
+*** piety_n ; ^ piety_n 0
+->amh qd_sn_a_n
+*** pig_n ; ^ pig_n 0
+->amh 'asama_n
+*** pigeon_n ; ^ pigeon_n 0
+->amh rgb_n
+*** pile_n ; ^ pile_n 0
+->amh kab_n
+->amh km_r_n
+*** pill_n ; ^ pill_n 0
+->amh 'nkbl__n
+*** pillage_n ; ^ pillage_n 0
+->amh zrfiya_n
+*** pillow_n ; ^ pillow_n 0
+->amh tras_n
+->amh mek_ed_a_n
+*** pilot_n ; ^ pilot_n 0
+->amh paylet_n
+->amh 'abrari_n
+*** pimp_n ; ^ pimp_n 0
+->amh 'aq_aTari_n
+->amh 'asbej_i_n
+*** pimple_n ; ^ pimple_n 0
+->amh bgur_n
+*** pincers_n ; ^ pincers_n 0
+->amh guTet_n
+->amh fecel_n
+->amh meqWenTeCa_n
+*** pinch_n ; ^ pinch_n 0
+->amh qunT_ari_n
+*** pinnacle_n ; ^ pinnacle_n 0
+->amh qWnCo_n
+*** pioneer_n ; ^ pioneer_n 0
+->amh 'aqNi_n
+*** pipe_n ; ^ pipe_n 0
+->amh tub_o_n
+->amh bWambWa_n
+*** pistol_n ; ^ pistol_n 0
+->amh xg_uT__n
+*** pit_n ; ^ pit_n 0
+->amh gWdgWad_n
+*** pitcher_n ; ^ pitcher_n 0
+->amh manqorqoriya_n
+->amh masero_n
+*** pitchfork_n ; ^ pitchfork_n 0
+->amh menx_n
+*** place_n ; ^ place_n 0
+->amh sfra_n
+->amh bota_n
+*** placebo_n ; ^ placebo_n 0
+->amh mamoN_a_n
+*** plague_n ; ^ plague_n 0
+->amh wererxN__n
+->amh sqay_n
+->amh cenefer_n
+*** plainness_n ; ^ plainness_n 0
+->amh lmuT_n_et_n
+*** plaintiff_n ; ^ plaintiff_n 0
+->amh kesax_n
+->amh teneTaT_ari_n
+*** plait_n ; ^ plait_n 0
+->amh gWngWn_n
+*** plan_n ; ^ plan_n 0
+->amh plan_n
+*** plane_n ; ^ plane_n 0
+->amh melagiya_n
+*** planet_n ; ^ planet_n 0
+->amh planEt_n
+->amh felek_n
+*** plank_n ; ^ plank_n 0
+->amh Terb_n
+*** plant_n ; ^ plant_n 0
+->amh fabrika_n
+*** planter_n ; ^ planter_n 0
+->amh tekay_n
+*** plaster_n ; ^ plaster_n 0
+->amh mrgit__n
+*** plasterer_n ; ^ plasterer_n 0
+->amh les_aN_n
+*** plastic_n ; ^ plastic_n 0
+->amh plastik_n
+*** platform_n ; ^ platform_n 0
+->amh medrek_n
+*** play_n ; ^ play_n 0
+->amh Cewata_n
+*** playground_n ; ^ playground_n 0
+->amh mer_ageCa_n
+*** plaything_n ; ^ plaything_n 0
+->amh meC_aweca_n
+*** pleasure_n ; ^ pleasure_n 0
+->amh tedla_n
+->amh des_ta_n
+->amh 'amrot_n
+->amh 'ad_uN_a_n
+*** plenty_n ; ^ plenty_n 0
+->amh brk_atE_n
+->amh bereket_n
+->amh Tgab_n
+*** plodder_n ; ^ plodder_n 0
+->amh 'azgami_n
+*** plot_n ; ^ plot_n 0
+->amh sEra_n
+*** plotter_n ; ^ plotter_n 0
+->amh 'admeN_a_n
+->amh sEreN_a_n
+->amh 'ad_ami_n
+*** plough_n ; ^ plough_n 0
+->amh marexa_n
+*** ploughman_n ; ^ ploughman_n 0
+->amh 'arax_n
+*** ploughshare_n ; ^ ploughshare_n 0
+->amh dgr_n
+*** plug_n ; ^ plug_n 0
+->amh wtaf_n
+->amh mesek_iya_n
+*** plum_n ; ^ plum_n 0
+->amh 'nkoy_n
+*** plunder_n ; ^ plunder_n 0
+->amh seleba_n
+*** plunderer_n ; ^ plunderer_n 0
+->amh bezbaZ_n
+->amh zerafi_n
+*** pod_n ; ^ pod_n 0
+->amh 'mbuT_n
+->amh qind_n
+*** poem_n ; ^ poem_n 0
+->amh gTm_n
+*** poetry_n ; ^ poetry_n 0
+->amh qnE_n
+->amh gTm_n
+*** point_n ; ^ point_n 0
+->amh Caf_n
+->amh neTb_n
+*** poison_n ; ^ poison_n 0
+->amh medhanit_n
+->amh merz_n
+*** poisoner_n ; ^ poisoner_n 0
+->amh medhaniteN_a_n
+->amh medhanitam_n
+*** poker_n ; ^ poker_n 0
+->amh meqWesqWexa_n
+*** pole_n ; ^ pole_n 0
+->amh gomed_n
+->amh walta_n
+*** police_n ; ^ police_n 0
+->amh polis_n
+*** policeman_n ; ^ policeman_n 0
+->amh polis_n
+*** policy_n ; ^ policy_n 0
+->amh mem_eriya_n
+->amh polisi_n
+*** politeness_n ; ^ politeness_n 0
+->amh Cewan_et_n
+->amh 'ad_eb_n
+*** politician_n ; ^ politician_n 0
+->amh politikeN_a_n
+*** pomegranate_n ; ^ pomegranate_n 0
+->amh roman_n
+->amh ruman_n
+*** pond_n ; ^ pond_n 0
+->amh kurE_n
+*** pool_n ; ^ pool_n 0
+->amh kurE_n
+*** porch_n ; ^ porch_n 0
+->amh taza_n
+*** porcupine_n ; ^ porcupine_n 0
+->amh Zart_n
+->amh jart_n
+*** porridge_n ; ^ porridge_n 0
+->amh genfo_n
+*** port_n ; ^ port_n 0
+->amh wedeb_n
+*** porter_n ; ^ porter_n 0
+->amh kuli_n
+->amh ber_eN_a_n
+*** portion_n ; ^ portion_n 0
+->amh kf_ay_n
+->amh fanta_n
+->amh kfl_n
+->amh fenta_n
+*** position_n ; ^ position_n 0
+->amh bota_n
+*** possession_n ; ^ possession_n 0
+->amh Trit_n
+*** postman_n ; ^ postman_n 0
+->amh posteN_a_n
+*** pot_n ; ^ pot_n 0
+->amh masero_n
+*** potatoes_n ; ^ potatoes_n 0
+->amh dn_c__n
+*** pouch_n ; ^ pouch_n 0
+->amh kereTit_n
+*** poultice_n ; ^ poultice_n 0
+->amh lT_fat_n
+*** pound_n ; ^ pound_n 0
+->amh neTr_n
+*** poverty_n ; ^ poverty_n 0
+->amh 'Tot_n
+->amh dhn_et_n
+*** powder_n ; ^ powder_n 0
+->amh doqEt_n
+->amh duqEt_n
+*** power_n ; ^ power_n 0
+->amh qsm_n
+*** practice_n ; ^ practice_n 0
+->amh tegbar_n
+->amh lmm_d_n
+*** praise_n ; ^ praise_n 0
+->amh msgana_n
+->amh wd_asE_n
+*** prattle_n ; ^ prattle_n 0
+->amh lflefa_n
+*** prayer_n ; ^ prayer_n 0
+->amh Selot_n
+*** preacher_n ; ^ preacher_n 0
+->amh sebaki_n
+*** precaution_n ; ^ precaution_n 0
+->amh Tnq_aqE_n
+*** precipice_n ; ^ precipice_n 0
+->amh gedel_n
+*** preface_n ; ^ preface_n 0
+->amh meqdm_n
+*** preference_n ; ^ preference_n 0
+->amh temer_aC_n
+->amh znb_alE_n
+*** pregnancy_n ; ^ pregnancy_n 0
+->amh 'rgzn_a_n
+*** premises_n ; ^ premises_n 0
+->amh gb_i_n
+*** preparation_n ; ^ preparation_n 0
+->amh zgj_t_n
+->amh mes_enado_n
+*** preposition_n ; ^ preposition_n 0
+->amh mestewadd_n
+*** present_n ; ^ present_n 0
+->amh xl_mat_n
+*** president_n ; ^ president_n 0
+->amh prEzidEnt_n
+*** press_n ; ^ press_n 0
+->amh prEs_n
+*** pressure_n ; ^ pressure_n 0
+->amh gf_it_n
+->amh wTret_n
+*** prestige_n ; ^ prestige_n 0
+->amh kbr_n
+*** pretender_n ; ^ pretender_n 0
+->amh 'asmes_ay_n
+*** pretext_n ; ^ pretext_n 0
+->amh sebeb_n
+*** price_n ; ^ price_n 0
+->amh waga_n
+->amh temen_n
+->amh 'agana_n
+*** prickle_n ; ^ prickle_n 0
+->amh garETa_n
+*** pride_n ; ^ pride_n 0
+->amh kurat_n
+*** priest_n ; ^ priest_n 0
+->amh qEs_n
+->amh kahn_n
+->amh TemTami_n
+*** priesthood_n ; ^ priesthood_n 0
+->amh qs_n_a_n
+*** prime_n ; ^ prime_n 0
+->amh 'afla_n
+*** primer_n ; ^ primer_n 0
+->amh kemsur_n
+*** principle_n ; ^ principle_n 0
+->amh merh_n
+->amh demb_n
+*** printer_n ; ^ printer_n 0
+->amh 'at_ami_n
+->amh mat_emiya_n
+*** printing_n ; ^ printing_n 0
+->amh 't_m_n
+*** priority_n ; ^ priority_n 0
+->amh qed_emtn_et_n
+->amh qedamin_et_n
+->amh qdmiya_n
+*** prison_n ; ^ prison_n 0
+->amh zebTy_a_n
+*** prize_n ; ^ prize_n 0
+->amh xl_mat_n
+*** probation_n ; ^ probation_n 0
+->amh gedeb_n
+*** problem_n ; ^ problem_n 0
+->amh cg_r_n
+->amh gud_ay_n
+->amh 'k_l_n
+->amh problEm_n
+*** procedure_n ; ^ procedure_n 0
+->amh 'ag_ebab_n
+->amh denb_n
+->amh demb_n
+*** process_n ; ^ process_n 0
+->amh hidet_n
+*** procession_n ; ^ procession_n 0
+->amh self_n
+*** proclamation_n ; ^ proclamation_n 0
+->amh lf_efa_n
+*** produce_n ; ^ produce_n 0
+->amh 'alaba_n
+*** producer_n ; ^ producer_n 0
+->amh 'amrac_n
+*** production_n ; ^ production_n 0
+->amh mrt_n
+*** profession_n ; ^ profession_n 0
+->amh moya_n
+*** professor_n ; ^ professor_n 0
+->amh profEser_n
+*** profit_n ; ^ profit_n 0
+->amh trf_n
+->amh reb_n
+->amh keseb_n
+->amh Tqm_n
+*** profiteer_n ; ^ profiteer_n 0
+->amh 'atrafi_n
+*** program_n ; ^ program_n 0
+->amh program_n
+*** progress_n ; ^ progress_n 0
+->amh 'rmj_a_n
+*** prohibition_n ; ^ prohibition_n 0
+->amh 'g_eda_n
+*** project_n ; ^ project_n 0
+->amh proZE_n
+*** proletarian_n ; ^ proletarian_n 0
+->amh wezad_er_n
+*** proletariat_n ; ^ proletariat_n 0
+->amh wezad_er_n
+*** promise_n ; ^ promise_n 0
+->amh tesfa_n
+*** promotion_n ; ^ promotion_n 0
+->amh xumet_n
+->amh 'dget_n
+*** proof_n ; ^ proof_n 0
+->amh masrej_a_n
+*** propeller_n ; ^ propeller_n 0
+->amh bilbil_a_n
+->amh wlblbit_n
+->amh 'rgbgbit_n
+->amh rgbgbit_n
+*** property_n ; ^ property_n 0
+->amh genzeb_n
+->amh Trit_n
+->amh nbret_n
+*** prophecy_n ; ^ prophecy_n 0
+->amh tnbit_n
+->amh ng_r_n
+*** prophet_n ; ^ prophet_n 0
+->amh tenbay_n
+->amh nebiy__n
+->amh ng_rteN_a_n
+->amh tnbiteN_a_n
+*** proportion_n ; ^ proportion_n 0
+->amh meTen_n
+*** prosperity_n ; ^ prosperity_n 0
+->amh bereket_n
+*** prostitute_n ; ^ prostitute_n 0
+->amh galemota_n
+->amh xermuTa_n
+*** prostitution_n ; ^ prostitution_n 0
+->amh xrmuTn_a_n
+*** protection_n ; ^ protection_n 0
+->amh tegen_n
+->amh Tb_eqa_n
+->amh muT_N__n
+*** protector_n ; ^ protector_n 0
+->amh meketa_n
+*** protocol_n ; ^ protocol_n 0
+->amh protokol_n
+*** protégé_n ; ^ protégé_n 0
+->amh baleTg__n
+*** province_n ; ^ province_n 0
+->amh 'awraj_a_n
+*** provision_n ; ^ provision_n 0
+->amh denb_n
+->amh demb_n
+*** provisions_n ; ^ provisions_n 0
+->amh snq_n
+->amh qel_eb_n
+*** prudence_n ; ^ prudence_n 0
+->amh blhat_n
+->amh Tnq_aqE_n
+*** publisher_n ; ^ publisher_n 0
+->amh 'asat_ami_n
+*** puff_n ; ^ puff_n 0
+->amh bul_qta_n
+*** pullet_n ; ^ pullet_n 0
+->amh qEb_n
+*** pulley_n ; ^ pulley_n 0
+->amh mezew_r_n
+*** pulse_n ; ^ pulse_n 0
+->amh tr_ta_n
+*** pump_n ; ^ pump_n 0
+->amh pompa_n
+*** pumpkin_n ; ^ pumpkin_n 0
+->amh dub_a_n
+*** punch_n ; ^ punch_n 0
+->amh TuC_a_n
+*** punishment_n ; ^ punishment_n 0
+->amh qTat_n
+*** pupil_n ; ^ pupil_n 0
+->amh temari_n
+*** pureness_n ; ^ pureness_n 0
+->amh Trat_n
+*** purity_n ; ^ purity_n 0
+->amh Trat_n
+*** purse_n ; ^ purse_n 0
+->amh borsa_n
+*** pus_n ; ^ pus_n 0
+->amh megl_n
+*** puzzle_n ; ^ puzzle_n 0
+->amh 'nqoql_x_n
+*** pyramid_n ; ^ pyramid_n 0
+->amh piramid_n
+*** quail_n ; ^ quail_n 0
+->amh drC_t_n
+*** qualification_n ; ^ qualification_n 0
+->amh clota_n
+*** quantity_n ; ^ quantity_n 0
+->amh bzat_n
+*** quarrel_n ; ^ quarrel_n 0
+->amh Tl_n
+->amh CqCq_n
+->amh Teb_n
+*** quarry_n ; ^ quarry_n 0
+->amh kaba_n
+*** quarter_n ; ^ quarter_n 0
+->amh smuni_n
+->amh 'amba_n
+->amh 'aTbiya_n
+*** query_n ; ^ query_n 0
+->amh Ty_aqE_n
+*** quest_n ; ^ quest_n 0
+->amh fl_ega_n
+*** question_n ; ^ question_n 0
+->amh Ty_aqE_n
+*** questionnaire_n ; ^ questionnaire_n 0
+->amh meTey_q_n
+*** queue_n ; ^ queue_n 0
+->amh redf_n
+*** quiet_n ; ^ quiet_n 0
+->amh SeT_ta_n
+->amh 'rgata_n
+*** quotation_n ; ^ quotation_n 0
+->amh Tqs_n
+*** rabbit_n ; ^ rabbit_n 0
+->amh Tncel_n
+*** rabble_n ; ^ rabble_n 0
+->amh Trq_ami_n
+*** racket_n ; ^ racket_n 0
+->amh rakEt_n
+*** radical_n ; ^ radical_n 0
+->amh 'akrari_n
+*** rafters_n ; ^ rafters_n 0
+->amh kenc_n
+*** rag_n ; ^ rag_n 0
+->amh Crnqus_n
+->amh Cerq_n
+->amh mnTaf_n
+->amh zatelo_n
+*** rage_n ; ^ rage_n 0
+->amh nd_Et_n
+*** rags_n ; ^ rags_n 0
+->amh wr_aj_n
+*** rain_n ; ^ rain_n 0
+->amh znab_n
+->amh Tel__n
+*** raisin_n ; ^ raisin_n 0
+->amh zebib_n
+*** rake_n ; ^ rake_n 0
+->amh mebWaTeCa_n
+*** ram_n ; ^ ram_n 0
+->amh dangl_E_n
+*** rancour_n ; ^ rancour_n 0
+->amh qim_n
+->amh qy_amE_n
+*** rank_n ; ^ rank_n 0
+->amh xumet_n
+*** ransom_n ; ^ ransom_n 0
+->amh bEza_n
+->amh guma_n
+*** rapidity_n ; ^ rapidity_n 0
+->amh fTnet_n
+*** rapier_n ; ^ rapier_n 0
+->amh xamla_n
+*** rascal_n ; ^ rascal_n 0
+->amh weslat_a_n
+*** rash_n ; ^ rash_n 0
+->amh xf_ta_n
+*** raspberry_n ; ^ raspberry_n 0
+->amh 'njor_i_n
+*** ray_n ; ^ ray_n 0
+->amh Cerer_n
+*** razor_n ; ^ razor_n 0
+->amh mlaC__n
+*** reactionary_n ; ^ reactionary_n 0
+->amh qelbax_n
+*** reader_n ; ^ reader_n 0
+->amh 'anbabi_n
+*** reading_n ; ^ reading_n 0
+->amh nbab_n
+*** reality_n ; ^ reality_n 0
+->amh wnet_n
+->amh 'wneta_n
+->amh 'wnet_n
+->amh 'wn_n
+->amh wneta_n
+*** realization_n ; ^ realization_n 0
+->amh gnz_abE_n
+*** realm_n ; ^ realm_n 0
+->amh gzat_n
+*** rearguard_n ; ^ rearguard_n 0
+->amh dejen_n
+*** reason_n ; ^ reason_n 0
+->amh mknyat_n
+->amh sab_iya_n
+*** rebate_n ; ^ rebate_n 0
+->amh qn_esa_n
+->amh qn_ax_n
+*** rebel_n ; ^ rebel_n 0
+->amh xf_ac_n
+->amh xfta_n
+*** rebellion_n ; ^ rebellion_n 0
+->amh xftn_et_n
+->amh bTb_T_n
+*** rebuke_n ; ^ rebuke_n 0
+->amh zlfiya_n
+->amh zlfet_n
+->amh zelefa_n
+*** receipt_n ; ^ receipt_n 0
+->amh faktur_n
+->amh karni_n
+->amh der_eseN__n
+*** receiver_n ; ^ receiver_n 0
+->amh terek_abi_n
+->amh mad_ameCa_n
+*** reception_n ; ^ reception_n 0
+->amh gbZ_a_n
+*** recipient_n ; ^ recipient_n 0
+->amh teqeb_ay_n
+->amh terek_abi_n
+*** recitation_n ; ^ recitation_n 0
+->amh dgmet_n
+*** recollection_n ; ^ recollection_n 0
+->amh tz_ta_n
+*** reconciliation_n ; ^ reconciliation_n 0
+->amh 'rq_n
+*** record_n ; ^ record_n 0
+->amh mezgeb_n
+*** rectum_n ; ^ rectum_n 0
+->amh qoxt_n
+*** redness_n ; ^ redness_n 0
+->amh qlat_n
+*** reduction_n ; ^ reduction_n 0
+->amh qn_esa_n
+->amh qn_ax_n
+*** reed_n ; ^ reed_n 0
+->amh meqa_n
+->amh br_n
+*** referee_n ; ^ referee_n 0
+->amh 'aC_awac_n
+*** refiner_n ; ^ refiner_n 0
+->amh 'anTari_n
+*** refrigerator_n ; ^ refrigerator_n 0
+->amh maqezqeZa_n
+*** refuge_n ; ^ refuge_n 0
+->amh meT_egiya_n
+->amh mes_edeja_n
+*** refugee_n ; ^ refugee_n 0
+->amh sd_eteN_a_n
+*** refusal_n ; ^ refusal_n 0
+->amh 'mbita_n
+*** region_n ; ^ region_n 0
+->amh qeTana_n
+*** register_n ; ^ register_n 0
+->amh mezgeb_n
+*** registrar_n ; ^ registrar_n 0
+->amh mezgabi_n
+*** registration_n ; ^ registration_n 0
+->amh mzgeba_n
+*** regret_n ; ^ regret_n 0
+->amh SeSet_n
+->amh qWC_t_n
+->amh TeTet_n
+*** regulation_n ; ^ regulation_n 0
+->amh dng_agE_n
+->amh denb_n
+->amh demb_n
+*** reign_n ; ^ reign_n 0
+->amh msfn_a_n
+*** reimbursement_n ; ^ reimbursement_n 0
+->amh mtk__n
+*** reinforcement_n ; ^ reinforcement_n 0
+->amh maT_enakeriya_n
+*** relapse_n ; ^ relapse_n 0
+->amh grxa_n
+*** relation_n ; ^ relation_n 0
+->amh zemed_n
+*** relationship_n ; ^ relationship_n 0
+->amh gnN_un_et_n
+*** relative_n ; ^ relative_n 0
+->amh zemed_n
+*** relatives_n ; ^ relatives_n 0
+->amh zemedamoc__n
+*** reliance_n ; ^ reliance_n 0
+->amh 'mnet_n
+*** relic_n ; ^ relic_n 0
+->amh qrs_n
+*** relief_n ; ^ relief_n 0
+->amh 'f_oyta_n
+->amh glg_l_n
+*** religion_n ; ^ religion_n 0
+->amh mateb_n
+->amh haymanot_n
+*** remainder_n ; ^ remainder_n 0
+->amh qeri_n
+*** remains_n ; ^ remains_n 0
+->amh frsrax_n
+->amh fr_ax_n
+*** remedy_n ; ^ remedy_n 0
+->amh medhanit_n
+->amh mefthE_n
+*** remembrance_n ; ^ remembrance_n 0
+->amh mastawexa_n
+->amh tz_ta_n
+*** reminder_n ; ^ reminder_n 0
+->amh 'asas_abi_n
+*** remnant_n ; ^ remnant_n 0
+->amh rzr_aZ_n
+*** remnants_n ; ^ remnants_n 0
+->amh 'l_aqi_n
+*** remorse_n ; ^ remorse_n 0
+->amh ror_o_n
+->amh SeSet_n
+->amh qWC_t_n
+->amh TeTet_n
+*** rendezvous_n ; ^ rendezvous_n 0
+->amh meq_aTeriya_n
+*** renewal_n ; ^ renewal_n 0
+->amh 'd_esa_n
+*** rent_n ; ^ rent_n 0
+->amh meg_azo_n
+->amh qd_aj_n
+->amh kiray_n
+*** repair_n ; ^ repair_n 0
+->amh Tg_ena_n
+*** reparation_n ; ^ reparation_n 0
+->amh kasa_n
+*** repentance_n ; ^ repentance_n 0
+->amh SeSet_n
+->amh qen_ona_n
+*** report_n ; ^ report_n 0
+->amh zegeba_n
+*** reporter_n ; ^ reporter_n 0
+->amh zegabi_n
+*** representation_n ; ^ representation_n 0
+->amh wk_ln_a_n
+*** representative_n ; ^ representative_n 0
+->amh wek_il_n
+->amh tewek_ay_n
+->amh teTeri_n
+*** reprimand_n ; ^ reprimand_n 0
+->amh weq_esa_n
+->amh zlfiya_n
+->amh zlfet_n
+->amh zelefa_n
+*** reprisal_n ; ^ reprisal_n 0
+->amh 'aSefa_n
+*** reproach_n ; ^ reproach_n 0
+->amh weq_esa_n
+->amh zlfiya_n
+->amh zlfet_n
+->amh zelefa_n
+*** republic_n ; ^ republic_n 0
+->amh rEpublik_n
+*** repudiation_n ; ^ repudiation_n 0
+->amh kdet_n
+*** reputation_n ; ^ reputation_n 0
+->amh zn_a_n
+*** request_n ; ^ request_n 0
+->amh Ty_aqE_n
+*** research_n ; ^ research_n 0
+->amh mrm_r_n
+->amh Tnat_n
+*** researcher_n ; ^ researcher_n 0
+->amh temeramari_n
+*** resemblance_n ; ^ resemblance_n 0
+->amh 'amsal_n
+->amh weder_n
+->amh tewedadari_n
+->amh 'amsay_a_n
+*** resentment_n ; ^ resentment_n 0
+->amh xm_eqa_n
+->amh qim_n
+*** reserve_n ; ^ reserve_n 0
+->amh meT_ebabeqiya_n
+*** residue_n ; ^ residue_n 0
+->amh zqTqaC_n
+->amh zq_aC_n
+*** resin_n ; ^ resin_n 0
+->amh muC_a_n
+*** resolution_n ; ^ resolution_n 0
+->amh ws_anE_n
+*** respect_n ; ^ respect_n 0
+->amh tesemin_et_n
+->amh kbr_n
+->amh 'akbrot_n
+*** respectability_n ; ^ respectability_n 0
+->amh tl_qn_et_n
+->amh kerama_n
+*** responsibility_n ; ^ responsibility_n 0
+->amh 'alafin_et_n
+->amh fanta_n
+*** restaurant_n ; ^ restaurant_n 0
+->amh rEstorant_n
+*** restitution_n ; ^ restitution_n 0
+->amh kasa_n
+*** result_n ; ^ result_n 0
+->amh wT_Et_n
+*** retailer_n ; ^ retailer_n 0
+->amh cercari_n
+->amh xeq_aC_n
+*** retaliation_n ; ^ retaliation_n 0
+->amh beqel_n
+*** revenge_n ; ^ revenge_n 0
+->amh beqel_n
+*** reverence_n ; ^ reverence_n 0
+->amh keberEta_n
+->amh kbr_n
+->amh moges_n
+*** review_n ; ^ review_n 0
+->amh 'aqaqir_n
+*** revision_n ; ^ revision_n 0
+->amh kl_esa_n
+*** revisionist_n ; ^ revisionist_n 0
+->amh kel_ax_n
+*** revolver_n ; ^ revolver_n 0
+->amh xg_uT__n
+*** reward_n ; ^ reward_n 0
+->amh waga_n
+->amh sTota_n
+*** rheumatism_n ; ^ rheumatism_n 0
+->amh qurTmat_n
+*** rhinoceros_n ; ^ rhinoceros_n 0
+->amh 'awraris_n
+*** rhyme_n ; ^ rhyme_n 0
+->amh snN__n
+*** ribbon_n ; ^ ribbon_n 0
+->amh kr__n
+*** rice_n ; ^ rice_n 0
+->amh ruz_n
+*** riches_n ; ^ riches_n 0
+->amh kbret_n
+*** riddle_n ; ^ riddle_n 0
+->amh 'nqoql_x_n
+*** ride_n ; ^ ride_n 0
+->amh xr_xr__n
+*** ridge_n ; ^ ridge_n 0
+->amh xenterer_n
+*** ridicule_n ; ^ ridicule_n 0
+->amh mez_ebabeca_n
+*** riding_n ; ^ riding_n 0
+->amh glbiya_n
+*** rifleman_n ; ^ rifleman_n 0
+->amh nefTeN_a_n
+*** rift_n ; ^ rift_n 0
+->amh snTq_n
+*** right_n ; ^ right_n 0
+->amh qeN__n
+->amh mebt_n
+*** righteousness_n ; ^ righteousness_n 0
+->amh bqat_n
+->amh Sdq_n
+->amh qd_sn_a_n
+*** rim_n ; ^ rim_n 0
+->amh cerkiyo_n
+*** rind_n ; ^ rind_n 0
+->amh qr_afi_n
+->amh qrfit__n
+->amh gelefet_n
+*** ring_n ; ^ ring_n 0
+->amh qelebet_n
+*** ringworm_n ; ^ ringworm_n 0
+->amh lax_n
+*** riot_n ; ^ riot_n 0
+->amh rebxa_n
+->amh gr_gr__n
+*** rioter_n ; ^ rioter_n 0
+->amh rebxeN_a_n
+*** rival_n ; ^ rival_n 0
+->amh teqenaqaN__n
+->amh teqenaqaN_n
+*** rivalry_n ; ^ rivalry_n 0
+->amh fukk_r_n
+*** river_n ; ^ river_n 0
+->amh wenz_n
+*** rivulet_n ; ^ rivulet_n 0
+->amh fefa_n
+*** road_n ; ^ road_n 0
+->amh zeng_n
+->amh menged_n
+*** robber_n ; ^ robber_n 0
+->amh qem_aN_a_n
+->amh neTaqi_n
+->amh tenaTaqi_n
+*** robbery_n ; ^ robbery_n 0
+->amh nTqiya_n
+->amh muClefa_n
+->amh qm_iya_n
+*** rock_n ; ^ rock_n 0
+->amh qWaT_N__n
+->amh 'alet_n
+*** rock-salt_n ; ^ rock-salt_n 0
+->amh 'amolE_n
+*** rocket_n ; ^ rocket_n 0
+->amh menkorakur_n
+*** rogue_n ; ^ rogue_n 0
+->amh weslat_a_n
+*** roguishness_n ; ^ roguishness_n 0
+->amh meltin_et_n
+*** role_n ; ^ role_n 0
+->amh mina_n
+->amh bota_n
+*** room_n ; ^ room_n 0
+->amh kfl_n
+*** roost_n ; ^ roost_n 0
+->amh qoT_n
+*** rope_n ; ^ rope_n 0
+->amh 'awtar_n
+->amh gemed_n
+->amh wedero_n
+*** rosary_n ; ^ rosary_n 0
+->amh meqW_Teriya_n
+*** roster_n ; ^ roster_n 0
+->amh mezgeb_n
+*** rostrum_n ; ^ rostrum_n 0
+->amh medrek_n
+*** round_n ; ^ round_n 0
+->amh zur_n
+*** roundness_n ; ^ roundness_n 0
+->amh kb_n_et_n
+*** row_n ; ^ row_n 0
+->amh xntrat_n
+->amh terta_n
+->amh mededa_n
+->amh CaCata_n
+->amh redf_n
+*** rower_n ; ^ rower_n 0
+->amh qezafi_n
+*** royalty_n ; ^ royalty_n 0
+->amh 'aqmax_n
+*** rubber_n ; ^ rubber_n 0
+->amh gom_a_n
+*** rubbing_n ; ^ rubbing_n 0
+->amh ft_ega_n
+*** rubbish_n ; ^ rubbish_n 0
+->amh qoxaxa_n
+->amh Tr_agi_n
+->amh gs_angs_n
+->amh wd_aqi_n
+*** rubble_n ; ^ rubble_n 0
+->amh Trqmqm_n
+*** rudeness_n ; ^ rudeness_n 0
+->amh dfret_n
+->amh 'r_eN_n_et_n
+->amh blgn_a_n
+->amh balegEn_et_n
+*** ruins_n ; ^ ruins_n 0
+->amh frsrax_n
+->amh fr_ax_n
+*** rule_n ; ^ rule_n 0
+->amh denb_n
+->amh msfn_a_n
+->amh demb_n
+*** ruler_n ; ^ ruler_n 0
+->amh geZ_n
+->amh masmeriya_n
+->amh mesfn_n
+*** rumbling_n ; ^ rumbling_n 0
+->amh gWrmrmta_n
+*** rumour_n ; ^ rumour_n 0
+->amh werE_n
+->amh CmCmta_n
+*** rump_n ; ^ rump_n 0
+->amh tan_ax_n
+*** runner_n ; ^ runner_n 0
+->amh telalaki_n
+->amh rWaC_n
+*** running_n ; ^ running_n 0
+->amh ruC_a_n
+*** rush_n ; ^ rush_n 0
+->amh Tdfiya_n
+*** rust_n ; ^ rust_n 0
+->amh wag_n
+->amh zget_n
+*** sack_n ; ^ sack_n 0
+->amh sl_c_a_n
+->amh kExa_n
+->amh jony_a_n
+*** saddle_n ; ^ saddle_n 0
+->amh korc_a_n
+*** sailor_n ; ^ sailor_n 0
+->amh merkebeN_a_n
+*** salad_n ; ^ salad_n 0
+->amh selaTa_n
+*** salary_n ; ^ salary_n 0
+->amh 'abel__n
+->amh demewez_n
+*** sale_n ; ^ sale_n 0
+->amh xy_aC_n
+*** salesman_n ; ^ salesman_n 0
+->amh 'ax_axaC_n
+*** saliva_n ; ^ saliva_n 0
+->amh mraq_n
+*** sample_n ; ^ sample_n 0
+->amh nam_una_n
+*** sanctification_n ; ^ sanctification_n 0
+->amh bur_akE_n
+*** sanction_n ; ^ sanction_n 0
+->amh 'g_eda_n
+->amh gz_t_n
+*** sanctity_n ; ^ sanctity_n 0
+->amh qd_usn_et_n
+*** sanctuary_n ; ^ sanctuary_n 0
+->amh meqdes_n
+->amh debr_n
+->amh mexef_eca_n
+*** sand_n ; ^ sand_n 0
+->amh db_uxt_n
+->amh 'axewa_n
+*** sandiness_n ; ^ sandiness_n 0
+->amh 'axewan_et_n
+*** sanitation_n ; ^ sanitation_n 0
+->amh Sdat_n
+*** sarcasm_n ; ^ sarcasm_n 0
+->amh 'agbo_n
+->amh 'axmur_n
+*** sash_n ; ^ sash_n 0
+->amh dg_n
+*** satchel_n ; ^ satchel_n 0
+->amh 'akofada_n
+->amh korejo_n
+*** satiety_n ; ^ satiety_n 0
+->amh Tgab_n
+*** satin_n ; ^ satin_n 0
+->amh kalos_n
+*** sauce_n ; ^ sauce_n 0
+->amh weT_n
+*** saucepan_n ; ^ saucepan_n 0
+->amh dst_n
+*** sausage_n ; ^ sausage_n 0
+->amh qWalima_n
+*** savagery_n ; ^ savagery_n 0
+->amh 'awrEn_et_n
+*** savings_n ; ^ savings_n 0
+->amh quT_eba_n
+->amh teqem_aC_n
+*** saw_n ; ^ saw_n 0
+->amh megaz_n
+*** scab_n ; ^ scab_n 0
+->amh qr_afi_n
+->amh qrfit__n
+->amh senkof_n
+*** scaffold_n ; ^ scaffold_n 0
+->amh rbrab_n
+*** scale_n ; ^ scale_n 0
+->amh mizan_n
+*** scandal_n ; ^ scandal_n 0
+->amh ql_Et_n
+*** scar_n ; ^ scar_n 0
+->amh TeqaTeqo_n
+->amh godanis_a_n
+->amh Tebasa_n
+*** scarf_n ; ^ scarf_n 0
+->amh gufta_n
+*** scavenger_n ; ^ scavenger_n 0
+->amh leqaqami_n
+*** scene_n ; ^ scene_n 0
+->amh tr'it_n
+*** scheme_n ; ^ scheme_n 0
+->amh mela_n
+*** schemer_n ; ^ schemer_n 0
+->amh Col_E_n
+*** science_n ; ^ science_n 0
+->amh sayns_n
+*** scientist_n ; ^ scientist_n 0
+->amh saynseN_a_n
+*** scissors_n ; ^ scissors_n 0
+->amh meqes_n
+*** scoff_n ; ^ scoff_n 0
+->amh waza_n
+*** scoop_n ; ^ scoop_n 0
+->amh mezaqiya_n
+*** score_n ; ^ score_n 0
+->amh gb_n
+*** scorpion_n ; ^ scorpion_n 0
+->amh ginT_n
+*** scoundrel_n ; ^ scoundrel_n 0
+->amh weslat_a_n
+*** scout_n ; ^ scout_n 0
+->amh qafir_n
+*** scrap_n ; ^ scrap_n 0
+->amh fqf_aqi_n
+*** scraper_n ; ^ scraper_n 0
+->amh mefeqfeqiya_n
+*** scrapings_n ; ^ scrapings_n 0
+->amh fgf_agi_n
+*** scraps_n ; ^ scraps_n 0
+->amh muT_aC_n
+*** scratch_n ; ^ scratch_n 0
+->amh muC_rat_n
+->amh Cret_n
+*** scream_n ; ^ scream_n 0
+->amh Cuhet_n
+*** screen_n ; ^ screen_n 0
+->amh meketa_n
+->amh kelela_n
+->amh grdox_n
+*** scribble_n ; ^ scribble_n 0
+->amh buCrCr_n
+*** sculptor_n ; ^ sculptor_n 0
+->amh qeraC_n
+*** sculpture_n ; ^ sculpture_n 0
+->amh qrS_n
+*** scum_n ; ^ scum_n 0
+->amh gefet_n
+->amh wd_aqi_n
+*** scurf_n ; ^ scurf_n 0
+->amh forefor_n
+*** seagull_n ; ^ seagull_n 0
+->amh sabisa_n
+*** search_n ; ^ search_n 0
+->amh fl_ega_n
+->amh ft_exa_n
+*** searcher_n ; ^ searcher_n 0
+->amh fel_agi_n
+*** season_n ; ^ season_n 0
+->amh weqt_n
+*** secessionist_n ; ^ secessionist_n 0
+->amh tegenTay_n
+->amh 'afengaC_n
+*** seclusion_n ; ^ seclusion_n 0
+->amh gelelteN_an_et_n
+*** second_n ; ^ second_n 0
+->amh sEkond_n
+*** secret_n ; ^ secret_n 0
+->amh msTir_n
+*** section_n ; ^ section_n 0
+->amh wegen_n
+*** security_n ; ^ security_n 0
+->amh medn_n
+->amh SeT_ta_n
+*** sedge_n ; ^ sedge_n 0
+->amh qETema_n
+*** sediment_n ; ^ sediment_n 0
+->amh zqTqaC_n
+->amh 'ar_n
+->amh 'atela_n
+->amh 'ambul_a_n
+->amh zq_aC_n
+->amh qr_ari_n
+*** seed_n ; ^ seed_n 0
+->amh frE_n
+->amh zer_n
+*** seedling_n ; ^ seedling_n 0
+->amh cg_N__n
+*** segment_n ; ^ segment_n 0
+->amh xrafi_n
+->amh kf_ay_n
+*** selection_n ; ^ selection_n 0
+->amh mrT_n
+*** self_n ; ^ self_n 0
+->amh ras_n
+*** seller_n ; ^ seller_n 0
+->amh xaC_n
+*** sender_n ; ^ sender_n 0
+->amh laki_n
+*** senior_n ; ^ senior_n 0
+->amh 'angaf_a_n
+*** sentence_n ; ^ sentence_n 0
+->amh `arefte neger_n ; || 1 ; 0 == 1 plr:plr,def:def,cs:cs,gen:gen ; ^ neger_n 1
+*** sentry_n ; ^ sentry_n 0
+->amh zeb_n
+*** series_n ; ^ series_n 0
+->amh mededa_n
+*** serpent_n ; ^ serpent_n 0
+->amh 'bab_n
+*** servant_n ; ^ servant_n 0
+->amh 'agelgay_n
+->amh 'axker_n
+*** server_n ; ^ server_n 0
+->amh kad_ami_n
+*** service_n ; ^ service_n 0
+->amh Selot_n
+->amh 'agelglot_n
+*** sesame_n ; ^ sesame_n 0
+->amh seliT_n
+*** session_n ; ^ session_n 0
+->amh sbseba_n
+*** set_n ; ^ set_n 0
+->amh sbsb_n
+*** settler_n ; ^ settler_n 0
+->amh tetek_ay_n
+->amh sefari_n
+->amh 'aqNi_n
+->amh tkleN_a_n
+*** seven_n ; ^ seven_n 0
+->amh sebat__n
+*** seventy_n ; ^ seventy_n 0
+->amh seb_a_n
+*** sewing_n ; ^ sewing_n 0
+->amh sfEt_n
+*** sex_n ; ^ sex_n 0
+->amh Sota_n
+*** shade_n ; ^ shade_n 0
+->amh Tla_n
+*** shadow_n ; ^ shadow_n 0
+->amh Tla_n
+*** shaft_n ; ^ shaft_n 0
+->amh zeng_n
+->amh zabiya_n
+*** shake-up_n ; ^ shake-up_n 0
+->amh xumxr_n
+*** shaking_n ; ^ shaking_n 0
+->amh 'nqTq_aTE_n
+->amh wzweza_n
+*** shame_n ; ^ shame_n 0
+->amh ^hfret_n
+->amh 'fret_n
+*** shape_n ; ^ shape_n 0
+->amh qT_n
+*** share_n ; ^ share_n 0
+->amh md_eba_n
+->amh kfy_a_n
+->amh fanta_n
+->amh 'aksiyon_n
+->amh fenta_n
+*** shavings_n ; ^ shavings_n 0
+->amh Tr_abi_n
+*** shawl_n ; ^ shawl_n 0
+->amh meg_onaTefiya_n
+->amh metaqefiya_n
+*** sheaf_n ; ^ sheaf_n 0
+->amh nedo_n
+*** shears_n ; ^ shears_n 0
+->amh mexel_eca_n
+*** sheath_n ; ^ sheath_n 0
+->amh 'afot_n
+->amh segeba_n
+*** shed_n ; ^ shed_n 0
+->amh Telela_n
+->amh meT_eleya_n
+*** sheep_n ; ^ sheep_n 0
+->amh beg_n
+*** sheepskin_n ; ^ sheepskin_n 0
+->amh lemd_n
+*** sheik_n ; ^ sheik_n 0
+->amh xEk_n
+*** shelf_n ; ^ shelf_n 0
+->amh mederderiya_n
+*** shell_n ; ^ shell_n 0
+->amh 'mbuT_n
+->amh zagol_n
+*** shelter_n ; ^ shelter_n 0
+->amh tegen_n
+->amh Telela_n
+->amh das_n
+->amh meT_egiya_n
+->amh taza_n
+->amh meT_eleya_n
+*** shepherd_n ; ^ shepherd_n 0
+->amh 'r_eN_a_n
+*** shield_n ; ^ shield_n 0
+->amh gax_a_n
+*** shin_n ; ^ shin_n 0
+->amh qlTm_n
+*** ship_n ; ^ ship_n 0
+->amh merkeb_n
+*** shirt_n ; ^ shirt_n 0
+->amh xemiz_n
+*** shit_n ; ^ shit_n 0
+->amh 'ar_n
+*** shock_n ; ^ shock_n 0
+->amh dng_aTE_n
+*** shoe_n ; ^ shoe_n 0
+->amh Cam_a_n
+*** shoes_n ; ^ shoes_n 0
+->amh meC_amiya_n
+*** shoot_n ; ^ shoot_n 0
+->amh cg_N__n
+->amh buqay_a_n
+->amh 'areg_n
+->amh qenbeT_n
+*** shooter_n ; ^ shooter_n 0
+->amh tekW_ax_n
+*** shop_n ; ^ shop_n 0
+->amh suq_n
+*** shopkeeper_n ; ^ shopkeeper_n 0
+->amh balesuq_n
+*** shopper_n ; ^ shopper_n 0
+->amh gebeyateN_a_n
+*** shortage_n ; ^ shortage_n 0
+->amh 'Tot_n
+->amh 'Tret_n
+*** shortcoming_n ; ^ shortcoming_n 0
+->amh gud_let_n
+*** shorts_n ; ^ shorts_n 0
+->amh qumTa_n
+*** shoulder_n ; ^ shoulder_n 0
+->amh Canqa_n
+->amh tkex_a_n
+*** shoulder-blade_n ; ^ shoulder-blade_n 0
+->amh brakW_a_n
+*** shoulder-strap_n ; ^ shoulder-strap_n 0
+->amh mangeca_n
+*** shout_n ; ^ shout_n 0
+->amh Cuhet_n
+->amh hota_n
+*** show_n ; ^ show_n 0
+->amh tr'it_n
+*** show-off_n ; ^ show-off_n 0
+->amh gur_a_n
+*** shower_n ; ^ shower_n 0
+->amh kaf_iya_n
+->amh kaf_ya_n
+*** shrew_n ; ^ shrew_n 0
+->amh 'aselci_n
+*** shroud_n ; ^ shroud_n 0
+->amh kefen_n
+->amh mekef_eNa_n
+->amh megen_eZa_n
+*** shrub_n ; ^ shrub_n 0
+->amh daw_a_n
+*** shuttle_n ; ^ shuttle_n 0
+->amh mewerweriya_n
+*** shyness_n ; ^ shyness_n 0
+->amh 'fret_n
+*** sickle_n ; ^ sickle_n 0
+->amh maCd_n
+*** sickness_n ; ^ sickness_n 0
+->amh 'mem_n
+->amh dewE_n
+*** side_n ; ^ side_n 0
+->amh wegen_n
+->amh 'agdmet_n
+*** sieve_n ; ^ sieve_n 0
+->amh wenfit_n
+*** sign_n ; ^ sign_n 0
+->amh mlk_t_n
+*** signal_n ; ^ signal_n 0
+->amh mlk_t_n
+*** signatories_n ; ^ signatories_n 0
+->amh teferarami_n
+*** signatory_n ; ^ signatory_n 0
+->amh fer_ami_n
+*** signature_n ; ^ signature_n 0
+->amh firma_n
+*** silence_n ; ^ silence_n 0
+->amh SeT_ta_n
+->amh zm_ta_n
+*** silliness_n ; ^ silliness_n 0
+->amh jln_et_n
+*** silt_n ; ^ silt_n 0
+->amh delel_n
+*** silver_n ; ^ silver_n 0
+->amh br__n
+*** sin_n ; ^ sin_n 0
+->amh 'abesa_n
+->amh wdqet_n
+*** sinew_n ; ^ sinew_n 0
+->amh lf_aC_n
+->amh jm_at_n
+*** singer_n ; ^ singer_n 0
+->amh mezem_r_n
+->amh zefaN_n
+*** singing_n ; ^ singing_n 0
+->amh zm_era_n
+*** sirloin_n ; ^ sirloin_n 0
+->amh Cq_n_a_n
+->amh dabit_n
+*** sister-in-law_n ; ^ sister-in-law_n 0
+->amh mrat_n
+*** sisterhood_n ; ^ sisterhood_n 0
+->amh 'tm_amacn_et_n
+*** site_n ; ^ site_n 0
+->amh bota_n
+*** sitter_n ; ^ sitter_n 0
+->amh teqem_aC_n
+*** situation_n ; ^ situation_n 0
+->amh geS_ta_n
+->amh 'akW_ahWan_n
+->amh hunEta_n
+*** six_n ; ^ six_n 0
+->amh sd_st_n
+*** sixty_n ; ^ sixty_n 0
+->amh sdsa_n
+*** size_n ; ^ size_n 0
+->amh meTen_n
+->amh tl_qn_et_n
+->amh sfat_n
+*** skeleton_n ; ^ skeleton_n 0
+->amh qWami_n
+*** sketch_n ; ^ sketch_n 0
+->amh ndf_n
+*** skill_n ; ^ skill_n 0
+->amh kin_n
+->amh clota_n
+*** skin_n ; ^ skin_n 0
+->amh qr_afi_n
+->amh qrfit__n
+->amh qurbet_n
+*** skirt_n ; ^ skirt_n 0
+->amh gldm_n
+*** skull_n ; ^ skull_n 0
+->amh Cnq_lat_n
+*** sky_n ; ^ sky_n 0
+->amh semay_n
+*** slacker_n ; ^ slacker_n 0
+->amh gWetata_n
+*** slam_n ; ^ slam_n 0
+->amh 'slmn_a_n
+*** slanderer_n ; ^ slanderer_n 0
+->amh tesedabi_n
+*** slap_n ; ^ slap_n 0
+->amh Tf_i_n
+*** slattern_n ; ^ slattern_n 0
+->amh rmTmT_n
+*** slaughterer_n ; ^ slaughterer_n 0
+->amh 'araj_n
+*** slave_n ; ^ slave_n 0
+->amh bariya_n
+*** slavery_n ; ^ slavery_n 0
+->amh barn_et_n
+*** sleep_n ; ^ sleep_n 0
+->amh 'nqlf_n
+*** sleeping_n ; ^ sleeping_n 0
+->amh meN_ta_n
+*** sleeve_n ; ^ sleeve_n 0
+->amh 'j_gE_n
+*** slide_n ; ^ slide_n 0
+->amh xetety_a_n
+*** sling_n ; ^ sling_n 0
+->amh wenCf_n
+*** slogan_n ; ^ slogan_n 0
+->amh mefek_r_n
+*** slope_n ; ^ slope_n 0
+->amh daget_n
+->amh tefases_n
+->amh 'areh_n
+->amh tedafat_n
+*** slovenliness_n ; ^ slovenliness_n 0
+->amh reheTn_et_n
+*** slowness_n ; ^ slowness_n 0
+->amh zg_ta_n
+->amh qes_ta_n
+*** sluggard_n ; ^ sluggard_n 0
+->amh gWetata_n
+*** slut_n ; ^ slut_n 0
+->amh bdatam_n
+*** smallpox_n ; ^ smallpox_n 0
+->amh fenTaTa_n
+*** smell_n ; ^ smell_n 0
+->amh xt_a_n
+*** smile_n ; ^ smile_n 0
+->amh fegegta_n
+*** smith_n ; ^ smith_n 0
+->amh 'anTreN_a_n
+*** smoke_n ; ^ smoke_n 0
+->amh Tis_n
+*** smoker_n ; ^ smoker_n 0
+->amh 'aTiyax_n
+*** smoothness_n ; ^ smoothness_n 0
+->amh 'al_esales_n
+*** snack_n ; ^ snack_n 0
+->amh meqoy_a_n
+->amh metek_eZa_n
+->amh mekses_n
+*** snake_n ; ^ snake_n 0
+->amh 'bab_n
+*** snap_n ; ^ snap_n 0
+->amh 'q_eC_ta_n
+*** snare_n ; ^ snare_n 0
+->amh maTmeja_n
+->amh weTmed_n
+*** sneak_n ; ^ sneak_n 0
+->amh 'as_abaqi_n
+*** sniper_n ; ^ sniper_n 0
+->amh nefTeN_a_n
+*** snorer_n ; ^ snorer_n 0
+->amh 'akurafi_n
+*** snuff_n ; ^ snuff_n 0
+->amh sur_et_n
+*** so-and-so_n ; ^ so-and-so_n 0
+->amh 'gelit_n
+->amh 'kelE_n
+->amh 'gelE_n
+*** soap_n ; ^ soap_n 0
+->amh samuna_n
+*** sob_n ; ^ sob_n 0
+->amh siqa_n
+*** socialism_n ; ^ socialism_n 0
+->amh soxalizm_n
+*** soil_n ; ^ soil_n 0
+->amh 'afer_n
+->amh merEt_n
+*** soldier_n ; ^ soldier_n 0
+->amh Cfra_n
+*** sole_n ; ^ sole_n 0
+->amh Cam_a_n
+*** soliloquy_n ; ^ soliloquy_n 0
+->amh menebanb_n
+*** solution_n ; ^ solution_n 0
+->amh fc__n
+->amh mefthE_n
+*** song_n ; ^ song_n 0
+->amh mezmur_n
+->amh zEma_n
+->amh zm_arE_n
+->amh zefen_n
+*** soot_n ; ^ soot_n 0
+->amh Tqerxa_n
+*** soothsayer_n ; ^ soothsayer_n 0
+->amh qal_c_a_n
+->amh ng_rteN_a_n
+->amh tnbiteN_a_n
+*** sophistication_n ; ^ sophistication_n 0
+->amh zebenayn_et_n
+*** sorcerer_n ; ^ sorcerer_n 0
+->amh TenqWay_n
+->amh 'asmateN_a_n
+*** sorcery_n ; ^ sorcery_n 0
+->amh 'asmat_n
+->amh Tnqola_n
+*** sorrow_n ; ^ sorrow_n 0
+->amh SeSet_n
+*** soul_n ; ^ soul_n 0
+->amh nefs_n
+*** sound_n ; ^ sound_n 0
+->amh dmS_n
+->amh dmT_n
+*** soup_n ; ^ soup_n 0
+->amh xorba_n
+*** source_n ; ^ source_n 0
+->amh men_exo_n
+->amh mnC_n
+*** south_n ; ^ south_n 0
+->amh debub_n
+*** sower_n ; ^ sower_n 0
+->amh zeri_n
+*** space_n ; ^ space_n 0
+->amh Tefer_n
+->amh bota_n
+*** span_n ; ^ span_n 0
+->amh snzr_n
+*** spanner_n ; ^ spanner_n 0
+->amh mefca_n
+*** spark_n ; ^ spark_n 0
+->amh fnT_aqi_n
+->amh tntag_n
+->amh ClanCl_n
+->amh fnT_ari_n
+*** spark-plug_n ; ^ spark-plug_n 0
+->amh kandEl_a_n
+*** sparrow_n ; ^ sparrow_n 0
+->amh Clfit__n
+*** spear_n ; ^ spear_n 0
+->amh Tor_n
+*** special_n ; ^ special_n 0
+->amh moya_n
+*** specimen_n ; ^ specimen_n 0
+->amh nam_una_n
+*** speck_n ; ^ speck_n 0
+->amh Teb_ta_n
+*** speckle_n ; ^ speckle_n 0
+->amh TeqaTeqo_n
+*** spectacles_n ; ^ spectacles_n 0
+->amh meneT_r_n
+->amh meneS_r_n
+*** spectator_n ; ^ spectator_n 0
+->amh temelkac_n
+*** speech_n ; ^ speech_n 0
+->amh ngg_r_n
+*** speed_n ; ^ speed_n 0
+->amh fTnet_n
+*** spell_n ; ^ spell_n 0
+->amh metet_n
+->amh 'asmat_n
+*** spendthrift_n ; ^ spendthrift_n 0
+->amh qnTu_n
+*** spice_n ; ^ spice_n 0
+->amh qmem_n
+*** spider_n ; ^ spider_n 0
+->amh xererit_n
+*** spindle_n ; ^ spindle_n 0
+->amh 'nzrt_n
+*** spinsterhood_n ; ^ spinsterhood_n 0
+->amh lETan_et_n
+*** spirit_n ; ^ spirit_n 0
+->amh menfes_n
+->amh qsm_n
+->amh nefs_n
+*** spirituality_n ; ^ spirituality_n 0
+->amh menfesawin_et_n
+*** spit_n ; ^ spit_n 0
+->amh Tiq_ta_n
+*** spite_n ; ^ spite_n 0
+->amh mq_eN_n_et_n
+*** spitting_n ; ^ spitting_n 0
+->amh 't_fta_n
+*** spittle_n ; ^ spittle_n 0
+->amh Tiq_ta_n
+*** spittoon_n ; ^ spittoon_n 0
+->amh metfiya_n
+*** spleen_n ; ^ spleen_n 0
+->amh Taf_iya_n
+*** splinter_n ; ^ splinter_n 0
+->amh snT_aqi_n
+*** splinters_n ; ^ splinters_n 0
+->amh ktk_ac_n
+*** split_n ; ^ split_n 0
+->amh snTq_n
+*** splotch_n ; ^ splotch_n 0
+->amh fnT_aqi_n
+*** sponge_n ; ^ sponge_n 0
+->amh sefneg_n
+*** sponger_n ; ^ sponger_n 0
+->amh qelawaC_n
+*** spool_n ; ^ spool_n 0
+->amh dw_r_n
+*** spoon_n ; ^ spoon_n 0
+->amh menka_n
+*** sport_n ; ^ sport_n 0
+->amh sport_n
+*** sportsman_n ; ^ sportsman_n 0
+->amh sporteN_a_n
+*** spot_n ; ^ spot_n 0
+->amh bota_n
+*** spots_n ; ^ spots_n 0
+->amh TeqaTeqo_n
+*** spout_n ; ^ spout_n 0
+->amh menCorer_n
+*** sprain_n ; ^ sprain_n 0
+->amh wl_qat_n
+->amh welemta_n
+*** spring_n ; ^ spring_n 0
+->amh Tb_i_n
+->amh Sedey_n
+->amh mnC_n
+->amh balEstra_n
+*** springboard_n ; ^ springboard_n 0
+->amh mezleya_n
+*** spur_n ; ^ spur_n 0
+->amh 'areh_n
+*** spy_n ; ^ spy_n 0
+->amh sel_ay_n
+->amh gubeN_a_n
+*** squabble_n ; ^ squabble_n 0
+->amh 'xkolelE_n
+*** square_n ; ^ square_n 0
+->amh 'ad_ebabay_n
+*** staff_n ; ^ staff_n 0
+->amh meqWamiya_n
+->amh mrkuz_n
+*** stage_n ; ^ stage_n 0
+->amh medrek_n
+*** stain_n ; ^ stain_n 0
+->amh 'df_n
+*** staircase_n ; ^ staircase_n 0
+->amh 'rken_n
+*** stake_n ; ^ stake_n 0
+->amh kasma_n
+->amh ckal_n
+*** stalk_n ; ^ stalk_n 0
+->amh br_n
+->amh 'ageda_n
+*** stall_n ; ^ stall_n 0
+->amh gaTa_n
+*** stallion_n ; ^ stallion_n 0
+->amh feres_n
+*** stamina_n ; ^ stamina_n 0
+->amh qsm_n
+*** stamp_n ; ^ stamp_n 0
+->amh tEmbr_n
+*** standing_n ; ^ standing_n 0
+->amh 'aqWam_n
+*** standpoint_n ; ^ standpoint_n 0
+->amh 'aqWam_n
+*** staple_n ; ^ staple_n 0
+->amh manTelTeya_n
+*** star_n ; ^ star_n 0
+->amh kokeb_n
+*** starch_n ; ^ starch_n 0
+->amh 'amido_n
+*** start_n ; ^ start_n 0
+->amh mejem_eriya_n
+*** statement_n ; ^ statement_n 0
+->amh megleCa_n
+*** statue_n ; ^ statue_n 0
+->amh msl_n
+*** stature_n ; ^ stature_n 0
+->amh zala_n
+->amh qumet_n
+*** status_n ; ^ status_n 0
+->amh bota_n
+->amh 'aqWam_n
+*** steadfastness_n ; ^ steadfastness_n 0
+->amh Tnat_n
+*** steam_n ; ^ steam_n 0
+->amh 'nfalot_n
+*** steel_n ; ^ steel_n 0
+->amh bret_n
+*** stem_n ; ^ stem_n 0
+->amh 'ageda_n
+*** step_n ; ^ step_n 0
+->amh 'rmj_a_n
+*** sterility_n ; ^ sterility_n 0
+->amh mek_ann_et_n
+*** steward_n ; ^ steward_n 0
+->amh 'astenagaj_n
+*** stick_n ; ^ stick_n 0
+->amh 'ankas_E_n
+->amh bet_r_n
+->amh gnTl_n
+->amh dul_a_n
+*** stickiness_n ; ^ stickiness_n 0
+->amh malagan_et_n
+*** stillness_n ; ^ stillness_n 0
+->amh Cr_ta_n
+->amh SeT_ta_n
+*** stimulant_n ; ^ stimulant_n 0
+->amh 'anqi_n
+->amh manqiya_n
+*** stink_n ; ^ stink_n 0
+->amh qWnas_n
+->amh krfat_n
+->amh qrnat_n
+->amh Tnbat_n
+->amh gmat_n
+*** stipend_n ; ^ stipend_n 0
+->amh 'abel__n
+*** stirrup_n ; ^ stirrup_n 0
+->amh 'rkab_n
+->amh rkab_n
+*** stock_n ; ^ stock_n 0
+->amh 'aksiyon_n
+->amh weret_n
+*** stockpile_n ; ^ stockpile_n 0
+->amh kmc_t_n
+*** stomach_n ; ^ stomach_n 0
+->amh hod_n
+*** stone_n ; ^ stone_n 0
+->amh dngay_n
+*** stooge_n ; ^ stooge_n 0
+->amh teleT_afi_n
+->amh 'agWebgWabi_n
+*** stool_n ; ^ stool_n 0
+->amh meq_emeCa_n
+->amh berCum_a_n
+*** stopper_n ; ^ stopper_n 0
+->amh wtaf_n
+*** storeroom_n ; ^ storeroom_n 0
+->amh gWada_n
+->amh megazen_n
+*** storey_n ; ^ storey_n 0
+->amh derb_n
+->amh foq_n
+*** stork_n ; ^ stork_n 0
+->amh 'rkum_n
+->amh xmela_n
+*** storm_n ; ^ storm_n 0
+->amh wejeb_n
+*** story_n ; ^ story_n 0
+->amh werE_n
+->amh tarik_n
+->amh teret_n
+*** storyteller_n ; ^ storyteller_n 0
+->amh ter_ac_n
+*** stoutness_n ; ^ stoutness_n 0
+->amh gzfet_n
+->amh gzef_n
+*** strainer_n ; ^ strainer_n 0
+->amh maT_ariya_n
+->amh maTleya_n
+*** stranger_n ; ^ stranger_n 0
+->amh 'ngda_n
+*** straw_n ; ^ straw_n 0
+->amh Cd_n
+->amh geleba_n
+*** stream_n ; ^ stream_n 0
+->amh Zret_n
+*** streetcar_n ; ^ streetcar_n 0
+->amh tram_n
+*** strength_n ; ^ strength_n 0
+->amh Tnk_arE_n
+->amh Tnat_n
+->amh gulbet_n
+->amh brtat_n
+->amh Snun_et_n
+*** stress_n ; ^ stress_n 0
+->amh Cnqet_n
+*** stretcher_n ; ^ stretcher_n 0
+->amh weseka_n
+->amh qarEza_n
+*** string_n ; ^ string_n 0
+->amh dri_n
+->amh sibago_n
+*** strip_n ; ^ strip_n 0
+->amh Tefr_n
+*** stripe_n ; ^ stripe_n 0
+->amh sember_n
+*** stroke_n ; ^ stroke_n 0
+->amh Cret_n
+*** structure_n ; ^ structure_n 0
+->amh mewaqr_n
+*** struggle_n ; ^ struggle_n 0
+->amh tnqnq_n
+->amh tgl_n
+*** stub_n ; ^ stub_n 0
+->amh gur_aj_n
+*** stubbornness_n ; ^ stubbornness_n 0
+->amh drqn_a_n
+->amh drqet_n
+->amh 'l_k_n
+*** student_n ; ^ student_n 0
+->amh temari_n
+*** study_n ; ^ study_n 0
+->amh Tnat_n
+->amh tmhrt_n
+*** stuff_n ; ^ stuff_n 0
+->amh 'qa_n
+*** stumbling-block_n ; ^ stumbling-block_n 0
+->amh 'nqfat_n
+->amh maneqo_n
+->amh 'anqafi_n
+->amh denqara_n
+*** stump_n ; ^ stump_n 0
+->amh dux_n
+*** stupidity_n ; ^ stupidity_n 0
+->amh reheTn_et_n
+->amh jln_et_n
+->amh dnqurn_a_n
+*** style_n ; ^ style_n 0
+->amh qEnT_n
+->amh feliT_n
+*** subject_n ; ^ subject_n 0
+->amh tegeZ_n
+->amh tmhrt_n
+->amh zEga_n
+*** subsidy_n ; ^ subsidy_n 0
+->amh dg_oma_n
+*** substitute_n ; ^ substitute_n 0
+->amh mtk__n
+->amh telew_aC_n
+->amh lw_aC_n
+->amh teteki_n
+*** subtlety_n ; ^ subtlety_n 0
+->amh rq_et_n
+->amh blTet_n
+*** subtraction_n ; ^ subtraction_n 0
+->amh qn_esa_n
+*** success_n ; ^ success_n 0
+->amh brtat_n
+->amh gubzn_a_n
+*** sucker_n ; ^ sucker_n 0
+->amh meTaC_n
+*** suffering_n ; ^ suffering_n 0
+->amh gudat_n
+*** sugar_n ; ^ sugar_n 0
+->amh suk_ar_n
+*** suit_n ; ^ suit_n 0
+->amh ks__n
+*** suitcase_n ; ^ suitcase_n 0
+->amh xanTa_n
+*** suite_n ; ^ suite_n 0
+->amh 'aC_afari_n
+->amh 'aj_abi_n
+->amh Cfra_n
+->amh 'ajeb_n
+*** sulks_n ; ^ sulks_n 0
+->amh kWrfiya_n
+*** sulphur_n ; ^ sulphur_n 0
+->amh dN__n
+*** sum_n ; ^ sum_n 0
+->amh dm_r_n
+*** summer_n ; ^ summer_n 0
+->amh bega_n
+*** summit_n ; ^ summit_n 0
+->amh Caf_n
+->amh 'afaf_n
+->amh 'anat_n
+->amh qWnCo_n
+*** summons_n ; ^ summons_n 0
+->amh mazeZa_n
+*** sun_n ; ^ sun_n 0
+->amh jember_n
+*** superficiality_n ; ^ superficiality_n 0
+->amh glbn_et_n
+*** superintendent_n ; ^ superintendent_n 0
+->amh teqoTaTari_n
+->amh teqWeTaTari_n
+*** superior_n ; ^ superior_n 0
+->amh xum_n
+*** superiority_n ; ^ superiority_n 0
+->amh bl_Ca_n
+->amh laq_iya_n
+*** supervision_n ; ^ supervision_n 0
+->amh quTT_r_n
+->amh ktt_l_n
+*** supervisor_n ; ^ supervisor_n 0
+->amh teqoTaTari_n
+->amh teqWeTaTari_n
+*** supper_n ; ^ supper_n 0
+->amh rat_n
+*** support_n ; ^ support_n 0
+->amh dgaf_n
+->amh med_egefiya_n
+*** surgeon_n ; ^ surgeon_n 0
+->amh wegEx_a_n
+*** surgery_n ; ^ surgery_n 0
+->amh 'opErasiyon_n
+*** surplus_n ; ^ surplus_n 0
+->amh brk_atE_n
+*** survey_n ; ^ survey_n 0
+->amh Tnat_n
+*** surveyor_n ; ^ surveyor_n 0
+->amh qey_ax_n
+*** suspicion_n ; ^ suspicion_n 0
+->amh TrT_r_n
+->amh TrT_arE_n
+*** swamp_n ; ^ swamp_n 0
+->amh regreg_n
+*** swarm_n ; ^ swarm_n 0
+->amh menga_n
+*** sway_n ; ^ sway_n 0
+->amh wzw_azE_n
+*** sweat_n ; ^ sweat_n 0
+->amh lab_n
+->amh labot_n
+->amh wez_n
+*** sweater_n ; ^ sweater_n 0
+->amh xur_ab_n
+*** sweeper_n ; ^ sweeper_n 0
+->amh meTregiya_n
+*** sweepings_n ; ^ sweepings_n 0
+->amh Tr_agi_n
+*** sweetheart_n ; ^ sweetheart_n 0
+->amh fqreN_a_n
+*** swelling_n ; ^ swelling_n 0
+->amh 'bTet_n
+->amh 'b_aC_n
+->amh 'beT_n
+*** swimmer_n ; ^ swimmer_n 0
+->amh waneteN_a_n
+*** swimming_n ; ^ swimming_n 0
+->amh wana_n
+*** swindler_n ; ^ swindler_n 0
+->amh 'at_alay_n
+->amh mol_aC_a_n
+->amh 'amtac_n
+->amh 'am_ac_n
+->amh 'aCberbari_n
+*** swing_n ; ^ swing_n 0
+->amh Zw_aZw_E_n
+->amh jw_ajw_E_n
+*** sword_n ; ^ sword_n 0
+->amh xotel_n
+->amh goradE_n
+->amh seyf_n
+*** swordsman_n ; ^ swordsman_n 0
+->amh seyfeN_a_n
+*** sycamore_n ; ^ sycamore_n 0
+->amh werka_n
+*** sycophant_n ; ^ sycophant_n 0
+->amh 'agWebgWabi_n
+*** sympathy_n ; ^ sympathy_n 0
+->amh 'anjet_n
+*** symptom_n ; ^ symptom_n 0
+->amh mlk_t_n
+*** synagogue_n ; ^ synagogue_n 0
+->amh mkurab_n
+*** synod_n ; ^ synod_n 0
+->amh sinodos_n
+*** syntax_n ; ^ syntax_n 0
+->amh 'ag_ebab_n
+*** syphilis_n ; ^ syphilis_n 0
+->amh qiT_N__n
+*** syrup_n ; ^ syrup_n 0
+->amh xrop_n
+*** system_n ; ^ system_n 0
+->amh menged_n
+->amh qT_n
+*** table_n ; ^ table_n 0
+->amh sedeqa_n
+->amh TereP_Eza_n
+*** tablet_n ; ^ tablet_n 0
+->amh 'nkbl__n
+*** tail_n ; ^ tail_n 0
+->amh Zrat_n
+*** taint_n ; ^ taint_n 0
+->amh wy_bat_n
+*** tale_n ; ^ tale_n 0
+->amh tereb_n
+->amh teret_n
+*** tale-bearer_n ; ^ tale-bearer_n 0
+->amh xokaka_n
+*** talk_n ; ^ talk_n 0
+->amh weg_n
+->amh ngg_r_n
+*** tameness_n ; ^ tameness_n 0
+->amh lem_adan_et_n
+*** tangerine_n ; ^ tangerine_n 0
+->amh menderin_n
+*** tangle_n ; ^ tangle_n 0
+->amh quTrTr_n
+*** tank_n ; ^ tank_n 0
+->amh tank_n
+*** tanner_n ; ^ tanner_n 0
+->amh debenansa_n
+->amh faqi_n
+*** tape_n ; ^ tape_n 0
+->amh max_egiya_n
+->amh tEp__n
+*** tapeworm_n ; ^ tapeworm_n 0
+->amh xuT_n
+->amh koso_n
+*** tar_n ; ^ tar_n 0
+->amh qTran_n
+->amh zft_n
+*** tardiness_n ; ^ tardiness_n 0
+->amh zg_ta_n
+*** tariff_n ; ^ tariff_n 0
+->amh tarif_n
+*** tarnish_n ; ^ tarnish_n 0
+->amh blz_n
+*** taste_n ; ^ taste_n 0
+->amh qana_n
+->amh Tam_n
+*** tattoo_n ; ^ tattoo_n 0
+->amh nq_sat_n
+->amh wq_rat_n
+->amh guramaylE_n
+*** tax_n ; ^ tax_n 0
+->amh qereT_n
+->amh gbr_n
+*** taxi_n ; ^ taxi_n 0
+->amh taksi_n
+*** tea_n ; ^ tea_n 0
+->amh xay_n
+*** teacher_n ; ^ teacher_n 0
+->amh 'astemari_n
+->amh memhr_n
+*** team_n ; ^ team_n 0
+->amh budn_n
+->amh Tm_ad_n
+*** teapot_n ; ^ teapot_n 0
+->amh ber_ad_n
+->amh kWskWst_n
+*** tear_n ; ^ tear_n 0
+->amh brqs_n
+*** tears_n ; ^ tears_n 0
+->amh 'nba_n
+*** teat_n ; ^ teat_n 0
+->amh Tut_n
+*** technique_n ; ^ technique_n 0
+->amh Tbeb_n
+*** telegram_n ; ^ telegram_n 0
+->amh tElEgram_n
+*** telegraph_n ; ^ telegraph_n 0
+->amh tElEgraf_n
+*** telephone_n ; ^ telephone_n 0
+->amh slk_n
+*** telescope_n ; ^ telescope_n 0
+->amh tElEskop__n
+*** teller_n ; ^ teller_n 0
+->amh negari_n
+*** temperature_n ; ^ temperature_n 0
+->amh muqet_n
+*** temptation_n ; ^ temptation_n 0
+->amh fetena_n
+*** tempter_n ; ^ tempter_n 0
+->amh tefetataN_n
+*** tenant_n ; ^ tenant_n 0
+->amh tegaZ_n
+->amh tekeray_n
+*** tendency_n ; ^ tendency_n 0
+->amh 'azmam_iya_n
+->amh znb_alE_n
+*** tenderness_n ; ^ tenderness_n 0
+->amh leslas_an_et_n
+->amh 'al_esales_n
+->amh lmlamE_n
+*** tendon_n ; ^ tendon_n 0
+->amh Zm_at_n
+->amh jm_at_n
+*** tendril_n ; ^ tendril_n 0
+->amh qembeT__n
+->amh qenbeT_n
+*** tennis_n ; ^ tennis_n 0
+->amh tEnis_n
+*** tension_n ; ^ tension_n 0
+->amh wTret_n
+*** tent_n ; ^ tent_n 0
+->amh dnkWan_n
+*** tenure_n ; ^ tenure_n 0
+->amh yzota_n
+*** termite_n ; ^ termite_n 0
+->amh msT_n
+*** terrace_n ; ^ terrace_n 0
+->amh 'rken_n
+*** terror_n ; ^ terror_n 0
+->amh xb_r_n
+*** terrorist_n ; ^ terrorist_n 0
+->amh 'ax_eb_ari_n
+*** test_n ; ^ test_n 0
+->amh muk_era_n
+->amh fetena_n
+*** testimony_n ; ^ testimony_n 0
+->amh mskera_n
+*** thanks_n ; ^ thanks_n 0
+->amh msgana_n
+*** thatch_n ; ^ thatch_n 0
+->amh kdan_n
+*** theory_n ; ^ theory_n 0
+->amh tiyori_n
+*** thicket_n ; ^ thicket_n 0
+->amh Txa_n
+*** thickness_n ; ^ thickness_n 0
+->amh wfret_n
+->amh wf_arE_n
+*** thief_n ; ^ thief_n 0
+->amh mentafi_n
+->amh berbari_n
+->amh tenaTaqi_n
+->amh 'aClagi_n
+->amh lEba_n
+->amh moClafi_n
+*** thigh_n ; ^ thigh_n 0
+->amh werc_n
+->amh Cn_n
+*** thing_n ; ^ thing_n 0
+->amh neger_n
+->amh 'qa_n
+*** thinness_n ; ^ thinness_n 0
+->amh qTnet_n
+->amh reqiqn_et_n
+->amh ksat_n
+->amh 'aq_eTaTen_n
+*** thirst_n ; ^ thirst_n 0
+->amh Tmat_n
+->amh Tm_n
+*** thistle_n ; ^ thistle_n 0
+->amh 'amEkela_n
+*** thong_n ; ^ thong_n 0
+->amh meCaN_a_n
+->amh Tefr_n
+*** thorn_n ; ^ thorn_n 0
+->amh 'xoh_n
+*** thorns_n ; ^ thorns_n 0
+->amh garETa_n
+*** thought_n ; ^ thought_n 0
+->amh 'a'mro_n
+->amh 'as_ab_n
+*** thread_n ; ^ thread_n 0
+->amh kr__n
+->amh fetl_n
+*** threat_n ; ^ threat_n 0
+->amh zac_a_n
+*** thresher_n ; ^ thresher_n 0
+->amh mewqiya_n
+*** threshing-machine_n ; ^ threshing-machine_n 0
+->amh mewqiya_n
+*** threshold_n ; ^ threshold_n 0
+->amh medrek_n
+*** throat_n ; ^ throat_n 0
+->amh guror_o_n
+*** throne_n ; ^ throne_n 0
+->amh menber_n
+->amh zufan_n
+*** thunderbolt_n ; ^ thunderbolt_n 0
+->amh mebreq_n
+*** tick_n ; ^ tick_n 0
+->amh meZger_n
+*** ticket_n ; ^ ticket_n 0
+->amh tikEt_n
+*** tide_n ; ^ tide_n 0
+->amh wejeb_n
+*** tile_n ; ^ tile_n 0
+->amh Tub_n
+*** time_n ; ^ time_n 0
+->amh gizE_n
+*** tin_n ; ^ tin_n 0
+->amh Tasa_n
+->amh qorqor_o_n
+*** tint_n ; ^ tint_n 0
+->amh maqlemiya_n
+->amh qelem_n
+*** tip_n ; ^ tip_n 0
+->amh Caf_n
+->amh gurxa_n
+*** title_n ; ^ title_n 0
+->amh r's_n
+->amh blat_a_n
+->amh 'ar'st_n
+*** toad_n ; ^ toad_n 0
+->amh gurT_n
+->amh gWaguncer_n
+*** tobacco_n ; ^ tobacco_n 0
+->amh tmbaho_n
+*** today_n ; ^ today_n 0
+->amh zarE_n
+*** toga_n ; ^ toga_n 0
+->amh meg_onaTefiya_n
+->amh kuta_n
+*** toil_n ; ^ toil_n 0
+->amh Tama_n
+->amh gar_n
+*** tomato_n ; ^ tomato_n 0
+->amh timatim_n
+*** tomb_n ; ^ tomb_n 0
+->amh meqabr_n
+*** tomorrow_n ; ^ tomorrow_n 0
+->amh nege_n
+*** tone_n ; ^ tone_n 0
+->amh dmS_n
+*** tongs_n ; ^ tongs_n 0
+->amh meqWenTeCa_n
+*** tongue_n ; ^ tongue_n 0
+->amh ls_an_n
+->amh mlas_n
+*** tonsil_n ; ^ tonsil_n 0
+->amh 'nTl_n
+*** tool_n ; ^ tool_n 0
+->amh mazriya_n
+*** tooth_n ; ^ tooth_n 0
+->amh Trs_n
+*** top_n ; ^ top_n 0
+->amh Caf_n
+->amh 'anat_n
+*** torch_n ; ^ torch_n 0
+->amh fana_n
+->amh cb_o_n
+*** torment_n ; ^ torment_n 0
+->amh sqay_n
+*** torrent_n ; ^ torrent_n 0
+->amh gWerf_n
+*** tortoise_n ; ^ tortoise_n 0
+->amh 'Eli_n
+*** torture_n ; ^ torture_n 0
+->amh sqay_n
+*** total_n ; ^ total_n 0
+->amh dm_r_n
+*** toughness_n ; ^ toughness_n 0
+->amh Tnk_arE_n
+*** tour_n ; ^ tour_n 0
+->amh gWbN_t_n
+*** tourist_n ; ^ tourist_n 0
+->amh turist_n
+*** tout_n ; ^ tout_n 0
+->amh wey_ala_n
+*** towel_n ; ^ towel_n 0
+->amh foTa_n
+*** toy_n ; ^ toy_n 0
+->amh meC_aweca_n
+->amh 'axangul_it_n
+*** trace_n ; ^ trace_n 0
+->amh feleg_n
+->amh duka_n
+->amh mlk_t_n
+->amh debza_n
+*** track_n ; ^ track_n 0
+->amh feleg_n
+->amh meroCa_n
+->amh duka_n
+*** trade_n ; ^ trade_n 0
+->amh ngd_n
+*** tradition_n ; ^ tradition_n 0
+->amh bahl_n
+*** traffic_n ; ^ traffic_n 0
+->amh trafik_n
+->amh telalafi_n
+*** trail_n ; ^ trail_n 0
+->amh feleg_n
+->amh duka_n
+*** trailer_n ; ^ trailer_n 0
+->amh tegWet_ac_n
+->amh tesabi_n
+*** train_n ; ^ train_n 0
+->amh babur_n
+*** trainee_n ; ^ trainee_n 0
+->amh telamaj_n
+->amh lemaj_n
+->amh telemamaj_n
+*** traitor_n ; ^ traitor_n 0
+->amh keji_n
+->amh kedateN_a_n
+*** tram_n ; ^ tram_n 0
+->amh tram_n
+*** tramp_n ; ^ tramp_n 0
+->amh dezedez_n
+*** tranquility_n ; ^ tranquility_n 0
+->amh 'aman_n
+->amh SeT_ta_n
+*** transaction_n ; ^ transaction_n 0
+->amh gZ__n
+*** transfer_n ; ^ transfer_n 0
+->amh zww_r_n
+*** transgression_n ; ^ transgression_n 0
+->amh 'lfit__n
+*** translation_n ; ^ translation_n 0
+->amh trgum_n
+*** translator_n ; ^ translator_n 0
+->amh tergWami_n
+*** trap_n ; ^ trap_n 0
+->amh maTmeja_n
+->amh weTmed_n
+*** travel_n ; ^ travel_n 0
+->amh gWzo_n
+*** traveller_n ; ^ traveller_n 0
+->amh mengedeN_a_n
+*** treadle_n ; ^ treadle_n 0
+->amh mergeCa_n
+*** treatise_n ; ^ treatise_n 0
+->amh drset_n
+*** treatment_n ; ^ treatment_n 0
+->amh hk_mn_a_n
+*** treaty_n ; ^ treaty_n 0
+->amh smmn_et_n
+->amh kidan_n
+*** tree_n ; ^ tree_n 0
+->amh zaf_n
+*** tremor_n ; ^ tremor_n 0
+->amh qTq_aTE_n
+*** trend_n ; ^ trend_n 0
+->amh znb_alE_n
+*** trial_n ; ^ trial_n 0
+->amh muk_era_n
+->amh fetena_n
+*** tribulation_n ; ^ tribulation_n 0
+->amh fd_a_n
+->amh mekera_n
+*** tribunal_n ; ^ tribunal_n 0
+->amh clot_n
+*** tribune_n ; ^ tribune_n 0
+->amh medrek_n
+*** trick_n ; ^ trick_n 0
+->amh tenkol_n
+*** trifle_n ; ^ trifle_n 0
+->amh zbaznkE_n
+*** trimmings_n ; ^ trimmings_n 0
+->amh 'f_afi_n
+*** trip_n ; ^ trip_n 0
+->amh gWzo_n
+*** triumph_n ; ^ triumph_n 0
+->amh dl_n
+*** trophy_n ; ^ trophy_n 0
+->amh gd_ay_n
+*** trot_n ; ^ trot_n 0
+->amh denglasa_n
+*** trouble_n ; ^ trouble_n 0
+->amh TaTa_n
+->amh 'wket_n
+->amh mekera_n
+*** troublemaker_n ; ^ troublemaker_n 0
+->amh qWesqWax_n
+->amh beTbaC_n
+->amh moged_eN_a_n
+->amh negereN_a_n
+->amh 'ab_eTabaC_n
+*** trousers_n ; ^ trousers_n 0
+->amh sur_i_n
+*** truck_n ; ^ truck_n 0
+->amh kamiwon_n
+*** trumpet_n ; ^ trumpet_n 0
+->amh Trumba_n
+*** trumpeter_n ; ^ trumpeter_n 0
+->amh TrumbeN_a_n
+*** trunk_n ; ^ trunk_n 0
+->amh gnd_n
+->amh kumbi_n
+*** trust_n ; ^ trust_n 0
+->amh 'mnet_n
+*** trustee_n ; ^ trustee_n 0
+->amh mogzit_n
+*** truth_n ; ^ truth_n 0
+->amh wnet_n
+->amh 'wnet_n
+->amh 'wn_n
+*** truthfulness_n ; ^ truthfulness_n 0
+->amh 'wneteN_an_et_n
+*** tub_n ; ^ tub_n 0
+->amh safa_n
+*** tube_n ; ^ tube_n 0
+->amh tub_o_n
+->amh bilqat_n
+*** tumult_n ; ^ tumult_n 0
+->amh fj_t_n
+*** tune_n ; ^ tune_n 0
+->amh zEma_n
+*** turban_n ; ^ turban_n 0
+->amh TmTam_n
+*** turmeric_n ; ^ turmeric_n 0
+->amh 'rd_n
+*** turmoil_n ; ^ turmoil_n 0
+->amh gr_gr__n
+*** turn_n ; ^ turn_n 0
+->amh fanta_n
+->amh fenta_n
+->amh tera_n
+->amh meT_emzeZa_n
+*** turtledove_n ; ^ turtledove_n 0
+->amh wanE_n
+->amh wanes_n
+*** tusk_n ; ^ tusk_n 0
+->amh Trs_n
+*** tutor_n ; ^ tutor_n 0
+->amh 'asTeN_i_n
+*** tweezers_n ; ^ tweezers_n 0
+->amh werenTo_n
+*** twig_n ; ^ twig_n 0
+->amh znT_afi_n
+*** twin_n ; ^ twin_n 0
+->amh menta_n
+*** tyranny_n ; ^ tyranny_n 0
+->amh Cq_ona_n
+*** tyrant_n ; ^ tyrant_n 0
+->amh CeqW_aN_n
+*** tyre_n ; ^ tyre_n 0
+->amh gom_a_n
+*** umbrella_n ; ^ umbrella_n 0
+->amh janTla_n
+->amh Tla_n
+*** umpire_n ; ^ umpire_n 0
+->amh daN_a_n
+*** uncle_n ; ^ uncle_n 0
+->amh 'ag_ot_n
+*** undergrowth_n ; ^ undergrowth_n 0
+->amh daw_a_n
+*** unfairness_n ; ^ unfairness_n 0
+->amh gf_n
+->amh Cb_o_n
+*** uniform_n ; ^ uniform_n 0
+->amh mel_ey_o_n
+*** upbringing_n ; ^ upbringing_n 0
+->amh 'astedadeg_n
+*** uprising_n ; ^ uprising_n 0
+->amh nqn_aqE_n
+*** uproar_n ; ^ uproar_n 0
+->amh wakata_n
+->amh gagata_n
+->amh wkata_n
+->amh bTb_T_n
+->amh dblqlq_n
+->amh fj_t_n
+*** urine_n ; ^ urine_n 0
+->amh xnt_n
+*** use_n ; ^ use_n 0
+->amh Tqm_n
+->amh fayda_n
+*** usefulness_n ; ^ usefulness_n 0
+->amh reb_n
+->amh Tqm_n
+->amh fayda_n
+*** user_n ; ^ user_n 0
+->amh teTeq_ami_n
+*** usher_n ; ^ usher_n 0
+->amh qWami_n
+->amh 'ag_afari_n
+*** vacancy_n ; ^ vacancy_n 0
+->amh kftet_n
+*** vaccination_n ; ^ vaccination_n 0
+->amh kt_bat_n
+*** vagabond_n ; ^ vagabond_n 0
+->amh zewari_n
+*** vagina_n ; ^ vagina_n 0
+->amh 'ms_n
+*** vagrancy_n ; ^ vagrancy_n 0
+->amh zuret_n
+*** vagrant_n ; ^ vagrant_n 0
+->amh kertat_a_n
+->amh zewari_n
+*** valet_n ; ^ valet_n 0
+->amh 'albax_n
+*** valley_n ; ^ valley_n 0
+->amh xeleqo_n
+*** valour_n ; ^ valour_n 0
+->amh jegnn_et_n
+*** value_n ; ^ value_n 0
+->amh waga_n
+->amh fayda_n
+*** vanity_n ; ^ vanity_n 0
+->amh kentun_et_n
+*** vapour_n ; ^ vapour_n 0
+->amh ten__n
+->amh 'nfalot_n
+*** vegetables_n ; ^ vegetables_n 0
+->amh 'ataklt_n
+*** vehicle_n ; ^ vehicle_n 0
+->amh texkerkari_n
+*** veil_n ; ^ veil_n 0
+->amh grdox_n
+*** velocity_n ; ^ velocity_n 0
+->amh fTnet_n
+*** velvet_n ; ^ velvet_n 0
+->amh welansa_n
+->amh kefay_n
+*** vendor_n ; ^ vendor_n 0
+->amh xaC_n
+*** veneration_n ; ^ veneration_n 0
+->amh tesemin_et_n
+->amh 'akbrot_n
+*** verandah_n ; ^ verandah_n 0
+->amh berenda_n
+*** verb_n ; ^ verb_n 0
+->amh 'anqeS_n
+*** verdure_n ; ^ verdure_n 0
+->amh lemlemn_et_n
+->amh Tel__n
+->amh lmlamE_n
+*** vermin_n ; ^ vermin_n 0
+->amh tebay_n
+*** vessel_n ; ^ vessel_n 0
+->amh menkeriya_n
+*** vexation_n ; ^ vexation_n 0
+->amh nd_Et_n
+*** vicar_n ; ^ vicar_n 0
+->amh qomos_n
+*** vicinity_n ; ^ vicinity_n 0
+->amh 'aqrab_iya_n
+*** victory_n ; ^ victory_n 0
+->amh dl_n
+*** vigour_n ; ^ vigour_n 0
+->amh qsm_n
+*** village_n ; ^ village_n 0
+->amh mender_n
+*** villager_n ; ^ villager_n 0
+->amh mendereN_a_n
+*** violence_n ; ^ violence_n 0
+->amh bTb_T_n
+->amh gf_n
+*** virgin_n ; ^ virgin_n 0
+->amh dngl_n
+*** virginity_n ; ^ virginity_n 0
+->amh ljageredn_et_n
+->amh kbrn_a_n
+*** virtue_n ; ^ virtue_n 0
+->amh mgbar_n
+*** viscosity_n ; ^ viscosity_n 0
+->amh malagan_et_n
+*** visit_n ; ^ visit_n 0
+->amh gWbN_t_n
+*** visitor_n ; ^ visitor_n 0
+->amh gWebNi_n
+*** vogue_n ; ^ vogue_n 0
+->amh weret_n
+*** voice_n ; ^ voice_n 0
+->amh dmS_n
+->amh dmT_n
+*** volume_n ; ^ volume_n 0
+->amh yzet_n
+->amh Traz_n
+->amh qS__n
+*** volunteer_n ; ^ volunteer_n 0
+->amh feqadeN_a_n
+->amh fan_o_n
+*** vomit_n ; ^ vomit_n 0
+->amh tfat_n
+->amh qrxat_n
+*** vote_n ; ^ vote_n 0
+->amh dmS_n
+*** voter_n ; ^ voter_n 0
+->amh meraC_n
+*** vowel_n ; ^ vowel_n 0
+->amh man_abebiya_n
+->amh 'an_ababi_n
+*** voyage_n ; ^ voyage_n 0
+->amh gWzo_n
+*** vulgarity_n ; ^ vulgarity_n 0
+->amh 'r_eN_n_et_n
+*** wage_n ; ^ wage_n 0
+->amh mnda_n
+->amh demewez_n
+*** wager_n ; ^ wager_n 0
+->amh wrr_d_n
+*** wages_n ; ^ wages_n 0
+->amh mnda_n
+*** waist_n ; ^ waist_n 0
+->amh wegeb_n
+*** waistline_n ; ^ waistline_n 0
+->amh xnT_n
+*** waiter_n ; ^ waiter_n 0
+->amh boy_n
+*** walk_n ; ^ walk_n 0
+->amh xr_xr__n
+*** wall_n ; ^ wall_n 0
+->amh gdgd_a_n
+*** wanderer_n ; ^ wanderer_n 0
+->amh kewtat_a_n
+->amh kertat_a_n
+->amh zewari_n
+->amh 'awtat_a_n
+->amh dezedez_n
+*** want_n ; ^ want_n 0
+->amh fl_agot_n
+*** war_n ; ^ war_n 0
+->amh Tor_n
+->amh Torn_et_n
+*** war-dance_n ; ^ war-dance_n 0
+->amh dankira_n
+*** warehouse_n ; ^ warehouse_n 0
+->amh medeb_r_n
+*** warfare_n ; ^ warfare_n 0
+->amh Torn_et_n
+*** warmth_n ; ^ warmth_n 0
+->amh muqet_n
+*** warning_n ; ^ warning_n 0
+->amh masTenqeqiya_n
+*** warp_n ; ^ warp_n 0
+->amh dr_n
+*** warrior_n ; ^ warrior_n 0
+->amh ToreN_a_n
+->amh tewagi_n
+->amh tegaday_n
+->amh 'aw_agi_n
+->amh 'arbeN_a_n
+*** wart_n ; ^ wart_n 0
+->amh kintarot_n
+*** warthog_n ; ^ warthog_n 0
+->amh kerker_o_n
+*** wash_n ; ^ wash_n 0
+->amh 'T_abi_n
+*** washing_n ; ^ washing_n 0
+->amh 'aTeba_n
+->amh 'Tbet_n
+*** wasp_n ; ^ wasp_n 0
+->amh terb_n
+*** waste_n ; ^ waste_n 0
+->amh qoxaxa_n
+*** watcher_n ; ^ watcher_n 0
+->amh temelkac_n
+*** watchman_n ; ^ watchman_n 0
+->amh zebeN_a_n
+*** water-bottle_n ; ^ water-bottle_n 0
+->amh kod_a_n
+*** waterfall_n ; ^ waterfall_n 0
+->amh fWafWatE_n
+*** watermelon_n ; ^ watermelon_n 0
+->amh kerbux_n
+*** way_n ; ^ way_n 0
+->amh wegen_n
+->amh zedE_n
+->amh menged_n
+*** weakling_n ; ^ weakling_n 0
+->amh fes_n
+->amh qesesteN_a_n
+->amh lfsfs_n
+*** weakness_n ; ^ weakness_n 0
+->amh dkmet_n
+->amh kWesasan_et_n
+->amh dkam_n
+*** wealth_n ; ^ wealth_n 0
+->amh habt_n
+->amh kbret_n
+->amh 'ad_uN_a_n
+*** weariness_n ; ^ weariness_n 0
+->amh lfat_n
+->amh zlet_n
+*** weasel_n ; ^ weasel_n 0
+->amh fadet_n
+*** weaver_n ; ^ weaver_n 0
+->amh xem_anE_n
+*** web_n ; ^ web_n 0
+->amh dr_n
+*** wedge_n ; ^ wedge_n 0
+->amh xbl_q_n
+->amh wxal_n
+*** weed_n ; ^ weed_n 0
+->amh 'arem_n
+->amh sinar_n
+*** week_n ; ^ week_n 0
+->amh semon_n
+->amh sam_nt_n
+*** weevil_n ; ^ weevil_n 0
+->amh neqez_n
+*** weft_n ; ^ weft_n 0
+->amh mag_n
+*** weight_n ; ^ weight_n 0
+->amh mizan_n
+*** welder_n ; ^ welder_n 0
+->amh bey_aj_n
+*** well_n ; ^ well_n 0
+->amh gWdgWad_n
+*** whale_n ; ^ whale_n 0
+->amh 'anberi_n
+*** wheat_n ; ^ wheat_n 0
+->amh sndE_n
+*** wheel_n ; ^ wheel_n 0
+->amh gom_a_n
+->amh xkrkrit_n
+->amh menkorakur_n
+*** whereabouts_n ; ^ whereabouts_n 0
+->amh dmTmaT_n
+->amh debza_n
+*** whetstone_n ; ^ whetstone_n 0
+->amh mesal_n
+*** whim_n ; ^ whim_n 0
+->amh 'amrot_n
+*** whip_n ; ^ whip_n 0
+->amh Zraf_n
+->amh 'alenga_n
+*** whippersnapper_n ; ^ whippersnapper_n 0
+->amh wrgaT_n
+*** whipping_n ; ^ whipping_n 0
+->amh grfiya_n
+*** whirlpool_n ; ^ whirlpool_n 0
+->amh 'azurit_n
+*** whistle_n ; ^ whistle_n 0
+->amh fixka_n
+*** whiteness_n ; ^ whiteness_n 0
+->amh nTat_n
+*** wick_n ; ^ wick_n 0
+->amh kr__n
+*** wickedness_n ; ^ wickedness_n 0
+->amh kfat_n
+->amh xer__n
+->amh xer_eN_n_et_n
+*** width_n ; ^ width_n 0
+->amh werd_n
+->amh sfat_n
+*** wife_n ; ^ wife_n 0
+->amh mist_n
+->amh balebEt_n
+*** wilderness_n ; ^ wilderness_n 0
+->amh bereha_n
+*** wilfulness_n ; ^ wilfulness_n 0
+->amh drqn_a_n
+*** will_n ; ^ will_n 0
+->amh nuzazE_n
+->amh fl_agot_n
+->amh feqad_n
+*** willingness_n ; ^ willingness_n 0
+->amh feqadeN_an_et_n
+*** wind_n ; ^ wind_n 0
+->amh nefas_n
+*** window_n ; ^ window_n 0
+->amh meskot_n
+*** wine_n ; ^ wine_n 0
+->amh weyn_n
+*** wineskin_n ; ^ wineskin_n 0
+->amh rkot_n
+*** wing_n ; ^ wing_n 0
+->amh knf_n
+*** wink_n ; ^ wink_n 0
+->amh qSbet_n
+->amh Tqxa_n
+*** winner_n ; ^ winner_n 0
+->amh reci_n
+->amh 'ax_en_afi_n
+*** wire_n ; ^ wire_n 0
+->amh xbo_n
+*** wisdom_n ; ^ wisdom_n 0
+->amh Tbeb_n
+*** wise_n ; ^ wise_n 0
+->amh Tebib_n
+*** wish_n ; ^ wish_n 0
+->amh fl_agot_n
+->amh mN_ot_n
+->amh feqad_n
+*** wit_n ; ^ wit_n 0
+->amh 'a'mro_n
+*** witch-doctor_n ; ^ witch-doctor_n 0
+->amh TenqWay_n
+*** witchcraft_n ; ^ witchcraft_n 0
+->amh 'asmat_n
+->amh Tnqola_n
+*** witness_n ; ^ witness_n 0
+->amh msk_r_n
+->amh meskari_n
+*** wizard_n ; ^ wizard_n 0
+->amh TenqWay_n
+*** woman_n ; ^ woman_n 0
+->amh sEt_n
+*** wonder_n ; ^ wonder_n 0
+->amh dnq_n
+*** wood_n ; ^ wood_n 0
+->amh dur_n
+->amh 'nCet_n
+*** woods_n ; ^ woods_n 0
+->amh Cak_a_n
+->amh den__n
+*** wool_n ; ^ wool_n 0
+->amh suf_n
+*** word_n ; ^ word_n 0
+->amh neger_n
+->amh qal_n
+*** worker_n ; ^ worker_n 0
+->amh wezad_er_n
+*** working_n ; ^ working_n 0
+->amh xq_ela_n
+*** world_n ; ^ world_n 0
+->amh 'ad_uN_a_n
+*** worm_n ; ^ worm_n 0
+->amh tl_n
+*** worry_n ; ^ worry_n 0
+->amh Cnqet_n
+->amh Cnq_n
+*** worshipper_n ; ^ worshipper_n 0
+->amh 'amlaki_n
+*** wrapper_n ; ^ wrapper_n 0
+->amh xfan_n
+*** wrath_n ; ^ wrath_n 0
+->amh quT_a_n
+*** wrench_n ; ^ wrench_n 0
+->amh wl_qat_n
+*** wrestler_n ; ^ wrestler_n 0
+->amh tagay_n
+*** wretchedness_n ; ^ wretchedness_n 0
+->amh gWsqWel_a_n
+*** writer_n ; ^ writer_n 0
+->amh derasi_n
+*** writing_n ; ^ writing_n 0
+->amh Tfet_n
+*** wrongdoer_n ; ^ wrongdoer_n 0
+->amh 'aTfi_n
+->amh steteN_a_n
+->amh TfateN_a_n
+*** wrongdoing_n ; ^ wrongdoing_n 0
+->amh Tur_n
+*** yearning_n ; ^ yearning_n 0
+->amh nafqot_n
+*** yeast_n ; ^ yeast_n 0
+->amh 'rxo_n
+*** yell_n ; ^ yell_n 0
+->amh Cuhet_n
+*** yesterday_n ; ^ yesterday_n 0
+->amh tlantn_a_n
+->amh tlant_n
+*** yield_n ; ^ yield_n 0
+->amh mrt_n
+*** yogurt_n ; ^ yogurt_n 0
+->amh 'rgo_n
+*** yoke_n ; ^ yoke_n 0
+->amh qember_n
+->amh qenber_n
+*** yolk_n ; ^ yolk_n 0
+->amh 'askWal_n
+*** young_n ; ^ young_n 0
+->amh tan_ax_n
+*** youth_n ; ^ youth_n 0
+->amh weT_at_n
+->amh weT_atn_et_n
+->amh ljageredn_et_n
+*** zero_n ; ^ zero_n 0
+->amh zEro_n
+*** zone_n ; ^ zone_n 0
+->amh qeTana_n
+->amh wereda_n
+->amh kl_l_n
+*** that_n ; ^ that_n 0
+->amh ya_n

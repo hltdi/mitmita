@@ -1,0 +1,96 @@
+seg: a e E i I o u H w y ' ` _ | *
+     b bW c cW C CW d dW f fW g gW
+     h hW j jW k kW l lW m mW n nW
+     p pW P PW N NW q qW r rW s sW
+     S SW t tW T TW v vW x xW z zW Z ZW
+     ^s ^S ^h ^hW ^sW ^SW
+
+vowels: a e E i I o u
+consonants: h l H m ^s r s x q b t c ^h n N ' k K w ` z Z y d j g T C P S ^S f p
+punctuation: “ ‘ ” ’ – … • : ; / \ , < > ? . ! % $ ( ) [ ] { } | # @ & * - _ + = " ~
+gemination: _
+postpunc: ,=፣ .=። :=፦ ;=፤
+
+postsyll: '=እ 'E=ኤ 'a=አ 'e=ኧ 'i=ኢ 'o=ኦ 'u=ኡ C=ጭ CE=ጬ CWa=ጯ Ca=ጫ Ce=ጨ Ci=ጪ Co=ጮ Cu=ጩ H=ሕ 
+HE=ሔ HWa=ሗ Ha=ሐ Hi=ሒ Ho=ሖ Hu=ሑ KW=ዅ KWE=ዄ KWa=ዃ KWe=ዀ KWi=ዂ N=ኝ NE=ኜ NWa=ኟ Na=ኛ Ne=ኘ Ni=ኚ No=ኞ Nu=ኙ P=ጵ 
+PE=ጴ PWa=ጷ Pa=ጳ Pe=ጰ Pi=ጲ Po=ጶ Pu=ጱ S=ጽ SE=ጼ SWa=ጿ Sa=ጻ Se=ጸ Si=ጺ So=ጾ Su=ጹ T=ጥ TE=ጤ TWa=ጧ Ta=ጣ Te=ጠ 
+Ti=ጢ To=ጦ Tu=ጡ Z=ዥ ZE=ዤ ZWa=ዧ Za=ዣ Ze=ዠ Zi=ዢ Zo=ዦ Zu=ዡ ^S=ፅ ^SE=ፄ ^Sa=ፃ ^Se=ፀ ^Si=ፂ ^So=ፆ ^Su=ፁ ^h=ኅ ^hE=ኄ 
+^ha=ኃ ^hi=ኂ ^ho=ኆ ^hu=ኁ ^s=ሥ ^sE=ሤ ^sWa=ሧ ^sa=ሣ ^se=ሠ ^si=ሢ ^so=ሦ ^su=ሡ `=ዕ `E=ዔ `a=ዓ `i=ዒ `o=ዖ `u=ዑ b=ብ bE=ቤ 
+bWa=ቧ ba=ባ be=በ bi=ቢ bo=ቦ bu=ቡ c=ች cE=ቼ cWa=ቿ ca=ቻ ce=ቸ ci=ቺ co=ቾ cu=ቹ d=ድ dE=ዴ dWa=ዷ da=ዳ de=ደ di=ዲ 
+do=ዶ du=ዱ f=ፍ fE=ፌ fWa=ፏ fa=ፋ fe=ፈ fi=ፊ fo=ፎ fu=ፉ g=ግ gE=ጌ gW=ጕ gWE=ጔ gWa=ጓ gWe=ጐ gWi=ጒ ga=ጋ ge=ገ gi=ጊ 
+go=ጎ gu=ጉ h=ህ hE=ሄ hW=ኍ hWE=ኌ hWa=ኋ hWe=ኈ hWi=ኊ ha=ሀ he=ኸ hi=ሂ ho=ሆ hu=ሁ j=ጅ jE=ጄ jWa=ጇ ja=ጃ je=ጀ ji=ጂ 
+jo=ጆ ju=ጁ k=ክ kE=ኬ kW=ኵ kWE=ኴ kWa=ኳ kWe=ኰ kWi=ኲ ka=ካ ke=ከ ki=ኪ ko=ኮ ku=ኩ l=ል lE=ሌ lWa=ሏ la=ላ le=ለ li=ሊ 
+lo=ሎ lu=ሉ m=ም mE=ሜ mWa=ሟ ma=ማ me=መ mi=ሚ mo=ሞ mu=ሙ n=ን nE=ኔ nWa=ኗ na=ና ne=ነ ni=ኒ no=ኖ nu=ኑ p=ፕ pE=ፔ 
+pWa=ፗ pa=ፓ pe=ፐ pi=ፒ po=ፖ pu=ፑ q=ቅ qE=ቄ qW=ቍ qWE=ቌ qWa=ቋ qWe=ቈ qWi=ቊ qa=ቃ qe=ቀ qi=ቂ qo=ቆ qu=ቁ r=ር rE=ሬ 
+rWa=ሯ ra=ራ re=ረ ri=ሪ ro=ሮ ru=ሩ s=ስ sE=ሴ sWa=ሷ sa=ሳ se=ሰ si=ሲ so=ሶ su=ሱ t=ት tE=ቴ tWa=ቷ ta=ታ te=ተ ti=ቲ 
+to=ቶ tu=ቱ v=ቭ vE=ቬ vWa=ቯ va=ቫ ve=ቨ vi=ቪ vo=ቮ vu=ቩ w=ው wE=ዌ wa=ዋ we=ወ wi=ዊ wo=ዎ wu=ዉ x=ሽ xE=ሼ xWa=ሿ 
+xa=ሻ xe=ሸ xi=ሺ xo=ሾ xu=ሹ y=ይ yE=ዬ ya=ያ ye=የ yi=ዪ yo=ዮ yu=ዩ z=ዝ zE=ዜ zWa=ዟ za=ዛ ze=ዘ zi=ዚ zo=ዞ zu=ዙ 
+
+feats:
+
+  pos: v ግስ
+
+  acc = True | False
+  def = True | False
+  pp = Inde | sIle | le | wede | Iske | be | Iyye | ke
+  vc = tr | smp | cs | ps
+  sub = True | False
+  neg = True | False
+  ye = True | False
+  pos = v
+  cj1 = sI | IndI | lI | IskI | bI
+  cj2 = sa | nI | Inji | s | m | na | ma
+  as = rc | it | smp
+  tm = imf | j_i | ger | prf
+  rel = True | False
+  ax = al
+  rl = acc = True | False;
+       p = True | False
+  sb = p2 = True | False;
+       fem = True | False;
+       p1 = True | False;
+       frm = True | False;
+       plr = True | False
+  ob = p2 = True | False;
+       p1 = True | False;
+       plr = True | False;
+       fem = True | False;
+       l = True | False;
+       frm = True | False;
+       b = True | False;
+       prp = True | False;
+       expl = True | False
+
+  pos: n ስም
+
+  vc = smp | ps | tr | cs
+  pos = n
+  as = it | smp | rc
+  prp = True | False
+  itu = True | False
+  pp = le | be | Iske | I | Inde | ke | wede | sIle
+  neg = True | False
+  fem = True | False
+  frm = True | False
+  poss = p2 = True | False;
+         p1 = True | False;
+         plr = True | False;
+         fem = True | False;
+         frm = True | False;
+         expl = True | False
+  tm = prf
+  rl = acc = True | False;
+       p = True | False;
+       gen = True | False
+  cnj = m | na | s
+  acc = True | False
+  plr = True | False
+  gen = True | False
+  p2 = True | False
+  p1 = True | False
+  v = agt | ins | inf | man
+  def = True | False
+  dis = True | False
+
+trans:
+  word = ቃል

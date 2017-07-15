@@ -206,7 +206,8 @@ class Spacy(Tagger):
         self.tokenizer = None
         self.tokenize = True
         # or spacy.load('en_depent_web_md') ??
-        self.tagger = spacy.load(arg)
+        self.tagger = spacy.load('en_core_web_sm')
+#        self.tagger = spacy.load(arg)
 
     def __repr__(self):
         return "spaCy:tagger:{}".format(self.lang)

@@ -888,7 +888,7 @@ class TreeTrans:
         """
         if verbosity:
             print('BUILDING {} with tgroups {} and tnodes {}'.format(self, tg_groups, tg_tnodes))
-        print("  SNodes: {}".format(self.snodes))
+            print("  SNodes: {}".format(self.snodes))
         tnode_index = 0
         # Dictionary mapping source node indices to initial target node indices
         node_index_map, agreements, group_nodes = {}, {}, {}
@@ -1088,7 +1088,7 @@ class TreeTrans:
             agreements[tginst] = agr
             if verbosity > 1:
                 print(" build(): tginst {} agr {}, agreements {}".format(tginst, agr, agreements))
-        subtnodes = tg_tnodes[1]
+        subtnodes = tg_tnodes[1] if len(tg_tnodes) > 1 else []
         self.add_tnodes(tnodes, subtnodes, tginst, group_nodes, node_features)
         # Store local variables as instance variables
         self.node_features = node_features

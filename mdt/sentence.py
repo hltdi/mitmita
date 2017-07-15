@@ -1771,7 +1771,7 @@ class Solution:
         self.segments = []
         # Current session (need for creating SegRecord objects)
         self.session = session
-        print("SOLUCIÓN CREADA con dstore {} y ginsts {}".format(dstore, ginsts))
+        print("SOLUTION CREATED with dstore {} and ginsts {}".format(dstore, ginsts))
 
     def __repr__(self):
         return "|< {} >|({})".format(self.sentence.raw, self.index)

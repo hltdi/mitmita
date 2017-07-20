@@ -575,7 +575,7 @@ class Language:
         # Empty new_anals in case we want to add things later
         self.new_anals.clear()
 
-    def read_cache(self, name='', expand=False):
+    def read_cache(self, name='', expand=False, verbose=False):
         """Read cached entries into self.cached from a file.
         Modified 2015/5/17 to include Mbojereha categories."""
         cache = self.get_cache_file(name=name)
@@ -597,7 +597,8 @@ class Language:
                         alist.insert(0, False)
                     self.cached[word] = alist
         except IOError:
-            print('No such cache file as {}'.format(cache))
+            if verbose:
+                print('No such cache file as {}'.format(cache))
 
     def get_cached_anal(self, word, expand=True):
         """Return a list of dicts, one for each analysis of the word, or None."""
@@ -1733,12 +1734,13 @@ class Language:
             loaded = True
         else:
             try:
+                print("Loading languages...")
                 srcpath = os.path.join(Language.get_language_dir(source), source + '.lg')
                 srclang = Language.read(srcpath, use=srcuse)
-                print("Lengua fuente {} cargada".format(srclang))
+                print("Source language {} loaded".format(srclang))
                 targpath = os.path.join(Language.get_language_dir(target), target + '.lg')
                 targlang = Language.read(targpath, use=targuse)
-                print("Lengua destino {} cargada".format(targlang))
+                print("Target language {} loaded".format(targlang))
             except IOError:
                 print("One of these languages doesn't exist.")
                 return

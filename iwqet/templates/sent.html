@@ -212,7 +212,7 @@ function ShowHelp() {
 function OnRegOra(raw, punc) {
     var sentval = document.getElementById("sentence").value;
     var sentend = sentval.charAt(sentval.length-1);
-    if ('.?!'.indexOf(sentend) == -1) {
+    if ('።?!'.indexOf(sentend) == -1) {
         sentval += punc;
         document.getElementById("sentence").value += punc;
     }
@@ -229,15 +229,13 @@ function OnRegFrase() {
     var fratra = document.Form2.fratra.value;
     document.getElementById("segtra2").innerHTML = "Selected translation";
     if (segtrans != "") {
-        segtrans = limpiarGrn(segtrans);
+        segtrans = cleanAmh(segtrans);
         document.Form2.fratra.value += "||" + segment + "=" + segtrans;
         if (segtrans == "0") {
             // User wants no translation for this segment.
             return true;
-        } else if (sentval == "") {
-           // Beginning of the sentence.
-            segtrans = capitalize(segtrans);
-        } else {
+        } else if (sentval != "") {
+           // Not beginning of the sentence.
             segtrans = " " + segtrans;
         }
         document.getElementById("error").innerHTML = "";
@@ -255,9 +253,7 @@ function OnRegFrase() {
         document.getElementById("error").innerHTML = "";
         document.getElementById("segment").value = choice;
         document.Form2.fratra.value += "||" + segment + "=" + choice;
-        if (sentval == "") {
-            choice = capitalize(choice);
-        } else {
+        if (sentval != "") {
             choice = " " + choice;
         }
         document.getElementById("sentence").value += choice;
@@ -285,24 +281,7 @@ function OnSalir()
     document.Form1.submit();             // Submit the page
     return true;
 }
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-function limpiarGrn(string) {
-    string = string.replace(/[âä]/, "ã");
-    string = string.replace(/à/, "á");
-    string = string.replace(/[êë]/, "ẽ");
-    string = string.replace(/è/, "é");
-    string = string.replace(/[îï]/, "ĩ");
-    string = string.replace(/ì/, "í");
-    string = string.replace(/[ôö]/, "õ");
-    string = string.replace(/ò/, "ó");
-    string = string.replace(/[ûü]/, "ũ");
-    string = string.replace(/ù/, "ú");
-    string = string.replace(/[ŷÿ]/, "ỹ");
-    string = string.replace(/ỳ/, "ý");
-    string = string.replace(/[’`´°‘]/, "'");
-    string = string.replace(/ĝ/, "g̃");
+function cleanAmh(string) {
     return string;
 }
 </script>
@@ -360,7 +339,7 @@ Usuario: <span class="username">{{ user.username }}</span>
 <p></p><p></p>
 
 {# Write the sentence with colors representing different translated segments #}
-<h3>Actual oración</h3>
+<h3>Current sentence</h3>
 <span class="sentence">
 {% for seg in sentence %}
 {# Each segment responds to mouse clicks which replace the segtra
@@ -383,9 +362,9 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 <td class="segsent">
 <table class="trans">
 <tr class="transtitle">
-  <th class="transtitle">Frase</th>
+  <th class="transtitle">Phrase</th>
   <td class="transbutton">
-  <input type="button" id="button" name="freg" onclick="OnRegFrase();" value="Registrar traducción">
+  <input type="button" id="button" name="freg" onclick="OnRegFrase();" value="Record translation">
   </td>
 </tr>
 <tr class="transtitle">

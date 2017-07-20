@@ -527,7 +527,7 @@ class POS:
         # Empty new_gens in case we want to add things later
         self.new_gens.clear()
 
-    def read_gen_cache(self, name=''):
+    def read_gen_cache(self, name='', verbose=False):
         """Read cached entries into self.gen_cached from a file."""
         file = self.get_gen_cache_file(name=name)
         try:
@@ -544,7 +544,8 @@ class POS:
                         fs = FeatStruct(fs, freeze=True)
                     self.gen_cached[(root, fs)] = words
         except IOError:
-            print('No such gen cache file as {}'.format(file))
+            if verbose:
+                print('No such gen cache file as {}'.format(file))
 
     def load_fst(self, generate=False, guess=False, segment=False,
                  verbose=False):

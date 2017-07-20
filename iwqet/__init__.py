@@ -74,19 +74,25 @@ def load(source='eng', target='amh', groups=None):
     if srclang and targlang and srclang.use == srcuse and targlang.use == targuse:
         loaded = True
     else:
-        try:
-            srcdir = get_language_dir(source)
-            targdir = get_language_dir(target)
-            srcpath = os.path.join(srcdir,  source + '.lg')
-#            print("srcpath {}".format(srcpath))
-            srclang = Language.read(srcpath, use=srcuse, directory=srcdir)
-            print("Source language {} loaded".format(srclang))
-            targpath = os.path.join(targdir, target + '.lg')
-            targlang = Language.read(targpath, use=targuse, directory=targdir)
-            print("Target language {} loaded".format(targlang))
-        except IOError:
-            print("At least one of these languages doesn't exist.")
+#        try:
+        srcdir = get_language_dir(source)
+        targdir = get_language_dir(target)
+        srcpath = os.path.join(srcdir,  source + '.lg')
+        srclang = Language.read(srcpath, use=srcuse, directory=srcdir)
+        print("Source language {} loaded".format(srclang))
+        targpath = os.path.join(targdir, target + '.lg')
+        targlang = Language.read(targpath, use=targuse, directory=targdir)
+        print("Target language {} loaded".format(targlang))
+        if not srclang:
+            print("Source language failed to load!")
             return
+        if not targlang:
+            print("Target language failed to load!")
+            return
+#        except IOError:
+#        if not srclang:
+#            print("At least one of these languages doesn't exist.")
+#            return
     # Load groups for source language now
     if not loaded:
         srclang.read_groups(files=groups, target=targlang)

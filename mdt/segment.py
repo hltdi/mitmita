@@ -177,7 +177,7 @@ class SolSeg:
             transhtml += '<tr><td class="source">'
             transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
             transhtml += '<tr><td class="other">'
-            transhtml += '<input type="radio" name="choice" id="other" value="other" checked>otra traducción (introducir abajo)</td></tr>'
+            transhtml += '<input type="radio" name="choice" id="other" value="other" checked>other translation (enter below)</td></tr>'
             # Remove special prefixes
             transhtml = SolSeg.remove_spec_pre(transhtml)
             transhtml = transhtml.replace('_', ' ')
@@ -189,7 +189,7 @@ class SolSeg:
             transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
             # Add other translation button
             transhtml += '<tr><td class="other">'
-            transhtml += '<input type="radio" name="choice" id="other" value="other" checked>otra traducción (introducir abajo)</td></tr>'
+            transhtml += '<input type="radio" name="choice" id="other" value="other" checked>other translation (enter below)</td></tr>'
             # Remove special prefixes
             transhtml = SolSeg.remove_spec_pre(transhtml)
             transhtml = transhtml.replace('_', ' ')
@@ -1003,7 +1003,9 @@ class TreeTrans:
                             targ_feats = targ_feats.copy(True)
                             if verbosity:
                                 print("  Causing sfeats {} to agree with tfeats {}".format(features, targ_feats))
-                            targ_feats = features.agree_FSS(targ_feats, agrs)
+                            if features:
+                                # features may be None
+                                targ_feats = features.agree_FSS(targ_feats, agrs)
                             if verbosity:
                                 print("   Now: {} to agree with tfeats {}".format(features, targ_feats))
                         node_index_map[snode.index] = tnode_index
@@ -1060,12 +1062,9 @@ class TreeTrans:
                                 if verbosity:
                                     print("  Causing sfeats {} to agree with tfeats {}".format(features, targ_feats.__repr__()))
                                     print("    features type: {}".format(type(features)))
-#                                if isinstance(features, FSSet):
-                                targ_feats = features.agree_FSS(targ_feats, agrs)
-#                                else:
-#                                    # Use an (unfrozen) copy of target features
-#                                    targ_feats = targ_feats.copy(True)
-#                                    features.agree(targ_feats, agrs)
+                                if features:
+                                    # features could be None
+                                    targ_feats = features.agree_FSS(targ_feats, agrs)
                                 if verbosity:
                                     print("  Now {} and {}".format(features, targ_feats.__repr__()))
                             node_index_map[snode.index] = tnode_index

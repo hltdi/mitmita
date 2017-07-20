@@ -10,6 +10,9 @@
 
 #### verbs
 
+### BE can't take an object
+%v_be :: be_v[ob=[-expl]]
+
 ### verb objects; FIGURE OUT HOW TO HANDLE INDIRECT AND DIRECT OBJECTS
 %v_1s_ob :: [pos=v,ob=[+expl,+p1,-plr]] me ; // 1:0
 %v_2_ob :: [pos=v,ob=[+expl,+p2]] you ; // 1:0
@@ -19,16 +22,7 @@
 %v_1p_ob :: [pos=v,ob=[+expl,+p1,+plr]] us ; // 1:0
 %v_3p_ob :: [pos=v,ob=[+expl,-p1,-p2,+plr,-fem]] them ; // 1:0
 
-#### verbs with definite objects; has to happen before must/should etc. because they make nouns out of verbs
-$v_defsing_ob :: [pos=v,ob=[+expl,-p1,-p2,-plr]] [pos=n,+def,+acc,rl=[+acc],-plr] ; >< 0 1
-
-### negative
-## must
-%v_neg_1s_must :: i must_v[pos=v,+aux,+neg,sb=[+expl,+p1,-plr]] not [pos=v,tam=stm] ; 3-> [pos=n] ; // 0:3 2:3
-## can, could
-%v_neg_1s_can :: i can_v[+neg,sb=[+expl,+p1,-plr],tm=imf] not [pos=v,sb=[+expl,+p1,-plr]] ; // 0:3 2:3
-## should
-%v_neg_1s_should :: i shall_v[pos=v,+neg,tam=pst,+aux,sb=[+expl,+p1,-plr]] not [pos=v,tam=stm] ; 2-> [pos=n] ; // 0:3 2:3
+### MOST NEGATIVE VERBS
 ## present
 %v_neg_1s_prs :: i do not [pos=v,+neg,sb=[+p1,-plr,+expl],tm=imf] ; // 0:3 1:3 2:3
 %v_neg_2_prs :: you do not [pos=v,+neg,sb=[+expl,+p2],tm=imf] ; // 0:3 1:3 2:3
@@ -85,14 +79,7 @@ $v_defsing_ob :: [pos=v,ob=[+expl,-p1,-p2,-plr]] [pos=n,+def,+acc,rl=[+acc],-plr
 ## have to past
 ## about to
 
-### affirmative
-## should
-%v_1s_should :: i shall_v[pos=v,tam=pst,+aux,sb=[+expl,+p1,-plr]] [pos=v,tam=stm] ; 2-> [pos=n] ; // 0:2
-## must
-%v_1s_must :: i must_v[pos=v,+aux,sb=[+expl,+p1,-plr]] [pos=v,tam=stm] ; 2-> [pos=n] ; // 0:2
-## have to present
-## have to past
-## can, could
+### MOST AFFIRMATIVE VERBS
 ## future will
 %v_1s_fut :: i will [pos=v,sb=[+expl,+p1,-plr],tm=imf,ax=al] ; // 0:2 1:2
 ## future going to
@@ -123,13 +110,36 @@ $v_defsing_ob :: [pos=v,ob=[+expl,-p1,-p2,-plr]] [pos=n,+def,+acc,rl=[+acc],-plr
 %v_1p_prs :: we [pos=v,tam=stm,sb=[+expl,+p1,+plr],tm=imf,ax=al] ; // 0:1
 %v_3p_prs :: they [pos=v,tam=stm,sb=[+expl,-p1,-p2,+plr],tm=imf,ax=al] ; // 0:1
 ## past
-%v_1s_pst :: i [pos=v,tam=pst,sb=[+expl,+p1,-plr],tm=prf] ; // 0
-%v_2_pst :: you [pos=v,tam=pst,sb=[+expl,+p2],tm=prf] ; // 0
-%v_3sm_pst :: he [pos=v,tam=pst,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0
-%v_3sf_pst :: she [pos=v,tam=pst,sb=[+expl,-p1,-p2,+fem,-plr],tm=prf] ; // 0
-%v_1p_pst :: we [pos=v,tam=pst,sb=[+expl,+p1,+plr],tm=prf] ; // 0
-%v_3p_pst :: they [pos=v,tam=pst,sb=[+expl,-p1,-p2,+plr],tm=prf] ; // 0
-%v_3sn_pst :: it [pos=v,tam=pst,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0
+%v_1s_pst :: i [pos=v,tam=pst,sb=[+expl,+p1,-plr],tm=prf] ; // 0:1
+%v_2_pst :: you [pos=v,tam=pst,sb=[+expl,+p2],tm=prf] ; // 0:1
+%v_3sm_pst :: he [pos=v,tam=pst,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0:1
+%v_3sf_pst :: she [pos=v,tam=pst,sb=[+expl,-p1,-p2,+fem,-plr],tm=prf] ; // 0:1
+%v_1p_pst :: we [pos=v,tam=pst,sb=[+expl,+p1,+plr],tm=prf] ; // 0:1
+%v_3p_pst :: they [pos=v,tam=pst,sb=[+expl,-p1,-p2,+plr],tm=prf] ; // 0:1
+%v_3sn_pst :: it [pos=v,tam=pst,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0:1
+
+#### LEAVE THIS (FOR NOW?) BECAUSE OF THE CONFUSION ASSOCIATED WITH SWAPPING IN MORPHOSYNS
+#### verbs with definite objects
+## make the object accusative and swap it with the verb
+#### has to follow pronoun subjects + verbs and precede must/should etc. because they make nouns out of verbs
+## $v_defsing_ob :: [pos=v,ob=[+expl,-p1,-p2,-plr]] [pos=n,+def,cs=acc,-plr] ; >< 0 1
+
+### negative modals
+## must
+%v_neg_1s_must :: i must_v[pos=v,+aux,+neg,sb=[+expl,+p1,-plr]] not [pos=v,tam=stm] ; 3-> [pos=n] ; // 0:3 2:3
+## can, could
+%v_neg_1s_can :: i can_v[+neg,sb=[+expl,+p1,-plr],tm=imf] not [pos=v,sb=[+expl,+p1,-plr]] ; // 0:3 2:3
+## should
+%v_neg_1s_should :: i shall_v[pos=v,+neg,tam=pst,+aux,sb=[+expl,+p1,-plr]] not [pos=v,tam=stm] ; 2-> [pos=n] ; // 0:3 2:3
+
+### affirmative modals
+## should
+%v_1s_should :: i shall_v[pos=v,tam=pst,+aux,sb=[+expl,+p1,-plr]] [pos=v,tam=stm] ; 2-> [pos=n] ; // 0:2
+## must
+%v_1s_must :: i must_v[pos=v,+aux,sb=[+expl,+p1,-plr]] [pos=v,tam=stm] ; 2-> [pos=n] ; // 0:2
+## have to present
+## have to past
+## can, could
 
 ## jussive (this has to follow the above because of "he will/can/ought to... let me go")
 %v_1ps_jus :: let me [pos=v,tam=stm,sb=[+expl,+p1,-plr],tm=j_i] ; // 0:2 1:2

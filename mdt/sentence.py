@@ -235,18 +235,6 @@ class Document(list):
         self.process1(reinit=reinit, verbosity=verbosity)
         if self.biling:
             self.process1(target=True, reinit=reinit,verbosity=verbosity)
-#        self.tokenize(verbosity=verbosity)
-#        if self.biling:
-#            self.tokenize(target=True, verbosity=verbosity)
-#        if verbosity:
-#            print("Found tokens {}".format(self.tokens))
-#        if reinit:
-#            Sentence.id = 0
-#        self.split()
-#        if self.biling:
-#            if reinit:
-#                Sentence.id = 0
-#            self.split(target=True)
         self.processed = True
 
     def process1(self, target=False, reinit=False, verbosity=0):
@@ -267,11 +255,11 @@ class Document(list):
             tagger = language.tagger
             # tagger splits document into sentences
             sentences = tagger.get_sentences(text)
-#            print("Found {} sentences".format(len(sentences)))
+#            print("Found sentences {}".format(sentences))
             for s in sentences:
                 tokens = [t[0] for t in s]
-#                analyses = [t[1] for t in s]
                 analyses = [[t.lower(), a[1]] for t, a in zip(tokens, s)]
+#                print(" Analyses: {}".format(analyses))
                 sentence = Sentence(language=language,
                                     tokens=tokens, analyses=analyses,
                                     target=target_language, session=self.session)
@@ -823,8 +811,8 @@ class Sentence:
                     else:
                         self.analyses = [[token, self.language.anal_word(token, clean=False)] for token in self.tokens]
                     # Then run MorphoSyns on analyses to collapse syntax into morphology where relevant for target
-#            if verbosity:
-            print("Running Morphosyns for {} on {}".format(self.language, self))
+            if verbosity:
+                print("Running Morphosyns for {} on {}".format(self.language, self))
             for mi, ms in enumerate(self.language.ms):
                 # If ms applies and is "ambiguous", create a new copy of the sentence and add to altsyns
                 # (this happens in MorphoSyn)

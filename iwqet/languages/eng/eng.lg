@@ -76,6 +76,7 @@ morphology:
   NNP::=|[pos=n,-plr,+prp]
   JJR::*|[pos=a,grd=cmp]
   JJS::*|[pos=a,grd=sup]
+  JJ::*|[pos=a,grd=smp]
   VBP|am::be|[pos=v,tam=prs,sb=[+expl,+p1,-plr]]
   VBP|'m::be|[pos=v,tam=prs,sb=[+expl,+p1,-plr]]
   VBP|are::be|[pos=v,tam=prs,sb=[+expl,+plr]];[pos=v,tam=prs,sb=[+expl,+p2,-plr]]

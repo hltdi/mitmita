@@ -70,7 +70,7 @@ def load_ea(train=False):
     eng, amh = iwqet.load('eng', 'amh')
     return eng, amh
 
-def ea_sentence(sentence, ambig=True, solve=False, user=None, segment=False,
+def ea_sentence(sentence, ambig=False, solve=False, user=None, segment=False,
                 verbosity=0):
     e, a = load_ea()
     session = iwqet.start(e, a, user)
@@ -82,6 +82,7 @@ def ea_sentence(sentence, ambig=True, solve=False, user=None, segment=False,
         if s.solutions and segment:
             solution = s.solutions[0]
             solution.get_segs()
+        output_sols(s)
     return s
 
 def arch_doc(lengua, ruta, session=None, user=None, proc=False):

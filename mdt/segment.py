@@ -83,8 +83,7 @@ class SolSeg:
     special_re = re.compile("%[A-Z]+_")
 
     def __init__(self, solution, indices, translation, tokens, color=None,
-                 spec_indices=None, session=None, gname=None, merger_groups=None):
-        print("Creating SolSeg with solution {}, indices {}, translation {}, tokens {}".format(solution, indices, translation, tokens))
+                 spec_indices=None, session=None, gname=None, merger_groups=None, is_punc=False):
         self.source = solution.source
         self.target = solution.target
         self.indices = indices
@@ -98,24 +97,28 @@ class SolSeg:
         # If there are special tokens in the source language, fix them here.
         self.special = False
         if '%' in self.token_str:
-            self.token_str = SolSeg.remove_spec_pre(self.token_str).replace('_', ' ')
+            self.token_str = SolSeg.remove_spec_pre(self.token_str).replace('~', ' ')
             self.special = True
             if not translation:
                 # Set the translation for the special segment
-                self.translation = [[self.source.translate_special(tokens[0])]]
+                spec_trans = self.source.translate_special(tokens[0])
+                if spec_trans:
+                    self.translation = [[spec_trans]]
         self.color = color
+        # Whether this segment is just punctuation
+        self.is_punc = is_punc
         # Name of the group instantiated in this segment
         self.gname = gname
         # Triples for each merger with the segment
         self.merger_gnames = merger_groups
         self.session = session
         # Create a record for this segment if there's a session running and it's not punctuation
-        if session and session.running and not self.source.is_punc(self.token_str):
+        if session and session.running and not self.is_punc:
             self.record = self.make_record(session, solution.sentence)
         else:
             self.record = None
         self.html = []
-        print("Created {}".format(self))
+        print("Creating SolSeg {} with solution {}, indices {}, translation {}, tokens {}, is punc? {}".format(self, solution, indices, translation, tokens, is_punc))
 
     def __repr__(self):
         """Print name."""
@@ -137,16 +140,26 @@ class SolSeg:
         """Set the HTML markup for this segment, given its position in the sentence,
         and the dictionary of choices for the record of the SolSeg.
         Do postprocessing on phrases joined by '_' or special tokens (numerals).
+        The html variable holds the triple (source tokens, color, translation choices)
         """
+        self.color = SolSeg.tt_notrans_color if not self.translation else SolSeg.tt_colors[index]
+        # Final source segment output
+        tokens = self.token_str
+#        # If this is a punctuation segment, don't give choices (later make this a preference option?)
+#        if self.is_punc:
+#            print("Punctuation segment: not giving options in HTML")
+#            translation = self.translation[0][0]
+#            transhtml = '<table><tr><td class="transchoice">'
+#            transhtml += translation
+#            transhtml += '</td></td></table>'
+#            self.html = (tokens, self.color, transhtml)
+#            return
         # Combine translations where possible
         if self.special:
             print("Setting HTML for special segment {}".format(self.raw_token_str))
-        self.color = SolSeg.tt_notrans_color if not self.translation else SolSeg.tt_colors[index]
         transhtml = '<table>'
         capitalized = False
         choice_list = self.record.choices if self.record else None
-        # Final source segment output
-        tokens = self.token_str
         for tindex, t in enumerate(self.translation):
             print("{} setting HTML for {}: {}".format(self, tindex, t))
             # Create all combinations of word sequences
@@ -174,8 +187,10 @@ class SolSeg:
         if self.translation:
             # Add other translation button
             # Button to translate as source language
-            transhtml += '<tr><td class="source">'
-            transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
+            if not self.is_punc:
+                transhtml += '<tr><td class="source">'
+                transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
+            # Button for the user's own translation
             transhtml += '<tr><td class="other">'
             transhtml += '<input type="radio" name="choice" id="other" value="other" checked>other translation (enter below)</td></tr>'
             # Remove special prefixes

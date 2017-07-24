@@ -188,13 +188,11 @@ class Spacy(Tagger):
     def __init__(self, arg, lang_abbrev, conversion=None, eos=None):
         Tagger.__init__(self, arg, lang_abbrev, conversion=conversion, eos=eos, morph=False)
         import spacy
-        print("spaCy imported")
         # No explicit tokenizer but the tagger itself tokenizes
         self.tokenizer = None
         self.tokenize = True
         # or spacy.load('en_depent_web_md') ??
         self.tagger = spacy.load('en_core_web_sm')
-        print("spaCy tagger loaded")
 #        self.tagger = spacy.load(arg)
 
     def __repr__(self):

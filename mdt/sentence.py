@@ -1840,13 +1840,15 @@ class Solution:
             if start > max_index+1:
                 # there's a gap between the farthest segment to the right and this one; make an untranslated segment
                 src_tokens = tokens[end_index+1:start]
-                print("Creating untranslated segment for {} in positions {}...{}".format(src_tokens, end_index+1, start-1))
-                if len(src_tokens) == 1 and self.source.is_punc(src_tokens[0]):
+                is_punc = len(src_tokens) == 1 and self.source.is_punc(src_tokens[0])
+                print("Creating untranslated segment for {} in positions {}...{} ({})".format(src_tokens, end_index+1, start-1, "punc" if is_punc else "not punc"))
+                if is_punc:
+                    # Convert punctuation if there is a mapping.
                     translation = [self.target.punc_postproc(src_tokens[0])]
                 else:
                     translation = []
                 seg = SolSeg(self, (end_index+1, start-1), translation, src_tokens, session=self.session, gname=gname,
-                             merger_groups=merger_groups)
+                             merger_groups=merger_groups, is_punc=is_punc)
                 self.segments.append(seg)
 #            src_tokens = tokens[start:end+1]
             if start < max_index:
@@ -1866,12 +1868,13 @@ class Solution:
         if max_index+1 < len(tokens):
             # Some word(s) at end not translated; use source forms with # prefix
             src_tokens = tokens[max_index+1:len(tokens)]
-            print("Creating untranslated segment at end: {}".format(src_tokens))
-            if len(src_tokens) == 1 and self.source.is_punc(src_tokens[0]):
+            is_punc = len(src_tokens) == 1 and self.source.is_punc(src_tokens[0])
+            print("Creating untranslated segment at end: {} ({})".format(src_tokens, "punc" if is_punc else "not punc"))
+            if is_punc:
                 translation = [self.target.punc_postproc(src_tokens[0])]
             else:
                 translation = []
-            seg = SolSeg(self, (max_index+1, len(tokens)-1), translation, src_tokens, session=self.session)
+            seg = SolSeg(self, (max_index+1, len(tokens)-1), translation, src_tokens, session=self.session, is_punc=is_punc)
             self.segments.append(seg)
         if html:
             self.seg_html()

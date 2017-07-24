@@ -1734,7 +1734,6 @@ class Language:
             loaded = True
         else:
             try:
-                print("Loading languages...")
                 srcpath = os.path.join(Language.get_language_dir(source), source + '.lg')
                 srclang = Language.read(srcpath, use=srcuse)
                 print("Source language {} loaded".format(srclang))
@@ -1927,7 +1926,7 @@ class Language:
         return output
 
     def punc_postproc(self, punc):
-        """Convert punctuation to another script if possible."""
+        """Convert punctuation to a character in another script if possible."""
         if self.postpunc:
             return self.postpunc.get(punc, punc)
         return punc

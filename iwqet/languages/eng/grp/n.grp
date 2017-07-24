@@ -1,6 +1,5 @@
 #### Features common to almost all translations
 +t == ; 0==0 plr:plr,def:def,poss:poss,cs:cs,gen:gen
-*** woman_n who $v ; ^ woman_n
 *** Amharic_n ; ^ Amharic_n 0
 ->amh 'amarN_a_n
 *** Bedouin_n ; ^ Bedouin_n 0

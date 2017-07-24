@@ -1083,6 +1083,12 @@ class MorphoSyn(Entry):
                 # This returns an FSSet too
 #                print("   Unifying FSSet {} with FeatStruct {}".format(sfeats, pfeats))
                 u = sfeats.unify_FS(pfeats)
+            elif not sfeats:
+                # No sentence item features but there are match item features. See if the parts of speech match.
+                if ppos and spos and ppos == spos:
+                    return True
+                else:
+                    return False
             else:
                 u = simple_unify(sfeats, pfeats)
             if u != 'fail':

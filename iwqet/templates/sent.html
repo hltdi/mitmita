@@ -16,6 +16,7 @@ table.trans
     border-spacing: 10px;
 /*    border-collapse: collapse; */
     width: 525px;
+    vertical-align: top;
 }
 table.transdoc
 {
@@ -88,7 +89,7 @@ td.transchoice
 td.segsent
 {
    text-align: left;
-   vertical-align: top;
+/*   vertical-align: top; */
    padding: 5px;
 /*   font-style: italic; */
 }
@@ -117,7 +118,7 @@ textarea#document
    font-family: "Verdana";
    font-size: 85%;
    width: 425px;
-   height: 300px;
+   height: 200px;
    resize: none;
    overflow-y: scroll;
 }
@@ -358,8 +359,11 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 <form name="Form2" method=POST action='sent'>
 
 <table class="transmeta">
+<!-- Only row, contains Phrase, Whole Sentence, and Document areas -->
 <tr class="trans">
+<!-- First column, contains Phrase and Whole Sentence areas, each a table -->
 <td class="segsent">
+<!-- Phrase area table -->      
 <table class="trans">
 <tr class="transtitle">
   <th class="transtitle">Phrase</th>
@@ -385,6 +389,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 </tr>
 </table>
 <p></p>
+<!-- Whole Sentence area table -->
 <table class="trans">
 <tr class="trans">
   <th class="transtitle">Whole sentence</th>
@@ -400,6 +405,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 </tr>
 </table>
 </td>
+<!-- Right column, Document area (a table) -->
 <td class="transtitle">
   <table class="transdoc">
   <tr class="trans">

@@ -70,7 +70,7 @@ def load_ea(train=False):
     eng, amh = iwqet.load('eng', 'amh')
     return eng, amh
 
-def ea_sentence(sentence, ambig=False, solve=False, user=None, segment=False,
+def ea_sentence(sentence, ambig=False, solve=True, user=None, segment=False,
                 verbosity=0):
     e, a = load_ea()
     session = iwqet.start(e, a, user)
@@ -97,10 +97,10 @@ def arch_doc(lengua, ruta, session=None, user=None, proc=False):
 def usuario(username):
     return iwqet.User.users.get(username)
 
-## Cargar una lengua, solo para análisis.
-def cargar(lang='spa'):
-    spa = iwqet.Language.load_lang(lang)
-    return spa
+# Load a language for analysis.
+def load_lang(lang='eng'):
+    eng = iwqet.Language.load_lang(lang)
+    return eng
 
 if __name__ == "__main__":
     print("ወደ ሚጥሚጣ እንኳን ደህና መጡ! version {}\n".format(__version__))

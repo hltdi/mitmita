@@ -1177,7 +1177,15 @@ class TreeTrans:
 #                print("Found node1 {} and node2 {} for constraint {}".format(agr_node1, agr_node2, feature_pairs))
                 agr_feats1, agr_feats2 = agr_node1[1], agr_node2[1]
                 feat_index1, feat_index2 = agr_node1[2], agr_node2[2]
-                # FSSets agr_feats1 and agr_feats2 have to be unfrozen before then can be made to agree
+#                if isinstance(agr_feats1, str):
+#                    agr_feats1 = FSSet(agr_feats1)
+#                if isinstance(agr_feats2, str):
+#                    agr_feats2 = FSSet(agr_feats2)
+                # FSSets agr_feats1 and agr_feats2 have to be unfrozen before they can be made to agree
+                if isinstance(agr_feats1, FeatStruct):
+                    agr_feats1 = FSSet(agr_feats1)
+                if isinstance(agr_feats2, FeatStruct):
+                    agr_feats2 = FSSet(agr_feats2)
                 agr_feats1 = agr_feats1.unfreeze(cast=False)
                 agr_feats2 = agr_feats2.unfreeze(cast=False)
                 af1, af2 = FSSet.mutual_agree(agr_feats1, agr_feats2, feature_pairs)

@@ -203,9 +203,10 @@ class FSSet(set):
     @staticmethod
     def mutual_agree(source, target, agrs):
         """Source and target are lists of sets of unfrozen FeatStructs, not FSSets.
-        Make all FSs target agree with all FSs in self and FSs in sself agree with FSs in target
+        Make all FSs target agree with all FSs in self and FSs in self agree with FSs in target
         on features specified in agrs dict or list of pairs. Features can be of the form x|y, where
         y is a feature within the feature x."""
+#        print("Mutual agree: {}, {}, {}".format(source.__repr__(), target.__repr__(), agrs.__repr__()))
         for fs1 in source:
             for fs2 in target:
                 agree1 = fs1.mutual_agree(fs2, agrs)

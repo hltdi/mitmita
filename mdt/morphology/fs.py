@@ -400,6 +400,7 @@ class FeatStruct:
         on features specified in agrs dict or list of pairs. A feature, pair can include
         a feature of the form x|y, where y is a feature within the x feature.
         Note: both self and target must be unfrozen before being modified."""
+#        print("Mutual agree: {}, {}, {}".format(self, target, agrs))
         agr_pairs = agrs.items() if isinstance(agrs, dict) else agrs
         if self.frozen():
             print("mutual_agree(): {} is frozen".format(self.__repr__()))
@@ -721,7 +722,7 @@ class FeatStruct:
             if isinstance(fval, FeatStruct):
                 fval._freeze(visited)
 
-    def unfreeze(self):
+    def unfreeze(self, cast=False):
         """Return an unfrozen copy of the FS if frozen; otherwise self."""
         if self.frozen():
             return self.copy()

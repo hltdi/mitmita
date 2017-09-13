@@ -69,7 +69,7 @@ morphology:
   VBN::=|[pos=v,tam=pp]
   VBG::*|[pos=v,tam=ing]
   VBP::=|[pos=v,tam=prs,sb=[+expl,+plr]];[pos=v,tam=prs,sb=[+expl,+p1,-plr]];[pos=v,tam=prs,sb=[+expl,+p2,-plr]]
-  VB::=|[pos=n,tam=stm]
+  VB::=|[pos=v,tam=stm]
   NNS::*|[pos=n,+plr]
   NNPS::*|[pos=n,+plr,+prp]
   NN::=|[pos=n,-plr]
@@ -93,3 +93,7 @@ morphology:
   VBP|'ve::have|[pos=v,tam=prs,sb=[+expl,+plr]];[pos=v,tam=prs,sb=[+expl,+p1,-plr]];[pos=v,tam=prs,sb=[+expl,+p2,-plr]]
   MD|would::would|[pos=v,tam=prs]
   MD|'d::would|[pos=v,tam=prs]
+
+join:
+- in~front~of, p
+- in~front, adv

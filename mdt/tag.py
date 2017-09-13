@@ -255,6 +255,7 @@ class Spacy(Tagger):
         sentence = []
         for item in tagged:
             itext, ilemma, ipos, itag, mpos, mfeats = self.get_repr(item)
+#            print("{} {} {} {} {} {}".format(itext, ilemma, ipos, itag, mpos, mfeats))
             pos_exp = Tagger.expand_POS(mpos)
             short_pos = pos_exp[0]
             if ilemma[0] == '-':
@@ -263,7 +264,11 @@ class Spacy(Tagger):
                 root = ilemma + '_' + short_pos
             else:
                 root = itext
-            dct = {'root': root, 'pos': short_pos, 'features': mfeats[1]}
+            features = mfeats[1]
+#            print("Item {}, short pos {}".format(item, short_pos))
+            if not features and short_pos:
+                features = FSSet("[pos={}]".format(short_pos))
+            dct = {'root': root, 'pos': short_pos, 'features': features}
             sentence.append((itext, dct))
             if self.is_eos(item):
                 sentences.append(sentence)

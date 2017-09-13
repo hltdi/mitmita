@@ -208,3 +208,70 @@
 
 ### other pp forms
 
+### adverbs between subject and verb
+%v_neg_1s_prs_adv :: i do not [pos=adv] [pos=v,+neg,sb=[+p1,-plr,+expl],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_2_prs_adv :: you do not [pos=adv] [pos=v,+neg,sb=[+expl,+p2],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3sm_prs_adv :: he does not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-fem,-plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3sf_prs_adv :: she does not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+fem,-plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1p_prs_adv :: we do not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,+plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1p_prs_adv :: they do not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1s_pst_adv :: i did not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,-plr],tm=prf] ; // 0:4 1:4 2:4
+%v_neg_2_pst_adv :: you did not [pos=adv] [pos=v,+neg,sb=[+expl,+p2],tm=prf] ; // 0:4 1:4 2:4
+%v_neg_3sm_pst_adv :: he did not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0:4 1:4 2:4
+%v_neg_3sf_pst_adv :: she did not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+fem,-plr],tm=prf] ; // 0:4 1:4 2:4
+%v_neg_1p_pst_adv :: we did not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,+plr],tm=prf] ; // 0:4 1:4 2:4
+%v_neg_1p_pst_adv :: they did not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+plr],tm=prf] ; // 0:4 1:4 2:4
+%v_neg_1s_fut_adv :: i will not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,-plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_2_fut_adv :: you will not [pos=adv] [pos=v,+neg,sb=[+expl,+p2],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3sm_fut_adv :: he will not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-fem,-plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3sf_fut_adv :: she will not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+fem,-plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1p_fut_adv :: we will not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,+plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1p_fut_adv :: they will not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+plr],tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1s_gt_fut_adv :: i am not going to [pos=adv] [pos=v,+neg,sb=[+expl,+p1,-plr],tm=imf] ; // 0:6 1:6 2:6 3:6 4:6
+%v_neg_2_gt_fut_adv :: you are not going to [pos=adv] [pos=v,+neg,sb=[+expl,+p2],tm=imf] ; //  0:6 1:6 2:6 3:6 4:6
+%v_neg_3sm_gt_fut_adv :: he is not going to [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-fem,-plr],tm=imf] ; //  0:6 1:6 2:6 3:6 4:6
+%v_neg_3sf_gt_fut_adv :: she is not going to [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+fem,-plr],tm=imf] ; //  0:6 1:6 2:6 3:6 4:6
+%v_neg_1p_gt_fut_adv :: we are not going to [pos=adv] [pos=v,+neg,sb=[+expl,+p1,+plr],tm=imf] ; //  0:6 1:6 2:6 3:6 4:6
+%v_neg_1p_gt_fut_adv :: they will not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+plr],tm=imf] ; //  0:6 1:6 2:6 3:6 4:6
+%v_neg_1s_prsprf_adv :: i have not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,-plr],tam=pp,tm=prf] ; // 0:4 1:4 2:4
+%v_neg_2_prsprf_adv :: you have not [pos=adv] [pos=v,+neg,sb=[+expl,+p2],tam=pp,tm=prf] ; // 0:4 1:4 2:4
+%v_neg_3sm_prsprf_adv :: he has not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-fem,-plr],tam=pp,tm=prf] ; // 0:4 1:4 2:4
+%v_neg_3sf_prsprf_adv :: she has not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+fem,-plr],tam=pp,tm=prf] ; // 0:4 1:4 2:4
+%v_neg_1p_prsprf_adv :: we have not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,+plr],tam=pp,tm=prf] ; // 0:4 1:4 2:4
+%v_neg_1p_prsprf_adv :: they have not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+plr],tam=pp,tm=prf] ; // 0:4 1:4 2:4
+%v_neg_1s_cont_adv :: i am not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,-plr],tam=ing,tm=imf] ; // 0:4 1:4 2:4
+%v_neg_2_cont_adv :: you are not [pos=adv] [pos=v,+neg,sb=[+expl,+p2],tam=ing,tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3sm_cont_adv :: he is not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-plr,-fem],tam=ing,tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3sf_cont_adv :: she is not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,-plr,+fem],tam=ing,tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1p_cont_adv :: we are not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,+plr],tam=ing,tm=imf] ; // 0:4 1:4 2:4
+%v_neg_3p_cont_adv :: they are not [pos=adv] [pos=v,+neg,sb=[+expl,-p1,-p2,+plr],tam=ing,tm=imf] ; // 0:4 1:4 2:4
+%v_neg_1s_cont_adv :: i be_v[pos=v,+aux,-prosp] not [pos=adv] [pos=v,+neg,sb=[+expl,+p1,-plr],tam=ing] ; // 0:4 2:4
+
+%v_1s_fut_adv :: i will [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tm=imf,ax=al] ; // 0:3 1:3
+%v_1s_gt_fut_adv :: i am going to [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tm=imf,ax=al] ; // 0:5 1:5 2:5 3:5
+%v_1s_prsprf_adv :: i have [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tam=pp,tm=ger,ax=al] ; // 0:3 1:3
+%v_2_prsprf_adv :: you have [pos=adv] [pos=v,sb=[+expl,+p2],tam=pp,tm=ger,ax=al] ; // 0:3 1:3
+%v_3sm_prsprf_adv :: he has [pos=adv] [pos=v,sb=[+expl,-p1,-p2,-fem,-plr],tam=pp,tm=ger,ax=al] ; // 0:3 1:3
+%v_3sf_prsprf_adv :: she has [pos=adv] [pos=v,sb=[+expl,-p1,-p2,+fem,-plr],tam=pp,tm=ger,ax=al] ; // 0:3 1:3
+%v_1p_prsprf_adv :: we have [pos=adv] [pos=v,sb=[+expl,+p1,+plr],tam=pp,tm=ger,ax=al] ; // 0:3 1:3
+%v_1p_prsprf_adv :: they have [pos=adv] [pos=v,sb=[+expl,-p1,-p2,+plr],tam=pp,tm=ger,ax=al] ; // 0:1 1:3
+%v_1s_cont_adv :: i be_v[pos=v,+aux,-prosp] [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tam=ing] ; // 0:3
+%v_1s_usedto_adv :: i use_v[pos=v,tam=pst,+aux] to [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tam=stm] ; // 0:4 2:4
+%v_1s_pstprf_adv :: i have_v[pos=v,tam=pst,+aux] [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tam=pp] ; // 0:3
+%v_1s_prosp_adv :: i be_v[pos=v,+aux,+prosp] about to [pos=adv] [pos=v,sb=[+expl,+p1,-plr],tam=stm] ; // 0:5 2:5 3:5
+%v_1s_prs_adv :: i [pos=adv] [pos=v,tam=stm,sb=[+expl,+p1,-plr],tm=imf,ax=al] ; // 0:2
+%v_2_prs_adv :: you [pos=adv] [pos=v,tam=stm,sb=[+expl,+p2],tm=imf,ax=al] ; // 0:2
+%v_3sm_prs_adv :: he [pos=adv] [pos=v,tam=prs,sb=[+expl,-p1,-p2,-plr,-fem],tm=imf,ax=al] ; // 0:2
+%v_3sf_prs_adv :: she [pos=adv] [pos=v,tam=prs,sb=[+expl,-p1,-p2,-plr,+fem],tm=imf,ax=al] ; // 0:2
+%v_3sn_prs_adv :: it [pos=adv] [pos=v,tam=prs,sb=[+expl,-p1,-p2,-fem,-plr],tm=imf,ax=al] ; // 0:2
+%v_1p_prs_adv :: we [pos=adv] [pos=v,tam=stm,sb=[+expl,+p1,+plr],tm=imf,ax=al] ; // 0:2
+%v_3p_prs_adv :: they [pos=adv] [pos=v,tam=stm,sb=[+expl,-p1,-p2,+plr],tm=imf,ax=al] ; // 0:2
+%v_1s_pst_adv :: i [pos=adv] [pos=v,tam=pst,sb=[+expl,+p1,-plr],tm=prf] ; // 0:2
+%v_1s_adv_pst_adv :: i [pos=adv] [pos=adv] [pos=v,tam=pst,sb=[+expl,+p1,-plr],tm=prf] ; // 0:3
+%v_2_pst_adv :: you [pos=adv] [pos=v,tam=pst,sb=[+expl,+p2],tm=prf] ; // 0:2
+%v_3sm_pst_adv :: he [pos=adv] [pos=v,tam=pst,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0:2
+%v_3sf_pst_adv :: she [pos=adv] [pos=v,tam=pst,sb=[+expl,-p1,-p2,+fem,-plr],tm=prf] ; // 0:2
+%v_1p_pst_adv :: we [pos=adv] [pos=v,tam=pst,sb=[+expl,+p1,+plr],tm=prf] ; // 0:2
+%v_3p_pst_adv :: they [pos=adv] [pos=v,tam=pst,sb=[+expl,-p1,-p2,+plr],tm=prf] ; // 0:2
+%v_3sn_pst_adv :: it [pos=adv] [pos=v,tam=pst,sb=[+expl,-p1,-p2,-fem,-plr],tm=prf] ; // 0:2
+

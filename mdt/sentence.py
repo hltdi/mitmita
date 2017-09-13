@@ -760,7 +760,7 @@ class Sentence:
             anygroups=True
         if not anygroups:
             if not terse:
-                print("Ningunos grupos encontrados para {}".format(self))
+                print("No groups found for {}".format(self))
             return False
         else:
             return True
@@ -828,7 +828,7 @@ class Sentence:
         """Merge the output of an external tagger and the L3Morpho analyzer. Use the tagger to
         disambiguate analyses, preferring the analysis if there's only one."""
         if verbosity:
-            print("Merging tagger and analyzer results for {}".format(self))
+            print("Merging tagger and analyzer results for {}: {}, {}".format(self, tagged, analyzed))
         results = []
         for (word, tag), (token, anals) in zip(tagged, analyzed):
 #            print("word {}, tag {}, token {}, anals {}".format(word, tag, token, anals))
@@ -1011,7 +1011,6 @@ class Sentence:
         # Now filter candidates to see if all words are present in the sentence
         # For each group, save a list of sentence token indices that correspond
         # to the group's words
-#        print("{} candidatos para grupos encontrados".format(len(candidates)))
         matched_keys = []
         group_index = 0
         for head_i, key, group in candidates:
@@ -1045,7 +1044,7 @@ class Sentence:
             self.groups.append(GInst(group, self, head_i, snodes, group_index))
             group_index += 1
         if not terse:
-            print("{} grupo(s) encontrado(s) para {}".format(len(self.groups), self))
+            print("{} groups(s) found for {}".format(len(self.groups), self))
             for g in self.groups:
                 print("  {}".format(g))
         # Assign sentence-level indices to each GNode; store gnodes in list
@@ -1155,9 +1154,9 @@ class Sentence:
                max_sols=0, verbosity=0, tracevar=None):
         """Generate solutions and translations (if translate is true)."""
         if not self.groups:
-            print("NINGUNOS GRUPOS encontrados para {}, así que NO HAY SOLUCIÓN POSIBLE".format(self))
+            print("NO GROUPS found for {}, so NO SOLUTION IS POSSIBLE".format(self))
             return
-        print("Resolviendo {}".format(self))
+        print("Solving {}".format(self))
 #        if self.altsyns:
 #            print("Alt analyses: {}".format(self.altsyns))
         ds = None

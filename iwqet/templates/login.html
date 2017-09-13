@@ -17,20 +17,19 @@ function ShowHelp() {
     var helpWin = window.open("", "Mit'mit'a: Help", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
     helpWin.document.write('<html><head>' +
 '<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
-"<title>Mainumby: Ayuda</title></head><body>" +
-"<h4 class='help'>Ayuda para ingresar a Mainumby</h4>" +
-"<p class='help'>Pod&eacute;s usar Mainumby como usuario registrado o como usuario no registrado.</p>" +
-"<p class='help'>Si sos un usuario registrado, tu interacción con la aplicación se " +
-"incorpora en la base de datos del sistema, y usando la información " +
-"que obtiene de ti, la aplicación puede mejorar su desempeño " +
-"y aumentar su memoria de traducción. Aun sin registrarte, pod&eacute;s usar la aplicación, " +
-"pero tu interacción con la aplicación no se registrará de manera que nadie se aprovechará de tu conocimiento de las lenguas.</p>" +
-"<p class='help'>Si ya ten&eacute;s una cuenta, te pod&eacute;s registrar en esta página. " +
-"Si no, hac&eacute; clic en el botón 'Crear cuenta'. " +
-"Si ten&eacute;s una cuenta y se te olvidó tu contraseña, desafortunadamente no " +
-"es posible recuperarla porque la aplicación no almacena las contraseñas. " +
-"En este caso, lo único que pod&eacute;s hacer " +
-"es crear otra cuenta.</p>" +
+"<title>Mit'mit'a: Help</title></head><body>" +
+"<h4 class='help'>Help logging in to Mit'mit'a</h4>" +
+"<p class='help'>You can use Mit'mit'a as a registered user or without registering.</p>" +
+"<p class='help'>If you're a registered user, your interaction with the application " +
+"will be incorporated into the system's database, and using the information " +
+"that it obtained from you, the application will be able to improve its performance " +
+"and expand its translation memory. Even with registering, you can use the application, " +
+"but your interaction with the application won't be recorded, so no one will benefit from your knowledge of the langauges.</p>" +
+"<p class='help'>If you already have an account, you can log in on this page. " +
+"If you don't, click the 'Create account' button. " +
+"If you have an account and you've forgotten your password, it's unfortunately " +
+"not possible to recover it since the application doesn't store the passwords. " +
+"In that case, your only option is to create another account.</p>" +
 "</body></html>");
 }
 function OnSalir()
@@ -41,7 +40,7 @@ function OnSalir()
     return true;
 }
 function loading() {
-    document.getElementById("loading").innerHTML = "<span class='cargando'>Loading database (could take awhile)...</span>";
+    document.getElementById("loading").innerHTML = "<span class='cargando'>Loading database (this could take awhile)...</span>";
     window.location.assign("doc");
 }
 function account() {

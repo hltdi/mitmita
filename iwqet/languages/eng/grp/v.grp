@@ -54,6 +54,14 @@
 *** be_v[tam=pst] sick ; ^ sick 1
 ->amh 'mm_v[as=smp,vc=smp,tm=ger,sb=[-p1,-p2,-fem,-plr]] neb_er ; || 0, 1 ; 0==0 sb:ob,neg:neg,rel:rel
 ->amh 'mm_v[as=smp,vc=ps,tm=ger] neb_er ; || 0, 1 ; 0==0 sb:sb,neg:neg,rel:rel
+### transitive verbs
+*** buy_v $a $n ; ^ buy_v 0
+->amh $a[cs=acc] $n gz'_v[as=smp,vc=smp] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg
+*** buy_v $n ; ^ buy_v 0
+->amh $n[cs=acc] gz'_v[as=smp,vc=smp] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg
+*** buy_v
+->amh gz'_v[as=smp,vc=smp]
+### Generic cases start here
 *** abandon_v
 ->amh kd'_v[as=smp,vc=smp]
 ->amh lqq_v[as=smp,vc=smp]
@@ -3006,12 +3014,6 @@
 ->amh qWl_f_v[as=smp,vc=ps]
 *** button_v up
 ->amh qWl_f_v[as=smp,vc=smp]
-*** buy_v $a $n ; ^ buy_v 0
-->amh $a[cs=acc] $n gz'_v[as=smp,vc=smp] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg
-*** buy_v $n ; ^ buy_v 0
-->amh $n[cs=acc] gz'_v[as=smp,vc=smp] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg
-*** buy_v
-->amh gz'_v[as=smp,vc=smp]
 *** cadge_v everywhere
 ->amh n|sWlsWl_v[as=smp,vc=ps]
 *** cajole_v
@@ -4074,7 +4076,6 @@
 ->amh bs'_v[as=smp,vc=ps]
 *** drink_v
 ->amh TT_'_v[as=smp,vc=smp]
-->amh m'g_v[as=smp,vc=smp]
 *** drink_v down
 ->amh qndb_v[as=smp,vc=smp]
 *** drink_v greedily
@@ -6113,6 +6114,8 @@
 ->amh satf_v[as=smp,vc=ps]
 ->amh kfl_v[as=rc,vc=ps]
 *** pass_v
+->amh 'lf_v[as=smp,vc=smp]
+*** pass_v the day ; ^ pass_v 0
 ->amh w'l_v[as=smp,vc=smp]
 *** pass_v around
 ->amh qb_l_v[as=it,vc=ps]
@@ -7377,6 +7380,8 @@
 ->amh fTn_v[as=smp,vc=smp]
 *** spend_v
 ->amh mWx_r_v[as=smp,vc=ps]
+*** spend_v the day ; ^ spend_v 0
+->amh w'l_v[as=smp,vc=smp]
 *** spice_v
 ->amh T'm_v[as=smp,vc=tr]
 ->amh qm_m_v[as=smp,vc=smp]

@@ -1598,6 +1598,9 @@ class Language:
                     name, x, pattern = line.partition(MS_NAME_SEP)
                     morphosyn = MorphoSyn(self, name=name.strip(), pattern=pattern.strip())
                     self.ms.append(morphosyn)
+                    # If there are optional Morphosyns associated with this Morphosyn add them too.
+                    if morphosyn.optional_ms:
+                        self.ms.extend(morphosyn.optional_ms)
         except IOError:
             print('No such MS file as {}'.format(path))
 
@@ -1896,6 +1899,7 @@ class Language:
                 return [root]
             posmorph = morf[pos]
 #            print("Generating root {} with POS {} and features {}".format(root, pos, features.__repr__()))
+#            print(" Features type: {}".format(type(features)))
             output = posmorph.gen(root, update_feats=features, guess=guess, only_words=True, cache=cache)
         else:
             for posmorph in list(morf.values()):

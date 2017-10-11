@@ -83,6 +83,7 @@ def ea_sentence(sentence, ambig=False, solve=True, user=None, segment=False,
             solution = s.solutions[0]
             solution.get_segs()
         output_sols(s)
+        return
     return s
 
 def arch_doc(lengua, ruta, session=None, user=None, proc=False):

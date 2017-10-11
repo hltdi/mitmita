@@ -719,8 +719,10 @@ class POS:
         """Starting with a FeatStruct fs, update it using the features in FSSet feat_fss,
         resulting in an FSSet."""
         fss = set()
+#        print("  feat_fss {}".format(feat_fss.__repr__()))
         for feat_fs in feat_fss:
             fs1 = self.update_FS(fs, feat_fs, top=top)
+#            print("  fs1 {}, type {}".format(fs1.__repr__(), type(fs1)))
             fs1.freeze()
             # Assume this always results in a non-zero FeatStruct
             fss.add(fs1)

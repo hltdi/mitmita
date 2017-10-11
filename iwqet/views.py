@@ -124,7 +124,9 @@ def reg():
     form = request.form
 #    print("Form for reg: {}".format(form))
     if request.method == 'POST' and 'username' in form:
-        if not form.get('username'):
+        if form.get('cancel') == 'Cancel':
+            return render_template('login.html')
+        elif not form.get('username'):
             return render_template('reg.html', error="username")
         elif not form.get('email'):
             return render_template('reg.html', error="email")

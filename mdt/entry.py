@@ -146,7 +146,8 @@ MS_ATTRIB_SEP = ';'
 AMBIG_CHAR = '*'
 DISAMBIG_CHAR = '%'
 # possibly empty form string followed by possibly empty FS string, for MorphoSyn pattern
-MS_FORM_FEATS = re.compile("\s*([$<'|\w¿¡?!]*)\s*((?:\[.+\])?)$")
+# ^prefix means this is head
+MS_FORM_FEATS = re.compile("\s*(\^?)([$<'|\w¿¡?!]*)\s*((?:\[.+\])?)$")
 # negative features: ![] with only features catpured
 MS_NEG_FEATS = re.compile("\s*!(\[.+\])$")
 MS_AGR = re.compile("\s*(\d)\s*=>\s*(\d)\s*(.+)$")
@@ -156,6 +157,7 @@ MS_SWAP = re.compile("\s*><\s*(.+)$")
 MS_FAILIF = re.compile("\s*FAILIF\s*(.+)$")
 # digit -> [FS], all obligatory
 MS_FEATMOD = re.compile("\s*(\d)\s*->\s*(\[.+\])$")
+MS_OPT = re.compile("\s*\((.+)\)$")
 
 class Entry:
     """Superclass for Group and possibly other lexical classes."""
@@ -596,7 +598,7 @@ class Group(Entry):
             # separate features if any
             m = FORM_FEATS.match(token)
             if not m:
-                print("No form/feats match for {}".format(tokens))
+                print("No form/feats match for {}".format(token))
             tok, feats = m.groups()
             if feats:
                 foundfeats = True
@@ -655,15 +657,36 @@ class Group(Entry):
 class MorphoSyn(Entry):
     """Within-language patterns that modify morphology and can delete words on the basis of the occurrence of other words or features."""
 
-    def __init__(self, language, name=None, pattern=None):
+    def __init__(self, language, name=None, pattern=None,
+                 del_indices=None, swap_indices=None, add_items=None, featmod=None, failif=None, agr=None,
+                 expanded=False):
         """pattern and change are strings, which get expanded at initialization.
         direction = True is left-to-right matching, False right-to-left matching.
         """
         name = name or MorphoSyn.make_name(pattern)
         Entry.__init__(self, name, language)
         self.direction = True
+        ## These will be set in expand()
+        self.agr = agr
+        self.del_indices = del_indices or []
+        self.add_items = add_items or []
+        self.swap_indices = swap_indices or []
+        self.failif = failif
+        self.featmod = featmod or []
+        # dict of forms, features, with indices as keys, for optional elements
+        self.optional = {}
+        # Pattern indices of items that must not match
+        self.neg_matches = []
+        # Wordform token (no features) near left end of pattern (for left-to-right direction)
+        self.head_index = -1
+        # If there are optional features, additional morphosyns are created.
+        self.optional_ms = []
+        # Expand unless this already happened (with optional form-feats)
         # This also sets self.agr, self.del_indices, self.featmod; may also set direction
-        self.pattern = self.expand(pattern)
+        if not expanded:
+            self.pattern = self.expand(pattern)
+        else:
+            self.pattern = pattern
         # Whether to print out verbose messages
         self.debug = False
 
@@ -706,16 +729,6 @@ class MorphoSyn(Entry):
         tokens = pattern[0].strip()
         # Attributes: agreement, delete, swap, add
         attribs = pattern[1:]
-        self.agr = None
-        self.del_indices = []
-        self.add_items = []
-        self.swap_indices = []
-        self.failif = None
-        self.featmod = []
-        # Pattern indices of items that must not match
-        self.neg_matches = []
-        # Wordform token (no features) near left end of pattern (for left-to-right direction)
-        self.head_index = -1
         # Expand attributes
         for attrib in attribs:
             attrib = attrib.strip()
@@ -734,7 +747,7 @@ class MorphoSyn(Entry):
                         feat_pairs.append((f1, f2))
                     else:
                         feat_pairs.append((f, f))
-                self.agr = int(srci), int(trgi), feat_pairs
+                self.agr = [int(srci), int(trgi), feat_pairs]
                 continue
             # Indices of pattern elements to be marked for deletion (and optionally their "target" indices)
             match = MS_DELETE.match(attrib)
@@ -745,7 +758,7 @@ class MorphoSyn(Entry):
                     d1, x, d2 = d.partition(':')
                     d1 = int(d1)
                     d2 = int(d2) if d2 else -1
-                    self.del_indices.append((d1, d2))
+                    self.del_indices.append([d1, d2])
                 continue
             match = MS_ADD.match(attrib)
             if match:
@@ -757,8 +770,7 @@ class MorphoSyn(Entry):
                 continue
             match = MS_SWAP.match(attrib)
             if match:
-                swap_indices = [int(i) for i in match.groups()[0].split()]
-                self.swap_indices = swap_indices
+                self.swap_indices =  [int(i) for i in match.groups()[0].split()]
                 continue
             match = MS_FAILIF.match(attrib)
             if match:
@@ -769,25 +781,72 @@ class MorphoSyn(Entry):
             match = MS_FEATMOD.match(attrib)
             if match:
                 fm_index, fm_feats = match.groups()
-                self.featmod.append((int(fm_index), FeatStruct(fm_feats)))
+                self.featmod.append([int(fm_index), FeatStruct(fm_feats)])
                 continue
             print("Something wrong with MS attribute {}".format(attrib))
         p = []
         for index, item in enumerate(tokens.split(MS_PATTERN_SEP)):
+            forms = None
+            feats = None
+            optmatch = MS_OPT.match(item)
+            if optmatch:
+                opt = optmatch.groups()[0]
+#                print("Found optional match {}".format(opt))
+                item = opt
             negmatch = MS_NEG_FEATS.match(item)
             if negmatch:
                 negfeats = negmatch.groups()[0]
                 self.neg_matches.append(index)
                 negfeats = FeatStruct(negfeats)
-                p.append(([], negfeats))
+                forms = []
+                feats = negfeats
+#                p.append(([], negfeats))
             else:
-                forms, feats = MS_FORM_FEATS.match(item).groups()
+                head_pref, forms, feats = MS_FORM_FEATS.match(item).groups()
                 if feats:
                     feats = FeatStruct(feats)
                 forms = [f.strip() for f in forms.split(FORMALT_SEP) if f]
-                if not feats and self.head_index == -1:
+                if head_pref:
+#                    print("Found head prefix for {}, head index {}".format(item, index))
                     self.head_index = index
-                p.append((forms, feats))
+                elif not feats and self.head_index == -1:
+                    self.head_index = index
+            p.append((forms, feats))
+            if optmatch:
+                self.optional[index] = (forms, feats)
+        if self.optional:
+#            print("Creating Morphosyns for optional elements {}".format(self.optional))
+            opt_pattern1 = []
+            del_indices = self.del_indices[:]
+            swap_indices = self.swap_indices[:]
+            add_items = self.add_items[:]
+            featmod = self.featmod[:]
+            agr = self.agr[:] if self.agr else None
+            for index, (forms, feats) in enumerate(p):
+                if index in self.optional:
+                    if self.head_index > index:
+                        self.head_index -= 1
+                    for i, (d, t) in enumerate(del_indices):
+                        if d > index:
+                            del_indices[i][0] -= 1
+                        if t > index:
+                            del_indices[i][1] -= 1
+                    if agr:
+                        if agr[0] > index:
+                            agr[0] -= 1
+                        if agr[1] > index:
+                            agr[1] -= 1
+                    for i, (fi, fs) in featmod:
+                        if fi > index:
+                            featmod[i][0] -= 1
+                else:
+                    opt_pattern1.append((forms, feats))
+            self.optional_ms.append(MorphoSyn(self.language, name=self.name + '_opt1',
+                                              del_indices=del_indices, swap_indices=swap_indices, agr=agr,
+                                              add_items=add_items, featmod=featmod, failif=self.failif,
+                                              pattern=opt_pattern1,
+                                              expanded=True))
+#            print("Optional MS: {}".format(self.optional_ms))
         return p
 
     def pattern_length(self):
@@ -1137,6 +1196,8 @@ class MorphoSyn(Entry):
                 # Because it may be mutated, use a copy of trg_feats
                 for src_feats in src_feats_list:
                     if src_feats:
+                        # It might not be an FSSet, but needs to be for agree_FSS()
+                        src_feats = FSSet(src_feats)
                         if verbosity > 1 or self.debug:
                             print("    Agreeing: {}, {}".format(src_feats.__repr__(), trg_feats.__repr__()))
                             print("    Types: source {}, target {}".format(type(src_feats), type(trg_feats)))
@@ -1150,7 +1211,9 @@ class MorphoSyn(Entry):
         if self.del_indices:
             for i, j in self.del_indices:
                 elements[i][0] = '~' + elements[i][0]
-                if j != -1:
+                if j == -1:
+                    j = self.head_index
+#                if j != -1:
 #                    print("Recording target distance {}".format(j-i))
                     elements[i][2][0]['target'] = j-i
 #                print("Recording deletion for match element {} (index {}), target: {} (index {})".format(elements[i], i, elements[j], j))

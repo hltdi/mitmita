@@ -22,14 +22,18 @@
 *** have_v[+aux,tam=pst] $v[+neg] ; ^ have_v 0
 ->amh $v[+neg,tm=prf] neb_er ; || 1, 0 ; 0 == 1
 ## should (also include possibility of tegeb_a?)
-*** shall_v[+aux,tam=pst] $v ; ^ shall_v 0
+*** should_v[pos=md,+aux] $v ; ^ should_v 0
 ->amh $n[v=inf,pos=n] hl_w_v[tm=imf,sb=[-p1,-p2,-fem,-plr],ob=[+prp,+b,+expl]] ; || 1, 0 ; 0 == 1 sb:ob,neg:neg
 ## must (same as should)
-*** must_v[+aux] $v ; ^ must_v 0
+*** must_v[pos=md,+aux] $v ; ^ must_v 0
 ->amh $n[v=inf,pos=n] hl_w_v[tm=imf,sb=[-p1,-p2,-fem,-plr],ob=[+prp,+b,+expl]] ; || 1, 0 ; 0 == 1 sb:ob,neg:neg
 ## can
-*** can_v $v ; ^ can_v 0
-->amh $v[cj1=lI,+sub,tm=imf] c'l_v ; || 1, 0 ; 0 == 1 sb:sb,neg:neg,tm:tm
+*** can_v[pos=md,+aux,-neg] $v ; ^ can_v 0
+->amh $v[cj1=lI,+sub,tm=imf] c'l_v[tm=imf,ax=al] ; || 1, 0 ; 0 == 1 sb:sb,tm:tm ; 0=1 sb:sb
+*** can_v[pos=md,+aux,+neg] $v ; ^ can_v 0
+->amh $v[cj1=lI,+sub,tm=imf] c'l_v[tm=imf,+neg] ; || 1, 0 ; 0 == 1 sb:sb,tm:tm ; 0=1 sb:sb
+*** could_v[pos=md,+aux] $v ; ^ could_v 0
+->amh $v[cj1=lI,+sub,tm=imf] c'l_v[tm=prf] ; || 1, 0 ; 0 == 1 sb:sb,neg:neg,tm:tm ; 0=1 sb:sb
 #### Special cases
 ### be -> ne, nbr, hwn
 *** be_v[tm=imf,-aux] $n ; ^ be_v 0
@@ -3616,9 +3620,7 @@
 *** curdle_v
 ->amh rg'_v[as=smp,vc=tr]
 *** cure_v
-->amh x'r_v[as=smp,vc=cs]
 ->amh fw_s_v[as=smp,vc=smp]
-->amh fw_s_v[as=smp,vc=ps]
 ->amh d'n_v[as=smp,vc=tr]
 *** curry_v favour
 ->amh lm_T_v[as=it,vc=ps]
@@ -4588,7 +4590,6 @@
 *** flutter_v about
 ->amh knf_v[as=smp,vc=smp]
 *** fly_v
-->amh fss_v[as=smp,vc=smp]
 ->amh brr_v[as=smp,vc=smp]
 *** fly_v down
 ->amh n|Zrgg_v[as=smp,vc=ps]

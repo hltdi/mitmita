@@ -147,7 +147,7 @@ AMBIG_CHAR = '*'
 DISAMBIG_CHAR = '%'
 # possibly empty form string followed by possibly empty FS string, for MorphoSyn pattern
 # ^prefix means this is head
-MS_FORM_FEATS = re.compile("\s*(\^?)([$<'|\w¿¡?!]*)\s*((?:\[.+\])?)$")
+MS_FORM_FEATS = re.compile("\s*(\^?)([$<'|\w¿¡?!]*)\s*((?:\*?\[.+\])?)$")
 # negative features: ![] with only features catpured
 MS_NEG_FEATS = re.compile("\s*!(\[.+\])$")
 MS_AGR = re.compile("\s*(\d)\s*=>\s*(\d)\s*(.+)$")
@@ -681,6 +681,8 @@ class MorphoSyn(Entry):
         self.head_index = -1
         # If there are optional features, additional morphosyns are created.
         self.optional_ms = []
+        # For each feature strict, whether it applies strictly to input.
+        self.strict = None
         # Expand unless this already happened (with optional form-feats)
         # This also sets self.agr, self.del_indices, self.featmod; may also set direction
         if not expanded:
@@ -785,7 +787,9 @@ class MorphoSyn(Entry):
                 continue
             print("Something wrong with MS attribute {}".format(attrib))
         p = []
-        for index, item in enumerate(tokens.split(MS_PATTERN_SEP)):
+        items = tokens.split(MS_PATTERN_SEP)
+        self.strict = [False] * len(items)
+        for index, item in enumerate(items):
             forms = None
             feats = None
             optmatch = MS_OPT.match(item)
@@ -804,6 +808,9 @@ class MorphoSyn(Entry):
             else:
                 head_pref, forms, feats = MS_FORM_FEATS.match(item).groups()
                 if feats:
+                    if feats[0] == '*':
+                        feats = feats[1:]
+                        self.strict[index] = True
                     feats = FeatStruct(feats)
                 forms = [f.strip() for f in forms.split(FORMALT_SEP) if f]
                 if head_pref:
@@ -1066,6 +1073,8 @@ class MorphoSyn(Entry):
     def match_item(self, stoken, sanals, pindex, verbosity=0):
         """Match a sentence item against a pattern item."""
         pforms, pfeats = self.pattern[pindex]
+        # Whether to match features strictly
+        strict = self.strict[pindex]
         isneg = pindex in self.neg_matches
         if verbosity > 1 or self.debug:
             print("  MS {} matching {}:{} against {}:{}".format(self, stoken, sanals, pforms, pfeats.__repr__()))
@@ -1087,7 +1096,7 @@ class MorphoSyn(Entry):
             # last corresponding to the list of anals in sentence
             anal_matches = []
             for sanal in sanals:
-                anal_matches.append(self.match_anal(stoken, sanal, pforms, pfeats, neg=isneg,
+                anal_matches.append(self.match_anal(stoken, sanal, pforms, pfeats, strict=strict, neg=isneg,
                                                     verbosity=verbosity))
             if any(anal_matches):
                 return [stoken, anal_matches, sanals]
@@ -1120,7 +1129,7 @@ class MorphoSyn(Entry):
             print("    Match token failed")
         return False
 
-    def match_anal(self, stoken, sanal, pforms, pfeats, neg=False, verbosity=0):
+    def match_anal(self, stoken, sanal, pforms, pfeats, strict=False, neg=False, verbosity=0):
         """Match the sentence analysis against pforms and pfeats in a pattern.
         sanal is either a dict or a pair (root, features)."""
         if isinstance(sanal, dict):
@@ -1141,7 +1150,7 @@ class MorphoSyn(Entry):
             if isinstance(sfeats, FSSet):
                 # This returns an FSSet too
 #                print("   Unifying FSSet {} with FeatStruct {}".format(sfeats, pfeats))
-                u = sfeats.unify_FS(pfeats)
+                u = sfeats.unify_FS(pfeats, strict=strict)
             elif not sfeats:
                 # No sentence item features but there are match item features. See if the parts of speech match.
                 if ppos and spos and ppos == spos:
@@ -1149,7 +1158,7 @@ class MorphoSyn(Entry):
                 else:
                     return False
             else:
-                u = simple_unify(sfeats, pfeats)
+                u = simple_unify(sfeats, pfeats, strict=strict)
             if u != 'fail':
                 if not neg:
                     # result could be frozen if nothing changed; we need an unfrozen FS for later changes

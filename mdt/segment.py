@@ -140,26 +140,26 @@ class SolSeg:
         """Set the HTML markup for this segment, given its position in the sentence,
         and the dictionary of choices for the record of the SolSeg.
         Do postprocessing on phrases joined by '_' or special tokens (numerals).
-        The html variable holds the triple (source tokens, color, translation choices)
         """
-        self.color = SolSeg.tt_notrans_color if not self.translation else SolSeg.tt_colors[index]
-        # Final source segment output
-        tokens = self.token_str
-#        # If this is a punctuation segment, don't give choices (later make this a preference option?)
-#        if self.is_punc:
-#            print("Punctuation segment: not giving options in HTML")
-#            translation = self.translation[0][0]
-#            transhtml = '<table><tr><td class="transchoice">'
-#            transhtml += translation
-#            transhtml += '</td></td></table>'
-#            self.html = (tokens, self.color, transhtml)
-#            return
         # Combine translations where possible
         if self.special:
             print("Setting HTML for special segment {}".format(self.raw_token_str))
+        self.color = SolSeg.tt_notrans_color if not self.translation else SolSeg.tt_colors[index]
         transhtml = '<table>'
         capitalized = False
         choice_list = self.record.choices if self.record else None
+        # Final source segment output
+        tokens = self.token_str
+        if self.is_punc:
+            trans = self.translation[0][0]
+            transhtml += "<tr><td class='transchoice'>"
+            transhtml += '<br/><input type="radio" name="choice" id={} value="{}" checked>{}</td>'.format(trans, trans, trans)
+            transhtml += '</tr>'
+            transhtml += '<tr><td class="other">'
+            transhtml += '<input type="radio" name="choice" id="other" value="other">other translation (enter below)</td></tr>'
+            transhtml += '</table>'
+            self.html = (tokens, self.color, transhtml)
+            return
         for tindex, t in enumerate(self.translation):
             print("{} setting HTML for {}: {}".format(self, tindex, t))
             # Create all combinations of word sequences
@@ -178,7 +178,10 @@ class SolSeg:
             transhtml += "<td class='transchoice'>"
             html_choices = []
             for tcindex, tchoice in enumerate(tcombs):
-                html_choices.append('<input type="radio" name="choice" id={} value="{}">{}'.format(tchoice, tchoice, tchoice))
+                if tindex == 0 and tcindex == 0:
+                    html_choices.append('<input type="radio" name="choice" id={} value="{}" checked>{}'.format(tchoice, tchoice, tchoice))
+                else:
+                    html_choices.append('<input type="radio" name="choice" id={} value="{}">{}'.format(tchoice, tchoice, tchoice))
             transhtml += "<br/>".join(html_choices)
             transhtml += "</td>"
             if self.record:
@@ -192,7 +195,7 @@ class SolSeg:
                 transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
             # Button for the user's own translation
             transhtml += '<tr><td class="other">'
-            transhtml += '<input type="radio" name="choice" id="other" value="other" checked>other translation (enter below)</td></tr>'
+            transhtml += '<input type="radio" name="choice" id="other" value="other">other translation (enter below)</td></tr>'
             # Remove special prefixes
             transhtml = SolSeg.remove_spec_pre(transhtml)
             transhtml = transhtml.replace('_', ' ')
@@ -365,8 +368,8 @@ class SNode:
     def match(self, grp_item, grp_feats, verbosity=0):
         """Does this node match the group item (word, root, category) and
         any features associated with it?"""
-        # If this is a punctuation node, it can't match a group item
-        if self.is_punc():
+        # If this is a punctuation node, it can't match a group item unless the item is also punctuation (not alphanum)
+        if self.is_punc() and grp_item.isalnum():
             return False
         if verbosity > 1:
             print('   SNode {} with features {} trying to match item {} with features {}'.format(self, self.analyses, grp_item, grp_feats.__repr__()))
@@ -420,7 +423,18 @@ class SNode:
                         node_roots.append(rr + '_' + p)
                 # Match group token
                 if is_cat:
-                    if grp_item not in node_cats:
+                    if grp_item in node_cats:
+                        # The category matches, but is there a group entry for the node's root
+                        item_groups = self.sentence.language.groups.get(node_root)
+                        if item_groups:
+                            if not any([len(g.tokens) == 1 for g in item_groups]):
+#                                print("Failing because there is no one-token entry for {}".format(node_root))
+                                continue
+                        else:
+#                            print("Failing because there's no group entry for {}".format(node_root))
+                            continue
+                    else:
+                        # Fail because the group category item doesn't match the node categories
                         continue
                 else:
                     # Not a category, has to match the root

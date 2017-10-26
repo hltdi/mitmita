@@ -183,6 +183,8 @@ class Language:
         # Phrases to join during sentence tokenization
         self.join = join
         self.groups = groups or {}
+        # Dictionary of roots/stems/tokens to group keys, e.g., 'drop': ['drop_n', 'drop_v']
+        self.group_keys = {}
         # Explicit groups to load instead of default
         self.groupnames = groupnames
         # Candidate groups from training; added 2017.3.6
@@ -1848,6 +1850,13 @@ class Language:
 #        self.changed = True
 #        return group
 
+    @staticmethod
+    def get_grouptoken(string):
+        if '_' in string:
+            return string.rpartition('_')[0]
+        else:
+            return string
+
     def add_group(self, group):
         """Add group to dict, indexed by head."""
         head = group.head
@@ -1856,6 +1865,11 @@ class Language:
         else:
             self.groups[head] = [group]
         self.groupnames[group.name] = group
+        token = Language.get_grouptoken(head)
+        if token in self.group_keys:
+            self.group_keys[token].add(head)
+        else:
+            self.group_keys[token] = {head}
         self.changed = True
 
 #    def add_group_to_lexicon(self, head, group, features):

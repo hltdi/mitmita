@@ -229,7 +229,7 @@ class SolSeg:
                 tokens = ' '.join(toks)
             else:
                 tokens = tokens.capitalize()
-        self.html = (tokens, self.color, transhtml)
+        self.html = (tokens, self.color, transhtml, index)
 
     @staticmethod
     def list_html(segments):
@@ -536,6 +536,7 @@ class GInst:
 #        self.head_pos = group.pos
         # List of GNodes
         self.nodes = []
+        ghead_index = group.head_index
         for index, sntups in enumerate(snode_indices):
             # sntups is a list of snindex, match features, token, create? tuples
 #            print(" SNTups {}".format(sntups))
@@ -546,17 +547,19 @@ class GInst:
                     deleted = True
                     break
             if deleted:
-#                print("snode_index {} is a deleted node; make special GNode?".format(sntups))
+                # If this is before where the head should be, decrement that index
+                if index <= ghead_index:
+                    ghead_index -= 1
+#                print("Ghead index decremented to {}".format(ghead_index))
                 # Increment index so indices correspond to raw group tokens
-                index += 1
+                continue
             else:
                 self.nodes.append(GNode(self, index, sntups))
 #        self.nodes = [GNode(self, index, indices) for index, indices in enumerate(snode_indices)]
         # The GNode that is the head of this GInst
-        i = group.head_index
-        if i > len(self.nodes) - 1:
-            print("Problem instantiating {} for {}; head index {}".format(group, self.nodes, i))
-        self.head = self.nodes[group.head_index]
+        if ghead_index > len(self.nodes) - 1:
+            print("Problem instantiating {} for {}; head index {}".format(group, self.nodes, ghead_index))
+        self.head = self.nodes[ghead_index]
         # Dict of variables specific to this group
         self.variables = {}
         # List of target language groups, gnodes, tnodes

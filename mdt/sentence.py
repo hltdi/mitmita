@@ -1707,7 +1707,7 @@ class Sentence:
 
     def get_html(self):
         """Create HTML for a sentence with no solution."""
-        return [(self.raw, "Silver", "<table border=1></table>")]
+        return [(self.raw, "Silver", "<table border=1></table>", 0)]
         
     def verbatim(self, node):
         """Use the source token in the target complete translation."""

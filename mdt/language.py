@@ -572,7 +572,7 @@ class Language:
 #                        print("{}:[]".format(word), file=out)
                     else:
                         anals = ["{}:{}".format(r, f.__repr__() if f else '') for r, f in analyses]
-                        anals = ';'.join(anals)
+                        anals = ';;'.join(anals)
                         print("{} || {}".format(word, anals), file=out)
         # Empty new_anals in case we want to add things later
         self.new_anals.clear()
@@ -587,7 +587,7 @@ class Language:
                 for line in f:
                     split_line = line.strip().split(" || ")
                     word, analyses = split_line
-                    analyses = analyses.split(';')
+                    analyses = analyses.split(';;')
                     anals = [a.split(':') for a in analyses]
                     alist = []
                     for r, a in anals:

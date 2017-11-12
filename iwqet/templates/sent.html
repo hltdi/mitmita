@@ -213,13 +213,16 @@ function ShowHelp() {
 function OnRegOra(raw, punc) {
     var sentval = document.getElementById("sentence").value;
     var sentend = sentval.charAt(sentval.length-1);
-    if ('።?!'.indexOf(sentend) == -1) {
+    if ('.?!'.indexOf(sentend) == -1) {
         sentval += punc;
         document.getElementById("sentence").value += punc;
     }
     // Add the sentence and its translation to the doc textarea
     document.getElementById("document").value += raw + "\n"+ sentval + "\n"
     document.Form2.oratra.value = sentval;
+    document.Form2.documento.value = document.getElementById("document").value
+    document.Form2.action = "sent";
+    document.Form2.submit();
 }
 function OnRegFrase() {
     var sentval = document.getElementById("sentence").value;
@@ -227,16 +230,20 @@ function OnRegFrase() {
     var segment = document.Form2.seg.value;
     var radio = document.Form2.choice;
     var choice = "";
-    var fratra = document.Form2.fratra.value;
+    segindex = document.Form2.segindex.value;
     document.getElementById("segtra2").innerHTML = "Selected translation";
     if (segtrans != "") {
-        segtrans = cleanAmh(segtrans);
+        // Record the translation
+        segtrans = limpiarGrn(segtrans);
         document.Form2.fratra.value += "||" + segment + "=" + segtrans;
+        document.Form2.segindices.value += " " + segindex;
         if (segtrans == "0") {
             // User wants no translation for this segment.
             return true;
-        } else if (sentval != "") {
-           // Not beginning of the sentence.
+        } else if (sentval == "") {
+           // Beginning of the sentence.
+            segtrans = capitalize(segtrans);
+        } else {
             segtrans = " " + segtrans;
         }
         document.getElementById("error").innerHTML = "";
@@ -254,29 +261,39 @@ function OnRegFrase() {
         document.getElementById("error").innerHTML = "";
         document.getElementById("segment").value = choice;
         document.Form2.fratra.value += "||" + segment + "=" + choice;
-        if (sentval != "") {
+        document.Form2.segindices.value += " " + segindex;
+        choice = limpiarGrn(choice);
+        if (sentval == "") {
+            choice = capitalize(choice);
+        } else {
             choice = " " + choice;
         }
         document.getElementById("sentence").value += choice;
     }
     return true;
 }
-function Segment(text, segment, color) {
+function Segment(text, segment, color, segindex) {
     var fratra = document.Form2.fratra.value;
+    var segindices = document.Form2.segindices.value;
     var formatted = "<font color=" + color + ">" + text + "</font>";
     // Clear error space.
     document.getElementById("error").innerHTML = "";
-    if (fratra.includes(segment)) {
+    // Generate an error message if this segment has already been translated
+//    document.getElementById("error").innerHTML = "segment indices " + segindices + ", index " + segindex;
+    if (segindices.includes(segindex)) {
         document.getElementById("error").innerHTML = "You already selected a translation for " + segment + "!";
         return false;        
     }
+    // Otherwise display the segment's HTML
     document.getElementById('segtra').innerHTML = formatted;
     document.getElementById('segtra2').innerHTML = "Enter another translation";
     document.Form2.seg.value = segment;
+    document.Form2.segindex.value = segindex;
     document.getElementById("segment").value = '';
 }
 function OnSalir()
 {
+    document.getElementById("document").value = "";
     document.Form1.action = "fin"
     document.Form1.target = "_self";     // Same window
     document.Form1.submit();             // Submit the page
@@ -346,7 +363,7 @@ Usuario: <span class="username">{{ user.username }}</span>
 {# Each segment responds to mouse clicks which replace the segtra
 section with a table of translations and sets the value of the seg form variable #}
 <span onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
-onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|format(seg[1])|e}});">
+onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|format(seg[1])|e}}, {{loop.index}});">
   <span style='color:{{ seg[1] }};'> {{ seg[0] }} </span></span>
 {% endfor %}
 </span>
@@ -417,8 +434,11 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
   </td>
   </tr>
   <input type="hidden" name="seg" value="">
+  <input type="hidden" name="segindex" value="">
+  <input type="hidden" name="segindices" value="">
   <input type="hidden" name="oratra" value="">
   <input type="hidden" name="fratra" value="">
+  <input type="hidden" name="documento" value="">
 </form>
 
 <form name="Form3" id="text-options">

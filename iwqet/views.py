@@ -31,7 +31,7 @@ from flask import request, session, g, redirect, url_for, abort, render_template
 from iwqet import app, make_document, load, seg_trans, quit, start, init_users, get_user, create_user
 
 # Global variables for views; probably a better way to do this...
-SESSION = ENG = AMH = DOC = SENT = SEGS = SEG_HTML = USER = None
+SESSION = ENG = AMH = DOC = SENTENCE = SEGS = SEG_HTML = USER = None
 SINDEX = 0
 USERS_INITIALIZED = False
 
@@ -74,7 +74,7 @@ def get_sentence():
     SENTENCE = DOC[SINDEX]
     SINDEX += 1
 
-def get_segmentation():
+def solve_and_segment():
     """Segment and translate SENTENCE."""
     global SEGS
     global SEG_HTML
@@ -160,15 +160,20 @@ def doc():
 def sent():
     form = request.form
     print("Form for sent: {}".format(form))
-#    if SEG_HTML:
-#        print("SEG_HTML {}".format(SEG_HTML))
-#    if 'oratra' in form:
-#        print("Registering sentence translation {}".format(form.get('oratra')))
     if 'help' in form and form['help'] == 'true':
         # Opened help window. Keep everything else as is.
         raw = SENTENCE.raw if SENTENCE else None
         punc = SENTENCE.get_final_punc() if SENTENCE else None
-        return render_template('sent.html', sentence=SEG_HTML, raw=raw, punc=punc, user=USER)
+        document = form.get('UTraDoc', '')
+        return render_template('sent.html', sentence=SEG_HTML, raw=raw, punc=punc,
+                               document=document, user=USER)
+    if 'oratra' in form:
+        # A sentence has been translated.
+        translation = form.get('oratra')
+        document = form.get('UTraDoc', '')
+        print("Registering sentence translation {} for {}".format(translation, SENTENCE))
+        print("Current document: {}".format(document))
+        return render_template('sent.html', user=USER, document=document)
     if 'text' in form and not DOC:
         # Create a new document
         make_doc(form['text'])
@@ -181,21 +186,24 @@ def sent():
         return render_template('doc.html', user=USER)
     else:
         # Translate and segment the sentence, assigning SEGS
-        get_segmentation()
+        solve_and_segment()
     # Pass the sentence segmentation, the raw sentence, and the final punctuation to the page
-    return render_template('sent.html', sentence=SEG_HTML, raw=SENTENCE.raw, punc=SENTENCE.get_final_punc(), user=USER)
+    return render_template('sent.html', sentence=SEG_HTML, raw=SENTENCE.raw, document='',
+                           record=SENTENCE.record, punc=SENTENCE.get_final_punc(), user=USER)
 
 @app.route('/fin', methods=['POST'])
 def fin():
 #    print("In fin...")
     global SESSION
     global DOC
-    global SENT
+    global SENTENCE
     global SEGS
     global SEG_HTML
     global USER
+    global SINDEX
     quit(SESSION)
-    SESSION = DOC = SENT = SEGS = SEG_HTML = USER = None
+    SESSION = DOC = SENTENCE = SEGS = SEG_HTML = USER = None
+    SINDEX = 0
     return render_template('fin.html')
 
 @app.route('/project')

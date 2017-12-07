@@ -167,9 +167,9 @@ def sent():
         document = form.get('UTraDoc', '')
         return render_template('sent.html', sentence=SEG_HTML, raw=raw, punc=punc,
                                document=document, user=USER)
-    if 'oratra' in form:
+    if 'senttrans' in form:
         # A sentence has been translated.
-        translation = form.get('oratra')
+        translation = form.get('senttrans')
         document = form.get('UTraDoc', '')
         print("Registering sentence translation {} for {}".format(translation, SENTENCE))
         print("Current document: {}".format(document))
@@ -188,7 +188,7 @@ def sent():
         # Translate and segment the sentence, assigning SEGS
         solve_and_segment()
     # Pass the sentence segmentation, the raw sentence, and the final punctuation to the page
-    return render_template('sent.html', sentence=SEG_HTML, raw=SENTENCE.raw, document='',
+    return render_template('sent.html', sentence=SEG_HTML, raw=SENTENCE.original, document='',
                            record=SENTENCE.record, punc=SENTENCE.get_final_punc(), user=USER)
 
 @app.route('/fin', methods=['POST'])

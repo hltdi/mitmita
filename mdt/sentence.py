@@ -350,7 +350,7 @@ class Document(list):
         return False
             
     def split(self, target=False):
-        """Split tokenized text into sentences. Later use a language-specific splitter.
+        """Split tokenized text into sentences. Used when there is no language-specific splitter.
         If target is true, split target_text."""
         tokens = self.target_tokens if target else self.tokens
         sentence_list = self.target_sentences if target else self
@@ -362,11 +362,23 @@ class Document(list):
         tokindex = 0
         token = ''
         toktype = 1
+        raw_sentences = []
+        raw_sentence = []
+        raw_token = ''
+        last_token_triple = ('', 1, -1)
         while tokindex < ntokens:
             token, toktype, toksubtype = tokens[tokindex]
 #            print("token {}, toktype {}, toksubtype {}".format(token, toktype, toksubtype))
+#            print("last token, type, subtype: {}".format(last_token_triple))
             if toktype in (0, 1):
                 current_sentence.append((token, toktype, toksubtype))
+                if last_token_triple[1] in (1, 2):
+                    # New raw token
+                    if raw_token:
+                        raw_sentence.append(raw_token)
+                    raw_token = token
+                else:
+                    raw_token += token
             # Check whether this is a sentence end
             elif Document.end_re.match(token):
                 if not current_sentence:
@@ -374,28 +386,47 @@ class Document(list):
                     return
                 elif len(current_sentence) == 1 and current_sentence[0][2] == 2:
                     # Sentence consists only of a numeral following by this end-of-sentence punctuation; continue current sentence.
-#                    print("Current sentence consists only of a numeral {}; treat as sentence start".format(current_sentence[0]))
                     current_sentence.append((token, toktype, toksubtype))
+                    raw_token += token
                 else:
                     # End sentence
                     current_sentence.append((token, toktype, toksubtype))
                     sentences.append(current_sentence)
                     current_sentence = []
+                    # Handle raw tokens/sentences
+                    raw_token += token
+                    raw_sentence.append(raw_token)
+                    raw_sentences.append(raw_sentence)
+                    raw_token = ''
+                    raw_sentence = []
             elif Document.poss_end_re.match(token):
                 if current_sentence and (tokindex == ntokens-1 or Document.start_next(tokens[tokindex:])):
                     # End sentence
                     current_sentence.append((token, toktype, toksubtype))
                     sentences.append(current_sentence)
                     current_sentence = []
+                    # Handle raw tokens/sentences
+                    raw_token += token
+                    raw_sentence.append(raw_token)
+                    raw_sentences.append(raw_sentence)
+                    raw_token = ''
+                    raw_sentence = []
                 else:
                     current_sentence.append((token, toktype, toksubtype))
+                    raw_token += token
             else:
                 current_sentence.append((token, toktype, toksubtype))
+                raw_token += token
             tokindex += 1
+            last_token_triple = (token, toktype, toksubtype)
+        if raw_token:
+            raw_sentence.append(raw_token)
+            raw_sentences.append(raw_sentence)
         # Make Sentence objects for each list of tokens and types
-        for sentence in sentences:
+        for sentence, rawsent in zip(sentences, raw_sentences):
             sentence_list.append(Sentence(language=language,
                                           tokens=[t[0] for t in sentence],
+                                          original=' '.join(rawsent),
                                           target=target_language,
                                           session=self.session))
 
@@ -450,6 +481,7 @@ class Sentence:
     tt_colors = ['red', 'blue', 'sienna', 'green', 'purple', 'red', 'blue', 'sienna', 'green', 'purple', 'red', 'blue', 'sienna', 'green', 'purple']
 
     def __init__(self, raw='', language=None, tokens=None, rawtokens=None,
+                 original='',
                  toktypes=None, toksubtypes=None,
                  nodes=None, groups=None, target=None, init=False,
                  analyses=None, session=None, parent=None,
@@ -468,6 +500,7 @@ class Sentence:
         else:
             self.raw = raw
             self.tokens = None
+        self.original = original
         # List of booleans, same length as self.tokens specifying whether the raw token was upper case
         self.isupper = []
         # Source language: a language object
@@ -1825,6 +1858,38 @@ class Solution:
             last_indices = raw_indices
         return ttrans_align
 
+    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None):
+        '''Set one or more segments for a sequence of untranslatable tokens.'''
+        stok_groups = []
+        stoks = []
+        i0 = end_index+1
+        for stok in src_tokens:
+            if stok[0] == '%':
+                # Special token; it should have its own segment
+                if stoks:
+                    stok_groups.append(stoks)
+                    stoks = []
+                stok_groups.append([stok])
+            else:
+                stoks.append(stok)
+        if stoks:
+            stok_groups.append(stoks)
+        i0 = end_index+1
+        for stok_group in stok_groups:
+            is_punc = len(stok_group) == 1 and self.source.is_punc(stok_group[0])
+            if is_punc:
+                # Convert punctuation in source to punctuation in target if there is a mapping.
+                translation = [self.target.punc_postproc(stok_group[0])]
+            else:
+                translation = []
+            start = i0
+            end = i0+len(stok_group)-1
+            seg = SolSeg(self, (start, end), translation, stok_group, session=self.session, gname=gname,
+                         merger_groups=merger_groups, is_punc=is_punc)
+            print("Untranslated segment {}->{}".format(start, end))
+            self.segments.append(seg)
+            i0 += len(stok_group)
+
     def get_segs(self, html=True):
         """Set the segments (instances of SolSegment) for the solution, including their translations."""
         tt = self.get_ttrans_outputs()
@@ -1834,47 +1899,27 @@ class Solution:
         for raw_indices, forms, gname, merger_groups in tt:
             late = False
             start, end = raw_indices[0], raw_indices[-1]
-#            print("Segment {}->{}".format(start, end))
-#            print("Raw indices: {}, forms {}, gname {}, merger_groups {}".format(raw_indices, forms, gname, merger_groups))
+            print("Segment {}->{}".format(start, end))
             if start > max_index+1:
-                # there's a gap between the farthest segment to the right and this one; make an untranslated segment
+                # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
                 src_tokens = tokens[end_index+1:start]
-                is_punc = len(src_tokens) == 1 and self.source.is_punc(src_tokens[0])
-                print("Creating untranslated segment for {} in positions {}...{} ({})".format(src_tokens, end_index+1, start-1, "punc" if is_punc else "not punc"))
-                if is_punc:
-                    # Convert punctuation if there is a mapping.
-                    translation = [self.target.punc_postproc(src_tokens[0])]
-                else:
-                    translation = []
-                seg = SolSeg(self, (end_index+1, start-1), translation, src_tokens, session=self.session, gname=gname,
-                             merger_groups=merger_groups, is_punc=is_punc)
-                self.segments.append(seg)
-#            src_tokens = tokens[start:end+1]
+                self.get_untrans_segs(src_tokens, end_index, gname=gname, merger_groups=merger_groups)
             if start < max_index:
-#                print("At least part of segment {} / {} actually appears earlier".format(raw_indices, forms))
-#                print("  start: {}, max_index {}".format(start, max_index))
+                # There's a gap between the portions of the segment
                 late = True
             # There may be gaps in the source tokens for a group; fill these with ...
             src_tokens = [(tokens[i] if i in raw_indices else '...') for i in range(start, end+1)]
             if late:
                 src_tokens[0] = "←" + src_tokens[0]
-            print("Creating segment for {}".format(src_tokens))
             seg = SolSeg(self, raw_indices, forms, src_tokens, session=self.session, gname=gname,
                          merger_groups=merger_groups)
             self.segments.append(seg)
             max_index = max(max_index, end)
             end_index = end
         if max_index+1 < len(tokens):
-            # Some word(s) at end not translated; use source forms with # prefix
+            # Some word(s) at end not translated; use source forms
             src_tokens = tokens[max_index+1:len(tokens)]
-            is_punc = len(src_tokens) == 1 and self.source.is_punc(src_tokens[0])
-            print("Creating untranslated segment at end: {} ({})".format(src_tokens, "punc" if is_punc else "not punc"))
-            if is_punc:
-                translation = [self.target.punc_postproc(src_tokens[0])]
-            else:
-                translation = []
-            seg = SolSeg(self, (max_index+1, len(tokens)-1), translation, src_tokens, session=self.session, is_punc=is_punc)
-            self.segments.append(seg)
+            self.get_untrans_segs(src_tokens, len(tokens)-1, gname=gname, merger_groups=merger_groups)
         if html:
             self.seg_html()
 

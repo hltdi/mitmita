@@ -223,15 +223,24 @@ class FSSet(set):
         else:
             items = features.items()
 
+        to_remove = []
+        to_add = []
+
         for fs in self:
             if fs.frozen():
                 fs1 = fs.unfreeze()
                 fs1.update_inside(features)
                 fs1.freeze()
-                self.remove(fs)
-                self.add(fs1)
+                to_remove.append(fs)
+                to_add.append(fs1)
+#                self.remove(fs)
+#                self.add(fs1)
             else:
                 fs.update_inside(features)
+        for x in to_remove:
+            self.remove(x)
+        for x in to_add:
+            self.add(x)
 
     def get(self, feature, default=None):
         """Get the value of the feature in the first FeatStruct that has one."""

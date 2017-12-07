@@ -1935,7 +1935,8 @@ class Language:
             return output
         else:
             print("The root/feature combination {}:{} can't be generated for POS {}!".format(root, features.__repr__(), pos))
-            return [root]
+            # Add * to mark this is a uninflected.
+            return ['*' + root]
 
     def gen_multroots(self, roots, features, pos=None, guess=False, roman=True, cache=True, verbosity=0):
         """For multiple roots and the same features, return the list of possible outputs."""

@@ -85,6 +85,11 @@ p.error
     color: #f00;
     font-style: italic;
 }
+p.instructions
+{
+    color: #00f;
+    font-style: italic;
+}
 table.center
 {
 	table-layout: fixed;

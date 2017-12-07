@@ -37,10 +37,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 #SESSIONS_DIR = os.path.join(os.path.dirname(__file__), 'sessions')
 
-SESSION_PRE = '{S}'
-TIME_PRE = '{T}'
-SENTENCE_PRE = '{{S'
-SEGMENT_PRE = 'S}}'
+SESSION_PRE = '{$}'
+TIME_PRE = '{t}'
+TIME_PRE_END = '{T}'
+SENTENCE_PRE = '{S'
+SENTENCE_POST = 'S}'
+SEGMENT_PRE = '{{s'
+SEGMENT_POST = '}}s'
 FEEDBACK_PRE = "{F}"
 USER_PRE = "{U}"
 TIME_FORMAT = "%d.%m.%Y/%H:%M:%S:%f"
@@ -115,16 +118,16 @@ class Session:
         self.end = get_time()
         self.save()
 
-    def record_translation(self, sentrecord, translation):
-        """Only record a verbatim translation of the sentence."""
-        sentrecord.translation = translation
+#    def record_translation(self, sentrecord, translation):
+#        """Only record a verbatim translation of the sentence."""
+#        sentrecord.translation = translation
 
     def record(self, sentrecord, trans_dict):
         """Record feedback about a segment's or entire sentence's translation."""
         print("{} recording translation for sentence {}".format(self, sentrecord))
         segrecord = None
-        if trans_dict.get("UTraOra"):
-            translation = trans_dict.get("UTraOra")
+        if 'senttrans' in trans_dict:
+            translation = trans_dict.get("senttrans")
             translation = self.target.ortho_clean(translation)
             print("Alternate sentence translation: {}".format(translation))
             sentrecord.record(translation)
@@ -160,9 +163,9 @@ class Session:
 
     def write(self, file=sys.stdout):
         print("{}".format(self), file=file)
-        print("{} {}".format(TIME_PRE, Session.time2str(self.start)), file=file)
+        print("{} {}".format(TIME_PRE, Session.time2shortstr(self.start)), file=file)
         if not self.running:
-            print("{} {}".format(TIME_PRE, Session.time2str(self.end)), file=file)
+            print("{} {}".format(TIME_PRE_END, Session.time2shortstr(self.end)), file=file)
         for sentence in self.sentences:
             sentence.write(file=file)
 

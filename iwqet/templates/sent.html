@@ -210,7 +210,7 @@ function ShowHelp() {
 "</p></body></html>");
     document.Form1.help.value = true;
 }
-function OnRegOra(raw, punc) {
+function OnRecordSent(raw, punc) {
     var sentval = document.getElementById("sentence").value;
     var sentend = sentval.charAt(sentval.length-1);
     if ('.?!'.indexOf(sentend) == -1) {
@@ -219,12 +219,12 @@ function OnRegOra(raw, punc) {
     }
     // Add the sentence and its translation to the doc textarea
     document.getElementById("document").value += raw + "\n"+ sentval + "\n"
-    document.Form2.oratra.value = sentval;
+    document.Form2.senttrans.value = sentval;
     document.Form2.documento.value = document.getElementById("document").value
     document.Form2.action = "sent";
     document.Form2.submit();
 }
-function OnRegFrase() {
+function OnRecordPhrase() {
     var sentval = document.getElementById("sentence").value;
     var segtrans = document.getElementById("segment").value;
     var segment = document.Form2.seg.value;
@@ -235,7 +235,7 @@ function OnRegFrase() {
     if (segtrans != "") {
         // Record the translation
         segtrans = limpiarGrn(segtrans);
-        document.Form2.fratra.value += "||" + segment + "=" + segtrans;
+        document.Form2.segtrans.value += "||" + segment + "=" + segtrans;
         document.Form2.segindices.value += " " + segindex;
         if (segtrans == "0") {
             // User wants no translation for this segment.
@@ -260,7 +260,7 @@ function OnRegFrase() {
         }
         document.getElementById("error").innerHTML = "";
         document.getElementById("segment").value = choice;
-        document.Form2.fratra.value += "||" + segment + "=" + choice;
+        document.Form2.segtrans.value += "||" + segment + "=" + choice;
         document.Form2.segindices.value += " " + segindex;
         choice = limpiarGrn(choice);
         if (sentval == "") {
@@ -273,7 +273,6 @@ function OnRegFrase() {
     return true;
 }
 function Segment(text, segment, color, segindex) {
-    var fratra = document.Form2.fratra.value;
     var segindices = document.Form2.segindices.value;
     var formatted = "<font color=" + color + ">" + text + "</font>";
     // Clear error space.
@@ -350,6 +349,11 @@ Usuario: <span class="username">{{ user.username }}</span>
 <h2>Selecting and recording translations</h2>
 {% endif %}
 
+<h1>Instructions</h3>
+<p id="instructions" class="instructions">Click on a colored segment
+of the sentence below to see the translation options.
+</p>
+
 <p id="error" class="error">
 </p>
 
@@ -363,7 +367,7 @@ Usuario: <span class="username">{{ user.username }}</span>
 {# Each segment responds to mouse clicks which replace the segtra
 section with a table of translations and sets the value of the seg form variable #}
 <span onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
-onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|format(seg[1])|e}}, {{loop.index}});">
+onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|format(seg[1])|e}}, {{'%r'|format(seg[3])|e}});">
   <span style='color:{{ seg[1] }};'> {{ seg[0] }} </span></span>
 {% endfor %}
 </span>
@@ -385,7 +389,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 <tr class="transtitle">
   <th class="transtitle">Phrase</th>
   <td class="transbutton">
-  <input type="button" id="button" name="freg" onclick="OnRegFrase();" value="Record translation">
+  <input type="button" id="button" name="freg" onclick="OnRecordPhrase();" value="Record translation">
   </td>
 </tr>
 <tr class="transtitle">
@@ -412,12 +416,12 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
   <th class="transtitle">Whole sentence</th>
   <td class="transbutton">
     <input type="button" id="button" name="oreg"
-    onclick="OnRegOra({{'%r'|format(raw)|e}}, {{'%r'|format(punc)|e}});" value="Record translation">
+    onclick="OnRecordSent({{'%r'|format(raw)|e}}, {{'%r'|format(punc)|e}});" value="Record translation">
     </td>
 </tr>  
 <tr class="trans">
   <td class="transtext" colspan="2">
-    <textarea name="UTraOra" id="sentence" value=""></textarea>
+    <textarea name="UTraSent" id="sentence" value=""></textarea>
   </td>
 </tr>
 </table>
@@ -436,8 +440,8 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
   <input type="hidden" name="seg" value="">
   <input type="hidden" name="segindex" value="">
   <input type="hidden" name="segindices" value="">
-  <input type="hidden" name="oratra" value="">
-  <input type="hidden" name="fratra" value="">
+  <input type="hidden" name="senttrans" value="">
+  <input type="hidden" name="segtrans" value="">
   <input type="hidden" name="documento" value="">
 </form>
 

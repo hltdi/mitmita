@@ -44,7 +44,7 @@ from .train import *
 ###### fs imports morphology.logic, morphology.internals
 from .morphology import *
 
-from .record import *
+from iwqet.record import *
 # from . import db
 
 

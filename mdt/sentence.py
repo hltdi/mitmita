@@ -150,7 +150,7 @@
 import copy, re, random, itertools
 from .ui import *
 from .segment import *
-from .record import SentRecord
+from iwqet.record import SentRecord
 
 class Document(list):
     """A list of of Sentences, split from a text string. If biling is True, this is a bilingual document,

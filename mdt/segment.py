@@ -65,7 +65,7 @@ from .cs import *
 from mdt.morphology.semiring import FSSet
 # needed for a few static methods
 from .entry import Entry, Group
-from .record import SegRecord
+from iwqet.record import SegRecord
 from .utils import *
 
 class SolSeg:

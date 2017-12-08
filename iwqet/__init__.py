@@ -23,7 +23,7 @@
 #
 # =========================================================================
 
-__all__ = ['views']
+__all__ = ['views', 'record']
 #  not needed for now: 'learn'
 
 from flask import Flask, url_for, render_template
@@ -41,14 +41,15 @@ from mdt.train import *
 #from .sentence import *
 #from .learn import *
 
+#SESSIONS_DIR = os.path.join(os.path.dirname(__file__), 'sessions')
+
 ## morphology a package; imports morphology.morpho
 ### which imports morphology.fst
 #### which imports morphology.semiring
 ##### which imports morphology.fs, morphology.utils
 ###### fs imports morphology.logic, morphology.internals
 from mdt.morphology import *
-
-from mdt.record import *
+from iwqet.record import *
 # from . import db
 
 ## Instantiate the Flask class to get the application
@@ -56,7 +57,6 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 
 LANGUAGE_DIR = os.path.join(os.path.dirname(__file__), 'languages')
-SESSIONS_DIR = os.path.join(os.path.dirname(__file__), 'sessions')
 
 def get_language_dir(abbrev):
     return os.path.join(LANGUAGE_DIR, abbrev)

@@ -35,16 +35,18 @@ import datetime, sys, os
 from werkzeug.security import generate_password_hash, check_password_hash
 #from iwqet import SESSIONS_DIR
 
-#SESSIONS_DIR = os.path.join(os.path.dirname(__file__), 'sessions')
+SESSIONS_DIR = os.path.join(os.path.dirname(__file__), 'sessions')
 
 SESSION_PRE = '{$}'
 TIME_PRE = '{t}'
 TIME_PRE_END = '{T}'
-SENTENCE_PRE = '{S'
-SENTENCE_POST = 'S}'
-SEGMENT_PRE = '{{s'
-SEGMENT_POST = '}}s'
+SENTENCE_PRE = '{S:'
+SENTENCE_POST = ':S}'
+SEGMENT_PRE = '{{s:'
+SEGMENT_POST = ':s}}'
 FEEDBACK_PRE = "{F}"
+TRANS_PRE = "{->"
+TRANS_POST = "<-}"
 USER_PRE = "{U}"
 TIME_FORMAT = "%d.%m.%Y/%H:%M:%S:%f"
 # Time format without microseconds; used in Session ID
@@ -164,10 +166,10 @@ class Session:
     def write(self, file=sys.stdout):
         print("{}".format(self), file=file)
         print("{} {}".format(TIME_PRE, Session.time2shortstr(self.start)), file=file)
-        if not self.running:
-            print("{} {}".format(TIME_PRE_END, Session.time2shortstr(self.end)), file=file)
         for sentence in self.sentences:
             sentence.write(file=file)
+        if not self.running:
+            print("{} {}".format(TIME_PRE_END, Session.time2shortstr(self.end)), file=file)
 
     def write_doc(self, file=sys.stdout, tm=False):
         """Write the source and target translations in raw form to file."""

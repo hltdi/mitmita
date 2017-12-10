@@ -251,20 +251,23 @@ class Document(list):
             sentence_list = self
             text = self.text
         if language.tagger and language.tagger.tokenize:
+            # This is what happens for English (with Mitmita, for example).
 #            print("Using external {} tagger for {}...".format(language, self))
             tagger = language.tagger
-            # tagger splits document into sentences
-            sentences = tagger.get_sentences(text)
-#            print("Found sentences {}".format(sentences))
-            for s in sentences:
-                tokens = [t[0] for t in s]
-                analyses = [[t.lower(), a[1]] for t, a in zip(tokens, s)]
+            # tagger splits document into sentences, returning tokenized sentences and raw sentences
+            tok_sentences, raw_sentences = tagger.get_sentences(text)
+            print("Found sentences {}".format(tok_sentences))
+            for tok, raw in zip(tok_sentences, raw_sentences):
+                tokens = [t[0] for t in tok]
+                analyses = [[t.lower(), a[1]] for t, a in zip(tokens, tok)]
 #                print(" Analyses: {}".format(analyses))
                 sentence = Sentence(language=language,
                                     tokens=tokens, analyses=analyses,
+                                    original=raw.strip(),
                                     target=target_language, session=self.session)
                 sentence_list.append(sentence)
         else:
+            # This is what happens for Spanish (for Mainumby, for example).
             self.tokenize(target=target, verbosity=verbosity)
             if reinit:
                 Sentence.id = 0
@@ -577,9 +580,10 @@ class Sentence:
     def get_final_punc(self):
         """Return sentence-final punctuation as a string or empty string if there is none."""
         # Final token
-        fintok = self.nodes[-1].token
-        if self.language.is_punc(fintok):
-            return fintok
+        if self.nodes:
+            fintok = self.nodes[-1].token
+            if self.language.is_punc(fintok):
+                return fintok
         return ''
 
     def pretty(self):

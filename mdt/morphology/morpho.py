@@ -625,7 +625,7 @@ class POS:
             only_words=True,
             trace=False):
         """Generate word from root and features."""
-#        print("Update feats {}, type {}".format(update_feats, type(update_feats)))
+#        print("Generating with root {} and features {} (type {})".format(root, update_feats.__repr__(), type(update_feats)))
         if isinstance(update_feats, str):
             update_feats = FeatStruct(update_feats)
         # See if there are already cached wordforms for the root and features
@@ -650,8 +650,12 @@ class POS:
                 upd_features = self.update_FSS(FeatStruct(features), update_feats)
             else:
                 upd_features = self.update_FS(FeatStruct(features), update_feats)
+        if not upd_features:
+            # Some features failed to unify
+            return []
         fst = fst or self.get_fst(generate=True, guess=guess, segment=segment)
         if not fst:
+            # Features may fail to unify
             return []
         # Up to this point, features may be a FeatStruct instance; cast in case
         fsset = FSSet.cast(upd_features)
@@ -722,7 +726,10 @@ class POS:
 #        print("  feat_fss {}".format(feat_fss.__repr__()))
         for feat_fs in feat_fss:
             fs1 = self.update_FS(fs, feat_fs, top=top)
-#            print("  fs1 {}, type {}".format(fs1.__repr__(), type(fs1)))
+#            print("  fs1 {}, type {}, length {}".format(fs1.__repr__(), type(fs1), len(fs1)))
+            if not fs1:
+                # The features failed to unify
+                return []
             fs1.freeze()
             # Assume this always results in a non-zero FeatStruct
             fss.add(fs1)
@@ -730,6 +737,7 @@ class POS:
 
     def update_FS(self, fs, features, top=True):
         """Add or modify features (a FS, FSSet, dict, or string) in fs."""
+#        print("Update_FS {} ({}), {} ({})".format(fs.__repr__(), type(fs), features.__repr__(), type(features)))
         fs = fs.copy()
         # First make sure features is a FeatStruct
         if isinstance(features, str):

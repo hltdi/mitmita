@@ -217,6 +217,8 @@ function OnRecordSent(raw, punc) {
         sentval += punc;
         document.getElementById("sentence").value += punc;
     }
+    // Give instructions for the next sentence.
+    document.getElementById("instructions").innerHTML = 'Click on "Next sentence" or "Quit".';
     // Add the sentence and its translation to the doc textarea
     document.getElementById("document").value += raw + "\n"+ sentval + "\n"
     document.Form2.senttrans.value = sentval;
@@ -230,20 +232,22 @@ function OnRecordPhrase() {
     var segment = document.Form2.seg.value;
     var radio = document.Form2.choice;
     var choice = "";
+    var prefix = "";
     segindex = document.Form2.segindex.value;
+    if (document.Form2.segtrans.value != "") {
+        prefix = "|||";
+    }
     document.getElementById("segtra2").innerHTML = "Selected translation";
     if (segtrans != "") {
         // Record the translation
-        segtrans = limpiarGrn(segtrans);
-        document.Form2.segtrans.value += "||" + segment + "=" + segtrans;
+//        segtrans = limpiarGrn(segtrans);
+        document.Form2.segtrans.value += prefix + segindex + "||F||" + segment + "=" + segtrans;
         document.Form2.segindices.value += " " + segindex;
         if (segtrans == "0") {
             // User wants no translation for this segment.
+            document.Form2.segtrans.value += prefix + segindex + "||F||" + segment + "=";
             return true;
-        } else if (sentval == "") {
-           // Beginning of the sentence.
-            segtrans = capitalize(segtrans);
-        } else {
+        } else if (sentval != "") {
             segtrans = " " + segtrans;
         }
         document.getElementById("error").innerHTML = "";
@@ -260,24 +264,25 @@ function OnRecordPhrase() {
         }
         document.getElementById("error").innerHTML = "";
         document.getElementById("segment").value = choice;
-        document.Form2.segtrans.value += "||" + segment + "=" + choice;
+        document.Form2.segtrans.value += prefix + segindex + "||T||" + segment + "=" + choice;
         document.Form2.segindices.value += " " + segindex;
-        choice = limpiarGrn(choice);
-        if (sentval == "") {
-            choice = capitalize(choice);
-        } else {
+//        choice = limpiarGrn(choice);
+        if (sentval != "") {
             choice = " " + choice;
         }
         document.getElementById("sentence").value += choice;
     }
+    document.getElementById("instructions").innerHTML = "If you've finished translating the sentence, click on 'Record sentence'; if not, click on another colored segment of the English sentence.";
     return true;
 }
 function Segment(text, segment, color, segindex) {
     var segindices = document.Form2.segindices.value;
     var formatted = "<font color=" + color + ">" + text + "</font>";
     // Clear error space.
-    document.getElementById("error").innerHTML = "";
-    // Generate an error message if this segment has already been translated
+    document.getElementById("error").innerHTML = ""; 
+    // Give instructions for translation selection.
+    document.getElementById("instructions").innerHTML = "Either select an option or enter a translation in the space provided. Afterwards, click on 'Record phrase'.";
+   // Generate an error message if this segment has already been translated
 //    document.getElementById("error").innerHTML = "segment indices " + segindices + ", index " + segindex;
     if (segindices.includes(segindex)) {
         document.getElementById("error").innerHTML = "You already selected a translation for " + segment + "!";
@@ -350,8 +355,12 @@ Usuario: <span class="username">{{ user.username }}</span>
 {% endif %}
 
 <h1>Instructions</h3>
-<p id="instructions" class="instructions">Click on a colored segment
-of the sentence below to see the translation options.
+<p id="instructions" class="instructions">
+{% if sentence %}
+Click on a colored segment of the sentence below to see the translation options.
+{% else %}
+Click on "Next sentence" or on "Quit" if you've finished the session.
+{% endif %}
 </p>
 
 <p id="error" class="error">
@@ -389,7 +398,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 <tr class="transtitle">
   <th class="transtitle">Phrase</th>
   <td class="transbutton">
-  <input type="button" id="button" name="freg" onclick="OnRecordPhrase();" value="Record translation">
+  <input type="button" id="button" name="freg" onclick="OnRecordPhrase();" value="Record phrase">
   </td>
 </tr>
 <tr class="transtitle">
@@ -416,7 +425,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
   <th class="transtitle">Whole sentence</th>
   <td class="transbutton">
     <input type="button" id="button" name="oreg"
-    onclick="OnRecordSent({{'%r'|format(raw)|e}}, {{'%r'|format(punc)|e}});" value="Record translation">
+    onclick="OnRecordSent({{'%r'|format(raw)|e}}, {{'%r'|format(punc)|e}});" value="Record sentence">
     </td>
 </tr>  
 <tr class="trans">

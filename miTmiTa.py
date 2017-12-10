@@ -35,6 +35,34 @@ import iwqet
 
 ## shortcuts
 
+def load_ea(train=False):
+    eng, amh = iwqet.load('eng', 'amh')
+    return eng, amh
+
+def document(text, process=True):
+    e = iwqet.Language.languages.get('eng')
+    a = iwqet.Language.languages.get('amh')
+    if not e:
+        e, a = load_ea()
+#        e = load1()
+    d = iwqet.Document(e, a, text=text, proc=process)
+    return d
+
+def sentence(sentence, ambig=False, solve=True, user=None, segment=False, verbosity=0):
+    e, a = load_ea()
+    session = iwqet.start(e, a, user)
+    d = iwqet.Document(e, a, sentence, True, session=session)
+    s = d[0]
+    s.initialize(ambig=ambig, verbosity=verbosity)
+    if solve or segment:
+        s.solve(all_sols=ambig)
+        if s.solutions and segment:
+            solution = s.solutions[0]
+            solution.get_segs()
+        output_sols(s)
+        return
+    return s
+
 def generate(language, stem, feats=None, pos='v'):
     if not feats:
         feats = iwqet.FeatStruct("[]")
@@ -52,39 +80,10 @@ def load1(lang='eng'):
     l = iwqet.Language.load_lang(lang)
     return l
 
-def ea_doc(text, process=True):
-    e = iwqet.Language.languages.get('eng')
-    a = iwqet.Language.languages.get('amh')
-    if not e:
-        e, a = load_ea()
-#        e = load1()
-    d = iwqet.Document(e, a, text=text, proc=process)
-    return d
-
 def output_sols(sentence):
     """Show target outputs for all solutions for sentence."""
     for sol in sentence.solutions:
         print(sol.get_ttrans_outputs())
-
-def load_ea(train=False):
-    eng, amh = iwqet.load('eng', 'amh')
-    return eng, amh
-
-def ea_sentence(sentence, ambig=False, solve=True, user=None, segment=False,
-                verbosity=0):
-    e, a = load_ea()
-    session = iwqet.start(e, a, user)
-    d = iwqet.Document(e, a, sentence, True, session=session)
-    s = d[0]
-    s.initialize(ambig=ambig, verbosity=verbosity)
-    if solve or segment:
-        s.solve(all_sols=ambig)
-        if s.solutions and segment:
-            solution = s.solutions[0]
-            solution.get_segs()
-        output_sols(s)
-        return
-    return s
 
 def arch_doc(lengua, ruta, session=None, user=None, proc=False):
     """Crear un documento del contenido de un archivo, solo para análisis."""

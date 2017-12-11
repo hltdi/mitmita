@@ -1862,20 +1862,28 @@ class Solution:
             last_indices = raw_indices
         return ttrans_align
 
-    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None):
-        '''Set one or more segments for a sequence of untranslatable tokens.'''
+    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None, indices_covered=None):
+        '''Set one or more segments for a sequence of untranslatable tokens. Ignore indices that are already covered by translated segments.'''
         stok_groups = []
         stoks = []
-        i0 = end_index+1
+        index = end_index + 1
+        included_tokens = []
         for stok in src_tokens:
-            if stok[0] == '%':
+            if index in indices_covered:
+                if stoks:
+                    stok_groups.append(stoks)
+                    stoks = []
+            elif stok[0] == '%':
                 # Special token; it should have its own segment
                 if stoks:
                     stok_groups.append(stoks)
                     stoks = []
                 stok_groups.append([stok])
+                included_tokens.append(stok)
             else:
                 stoks.append(stok)
+                included_tokens.append(stok)
+            index += 1
         if stoks:
             stok_groups.append(stoks)
         i0 = end_index+1
@@ -1890,7 +1898,7 @@ class Solution:
             end = i0+len(stok_group)-1
             seg = SolSeg(self, (start, end), translation, stok_group, session=self.session, gname=gname,
                          merger_groups=merger_groups, is_punc=is_punc)
-            print("Untranslated segment {}->{}".format(start, end))
+            print("Segment (untranslated) {}->{}: {}".format(start, end, included_tokens))
             self.segments.append(seg)
             i0 += len(stok_group)
 
@@ -1900,14 +1908,15 @@ class Solution:
         end_index = -1
         max_index = -1
         tokens = self.sentence.tokens
+        indices_covered = []
         for raw_indices, forms, gname, merger_groups in tt:
             late = False
             start, end = raw_indices[0], raw_indices[-1]
-            print("Segment {}->{}".format(start, end))
             if start > max_index+1:
                 # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
                 src_tokens = tokens[end_index+1:start]
-                self.get_untrans_segs(src_tokens, end_index, gname=gname, merger_groups=merger_groups)
+                self.get_untrans_segs(src_tokens, end_index, gname=gname, merger_groups=merger_groups,
+                                      indices_covered=indices_covered)
             if start < max_index:
                 # There's a gap between the portions of the segment
                 late = True
@@ -1917,13 +1926,17 @@ class Solution:
                 src_tokens[0] = "←" + src_tokens[0]
             seg = SolSeg(self, raw_indices, forms, src_tokens, session=self.session, gname=gname,
                          merger_groups=merger_groups)
+            print("Segment (translated) {}->{}: {}={}".format(start, end, src_tokens, forms))
             self.segments.append(seg)
+            indices_covered.extend(raw_indices)
+#            print(" Indices covered: {}".format(indices_covered))
             max_index = max(max_index, end)
             end_index = end
         if max_index+1 < len(tokens):
             # Some word(s) at end not translated; use source forms
             src_tokens = tokens[max_index+1:len(tokens)]
-            self.get_untrans_segs(src_tokens, len(tokens)-1, gname=gname, merger_groups=merger_groups)
+            self.get_untrans_segs(src_tokens, len(tokens)-1, gname=gname, merger_groups=merger_groups,
+                                  indices_covered=indices_covered)
         if html:
             self.seg_html()
 

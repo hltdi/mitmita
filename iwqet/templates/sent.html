@@ -98,13 +98,13 @@ td.button
    text-align: center;
    padding: 5px;
 }
-td.other
+td.source
 {
    text-align: left;
    padding: 5px;
 /*   border: 1px solid black; */
    font-style: italic;
-   font-size: 80%;
+   font-size: 100%;
 }
 textarea#sentence
 {
@@ -227,46 +227,67 @@ function OnRecordSent(raw, punc) {
     document.Form2.submit();
 }
 function OnRecordPhrase() {
+    // This is what happens when the "Registrar frase" button is clicked
     var sentval = document.getElementById("sentence").value;
     var segtrans = document.getElementById("segment").value;
     var segment = document.Form2.seg.value;
-    var radio = document.Form2.choice;
+    // This can be either a single checkbox or a group of radio buttons.
+    var selection = document.Form2.choice;
+    // This is INPUT if checkbox, undefined otherwise.
+    var seltype = selection.nodeName;
     var choice = "";
     var prefix = "";
     segindex = document.Form2.segindex.value;
     if (document.Form2.segtrans.value != "") {
+        // This is not the first phrase (segment) in the sentence to be recorded.
         prefix = "|||";
     }
-    document.getElementById("segtra2").innerHTML = "Selected translation";
+    document.getElementById("segtra2").innerHTML = "Translation selected";
     if (segtrans != "") {
-        // Record the translation
-//        segtrans = limpiarGrn(segtrans);
+	// User has provided their own translation.
+	// Record the segment and its translation in the variable segtrans.
         document.Form2.segtrans.value += prefix + segindex + "||F||" + segment + "=" + segtrans;
+	// Record the index of this segment in the variable segindices.
         document.Form2.segindices.value += " " + segindex;
         if (segtrans == "0") {
-            // User wants no translation for this segment.
+            // User wants no translation for this segment; record this anyway in segtrans
+	    // (User may also just skip this segment. Should something happen in OnRecordSent in this case?)
             document.Form2.segtrans.value += prefix + segindex + "||F||" + segment + "=";
             return true;
-        } else if (sentval != "") {
+        } else if (sentval == "") {
+            // Beginning of the sentence; capitalize the translation, stored in segtrans.
+            segtrans = capitalize(segtrans);
+        } else {
+	    // Not the beginning of the sentence; add a space before translation.
             segtrans = " " + segtrans;
         }
+	// Clear the error space.
         document.getElementById("error").innerHTML = "";
+	// Add the translation to the variable sentence.
         document.getElementById("sentence").value += segtrans;
     } else {
-        for (var i = 0; i < radio.length; i++) {
-            if(radio[i].checked) {
-                choice = radio[i].value;
-                if (choice == "other") {
-                    document.getElementById("error").innerHTML = "You have to select an option or enter another translation!";
-                    return false;
-                }
+	if (seltype == "INPUT") {
+	    // The option is a single checkbox item; it must be checked.
+	    if (!selection.checked) {
+		document.getElementById("instructions").innerHTML = '';
+		document.getElementById("error").innerHTML = "You have to select the option or enter your own translation!";
+		return false;
+	    } else {
+		choice = selection.value;
+	    }
+	} else {
+	    // User has selected one of the translation options.
+            for (var i = 0; i < selection.length; i++) {
+		if (selection[i].checked) {
+		    // The translation selected
+                    choice = selection[i].value;
+		}
             }
-        }
+	}
         document.getElementById("error").innerHTML = "";
         document.getElementById("segment").value = choice;
         document.Form2.segtrans.value += prefix + segindex + "||T||" + segment + "=" + choice;
         document.Form2.segindices.value += " " + segindex;
-//        choice = limpiarGrn(choice);
         if (sentval != "") {
             choice = " " + choice;
         }
@@ -281,14 +302,14 @@ function Segment(text, segment, color, segindex) {
     // Clear error space.
     document.getElementById("error").innerHTML = ""; 
     // Give instructions for translation selection.
-    document.getElementById("instructions").innerHTML = "Either select an option or enter a translation in the space provided. Afterwards, click on 'Record phrase'.";
    // Generate an error message if this segment has already been translated
-//    document.getElementById("error").innerHTML = "segment indices " + segindices + ", index " + segindex;
     if (segindices.includes(segindex)) {
+	document.getElementById("instructions").innerHTML = "";
         document.getElementById("error").innerHTML = "You already selected a translation for " + segment + "!";
         return false;        
     }
     // Otherwise display the segment's HTML
+    document.getElementById("instructions").innerHTML = "Either select an option or enter a translation in the space provided. Afterwards, click on 'Record phrase'.";
     document.getElementById('segtra').innerHTML = formatted;
     document.getElementById('segtra2').innerHTML = "Enter another translation";
     document.Form2.seg.value = segment;

@@ -4230,9 +4230,10 @@
 ->amh sebebeN_a_n
 *** maltreatment_n ; ^ maltreatment_n 0
 ->amh Tqat_n
+*** man_n[-plr,+def] ; ^ man_n 0
+->amh sewy_E_n[+def] ; 0==0 gen:gen,cs:cs
 *** man_n ; ^ man_n 0
 ->amh sew_n
-->amh seb'_n
 *** management_n ; ^ management_n 0
 ->amh 'ay_ayaz_n
 *** mandate_n ; ^ mandate_n 0
@@ -7803,6 +7804,8 @@
 ->amh meskari_n
 *** wizard_n ; ^ wizard_n 0
 ->amh TenqWay_n
+*** woman_n[-plr,+def] ; ^ woman_n 0
+->amh sEty_on[+def] ; 0==0 gen:gen,cs:cs
 *** woman_n ; ^ woman_n 0
 ->amh sEt_n
 *** wonder_n ; ^ wonder_n 0

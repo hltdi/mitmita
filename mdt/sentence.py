@@ -256,7 +256,7 @@ class Document(list):
             tagger = language.tagger
             # tagger splits document into sentences, returning tokenized sentences and raw sentences
             tok_sentences, raw_sentences = tagger.get_sentences(text)
-            print("Found sentences {}".format(tok_sentences))
+#            print("Found sentences {}".format(tok_sentences))
             for tok, raw in zip(tok_sentences, raw_sentences):
                 tokens = [t[0] for t in tok]
                 analyses = [[t.lower(), a[1]] for t, a in zip(tokens, tok)]
@@ -1935,7 +1935,7 @@ class Solution:
         if max_index+1 < len(tokens):
             # Some word(s) at end not translated; use source forms
             src_tokens = tokens[max_index+1:len(tokens)]
-            self.get_untrans_segs(src_tokens, len(tokens)-1, gname=gname, merger_groups=merger_groups,
+            self.get_untrans_segs(src_tokens, max_index, gname=gname, merger_groups=merger_groups,
                                   indices_covered=indices_covered)
         if html:
             self.seg_html()

@@ -60,7 +60,7 @@ def sentence(sentence, ambig=False, solve=True, user=None, segment=False, verbos
             solution = s.solutions[0]
             solution.get_segs()
         output_sols(s)
-        return
+        return s
     return s
 
 def generate(language, stem, feats=None, pos='v'):

@@ -159,11 +159,11 @@ def doc():
 @app.route('/sent', methods=['GET', 'POST'])
 def sent():
     form = request.form
+    punc = SENTENCE.get_final_punc() if SENTENCE else None
     print("Form for sent: {}".format(form))
     if 'help' in form and form['help'] == 'true':
         # Opened help window. Keep everything else as is.
         raw = SENTENCE.raw if SENTENCE else None
-        punc = SENTENCE.get_final_punc() if SENTENCE else None
         document = form.get('UTraDoc', '')
         return render_template('sent.html', sentence=SEG_HTML, raw=raw, punc=punc,
                                document=document, user=USER)
@@ -190,9 +190,11 @@ def sent():
     else:
         # Translate and segment the sentence, assigning SEGS
         solve_and_segment()
+        print("Solved and segmented")
     # Pass the sentence segmentation, the raw sentence, and the final punctuation to the page
+    punc = SENTENCE.get_final_punc()
     return render_template('sent.html', sentence=SEG_HTML, raw=SENTENCE.original, document='',
-                           record=SENTENCE.record, punc=SENTENCE.get_final_punc(), user=USER)
+                           record=SENTENCE.record, punc=punc, user=USER)
 
 @app.route('/fin', methods=['POST'])
 def fin():

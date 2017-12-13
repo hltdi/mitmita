@@ -246,7 +246,7 @@ class Spacy(Tagger):
     def get_sentences(self, text):
         """Tokenize and tag the text if this hasn't happened already.
         Then split the resulting list into lists of sentence tuples, the tokenized and raw sentences."""
-        print("Text {}".format(text))
+#        print("Text {}".format(text))
         if isinstance(text, str):
             # text needs to be tagged
             tagged = self.tag(text)
@@ -258,7 +258,7 @@ class Spacy(Tagger):
         sent_end = 0
         for item in tagged:
             itext, ilemma, ipos, itag, mpos, mfeats = self.get_repr(item)
-            print("{} {} {} {} {} {}".format(itext, ilemma, ipos, itag, mpos, mfeats))
+#            print("{} {} {} {} {} {}".format(itext, ilemma, ipos, itag, mpos, mfeats))
             position = item.idx
             pos_exp = Tagger.expand_POS(mpos)
             short_pos = pos_exp[0]
@@ -285,7 +285,7 @@ class Spacy(Tagger):
             sentences.append(sentence)
             raw_sentence = text[sent_end:position+1]
             raw_sentences.append(raw_sentence)
-        print("Raw sentences {}".format(raw_sentences))
+#        print("Raw sentences {}".format(raw_sentences))
         return sentences, raw_sentences
 
     def get_featstring(self, item):

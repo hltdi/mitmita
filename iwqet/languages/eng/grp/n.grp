@@ -2878,9 +2878,7 @@
 ->amh leT_aqi_n
 ->amh teket_ay_n
 *** food_n ; ^ food_n 0
-->amh mebl_n
 ->amh mgb_n
-->amh 'hl_n
 *** fool_n ; ^ fool_n 0
 ->amh 'ankola_n
 *** foot_n ; ^ foot_n 0
@@ -4330,6 +4328,8 @@
 ->amh meTen_n
 *** measurement_n ; ^ measurement_n 0
 ->amh lk__n
+*** meat_n ; ^ meat_n 0
+->amh sga_n
 *** mechanic_n ; ^ mechanic_n 0
 ->amh mEkanik_n
 *** medal_n ; ^ medal_n 0
@@ -5090,6 +5090,8 @@
 ->amh tgat_n
 *** person_n ; ^ person_n 0
 ->amh sew_n
+*** people_n ; ^ people_n 0
+->amh sew_n[+plr]
 *** personality_n ; ^ personality_n 0
 ->amh sewn_et_n
 *** perspiration_n ; ^ perspiration_n 0
@@ -7821,6 +7823,10 @@
 *** word_n ; ^ word_n 0
 ->amh neger_n
 ->amh qal_n
+*** work_n ; ^ work_n 0
+->amh sra_n
+*** job_n ; ^ job_n 0
+->amh sra_n
 *** worker_n ; ^ worker_n 0
 ->amh wezad_er_n
 *** working_n ; ^ working_n 0

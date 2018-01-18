@@ -643,6 +643,13 @@ class Sentence:
         """Create a SentRecord object to this sentence."""
         return SentRecord(self, session=session)
 
+    def get_node_by_raw(self, index):
+        """Get the SNode that has index among its raw_indices."""
+        for n in self.nodes:
+            if index in n.raw_indices:
+                return n
+        return None
+
     ## Initial processing
     
     def segment(self, token, tok_index, verbosity=0):
@@ -917,7 +924,7 @@ class Sentence:
 #        incorp_indices = []
         del_indices = {}
         for tokindex, (rawtok, (token, anals)) in enumerate(zip(self.rawtokens, self.analyses)):
-#            print("Nodifying item {}, token {}".format(tokindex, token))
+#            print("Nodifying item {}, token {}, anal {}".format(tokindex, token, anals[0] if anals else None))
             if not incl_del and MorphoSyn.del_token(token):
                 # Ignore elements deleted by MorphoSyns
                 if anals and 'target' in anals[0]:
@@ -964,6 +971,7 @@ class Sentence:
 #                    print("Adding del indices {} to SNode: {}:{}".format(raw_indices, token, index))
                 raw_indices.append(tokindex)
 #                incorp_indices.append(tokindex)
+#                print("Creating snode {} with raw indices {}".format(index, raw_indices))
                 self.nodes.append(SNode(token, index, anals, self, raw_indices, rawtoken=rawtok))
 #                                        incorp_indices, del_indices=del_indices.get(tokindex, [])))
 #                incorp_indices = []

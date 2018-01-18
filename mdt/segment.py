@@ -155,10 +155,8 @@ class SolSeg:
             transhtml += "<tr><td class='transchoice'>"
             transhtml += '<br/><input type="radio" name="choice" id={} value="{}" checked>{}</td>'.format(trans, trans, trans)
             transhtml += '</tr>'
-#            transhtml += '<tr><td class="other">'
-#            transhtml += '<input type="radio" name="choice" id="other" value="other">other translation (enter below)</td></tr>'
             transhtml += '</table>'
-            self.html = (tokens, self.color, transhtml)
+            self.html = (tokens, self.color, transhtml, index)
             return
         for tindex, t in enumerate(self.translation):
             print("{} setting HTML for {}: {}".format(self, tindex, t))
@@ -240,12 +238,14 @@ class SNode:
     """Sentence token and its associated analyses and variables."""
 
     def __init__(self, token, index, analyses, sentence, raw_indices,
-                 rawtoken=None): #, del_indices=None):
+                 rawtoken=None, toktype=1): #, del_indices=None):
 #        print("Creating SNode with args {}, {}, {}, {}".format(token, index, analyses, sentence))
         # Raw form in sentence (possibly result of segmentation)
         self.token = token
         # Original form of this node's token (may be capitalized)
         self.rawtoken = rawtoken
+        # Token type, relevant for punctuation only
+        self.toktype = toktype
         # Position in sentence
         self.index = index
         # Positions in original sentence

@@ -1,6 +1,6 @@
 ### IDIOMS WITH ADVERBS AS HEADS
 *** almost $v[tam=pst] ; ^ almost 0
-->amh $v[tm=imf,+sub,cj1=lI] mnm qr*_v[+neg,tm=prf] ; || 2, 0 ; 1==0 sb:sb,ob:ob ; 0=2 sb:ob
+->amh $v[tm=imf,+sub,cj1=lI] mnm qr*_v[sb=[-p1,-p2,-plr,-fem],+neg,tm=prf] ; || 2, 0 ; 1==0 sb:sb,ob:ob ; 0=2 sb:ob
 ### PREPOSITIONS
 *** in~front~of ; ^ in~front~of 0
 ->amh 'fit

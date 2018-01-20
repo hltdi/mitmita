@@ -610,8 +610,8 @@ class Language:
             for entry in entries[1:]:
                 feat = entry.get('features')
                 if feat:
-                    entry['features'] = FSSet(entry['features'])
-#                    entry['features'] = FeatStruct(entry['features'], freeze=True)
+                    entry['features'] = FSSet.parse(entry['features'])
+#                    entry['features'] = FSSet(entry['features'])
                     pos = entry['features'].get('pos', '')
                     entry['root'] = Language.make_root(entry['root'], pos)
             self.cached[word] = entries[1:]

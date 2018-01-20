@@ -7,7 +7,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyright (C) 2016, 2017 PLoGS <gasser@indiana.edu>
+#   Copyright (C) 2016, 2017, 2018 PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -30,12 +30,15 @@
 # -- Lots of additions and fixes.
 # 2016.04.02-3
 # -- Added users, with hashed passwords
+# 2018.01.19
+# -- User files are YAML.
 
-import datetime, sys, os
+import datetime, sys, os, yaml
 from werkzeug.security import generate_password_hash, check_password_hash
 #from iwqet import SESSIONS_DIR
 
 SESSIONS_DIR = os.path.join(os.path.dirname(__file__), 'sessions')
+USERS_FILE = "users"
 
 SESSION_PRE = '{$}'
 TIME_PRE = '{t}'
@@ -92,13 +95,21 @@ class Session:
     def time2shortstr(time):
         return time.strftime(SHORT_TIME_FORMAT)
 
+    def to_dict(self):
+        """Create dictionary from Session, after it stops."""
+        d = {}
+        d['start'] = Session.time2shortstr(self.start)
+        d['end'] = Session.time2shortstr(self.end)
+        d['id'] = self.id
+        d['sents'] = [s.to_dict() for s in self.sentences]
+        return d
+
     def make_id(self):
         self.id = "{}::{}".format(self.user.username, Session.time2shortstr(self.start))
 
     def get_path(self):
-        userfilename = self.user.username + '.usr'
-#        month = "{}.{}".format(self.start.year, self.start.month)
-        return os.path.join(SESSIONS_DIR, userfilename)
+        sessionfilename = self.user.username + '.sess'
+        return os.path.join(SESSIONS_DIR, sessionfilename)
 
     def length(self):
         """Length of the session as a time delta object."""
@@ -164,12 +175,17 @@ class Session:
             self.write(file=file)
 
     def write(self, file=sys.stdout):
-        print("{}".format(self), file=file)
-        print("{} {}".format(TIME_PRE, Session.time2shortstr(self.start)), file=file)
-        for sentence in self.sentences:
-            sentence.write(file=file)
-        if not self.running:
-            print("{} {}".format(TIME_PRE_END, Session.time2shortstr(self.end)), file=file)
+        """Write the Session's information and contents to a file our stdout."""
+        d = [self.to_dict()]
+        yaml.dump(d, file, default_flow_style=False)
+
+#    def write(self, file=sys.stdout):
+#        print("{}".format(self), file=file)
+#        print("{} {}".format(TIME_PRE, Session.time2shortstr(self.start)), file=file)
+#        for sentence in self.sentences:
+#            sentence.write(file=file)
+#        if not self.running:
+#            print("{} {}".format(TIME_PRE_END, Session.time2shortstr(self.end)), file=file)
 
     def write_doc(self, file=sys.stdout, tm=False):
         """Write the source and target translations in raw form to file."""
@@ -189,7 +205,7 @@ class SentRecord:
     def __init__(self, sentence, session=None, user=None):
         # Also include analyses??
         self.session = session
-        self.raw = sentence.raw
+        self.raw = sentence.original
         self.tokens = sentence.tokens
         self.time = get_time()
         self.user = user
@@ -205,11 +221,23 @@ class SentRecord:
 #        session = "{}".format(self.session) if self.session else ""
         return "{} {} {}".format(SENTENCE_PRE, self.raw, SENTENCE_POST)
 
+    def to_dict(self):
+        d = {}
+        d['src'] = self.raw
+        d['trg'] = self.translation
+        d['time'] = Session.time2shortstr(self.time)
+        d['segs'] = [s.to_dict() for s in self.segments.values()]
+        return d
+
     def record(self, translation):
         """Record user's translation for the whole sentence."""
         feedback = Feedback(translation=translation)
         print("{} recording translation {}, feedback: {}".format(self, translation, feedback))
         self.feedback = feedback
+
+    def write(self, file=sys.stdout):
+        d = self.to_dict()
+        yaml.dump(d, file, default_flow_style=False)        
 
     def write(self, file=sys.stdout):
         print("{}".format(SENTENCE_PRE), file=file)
@@ -244,6 +272,14 @@ class SegRecord:
 #        session =  "{}".format(self.session) if self.session else ""
         return "{} {}".format(SEGMENT_PRE, self.tokens)
 
+    def to_dict(self):
+        """Create dictionary from SegRecord."""
+        d = {}
+        d['src'] = self.tokens
+#        d['trg'] = self.translation
+        d['gname'] = self.gname
+        return d
+        
     def record(self, choices=None, translation=None):
         print("{} recording translation {}, choices {}".format(self, translation, choices))
         if choices:
@@ -300,17 +336,26 @@ class User:
     new_users = {}
 
     def __init__(self, username='', email='', password='', name='', level=1, pw_hash='',
+                 creation=None, nsessions=0, nsentences=0, update=None, score=0.0,
                  new=False):
         """name and level are optional. Other fields are required."""
         self.username = username
         self.email = email
-        # Guarani ability
+        # Amharic ability
         self.level = level
         self.name = name
+        self.creation = creation if creation else User.time()
         if pw_hash:
             self.pw_hash = pw_hash
         else:
             self.set_password(password)
+        # Initial values to be updated later
+        self.nsessions = nsessions
+        self.nsentences = nsentences
+        # Time data last updated
+        self.update = update or self.creation
+        # Score based on evaluation of translations
+        self.score = score
         # Add to dict of all users
         User.users[self.username] = self
         # If this is a new user, save it here so it can be written to all.usr at the end
@@ -321,6 +366,11 @@ class User:
     def __repr__(self):
         return "{} {}".format(USER_PRE, self.username)
 
+    @staticmethod
+    def time():
+        time = get_time()
+        return time.strftime(SHORT_TIME_FORMAT)
+
     def set_password(self, password):
         self.pw_hash = generate_password_hash(password)
 
@@ -330,31 +380,67 @@ class User:
     def add_user(self):
         User.users[self.username] = self
 
+    def user2dict(self):
+        d = {}
+        d['username'] = self.username
+        d['level'] = self.level
+        d['name'] = self.name
+        d['email'] = self.email
+        d['creation'] = self.creation
+        d['update'] = self.update
+        d['nsentences'] = self.nsentences
+        d['nsessions'] = self.nsessions
+        d['score'] = self.score
+        d['pw_hash'] = self.pw_hash
+        return d
+
     @staticmethod
-    def dict2user(dct):
+    def from_file(username):
+        path = User.get_path(username)
+        with open(path, encoding='utf8') as file:
+            d = yaml.load(file)
+            u = User.dict2user(d, new=False)
+        return u
+
+    @staticmethod
+    def dict2user(dct, new=True):
         level = dct.get('level', 1)
-        if isinstance(level, str):
-            level = int(level)
+#        if isinstance(level, str):
+#            level = int(level)
         return User(username=dct.get('username', ''),
                     password=dct.get('password', ''),
+                    pw_hash=dct.get('pw_hash'),
                     email=dct.get('email', ''),
                     name=dct.get('name', ''),
+                    creation=dct.get('creation'),
+                    update=dct.get('update'),
+                    nsentences=dct.get('nsentences', 0),
+                    nsessions=dct.get('nsessions', 0),
+                    score=dct.get('score', 0.0),
                     level=level,
-                    new=True)
+                    new=new)
 
     @staticmethod
     def get_user(username):
        return User.users.get(username)
 
     def write(self, file=sys.stdout):
+        # Write the user data in a line in USERS_FILE
         print("{};{};{};{};{}".format(self.username, self.pw_hash, self.email, self.name, self.level), file=file)
 
     @staticmethod
     def get_users_path():
-        return os.path.join(SESSIONS_DIR, 'all.usr')
+        return os.path.join(SESSIONS_DIR, USERS_FILE)
 
-    def get_path():
-        filename = "{}.usr".format(self.username)
+    @staticmethod
+    def get_path(username):
+        # File where the user's data is stored
+        filename = "{}.usr".format(username)
+        return os.path.join(SESSIONS_DIR, filename)
+
+    def get_sessions_path():
+        # File where the user's sessions are stored
+        filename = "{}.sess".format(self.username)
         return os.path.join(SESSIONS_DIR, filename)
 
     @staticmethod
@@ -363,9 +449,11 @@ class User:
 #        path = path or User.get_users_path()
         with open(path, encoding='utf8') as file:
             for line in file:
-                username, pw_hash, email, name, level = line.split(';')
-                user = User(username=username, pw_hash=pw_hash, email=email, name=name, level=level,
-                            new=False)
+                username, pw_hash, email, name, level = line.strip().split(';')
+                level = int(level)
+                user = User.from_file(username)
+#                user = User(username=username, pw_hash=pw_hash, email=email, name=name, level=level,
+#                            new=False)
                 User.users[username] = user
 
     @staticmethod
@@ -374,6 +462,12 @@ class User:
         with open(User.get_users_path(), 'a', encoding='utf8') as file:
             for username, user in User.new_users.items():
                 user.write(file=file)
+
+    def create_user_file(self):
+        """Create user file with basic data about the user (to be changed later)."""
+        d = self.user2dict()
+        with open(User.get_path(self.username), 'w', encoding='utf8') as file:
+            yaml.dump(d, file)
 
     @staticmethod
     def get_user(username):

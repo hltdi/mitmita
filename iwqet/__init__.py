@@ -158,7 +158,7 @@ def create_user(dct):
     return User.dict2user(dct)
 
 def get_users_path():
-    return os.path.join(SESSIONS_DIR, 'all.usr')
+    return os.path.join(SESSIONS_DIR, 'users')
 
 def get_user_path(user):
     filename = "{}.usr".format(user.username)

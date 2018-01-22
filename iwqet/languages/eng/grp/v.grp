@@ -4509,6 +4509,7 @@
 ->amh bq'_v[as=smp,vc=tr]
 ->amh Tnqq_v[as=rc,vc=tr]
 ->amh dmdm_v[as=smp,vc=smp]
+->amh Cr_s_v[as=smp,vc=smp]
 *** finish_v completed
 ->amh Cr_s_v[as=smp,vc=smp]
 *** fire_v
@@ -14115,17 +14116,9 @@
 *** find_v $n ; ^ find_v 0
 ->amh $n[cs=acc] gN*_v[as=smp,vc=tr] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
 *** finish_v $a $n ; ^ finish_v 0
-->amh $a[cs=acc] $n 'lq_v[as=smp,vc=smp] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
+->amh $a[cs=acc] $n Cr_s_v[as=smp,vc=smp] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
 *** finish_v $n ; ^ finish_v 0
-->amh $n[cs=acc] 'lq_v[as=smp,vc=smp] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
-*** finish_v $a $n ; ^ finish_v 0
-->amh $a[cs=acc] $n bq'_v[as=smp,vc=tr] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
-*** finish_v $n ; ^ finish_v 0
-->amh $n[cs=acc] bq'_v[as=smp,vc=tr] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
-*** finish_v $a $n ; ^ finish_v 0
-->amh $a[cs=acc] $n Tnqq_v[as=rc,vc=tr] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
-*** finish_v $n ; ^ finish_v 0
-->amh $n[cs=acc] Tnqq_v[as=rc,vc=tr] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
+->amh $n[cs=acc] Cr_s_v[as=smp,vc=smp] ; || 1, 0 ; 0==1 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
 *** finish_v $a $n ; ^ finish_v 0
 ->amh $a[cs=acc] $n dmdm_v[as=smp,vc=smp] ; || 2, 0, 1 ; 0==2 tm:tm,rel:rel,sb:sb,ob:ob,neg:neg,ax:ax
 *** finish_v $n ; ^ finish_v 0

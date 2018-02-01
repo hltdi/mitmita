@@ -83,7 +83,8 @@ class SolSeg:
     special_re = re.compile("%[A-Z]+_")
 
     def __init__(self, solution, indices, translation, tokens, color=None,
-                 spec_indices=None, session=None, gname=None, merger_groups=None, is_punc=False):
+                 spec_indices=None, session=None, gname=None,
+                 tgroups=None, merger_groups=None, is_punc=False):
         self.source = solution.source
         self.target = solution.target
         self.indices = indices
@@ -109,6 +110,8 @@ class SolSeg:
         self.is_punc = is_punc
         # Name of the group instantiated in this segment
         self.gname = gname
+        # Target-language groups
+        self.tgroups = tgroups or [[]] * len(self.translation)
         # Triples for each merger with the segment
         self.merger_gnames = merger_groups
         self.session = session
@@ -855,6 +858,8 @@ class TreeTrans:
         self.top = top
         # All target groups for nodes within this TT
         self.all_tgroups = []
+        # Tgroups in output order for each translation
+        self.ordered_tgroups = []
         # Merged group indices
         self.mergers = []
         snode_indices = list(tree)
@@ -890,6 +895,8 @@ class TreeTrans:
         self.node_features = None
         self.group_nodes = None
         self.agreements = None
+        # Accumulate the nodes found in build()
+        self.all_nodes = []
         # Final outputs; different ones have alternate word orders
         self.outputs = []
         # Strings representing outputs
@@ -998,6 +1005,8 @@ class TreeTrans:
                 # Constrain the position of this node in the tgroup
                 if len(tgroup.tokens) > 1:
                     t_indices = [(tgroup, t_index)]
+                else:
+                    t_indices = [(tgroup, 0)]
                 node_features.append([spec_trans, None, t_indices])
                 tnode_index += 1
             else:
@@ -1130,6 +1139,8 @@ class TreeTrans:
                         else:
                             if len(tgroup.tokens) > 1:
                                 t_indices.append((tgroup, t_index))
+                            else:
+                                t_indices = [(tgroup, 0)]
                             # Make target and source features agree as required
                             if not targ_feats:
                                 targ_feats = FeatStruct({})
@@ -1372,10 +1383,14 @@ class TreeTrans:
                 succeeding_state = next(generator)
                 order_vars = self.variables['order']
                 positions = [list(v.get_value(dstore=succeeding_state.dstore))[0] for v in order_vars]
-#                print("Found positions {}".format(positions))
                 # list of (form, position) pairs; sort by position
-                node_pos = list(zip([n[0] for n in self.nodes], positions))
-                node_pos.sort(key=lambda x: x[1])
+                node_group_pos = list(zip(self.nodes, positions))
+                node_group_pos.sort(key=lambda x: x[1])
+                node_pos = [n[0] for n in node_group_pos]
+                self.all_nodes.append(node_pos)
+                # Groups and gnode indices in output order
+                group_pos = [n[1] for n in node_pos]
+                self.ordered_tgroups.append(group_pos)
                 # just the form
                 output = [n[0] for n in node_pos]
                 self.outputs.append(output)

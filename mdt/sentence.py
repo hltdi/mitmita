@@ -260,7 +260,6 @@ class Document(list):
             for tok, raw in zip(tok_sentences, raw_sentences):
                 tokens = [t[0] for t in tok]
                 analyses = [[t.lower(), a[1]] for t, a in zip(tokens, tok)]
-#                print(" Analyses: {}".format(analyses))
                 sentence = Sentence(language=language,
                                     tokens=tokens, analyses=analyses,
                                     original=raw.strip(),
@@ -830,7 +829,7 @@ class Sentence:
             # sentence was created.
             if self.analyses:
                 self.lowercase()
-                # Also join_lex()??
+#                print("ANALYSES already exist: {}".format(self.analyses))
             else:
                 tagged = None
                 # Split at spaces by default.
@@ -845,7 +844,6 @@ class Sentence:
                 if self.tagger and not self.tagger.tokenizer:
                     # Use the POS tagger here
                     tagged = self.tagger.tag(self.tokens)
-                print("Tagged: {}".format(tagged))
                 # Still need to figure out how to integrated tagged results and morphological analyses
                 if not self.tagger or self.tagger.morph:
                     analyses = [[token, self.language.anal_word(token, clean=False)] for token in self.tokens]
@@ -924,7 +922,7 @@ class Sentence:
 #        incorp_indices = []
         del_indices = {}
         for tokindex, (rawtok, (token, anals)) in enumerate(zip(self.rawtokens, self.analyses)):
-#            print("Nodifying item {}, token {}, anal {}".format(tokindex, token, anals[0] if anals else None))
+            print("NODIFYING item {}, token {}, anal {}".format(tokindex, token, anals))
             if not incl_del and MorphoSyn.del_token(token):
                 # Ignore elements deleted by MorphoSyns
                 if anals and 'target' in anals[0]:
@@ -950,6 +948,7 @@ class Sentence:
 #                print("Token {}, anals {}".format(token, anals))
                 if not isinstance(anals, list):
                     anals = [anals]
+                    self.analyses[tokindex][1] = anals
                 for anal in anals:
                     root = anal['root']   # there has to be one of these
                     cats = self.language.get_cats(root)
@@ -1822,6 +1821,7 @@ class Solution:
             for tt in self.treetranss:
                 if not tt.output_strings:
                     continue
+                trggroups = tt.ordered_tgroups
                 indices = tt.snode_indices
                 raw_indices = []
                 for index in indices:
@@ -1829,7 +1829,7 @@ class Solution:
                     raw1 = node.raw_indices
                     raw_indices.extend(raw1)
                 raw_indices.sort()
-                self.ttrans_outputs.append([raw_indices, tt.output_strings, tt.ginst.group.name, tt.get_merger_groups()])
+                self.ttrans_outputs.append([raw_indices, tt.output_strings, tt.ginst.group.name, tt.get_merger_groups(), trggroups])
                 last_indices = raw_indices
         return self.ttrans_outputs
 
@@ -1917,13 +1917,14 @@ class Solution:
         max_index = -1
         tokens = self.sentence.tokens
         indices_covered = []
-        for raw_indices, forms, gname, merger_groups in tt:
+        for raw_indices, forms, gname, merger_groups, tgroups in tt:
             late = False
             start, end = raw_indices[0], raw_indices[-1]
             if start > max_index+1:
                 # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
                 src_tokens = tokens[end_index+1:start]
-                self.get_untrans_segs(src_tokens, end_index, gname=gname, merger_groups=merger_groups,
+                self.get_untrans_segs(src_tokens, end_index, gname=gname,
+                                      merger_groups=merger_groups, tgroups=tgroups,
                                       indices_covered=indices_covered)
             if start < max_index:
                 # There's a gap between the portions of the segment
@@ -1933,7 +1934,7 @@ class Solution:
             if late:
                 src_tokens[0] = "←" + src_tokens[0]
             seg = SolSeg(self, raw_indices, forms, src_tokens, session=self.session, gname=gname,
-                         merger_groups=merger_groups)
+                         merger_groups=merger_groups, tgroups=tgroups)
             print("Segment (translated) {}->{}: {}={}".format(start, end, src_tokens, forms))
             self.segments.append(seg)
             indices_covered.extend(raw_indices)

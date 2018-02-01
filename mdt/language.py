@@ -409,11 +409,13 @@ class Language:
         return string
 
     ### Getting and setting
-    def get_group(self, name):
+    def get_group(self, name, key=None):
         """Name if not None is a string representing the group's 'name'."""
-        key = Group.get_key(name)
+        key = key or Group.get_key(name)
         cands = self.groups.get(key)
-        return firsttrue(lambda c: c.name == name, cands)
+        if cands:
+            return firsttrue(lambda c: c.name == name, cands)
+        return None
 
     ### Directories and files
     

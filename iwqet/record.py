@@ -232,6 +232,8 @@ class Session:
 class SentRecord:
     """A record of a Sentence and a single user's response to it."""
 
+    toksep = "~~"
+
     def __init__(self, sentence, session=None, user=None):
         self.sentence = sentence
         self.session = session
@@ -262,7 +264,8 @@ class SentRecord:
         result = []
         for analysis in self.sentence.analyses:
             dct = analysis[1][0]
-            result.append("{};;{};;{};;{}".format(analysis[0], dct.get('pos'), dct.get('root'),
+            result.append("{}{}{}{}{}{}{}".format(analysis[0], SentRecord.toksep, dct.get('pos'),
+                                                  SentRecord.toksep, dct.get('root'), SentRecord.toksep,
                                                   SentRecord.stringify_feats(dct.get('features'))))
         return result
 

@@ -547,6 +547,7 @@ class Group(Entry):
         head_index = -1
         head = None
         features = None
+        failif = None
         count = 0
         nogap = False
         if '[' in string:
@@ -671,13 +672,16 @@ class Group(Entry):
                 if tc:
                     tattribs['count'] = tc
                 tgroups.append((tgroup, tattribs))
-        g = Group(realtokens, head_index=head_index, head=head, features=features, agr=within_agrs,
-                  nogap=nogap, name=Group.make_name(name_toks), count=count)
+        # Check to see whether a group with this name has already been created for language;
+        # if so, use it
+        gname = Group.make_name(name_toks)
+        existing_group = language.get_group(gname, key=head)
+        g = existing_group or Group(realtokens, head_index=head_index, head=head, features=features, agr=within_agrs,
+                                    failif=failif, nogap=nogap, name=gname, count=count)
         if target and not trans:
             g.trans = tgroups
-        language.add_group(g)
-#        if trans_agrs:
-#            trans_agrs = tuple(trans_agrs)
+        if not existing_group:
+            language.add_group(g)
         return g, trans_agrs, alignment, trans_count
 
     ### Translations

@@ -48,7 +48,7 @@ def document(text, process=True):
     d = iwqet.Document(e, a, text=text, proc=process)
     return d
 
-def sentence(sentence, ambig=False, solve=True, user=None, segment=False, verbosity=0):
+def sentence(sentence, ambig=False, solve=True, user=None, segment=True, verbosity=0):
     e, a = load_ea()
     session = iwqet.start(e, a, user)
     d = iwqet.Document(e, a, sentence, True, session=session)

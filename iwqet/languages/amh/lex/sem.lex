@@ -3490,6 +3490,7 @@ rusya_n $n
 ruz_n $n
 rzq_n $n
 rzr_aZ_n $n
+ser_ateN_a_n $n
 sEkond_n $n
 sEntimEtr_n $n
 sEra_n $n

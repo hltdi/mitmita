@@ -922,7 +922,6 @@ class Sentence:
 #        incorp_indices = []
         del_indices = {}
         for tokindex, (rawtok, (token, anals)) in enumerate(zip(self.rawtokens, self.analyses)):
-            print("NODIFYING item {}, token {}, anal {}".format(tokindex, token, anals))
             if not incl_del and MorphoSyn.del_token(token):
                 # Ignore elements deleted by MorphoSyns
                 if anals and 'target' in anals[0]:
@@ -945,7 +944,6 @@ class Sentence:
                 # Multiple dicts: ambiguity; let node handle it
                 # Get cats
                 # FIX THIS LATER; ONLY ONE ANAL SHOULD BE POSSIBLE
-#                print("Token {}, anals {}".format(token, anals))
                 if not isinstance(anals, list):
                     anals = [anals]
                     self.analyses[tokindex][1] = anals
@@ -966,15 +964,8 @@ class Sentence:
                         anal['pos'] = pos
 #                    print("    POS: {}".format(pos))
                 raw_indices = del_indices.get(tokindex, [])
-#                if raw_indices:
-#                    print("Adding del indices {} to SNode: {}:{}".format(raw_indices, token, index))
                 raw_indices.append(tokindex)
-#                incorp_indices.append(tokindex)
-#                print("Creating snode {} with raw indices {}".format(index, raw_indices))
                 self.nodes.append(SNode(token, index, anals, self, raw_indices, rawtoken=rawtok))
-#                                        incorp_indices, del_indices=del_indices.get(tokindex, [])))
-#                incorp_indices = []
-#                del_indices = []
                 index += 1
             else:
                 # No analysis, just use the raw string
@@ -1015,9 +1006,7 @@ class Sentence:
                 if not isinstance(anals, list):
                     # Is this still possible?
                     anals = [anals]
-#                print(" Node: {}, anals: {}".format(node, anals))
                 for a in anals:
-#                    print("Analysis {}".format(a))
                     root = a.get('root')
                     if root:
                         if root not in keys:
@@ -1031,8 +1020,6 @@ class Sentence:
                                 psuf = '_' + psuf
                             for rr in r.split('|'):
                                 keys.add(rr + psuf)
-#                        print("Root {} contains an alternative".format(root))
-#                        print(" Keys now {}".format(keys))
 
                     pos = a.get('pos')
                     if pos and '_' not in root:
@@ -1040,7 +1027,6 @@ class Sentence:
                         if k not in keys:
                             keys.add(k)
             # Look up candidate groups in lexicon
-#            print("Group keys for {}: {}".format(node, keys))
             for k in keys:
                 if k in self.language.groups:
                     # All the groups with key k
@@ -1051,7 +1037,6 @@ class Sentence:
                             continue
                         candidates.append((node.index, k, group))
                         node.group_cands.append(group)
-#            print("Group cands for {}: {}".format(node, node.group_cands))
         # Now filter candidates to see if all words are present in the sentence
         # For each group, save a list of sentence token indices that correspond
         # to the group's words
@@ -1069,21 +1054,13 @@ class Sentence:
             # Matching snodes, along with root and unified features if any
             if verbosity > 1:
                 print("Matching group {}".format(group))
-#            if (head_i, key) in matched_keys:
-#                # Already matched one for this key, so don't bother checking.
-#                if verbosity:
-#                    print("Not considering {} because already matched group with key {}".format(group, key))
-#                continue
             snodes = group.match_nodes(self.nodes, head_i, verbosity=verbosity)
             if not snodes:
-#                print("Group {} failed to match".format(group))
                 # This group is out
                 if verbosity > 1:
                     print("Failed to match")
                 continue
             matched_keys.append(matched_key)
-#            if verbosity > 1:
-#            print('Group {} matches snodes {}'.format(group, snodes))
             # Create a GInst object and GNodes for each surviving group
             self.groups.append(GInst(group, self, head_i, snodes, group_index))
             group_index += 1
@@ -1104,7 +1081,6 @@ class Sentence:
         covered = {}
         for gnode in self.gnodes:
             si = gnode.snode_indices
-#            print("Checking covered indices for gnode {}: {}".format(gnode, si))
             for i in si:
                 if i not in covered:
                     covered[i] = []
@@ -1881,8 +1857,8 @@ class Solution:
                 if stoks:
                     stok_groups.append(stoks)
                     stoks = []
-            elif stok[0] == '%':
-                # Special token; it should have its own segment
+            elif stok[0] == '%' or self.source.is_punc(stok[0]):
+                # Special token or punctuation; it should have its own segment
                 if stoks:
                     stok_groups.append(stoks)
                     stoks = []
@@ -1924,8 +1900,7 @@ class Solution:
                 # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
                 src_tokens = tokens[end_index+1:start]
                 self.get_untrans_segs(src_tokens, end_index, gname=gname,
-                                      merger_groups=merger_groups, tgroups=tgroups,
-                                      indices_covered=indices_covered)
+                                      merger_groups=merger_groups, indices_covered=indices_covered)
             if start < max_index:
                 # There's a gap between the portions of the segment
                 late = True

@@ -141,7 +141,7 @@ class Session:
         segrecord = None
         if translation:
             translation = self.target.ortho_clean(translation)
-            print("Recorded sentence translation: {}".format(translation))
+            print("Recorded sentence translation: {}, segtrans: {}".format(translation, segtrans))
             sentrecord.record(translation)
 
         # There might be both segment and whole sentence translations.
@@ -149,11 +149,14 @@ class Session:
             segrecords = sentrecord.segments
 #            segreclist = sentrecord.seg_list
             print("Seg list in sent record: {}".format(segrecords))
+            tgroups = None
             seg_src_trans = segtrans.split('|||')
             for src_trans in seg_src_trans:
                 # index || selected_choice? || source_phrase = translation
                 print("  src_trans: {}".format(src_trans))
-                index, agreed, src_trans = src_trans.split('||')
+                index, agreed, choice_index, src_trans = src_trans.split('||')
+                agreed = agreed == "T"
+                choice_index = int(choice_index)
                 src, trans = src_trans.split('=')
                 index = int(index)
                 # Get the segrecord from the dict
@@ -164,9 +167,14 @@ class Session:
 #                if segrecord1:
 #                    print("  segrecord {}, translation {}".format(segrecord1, segrecord1.translation))
                 if segrecord1:
-                    segrecord1.response_code = 1 if agreed else 0
+                    if agreed:
+                        segrecord1.response_code = 1
+                        tgroups = segrecord1.choice_tgroups[choice_index]
+                        segrecord1.tgroups = tgroups
+                    else:
+                        segrecord1.response_code = 0
                     segrecord1.seltrans = trans
-                    print("  segrecord {}, trans {}, code {}".format(segrecord1, segrecord1.seltrans, segrecord1.response_code))
+                    print("  segrecord {}, trans {}, code {}, tgroups {}".format(segrecord1, segrecord1.seltrans, segrecord1.response_code, tgroups))
 
 #    def record(self, sentrecord, trans_dict):
 #        """Record feedback about a segment's or entire sentence's translation."""
@@ -340,6 +348,7 @@ class SegRecord:
         self.tokens = solseg.token_str
         self.gname = solseg.gname
         self.merger_gnames = solseg.merger_gnames
+        self.tgroups = None
         # Add to parent SentRecord
         self.sentence.segments[self.tokens] = self
         # These get filled in during set_html() in SolSeg
@@ -363,55 +372,11 @@ class SegRecord:
         d['gname'] = self.gname
         d['resp'] = self.response_code
         d['trg'] = self.seltrans
+        if self.tgroups:
+            # Only if translation is selected
+            d['tgrp'] = self.tgroups
         return d
         
-    def record(self, choices=None, translation=None):
-        print("{} recording translation {}, choices {}".format(self, translation, choices))
-        if choices:
-            self.feedback = Feedback(choices=choices)
-            print("{}".format(self.feedback))
-        elif translation:
-            self.feedback = Feedback(translation=translation)
-            print("{}".format(self.feedback))
-        else:
-            print("Something wrong: NO FEEDBACK TO RECORD")
-
-    def write(self, file=sys.stdout):
-        print("{}".format(self), file=file)
-        print("{}".format(self.gname), file=file)
-        print("{}".format(self.merger_gnames), file=file)
-        print("{}".format(self.feedback), file=file)
-
-class Feedback:
-    """Feedback from a user about a segment or sentence and its translation."""
-
-    def __init__(self, accept=True, choices=None, translation=None):
-        """
-        EITHER the user simply
-        -- accepts the system's translation (accept=True) OR
-        -- makes selection from the alternatives offered by the system
-           (choices is a list of pos_index, choice pairs) OR
-        -- provides an alternate translation (translation is not None).
-        No backpointer to the SegRecord or SentRecord that this refers to.
-        """
-        self.accept = accept
-        self.choices = choices
-        self.translation = translation
-#        self.id = '@'
-        self.id = ''
-        if translation:
-            self.id += "{}".format(translation)
-        elif choices:
-            choice_string = ','.join(["{}={}".format(pos, c) for pos, c in choices])
-            self.id += "{}".format(choice_string)
-        else:
-            self.id += "ACC"
-
-    def __repr__(self):
-        return "{} {}".format(FEEDBACK_PRE, self.id)
-
-ACCEPT = Feedback()
-
 class User:
     """User of the system who is registered and whose feedback is saved."""
 

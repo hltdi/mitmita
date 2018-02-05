@@ -136,7 +136,7 @@ TARGET = 3
 TRAIN = 4
 
 ## Strings used in groups file
-GROUP_SEP = '***'
+GROUP_SEP = '**'
 TRANS_START = '->'
 HEAD_SEP = ';'
 

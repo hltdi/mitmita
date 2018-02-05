@@ -329,6 +329,20 @@ class Group(Entry):
         """Get a group's key into Language.groups from its name or print name."""
         return name.split('.')[0].split('[')[0]
 
+    @staticmethod
+    def make_gpair_name(groups):
+        """Create a string name for one or two merged group nodes. Each is represented
+        by a pair: (group_name, index).
+        """
+        string = Group.make_node_name(groups[0][0], groups[0][1])
+        if len(groups) == 2:
+            string += "++{}".format(Group.make_node_name(groups[1][0], groups[1][1]))
+        return string
+
+    def make_node_name(group, index):
+        """Create a string name for a group node, given group name and index."""
+        return "{}:{}".format(group.name, index)
+
     def priority(self):
         """Returns a value that is used in sorting the groups associated with a particular key.
         Groups with more tokens and more features have priority."""

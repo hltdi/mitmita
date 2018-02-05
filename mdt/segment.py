@@ -112,6 +112,7 @@ class SolSeg:
         self.gname = gname
         # Target-language groups
         self.tgroups = tgroups or [[]] * len(self.translation)
+        self.choice_tgroups = None
         # Triples for each merger with the segment
         self.merger_gnames = merger_groups
         self.session = session
@@ -153,6 +154,9 @@ class SolSeg:
         choice_list = self.record.choices if self.record else None
         # Final source segment output
         tokens = self.token_str
+        trans_choice_index = 0
+        # T Group strings associated with each choice
+        choice_tgroups = []
         if self.is_punc:
             trans = self.translation[0][0]
             transhtml += "<tr><td class='transchoice'>"
@@ -161,29 +165,45 @@ class SolSeg:
             transhtml += '</table>'
             self.html = (tokens, self.color, transhtml, index)
             return
-        for tindex, t in enumerate(self.translation):
+        for tindex, (t, tgroups) in enumerate(zip(self.translation, self.tgroups)):
             print("{} setting HTML for {}: {}".format(self, tindex, t))
             # Create all combinations of word sequences
-            t_expanded = []
-            for tt in t:
-                if '(' in tt:
-                    tt = ['', tt[1:-1]]
-                else:
-                    tt = tt.split('|')
-                t_expanded.append(tt)
-            tcombs = [' '.join(y) for y in allcombs(t_expanded)]
-            tcombs.sort()
-#            print("  Tcombs {}".format(tcombs))
+            tg_expanded = []
+            if self.special:
+                trans = t[0]
+                tgcombs = [[(trans, '')]]
+            else:
+                for tt, tg in zip(t, tgroups):
+                    tg = Group.make_gpair_name(tg)
+                    # Get rid of parentheses around optional elements
+                    if '(' in tt:
+                        tt = ['', tt[1:-1]]
+                    else:
+                        tt = tt.split('|')
+                    # Add tg group string to each choice
+                    tg_expanded.append([(ttt, tg) for ttt in tt])
+                tgcombs = allcombs(tg_expanded)
+            tgcombs.sort()
+            tgforms = []
+            tggroups = []
+            for ttg in tgcombs:
+                tgforms.append(' '.join([tttg[0] for tttg in ttg if tttg[0]]))
+                tggroups.append("||".join([tttg[1] for tttg in ttg if tttg[0]]))
             # A single translation of the source segment
             transhtml += '<tr>'
             transhtml += "<td class='transchoice'>"
             html_choices = []
-            for tcindex, tchoice in enumerate(tcombs):
+            for tcindex, (tchoice, tcgroups) in enumerate(zip(tgforms, tggroups)):
+                choice_tgroups.append(tcgroups)
+#                print("  Choice {}: {} (groups: {})".format(trans_choice_index, tchoice, tcgroups))
                 if tindex == 0 and tcindex == 0:
                     html_choices.append('<input type="radio" name="choice" id={} value="{}" checked>{}'.format(tchoice, tchoice, tchoice))
                 else:
                     html_choices.append('<input type="radio" name="choice" id={} value="{}">{}'.format(tchoice, tchoice, tchoice))
+                trans_choice_index += 1
             transhtml += "<br/>".join(html_choices)
+            if len(tgcombs) > 1:
+                transhtml += "<hr>"
             transhtml += "</td>"
             if self.record:
                 choice_list.append(tchoice)
@@ -229,7 +249,11 @@ class SolSeg:
                 tokens = ' '.join(toks)
             else:
                 tokens = tokens.capitalize()
+        self.choice_tgroups = choice_tgroups
+        if self.record:
+            self.record.choice_tgroups = choice_tgroups
         self.html = (tokens, self.color, transhtml, index)
+#        self.html = (tokens, self.color, transhtml, index)
 
     @staticmethod
     def list_html(segments):

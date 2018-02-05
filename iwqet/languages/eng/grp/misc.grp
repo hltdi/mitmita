@@ -1,859 +1,859 @@
 ### IDIOMS WITH ADVERBS AS HEADS
-*** almost $v[tam=pst] ; ^ almost 0
+** almost $v[tam=pst] ; ^ almost 0
 ->amh $v[tm=imf,+sub,cj1=lI] mnm qr*_v[sb=[-p1,-p2,-plr,-fem],+neg,tm=prf] ; || 2, 0 ; 1==0 sb:sb,ob:ob ; 0=2 sb:ob
 ### PREPOSITIONS
-*** in~front~of ; ^ in~front~of 0
+** in~front~of ; ^ in~front~of 0
 ->amh 'fit
 ->amh fit lefit
 ->amh kefit
-*** amen
+** amen
 ->amh 'amEn
-*** above
+** above
 ->amh lay
-*** abreast
+** abreast
 ->amh wede gon_
-*** absolutely
+** absolutely
 ->amh befS_um
 ->amh ket_o
-*** abundantly
+** abundantly
 ->amh begef
 ->amh besef_iw
-*** accidentally
+** accidentally
 ->amh bednget
-*** adequately
+** adequately
 ->amh beqaTu
-*** adjacent
+** adjacent
 ->amh qer_ebe leqrb
-*** after
+** after
 ->amh bestiya
-*** again
+** again
 ->amh 'ndegena
 ->amh degmo
 ->amh dagmeN_a
-*** ajar
+** ajar
 ->amh gerbab_a
-*** alongside
+** alongside
 ->amh gon_ legon_
-*** already
+** already
 ->amh 'asqed_mo
-*** also
+** also
 ->amh degmo
-*** always
+** always
 ->amh hul_gizE
 ->amh zewetr
-*** and
+** and
 ->amh 'n_a
-*** annually
+** annually
 ->amh bey_e`ametu
-*** anywhere
+** anywhere
 ->amh yetm_
-*** anyway
+** anyway
 ->amh mecEm
-*** apart
+** apart
 ->amh ley_ebc_a
-*** approximately
+** approximately
 ->amh begm_t
 ->amh gedema
 ->amh kemol_a god_el
-*** artfully
+** artfully
 ->amh bezedE
-*** aside
+** aside
 ->amh wede gon_
-*** awfully
+** awfully
 ->amh kfuN_a
-*** badly
+** badly
 ->amh kfuN_a
-*** barely
+** barely
 ->amh lamel
-*** before
+** before
 ->amh befit
 ->amh kez_ih fit
 ->amh qedem sil
-*** beforehand
+** beforehand
 ->amh 'asqed_mo
-*** beside
+** beside
 ->amh gon_ legon_
-*** besides
+** besides
 ->amh degmo
 ->amh kez_ihm_ belay
 ->amh kez_iyam_ lEla
-*** best
+** best
 ->amh 'ablTo
-*** but
+** but
 ->amh 'nji
 ->amh daru gn
 ->amh gn
 ->amh neger gn
-*** calmly
+** calmly
 ->amh beTm_ona
-*** carefully
+** carefully
 ->amh bezedE
-*** chiefly
+** chiefly
 ->amh beteley_
-*** completely
+** completely
 ->amh Cer_so
 ->amh feS_mo
 ->amh ket_o
-*** confidentially
+** confidentially
 ->amh bemsTir
-*** considerably
+** considerably
 ->amh beTam
-*** constantly
+** constantly
 ->amh 'ahunm_ 'ahunm_
 ->amh bey_egizEw
 ->amh zewetr
-*** continuously
+** continuously
 ->amh tertawn
-*** correctly
+** correctly
 ->amh beqaTu
-*** daily
+** daily
 ->amh hul_ qen
-*** deliberately
+** deliberately
 ->amh hone blo
-*** downwards
+** downwards
 ->amh zqzq
-*** earlier
+** earlier
 ->amh qed_em_ blo
 ->amh qd_m
-*** early
+** early
 ->amh befit
 ->amh begizE
-*** earnestly
+** earnestly
 ->amh yemr_
-*** easily
+** easily
 ->amh yaleceg_ere
-*** either
+** either
 ->amh weym_
-*** elsewhere
+** elsewhere
 ->amh lElaga
-*** entirely
+** entirely
 ->amh befS_um
 ->amh bemulu
 ->amh feS_mo
-*** especially
+** especially
 ->amh beteley_
 ->amh ylqunm_
-*** even
+** even
 ->amh 'nkWa
 ->amh lElaw qerto
 ->amh snkWa
-*** eventually
+** eventually
 ->amh wlo 'adro
-*** everywhere
+** everywhere
 ->amh bey_al_eb_et
 ->amh hul_ubota
 ->amh yetm_
-*** evidently
+** evidently
 ->amh begehad
-*** extensively
+** extensively
 ->amh besef_iw
-*** extremely
+** extremely
 ->amh 'j_g beTam
 ->amh beTam
-*** fast
+** fast
 ->amh befTnet
 ->amh tolotolo
-*** finally
+** finally
 ->amh 'adro
 ->amh zoro zoro
-*** forever
+** forever
 ->amh zele'alem
-*** formerly
+** formerly
 ->amh dro
-*** fortunately
+** fortunately
 ->amh deg_n_etu
-*** forward!
+** forward!
 ->amh wede fit
-*** frequently
+** frequently
 ->amh bey_eweqtu
 ->amh serk
-*** fully
+** fully
 ->amh bemulu
 ->amh ket_o
-*** furthermore
+** furthermore
 ->amh beteCem_ari
 ->amh degmo
 ->amh kez_ih belay
 ->amh kez_ihm_ belay
-*** generally
+** generally
 ->amh beTeqlal_aw
-*** gladly
+** gladly
 ->amh des_ blo
-*** gradually
+** gradually
 ->amh qes beqes_
 ->amh tn_x betn_x
-*** gravely
+** gravely
 ->amh kfuN_a
-*** greatly
+** greatly
 ->amh beTam
-*** hence
+** hence
 ->amh 'ngdih
-*** henceforth
+** henceforth
 ->amh kengdih wedih
-*** here
+** here
 ->amh 'z_ih
 ->amh wedih
-*** hereabout
+** hereabout
 ->amh gedema
-*** hereabouts
+** hereabouts
 ->amh 'z_ih gedema
-*** hereafter
+** hereafter
 ->amh kengdih
-*** horizontally
+** horizontally
 ->amh 'agdmox
-*** hourly
+** hourly
 ->amh bey_ese'atu
-*** how
+** how
 ->amh 'ndEt
-*** however
+** however
 ->amh daru gn
 ->amh neger gn
-*** hurray
+** hurray
 ->amh 's_ey
-*** if
+** if
 ->amh 'ndehone
-*** immediately
+** immediately
 ->amh 'ahununu
 ->amh befTnet
 ->amh band gizE
 ->amh wedyaw
-*** in
+** in
 ->amh wedewsT
-*** individually
+** individually
 ->amh benefs wek_ef
 ->amh bey_egl_
-*** inside
+** inside
 ->amh kewsT
 ->amh wedewsT
-*** instantly
+** instantly
 ->amh kemeqeS_ebe
-*** intentionally
+** intentionally
 ->amh hone blo
-*** late
+** late
 ->amh 'alegizE
-*** lately
+** lately
 ->amh beqrbu
 ->amh keqrb gizE wedih
-*** likewise
+** likewise
 ->amh 'ndihu
 ->amh 'ndihum_
-*** luckily
+** luckily
 ->amh deg_n_etu
-*** meanwhile
+** meanwhile
 ->amh 'skez_iya
-*** more
+** more
 ->amh 'ablTo
 ->amh ylq
-*** moreover
+** moreover
 ->amh beteCem_ari
 ->amh beter_efe
 ->amh degmo
 ->amh kez_ihm_ belay
 ->amh kez_iyam_ lEla
-*** never
+** never
 ->amh ket_o
-*** nevertheless
+** nevertheless
 ->amh bihonm_ qlu
 ->amh honom_
 ->amh yhun 'nji
-*** no!
+** no!
 ->amh 'ay
-*** nonetheless
+** nonetheless
 ->amh daru gn
-*** now
+** now
 ->amh 'ngdih
 ->amh 'ahun
-*** nowadays
+** nowadays
 ->amh behunu gizE
 ->amh bezarEgizE
-*** often
+** often
 ->amh bey_egizEw
 ->amh bzu gizE
-*** once
+** once
 ->amh 'and gizE
-*** openly
+** openly
 ->amh begehad
 ->amh begl_aC
 ->amh beyfa
-*** opposite
+** opposite
 ->amh mado
-*** or
+** or
 ->amh weym_
 ->amh weys_
-*** otherwise
+** otherwise
 ->amh 'alebelez_iya
-*** over
+** over
 ->amh lay
-*** partially
+** partially
 ->amh bekefil
-*** patiently
+** patiently
 ->amh Trsun nekso
-*** perfectly
+** perfectly
 ->amh bedenb
-*** perhaps
+** perhaps
 ->amh dnget
 ->amh mnalbat
-*** periodically
+** periodically
 ->amh bey_eweqtu
-*** persistently
+** persistently
 ->amh neg_aTeb_a
-*** possibly
+** possibly
 ->amh mnalbat
-*** practically
+** practically
 ->amh betegbar
-*** previously
+** previously
 ->amh 'asqed_mo
 ->amh dro
 ->amh kez_ih fit
 ->amh qedem sil
 ->amh qed_em_ blo
-*** prior
+** prior
 ->amh qedem sil
 ->amh qed_em_ blo
-*** privately
+** privately
 ->amh begl_
-*** properly
+** properly
 ->amh bedenb
 ->amh beqaTu
 ->amh beweg
-*** publicly
+** publicly
 ->amh beyfa
-*** quickly
+** quickly
 ->amh tolo
 ->amh tolotolo
-*** quietly
+** quietly
 ->amh beSeT_ta
-*** quite
+** quite
 ->amh Cer_so
-*** rapidly
+** rapidly
 ->amh befTnet
 ->amh tolotolo
-*** rather
+** rather
 ->amh ylqs_
 ->amh ylqun
 ->amh ylquns_
-*** recently
+** recently
 ->amh beqrbu
 ->amh keqrb gizE wedih
-*** red-handed
+** red-handed
 ->amh 'j_ kefnj
-*** regularly
+** regularly
 ->amh begizEw
 ->amh bey_egizEw
 ->amh zewetr
-*** repeatedly
+** repeatedly
 ->amh 'ahunm_ 'ahunm_
 ->amh bedg_ami
-*** roughly
+** roughly
 ->amh begm_t
 ->amh gedema
 ->amh kemol_a god_el
-*** round
+** round
 ->amh 'z_ih gedema
-*** ruthlessly
+** ruthlessly
 ->amh yalemare
-*** say
+** say
 ->amh bel
-*** scarcely
+** scarcely
 ->amh 'mbzam_
-*** secretly
+** secretly
 ->amh wsT lews_T
 ->amh wsT wsTun
-*** seldom
+** seldom
 ->amh 'mbzam_
-*** separately
+** separately
 ->amh bebc_a
 ->amh bc_alebc_a
 ->amh ley_ebc_a
-*** seriously
+** seriously
 ->amh yemr_
-*** shortly
+** shortly
 ->amh beqrb gizE
-*** simultaneously
+** simultaneously
 ->amh band gizE
-*** singly
+** singly
 ->amh 'andband
-*** slowly
+** slowly
 ->amh beqes_ta
 ->amh qes beqes_
-*** sometimes
+** sometimes
 ->amh behone gizE
-*** somewhere
+** somewhere
 ->amh 'anduga
-*** specially
+** specially
 ->amh beteley_
-*** stealthily
+** stealthily
 ->amh wsT lews_T
-*** still
+** still
 ->amh 'ahunm_
 ->amh bahun gizE
-*** strongly
+** strongly
 ->amh 'aTbqo
-*** suddenly
+** suddenly
 ->amh bednget
 ->amh dnget
-*** surely
+** surely
 ->amh 'ndEta
-*** then
+** then
 ->amh yez_ihn gizE
 ->amh yan_E
 ->amh yan gizE
-*** there
+** there
 ->amh 'z_iya lay
 ->amh bez_iya
 ->amh 'z_iya
-*** therefore
+** therefore
 ->amh 'ngdih
-*** thus
+** thus
 ->amh 'ndihum_
 ->amh 'ngdih
-*** together
+** together
 ->amh 'abro
 ->amh 'andlay
 ->amh 'andn_et
 ->amh 'andga
 ->amh 'andlay
 ->amh bandn_et
-*** towards
+** towards
 ->amh bek_ul
-*** truly
+** truly
 ->amh 'k_o
-*** underneath
+** underneath
 ->amh kewsT
-*** undoubtedly
+** undoubtedly
 ->amh 'ndEta
 ->amh yaleTreT_ere
-*** unexpectedly
+** unexpectedly
 ->amh bag_aTami
 ->amh bednget
-*** unquestionably
+** unquestionably
 ->amh yaleTreT_ere
-*** untimely
+** untimely
 ->amh 'alegizE
-*** unusually
+** unusually
 ->amh kemeTen belay
-*** unwillingly
+** unwillingly
 ->amh begd_
-*** upwards
+** upwards
 ->amh wedelay
-*** utterly
+** utterly
 ->amh feS_mo
-*** very
+** very
 ->amh beTam
-*** well
+** well
 ->amh beg_o
 ->amh beqaTu
-*** why
+** why
 ->amh lemn
-*** when
+** when
 ->amh mecE
 ->amh bemn gizE
 ->amh mngizE
-*** whenever
+** whenever
 ->amh mngizEm_
-*** where
+** where
 ->amh wedEt
 ->amh yet
-*** wholly
+** wholly
 ->amh mol_abemulu
-*** why
+** why
 ->amh slemn
-*** widely
+** widely
 ->amh besef_iw
-*** yearly
+** yearly
 ->amh bey_e`ametu
-*** yes
+** yes
 ->amh 'awo
-*** yet
+** yet
 ->amh 'ahunm_
-*** yonder
+** yonder
 ->amh mado
-*** above all ; ^ all 1
+** above all ; ^ all 1
 ->amh kehul_um_ laqe
-*** after all ; ^ all 1
+** after all ; ^ all 1
 ->amh mecEm
-*** after that ; ^ that 1
+** after that ; ^ that 1
 ->amh kez_iya behWala
-*** after this ; ^ this 1
+** after this ; ^ this 1
 ->amh kez_ih behWala
-*** all along ; ^ along 1
+** all along ; ^ along 1
 ->amh gizEgizEm_
-*** all over ; ^ over 1
+** all over ; ^ over 1
 ->amh bemulu
-*** all over the body ; ^ body 3
+** all over the body ; ^ body 3
 ->amh hul_emena
-*** all sorts of things ; ^ sorts 1
+** all sorts of things ; ^ sorts 1
 ->amh yehone yalhone
-*** all that ; ^ that 1
+** all that ; ^ that 1
 ->amh 'skez_ih
-*** all the time ; ^ time 2
+** all the time ; ^ time 2
 ->amh hul_gizE
 ->amh mecEwnm
-*** along with ; ^ along 0
+** along with ; ^ along 0
 ->amh 'abro
-*** among other things ; ^ things 2
+** among other things ; ^ things 2
 ->amh beteCem_ari
-*** and also ; ^ also 1
+** and also ; ^ also 1
 ->amh 'ndihu
-*** and then ; ^ then 1
+** and then ; ^ then 1
 ->amh 'n_a
-*** another time ; ^ time 1
+** another time ; ^ time 1
 ->amh dagmeN_a
 ->amh lEla gizE
-*** any place ; ^ place 1
+** any place ; ^ place 1
 ->amh yetm_
-*** any time ; ^ time 1
+** any time ; ^ time 1
 ->amh behone gizE
-*** apart from ; ^ apart 0
+** apart from ; ^ apart 0
 ->amh beter_efe
-*** as much as possible ; ^ possible 3
+** as much as possible ; ^ possible 3
 ->amh betecalemeT_ene
 ->amh yehonewn yahl
-*** as time passes ; ^ passes 2
+** as time passes ; ^ passes 2
 ->amh 'y_ad_er
-*** at a certain stage ; ^ stage 3
+** at a certain stage ; ^ stage 3
 ->amh behone gizE
-*** at any rate ; ^ rate 2
+** at any rate ; ^ rate 2
 ->amh bez_ihm_ hone bez_iya
 ->amh honom_
-*** at any time ; ^ time 2
+** at any time ; ^ time 2
 ->amh gizEgizEm_
-*** at daybreak ; ^ daybreak 1
+** at daybreak ; ^ daybreak 1
 ->amh goh siqed_
-*** at last ; ^ last 1
+** at last ; ^ last 1
 ->amh wlo 'adro
-*** at least ; ^ least 1
+** at least ; ^ least 1
 ->amh bihon bihon
 ->amh zoro zoro
-*** at once ; ^ once 1
+** at once ; ^ once 1
 ->amh band gizE
-*** at that time ; ^ time 2
+** at that time ; ^ time 2
 ->amh yan gizE
-*** at the end ; ^ end 2
+** at the end ; ^ end 2
 ->amh yehWala hWala
-*** at the foot of ; ^ foot 2
+** at the foot of ; ^ foot 2
 ->amh beste grgE
-*** at this point ; ^ point 2
+** at this point ; ^ point 2
 ->amh 'z_ih lay
-*** at this time ; ^ time 2
+** at this time ; ^ time 2
 ->amh yez_ihn gizE
-*** at this very moment ; ^ moment 3
+** at this very moment ; ^ moment 3
 ->amh 'ahun bahun
-*** at which price ; ^ price 2
+** at which price ; ^ price 2
 ->amh bale snt
-*** before long ; ^ before 0
+** before long ; ^ before 0
 ->amh beqrbu
-*** besides this ; ^ besides 0
+** besides this ; ^ besides 0
 ->amh kez_ih lEla
-*** beyond measure ; ^ measure 1
+** beyond measure ; ^ measure 1
 ->amh kemeTen belay
-*** bit by bit ; ^ bit 0
+** bit by bit ; ^ bit 0
 ->amh tn_x betn_x
-*** by and large ; ^ large 2
+** by and large ; ^ large 2
 ->amh bedefenaw
 ->amh kemol_a god_el
-*** by any means ; ^ means 2
+** by any means ; ^ means 2
 ->amh mnm_ bihon
-*** by chance ; ^ chance 1
+** by chance ; ^ chance 1
 ->amh bag_aTami
 ->amh dnget
-*** by force ; ^ force 1
+** by force ; ^ force 1
 ->amh begd_
-*** by preference ; ^ preference 1
+** by preference ; ^ preference 1
 ->amh ylqs_
 ->amh ylquns_
-*** by the way ; ^ way 2
+** by the way ; ^ way 2
 ->amh lemehonu
-*** by turn ; ^ turn 1
+** by turn ; ^ turn 1
 ->amh betera
-*** close to ; ^ close 0
+** close to ; ^ close 0
 ->amh 'aTegeb
 ->amh gon_ legon_
-*** day in day out ; ^ day 0
+** day in day out ; ^ day 0
 ->amh neg_aTeb_a
-*** each in his own way ; ^ each 0
+** each in his own way ; ^ each 0
 ->amh bey_efinaw
-*** even at that ; ^ that 2
+** even at that ; ^ that 2
 ->amh ya bihon
 ->amh yam_ hone yh
-*** even now ; ^ now 1
+** even now ; ^ now 1
 ->amh 'ahunm_
-*** ever since ; ^ since 1
+** ever since ; ^ since 1
 ->amh kez_iya wediya
-*** every day ; ^ day 1
+** every day ; ^ day 1
 ->amh TWatn_a mata
-*** every morning ; ^ morning 1
+** every morning ; ^ morning 1
 ->amh TWat TWat
-*** face to face ; ^ face 0
+** face to face ; ^ face 0
 ->amh 'ayn le'ayn
 ->amh fit lefit
-*** for a short while ; ^ while 3
+** for a short while ; ^ while 3
 ->amh Tqit gizE
-*** for nothing ; ^ nothing 1
+** for nothing ; ^ nothing 1
 ->amh 'ndihu
-*** in large quantities ; ^ quantities 2
+** in large quantities ; ^ quantities 2
 ->amh bebzat
-*** from here ; ^ here 1
+** from here ; ^ here 1
 ->amh kez_ih
-*** from there ; ^ there 1
+** from there ; ^ there 1
 ->amh kez_iya
-*** from this time on ; ^ time 2
+** from this time on ; ^ time 2
 ->amh 'ngdih wediya
-*** from this time onward ; ^ time 2
+** from this time onward ; ^ time 2
 ->amh 'ngdih wedih
-*** from time immemorial ; ^ time 1
+** from time immemorial ; ^ time 1
 ->amh znte 'alem
-*** from time to time ; ^ time 1
+** from time to time ; ^ time 1
 ->amh begizEw
 ->amh bey_egizEw
 ->amh bey_ese'atu
 ->amh kegizE wedegizE
-*** full of confusion ; ^ full 0
+** full of confusion ; ^ full 0
 ->amh yeCereba tezkar
-*** full of turmoil ; ^ full 0
+** full of turmoil ; ^ full 0
 ->amh yeCereba tezkar
-*** how much ; ^ much 1
+** how much ; ^ much 1
 ->amh snt
-*** how many ; ^ many 1
+** how many ; ^ many 1
 ->amh snt
-*** here and now ; ^ here 0
+** here and now ; ^ here 0
 ->amh 'ahun bahun
-*** if that is the case ; ^ if 0
+** if that is the case ; ^ if 0
 ->amh 'ngdiyam_a
-*** in a good way ; ^ way 3
+** in a good way ; ^ way 3
 ->amh beg_o
-*** in a row ; ^ row 2
+** in a row ; ^ row 2
 ->amh beterta
 ->amh tertawn
-*** in addition to this ; ^ addition 1
+** in addition to this ; ^ addition 1
 ->amh bez_ih lay
-*** in addition ; ^ addition 1
+** in addition ; ^ addition 1
 ->amh beteCem_ari
-*** in advance ; ^ advance 1
+** in advance ; ^ advance 1
 ->amh 'asqed_mo
-*** in any case ; ^ case 2
+** in any case ; ^ case 2
 ->amh mnm_ bihon
 ->amh yam_ hone yh
-*** in between ; ^ between 1
+** in between ; ^ between 1
 ->amh Talqa
-*** in case
+** in case
 ->amh dnget
-*** in detail ; ^ detail 1
+** in detail ; ^ detail 1
 ->amh 'andband
-*** in full
+** in full
 ->amh bemulu
-*** in general ; ^ general 1
+** in general ; ^ general 1
 ->amh beTeqlal_aw
 ->amh bedefenaw
-*** in great quantity ; ^ quantity 2
+** in great quantity ; ^ quantity 2
 ->amh begef
-*** in olden times ; ^ times 2
+** in olden times ; ^ times 2
 ->amh dro
 ->amh duro
-*** in other words ; ^ words 2
+** in other words ; ^ words 2
 ->amh malet
-*** in practice ; ^ practice 1
+** in practice ; ^ practice 1
 ->amh betegbar
-*** in private ; ^ private 1
+** in private ; ^ private 1
 ->amh bebc_a
-*** in recent times ; ^ times 2
+** in recent times ; ^ times 2
 ->amh keqrb gizE wedih
-*** in spite of this ; ^ spite 1
+** in spite of this ; ^ spite 1
 ->amh ken_e'ak_at_Ew
-*** in the course of time ; ^ course 2
+** in the course of time ; ^ course 2
 ->amh begizE bzat
-*** in the direction of ; ^ direction 2
+** in the direction of ; ^ direction 2
 ->amh bek_ul
-*** in the end ; ^ end 2
+** in the end ; ^ end 2
 ->amh zoro zoro
-*** in the future ; ^ future 1
+** in the future ; ^ future 1
 ->amh wede fit
-*** in the long run ; ^ run 3
+** in the long run ; ^ run 3
 ->amh wlo 'adro
-*** in the near future ; ^ future 3
+** in the near future ; ^ future 3
 ->amh beqrb gizE
-*** in the past ; ^ past 2
+** in the past ; ^ past 2
 ->amh duro
-*** in what order ; ^ order 2
+** in what order ; ^ order 2
 ->amh snteN_a
-*** which number ; ^ number 1
+** which number ; ^ number 1
 ->amh snteN_a
-*** indeed
+** indeed
 ->amh 'k_o
-*** just a little ; ^ little 2
+** just a little ; ^ little 2
 ->amh tn_x tn_x
-*** just like that ; ^ like 1
+** just like that ; ^ like 1
 ->amh zm_ blo
-*** later on ; ^ later 0
+** later on ; ^ later 0
 ->amh 'y_ad_er
 ->amh yehWala hWala
-*** little by little ; ^ little 0
+** little by little ; ^ little 0
 ->amh qes beqes_
-*** long ago ; ^ ago 1
+** long ago ; ^ ago 1
 ->amh duro
 ->amh wetro
-*** many times ; ^ times 1
+** many times ; ^ times 1
 ->amh bez_agizE
-*** more or less ; ^ more 0
+** more or less ; ^ more 0
 ->amh kemol_a god_el
-*** more than ; ^ more 0
+** more than ; ^ more 0
 ->amh kehulu bel_eTe
-*** more than I ; ^ more 0
+** more than I ; ^ more 0
 ->amh kenE laqe
-*** more than anything ; ^ more 0
+** more than anything ; ^ more 0
 ->amh kehul_um_ lqo
-*** more than ever before ; ^ more 0
+** more than ever before ; ^ more 0
 ->amh kemecEwm_
-*** more than that ; ^ more 0
+** more than that ; ^ more 0
 ->amh kehul_um_ laqe
-*** more than this ; ^ more 0
+** more than this ; ^ more 0
 ->amh kehul_um_ laqe
-*** most of the time ; ^ most 0
+** most of the time ; ^ most 0
 ->amh 'abzaN_awn gizE
 ->amh bzuwn gizE
-*** near to each other ; ^ near 0
+** near to each other ; ^ near 0
 ->amh qer_ebe leqrb
-*** never at all ; ^ never 0
+** never at all ; ^ never 0
 ->amh ket_ownm_
-*** next week ; ^ week 1
+** next week ; ^ week 1
 ->amh yem_imeTaw sam_nt
-*** not at all ; ^ not 0
+** not at all ; ^ not 0
 ->amh Cer_so
-*** not even ; ^ not 0
+** not even ; ^ not 0
 ->amh 'nkWan
 ->amh snkWa
-*** exactly
+** exactly
 ->amh 'k_o
-*** on my way ; ^ way 2
+** on my way ; ^ way 2
 ->amh 'gre mengedEn
-*** on the contrary ; ^ contrary 2
+** on the contrary ; ^ contrary 2
 ->amh 'nji
 ->amh ylqunm_
-*** on time ; ^ time 1
+** on time ; ^ time 1
 ->amh begizE
 ->amh beweqtu
-*** once again ; ^ once 0
+** once again ; ^ once 0
 ->amh dagmeN_a
-*** one after the other ; ^ one 0
+** one after the other ; ^ one 0
 ->amh 'gr begr
-*** one at a time ; ^ one 0
+** one at a time ; ^ one 0
 ->amh 'andband
-*** one by one ; ^ one 0
+** one by one ; ^ one 0
 ->amh 'andband
-*** one after the other ; ^ one 0
+** one after the other ; ^ one 0
 ->amh fitn_a hWala
-*** one moment ; ^ moment 1
+** one moment ; ^ moment 1
 ->amh 'andafta
-*** one way or the other ; ^ way 1
+** one way or the other ; ^ way 1
 ->amh bez_ihm_ hone bez_iya
-*** opposite to ; ^ opposite 0
+** opposite to ; ^ opposite 0
 ->amh fit lefit
-*** other than this ; ^ other 0
+** other than this ; ^ other 0
 ->amh kez_ih lEla
-*** over there ; ^ there 1
+** over there ; ^ there 1
 ->amh bez_iya
-*** point by point ; ^ point 0
+** point by point ; ^ point 0
 ->amh 'andband
-*** rather than ; ^ rather 0
+** rather than ; ^ rather 0
 ->amh ylq
-*** second time ; ^ time 1
+** second time ; ^ time 1
 ->amh dagmox
-*** since then ; ^ since 0
+** since then ; ^ since 0
 ->amh kez_iya wediya
-*** since when ; ^ since 0
+** since when ; ^ since 0
 ->amh kemecE jem_ro
-*** so far ; ^ far 1
+** so far ; ^ far 1
 ->amh 'skez_ih
-*** soon after ; ^ soon 0
+** soon after ; ^ soon 0
 ->amh wedyaw
-*** soon
+** soon
 ->amh tolo
-*** sooner or later ; ^ sooner 0
+** sooner or later ; ^ sooner 0
 ->amh wale 'adro
-*** step by step ; ^ step 0
+** step by step ; ^ step 0
 ->amh qes beqes_
-*** that far ; ^ far 1
+** that far ; ^ far 1
 ->amh 'skez_ih
-*** that is ; ^ that 0
+** that is ; ^ that 0
 ->amh malet
-*** that is to say ; ^ that 0
+** that is to say ; ^ that 0
 ->amh malet
-*** that much ; ^ much 1
+** that much ; ^ much 1
 ->amh 'skez_ih
-*** that way ; ^ way 1
+** that way ; ^ way 1
 ->amh bez_iya
-*** the coming ; ^ coming 1
+** the coming ; ^ coming 1
 ->amh yefitac_n
-*** the other day ; ^ day 2
+** the other day ; ^ day 2
 ->amh beqed_em let
-*** the previous day ; ^ day 2
+** the previous day ; ^ day 2
 ->amh beqed_em let
-*** the year before last ; ^ year 1
+** the year before last ; ^ year 1
 ->amh 'ac_amna
-*** this very day ; ^ day 2
+** this very day ; ^ day 2
 ->amh zarEwnu
-*** through and through ; ^ through 0
+** through and through ; ^ through 0
 ->amh Cer_so
-*** thus far ; ^ far 1
+** thus far ; ^ far 1
 ->amh bahun gizE
-*** till then ; ^ till 0
+** till then ; ^ till 0
 ->amh 'skez_iya
-*** to say nothing of other ; ^ say 1
+** to say nothing of other ; ^ say 1
 ->amh lElaw qerto
-*** too much ; ^ too 0
+** too much ; ^ too 0
 ->amh kemeTen belay
-*** towards the west ; ^ west 2
+** towards the west ; ^ west 2
 ->amh beste m'rab
-*** turn by turn ; ^ turn 0
+** turn by turn ; ^ turn 0
 ->amh bey_etera
 ->amh tera betera
-*** until here ; ^ until 0
+** until here ; ^ until 0
 ->amh 'skez_ih
-*** until now ; ^ until 0
+** until now ; ^ until 0
 ->amh 'skahun
-*** until there ; ^ until 0
+** until there ; ^ until 0
 ->amh 'skez_iya
-*** until where ; ^ until 0
+** until where ; ^ until 0
 ->amh 'skeyet
-*** very much ; ^ much 1
+** very much ; ^ much 1
 ->amh 'j_g
 ->amh 'j_g beTam
 ->amh 'aTbqo
-*** very well ; ^ well 1
+** very well ; ^ well 1
 ->amh 'j_gun
-*** well of course ; ^ course 2
+** well of course ; ^ course 2
 ->amh mecEm
-*** well then ; ^ then 1
+** well then ; ^ then 1
 ->amh 'ngdiyam_a
 ->amh 'ngdiyas_
 ->amh bel
 ->amh tadiya
-*** what else ; ^ what 0
+** what else ; ^ what 0
 ->amh beter_efe
-*** whatever happens ; ^ happens 1
+** whatever happens ; ^ happens 1
 ->amh mnm_ bihon
 ->amh yehone bihonm
-*** whatever it is ; ^ whatever 0
+** whatever it is ; ^ whatever 0
 ->amh yam_ hone yh ; || 0, 1, 2
-*** whatever may be ; ^ whatever 0
+** whatever may be ; ^ whatever 0
 ->amh yemeT_aw bimeTam
-*** whatever may happen ; ^ happen 2
+** whatever may happen ; ^ happen 2
 ->amh gram nefes qeN_
-*** at what time ; ^ time 2
+** at what time ; ^ time 2
 ->amh mngizE
-*** what
+** what
 ->amh mn
-*** who
+** who
 ->amh man_n
-*** whole-heartedly
+** whole-heartedly
 ->amh mol_alb_
-*** with perseverance ; ^ perseverance 1
+** with perseverance ; ^ perseverance 1
 ->amh Trsun nekso
-*** with pleasure ; ^ pleasure 1
+** with pleasure ; ^ pleasure 1
 ->amh bedes_ 'ale
-*** without any reason ; ^ reason 2
+** without any reason ; ^ reason 2
 ->amh zm_ blo
-*** me ; ^ me 0
+** me ; ^ me 0
 ->amh 'nEn
-*** this ; ^ this 0
+** this ; ^ this 0
 ->amh yh

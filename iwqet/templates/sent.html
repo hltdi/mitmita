@@ -8,14 +8,22 @@ table.transmeta
 {
     border: 0;
     padding: 5px;
-    width: 985px;
+    width: 785px;
+}
+table.transphrase
+{
+    border: 2px solid black;
+    border-spacing: 10px;
+    vertical-align: top;
+    width: 425px;
+    display: none;
 }
 table.trans
 {
     border: 2px solid black;
     border-spacing: 10px;
 /*    border-collapse: collapse; */
-    width: 525px;
+    width: 425px;
     vertical-align: top;
 }
 table.transdoc
@@ -111,14 +119,14 @@ textarea#sentence
 {
    font-family: "Verdana";
    font-size: 100%;
-   width: 495px;
+   width: 395px;
    height: 50px;
 }
 textarea#document
 {
    font-family: "Verdana";
    font-size: 85%;
-   width: 425px;
+   width: 325px;
    height: 200px;
    resize: none;
    overflow-y: scroll;
@@ -127,7 +135,7 @@ textarea#segment
 {
    font-family: "Verdana";
    font-size: 100%;
-   width: 495px;
+   width: 395px;
    height: 20px;
 }
 span#doctrans
@@ -237,8 +245,10 @@ function OnRecordPhrase() {
     // This is INPUT if checkbox, undefined otherwise.
     var seltype = selection.nodeName;
     var choice = "";
+    var group = "";
     var prefix = "";
-    segindex = document.Form2.segindex.value;
+    var choiceindex = 0;
+    var segindex = document.Form2.segindex.value;
     if (document.Form2.segtrans.value != "") {
         // This is not the first phrase (segment) in the sentence to be recorded.
         prefix = "|||";
@@ -247,13 +257,13 @@ function OnRecordPhrase() {
     if (segtrans != "") {
 	// User has provided their own translation.
 	// Record the segment and its translation in the variable segtrans.
-        document.Form2.segtrans.value += prefix + segindex + "||F||" + segment + "=" + segtrans;
+        document.Form2.segtrans.value += prefix + segindex + "||F||-1||" + segment + "=" + segtrans;
 	// Record the index of this segment in the variable segindices.
         document.Form2.segindices.value += " " + segindex;
         if (segtrans == "0") {
             // User wants no translation for this segment; record this anyway in segtrans
 	    // (User may also just skip this segment. Should something happen in OnRecordSent in this case?)
-            document.Form2.segtrans.value += prefix + segindex + "||F||" + segment + "=";
+            document.Form2.segtrans.value += prefix + segindex + "||F||-1||" + segment + "=";
             return true;
         } else if (sentval == "") {
             // Beginning of the sentence; capitalize the translation, stored in segtrans.
@@ -282,19 +292,21 @@ function OnRecordPhrase() {
 		if (selection[i].checked) {
 		    // The translation selected
                     choice = selection[i].value;
+		    choiceindex = i;
 		}
             }
 	}
         document.getElementById("error").innerHTML = "";
         document.getElementById("segment").value = choice;
-        document.Form2.segtrans.value += prefix + segindex + "||T||" + segment + "=" + choice;
+        document.Form2.segtrans.value += prefix + segindex + "||T||" + choiceindex + "||" + segment + "=" + choice;
         document.Form2.segindices.value += " " + segindex;
         if (sentval != "") {
             choice = " " + choice;
         }
         document.getElementById("sentence").value += choice;
     }
-    document.getElementById("instructions").innerHTML = "If you've finished translating the sentence, click on 'Record sentence'; if not, click on another colored segment of the English sentence.";
+    document.getElementById("instructions").innerHTML = "If you've finished translating the sentence, \
+        click on 'Record sentence'; if not, click on another colored segment of the English sentence.";
     return true;
 }
 function Segment(text, segment, color, segindex) {
@@ -302,6 +314,7 @@ function Segment(text, segment, color, segindex) {
     var formatted = "<font color=" + color + ">" + text + "</font>";
     // Clear error space.
     document.getElementById("error").innerHTML = ""; 
+    document.getElementById("transphrase").style.display="block";
     // Give instructions for translation selection.
    // Generate an error message if this segment has already been translated
     if (segindices.includes(segindex)) {
@@ -343,8 +356,8 @@ function cleanAmh(string) {
     <td class="title">
     <a href="base">
     <img class='banner' src="{{url_for('static',
-      filename='banner_logo_short.png')}}" alt="" width="500px"
-      height="90px" />
+      filename='logo.png')}}" alt="" width="300px"
+      height="52px" />
     </a>
     </td>
     <td class="menu" style="width: 200px">
@@ -361,7 +374,7 @@ function cleanAmh(string) {
 </form>
 
 <tr>
-<td colspan="4" style="width:1000px">  
+<td colspan="4" style="width:800px">  
 
 {% if user %}
 <table class="title">
@@ -416,7 +429,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
 <!-- First column, contains Phrase and Whole Sentence areas, each a table -->
 <td class="segsent">
 <!-- Phrase area table -->      
-<table class="trans">
+<table class="transphrase" id="transphrase">
 <tr class="transtitle">
   <th class="transtitle">Phrase</th>
   <td class="transbutton">
@@ -440,7 +453,7 @@ onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|fo
   </td>
 </tr>
 </table>
-<p></p>
+
 <!-- Whole Sentence area table -->
 <table class="trans">
 <tr class="trans">

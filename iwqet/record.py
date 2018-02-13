@@ -135,14 +135,14 @@ class Session:
 #        """Only record a verbatim translation of the sentence."""
 #        sentrecord.translation = translation
 
-    def record(self, sentrecord, translation=None, segtrans=None):
+    def record(self, sentrecord, translation=None, segtrans=None, comments=None):
         """Record feedback about a sentence's translation."""
         print("{} recording translation for sentence {} with translation {} and seg trans {}".format(self, sentrecord, translation, segtrans))
         segrecord = None
         if translation:
             translation = self.target.ortho_clean(translation)
             print("Recorded sentence translation: {}, segtrans: {}".format(translation, segtrans))
-            sentrecord.record(translation)
+            sentrecord.record(translation, comments)
 
         # There might be both segment and whole sentence translations.
         if segtrans:
@@ -259,6 +259,7 @@ class SentRecord:
         self.feedback = None
         # Verbatim translation of the sentence
         self.translation = ''
+        self.comments = ''
 
     def __repr__(self):
 #        session = "{}".format(self.session) if self.session else ""
@@ -311,12 +312,19 @@ class SentRecord:
         d['s_ms'] = self.get_morphosyns()
         d['trg'] = self.translation
         d['time'] = Session.time2shortstr(self.time)
-        d['segs'] = [s.to_dict() for s in self.segments.values()]
+        if self.comments:
+            d['cmt'] = self.comments
+        segdicts = [s.to_dict() for s in self.segments.values()]
+        segdicts = [x for x in segdicts if x]
+        if segdicts:
+            d['segs'] = segdicts
         return d
 
-    def record(self, translation):
-        """Record user's translation for the whole sentence."""
+    def record(self, translation, comments=None):
+        """Record user's translation for the whole sentence and comments if there are any."""
         self.translation = translation
+        if comments:
+            self.comments = comments
 #        feedback = Feedback(translation=translation)
 #        print("{} recording translation {}, feedback: {}".format(self, translation, feedback))
 #        self.feedback = feedback

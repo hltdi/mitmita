@@ -172,10 +172,11 @@ def sent():
         translation = form.get('senttrans')
         document = form.get('UTraDoc', '')
         segtrans = form.get('segtrans', '')
+        comments = form.get("UComment", '')
         print("Registering sentence translation {} for {}".format(translation, SENTENCE))
         print("Current document: {}".format(document))
         if SESSION:
-            SESSION.record(SENTENCE.record, translation=translation, segtrans=segtrans)
+            SESSION.record(SENTENCE.record, translation=translation, segtrans=segtrans, comments=comments)
         return render_template('sent.html', user=USER, document=document)
     if 'text' in form and not DOC:
         # Create a new document

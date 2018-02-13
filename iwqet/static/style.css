@@ -33,7 +33,7 @@ h1
 	margin-bottom: 0;
         border: thin solid;
 	text-align: left;
-	font-weight: bold;
+/*	font-weight: bold; */
 	color: #FFF;
 	background-color: #000;
 }

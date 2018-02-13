@@ -183,6 +183,8 @@ class Language:
         # Phrases to join during sentence tokenization
         self.join = join
         self.groups = groups or {}
+        # A dictionary of group attribute defaults for different head categories
+        self.group_defaults = {}
         # Dictionary of roots/stems/tokens to group keys, e.g., 'drop': ['drop_n', 'drop_v']
         self.group_keys = {}
         # Explicit groups to load instead of default
@@ -1523,6 +1525,8 @@ class Language:
         print("Reading lexical groups for {}".format(self.name))
         for gfile in self.get_group_files(files):
             with open(gfile, encoding='utf8') as file:
+                grouptype = gfile.rpartition('/')[-1].split('.')[0]
+                groupdefaults = []
                 if verbosity:
                     print("Reading groups for {} of {}".format(self.name, gfile))
                 # Groups separated by GROUP_SEP string
@@ -1541,8 +1545,12 @@ class Language:
                         if line[1] == 't':
 #                            print("Each group translation has {}: {}".format(tp, addition))
                             transadd = tp, addition
+                            groupdefaults.append(transadd)
                         else:
                             sourceadd = addition
+                            groupdefaults.append(sourceadd)
+                if groupdefaults:
+                    self.group_defaults[grouptype] = groupdefaults
                 for group_spec in groups[1:]:
                     group_trans = group_spec.split('\n')
                     n = 0
@@ -1874,6 +1882,7 @@ class Language:
             self.group_keys[token].add(head)
         else:
             self.group_keys[token] = {head}
+        group.language = self
         self.changed = True
 
 #    def add_group_to_lexicon(self, head, group, features):

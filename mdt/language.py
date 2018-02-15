@@ -487,6 +487,13 @@ class Language:
         paths = [os.path.join(d, name + '.grp') for name in names]
         return [path for path in paths if os.path.exists(path)]
 
+    def get_cat_group_file(self, cat):
+        """Get the path for the group file for cat."""
+        d = self.get_group_dir()
+        path = os.path.join(d, cat + '.grp')
+        if os.path.exists(path):
+            return path
+
     def get_seg_file(self):
         """Pathname for file containing segmentable forms, e.g., del, they're."""
         d = self.get_lex_dir()
@@ -1588,12 +1595,22 @@ class Language:
                                     translations.append(tgroup)
                         target_groups.extend(translations)
                     # Creates the group and any target groups specified and adds them to self.groups
-                    Group.from_string(source_group, self, translations, target=target, trans=False)
+                    Group.from_string(source_group, self, translations, target=target, trans=False,
+                                      cat=grouptype)
 
         # Sort groups for each key by priority
         for key, groups in self.groups.items():
             if len(groups) > 1:
                 groups.sort(key=lambda g: g.priority(), reverse=True)
+
+    def write_group_defaults(self, cat, stream):
+        """Write the group defaults for category cat to stream."""
+        defaults = self.group_defaults.get(cat)
+        if defaults:
+            for default in defaults:
+                # Assumes translation default
+                tp, addition = default
+                print("+t {} {}".format(tp, addition), file=stream)
 
     def read_ms(self, target=None, verbosity=0):
         """Read in MorphoSyns for target from a .ms file. If target is not None (must be a language), read in translation groups

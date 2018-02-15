@@ -7,7 +7,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft (C) 2014, 2016, 2017 HLTDI, PLoGS <gasser@indiana.edu>
+#   Copyleft (C) 2014, 2016, 2017, 2018 HLTDI, PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -27,6 +27,7 @@
 # 2014.07.08
 # -- Created
 
+import unicodedata
 from sys import getsizeof, stderr
 from itertools import chain
 from collections import deque
@@ -34,6 +35,10 @@ try:
     from reprlib import repr
 except ImportError:
     pass
+
+def remove_control_characters(s):
+    """Returns string s with unicode control characters removed."""
+    return "".join(ch for ch in s if unicodedata.category(ch)[0]!="C")
 
 def allcombs(seqs):
     """Returns a list of all sequences consisting of one element from each of seqs.

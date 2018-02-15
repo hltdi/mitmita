@@ -7,7 +7,8 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2014, 2015, 2016, 2017 HLTDI and PLoGS <gasser@indiana.edu>
+#   Copyleft 2014, 2015, 2016, 2017, 2018
+#     HLTDI and PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -148,6 +149,7 @@
 # -- Got sentence initialization and solution to work with external tagger.
 
 import copy, re, random, itertools
+from .utils import remove_control_characters
 from .ui import *
 from .segment import *
 from iwqet.record import SentRecord
@@ -229,9 +231,15 @@ class Document(list):
     def __repr__(self):
         return "D[ {} ]D".format(self.id)
 
+    def preprocess(self):
+        """Preprocess the document text.
+        Remove Unicode control characters."""
+        self.text = remove_control_characters(self.text)
+
     def process(self, reinit=True, verbosity=0):
         """Use tokenize and split to generate tokenized sentences,
         or use the off-the-shelf tokenizer and tagger to do this."""
+        self.preprocess()
         self.process1(reinit=reinit, verbosity=verbosity)
         if self.biling:
             self.process1(target=True, reinit=reinit,verbosity=verbosity)

@@ -780,6 +780,16 @@ class Group(Entry):
                 group.write(file)
 
     @staticmethod
+    def rewrite_groups(language, cat, groups=None):
+        """Overwrite the groups file for cat with groups."""
+        path = language.get_cat_group_file(cat)
+        with open(path, 'w', encoding='utf8') as file:
+            # First write the defaults for this category
+            language.write_group_defaults(cat, file)
+            for group in groups:
+                group.write(file)
+
+    @staticmethod
     def get_cat_groups(language, cat, filt=None):
         """Return all groups in language with category cat that satisfy filter function."""
         cat_groups = []

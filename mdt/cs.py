@@ -1,5 +1,5 @@
 #   
-#   Mainumby: CS: what is needed to implement l3 style constraint satisfaction
+#   Mit'mit'a: CS: what is needed to implement l3 style constraint satisfaction
 #   using the lexicon/grammars created.
 #
 ########################################################################
@@ -8,7 +8,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2014, 2015, 2016 HLTDI and PLoGS <gasser@indiana.edu>
+#   Copyleft 2014, 2015, 2016, 2018 HLTDI and PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -110,9 +110,17 @@ class Solver:
             # Expand to next states if distributable
             if state.status == SearchState.distributable:
                 score = random.random() / 100.0
-                for attribs, next_state in self.distribute(state=state, verbosity=expand_verbosity):
+                if self.evaluator and n > 0:
+                    state.get_value(evaluator=self.evaluator, var_value=None)
+                for index (attribs, next_state) in enumerate(self.distribute(state=state, verbosity=expand_verbosity)):
                     if self.evaluator:
-                        val = next_state.get_value(evaluator=self.evaluator, var_value=attribs)
+                        if index == 0:
+                            # The 'a' branch with the promising selected variable and value; evaluate on the basis
+                            # of parent state (oldval)
+                            val = next_state.get_value(evaluator=self.evaluator, var_value=attribs)
+                        else:
+                            # The 'b' branch, excluding the promising value from the variable; use parent value
+                            val = state.value
                     else:
                         # If there's no evaluator function, just the order of states returned by distribute.
                         val = score
@@ -271,6 +279,7 @@ class SearchState:
         self.depth = depth
         self.status = SearchState.running
         self.verbosity = verbosity
+        self.value = 0.0
 
     def __repr__(self):
         return "<SS {}/{}>".format(self.name, self.depth)
@@ -278,10 +287,13 @@ class SearchState:
     def get_value(self, evaluator=None, var_value=None):
         """A measure of how promising this state is. Unless there is an explicit evaluator
         for the solver, by default, this is how many undetermined essential variables there are."""
+        par_value = self.parent.value if self.parent else 0.0
         if evaluator:
-            return evaluator(self.dstore, var_value)
+            return evaluator(self.dstore, var_value, par_value)
         else:
             return len(self.dstore.ess_undet)
+        self.value = value
+        return value
 
     def exit(self, result, verbosity=0):
         if result == Constraint.failed:

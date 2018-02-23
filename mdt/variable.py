@@ -1,13 +1,13 @@
 #   
-#   Mainumby variables and domain stores: required for constraint satisfaction.
+#   Mit'mit'a variables and domain stores: required for constraint satisfaction.
 #
 ########################################################################
 #
-#   This file is part of the HLTDI L^3 project
+#   This file is part of the PLoGS project
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyright (C) 2014, 2015, 2016 PLoGS <gasser@indiana.edu>
+#   Copyleft (C) 2014, 2015, 2016, 2018 PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -392,6 +392,9 @@ class Var:
                     self.set_upper_card(val_len, dstore=dstore)
                     if dstore and self in dstore.undetermined:
                         self.det_update(dstore)
+            else:
+                new_upper_card = len(new_upper)
+                self.set_upper_card(new_upper_card, dstore=dstore)
             return True
         return False
 

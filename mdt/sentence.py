@@ -180,7 +180,7 @@ class Document(list):
     # digits with intermediate characters (.,=></), which must be followed by one or more digits
     number_re = re.compile(r"([(\[{¡¿–—\"\'«“‘`*=]*)([\-+±$£€]?[\d]+[\d,.=></+\-±/×÷≤≥]*[\d]+[%¢°º]?)([)\]}!?\"\'»”’*\-–—,.:;]*)$")
     # separated punctuation, including some that might be separated by error
-    punc_re = re.compile(r"([\-–—&=.,:;\"+<>/?!]{1,3})$")
+    punc_re = re.compile(r"([\-–—&=.,:;\"+<>/?!%$]{1,3})$")
     # word of one character
     word1_re = re.compile(r"([(\[{¡¿\-–—\"\'«“‘`*=]*)(\w)([)\]}\"\'»”’*\-–—,:;=]*[?|.]?)$")
     # word of more than one character: one beginning character, one end character, 0 or more within characters;
@@ -1450,64 +1450,68 @@ class Sentence:
 #            varscore -= gnodes
 #        return varscore
 
-    def state_eval(self, dstore, var_value, group_size_wt=2):
+    def state_eval(self, dstore, var_value, par_val, verbosity=0):
         """Assign a score to the domain store based on how many snodes are covered and how large groups are.
         Changed 2015.09.24, adding second constraint and eliminating number of undetermined esssential variables.
         Changed 2016.07.13 to using groups and snodes to figure score, independent of the variable selected,
         only sn->gn variables if one is selected.
+        2018.2.22: massive changes (see mainumby).
         """
-        # No point in checking dstore since it's the same across states at time of evaluation
-        varscore = 0
-        undet = dstore.ess_undet
-        groups = self.variables['groups']
-        covered = self.variables['covered_snodes']
-        if covered in undet:
-            cu = covered.get_upper(dstore)
-            cl = covered.get_lower(dstore)
-            varscore -= len(cl)
-            varscore -= (len(cu) - len(cl)) / 2.0
-        else:
-            # covered variable is determined
-            varscore -= len(covered.get_value(dstore))
-        if groups in undet:
-            gu = groups.get_upper(dstore)
-            gl = groups.get_lower(dstore)
-            gnodes = 0
-            if gl:
-                for g in gl:
-                    group = self.groups[g]
-                    gnodes += group.ngnodes
-                gnodes /= len(gl)
-                varscore -= gnodes
-        else:
-            # groups variable is determined
-            gval = groups.get_value(dstore)
-            if gval:
-                gnodes = 0
-                for g in gval:
-                    group = self.groups[g]
-                    gnodes += group.ngnodes
-                gnodes /= len(gval)
-                varscore -= gnodes
-        if var_value:
+        score = 0.0
+        if par_val and var_value:
+            if verbosity:
+                print("Evaluating dstore {} from parent {} and var/val {}".format(dstore, par_val, var_value))
+            # Don't calculate the whole score; just update the parent's score on the basis of the variable and value
+            # (this is done for the ...a branch in distribution).
+            score = par_val
             variable, value = var_value
             typ = Sentence.get_var_type(variable)
-            if typ == 'sn->gn':
-                # sn->gn variables are good to the extent they point to gnodes in large groups
-                # and have lower indices (because preferred interpretations are earlier)
-                if value:
-                    for gni in value:
-                        gn = self.gnodes[gni]
-                        varscore -= gn.ginst.ngnodes
-                    varscore /= len(value)
+            if typ == 'groups':
+                # Subtract half of the number of gnodes in the group that is the single member of the value set
+                group = self.groups[list(value)[0]]
+                score -= (group.ngnodes - 1) / 2.0
             elif typ == 'covered_snodes':
-                pass
-            elif typ == 'groups':
-                pass
+                score -= 1
+            elif typ == 'sn->gn':
+                # sn->gn variable value selected represents a cat gnode that is to be merged with
+                # a concrete node in another group
+                if value:
+                    score -= 0.5
+            else:
+                print("Something wrong: state eval variable {} is not of an acceptable type".format(variable))
+            score = round(score, 4)
+            if verbosity:
+                print("  Score: {}".format(score))
+            return score
+        # Otherwise calculate the whole value, based on three types of variables
+        # Essential undetermined variables
+        undet = dstore.ess_undet
+        gnodes = 0
+        nnodes = len(self.nodes)
+        if verbosity:
+            print("Evaluating dstore {}; undet: {}, var/value {}, parent val {}".format(dstore, undet, var_value, par_val))
+        ## $groups
+        # lower bound of $groups variable for sentence
+        gl = self.variables['groups'].get_lower(dstore)
+        # Number of gnodes for each group in $groups lower bound
+        gllengths = [self.groups[g].ngnodes for g in gl]
+        glbonus = sum([max(0, n-1) for n in gllengths]) / 2.0
+        ## $s2g variables for sentence nodes
+        s2gl = [v.get_lower(dstore) for v in [node.variables.get('gnodes') for node in self.nodes]]
+        s2glbonus = sum([(1 if len(s) == 2 else 0) for s in s2gl]) / 2.0
+        # $covered_snodes
+        cl = self.variables['covered_snodes'].get_lower(dstore)
+        cslower = len(cl)
+        csscore = nnodes - cslower
+        if verbosity:
+            print("  Uncovered nodes {}, groups {}, s2g {}".format(csscore, glbonus, s2glbonus))
+        score = csscore - glbonus - s2glbonus
         # Tie breaker
-        varscore += random.random() / 100.0
-#        print("Evaluating dstore {}; undet: {}, var/value {}, score {}".format(dstore, undet, var_value, varscore))
-        return varscore
+        score += random.random() / 100.0
+        score = round(score, 4)
+        if verbosity:
+            print("  Score: {}".format(score))
+        return score
 
     @staticmethod
     def get_var_type(variable):

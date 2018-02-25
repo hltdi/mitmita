@@ -891,7 +891,7 @@ class Sentence:
                 if verbosity:
                     print("  tagger tag {}, analyzer tag {}".format(tag, anal_pos))
                 if anal_pos and tag:
-                    if anal_pos == tag:
+                    if anal_pos == tag or self.language.postag_match(tag, anal_pos):
                         if verbosity:
                             print("  tagger and analyzer agree on {} for {}".format(tag, anal))
                         results1.append(anal)

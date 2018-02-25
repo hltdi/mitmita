@@ -174,7 +174,8 @@ class Language:
                  # end-of-sentence characters
                  eos=EOS,
                  # Added from morphology/language
-                 pos=None, cache=True):
+                 pos=None, cache=True,
+                 postags=None):
         """Initialize dictionaries and names."""
         self.name = name
         self.abbrev = abbrev
@@ -189,6 +190,8 @@ class Language:
         self.group_keys = {}
         # Explicit groups to load instead of default
         self.groupnames = groupnames
+        # Dict of POS tag conversions
+        self.postags = postags or {}
         # Candidate groups from training; added 2017.3.6
         self.cand_groups = {}
         self.ms = []
@@ -366,6 +369,12 @@ class Language:
 
     def get_num_patterns(self):
         return [p for p in self.pattern_list if '/num' in p[0]]
+
+    def postag_match(self, taggertag, morphotag):
+        """Does the POS tag from the tagger match the tag from the morphological analyzer?"""
+        if morphotag in self.postags:
+            return taggertag in self.postags[morphotag]
+        return False
 
     def find_numeral(self, words):
         """Determines whether the list of words begins with a numeral, either in the form of digits or words.
@@ -1732,6 +1741,7 @@ class Language:
                     subkey = subkey.strip()
                     if '|' in value:
                         value = value.split('|')
+                        value = [v for v in value if v]
                     subdct[subkey] = value
                     continue
                 if line[0] == '-':

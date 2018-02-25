@@ -325,8 +325,14 @@ class SNode:
 
     def is_unk(self):
         """Does this node have no analysis, no known category or POS?"""
+        if self.is_special():
+            return False
         a = self.get_analysis()
         return not (a.get('pos') or a.get('cats') or a.get('features'))
+
+    def is_special(self):
+        """Is this 'special' (for example, a number)?"""
+        return Entry.is_special(self.token)
 
     ## Create IVars and (set) Vars with sentence DS as root DS
 
@@ -441,108 +447,90 @@ class SNode:
         # If this is a punctuation node, it can't match a group item unless the item is also punctuation (not alphanum)
         if self.is_punc() and grp_item.isalnum():
             return False
-        if verbosity > 1:
-            print('   SNode {} with features {} trying to match item {} with features {}'.format(self, self.analyses, grp_item, grp_feats.__repr__()))
+        if verbosity > 1 or debug:
+            print('   SNode {} with features {}\n   trying to match item {} with features {}'.format(self, self.analyses, grp_item, grp_feats.__repr__()))
         # If item is a category, don't bother looking at token
         is_cat = Entry.is_cat(grp_item)
         is_spec = Entry.is_special(grp_item)
         if is_spec and Entry.is_special(self.token):
-#            print("Special entry {} for {}".format(grp_item, self.token))
+            if verbosity > 1 or debug:
+                print("Special entry {} for {}".format(grp_item, self.token))
             token_type = self.token.split('~')[0]
             if token_type.startswith(grp_item):
                 # Special group item matches node token (grp_item could be shorter than token_type)
                 return None
-        if not self.analyses:
-            # The node has no associated roots, cats, or features.
+        # Check whether the group item is really a set item (starting with '$$'); if so, drop the first '$' before matching
+        if is_cat and Entry.is_set(grp_item):
+            grp_item = grp_item[1:]
+        # If group token is not cat and there are no group features, check for perfect match
+        if not is_cat and not grp_feats:
             if self.token == grp_item:
-                if verbosity:
-                    print("    Non-cat token matches node token")
-                # Exact match between group and node tokens. SUCCEED with no features
+                if verbosity or debug:
+                    print("    Matches trivially")
                 return None
+        # Go through analyses, checking cat, root, and features (if any group features)
+        results = []
+        # 2018.2.23: updated to exclude case where SNode has no analyses; it always does
+        #  also nodes can match group category even if they don't have associated groups of their own
+        for analysis in self.analyses:
+            node_features = analysis.get('features')
+            node_cats = analysis.get('cats', [])
+            node_root = analysis.get('root', '')
+            node_roots = None
+            if verbosity > 1 or debug:
+                print("    Trying to match analysis: {}/{}/{} against group {}".format(node_root, node_cats, node_features.__repr__(), grp_item))
+            if '_' in node_root: # and not SolSeg.special_re.match(node_root):
+                # Numbers and other special tokens also contain '_'
+                node_roots = []
+                # An ambiguous root in analysis, for example, ser|ir in Spa
+                r, p = node_root.split('_')
+                for rr in r.split('|'):
+                    node_roots.append(rr + '_' + p)
+            # Match group token
+            if is_cat:
+                if grp_item in node_cats:
+                    if verbosity > 1 or debug:
+                        print("      Succeeding for cat {}".format(grp_item))
+                else:
+                    # Fail because the group category item doesn't match the node categories
+                    if verbosity > 1 or debug:
+                        print("      Failing because group cat item doesn't match node cats")
+                    continue
             else:
-                # All other cases fail because root or cat matches require node features
-                return False
-        else:
-            # Check whether a group item is really a set item (starting with '$$'); if so, drop the first '$' before matching
-            if is_cat and Entry.is_set(grp_item):
-                grp_item = grp_item[1:]
-            # If group token is not cat and there are no group features, check for perfect match
-            if not is_cat and not grp_feats:
-                if self.token == grp_item:
-                    if verbosity:
-                        print("    Matches trivially")
-                    return None
-            # Go through analyses, checking cat, root, and features (if any group features)
-            results = []
-            for analysis in self.analyses:
-                node_features = analysis.get('features')
-                node_cats = analysis.get('cats', [])
-                node_root = analysis.get('root', '')
-                node_roots = None
-                if verbosity > 1:
-                    print("    Trying to match analysis: {}/{}/{} against group {}".format(node_root, node_cats, node_features.__repr__(), grp_item))
-                if '_' in node_root: # and not SolSeg.special_re.match(node_root):
-                    # Numbers and other special tokens also contain '_'
-                    node_roots = []
-                    # An ambiguous root in analysis, for example, ser|ir in Spa
-#                    node_root_split = node_root.split('_')
-#                    if len(node_root_split) != 2:
-#                        print("Something wrong with node root {}".format(node_root))
-                    r, p = node_root.split('_')
-                    for rr in r.split('|'):
-                        node_roots.append(rr + '_' + p)
-                # Match group token
-                if is_cat:
-                    if grp_item in node_cats:
-                        # The category matches, but is there a group entry for the node's root
-                        item_groups = self.sentence.language.groups.get(node_root)
-                        if item_groups:
-                            if not any([len(g.tokens) == 1 for g in item_groups]):
-#                                print("Failing because there is no one-token entry for {}".format(node_root))
-                                continue
-                        else:
-#                            print("Failing because there's no group entry for {}".format(node_root))
-                            continue
+                # Not a category, has to match the root
+                if node_roots:
+                    m = firsttrue(lambda x: x == grp_item, node_roots)
+                    if m:
+                        node_root = m
                     else:
-                        # Fail because the group category item doesn't match the node categories
                         continue
-                else:
-                    # Not a category, has to match the root
-                    if node_roots:
-                        m = firsttrue(lambda x: x == grp_item, node_roots)
-                        if m:
-                            node_root = m
-                        else:
-                            continue
-                    elif grp_item != node_root:
-                        continue
-                # Match features if there are any
-                if node_features:
-                    if grp_feats:
-                        # 2015.7.5: strict option added to force True feature in grp_features
-                        # to be present in node_features, e.g., for Spanish reflexive
-                        if verbosity > 1:
-                            print("    Unifying n feats {} ({}) with g feats {} ({})".format(node_features, type(node_features), grp_feats.__repr__(), type(grp_feats)))
-                        nfeattype = type(node_features)
-                        if nfeattype == FSSet:
-                            u_features = node_features.unify_FS(grp_feats, strict=True, verbose=verbosity>1)
-#                            if verbosity > 1:
-#                                print("     Result of unification: {}, type {}".format(u_features, type(u_features)))
-                        else:
-                            u_features = simple_unify(node_features, grp_feats, strict=True)
-                        if u_features != 'fail':
-                            # SUCCEED: matched token and features
-                            results.append((node_root, u_features))
+                elif grp_item != node_root:
+                    continue
+            # Match features if there are any
+            if node_features:
+                if grp_feats:
+                    # 2015.7.5: strict option added to force True feature in grp_features
+                    # to be present in node_features, e.g., for Spanish reflexive
+                    if verbosity > 1 or debug:
+                        print("    Unifying n feats {} ({}) with g feats {} ({})".format(node_features, type(node_features), grp_feats.__repr__(), type(grp_feats)))
+                    nfeattype = type(node_features)
+                    if nfeattype == FSSet:
+                        u_features = node_features.unify_FS(grp_feats, strict=True, verbose=verbosity>1)
                     else:
-                        # SUCCEED: matched token and no group features to match
-                        results.append((node_root, node_features))
+                        u_features = simple_unify(node_features, grp_feats, strict=True)
+                    if u_features != 'fail':
+                        # SUCCEED: matched token and features
+                        results.append((node_root, u_features))
                 else:
-                    # SUCCEED: group has features but node doesn't
-                    results.append((grp_item, grp_feats))
-            if results:
-                if verbosity > 1:
-                    print("  Returning match results: {}".format(results))
-                return results
+                    # SUCCEED: matched token and no group features to match
+                    results.append((node_root, node_features))
+            else:
+                # SUCCEED: group has features but node doesn't
+                results.append((grp_item, grp_feats))
+        if results:
+            if verbosity > 1 or debug:
+                print("  Returning match results: {}".format(results))
+            return results
         return False
 
 class GInst:

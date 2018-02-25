@@ -120,7 +120,7 @@ class Solver:
                             val = next_state.get_value(evaluator=self.evaluator, var_value=attribs)
                         else:
                             # The 'b' branch, excluding the promising value from the variable; use parent value
-                            val = state.value
+                            val = state.value + random.random() / 100.0
                     else:
                         # If there's no evaluator function, just the order of states returned by distribute.
                         val = score

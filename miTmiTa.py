@@ -48,19 +48,19 @@ def document(text, process=True):
     d = iwqet.Document(e, a, text=text, proc=process)
     return d
 
-def sentence(sentence, ambig=False, solve=True, user=None, segment=True, verbosity=0):
+def sentence(sentence, ambig=False, solve=True, user=None, segment=True,
+             max_sols=1, verbosity=0):
     e, a = load_ea()
     session = iwqet.start(e, a, user)
     d = iwqet.Document(e, a, sentence, True, session=session)
     s = d[0]
     s.initialize(ambig=ambig, verbosity=verbosity)
     if solve or segment:
-        s.solve(all_sols=ambig)
+        s.solve(all_sols=ambig or max_sols>1, max_sols=max_sols)
         if s.solutions and segment:
             solution = s.solutions[0]
             solution.get_segs()
         output_sols(s)
-        return s
     return s
 
 def generate(language, stem, feats=None, pos='v'):

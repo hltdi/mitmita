@@ -512,7 +512,7 @@ class Sentence:
             self.tokens = None
         self.original = original
         # List of booleans, same length as self.tokens specifying whether the raw token was upper case
-        self.isupper = []
+#        self.isupper = []
         # Source language: a language object
         self.language = language
         # External tagger if there is one
@@ -677,29 +677,29 @@ class Sentence:
                 self.tokens[index] = token
 
     def join_lex(self, verbosity=0):
-        """Combine tokens into units for numerals (and other things?)."""
+        """Combine tokens into units for numerals and names."""
         tokens = []
         tok_position = 0
-        num_found = False
+        spec_found = False
         # Handle numeral word sequences
         while tok_position < len(self.tokens):
-            num = self.language.find_numeral(self.tokens[tok_position:])
-            if num:
-#                print("NUM {}".format(num))
-                num_tokens, is_dig = num
-                num_found = True
-                prefix = "%ND~" if is_dig else "%N~"
-                tokens.append(prefix + '~'.join(num_tokens))
-                tok_position += len(num_tokens)
+            spec = self.language.find_special(self.tokens[tok_position:])
+#            num = self.language.find_numeral(self.tokens[tok_position:])
+            if spec:
+#                print("SPEC {}".format(spec))
+                newtokens, prefix = spec
+                spec_found = True
+                prefix = "%{}~".format(prefix)
+                tokens.append(prefix + '~'.join(newtokens))
+                tok_position += len(newtokens)
             else:
                 tokens.append(self.tokens[tok_position])
                 tok_position += 1
-        if num_found:
+        if spec_found:
             self.tokens = tokens
         # Join other phrases (stored in the tree self.language.join)
         if self.language.join:
             joined = Sentence.join_from_tree(self.tokens, self.language.join)
-            print("Joined tokens: {}".format(joined))
             self.tokens = joined
 
     @staticmethod
@@ -767,18 +767,22 @@ class Sentence:
         """Make capitalized tokens lowercase.
         2016.05.08: only do this for the first word.
         2017.03.19: do it for all words but keep a record of raw capitalization in self.isupper.
+        2018.02.15: do this only for the first word, unless a word is uppercase.
+        Still need to figure out what to do for words that are capitalized by convention within
+        sentences, for example, at the beginning of quotations.
         """
+        first_word = True
         for index, token in enumerate(self.tokens):
-            # Capitalized and uppercase words not distinguished
-            if token[0].isupper():
+            if first_word:
+                first_char = token[0]
+                if not self.language.is_punc(first_char):
+                    if self.language.is_known(token.lower()):
+                        self.tokens[index] = token.lower()
+                    # Otherwise this is a name, so keep it capitalized
+                    first_word = False
+            elif token.isupper():
+                # Lowercase words other than the first one if they're all uppercase
                 self.tokens[index] = token.lower()
-                self.isupper.append(True)
-            else:
-                self.isupper.append(False)
-#        # There may be initial punctuation.
-#        if self.language.is_punc(self.tokens[0]):
-#            self.tokens[1] = self.tokens[1].lower()
-#        self.tokens[0] = self.tokens[0].lower()
 
     def preprocess(self, verbosity=0):
         """Segment contractions, join numerals, lowercase first word, normalize orthography and punctuation.
@@ -1460,7 +1464,7 @@ class Sentence:
         score = 0.0
         if par_val and var_value:
             if verbosity:
-                print("Evaluating dstore {} from parent {} and var/val {}".format(dstore, par_val, var_value))
+                print("  Evaluating dstore {} from parent {} and var/val {}".format(dstore, par_val, var_value))
             # Don't calculate the whole score; just update the parent's score on the basis of the variable and value
             # (this is done for the ...a branch in distribution).
             score = par_val
@@ -1489,7 +1493,7 @@ class Sentence:
         gnodes = 0
         nnodes = len(self.nodes)
         if verbosity:
-            print("Evaluating dstore {}; undet: {}, var/value {}, parent val {}".format(dstore, undet, var_value, par_val))
+            print("  Evaluating dstore {}; undet: {}, var/value {}, parent val {}".format(dstore, undet, var_value, par_val))
         ## $groups
         # lower bound of $groups variable for sentence
         gl = self.variables['groups'].get_lower(dstore)

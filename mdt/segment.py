@@ -441,7 +441,7 @@ class SNode:
         # None matched
         return False
 
-    def match(self, grp_item, grp_feats, verbosity=0):
+    def match(self, grp_item, grp_feats, verbosity=0, debug=False):
         """Does this node match the group item (word, root, category) and
         any features associated with it?"""
         # If this is a punctuation node, it can't match a group item unless the item is also punctuation (not alphanum)

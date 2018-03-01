@@ -4,6 +4,7 @@ source: True
 target: True
 #exttag: nltk|eng
 exttag: spacy|en
+wordjoin: and,de,of
 lemmas: True
 pos:
    VERB::v

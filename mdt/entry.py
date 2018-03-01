@@ -295,6 +295,8 @@ class Group(Entry):
             
         name = name or Group.make_name(tokens)
         Entry.__init__(self, name, language, trans=trans, comment=comment)
+        # POS, 'misc', or other
+        self.cat = cat
         # The string in a .grp file encoding this Group
         self.string = string
         # The "type" (POS, misc, or other)
@@ -555,7 +557,7 @@ class Group(Entry):
 
     @staticmethod
     def from_string(string, language, trans_strings=None, target=None, trans=False, n_src_tokens=1,
-                    tstrings=None):
+                    tstrings=None, cat=''):
         """Convert a group string and possibly a set of translation group strings
         to one or more groups."""
 #        print("Creating group from {} and trans strings {} [trans={}]".format(string, trans_strings, trans))

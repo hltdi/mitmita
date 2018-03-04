@@ -767,22 +767,24 @@ class Sentence:
         """Make capitalized tokens lowercase.
         2016.05.08: only do this for the first word.
         2017.03.19: do it for all words but keep a record of raw capitalization in self.isupper.
-        2018.02.15: do this only for the first word, unless a word is uppercase.
-        Still need to figure out what to do for words that are capitalized by convention within
-        sentences, for example, at the beginning of quotations.
+        This doesn't work as in Mainumby because of how spacy does morphology and tagging,
+        so everything is lowercased.
         """
-        first_word = True
         for index, token in enumerate(self.tokens):
-            if first_word:
-                first_char = token[0]
-                if not self.language.is_punc(first_char):
-                    if self.language.is_known(token.lower()):
-                        self.tokens[index] = token.lower()
-                    # Otherwise this is a name, so keep it capitalized
-                    first_word = False
-            elif token.isupper():
-                # Lowercase words other than the first one if they're all uppercase
-                self.tokens[index] = token.lower()
+            self.tokens[index] = token.lower()
+#        first_word = True
+#        for index, (token, anals) in enumerate(zip(self.tokens, self.analyses)):
+#            if first_word:
+#                print("Checking first word {}, anals {}".format(token, anals))
+#                first_char = token[0]
+#                if not self.language.is_punc(first_char):
+#                    if self.language.is_known(token.lower()):
+#                        self.tokens[index] = token.lower()
+#                    # Otherwise this is a name, so keep it capitalized
+#                    first_word = False
+#            elif token.isupper():
+#                # Lowercase words other than the first one if they're all uppercase
+#                self.tokens[index] = token.lower()
 
     def preprocess(self, verbosity=0):
         """Segment contractions, join numerals, lowercase first word, normalize orthography and punctuation.
@@ -841,7 +843,6 @@ class Sentence:
             # sentence was created.
             if self.analyses:
                 self.lowercase()
-#                print("ANALYSES already exist: {}".format(self.analyses))
             else:
                 tagged = None
                 # Split at spaces by default.
@@ -1804,148 +1805,7 @@ class Solution:
         for g in self.ginsts:
             g.display(word_width=word_width, s2gnodes=self.s2gnodes)
 
-    def get_ttrans_outputs(self):
-        """Return a list of (snode_indices, translation_strings, source group name, source merger groups) for the solution's
-        tree translations."""
-        if not self.ttrans_outputs:
-            self.ttrans_outputs = []
-            last_indices = [-1]
-            for tt in self.treetranss:
-                if not tt.output_strings:
-                    continue
-                trggroups = tt.ordered_tgroups
-                indices = tt.snode_indices
-                raw_indices = []
-                for index in indices:
-                    node = self.sentence.nodes[index]
-                    raw1 = node.raw_indices
-                    raw_indices.extend(raw1)
-                raw_indices.sort()
-                self.ttrans_outputs.append([raw_indices, tt.output_strings, tt.ginst.group.name, tt.get_merger_groups(), trggroups])
-                last_indices = raw_indices
-        return self.ttrans_outputs
-
-    def get_ttrans_alignment(self):
-        """Return a list of (snode_indices, snode_words, snode_root, translation_strings, translation roots) for the solution's
-        tree translations."""
-        def get_trans_root(translations):
-            ttt = set()
-            for trans1 in translations:
-                for trans2 in trans1[1]:
-                    troot = trans2[1]
-                    if '$' not in troot:
-                        ttt.add(troot)
-            return ttt
-        ttrans_align = []
-        last_indices = [-1]
-        tokens = self.sentence.tokens
-        for tt in self.treetranss:
-            if not tt.output_strings:
-                continue
-            indices = tt.snode_indices
-            raw_indices = []
-            stokens = []
-            ginst = tt.ginst
-            group = ginst.group
-            translations = get_trans_root(ginst.translations)
-            subtt = tt.subTTs
-            if subtt:
-                subtt = [get_trans_root(st.ginst.translations) for st in subtt]
-            merger = tt.get_merger_roots()
-            for index in indices:
-                node = self.sentence.nodes[index]
-                raw1 = node.raw_indices
-                raw_indices.extend(raw1)
-                stokens.extend([tokens[i] for i in raw1])
-            raw_indices.sort()
-            ttrans_align.append([raw_indices, stokens, group.head, tt.output_strings, subtt, translations])
-            last_indices = raw_indices
-        return ttrans_align
-
-    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None, indices_covered=None):
-        '''Set one or more segments for a sequence of untranslatable tokens. Ignore indices that are already covered by translated segments.'''
-        stok_groups = []
-        stoks = []
-        index = end_index + 1
-        included_tokens = []
-        for stok in src_tokens:
-            if index in indices_covered:
-                if stoks:
-                    stok_groups.append(stoks)
-                    stoks = []
-            elif stok[0] == '%' or self.source.is_punc(stok[0]):
-                # Special token or punctuation; it should have its own segment
-                if stoks:
-                    stok_groups.append(stoks)
-                    stoks = []
-                stok_groups.append([stok])
-                included_tokens.append(stok)
-            else:
-                stoks.append(stok)
-                included_tokens.append(stok)
-            index += 1
-        if stoks:
-            stok_groups.append(stoks)
-        i0 = end_index+1
-        for stok_group in stok_groups:
-            is_punc = len(stok_group) == 1 and self.source.is_punc(stok_group[0])
-            if is_punc:
-                # Convert punctuation in source to punctuation in target if there is a mapping.
-                translation = [self.target.punc_postproc(stok_group[0])]
-            else:
-                translation = []
-            start = i0
-            end = i0+len(stok_group)-1
-            seg = SolSeg(self, (start, end), translation, stok_group, session=self.session, gname=gname,
-                         merger_groups=merger_groups, is_punc=is_punc)
-            print("Segment (untranslated) {}->{}: {}".format(start, end, included_tokens))
-            self.segments.append(seg)
-            i0 += len(stok_group)
-
-    def get_segs(self, html=True):
-        """Set the segments (instances of SolSegment) for the solution, including their translations."""
-        tt = self.get_ttrans_outputs()
-        end_index = -1
-        max_index = -1
-        tokens = self.sentence.tokens
-        indices_covered = []
-        for raw_indices, forms, gname, merger_groups, tgroups in tt:
-            late = False
-            start, end = raw_indices[0], raw_indices[-1]
-            if start > max_index+1:
-                # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
-                src_tokens = tokens[end_index+1:start]
-                self.get_untrans_segs(src_tokens, end_index, gname=gname,
-                                      merger_groups=merger_groups, indices_covered=indices_covered)
-            if start < max_index:
-                # There's a gap between the portions of the segment
-                late = True
-            # There may be gaps in the source tokens for a group; fill these with ...
-            src_tokens = [(tokens[i] if i in raw_indices else '...') for i in range(start, end+1)]
-            if late:
-                src_tokens[0] = "←" + src_tokens[0]
-            seg = SolSeg(self, raw_indices, forms, src_tokens, session=self.session, gname=gname,
-                         merger_groups=merger_groups, tgroups=tgroups)
-            print("Segment (translated) {}->{}: {}={}".format(start, end, src_tokens, forms))
-            self.segments.append(seg)
-            indices_covered.extend(raw_indices)
-#            print(" Indices covered: {}".format(indices_covered))
-            max_index = max(max_index, end)
-            end_index = end
-        if max_index+1 < len(tokens):
-            # Some word(s) at end not translated; use source forms
-            src_tokens = tokens[max_index+1:len(tokens)]
-            self.get_untrans_segs(src_tokens, max_index, gname=gname, merger_groups=merger_groups,
-                                  indices_covered=indices_covered)
-        if html:
-            self.seg_html()
-
-    def seg_html(self):
-        for i, segment in enumerate(self.segments):
-            segment.set_html(i)
-
-    def get_seg_html(self):
-        return [segment.html for segment in self.segments]
+    ## Creating translations
 
     def translate(self, verbosity=0, all_trans=False, interactive=False):
         """Do everything you need to create the translation."""
@@ -2118,3 +1978,147 @@ class Solution:
                         continue
                     if not interactive or not input('SEARCH FOR ANOTHER TRANSLATION FOR {}? [yes/NO] '.format(tt)):
                         break
+
+    def get_ttrans_outputs(self):
+        """Return a list of (snode_indices, translation_strings, source group name, source merger groups) for the solution's
+        tree translations."""
+        if not self.ttrans_outputs:
+            self.ttrans_outputs = []
+            last_indices = [-1]
+            for tt in self.treetranss:
+                if not tt.output_strings:
+                    continue
+                trggroups = tt.ordered_tgroups
+                indices = tt.snode_indices
+                raw_indices = []
+                for index in indices:
+                    node = self.sentence.nodes[index]
+                    raw1 = node.raw_indices
+                    raw_indices.extend(raw1)
+                raw_indices.sort()
+                self.ttrans_outputs.append([raw_indices, tt.output_strings, tt.ginst.group.name, tt.get_merger_groups(), trggroups])
+                last_indices = raw_indices
+        return self.ttrans_outputs
+
+#    def get_ttrans_alignment(self):
+#        """Return a list of (snode_indices, snode_words, snode_root, translation_strings, translation roots) for the solution's
+#        tree translations."""
+#        def get_trans_root(translations):
+#            ttt = set()
+#            for trans1 in translations:
+#                for trans2 in trans1[1]:
+#                    troot = trans2[1]
+#                    if '$' not in troot:
+#                        ttt.add(troot)
+#            return ttt
+#        ttrans_align = []
+#        last_indices = [-1]
+#        tokens = self.sentence.tokens
+#        for tt in self.treetranss:
+#            if not tt.output_strings:
+#                continue
+#            indices = tt.snode_indices
+#            raw_indices = []
+#            stokens = []
+#            ginst = tt.ginst
+#            group = ginst.group
+#            translations = get_trans_root(ginst.translations)
+#            subtt = tt.subTTs
+#            if subtt:
+#                subtt = [get_trans_root(st.ginst.translations) for st in subtt]
+#            merger = tt.get_merger_roots()
+#            for index in indices:
+#                node = self.sentence.nodes[index]
+#                raw1 = node.raw_indices
+#                raw_indices.extend(raw1)
+#                stokens.extend([tokens[i] for i in raw1])
+#            raw_indices.sort()
+#            ttrans_align.append([raw_indices, stokens, group.head, tt.output_strings, subtt, translations])
+#            last_indices = raw_indices
+#        return ttrans_align
+
+    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None, indices_covered=None):
+        '''Set one or more segments for a sequence of untranslatable tokens. Ignore indices that are already covered by translated segments.'''
+        stok_groups = []
+        stoks = []
+        index = end_index + 1
+        included_tokens = []
+        for stok in src_tokens:
+            if index in indices_covered:
+                if stoks:
+                    stok_groups.append(stoks)
+                    stoks = []
+            elif stok[0] == '%' or self.source.is_punc(stok[0]):
+                # Special token or punctuation; it should have its own segment
+                if stoks:
+                    stok_groups.append(stoks)
+                    stoks = []
+                stok_groups.append([stok])
+                included_tokens.append(stok)
+            else:
+                stoks.append(stok)
+                included_tokens.append(stok)
+            index += 1
+        if stoks:
+            stok_groups.append(stoks)
+        i0 = end_index+1
+        for stok_group in stok_groups:
+            is_punc = len(stok_group) == 1 and self.source.is_punc(stok_group[0])
+            if is_punc:
+                # Convert punctuation in source to punctuation in target if there is a mapping.
+                translation = [self.target.punc_postproc(stok_group[0])]
+            else:
+                translation = []
+            start = i0
+            end = i0+len(stok_group)-1
+            seg = SolSeg(self, (start, end), translation, stok_group, session=self.session, gname=gname,
+                         merger_groups=merger_groups, is_punc=is_punc)
+            print("Segment (untranslated) {}->{}: {}".format(start, end, included_tokens))
+            self.segments.append(seg)
+            i0 += len(stok_group)
+
+    def get_segs(self, html=True):
+        """Set the segments (instances of SolSegment) for the solution, including their translations."""
+        tt = self.get_ttrans_outputs()
+        end_index = -1
+        max_index = -1
+        tokens = self.sentence.tokens
+        indices_covered = []
+        for raw_indices, forms, gname, merger_groups, tgroups in tt:
+            late = False
+            start, end = raw_indices[0], raw_indices[-1]
+            if start > max_index+1:
+                # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
+                src_tokens = tokens[end_index+1:start]
+                self.get_untrans_segs(src_tokens, end_index, gname=gname,
+                                      merger_groups=merger_groups, indices_covered=indices_covered)
+            if start < max_index:
+                # There's a gap between the portions of the segment
+                late = True
+            # There may be gaps in the source tokens for a group; fill these with ...
+            src_tokens = [(tokens[i] if i in raw_indices else '...') for i in range(start, end+1)]
+            if late:
+                src_tokens[0] = "←" + src_tokens[0]
+            seg = SolSeg(self, raw_indices, forms, src_tokens, session=self.session, gname=gname,
+                         merger_groups=merger_groups, tgroups=tgroups)
+            print("Segment (translated) {}->{}: {}={}".format(start, end, src_tokens, forms))
+            self.segments.append(seg)
+            indices_covered.extend(raw_indices)
+#            print(" Indices covered: {}".format(indices_covered))
+            max_index = max(max_index, end)
+            end_index = end
+        if max_index+1 < len(tokens):
+            # Some word(s) at end not translated; use source forms
+            src_tokens = tokens[max_index+1:len(tokens)]
+            self.get_untrans_segs(src_tokens, max_index, gname=gname, merger_groups=merger_groups,
+                                  indices_covered=indices_covered)
+        if html:
+            self.seg_html()
+
+    def seg_html(self):
+        for i, segment in enumerate(self.segments):
+            segment.set_html(i)
+
+    def get_seg_html(self):
+        return [segment.html for segment in self.segments]
+

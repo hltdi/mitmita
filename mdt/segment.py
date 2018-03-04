@@ -92,6 +92,7 @@ class SolSeg:
         self.any_choices = any(['|' in t for t in translation])
         # For each translation alternative, separate words, each of which can have alternatives (separated by '|').
         self.translation = [t.split() for t in translation]
+        self.cleaned_trans = None
         self.tokens = tokens
         self.token_str = ' '.join(tokens)
         self.raw_token_str = self.token_str[:]
@@ -105,6 +106,8 @@ class SolSeg:
                 spec_trans = self.source.translate_special(tokens[0])
                 if spec_trans:
                     self.translation = [[spec_trans]]
+        if not self.cleaned_trans:
+            self.cleaned_trans = self.translation
         self.color = color
         # Whether this segment is just punctuation
         self.is_punc = is_punc
@@ -133,6 +136,13 @@ class SolSeg:
         """Remove special prefixes, for example, '%ND_'."""
         if '%' in string:
             string = ''.join(SolSeg.special_re.split(string))
+        return string
+    
+    @staticmethod
+    def clean_spec(string):
+        """Remove special prefixes and connecting characters."""
+        string = SolSeg.remove_spec_pre(string)
+        string = string.replace('_', ' ').replace('~', ' ')
         return string
     
     def make_record(self, session=None, sentence=None):
@@ -165,7 +175,7 @@ class SolSeg:
             transhtml += '</table>'
             self.html = (tokens, self.color, transhtml, index)
             return
-        for tindex, (t, tgroups) in enumerate(zip(self.translation, self.tgroups)):
+        for tindex, (t, tgroups) in enumerate(zip(self.cleaned_trans, self.tgroups)):
             print("{} setting HTML for {}: {}".format(self, tindex, t))
             # Create all combinations of word sequences
             tg_expanded = []
@@ -209,28 +219,16 @@ class SolSeg:
                 choice_list.append(tchoice)
             transhtml += '</tr>'
         if self.translation:
-            # Add other translation button
-            # Button to translate as source language
-            transhtml += '<tr><td class="source">'
-            transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
-            # Button for the user's own translation
-#            transhtml += '<tr><td class="other">'
-#            transhtml += '<input type="radio" name="choice" id="other" value="other">other translation (enter below)</td></tr>'
-            # Remove special prefixes
-            transhtml = SolSeg.remove_spec_pre(transhtml)
-            transhtml = transhtml.replace('_', ' ')
-            transhtml = transhtml.replace('~', ' ')
+            if self.cleaned_trans[0][0] != tokens:
+                # Add other translation button
+                # Button to translate as source language
+                transhtml += '<tr><td class="source">'
+                transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
         else:
             # No translations suggested: checkbox for translating as source only
             # Button to translate as source language; the only button
             transhtml += '<tr><td class="source">'
             transhtml += '<input type="checkbox" name="choice" id={} value="{}" checked>{}</td></tr>'.format(tokens, tokens, tokens)
-            # Add other translation button
-#            transhtml += '<tr><td class="other">'
-#            transhtml += '<input type="radio" name="choice" id="other" value="other" checked>other translation (enter below)</td></tr>'
-            # Remove special prefixes
-            transhtml = SolSeg.remove_spec_pre(transhtml)
-            transhtml = transhtml.replace('_', ' ')
         transhtml += '</table>'
         # Capitalize tokens if in first place        
         if index==0:
@@ -289,7 +287,6 @@ class SNode:
         self.sentence = sentence
         # Raw sentence tokens associated with this SNode
 #        print("Tokens {}".format(sentence.tokens))
-#        print("Raw indices {}".format(self.raw_indices))
         self.raw_tokens = [sentence.tokens[i] for i in self.raw_indices]
         # Any deleted tokens to the left or right of the SNode token
         self.left_delete = None
@@ -542,6 +539,7 @@ class GInst:
         # The Group object that this "instantiates"
         self.group = group
         self.sentence = sentence
+        self.source = sentence.language
         self.target = sentence.target
         # Index of group within the sentence
         self.index = index
@@ -553,23 +551,19 @@ class GInst:
         ghead_index = group.head_index
         for index, sntups in enumerate(snode_indices):
             # sntups is a list of snindex, match features, token, create? tuples
-#            print(" SNTups {}".format(sntups))
             deleted = False
             for snindex, match, token, create in sntups:
                 if not create:
-#                    print("token {} doesn't match its snode token".format(token))
                     deleted = True
                     break
             if deleted:
                 # If this is before where the head should be, decrement that index
                 if index <= ghead_index:
                     ghead_index -= 1
-#                print("Ghead index decremented to {}".format(ghead_index))
                 # Increment index so indices correspond to raw group tokens
                 continue
             else:
                 self.nodes.append(GNode(self, index, sntups))
-#        self.nodes = [GNode(self, index, indices) for index, indices in enumerate(snode_indices)]
         # The GNode that is the head of this GInst
         if ghead_index > len(self.nodes) - 1:
             print("Problem instantiating {} for {}; head index {}".format(group, self.nodes, ghead_index))
@@ -738,6 +732,7 @@ class GInst:
 #            for gn_index, gnode in enumerate(self.nodes):
             for gnode in self.nodes:
                 gn_index = gnode.index
+                gn_token = gnode.token
 #                print(" tgroup {}, gnode {}, gn_index {}".format(tgroup, gnode, gn_index))
                 # Align gnodes with target tokens and features
                 targ_index = alignment[gn_index]
@@ -754,7 +749,11 @@ class GInst:
 #                        print(" s2t_dict agrs {}, tindex {}, stagr {}".format(agrs, tindex, stagr))
 #                    agrs = s2t_dict['agr'][targ_index]
                         agrs = stagr
-                token = tokens[targ_index]
+                if gnode.special:
+                    spec_trans = self.source.translate_special(gn_token)
+                    token = spec_trans
+                else:
+                    token = tokens[targ_index]
                 feats = features[targ_index] if features else None
                 gnodes.append((gnode, token, feats, agrs, targ_index))
 #            print("Gnodes: {}".format(gnodes))
@@ -771,6 +770,7 @@ class GNode:
         self.sentence = ginst.sentence
         self.snode_indices = [s[0] for s in snodes]
         self.snode_anal = [s[1] for s in snodes]
+        self.snode_tokens = [s[2] for s in snodes]
         # Whether this is the head of the group
         self.head = index == ginst.group.head_index
         # Group word, etc. associated with this node

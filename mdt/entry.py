@@ -513,14 +513,14 @@ class Group(Entry):
                     if verbosity > 1 or self.debug:
                         print('  Node {} match {}:{}, {}:: {}'.format(node, token, index, feats, node_match))
                     if node_match != False:
-#                        if Group.is_cat(token):
-#                            print("Node {} matched cat token {}".format(node, token))
                         if not iscat and not last_cat and index > 0 and last_sindex >= 0 and nodegap:
-#                            snode_start - last_sindex != 1:
                             if verbosity or self.debug:
                                 fstring = " Group token {} in sentence position {} doesn't follow last token at {}"
                                 print(fstring.format(token, snode_indices, last_sindex))
                             return False
+                        if Entry.is_special(token):
+                            # For special tokens, use the original (marked up) source item
+                            token = node.token
                         match_snodes1.append((node.index, node_match, token, True))
                         if iscat:
                             last_cat = True

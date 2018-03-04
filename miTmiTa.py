@@ -8,7 +8,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2014, 2015, 2016, 2017; HLTDI, PLoGS <gasser@indiana.edu>
+#   Copyleft 2014, 2015, 2016, 2017, 2018; HLTDI, PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -35,7 +35,7 @@ import iwqet
 
 ## shortcuts
 
-def load_ea(train=False):
+def load(train=False):
     eng, amh = iwqet.load('eng', 'amh')
     return eng, amh
 
@@ -43,14 +43,14 @@ def document(text, process=True):
     e = iwqet.Language.languages.get('eng')
     a = iwqet.Language.languages.get('amh')
     if not e:
-        e, a = load_ea()
+        e, a = load()
 #        e = load1()
     d = iwqet.Document(e, a, text=text, proc=process)
     return d
 
 def sentence(sentence, ambig=False, solve=True, user=None, segment=True,
              max_sols=1, verbosity=0):
-    e, a = load_ea()
+    e, a = load()
     session = iwqet.start(e, a, user)
     d = iwqet.Document(e, a, sentence, True, session=session)
     s = d[0]

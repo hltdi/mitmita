@@ -386,7 +386,7 @@ class Language:
         if token in self.words:
             return True
         anal = self.anal_word(token)
-        if anal[0].features:
+        if anal[0].get('features'):
             # There is a morphological analysis
             # %% Figure out a way to save this
             return True

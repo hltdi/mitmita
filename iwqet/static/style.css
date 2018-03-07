@@ -207,6 +207,11 @@ span.sentence
    font-weight: bold;
    border: thin solid;
 }
+#parenthetical
+{
+    font-weight: normal;
+    color: LightGray;
+}
 span.choice
 {
    font-size: 100%;

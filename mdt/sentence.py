@@ -2071,7 +2071,8 @@ class Solution:
                 translation = []
             start = i0
             end = i0+len(stok_group)-1
-            seg = SolSeg(self, (start, end), translation, stok_group, session=self.session, gname=gname,
+            indices = list(range(start, end+1))
+            seg = SolSeg(self, indices, translation, stok_group, session=self.session, gname=gname,
                          merger_groups=merger_groups, is_punc=is_punc)
             print("Segment (untranslated) {}->{}: {}".format(start, end, included_tokens))
             self.segments.append(seg)
@@ -2096,11 +2097,30 @@ class Solution:
                 # There's a gap between the portions of the segment
                 late = True
             # There may be gaps in the source tokens for a group; fill these with ...
-            src_tokens = [(tokens[i] if i in raw_indices else '...') for i in range(start, end+1)]
-            if late:
-                src_tokens[0] = "←" + src_tokens[0]
+            src_tokens = []
+            parenthetical = []
+            pre_paren = []
+            post_paren = []
+            for tokindex in range(start, end+1):
+                token = tokens[tokindex]
+                if tokindex in raw_indices:
+                    # A token in the group
+                    # First check whether there is a parenthetical before this
+                    if parenthetical:
+                        post_paren.append(token)
+                    else:
+                        pre_paren.append(token)
+                else:
+                    parenthetical.append(token)
+            if parenthetical:
+                src_tokens = pre_paren + parenthetical + post_paren
+            else:
+                src_tokens = pre_paren
+#            print("Creating SolSeg with parenthetical {} and source tokens {}".format(parenthetical, src_tokens))
             seg = SolSeg(self, raw_indices, forms, src_tokens, session=self.session, gname=gname,
-                         merger_groups=merger_groups, tgroups=tgroups)
+                         tgroups=tgroups, merger_groups=merger_groups,
+                         has_paren=[pre_paren, parenthetical, post_paren] if parenthetical else None,
+                         is_paren=late)
             print("Segment (translated) {}->{}: {}={}".format(start, end, src_tokens, forms))
             self.segments.append(seg)
             indices_covered.extend(raw_indices)

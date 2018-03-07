@@ -270,12 +270,13 @@ function OnRecordPhrase() {
             segtrans = capitalize(segtrans);
         } else {
 	    // Not the beginning of the sentence; add a space before translation.
-            segtrans = " " + segtrans;
+            segtrans = " " + segtrans + " ";
         }
 	// Clear the error space.
         document.getElementById("error").innerHTML = "";
 	// Add the translation to the variable sentence.
-        document.getElementById("sentence").value += segtrans;
+	AddSegment(segtrans);
+//        document.getElementById("sentence").value += segtrans;
     } else {
 	if (seltype == "INPUT") {
 	    // The option is a single checkbox item; it must be checked.
@@ -301,13 +302,26 @@ function OnRecordPhrase() {
         document.Form2.segtrans.value += prefix + segindex + "||T||" + choiceindex + "||" + segment + "=" + choice;
         document.Form2.segindices.value += " " + segindex;
         if (sentval != "") {
-            choice = " " + choice;
+            choice = " " + choice + " ";
         }
-        document.getElementById("sentence").value += choice;
+	AddSegment(choice);
+//        document.getElementById("sentence").value += choice;
     }
     document.getElementById("instructions").innerHTML = "If you've finished translating the sentence, \
         click on 'Record sentence'; if not, click on another colored segment of the English sentence.";
     return true;
+}
+function AddSegment(text) {
+    sentarea = document.getElementById("sentence");
+    if (sentarea.selectionStart || sentarea.selectionStart == '0') {
+	current = sentarea.value
+	start = sentarea.selectionStart;
+	length = sentarea.value.length;
+	beginning = current.substring(0, start);
+	end = current.substring(start, length);
+//	alert("Selection start " + start);
+	sentarea.value = beginning + text + end;
+    }
 }
 function Segment(text, segment, color, segindex) {
     var segindices = document.Form2.segindices.value;
@@ -412,7 +426,8 @@ Click on "Next sentence" or on "Quit" if you've finished the session.
 section with a table of translations and sets the value of the seg form variable #}
 <span onmouseover="this.style.cursor='pointer'" onmouseout="this.style.cursor='default'"
 onclick="Segment({{'%r'|format(seg[2])|e}}, {{'%r'|format(seg[0])|e}}, {{'%r'|format(seg[1])|e}}, {{'%r'|format(seg[3])|e}});">
-  <span style='color:{{ seg[1] }};'> {{ seg[0] }} </span></span>
+{{seg[4]|safe}}
+</span>
 {% endfor %}
 </span>
 <p></p>

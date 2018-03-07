@@ -83,7 +83,7 @@ class SolSeg:
     special_re = re.compile("%[A-Z]+_")
 
     def __init__(self, solution, indices, translation, tokens, color=None,
-                 spec_indices=None, session=None, gname=None,
+                 spec_indices=None, session=None, gname=None, has_paren=False, is_paren=False,
                  tgroups=None, merger_groups=None, is_punc=False):
         self.source = solution.source
         self.target = solution.target
@@ -96,6 +96,21 @@ class SolSeg:
         self.tokens = tokens
         self.token_str = ' '.join(tokens)
         self.raw_token_str = self.token_str[:]
+        # Whether there's an unattached segment within this segment
+        self.has_paren = has_paren
+        # Whether this an unattached segment within another segment
+        self.is_paren = is_paren
+        # Stuff to do when there's a parenthetical segment within the segment
+        if has_paren:
+            pre, paren, post = has_paren
+            self.original_tokens = pre + post
+            self.pre_token_str = ' '.join(pre)
+            self.paren_token_str = ' '.join(paren)
+            self.post_token_str = ' '.join(post)
+        else:
+            self.original_tokens = tokens
+        self.original_token_str = ' '.join(self.original_tokens)
+        self.original_token_str = self.original_token_str.replace("←", "")
         # If there are special tokens in the source language, fix them here.
         self.special = False
         if '%' in self.token_str:
@@ -150,6 +165,15 @@ class SolSeg:
         if sentence:
             return SegRecord(self, sentence=sentence.record, session=session)
 
+    def set_source_html(self):
+        if self.has_paren:
+            pre, paren, post = self.has_paren
+            self.source_html = "<span style='color:{};'> {} </span>".format(self.color, self.pre_token_str)
+            self.source_html += "<span id=parenthetical> {} </span>".format(self.paren_token_str)
+            self.source_html += "<span style='color:{};'> {} </span>".format(self.color, self.post_token_str)
+        else:
+            self.source_html = "<span style='color:{};'> {} </span>".format(self.color, self.token_str)
+
     def set_html(self, index, verbosity=0):
         """Set the HTML markup for this segment, given its position in the sentence,
         and the dictionary of choices for the record of the SolSeg.
@@ -159,11 +183,13 @@ class SolSeg:
         if self.special:
             print("Setting HTML for special segment {}".format(self.raw_token_str))
         self.color = SolSeg.tt_notrans_color if not self.translation else SolSeg.tt_colors[index]
+        self.set_source_html()
         transhtml = '<table>'
         capitalized = False
         choice_list = self.record.choices if self.record else None
         # Final source segment output
         tokens = self.token_str
+        orig_tokens = self.original_token_str
         trans_choice_index = 0
         # T Group strings associated with each choice
         choice_tgroups = []
@@ -173,7 +199,7 @@ class SolSeg:
             transhtml += '<br/><input type="radio" name="choice" id={} value="{}" checked>{}</td>'.format(trans, trans, trans)
             transhtml += '</tr>'
             transhtml += '</table>'
-            self.html = (tokens, self.color, transhtml, index)
+            self.html = (tokens, self.color, transhtml, index, self.source_html)
             return
         for tindex, (t, tgroups) in enumerate(zip(self.cleaned_trans, self.tgroups)):
             print("{} setting HTML for {}: {}".format(self, tindex, t))
@@ -223,12 +249,12 @@ class SolSeg:
                 # Add other translation button
                 # Button to translate as source language
                 transhtml += '<tr><td class="source">'
-                transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
+                transhtml += '<input type="radio" name="choice" id={} value="{}">{}</td></tr>'.format(orig_tokens, orig_tokens, orig_tokens)
         else:
             # No translations suggested: checkbox for translating as source only
             # Button to translate as source language; the only button
             transhtml += '<tr><td class="source">'
-            transhtml += '<input type="checkbox" name="choice" id={} value="{}" checked>{}</td></tr>'.format(tokens, tokens, tokens)
+            transhtml += '<input type="checkbox" name="choice" id={} value="{}" checked>{}</td></tr>'.format(orig_tokens, orig_tokens, orig_tokens)
         transhtml += '</table>'
         # Capitalize tokens if in first place        
         if index==0:
@@ -250,7 +276,7 @@ class SolSeg:
         self.choice_tgroups = choice_tgroups
         if self.record:
             self.record.choice_tgroups = choice_tgroups
-        self.html = (tokens, self.color, transhtml, index)
+        self.html = (tokens, self.color, transhtml, index, self.source_html)
 #        self.html = (tokens, self.color, transhtml, index)
 
     @staticmethod

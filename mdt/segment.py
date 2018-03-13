@@ -103,9 +103,11 @@ class SolSeg:
         # Stuff to do when there's a parenthetical segment within the segment
         if has_paren:
             pre, paren, post = has_paren
+            self.paren_tokens = [p[0] for p in paren]
+            self.paren_indices = [p[1] for p in paren]
             self.original_tokens = pre + post
             self.pre_token_str = ' '.join(pre)
-            self.paren_token_str = ' '.join(paren)
+            self.paren_token_str = ' '.join(self.paren_tokens)
             self.post_token_str = ' '.join(post)
         else:
             self.original_tokens = tokens
@@ -114,13 +116,31 @@ class SolSeg:
         # If there are special tokens in the source language, fix them here.
         self.special = False
         if '%' in self.token_str:
-            self.token_str = SolSeg.remove_spec_pre(self.token_str).replace('~', ' ')
-            self.special = True
+            # Create the source string without special characters
             if not translation:
+                self.special = True
                 # Set the translation for the special segment
                 spec_trans = self.source.translate_special(tokens[0])
                 if spec_trans:
                     self.translation = [[spec_trans]]
+                    self.cleaned_trans = [[SolSeg.clean_spec(spec_trans)]]
+            else:
+                # Group with special token
+                trans = []
+                cleaned_trans = []
+                for token in translation:
+                    if '%' in token:
+                        spec_trans = self.source.translate_special(token)
+                        if spec_trans:
+                            trans.append(spec_trans)
+                            cleaned_trans.append(SolSeg.clean_spec(spec_trans))
+                            continue
+                    trans.append(token)
+                    cleaned_trans.append(token)
+                self.translation = [trans]
+                self.cleaned_trans = [cleaned_trans]
+            self.token_str = SolSeg.clean_spec(self.token_str)
+            self.original_token_str = SolSeg.clean_spec(self.original_token_str)
         if not self.cleaned_trans:
             self.cleaned_trans = self.translation
         self.color = color
@@ -140,7 +160,7 @@ class SolSeg:
         else:
             self.record = None
         self.html = []
-        print("Creating SolSeg {} with solution {}, indices {}, translation {}, tokens {}, is punc? {}".format(self, solution, indices, translation, tokens, is_punc))
+#        print("Creating SolSeg {} with solution {}, indices {}, translation {}, tokens {}, is punc? {}".format(self, solution, indices, translation, tokens, is_punc))
 
     def __repr__(self):
         """Print name."""
@@ -173,6 +193,14 @@ class SolSeg:
             self.source_html += "<span style='color:{};'> {} </span>".format(self.color, self.post_token_str)
         else:
             self.source_html = "<span style='color:{};'> {} </span>".format(self.color, self.token_str)
+
+    def get_gui_source(self, paren_color='Gray'):
+        if self.has_paren:
+            return ["<span style='color:{};'> {} </span>".format(self.color, self.pre_token_str),
+                    "<span style='color:{};'> {} </span>".format(paren_color, self.paren_token_str),
+                    "<span style='color:{};'> {} </span>".format(self.color, self.post_token_str)]
+        else:
+            return "<span style='color:{};'> {} </span>".format(self.color, self.token_str)
 
     def set_html(self, index, verbosity=0):
         """Set the HTML markup for this segment, given its position in the sentence,
@@ -276,8 +304,7 @@ class SolSeg:
         self.choice_tgroups = choice_tgroups
         if self.record:
             self.record.choice_tgroups = choice_tgroups
-        self.html = (tokens, self.color, transhtml, index, self.source_html)
-#        self.html = (tokens, self.color, transhtml, index)
+        self.html = (orig_tokens, self.color, transhtml, index, self.source_html)
 
     @staticmethod
     def list_html(segments):

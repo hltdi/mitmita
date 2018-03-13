@@ -2037,12 +2037,14 @@ class Solution:
 #            last_indices = raw_indices
 #        return ttrans_align
 
-    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None, indices_covered=None):
+    def get_untrans_segs(self, src_tokens, end_index, gname=None, merger_groups=None, indices_covered=None,
+                         is_paren=False):
         '''Set one or more segments for a sequence of untranslatable tokens. Ignore indices that are already covered by translated segments.'''
         stok_groups = []
         stoks = []
         index = end_index + 1
         included_tokens = []
+        newsegs = []
         for stok in src_tokens:
             if index in indices_covered:
                 if stoks:
@@ -2073,10 +2075,12 @@ class Solution:
             end = i0+len(stok_group)-1
             indices = list(range(start, end+1))
             seg = SolSeg(self, indices, translation, stok_group, session=self.session, gname=gname,
-                         merger_groups=merger_groups, is_punc=is_punc)
+                         merger_groups=merger_groups, is_punc=is_punc, is_paren=is_paren)
             print("Segment (untranslated) {}->{}: {}".format(start, end, included_tokens))
             self.segments.append(seg)
+            newsegs.append(seg)
             i0 += len(stok_group)
+        return newsegs
 
     def get_segs(self, html=True):
         """Set the segments (instances of SolSegment) for the solution, including their translations."""
@@ -2085,6 +2089,10 @@ class Solution:
         max_index = -1
         tokens = self.sentence.tokens
         indices_covered = []
+        # Token lists for parenthetical segments
+        parentheticals = []
+        # Segments containing parentheticals
+        has_parens = []
         for raw_indices, forms, gname, merger_groups, tgroups in tt:
             late = False
             start, end = raw_indices[0], raw_indices[-1]
@@ -2101,6 +2109,7 @@ class Solution:
             parenthetical = []
             pre_paren = []
             post_paren = []
+            paren_record = []
             for tokindex in range(start, end+1):
                 token = tokens[tokindex]
                 if tokindex in raw_indices:
@@ -2112,7 +2121,9 @@ class Solution:
                         pre_paren.append(token)
                 else:
                     parenthetical.append(token)
+                    paren_record.append((token, tokindex))
             if parenthetical:
+                parentheticals.append(paren_record)
                 src_tokens = pre_paren + parenthetical + post_paren
             else:
                 src_tokens = pre_paren
@@ -2121,8 +2132,16 @@ class Solution:
                          tgroups=tgroups, merger_groups=merger_groups,
                          has_paren=[pre_paren, parenthetical, post_paren] if parenthetical else None,
                          is_paren=late)
+            if late:
+                pindices = seg.indices
+                for hp in has_parens:
+                    hp_pindices = hp.paren_indices
+                    if pindices == hp_pindices:
+                        hp.paren_seg = seg
             print("Segment (translated) {}->{}: {}={}".format(start, end, src_tokens, forms))
             self.segments.append(seg)
+            if parenthetical:
+                has_parens.append(seg)
             indices_covered.extend(raw_indices)
 #            print(" Indices covered: {}".format(indices_covered))
             max_index = max(max_index, end)
@@ -2132,6 +2151,28 @@ class Solution:
             src_tokens = tokens[max_index+1:len(tokens)]
             self.get_untrans_segs(src_tokens, max_index, gname=gname, merger_groups=merger_groups,
                                   indices_covered=indices_covered)
+        # Check with untranslated parentheticals have gotten segments
+        for parenthetical in parentheticals:
+            ptokens = [p[0] for p in parenthetical]
+            pindices = [p[1] for p in parenthetical]
+            found = False
+            i = 0
+            newsegs = None
+            while not found and i < len(self.segments):
+                segment = self.segments[i]
+                if segment.tokens == ptokens and segment.indices == pindices:
+                    found = True
+                i += 1
+            if not found:
+                newsegs = self.get_untrans_segs(ptokens, pindices[0]-1, indices_covered=indices_covered, is_paren=True)
+                newseg = newsegs[0]
+                pindices = newseg.indices
+                for hp in has_parens:
+                    if pindices == hp.paren_indices:
+                        print(" Found matching enclosing segment for untrans segment {}".format(newseg))
+                        hp.paren_seg = newseg
+        # Sort the segments by start indices in case they're not in order (because of parentheticals)
+        self.segments.sort(key=lambda s: s.indices[0])
         if html:
             self.seg_html()
 
@@ -2140,5 +2181,26 @@ class Solution:
             segment.set_html(i)
 
     def get_seg_html(self):
-        return [segment.html for segment in self.segments]
+#        return [segment.html for segment in self.segments]
+        return self.get_gui_segments()
+
+    def get_gui_segments(self):
+        """These may differ from SolSegs because of intervening segments within outer segments."""
+        segments = []
+        enclosings = []
+        parens = []
+        for segment in self.segments:
+            if segment.has_paren:
+                tokens, color, html, index, src_html = segment.html
+                paren_seg = segment.paren_seg
+                ptokens, pcolor, phtml, pindex, psrc = paren_seg.html
+                gui_src = segment.get_gui_source(pcolor)
+                preseg = tokens, color, html, index, gui_src[0]
+                parenseg = ptokens, pcolor, phtml, pindex, gui_src[1]
+                postseg = tokens, color, html, index, gui_src[2]
+#                print("Adding gui segments for {}".format(gui_src))
+                segments.extend([preseg, parenseg, postseg])
+            elif not segment.is_paren:
+                segments.append(segment.html)
+        return segments
 

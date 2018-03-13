@@ -275,7 +275,7 @@ class Group(Entry):
 
     def __init__(self, tokens, head_index=-1, head='', language=None, name='',
                  features=None, agr=None, trans=None, count=0, failif=None,
-                 string=None, trans_strings=None, cat='', comment=''):
+                 string=None, trans_strings=None, cat='', comment='', intervening=None):
         """Either head_index or head (a string) must be specified."""
         # tokens is a list of strings
         # name may be specified explicitly or not
@@ -585,6 +585,7 @@ class Group(Entry):
         failif = None
         count = 0
         intervening = None
+        comment = ''
         if '[' in string:
             hasfeats = True
             features = []

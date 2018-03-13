@@ -14,27 +14,41 @@ function ShowHelp() {
 "<h4 class='help'>Ayuda general para la aplicación</h4>" +
 "</body></html>");
 }
+function Shortcut() {
+    form = document.getElementById("form");
+//    document.getElementById("loading").innerHTML = "<span class='cargando'>Cargando base de datos (podría tardarse)...</span>";
+    form.action = "doc";
+    form.submit();
+}
+function Login() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
 </script>
 
 </head>
 
 <body>
 
-<form action='login' method="post">
+<form action='' id="form" method="post">
 
 <table class="center">
   <tr>
     <td class="title">
     <img class='banner' src="{{url_for('static', filename='logo.png')}}" alt="" width="300", height="52"/>
     </td>
-    <td class="menu" style="width: 166px">
+    <td class="menu" style="width: 116px">
       <a href="proyecto">PROJECT</a>
     </td>
-    <td class="menu" style="width: 167px">
+    <td class="menu" style="width: 117px">
       <a href="contacto">CONTACT</a>
     </td>
-    <td class="menu" style="width: 167px">
-      <input type="submit" value="START SESSION" class="menu">
+    <td class="menu" style="width: 120px">
+      <button class="menu" onclick="Shortcut()">SHORTCUT</button>
+    </td>
+    <td class="menu" style="width: 147px">
+      <button class="menu" onclick="Login()">START SESSION</button>
     </td>
     <td></td>
   </tr>
@@ -42,6 +56,7 @@ function ShowHelp() {
 <td colspan="5" style="width:800px">
 <h1><b>Welcome to Mit'mit'a!</b> ወደ ሚጥሚጣ እንኳን ደህና መጣህ/ሽ!</h1>
 
+<div id="intro">
 <h2>What is it?</h2>
 
 <p>
@@ -92,11 +107,13 @@ The system keeps a memory of the texts and the translations created by
 <p>
 <a href="project">Learn more about the theory behind Mit'mit'a.</a>
 </p>
+</div>
 
 <hr/>
 
 <p>
-<input type="submit" value="Start session" id="button">
+  <input type="submit" value="Start session" id="button" onclick="Login()">
+  <input type="submit" value="Shortcut" id="button" onclick="Shortcut()">
 </p>
 
 </td>

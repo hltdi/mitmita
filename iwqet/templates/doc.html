@@ -78,11 +78,15 @@ User: <span class="username">{{ user.username }}</span>
 <h2>Entering a document</h2>
 {% endif %}
 
-<p>
-<span class='instruction'>
+<p class='instructions'>
 Enter one or more sentences to translate.
-</span>
 </p>
+
+{% if error %}
+<p class="error">
+There's an error in the document. Did you forget the final punctuation?
+</p>
+{% endif %}
 
   <textarea name="text" class="doc"></textarea>
 

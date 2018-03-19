@@ -16,7 +16,9 @@ function ShowHelp() {
 }
 function Shortcut() {
     form = document.getElementById("form");
-//    document.getElementById("loading").innerHTML = "<span class='cargando'>Cargando base de datos (podría tardarse)...</span>";
+    document.getElementById("instructions").innerHTML = "";
+    document.getElementById("buttons").innerHTML = "";
+    document.getElementById("intro").innerHTML = "<span class='cargando'>Loading (could take awhile)...</span>";
     form.action = "doc";
     form.submit();
 }
@@ -55,6 +57,12 @@ function Login() {
 <tr>
 <td colspan="5" style="width:800px">
 <h1><b>Welcome to Mit'mit'a!</b> ወደ ሚጥሚጣ እንኳን ደህና መጣህ/ሽ!</h1>
+
+<p class="instructions" id="instructions">
+  To login and start a session, click on "START SESSION".<br />  
+  To skip login and go directly to the page where you can use the
+  system to translate a document, click on "SHORTCUT".
+</p>
 
 <div id="intro">
 <h2>What is it?</h2>
@@ -111,7 +119,7 @@ The system keeps a memory of the texts and the translations created by
 
 <hr/>
 
-<p>
+<p id='buttons'>
   <input type="submit" value="Start session" id="button" onclick="Login()">
   <input type="submit" value="Shortcut" id="button" onclick="Shortcut()">
 </p>

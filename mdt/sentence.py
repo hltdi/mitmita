@@ -149,7 +149,7 @@
 # -- Got sentence initialization and solution to work with external tagger.
 
 import copy, re, random, itertools
-from .utils import remove_control_characters
+from .utils import remove_control_characters, firsttrue
 from .ui import *
 from .segment import *
 from iwqet.record import SentRecord
@@ -1055,6 +1055,12 @@ class Sentence:
         # to the group's words
         matched_keys = []
         group_index = 0
+        # Initially filtered
+        filtered1 = []
+        # Candidate groups with categories
+        cat_groups = []
+        # Rejected category groups
+        rejected = []
         for head_i, key, group in candidates:
             # Check whether there is already a match for this position, key, and group length
             # LATER HAVE A BETTER WAY OF CHOOSING A MATCH
@@ -1074,6 +1080,28 @@ class Sentence:
                     print("Failed to match")
                 continue
             matched_keys.append(matched_key)
+            # Find snodes that would be category nodes within this group
+            cat_i = group.get_cat_indices()
+            if cat_i:
+                # Groups with category nodes
+                cat_snodes = [snodes[i][0][0] for i in cat_i]
+                cat_groups.append((group, cat_snodes))
+            # All candidate groups
+            filtered1.append((group, head_i, snodes))
+        if cat_groups:
+            for cat_group, cat_snodes in cat_groups:
+                for cat_snode in cat_snodes:
+                    cat_match = firsttrue(lambda c: c[1] == cat_snode, filtered1)
+                    if not cat_match:
+                        print("  Group {} rejected; no match for cat snode {}".format(cat_group, cat_snode))
+                        rejected.append(cat_group)
+                        break
+                    else:
+                        print("    Found match {} for cat snode {}".format(cat_match, cat_snode))
+        for (group, head_i, snodes) in filtered1:
+            if group in rejected:
+                # This group was rejected because there was no match for its category token(s)
+                continue
             # Create a GInst object and GNodes for each surviving group
             self.groups.append(GInst(group, self, head_i, snodes, group_index))
             group_index += 1
@@ -1744,8 +1772,14 @@ class Sentence:
 
     def get_html(self):
         """Create HTML for a sentence with no solution."""
-        return [(self.raw, "Silver", "<table border=1></table>", 0)]
-        
+        tokens = ' '.join(self.tokens)
+        source_html = "<span style='color:Silver;'> {} </span>".format(tokens)
+        trans_html = "<table>"
+        trans_html += '<tr><td class="source">'
+        trans_html += '<input type="radio" name="choice" id="{}" value="{}">{}</td></tr>'.format(tokens, tokens, tokens)
+        trans_html += '</table>'
+        return [(self.raw, "Silver", trans_html, 0, source_html)]
+
     def verbatim(self, node):
         """Use the source token in the target complete translation."""
         # If token consists of only punctuation or digits, just return it

@@ -182,6 +182,9 @@ def sent():
         # Create a new document
         make_doc(form['text'])
         print("Created document {}".format(DOC))
+        if len(DOC) == 0:
+            print(" But document is empty.")
+            return render_template('doc.html', user=USER, error=True)
     # Get the next sentence in the document, assigning SENTENCE
     get_sentence()
     print("Current sentence {}".format(SENTENCE))

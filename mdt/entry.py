@@ -200,6 +200,19 @@ class Entry:
         """Is this a symbol for a special category, like numerals?"""
         return name and name[0] == SPEC_CHAR 
 
+    @staticmethod
+    def special_prefix(name, check=False):
+        """If this is a special token, return its prefix (what precedes ~)."""
+        if not check or Entry.is_special(name):
+            return name.split('~')[0]
+        return ''
+
+    @staticmethod
+    def match_special(stoken, ptokens):
+        """Does any MS pattern token (%C, %N, etc.) match the sentence token?"""
+        prefix = Entry.special_prefix(stoken, check=True)
+        return prefix and any([prefix == ptoken for ptoken in ptokens])
+        
 #    @staticmethod
 #    def is_negative(name):
 #        """Is this a symbol for a negative feature or category?"""
@@ -214,6 +227,12 @@ class Entry:
     def is_lexeme(name):
         """Is this the name of a lexeme?"""
         return LEXEME_CHAR in name
+
+    ## Group properties
+
+    def get_cat_indices(self):
+        """Return a list of gnode positions for categories."""
+        return [index for index, token in enumerate(self.tokens) if Entry.is_cat(token)]
 
     ## Serialization
 

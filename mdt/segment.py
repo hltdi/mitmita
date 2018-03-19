@@ -78,7 +78,7 @@ class SolSeg:
                  'purple', 'red', 'blue', 'sienna', 'green', 'purple', 'red', 'blue', 'sienna', 'green',
                  'purple', 'red', 'blue', 'sienna', 'green', 'purple', 'red', 'blue', 'sienna', 'green']
 
-    tt_notrans_color = "Gray"
+    tt_notrans_color = "Silver"
 
     special_re = re.compile("%[A-Z]+_")
 
@@ -194,7 +194,7 @@ class SolSeg:
         else:
             self.source_html = "<span style='color:{};'> {} </span>".format(self.color, self.token_str)
 
-    def get_gui_source(self, paren_color='Gray'):
+    def get_gui_source(self, paren_color='Silver'):
         if self.has_paren:
             return ["<span style='color:{};'> {} </span>".format(self.color, self.pre_token_str),
                     "<span style='color:{};'> {} </span>".format(paren_color, self.paren_token_str),
@@ -272,7 +272,7 @@ class SolSeg:
             if self.record:
                 choice_list.append(tchoice)
             transhtml += '</tr>'
-        if self.translation:
+        if self.translation and self.translation[0]:
             if self.cleaned_trans[0][0] != tokens:
                 # Add other translation button
                 # Button to translate as source language

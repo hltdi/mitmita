@@ -1390,6 +1390,10 @@ class Language:
                   clean=True,
                   verbosity=0):
         '''Analyze a single word, trying all existing POSs, both lexical and guesser FSTs.'''
+        # Check whether the analyzer is loaded.
+        if self.use in (GENERATION, TARGET):
+            print("The analyzer for {} hasn't been loaded".format(self))
+            return
         # Before anything else, check to see if the word is in the list of words that
         # have failed to be analyzed
         if no_anal != None and word in no_anal:

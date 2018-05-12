@@ -1,4 +1,4 @@
-# Mainumby. Parsing and translation with minimal dependency grammars.
+# Mit'mit'a. Parsing and translation with minimal dependency grammars.
 #
 ########################################################################
 #
@@ -6,7 +6,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2017; PLoGS <gasser@indiana.edu>
+#   Copyleft 2017, 2018; PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -26,6 +26,45 @@
 # This eventually loads ui, segment, record, cs, utils, language, entry
 # some morphology functions (more needed?)
 from .sentence import *
+
+class Learner:
+    """Take source and target languages, and learn new groups based on
+    existing groups."""
+
+    def __init__(self, source, target):
+        self.source = source
+        self.target = target
+        self.groups = source.groups
+
+    def __repr__(self):
+        return "L:{}->{}".format(self.source.abbrev, self.target.abbrev)
+
+    def learn(self, sphrase, tphrase):
+        print("Learning group for <{} -> {}>".format(sphrase, tphrase))
+
+    def add_target_anal(self):
+        """Add the analyzer FSTs for the target language."""
+        if self.target.use != TRAIN:
+            # Analyzer not yet loaded
+            self.target.set_anal_cached()
+            self.target.load_morpho(generate=False, analyze=True, segment=False, guess=False)
+            self.target.use = TRAIN
+
+class Phrase:
+    """A sequence of words in some language."""
+
+    def __init__(self, words, language, analyses=None):
+        self.language = language
+        # A list of strings
+        self.words = words
+        # None or a list of list of (root, feats) pairs (allowing for ambiguity)
+        self.analyses = analyses or self.analyze()
+
+    def __repr__(self):
+        return "P:{}".format(" ".join(words))
+
+    def analyze(self):
+        return [self.language.anal_word(w) for w in self.words]
 
 class Trainer:
     """Take a bilingual Document and the two associated languages, and learn

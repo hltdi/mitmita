@@ -1607,8 +1607,6 @@ class FST:
         empty_name = fst_name + '0'
         if empty:
             name = empty_name
-            if phon:
-                name = name + 'P'
         elif segment:
             name = fst_name + '+'
         else:

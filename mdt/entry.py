@@ -153,9 +153,9 @@ FORMALT_SEP = '|'
 MS_ATTRIB_SEP = ';'
 AMBIG_CHAR = '*'
 DISAMBIG_CHAR = '%'
-# possibly empty form string followed by possibly empty FS string, for MorphoSyn pattern
+# possibly empty form string followed by zero or more FS strings, for MorphoSyn pattern
 # ^prefix means this is head
-MS_FORM_FEATS = re.compile("\s*(\^?)([$<'|\w¿¡?!]*)\s*((?:\*?\[.+\])?)$")
+MS_FORM_FEATS = re.compile("\s*(\^?)([$%<'|\w¿¡?!]*)\s*((?:\*?\[.+\])*)$")
 # negative features: ![] with only features catpured
 MS_NEG_FEATS = re.compile("\s*!(\[.+\])$")
 MS_AGR = re.compile("\s*(\d)\s*=>\s*(\d)\s*(.+)$")
@@ -233,6 +233,12 @@ class Entry:
     def get_cat_indices(self):
         """Return a list of gnode positions for categories."""
         return [index for index, token in enumerate(self.tokens) if Entry.is_cat(token)]
+
+    def get_nfeatures(self):
+        """Sum of the features for all group tokens."""
+        if not self.features:
+            return 0
+        return sum([(len(fs) if fs else 0) for fs in self.features])
 
     ## Serialization
 
@@ -1008,7 +1014,13 @@ class MorphoSyn(Entry):
                     if feats[0] == '*':
                         feats = feats[1:]
                         self.strict[index] = True
-                    feats = FeatStruct(feats)
+                    if "][" in feats:
+                        # Multiple features
+                        feats = feats.split("][")
+                        feats = [feats[0] + "]"] + ["[" + f + "]" for f in feats[1:-1]] + ["[" + feats[-1]]
+                        feats = FSSet(*feats)
+                    else:
+                        feats = FeatStruct(feats)
                 forms = [f.strip() for f in forms.split(FORMALT_SEP) if f]
                 if head_pref:
 #                    print("Found head prefix for {}, head index {}".format(item, index))
@@ -1350,14 +1362,17 @@ class MorphoSyn(Entry):
                 print("   {} unifying {}/{} and {}/{}".format(self, sroot, sfeats.__repr__(), pforms, pfeats.__repr__()))
             if isinstance(sfeats, FSSet):
                 # This returns an FSSet too
-#                print("   Unifying FSSet {} with FeatStruct {}".format(sfeats, pfeats))
-                u = sfeats.unify_FS(pfeats, strict=strict)
+#                print("   Unifying FSSet {} with {}".format(sfeats, pfeats))
+#                u = sfeats.unify_FS(pfeats, strict=strict)
+                u = sfeats.u(pfeats, strict=strict)
             elif not sfeats:
                 # No sentence item features but there are match item features. See if the parts of speech match.
                 if ppos and spos and ppos == spos:
                     return True
                 else:
                     return False
+            elif isinstance(pfeats, FSSet):
+                u = pfeats.unify_FS(sfeats, strict=strict)
             else:
                 u = simple_unify(sfeats, pfeats, strict=strict)
             if u != 'fail':

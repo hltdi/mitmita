@@ -90,6 +90,13 @@ class FSSet(set):
             fsset.remove(fs)
         return fsset
 
+    def u(self, f, strict=False):
+        """Unify this FSSet with either another FSSet or a FeatStruct."""
+        if isinstance(f, FSSet):
+            return self.unify(f)
+        else:
+            return self.unify_FS(f, strict=strict)
+
     def unify(self, fs2):
         """Unify this FSSet with another one."""
         result1 = [simple_unify(f1, f2) for f1 in list(self) for f2 in list(fs2)]

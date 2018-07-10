@@ -629,17 +629,22 @@ class POS:
         if isinstance(update_feats, str):
             update_feats = FeatStruct(update_feats)
         # See if there are already cached wordforms for the root and features
+        # Note: we have to find all of the cached keys
         cache_keys = []
         if isinstance(update_feats, FSSet):
             cache_keys = list(update_feats)
         else:
             cache_keys.append(update_feats)
         all_cached = []
+        all_found = True
         for cache_key in cache_keys:
             cached = self.get_cached_gen(root, cache_key)
             if cached:
                 all_cached.extend(cached)
-        if all_cached:
+            else:
+                all_found = False
+                break
+        if all_found:
             if trace:
                 print("Found {}:{} in cached generations".format(root, cache_keys))
             return all_cached

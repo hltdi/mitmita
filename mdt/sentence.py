@@ -1624,7 +1624,8 @@ class Sentence:
             for conflict in conflicts:
                 for conflict1 in conflict:
                     group = self.groups[conflict1]
-                    gn = group.ngnodes
+                    # 2018.7.10: Fixed this so it favors concrete over abstact tokens (nodes)
+                    gn = group.ncgnodes + group.nanodes / 2.0
                     if gn > biggest[1]:
                         biggest = (conflict1, gn)
             val = {biggest[0]}
@@ -2108,8 +2109,8 @@ class Solution:
             start = i0
             end = i0+len(stok_group)-1
             indices = list(range(start, end+1))
-            seg = SolSeg(self, indices, translation, stok_group, session=self.session, gname=gname,
-                         merger_groups=merger_groups, is_punc=is_punc, is_paren=is_paren)
+            seg = SolSeg(self, indices, translation, stok_group, session=self.session, gname=None,
+                         merger_groups=None, is_punc=is_punc, is_paren=is_paren)
             print("Segment (untranslated) {}->{}: {}".format(start, end, included_tokens))
             self.segments.append(seg)
             newsegs.append(seg)

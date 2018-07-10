@@ -7,7 +7,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyright (C) 2016, 2017, 2018 PLoGS <gasser@indiana.edu>
+#   Copyleft 2016, 2017, 2018 PLoGS <gasser@indiana.edu>
 #   
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -83,6 +83,15 @@ class Session:
     def __repr__(self):
         return "{} {}".format(SESSION_PRE, self.id)
 
+    def to_dict(self):
+        """Create dictionary from Session, after it stops."""
+        d = {}
+        d['start'] = Session.time2shortstr(self.start)
+        d['end'] = Session.time2shortstr(self.end)
+        d['id'] = self.id
+        d['sents'] = [s.to_dict() for s in self.sentences]
+        return d
+
     @staticmethod
     def time2str(time):
         return time.strftime(TIME_FORMAT)
@@ -95,14 +104,23 @@ class Session:
     def time2shortstr(time):
         return time.strftime(SHORT_TIME_FORMAT)
 
-    def to_dict(self):
-        """Create dictionary from Session, after it stops."""
-        d = {}
-        d['start'] = Session.time2shortstr(self.start)
-        d['end'] = Session.time2shortstr(self.end)
-        d['id'] = self.id
-        d['sents'] = [s.to_dict() for s in self.sentences]
-        return d
+    @staticmethod
+    def shortstr2time(string):
+        return datetime.datetime.strptime(string, SHORT_TIME_FORMAT)
+
+    @staticmethod
+    def get_sessions(sessions, time_feat_dict):
+        """Get all session dicts in session dict list matching time features."""
+        filt = Session.filter_time_func(time_feat_dict)
+        return [s for s in sessions if filt(Session.shortstr2time(s['start']))]
+
+    @staticmethod
+    def filter_feature(feature, typ, value):
+        return value is None or feature.__getattribute__(typ) == value
+
+    @staticmethod
+    def filter_time_func(time_feat_dict):
+        return lambda feature: all([Session.filter_feature(feature, typ, time_feat_dict.get(typ, None)) for typ in ['year', 'month', 'day', 'hour', 'minute']])
 
     def make_id(self):
         self.id = "{}::{}".format(self.user.username, Session.time2shortstr(self.start))
@@ -377,7 +395,8 @@ class SegRecord:
         """Create dictionary from SegRecord."""
         d = {}
         d['src'] = self.tokens
-        d['gname'] = self.gname
+        if self.gname:
+            d['gname'] = self.gname
         d['resp'] = self.response_code
         d['trg'] = self.seltrans
         if self.tgroups:
@@ -500,6 +519,12 @@ class User:
         # File where the user's sessions are stored
         filename = "{}.sess".format(self.username)
         return os.path.join(SESSIONS_DIR, filename)
+
+    def read_sessions(self):
+        """Read in the sessions file for this user, returning a list of session dicts."""
+        path = self.get_session_path()
+        # catch?
+        return yaml.load(open(path, encoding="utf8"))
 
     @staticmethod
     def read_all(path=None):

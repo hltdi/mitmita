@@ -38,7 +38,7 @@ except ImportError:
 
 def remove_control_characters(s):
     """Returns string s with unicode control characters removed."""
-    return "".join(ch for ch in s if unicodedata.category(ch)[0]!="C")
+    return "".join(ch for ch in s if unicodedata.category(ch) not in ("Cf", "Cs", "Co", "Cn"))
 
 def allcombs(seqs):
     """Returns a list of all sequences consisting of one element from each of seqs.

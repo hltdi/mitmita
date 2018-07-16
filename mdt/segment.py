@@ -377,6 +377,9 @@ class SNode:
         """Does this node have no analysis, no known category or POS?"""
         if self.is_special():
             return False
+        if '~' in self.token:
+            # A special phrase that bypasses POS tagging
+            return False
         a = self.get_analysis()
         return not (a.get('pos') or a.get('cats') or a.get('features'))
 

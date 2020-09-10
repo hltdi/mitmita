@@ -3,61 +3,71 @@
 <head>
 <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
 
+{% block script %}
 <script>
 function ShowHelp() {
-    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=600,height=400");
     helpWin.document.write('<html><head>' +
 '<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
 "<title>Mainumby: Ayuda</title></head><body>" +
 "<h4 class='help'>Ayuda sobre tu nueva cuenta</h4>" +
 "</body></html>");
 }
-function OnSalir() {
-    document.Form1.action = "fin"
-    document.Form1.target = "_self";     // Same window
-    document.Form1.submit();             // Submit the page
-    return true;
-}
-function loading() {
-    document.getElementById("loading").innerHTML = "<span class='cargando'>Cargando base de datos (podría tardarse)...</span>";
+function documento() {
+    cargando();
     window.location.assign("doc");
 }
+function traducir() {
+    cargando();
+    form = document.getElementById("form");
+    form.action = "tra";
+    form.submit();
+}
 </script>
+{% endblock %}
 
-<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+<title>Mainumby: un Ayudante para la Traducción Castellano-Guaraní</title>
 
 </head>
 
 <body>
 
-<table class="center">
-  <tr>
-    <td class="title">
-    <img class='banner' src="{{url_for('static',
-      filename='banner_logo_short.png')}}" alt="" width="500px" height="90px" />
-    </td>
-    <td class="menu" style="width: 250px"><input class="menu"
-      type="submit" value="QUIT" name="salir" onclick="return OnSalir();"></td>
-    <td class="menu" style="width: 250px"><button class="menu"
-      onclick="ShowHelp();">HELP</button></td>
-  </tr>
+{% block body %}
+<form name="Form1" id='form' method=POST>
 
+<table class="left">
+ <tr class='brown'>
+   <td class="title">
+   <a href="/">
+   <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300px" height="52px" />
+   </a>
+   </td>
+
+   <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button></td>
+   <td class="menuuser" style="width: 200px">{{ user }}</td>
+   <td class="menu" style="width: 200px"><a href="acerca">ACERCA DE</a></td>
+   <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+</tr>
 <tr>
-<td colspan="3" style="width:1000px">  
+<td colspan='6' style="width: 1200px">
 
-  <p class="center">Account created!</p>
-
-<hr>
-
-<p class="center">
-<button onclick="loading()" id="button">Continue</button><br/>
+<h2>¡Cuenta creada! ¡Ingresaste como <span class="username">{{user}}</span>!</h2>
+<div id="cargando">
+<p>
+Para continuar, seleccioná TRADUCIR.
 </p>
+</div>
+</td>
+</tr>
+</table>
 
-<p class="center" id="loading">
-  </p>
+{% endblock %}
 
-</td></tr></table>
-
+<script async="" src="{{url_for('static', filename='Misc.js')}}"></script>
 </body>
 
 </html>

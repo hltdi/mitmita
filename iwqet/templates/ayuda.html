@@ -1,0 +1,318 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mainumby: Ayuda
+{% endblock %}
+
+{% block body %}
+<button onclick="topFunction()" id="inicio" title="Volver al inicio">VOLVER AL INICIO</button>
+
+<form action='' id='form' target="_blank" method="post">
+
+<div class="nav">
+<table class="nav">
+  <tr class="brown">
+    <td>
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300" height="52" />
+    </a>
+    </td>
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button>
+      </td>
+    <td class="menufuzzy" style="width: 200px">AYUDA</td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+  </tr>
+  <tr>
+  </table>
+</div>
+<table class="main">
+<tr>
+<td colspan='3' style="width: 1212px">
+
+<h1>Ayuda para Mainumby</h1>
+
+<h2>Temas</h2>
+  <ul>
+   <li><a href="#general">Opciones generales</a></i>
+    <li><a href="#ora">Traducir palabras, frases, oraciones</a>
+    <ul>
+      <li><a href="#ora_introducir">Introducir algo que traducir</a></li>
+      <li><a href="#ora_seleccionar">Seleccionar una traducción</a></li>
+    </ul>
+    </li>
+    <li><a href="#doc">Traducir documentos</a>
+    <ul>
+      <li><a href="#doc_subir">Subir un documento</a></li>
+      <li><a href="#doc_seleccionar">Seleccionar un documento almacenado</a></i>
+      <li><a href="#doc_traducir">Seleccionar la traducción</a></li>
+    </ul>
+    </li>
+  </ul>
+
+<div class="vspace" id="general"></div>
+<h2>Opciones generales</h2>
+<p>
+  Para mostrar la interfaz de traducción, seleccioná
+  <a href="tra" target="_blank"><img src="{{url_for('static', filename='traducir.png')}}" style="width: 100px;
+vertical-align:middle" alt="TRADUCIR" /></a>.
+  Para evitar la página de inicio (esta página) y ir directamente a la interfaz de
+traducción, marcá esa página como favorita en tu navegador.
+</p>
+
+<p>En la página de traducción hay dos interfaces, una para la
+traducción de palabras, frases, y oraciones simples, una para documentos almacenados en archivos.
+Pod&eacute;s elegir entre estas dos opciones con los botones en la parte superior izquierda
+de la ventana.
+</p>
+  <img class="instructions"
+  src="{{url_for('static', filename='oradoc.png')}}" style="width:500px;" alt="ora doc" />
+<p>
+Por defecto, Mainumby ofrece traducciones alternativas para muchas
+palabras y frases.
+(Actualmente no tiene una forma sofisticada de escoger la traducción más adecuada.)
+Si quer&eacute;s que ofrezca solo una traducción, pod&eacute;s
+seleccionar "Sin opciones" en el centro superior de la ventana.
+</p>
+  <img class="instructions"
+  src="{{url_for('static', filename='opciones.png')}}" style="width:500px;" alt="opciones" />
+  <p>
+
+<div class="vspace" id="ora"></div>
+<h2>Traducir palabras, frases, oraciones</h2>
+
+<div class="vspace" id="ora_introducir"></div>
+<h3>Introducir palabras, frases, oraciones para traducir</h3>
+<div class='paso'>
+  Introducí una palabra, frase, u oración castellana en el espacio a la
+  izquierda.
+  <br/>
+    <img class="instructions"
+  src="{{url_for('static', filename='bici.png')}}"
+  style="width: 550px" alt="traducción 1" />
+  <br/>
+  <div class='subpaso'>
+  Ten&eacute; en cuenta que Mainumby no tiene un corrector ortográfico castellano así que no
+    tolera errores.
+    Por ejemplo, el verbo <i>está</i> no se reconoce si se escribe sin
+    la tilde.
+  </div>
+  </div>
+<div class='paso'>
+  Presioná la tecla Intro/Entrar.
+  <br/>
+  <img class="instructions"
+  src="{{url_for('static', filename='teclado.png')}}" style="width: 550px;" alt="enter" />
+</div>
+<div class='subpaso'>
+  La traducción aparece en los espacios a la derecha.
+</div>
+<img class="instructions"
+  src="{{url_for('static', filename='ajogua1.png')}}"
+style="width: 550px;" alt="traducción 2" />
+
+<div class="vspace" id="ora_seleccionar"></div>
+<h3 id="ora">Seleccionar una traducción</h3>
+
+<div class='paso'>
+  Si la traducción tiene el símbolo "▾", podés escoger otra traducción
+  de la lista que aparece al hacer clic en la traducción.
+</div>
+  <img class="instructions"
+  src="{{url_for('static', filename='ajogua2.png')}}"
+  style="width: 550px;" alt="traducción 3" />
+<div class='subpaso'>
+La traducción actualmente seleccionada se muestra en el espacio
+inferior a la izquierda.
+</div>
+<div class="paso">
+  Pod&eacute;s editar la traducción en el espacio inferior.
+</div>
+<div class='subpaso'>
+  Como ejemplo, en este video se elimina la palabra <i>peteĩ</i> de la
+  traducción.
+</div>
+<video class="instructions" style="width: 550px;" controls>
+  <source src="{{url_for('static', filename='ajogua4.mp4')}}" type="video/mp4">
+</video>
+
+<!--
+<div class='paso'>
+  <span class='paso'>
+  Podés cambiar la posición de los segmentos al arrastrar un
+  segmento con el mouse y soltarlo sobre otro segmento.
+  </span>
+  El superior muestra la traducción de los segmentos extraídos por
+  Mainumby, con colores que corresponden a los de los segmentos en la
+  oración castellana.
+</div>
+<div class='subpaso'>
+  La traducción que corresponde a las opciones seleccionadas se
+  muestra en el espacio inferior a la derecha.
+  Si todavía no estás satisfecho con la traducción, podés editar el
+  texto en este espacio.
+  Mainumby normaliza los caracteres guaraníes que escriben en este
+  espacio, por ejemplo, cambiando "ê" a "ẽ".
+</div>
+-->
+<div class='paso'>
+  Para copiar la traducción al portapapeles de tu computadora o
+  teléfono para pegarla en otra ventana, presioná el botón "Copiar".
+</div>
+
+<div class="vspace" id="doc"></div>
+<h2>Traducir documentos</h2>
+<div class="paso">
+Para traducir un documento, primero seleccioná la opción
+  "Documentos" en la parte superior de la ventana.
+</div>
+  <img class="instructions"
+  src="{{url_for('static', filename='doc.png')}}"
+  style="width: 550px;" alt="documentos" />
+
+<p>
+Se presentará dos posibilidades para
+introducir un documento para traducir. Pod&eacute;s subir un documento
+de tu computadora o tel&eacute;fono o, por otro lado, elegir un
+documento de los que están almacenados en la base de datos de
+Mainumby.
+</p>
+
+<div class="vspace" id="doc_subir"></div>
+<h3>Subir un documento</h3>
+<div class="paso">
+Para subir un documento, presioná el botón "Examinar...".
+</div>
+  <img class="instructions"
+  src="{{url_for('static', filename='subir1.png')}}"
+  style="width: 550px;" alt="subir" />
+
+<div class="paso">
+En la ventana que aparece, escog&eacute; un archivo.
+</div>
+
+<div class='subpaso'>
+  Ten&eacute; en cuenta que Mainumby maneja solo archivos
+  de formato .txt (o sea, archivos de texto) y de formato .docx (o
+  sea, archivos de Microsoft Word 2007 o posterior).
+Además los archivos de más de 1 MB no se manejan.
+</div>
+
+<p>
+Una vez que has escogido un archivo admisible, verás en un espacio
+gris el nombre y el tamaño del archivo.
+</p>
+
+<div class='paso'>
+Presioná el botón "Abrir" para continuar con la traducción de este archivo.
+</div>
+
+<img class="instructions"
+  src="{{url_for('static', filename='abrir.png')}}"
+  style="width: 550px;" alt="abrir" />
+
+<p>
+  Mainumby segmenta el documento en oraciones, mostrando los límites
+  entre párrafos con el simbolo "¶".
+  Aparte de eso, descarta el formato del documento, por ejemplo, las
+  fuentes y la sangría.
+</p>
+
+<img class="instructions"
+  src="{{url_for('static', filename='enemigo1.png')}}"
+  style="width: 550px;" alt="enemigo 1" />
+
+<div class="vspace" id="doc_seleccionar"></div>
+<h3>Seleccionar un documento almacenado</h3>
+
+<div class="paso">
+Para elegir un documento de los almacenados en el sistema, presioná el botón "Elegir...".
+</div>
+  <img class="instructions"
+  src="{{url_for('static', filename='almacenado1.png')}}"
+  style="width: 550px;" alt="almacenado1" />
+
+  <p>Se muestra un menú de categorías.</p>
+<div class="paso">
+Para ver los documentos almacenados en una categoría, hac&eacute; clic
+  en el símbolo "▸" al lado del nombre de la categoría.
+</div>
+<div class="paso">
+Hac&eacute; clic en el nombre del documento que quer&eacute;s
+  traducir.
+</div>
+
+<img class="instructions"
+  src="{{url_for('static', filename='abejas1.png')}}"
+  style="width: 550px;" alt="abejas1" />
+
+<ul>
+  <li>Seleccionás oraciones para traducir al mover el mouse sobre el
+  documento. Para traducir la oración resaltada en negrita, hacé
+  clic.
+  </li>
+  <li>Como en la interfaz para oraciones, si has seleccionado
+  el modo "sin opciones", la traducción de Mainumby aparece directamente
+  en el espacio a la derecha.
+  Por otro lado, si has seleccionado el modo "con opciones", se muestran los segmentos
+  extraídos por Mainumby y sus traducciones (a la derecha) con
+  colores. Como en la otra interfaz, se puede escoger entre las
+  opciones ofrecidas y cambiar la posición de segmentos.
+  </li>
+  <li>Con el modo "con opciones", tenés que aceptar la traducción de cada oración
+  antes de que se incluya en la traducción del documento.
+  Cuando estés satisfecho con la traducción de la oración,
+  presioná el botón "Aceptar" para incluirla en la traducción del
+  documento, la que se muestra en el espacio en la parte inferior
+  derecha.
+  </li>
+  <li>Cuando termines la traducción del documento, lo podés
+  guardar como archivo en tu computadora o teléfono. Escribí un nombre
+  para el archivo en el espacio después de "Nombre de archivo:", y
+  presioná el botón "Guardar".
+  El archivo será de formato ".txt" (texto), no de ".docx" (Microsoft
+  Word).
+  </li>
+  <li>Para registrar la traducción en la memoria de traducción de
+  Mainumby (así mejorando traducciones futuras que ofrece el sistema),
+  presioná el botón "Registrar".
+  </li>
+</ul>
+<div class="vspace" id="doc_traducir"></div>
+<h3>Seleccionar la traducción</h3>
+
+</td>
+</tr>
+</table>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script>
+/* Return-to-top button */
+mybutton = document.getElementById("inicio");
+window.onscroll = function() {scrollFunction()};
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+function traducir() {
+    form = document.getElementById("form");
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

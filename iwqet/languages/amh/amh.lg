@@ -1,8 +1,10 @@
 # Language data file for Amharic; still incomplete
 # የአማርኛ የቋንቋ ውሂብ ፋይል፤ ገና አልተፈጸመም
 
-name: amharic
+name: አማርኛ
 abbrev: amh
-source: False
+source: True
 target: True
 eos: .?!።፧
+geez: True
+groups: smp,n,v

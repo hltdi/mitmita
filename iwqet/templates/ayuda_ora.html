@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mainumby: Ayuda para Traducción de Oraciones
+{% endblock %}
+
+{% block body %}
+<form action='' id='form' target="_blank" method="post">
+
+<div class='nav'>
+<table class="nav" id="long">
+  <tr class="brown">
+    <td>
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300" height="52" />
+    </a>
+    </td>
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button>
+      </td>
+    <td class="menu" style="width: 200px"><a href="ayuda">AYUDA</a></td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+  </tr>
+</table>
+</div>
+<table class="main">
+<tr>
+<td colspan='3' style="width: 1212px">
+
+<h1>Ayuda: Palabras, Frases, Oraciones</h1>
+
+<h2>Temas</h2>
+  <ul>
+    <li><a href="#introducir">Introducir palabras, frases, oraciones</a></li>
+    <li><a href="#seleccionar">Seleccionar una traducción</a></li>
+
+</ul>
+
+<h2 id="#introducir">Introducir palabras, frases, oraciones para traducir</h2>
+<div class='paso'>
+  ► Introducí una palabra, frase, u oración castellana en el espacio a la
+  izquierda.
+  <br/>
+    <img class="instructions"
+  src="{{url_for('static', filename='bici.png')}}"
+  style="width: 550px" alt="traducción 1" />
+  <br/>
+  <div class='subpaso'>
+  Ten&eacute; en cuenta que Mainumby no tiene un corrector ortográfico castellano así que no
+    tolera errores.
+    Por ejemplo, el verbo <i>está</i> no se reconoce si se escribe sin
+    la tilde.
+  </div>
+  </div>
+<div class='paso'>
+  ► Presioná la tecla Intro/Entrar.
+  <br/>
+  <img class="instructions"
+  src="{{url_for('static', filename='teclado.png')}}" style="width: 550px;" alt="enter" />
+</div>
+<div class='subpaso'>
+  La traducción aparece en los espacios a la derecha.
+</div>
+<img class="instructions"
+  src="{{url_for('static', filename='ajogua1.png')}}"
+style="width: 550px;" alt="traducción 2" />
+
+<h2 id="#seleccionar">Seleccionar una traducción</h2>
+
+<div class='paso'>
+  ► Si la traducción tiene el símbolo "▾", podés escoger otra traducción 
+  de la lista que aparece al hacer clic en la traducción. 
+</div>
+  <img class="instructions"
+  src="{{url_for('static', filename='ajogua2.png')}}"
+  style="width: 550px;" alt="traducción 3" />
+<div class='subpaso'>
+La traducción actualmente seleccionada se muestra en el espacio
+inferior a la izquierda.
+</div>
+<div class="paso">
+  ► Pod&eacute;s editar la traducción en el espacio inferior.
+</div>
+<div class='subpaso'>
+  Como ejemplo, en este video se elimina la palabra <i>peteĩ</i> de la
+  traducción.
+</div>  
+<video class="instructions" style="width: 550px;" controls>
+  <source src="{{url_for('static', filename='ajogua4.mp4')}}" type="video/mp4">
+</video>
+
+<!--
+<div class='paso'>
+  <span class='paso'>
+  Podés cambiar la posición de los segmentos al arrastrar un 
+  segmento con el mouse y soltarlo sobre otro segmento. 
+  </span>
+  El superior muestra la traducción de los segmentos extraídos por 
+  Mainumby, con colores que corresponden a los de los segmentos en la 
+  oración castellana.
+</div>
+<div class='subpaso'>
+  La traducción que corresponde a las opciones seleccionadas se 
+  muestra en el espacio inferior a la derecha. 
+  Si todavía no estás satisfecho con la traducción, podés editar el 
+  texto en este espacio. 
+  Mainumby normaliza los caracteres guaraníes que escriben en este 
+  espacio, por ejemplo, cambiando "ê" a "ẽ". 
+</div>
+-->
+<div class='paso'>
+  ► Para copiar la traducción al portapapeles de tu computadora o 
+  teléfono para pegarla en otra ventana, presioná el botón "Copiar".
+</div>
+
+</td>
+</tr>
+</table>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script>
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+function traducir() {
+    form = document.getElementById("form");
+//    document.getElementById("cargando").innerHTML = "<p></p><span class='cargando'>Cargando base de datos (podría tardarse)...</span><p></p>";
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

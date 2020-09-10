@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mainumby: Contacto
+{% endblock %}
+
+{% block body %}
+<form id='form' action='login' method="post">
+
+<div class="nav">
+<table class="nav">
+  <tr class="brown">
+    <td class="title">
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300" height="52" />
+    </a>
+    </td>
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button></td>
+<!--      
+    <td class="menu" style="width: 200px">
+       <button class="menu"
+      onclick="ingresar()">IDENTIFICARTE</button></td>
+-->      
+    <td class="menu" style="width: 200px"><a href="ayuda">AYUDA</a></td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menufuzzy" style="width: 200px">CONTACTO</td>
+  </tr>
+</table>
+</div>
+<table class="main">
+<tr>
+<td colspan='3' style="width: 1212px">
+
+<h1>Contacto</h1>
+
+<div id="cargando">
+  <h2>Para hacernos preguntas, sugerencias, críticas
+  </h2>
+
+  <p>
+  Enviale un correo al director del proyecto,
+  <a href="http://homes.soic.indiana.edu/gasser/">Michael Gasser</a>:
+  <a href="mailto:gasser@indiana.edu?Subject=Mainumby">gasser ARROBA indiana PUNTO edu</a>.
+  </p>
+
+<h2>Para participar</h2>
+
+<p>
+  Tenemos un <a href="https://groups.google.com/forum/#!forum/mainumby-disc">
+  grupo de Google</a> para los usuarios de Mainumby.
+  En este grupo se puede compartir comentarios sobre el proyecto,
+  sobre la traducción de palabras o frases específicas al guaraní, y sobre
+  los desafíos de la traducción en el contexto paraguayo por lo general.
+  Si te quer&eacute;s juntar al grupo,
+  enviale un correo a <a href="mailto:gasser@indiana.edu?Subject=Grupo%20de%20Google%20para%20Mainumby">Michael Gasser</a>.
+</p>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</form>
+{% endblock %}
+
+{% block script %}
+<script>
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+function traducir() {
+    form = document.getElementById("form");
+    document.getElementById("cargando").innerHTML = "<p></p><span class='cargando'>Cargando base de datos (podría tardarse)...</span><p></p>";
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

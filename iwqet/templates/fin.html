@@ -1,39 +1,56 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-<head>
-<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+{% extends "base.html" %}
 
-<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+{% block body %}
+<form method=POST id='form'>
 
-</head>
-
-<body>
-
-<form method=POST action='login'>
-
-<table class="center">
-  <tr>
+<div class="nav">
+<table class="nav">
+  <tr class='brown'>
     <td class="title">
-    <a href="base">
-    <img class='banner' src="{{url_for('static',
-      filename='logo.png')}}" alt="" width="300px"
-      height="52px" />
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300px" height="52px" />
     </a>
     </td>
-    <td class="menu" style="width: 500px">
-      <input type="submit" action="reiniciar" name="reiniciar"
-      value="RESTART" class="menu">
-      </td>
-  </tr>
 
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">REINICIAR</button></td>
+    <td class="menu" style="width: 200px"><a href="ayuda">AYUDA</a></td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+  </tr>
+</table>
+</div>
+
+<table class="main">
 <tr>
-  <td colspan="2" style="width:800px">
+<td colspan='3' style="width: 1212px">
+
+<div id="cargando">
+<h1>¡Aguyje reiporu rehe Mainumby!</h1>
+</div>
+
+</td>
+</tr>
 </table>
 
-<h1>Thank you for using Mit'mit'a!</h1>
-
 </form>
+{% endblock %}
 
-</body>
-
-</html>
+{% block script %}
+<script>
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+function traducir() {
+    form = document.getElementById("form");
+    document.getElementById("cargando").innerHTML = "<p></p><span class='cargando'>Reiniciando sesión. Cargando base de datos...</span><p></p>";
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

@@ -1,0 +1,364 @@
+{% extends "base.html" %}
+
+{% block style %}
+<style type="text/css">
+table.example
+{
+    border: 1px solid black;
+    padding: 5px;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+table.example tr td,th
+{
+    border: 1px solid black;
+    padding: 3px;
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<form action='' id='form' method="post">
+
+<div class="nav">
+<table class="nav">
+  <tr class="brown">
+    <td class="title">
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300" height="52" />
+    </a>
+    </td>
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button>
+    </td>
+<!--    
+    <td class="menu" style="width: 200px">
+       <button class="menu" onclick="ingresar()">IDENTIFICARTE</button></td>
+-->      
+    <td class="menu" style="width: 200px"><a href="ayuda">AYUDA</a></td>
+    <td class="menufuzzy" style="width: 200px">ACERCA</td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+  </tr>
+</table>
+</div>
+<table class="main">
+<tr>
+<td colspan='3' style="width: 1212px">
+
+<h1>Acerca de Mainumby</h1>
+
+<div id="cargando">
+  <p>
+  Mainumby es un componente del proyecto <a href="http://homes.soic.indiana.edu/gasser/pisur.html">
+  <strong>Procesamiento de Idiomas del
+  Sur Global</strong></a> (PISur), dirigido por Michael Gasser, profesor
+  asociado em&eacute;rito de la <a
+  href="http://www.soic.indiana.edu/">Escuela de Informática,
+  Computación, y Ingeniería</a> de la <a href="https://www.indiana.edu/">Universidad de Indiana</a> en Estados
+  Unidos de Am&eacute;rica.
+  Será el primero de una planeada serie de sistemas para la traducción asistida
+  por computadora a lenguas a las que faltan recursos computacionales.
+  </p>
+
+  <h2>Motivación</h2>
+
+<p>
+Aunque el Paraguay tiene dos lenguas oficiales y un índice de
+  bilingüismo más alta que en todos los demás países americanos, en
+  otros sentidos falla en realizar el ideal de un país bilingüe.
+  Esto resulta sobre todo por la asimetría que caracteriza la
+  situación sociolingüística de sus lenguas oficiales.
+  Mientras que el castellano se beneficia de todos los recursos y
+  materiales de una lengua internacional,
+  el guaraní padece una carencia de recursos y materiales. Esta
+  situación tiene dos consecuencias significativas:
+  los guaraní-hablantes monolingües se quedan a menudo sin acceso a la
+  información necesaria para participar en la sociedad
+  y para aprovecharse de los beneficios de ser ciudadanos, y el
+  alfabetismo guaraní,
+  un gran objetivo de la educación primaria paraguaya,
+  resulta ser de poca utilidad porque no existen muchos materiales
+  para leer en guaraní,
+  y los que hay no motivan a los estudiantes a practicar la lengua <a
+  href="#ref1">[1]</a><a href="#ref2">[2]</a>.
+  </p>
+
+  <p>
+  Aunque no puede ser una solución completa a la crisis al que se
+  enfrenta el guaraní, el aumento del material en la lengua podría
+  tener un gran papel en el acceso a mejores oportunidades para las personas que manejan
+  mejor el guaraní.
+  Este aumento podría manifestarse en forma de escritura independiente
+  por autores guaraní-hablantes o de traducciones de material al guaraní de otras lenguas.
+  En otras situaciones comparables — en países que alcanzaron su
+  independencia durante el siglo XX como Israel,
+  Indonesia, y Eslovenia, y en otros países o regiones bilingües como Irlanda,
+  el País Vasco, y Gales — la traducción ha posibilitado el uso en la educación,
+  el gobierno, y el comercio de lenguas que habían carecido de textos.
+  </p>
+
+<h2>Trasfondo teórico</h2>
+  <p>
+  La traducción es una tarea, aun cuando la hacen expertos, que
+  necesita muchas horas de trabajo.
+  En el mundo actual, la mayoría de los traductores utilizan computadoras en su trabajo,
+  no sólo para guardar sus traducciones en forma digital sino también
+  para facilitar la tarea misma.
+  No cabe duda de que el uso de herramientas computacionales haya
+  acelerado la producción de traducciones <a href="#ref3">[3]</a>,
+  y que de esta manera podría servir para el fortalecimiento de las lenguas indígenas <a href="ref4">[4]</a>.
+</p>
+
+<p>
+Las herramientas, a menudo integradas en sistemas de
+<a href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_asistida_por_computadora"><strong>traducción
+asistida por computadora</strong></a> (TAC), pertenecen a tres categorías:
+diccionarios, memorias de traducción, y traducción automática. Una
+<a href="https://es.wikipedia.org/wiki/Memoria_de_traducci%C3%B3n">
+<strong>memoria de traducción</strong></a> (MT) es un conjunto de “unidades de traducción”
+(UT): cada unidad consiste en una oración (u otro segmento de texto)
+en una lengua (digamos L1) y su traducción en otra (L2). Supongamos
+que un usuario est&eacute; traduciendo un documento de L1 a L2.
+Introduce el documento en el sistema TAC.
+Primero el sistema segmenta el documento en oraciones.
+Enseguida busca para cada oración en su MT UTs cuya oración de L1
+coincide con la del documento.
+Finalmente le muestran los resultados al usuario.
+En el ejemplo fijado abajo,
+el usuario está a punto de traducir la oración castellana a la izquierda (la
+"oración fuente"), y el sistema TAC le ha mostrado una UT que coincide
+con la oración fuente en ocho palabras.
+</p>
+
+<table class="example">
+  <tr>
+    <th>Documento:
+    </th>
+    <th>Resultados de la búsqueda de la MT:
+      </th>
+    </tr>
+    <tr>
+      <td>...<br/>
+      <strong>En</strong> la montaña <strong>vivieron</strong> los
+	inmigrantes
+	<strong>por mucho tiempo en paz y</strong> armonía con la naturaleza.</br>
+      ...
+
+      </td>
+      <td>
+	<span style="color: #AA0000"><strong>En</strong></span> esas
+	comunidades
+	<span style="color: #009900"><strong>vivieron</strong></span>
+	<span style="color: #0000AA"><strong>por mucho
+	tiempo</strong></span>
+	<span style="color: #888800"><strong>en paz y</strong></span>
+	amistad, juntos y solidariamente.<br/>
+	Umi táva <span style="color: #AA0000"><strong>rupi</strong></span>
+	<span style="color: #009900"><strong>oiko</strong></span>
+	<span style="color: #0000AA"><strong>heta ára</strong></span>
+	<span style="color: #888800"><strong>teko marangatu
+	ha</strong></span> mborayhu
+	pa'ũ<span style="color: #888800"><strong>me</strong></span>,
+	oñondivepa, jekupytýpe.
+      </td>
+    </tr>
+  </table>
+
+  <p>
+Algunos sistemas presentan además el alineamiento entre las palabras
+  en las dos oraciones de las UTs que coinciden; esto se fija en el
+  ejemplo por la coloración de las palabras.
+  Por ejemplo, el color verde muestra la correspondencia entre la
+  palabra castellana <i>vivieron</i> y la palabra guaraní <i>oiko</i>.
+</p>  
+<p>  
+El usuario puede usar las sugerencias que le da el sistema o
+  rechazarlas. Su traducción final se registra en la MT; es decir,
+  cuánto más se usa el sistema TAC, más aumenta la MT.
+</p>
+  <p>  
+La utilidad de una MT depende de su tamaño y de la concordancia entre
+  su contenido y el del documento fuente. Obviamente los pocos corpus
+  bilingües castellano-guaraní que existen en la actualidad no sirven para una MT
+  adecuada.
+</p>  
+<p>  
+  Los sistemas de
+  <a href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_autom%C3%A1tica">
+  <strong>traducción automática</strong></a> (TA) se clasifican en dos tipos:
+  sistemas basados en reglas (TABR) y sistemas basados en datos
+  (traducción automática
+  <a
+  href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_autom%C3%A1tica_estad%C3%ADstica">
+  estadística</a> y
+  <a
+  href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_autom%C3%A1tica_neuronal">
+  neuronal</a> (TAE, TAN)). Los sistemas <a
+  href="https://es.wikipedia.org/wiki/Traducci%C3%B3n_autom%C3%A1tica#Traducci%C3%B3n_autom%C3%A1tica_basada_en_reglas">
+  <strong>basados en reglas</strong></a> (p.ej., Apertium) se componen de
+  diccionarios bilingües y reglas que implementan correspondencias
+  gramaticales entre las lenguas.
+  Dependen del conocimiento
+  lingüístico de expertos; no aprenden automáticamente. Los sistemas
+  <strong>basados en datos</strong> (p.ej., Traductor de Google), como las memorias de
+  traducción, dependen de <i>corpus</i> bilingües grandes. Utilizando el
+  <strong><a
+  href="https://es.wikipedia.org/wiki/Aprendizaje_autom%C3%A1tico">
+  aprendizaje automático</a></strong>, se descubren tendencias
+  estadísticas en las relaciones entre las dos lenguas, en la traducción de palabras y frases y en el orden de
+  palabras, sin depender de conocimiento gramatical explícito o de diccionarios.
+  Para pares de lenguas para las que existen
+  corpus bilingües adecuados, domina hoy en día la traducción estadística o neuronal.
+</p>
+  <p>
+En resumen, los sistemas TAC incluyen herramientas (MT, TA) que sólo
+  se pueden implementar a través de corpus bilingües grandes de las
+  lenguas en cuestión. En falta de un corpus adecuado, sólo se pueden
+  incorporar diccionarios y TABR.
+</p>
+
+<h2>Metas</h2>
+
+<p>
+El objetivo principal del proyecto es ayudar en la tarea de la
+traducción castellano-guaraní a través del desarrollo de una serie de
+herramientas computacionales integradas en una aplicación web, es
+decir, un sistema de TAC.
+Como en los sistemas TAC convencionales, se planea integrar una MT
+y un traductor automático (TA) en la aplicación.
+Aunque se ha desarrollado una versión inicial de un sistema de TABR, incluso un diccionario
+bilingüe digital
+(Mbojereha), ya sabemos que padece de muchas lagunas en su cobertura
+de las lenguas.
+Por otro lado, una MT usable todavía no existe por causa de la falta
+de corpus bilingües.
+Pretendemos complementar los pocos
+recursos disponibles con datos que solicitaremos de los usuarios del
+sistema, específicamente para llenar lagunas que se han identificado
+en la MT y el TA.
+</p>
+<p>
+Creemos que Mainumby va a representar un logro importante no solo para la
+traducción castellano-guaraní sino tambi&eacute;n para los ámbitos de investigaciones
+computacionales dedicados a la traducción automática y la
+traducción asistida por computadora en el contexto de lenguas sin recursos
+suficientes.
+</p>
+<p>
+Pod&eacute;s enterarte más sobre la teoría subyacente a Mainumby,
+Traducción por Segmentos Generalizados (tambi&eacute;n llamada
+Traducción de Dependencias Minimales), en Gasser (2017) <a href="#ref5">[5]</a>,
+un artículo en ingl&eacute;s que ilustra la teoría con ejemplos de
+otra implementación,
+y sobre Mainumby mismo en Gasser (2018) <a href="#ref6">[6]</a>.
+Si sos programador(a), pod&eacute;s acceder al código del proyecto en
+Github aquí: <a href="https://github.com/hltdi/mainumby">https://github.com/hltdi/mainumby</a>.
+</p>
+
+<h2>Cómo funciona</h2>
+
+<p>
+  Mainumby tiene un diccionario bilingüe de frases y
+  conocimiento básico de la gramática castellana, la
+  gramática guaraní, y las relaciones entre ellas.
+  El diccionario y la gramática se basan en varios recursos publicados o
+  disponibles en forma digital, pero todavía padece lagunas grandes.
+</p>
+<p>
+  Para cada oración castellana que el usuario introduce, Mainumby
+  analiza las palabras, extrayendo las raíces y las propiedades gramáticas.
+  Entonces busca frases en la oración analizada que coinciden con frases en su diccionario.
+  Finalmente, para cada frase coincidente genera una o más traducciones en guaraní, usando
+  su conocimiento de la morfología y ortografía del idioma.
+  En la interfaz, se le muestran estos resultados al usuario.
+</p>
+<p>
+  Cuando el usuario corrige la salida del sistema o reemplaza una
+  traducción por una diferente, Mainumby aprende de esta
+  retroalimentación, mejorando su diccionario o su conocimiento
+  gramatical.
+  Además Mainumby añade la traducción producida por el usuario a una
+  <strong>memoria de traducción</strong>, de manera que se use en sesiones futuras cuando
+  otro usuario traduzca una oración semejante.
+</p>
+
+<h2>Bibliografía</h2>
+
+<p id="ref1">
+[1] De Granda, G. (1988). <i>Sociedad, historia y lengua del
+Paraguay</i>. Bogotá: Instituto Garo y Guervo.
+</p>
+
+<p id="ref2">
+[2] <a
+href="http://congresosdelalengua.es/cartagena/ponencias/seccion_3/33/melia_bartolomiu.htm">Melià,
+B. (2007)</a>.
+La crisis del bilingüismo en Paraguay. <i>IV Congreso Internacional de la Lengua Española</i>. Cartagena, Colombia.
+</p>
+
+<p id="ref3">
+[3] <a
+href="http://www.sciencedirect.com/science/article/pii/S1877042815044213">Candel-Mora,
+M. A. (2015)</a>.
+Comparable corpus approach to explore
+the influence of computer-assisted translation systems on
+textuality. <i>Procedia: Social and Behavioral Sciences</i>, <i>198</i>, 67-73.
+</p>
+
+<p id="ref4">
+[4] <a href="http://homes.sice.indiana.edu/gasser/Papers/cilli.pdf">Gasser, M. (2006)</a>. Machine translation and the future of
+indigenous languages. <i>I Congreso Internacional de Lenguas y
+Literaturas Indoamericanas</i>, October, 2006, Temuco, Chile.
+</p>
+
+<p id="ref5">
+[5] <a href="https://arxiv.org/abs/1710.00923">Gasser, M. (2017)</a>. Minimal dependency translation:
+a framework for computer-assisted translation for under-resourced
+languages.
+<i>EAI International Conference on ICT for Development for Africa</i>,
+25-27 septiembre, 2017, Bahir Dar, Etiopía.
+</p>
+
+<p id="ref6">
+[6] <a href="https://arxiv.org/abs/1810.08603">Gasser, M. (2018)</a>. Mainumby: un ayudante para la traducción
+castellano-guaraní. <i>Tercer Seminario Internacional sobre Traducción,
+Terminología y Lenguas Minorizadas</i>, Asunción, Paraguay, 19-21 julio, 2018, San Lorenzo, Paraguay.
+</p>
+
+<hr/>
+</form>
+</div>
+</td>
+</tr>
+</table>
+
+{% endblock %}
+
+{% block script %}
+<script>
+function ShowHelp() {
+    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=600,height=400");
+    helpWin.document.write('<html><head>' +
+'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
+"<title>Mainumby: Ayuda</title></head><body>" +
+"<h4 class='help'>Ayuda general para la aplicación</h4>" +
+"</body></html>");
+}
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+function traducir() {
+    form = document.getElementById("form");
+    document.getElementById("cargando").innerHTML = "<p></p><span class='cargando'>Cargando base de datos (podría tardarse)...</span><p></p>";
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

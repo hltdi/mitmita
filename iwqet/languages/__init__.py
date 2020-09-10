@@ -1,2 +1,1 @@
-"""Hiiktuu languages."""
-
+"""Mit'mit'a languages."""

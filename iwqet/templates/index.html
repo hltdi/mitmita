@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form action='' id='form' method="post">
+
+<div class="nav">
+<table class="nav">
+  <tr class="brown">
+    <td>
+    <img class='banner' src="{{url_for('static', filename='gyez_logo.png')}}"
+         alt="" width="400" height="52" />
+    </td>
+
+    <td class='title' style="width: 0px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">መተርጐም</button>
+      </td>
+    <td class="menu" style="width: 200px"><a href="">እርዳታ</a></td>
+    <td class="menu" style="width: 200px"><a href="acerca">ስለ ፕሮዤው</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">አግኙን</a></td>
+
+  </tr>
+</table>
+</div>
+
+<table class="main">
+<tr>
+<td colspan='3' style="width: 1212px">
+
+<div id="cargando">
+<h1>ወደ ጘዝ እንኳን ደህና መጡ!</h1>
+
+  <!--
+<h2>Temas</h2>
+  <ul>
+    <li><a href="#general">Uso en general</a></li>
+    <li><a href="ayuda_ora">Traducción de palabras, frases, oraciones</a></li>
+    <li><a href="ayuda_doc">Traducción de documentos</a></li>
+  </ul>
+
+  <h2 id="general">Uso en general</h2>
+  -->
+
+  <h2><span class='amh'>ጘዝ ምንድን ነው?</span></h2>
+  <p>
+    </p>
+
+<!--
+  <p>
+  To learn more about the theory behind the program, select
+  <a href="acerca"><img src="{{url_for('static', filename='acerca.png')}}" style="width: 75px;
+  vertical-align:middle" alt="ACERCA" /></a>.
+  </p>
+-->
+
+  <h2><span class='amh'>ለማን ነው?</span></h2>
+  <p></p>
+
+<h2><span class='amh'>እንዴት እጀምራለሁ?</span></h2>
+<p>
+</p>
+
+<h2><span class='amh'>ፕሮዤውን እንዴት እደግፋለሁ?</span></h2>
+<!--
+<p>
+<a href="mailto:gasser@indiana.edu?Subject=Grupo%20de%20Google%20para%20Mainumby">Michael Gasser</a>.
+</p>
+-->
+
+</td>
+</tr>
+</table>
+
+</form>
+
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+function documento() {
+    cargando();
+    window.location.assign("doc");
+}
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+function traducir() {
+    cargando();
+    form = document.getElementById("form");
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

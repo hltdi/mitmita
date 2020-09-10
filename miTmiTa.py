@@ -28,6 +28,9 @@
 # 2017.4
 # -- English->Amharic
 # -- Split off from mainumby as miTmiTa.py
+# 2020.8
+# -- Updated with changes to mainumby
+# -- Amharic->Chaha
 
 __version__ = 1.0
 
@@ -35,24 +38,53 @@ import iwqet
 
 ## shortcuts
 
+FS = iwqet.morpho.FeatStruct
+FSS = iwqet.morpho.FSSet
+
 def load(train=False):
-    eng, amh = iwqet.load('eng', 'amh')
-    return eng, amh
+    amh, sgw = iwqet.Language.load_trans('amh', 'sgw', train=train)
+    return amh, sgw
+
+def tra(oracion, html=False, user=None, choose=False, verbosity=0):
+    return ora(oracion, user=user, max_sols=2, translate=True,
+               connect=True, generate=True, html=html, choose=choose,
+               verbosity=verbosity)
+
+## Creación (y opcionalmente traducción) de oración simple y de documento.
+
+def ora(text, user=None, max_sols=2, translate=True,
+        connect=True, generate=False, html=False, choose=False, verbosity=0):
+    return kuaa.oración(text, user=user, max_sols=max_sols, translate=translate,
+                        connect=connect, generate=generate, html=html, choose=choose,
+                        verbosity=verbosity)
+
+def anal(sentence, user=None, verbosity=0):
+    """Analizar una oración castellana."""
+    return kuaa.oración(sentence, user=user, translate=False, verbosity=verbosity)
 
 def document(text, process=True):
-    e = iwqet.Language.languages.get('eng')
     a = iwqet.Language.languages.get('amh')
-    if not e:
-        e, a = load()
+    s = iwqet.Language.languages.get('sgw')
+    if not a:
+        a, s = load()
 #        e = load1()
-    d = iwqet.Document(e, a, text=text, proc=process)
+    d = iwqet.Document(a, s, text=text, proc=process)
     return d
+
+def sent(text, user=None, max_sols=2, translate=True,
+        connect=True, generate=False, html=False, choose=False, verbosity=0):
+    return iwqet.አረፍተነገር(text, user=user, max_sols=max_sols, translate=translate,
+                        connect=connect, generate=generate, html=html, choose=choose,
+                        verbosity=verbosity)
 
 def sentence(sentence, ambig=False, solve=True, user=None, segment=True,
              max_sols=1, verbosity=0):
     e, a = load()
-    session = iwqet.start(e, a, user)
-    d = iwqet.Document(e, a, sentence, True, session=session)
+    gui = iwqet.gui.GUI()
+    gui.source = e
+    gui.target = a
+    iwqet.start(gui, user)
+    d = iwqet.Document(e, a, sentence, True)
     s = d[0]
     s.initialize(ambig=ambig, verbosity=verbosity)
     if solve or segment:

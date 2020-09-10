@@ -1,0 +1,1330 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mainumby: Traducción
+{% endblock %}
+
+{% block style %}
+
+<style type="text/css">
+
+.modo
+{
+    clear: left;
+    font-size: 120%;
+    margin-top: .75em;
+    margin-bottom: .35em;
+    background-color: #F5E754;
+    padding: 8px;
+}
+label#subir
+ {
+    display: inline-block;
+    position: relative;
+    background-color: #F5E754;
+    color: #4B2B17;
+    font-family: "Verdana";
+    font-size: 100%;
+    text-align: center;
+    padding: 0px;
+    width: 116px;
+    border-radius: 4px;
+    border-style: outset;
+    border-color: black;
+    border-width: 2px;
+    cursor: pointer;
+}
+label#subir:hover, label#subir:active
+{
+    background-color: #4B2B17;
+    color: #F5E754;
+}
+td.subir
+{
+    vertical-align: top;
+    font-size: 100%;
+    width: 125px;
+}
+td.ocultar
+{
+    text-align: right;
+    font-size: 90%;
+}
+td.opciones
+{
+    font-size: 80%;
+    font-style: italic;
+    text-align: center;
+    border: 1px solid white;
+    width: 38%;
+}
+td.sinopciones
+{
+    font-size: 80%;
+    font-style: italic;
+    text-align: center;
+    border: 1px solid white;
+    width: 38%;
+}
+td.sep
+{
+    text-align: left;
+}
+.envoltorio-subida {
+    position: relative;
+    font-size: 100%;
+    padding-bottom: 6px;
+}
+
+.btn-subir {
+    padding: 0px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+}
+.subir-label {
+    padding: 0px;
+}
+.subir-label:hover {
+    background-color: #4B2B17;
+    color: #8DEDCD;
+}
+div.archivo {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: LightGray;
+}
+span.archivo {
+    font-style: italic;
+    color: #4B2B17;
+}
+
+div.archivo table td {
+    vertical-align: middle;
+    padding-left: 8px;
+    padding-right: 18px;
+}
+
+div#fuente
+{
+    font-family: "Verdana";
+    font-size: {% if props.tfuente %} {{props.tfuente}} {% else %} 115% {% endif %};
+    font-weight: {% if documento %}normal{% else %}bold{% endif %};
+    resize: none;
+    padding: 8px 8px;
+    margin: 0px;
+    box-sizing: border-box;
+    width: 100%;
+    height: {% if documento %}260pt{% else %}80pt{% endif %};
+    white-space: normal;
+    border: thin solid;
+    overflow-y: auto;
+}
+span.fuente
+{
+    font-weight: bold;
+}
+div#meta
+{
+    font-family: "Verdana";
+    font-size: {% if props.tfuente and not props.isdoc %} {{props.tfuente}} {% else %} 100% {% endif %};
+    resize: none;
+    padding: 8px 0px 8px 8px;
+    line-height: 125%;
+    margin: 0px;
+    box-sizing: border-box;
+    width: 101%;
+    height: 80pt;
+    white-space: normal;
+    border: thin solid;
+    overflow-y: auto;
+}
+div#doc
+{
+}
+div.oradoc
+{
+}
+div.oradoc:hover
+{
+    cursor: pointer;
+    background-color: #8DEDCD;
+}
+span.lengua
+{
+    font-size: 115%;
+/*    font-weight: bold; */
+}
+div#instruc_fuente, div#instruc2, div#instruc_trad
+{
+    {% if props.ocultar %} display: none; {% endif %}
+}
+div.comentario
+{
+    text-align: left;
+}
+textarea.ometa
+{
+    font-family: "Verdana";
+    resize: none;
+    font-size: 100%;
+    padding: 4px 0px 4px 4px;
+    margin: 0px;
+    width: 100%;
+    border: thin solid;
+    height: 60px;
+}
+textarea.dmeta
+{
+    font-family: "Verdana";
+    resize: none;
+    font-size: 100%;
+    padding: 4px 0px 4px 4px;
+    margin: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    border: thin solid;
+    height: {% if tradtodo %}260pt{% else %}100pt{% endif %};
+}
+textarea.comentario
+{
+    font-family: "Verdana";
+    resize: none;
+    font-size: 100%;
+    padding: 4px 0px 4px 4px;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    width: 50%;
+    box-sizing: border-box;
+    border: thin solid;
+    height: 50pt;
+}
+input.filename
+{
+   width: 50pt;
+}
+div.despleg {
+    font-family: "Verdana";
+    background-color: #4B2B17;
+    color: white;
+    font-size: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    margin: none;
+    border: none;
+}
+.segopcion {
+    cursor: pointer;
+    text-indent: -8px;
+    padding-left: 16px;
+    padding-right: 8px;
+    line-height: 1.2;
+/*    padding-bottom: 5px; */
+}
+div.opcion {
+    font-size: 100%;
+    padding-bottom: 5px;
+    cursor: pointer;
+    padding-left: 22px ;
+    text-indent: -22px ;
+}
+.segopcion:hover {
+    text-decoration: underline;
+}
+.opcion:hover {
+    text-decoration: underline;
+}
+.desplegable {
+    position: relative;
+    display: inline-block;
+}
+#dominios {
+    display: none;
+    border: 1px;
+    border-style: solid;
+    background-color: #F5E754;
+}
+div.desplegable-derecha {
+    position: relative;
+    display: inline-block;
+    /*    background-color: #4B2B17; */
+    border: none;
+    width: 100%;
+}
+div.despleg-derecha {
+    font-family: "Verdana";
+/*    background-color: #4B2B17; */
+    color: #4B2B17;
+    font-size: 110%;
+    line-height: 1.5;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    margin: none;
+    border: 0;
+}
+.contenido-desplegable {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    font-size: 85%;
+    min-width: 225px;
+    overflow: auto;
+    padding: 4px 0px;
+/*    border: 1pt; */
+/*    border-style: solid; */
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4);
+    z-index: 1;
+}
+.textos-desplegable {
+    display: none;
+    position: relative;
+    left: 125px;
+    bottom: 25px;
+    background-color: #8DEDCD;
+    font-size: 100%;
+    /*    min-width: 160px; */
+    width: 35%;
+    overflow: auto;
+    padding: 2px 2px;
+    z-index: 1;
+}
+#seleccionBoton
+{
+    padding-top: 6px;
+}
+.show {display: block;}
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+<div class='nav'>
+<table class='nav'>
+
+<form id='form' name="Form1" method=POST>
+
+<tr class="brown">
+    <td class="title">
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300px"
+      height="52px" />
+    </a>
+    </td>
+
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <input class="menu" type="submit" value="SALIR" name="salir" onclick="return alSalir();">
+    </td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menu" style="width: 200px"><a
+      href="ayuda">AYUDA</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+    <input type="hidden" name="ayuda" value="">
+    <input type="hidden" name="modo" value="ora">
+</tr>
+</form>
+</table>
+</div>
+
+<table class="main">
+<tr>
+<td colspan="3"  style="width: 1212px">
+
+<p id="error" class="error">
+{% if error %}{{error}}{% endif %}
+</p>
+
+<form id="modo" name="Form0" method="post">
+<div class="modo">
+    <table style="width:100%">
+    <tr>
+    {#    <td class='subir'>Traducción de </td> #}
+    <td class='opciones'>
+    Traducción de...<br/>
+{% if doc %}
+    <input type="button" class="trad" id="tradora" style="background-color: #F5E754; cursor: pointer" value="Palabras/frases/oraciones" onclick="alternarPalDoc(false);">
+    <input type="button" class="trad" id="traddoc" style="background-color: #8DEDCD" value="Documentos">
+{% else %}
+    <input type="button" class="trad" id="tradora" style="background-color: #8DEDCD" value="Palabras/frases/oraciones">
+    <input type="button" class="trad" id="traddoc" style="background-color: #F5E754; cursor: pointer" value="Documentos" onclick="alternarPalDoc(true);">
+{% endif %}
+{#    <span class='vl'></span> #}
+    </td>
+    <td style="width: 25px"></td>
+    <td class='sinopciones'>
+    ¿Opciones de traducción?<br/>
+    {% if choose %}
+    <input type="button" class="trad" id="conopc" style="background-color: #F5E754; cursor: pointer" value="Con opciones" onclick="alternarOpciones(false);">
+    <input type="button" class="trad" id="sinopc" style="background-color: #8DEDCD" value="Sin opciones">
+    {% else %}
+    <input type="button" class="trad" id="conopc" style="background-color: #8DEDCD" value="Con opciones">
+    <input type="button" class="trad" id="sinopc" style="background-color: #F5E754; cursor: pointer" value="Sin opciones" onclick="alternarOpciones(true);">
+    {% endif %}
+    </td>
+    <td class='ocultar'>
+{#
+    <span id="sinopciones" class="alternar" onclick="alternarOpciones();">
+    {% if choose %}Mostrar opciones. {% else %}Traducir sin opciones.{% endif %}
+     </span><br/>
+#}
+    <span id="ocultar" class="alternar" onclick="alternarInstrucciones();">
+    {% if props.ocultar %}Mostrar instrucciones. {% else %}Ocultar instrucciones.{% endif %}
+    </span>
+    </td>
+    </tr>
+    </table>
+</div>
+
+{% if doc and not documento %}
+<table style="width:100%">
+<tr>
+
+<td>
+<div class="envoltorio-subida" id="envoltorio-subida">
+{#
+  {% if not user %}
+  <div class="advert" id="advert">Notá que no es posible registrar una traducción
+    en la base de datos de Mainumby sin identificarte.</div>
+    {% endif %}
+#}
+  <label id="subir" for="subido">
+  <div class="subir-label">Examinar...</div>
+  <input id='subido' type='file' class="btn-subir" onchange="archivoSubido();" name='subido'>
+  </label>
+  <span class='instructions'>
+    Subí un archivo (formato .txt o .docx) de tu computadora.
+  </span>
+</div>
+</td>
+</tr>
+<tr>
+<td>
+  <div id="seleccionBoton">
+  <input type="button" value="Elegir..." id="button" onclick="seleccionarArchivo();">
+  <span class'instructions'>
+    Elegí un archivo de la base de datos de Mainumby.
+  </span>
+    </div>
+</td></tr>
+<tr>
+<td id="dominios">
+{% if text_html %}
+{{ text_html|safe }}
+{% endif %}
+</td>
+</tr>
+
+</table>
+
+{% endif %}
+
+<input type="hidden" name="documento" value=''>
+<input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
+<input type="hidden" name="sinopciones" value={% if choose %}true{% else %}false{% endif %}>
+<input type="hidden" name="docsrc" value="computadora">
+<input type="hidden" name="textid" value="">
+<input type="hidden" name="modo" value="ora">
+
+</form>
+
+{% if documento or not doc %}
+
+<table>
+
+  <tr>
+    <td style="width: 590px">
+      <span class="lengua">Castellano</span>
+    </td>
+    <td style="width: 20px"></td>
+    <td style="width: 590px">
+      <span class="lengua">Guaraní</span>
+  </tr>
+
+  <tr>
+  <td>
+  {% if documento %}
+    <div id='fuente' contenteditable="false">{{documento|safe}}</div>
+  {% elif oracion %}
+    <div id='fuente' contenteditable="true">{{oracion|safe}}</div>
+  {% else %}
+    <div id='fuente' contenteditable="true"></div>
+  {% endif %}<br class='instruc'/>
+
+  {% if documento %}
+    <div class="instruc" id="instruc_fuente">
+    {% if not tradtodo %}
+    Para seleccionar una oración para traducir, hacé clic sobre la oración.
+    {% if choose %}
+    <br />
+    Para traducir todo el documento, presioná "Traducir todo" abajo.
+    {% endif %}
+    <br />
+    {% endif %}
+    Para abandonar este documento, presioná "Abandonar" abajo.
+    </div>
+    <br class='sep'/>
+    <input type="button" value="Abandonar" id="button" onclick="abandonarDoc();">
+    {% if choose %}
+    <span id="tradtodo">
+    <input type="button" value="Traducir todo" id="button" onclick="traducirTodo();">
+    </span>
+    {% endif %}
+  {% elif oracion %}
+    <div class="instruc" id="instruc_fuente">Para traducir otra oración,
+    primero presioná 'Borrar' o hacé clic en el espacio de arriba.
+    </div>
+    <br class='instruc'/>
+    <input type="button" value="Borrar" id="button" onclick="borrar()">
+  {% elif not doc %}
+    <div class="instruc" id="instruc_fuente">Escribí una palabra,
+    frase, u oración, y luego presioná Intro/Enter para traducirla.</div>
+  {% endif %}
+    </td>
+
+    <td></td>
+
+    <td>
+  {% if doc and not tradtodo %}
+<span class="level">Oración actual</span>
+  {% endif %}
+  {% if not choose %}
+<div id='meta'>
+  {% if tra_seg_html %}
+      {% for tra in tra_seg_html %}
+      {{tra[2]|safe}}
+      {% endfor %}
+  {% endif %}
+</div>
+  {% endif %}
+
+  {% if tra or choose %}
+  {% if not choose %}
+    <br class='instruc'/>
+<div class='instruc'>
+    <div id='instruc2'>
+    • Para segmentos marcados con "▾", pod&eacute;s seleccionar otra opción.<br />
+    • Para cambiar la posición de un segmento, arrastralo sobre otro segmento.</div>
+</div>
+  {% endif %}
+  {% if not tradtodo %}
+{#
+    <br class="sep" />
+    <span id="correccion" class="alternar" onclick="alternarCorreccion();">Desactivar corrección ortográfica automática.</span>
+    <br class='instruc'/>
+#}
+<textarea class='ometa' id='textmeta'>{{tra|safe}}</textarea>
+    {% if tra %}
+    <br class='instruc' />
+    <div class="instruc" id="instruc_trad">
+    • Si no estás satisfecho con la traducción, pod&eacute;s editarla.<br />
+    {% if doc %}
+    • Para incluir esta oración en la traducción del documento, presioná "Aceptar".<br />
+    {% else %}
+    • Para copiar la traducción al portapapeles, presioná "Copiar".
+{#    {% if user %} #}
+    <br />
+    • Para registrar la traducción en la memoria de Mainumby, presioná "Registrar".
+{#    {% endif %}   #}
+    {% endif %}
+    {% endif %}
+    </div>
+
+    <br class='instruc'/>
+
+    {% if doc %}
+    <input type="button" value="Aceptar" id="button" onclick="aceptarTrad();">
+    {% else %}
+    <input type="button" value="Copiar" id="button" onclick="copiar();">
+{#    {% if user %} #}
+    <input type="button" value="Registrar" id="button" onclick="registrar();">
+{#    {% endif %}   #}
+    {% endif %}
+    {% endif %}
+
+  {% endif %}
+
+  {% if documento %}
+   {% if not tradtodo %}
+    <br class="sep" />
+    <span class="level">Documento</span><br />
+   {% endif %}
+    <form name="Form3" id="text-options">
+    <textarea class='dmeta' id='aceptado'>{% if aceptado %}{{aceptado|safe}}{% endif %}</textarea>
+    <br class='instruc' />
+    <input type="submit" value="Guardar" id="button"/>
+    <label>Nombre de archivo:<input type="text" class="filename" id="text-filename" placeholder="doc.txt" size="50"/></label>
+    <input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
+{#   {% if user %} #}
+    <br class='sep' />
+    <input type="button" value="Registrar" id="button" onclick="registrar();">
+{#   {% endif %} #}
+    </form>
+  {% endif %}
+
+    </td>
+  </tr>
+  {% if tra_seg_html %}
+  <tr>
+    <td colspan='3' align='center'>
+{#    <div class="comentario"> #}
+      <textarea class="comentario" id="comentario"
+      placeholder='Si ten&eacute;s sugerencias o correcciones, escribilas aquí y luego presioná "Entrar".'></textarea><br class='sep' />
+    <input type="button" value="Entrar" id="button" onclick="comentario();">
+{#    </div> #}
+    </td>
+  </tr>
+  {% endif %}
+
+</table>
+{% endif %}
+
+<form name="Form2" method=POST action='tra'>
+<input type="hidden" name="modo" value={% if isdoc %}"doc"{% else %}"ora"{% endif %}>
+<input type="hidden" name="ofuente" value="">
+<input type="hidden" name="oindex" value={% if oindex %}{{oindex}}{% else %}"0"{% endif %}>
+<input type="hidden" name="tacept" value="">
+<input type="hidden" name="isdoc" value=false>
+<input type="hidden" name="borrar" value=false>
+<input type="hidden" name="registrar" value=false>
+<input type="hidden" name="tfuente" value="115%">
+<input type="hidden" name="ometa" value="">
+<input type="hidden" name="nocorr" value="">
+<input type="hidden" name="sinopciones" value={% if choose %}true{% else %}false{% endif %}>
+<input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
+<input type="hidden" name="tradtodo" value={% if tradtodo %}true{% else %}false{% endif %}>
+<input type="hidden" name="docscrolltop" value=0>
+<input type="hidden" name="abandonardoc" value=false>
+</form>
+
+{% endblock %}
+
+{% block script %}
+
+{% if doc and not documento %}
+<script src="{{url_for('static', filename='mammoth.browser.js')}}"></script>
+{% endif %}
+
+{% if aceptado %}
+<script async="" src="{{url_for('static', filename='FileSaver.js')}}"></script>
+<script async="" src="{{url_for('static', filename='Blob.js')}}"></script>
+<script async="" src="{{url_for('static', filename='SaveDoc.js')}}"></script>
+{% endif %}
+
+{% if docscrolltop %}
+<script>
+document.getElementById("fuente").scrollTop = {{docscrolltop}};
+</script>
+{% endif %}
+
+<script>
+document.getElementById("fuente").focus();
+
+// Detectar nueva línea (Intro) en el espacio 'fuente' para iniciar traducción.
+document.getElementById("fuente").addEventListener("keypress", function(event) {
+   key = event.which || event.keyCode;
+   longFuente();
+   if (key == 13) {
+       event.preventDefault();
+       fuenteNuevaLinea();
+   }
+});
+
+// Detectar ediciones del espacio 'textmeta' para corregir errores ortográficos.
+document.getElementById("textmeta").addEventListener("keyup", function(event) {
+    if (!document.Form2.nocorr.value) {
+	key = event.key;
+	code = event.which || event.keyCode;
+        if (code > 47 && code != 224) {
+	    corregirGn();
+	}
+    }
+});
+
+{% if not doc %}
+document.getElementById("fuente").addEventListener("click", function(event) {
+    if (document.getElementById("textmeta").value) {
+        borrar();
+    }
+});
+{% endif %}
+
+function getDocScrollTop()
+{
+    var doc = document.getElementById("fuente");
+    var y = doc.scrollTop;
+    return y;
+}
+
+function longFuente()
+{
+    f = document.getElementById("fuente");
+    t = f.innerHTML;
+    t = t.replace(/<br>/g, "");
+    l = t.length;
+    if (l > 40) {
+        f.style.fontSize = "115%";
+        document.Form2.tfuente.value = "115%";
+    }
+}
+
+function alSalir()
+{
+    document.Form2.borrar.value = true;
+    document.Form2.ofuente.value = '';
+    document.Form2.ometa.value = '';
+    document.Form2.tfuente.value = "115%";
+    document.Form1.action = "fin";
+    document.Form1.target = "_self";     // Misma ventana
+    document.Form1.submit();             // Enviar la página
+    document.getElementById("aceptado").innerHTML = "";
+    return true;
+}
+
+function borrarFuente() {
+    document.getElementById("fuente").innerHTML = "";
+}
+
+function borrar()
+{
+    document.Form2.borrar.value = true;
+    document.Form2.ofuente.value = '';
+    document.Form2.ometa.value = '';
+    document.Form2.tfuente.value = "115%";
+    document.Form2.submit();
+    document.getElementById("aceptado").value = '';
+    return true;
+}
+
+function copiar()
+{
+    textmeta = document.getElementById("textmeta");
+    textmeta.select();
+    document.execCommand("copy");
+}
+
+function registrar()
+{
+    if (document.getElementById("aceptado"))
+    {
+      // Registrar traducción de documento
+      meta = document.getElementById("aceptado").innerHTML;
+      isdoc = true;
+    } else {
+      // Registrar traducción de oración
+      meta = document.getElementById("textmeta").innerHTML;
+      isdoc = false;
+    }
+    document.Form2.ometa.value = meta;
+    document.Form2.borrar.value = true;
+    document.Form2.registrar.value = true;
+    document.Form2.ofuente.value = '';
+    document.Form2.tfuente.value = "115%";
+    document.Form2.isdoc.value = isdoc;
+    document.Form2.action = "tra";
+    document.Form2.submit();
+}
+
+function aceptarTrad()
+{
+    trad = document.getElementById("textmeta").value;
+    index = document.Form2.oindex.value;
+//    alert("Aceptando oración " + index + " :: " + trad);
+    document.Form2.tacept.value = trad;
+    document.Form2.isdoc.value = true;
+    document.Form2.tfuente.value = "100%";
+    document.Form2.submit();
+    document.getElementById("aceptado").value = '';
+}
+
+function comentario()
+{
+    com = document.getElementById("comentario").value;
+//    index = document.Form2.oindex.value;
+    alert("Registrando " + com);
+//    user_location();
+//    document.Form2.tacept.value = trad;
+//    document.Form2.isdoc.value = true;
+//    document.Form2.tfuente.value = "100%";
+//    document.Form2.submit();
+    document.getElementById("comentario").value = '';
+}
+
+function user_location() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      console.log( this.responseText);
+    }
+  };
+  xhttp.open("GET", "//api.ipify.org?format=json", true);
+  xhttp.send();
+}
+
+function abandonarDoc()
+{
+    document.Form2.modo.value = "doc";
+    document.Form2.abandonardoc.value = true;
+    document.Form2.isdoc.value = true;
+    document.Form2.ofuente.value = '';
+    document.Form2.ometa.value = '';
+    document.Form2.submit();
+    document.getElementById("aceptado").value = '';
+}
+
+function traducirTodo()
+{
+    document.Form2.tradtodo.value = true;
+/*    document.Form2.borrar.value = true; */
+    document.Form2.isdoc.value = true;
+    document.Form2.modo.value = '';
+/*    document.style.cursor = "wait"; */
+    document.Form2.submit();
+}
+
+function mayuscula(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function agregarTri(string) {
+    return string + " \u25BE";
+}
+
+function eliminarTri(string) {
+    return string.replace(/ \u25BE/g, '');
+}
+
+function limpiarMeta(string) {
+    // Remove line breaks.
+    string = string.replace(/(\r\n|\n|\r)/gm, "");
+    string = string.trim();
+    // Convert non-breaking spaces to spaces.
+    string = string.replace(/\&nbsp;/g, ' ');
+    // Remove menu triangle.
+    string = string.replace(/ \u25BE/g, '');
+    // Remove extra spaces
+    string = string.replace(/\s+/g," ");
+    // Remove spaces before periods, commas, and semicolons
+    string = string.replace(/ \./g, ".");
+    string = string.replace(/ \,/g, ",");
+    string = string.replace(/ \;/g, ";");
+    string = string.replace(" ?", "?");
+    {% if props.cap %}
+    string = mayuscula(string);
+    {% endif %}
+    return string;
+}
+
+function corregirGn() {
+    textmeta = document.getElementById("textmeta");
+    text = textmeta.value;
+    if (text) {
+      position = textmeta.selectionStart;
+	// Where to put the cursor after correction.
+      insertion = position;
+      changed = '';
+      c = text.slice(position-1, position);
+//	alert("char " + c + " before " + before + " after " + after);
+    if (["â", "ä"].indexOf(c) >= 0) {
+	    changed = "ã";
+    } else if (["ê", "ë"].indexOf(c) >= 0) {
+	    changed = "ẽ";
+    } else if (["î", "ï"].indexOf(c) >= 0) {
+	    changed = "ĩ";
+    } else if (["ô", "ö"].indexOf(c) >= 0) {
+	    changed = "õ";
+    } else if (["û", "ü"].indexOf(c) >= 0) {
+	    changed = "ũ";
+    } else if (["ŷ", "ÿ"].indexOf(c) >= 0) {
+	    changed = "ỹ";
+    } else if ("ĝ" == c) {
+	    changed = "g̃";
+	    // Two characters so insert character one position forward.
+	    insertion += 1;
+	} else if (["`", "´", "°", "‘", "'", "ʼ"].indexOf(c) >= 0) {
+	    changed = "’";
+	}
+	if (changed) {
+	    before = text.slice(0, position-1);
+	    after = text.slice(position);
+	    text = before + changed + after;
+	    document.getElementById("textmeta").value = text;
+	    textmeta.selectionEnd = insertion;
+	}
+}
+}
+
+function fuente() {
+    f = document.getElementById("fuente").innerHTML;
+    // May contain <br>
+    f = f.replace(/<br>/g, "");
+    return f;
+}
+
+function fuenteNuevaLinea() {
+    f = fuente();
+    document.getElementById("fuente").innerHTML = f;
+    document.Form2.ofuente.value = f;
+    document.Form2.action = "tra";
+    document.Form2.submit();
+}
+
+function cambiarMeta(button, choiceid) {
+    // Swap items at the top with selected menu item.
+    newitem = document.getElementById(choiceid).innerHTML;
+    olditem = document.getElementById(button).innerHTML;
+    // Add and remove the menu dropdown triangle.
+    newitem = agregarTri(newitem);
+    olditem = eliminarTri(olditem);
+    document.getElementById(button).innerHTML = newitem;
+    document.getElementById(choiceid).innerHTML = olditem;
+    actualTra();
+}
+
+/* What happens when the user clicks on a sentence in the document window.*/
+function seleccionarOra(oraid, index) {
+    var oracion = document.getElementById(oraid).innerHTML;
+    var scrolltop = getDocScrollTop();
+    document.Form2.docscrolltop.value = scrolltop;
+//    alert("Scrolltop " + scrolltop);
+    document.Form2.ofuente.value = oracion;
+    document.Form2.oindex.value = index;
+    document.Form2.tfuente.value = "100%";
+    document.Form2.isdoc.value = true;
+    document.Form2.submit();
+}
+
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+function desplegar(button) {
+    element = document.getElementById(button);
+    element.classList.toggle("show");
+}
+
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+function desplegarDerecha(childid, parentid) {
+    child = document.getElementById(childid);
+    parent = document.getElementById(parentid);
+    parentLabel = parent.innerHTML;
+    if (!child.style.display || child.style.display === "none") {
+	child.style.display = "block";
+	parent.innerHTML = triAbajo(parentLabel);
+    } else {
+	child.style.display = "none";
+	parent.innerHTML = triDerecha(parentLabel);
+    }
+}
+
+/* Arregla el triángulo que sigue el nombre de un dominio */
+function triAbajo(string) {
+    return string.replace(/\u25B8/g, "\u25BE");
+}
+
+function triDerecha(string) {
+    return string.replace(/\u25BE/g, "\u25B8");
+}
+
+function abrirSeleccionado(textid) {
+    // Open the selected Text from the DB.
+    document.Form0.modo.value = "doc";
+    document.Form2.isdoc.value = true;
+    document.Form0.textid.value = textid;
+    document.Form0.submit();
+}
+
+function ocultarDominios() {
+    var texttd = document.getElementById("dominios");
+    texttd.style.display = "none";
+}
+
+function mostrarDominios() {
+    var texttd = document.getElementById("dominios");
+    texttd.style.display = "block";
+    var selBot = document.getElementById("seleccionBoton");
+    selBot.style.display = "none";
+}
+
+/* Encuentra las traducciones de segmentos actualmente seleccionados */
+function actualTra() {
+    var trans = "";
+    var dropdowns = document.getElementsByClassName("despleg");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var dropdown = dropdowns[i];
+      var trans1 = dropdown.innerHTML;
+      trans = trans + " " + trans1;
+    }
+    trans = limpiarMeta(trans);
+    document.getElementById('textmeta').value = trans;
+    document.Form2.tmeta.value = trans;
+}
+
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+
+function alternarPalDoc(doc) {
+    if (doc) {
+	ora = document.getElementById("tradora");
+	tdoc = document.getElementById("traddoc");
+        document.Form0.modo.value = "doc";
+        document.Form2.isdoc.value = true;
+	tdoc.style.background = "#8DEDCD";
+	tdoc.style.cursor = "default";
+	ora.style.background = "#F5E754";
+	ora.style.cursor = "pointer";
+        document.Form0.submit();
+    } else {
+	ora = document.getElementById("tradora");
+	tdoc = document.getElementById("traddoc");
+        document.Form0.modo.value = "ora";
+        document.Form2.isdoc.value = false;
+	ora.style.background = "#8DEDCD";
+	ora.style.cursor = "default";
+	tdoc.style.background = "#F5E754";
+	tdoc.style.cursor = "pointer";
+        document.Form0.submit();
+    }
+}
+
+/* Alternar corrección automática */
+function alternarCorreccion() {
+//    alert("Alternando " + document.Form2.nocorr.value);
+    if (document.Form2.nocorr.value) {
+//	alert("Activando...");
+	document.Form2.nocorr.value = "";
+        document.getElementById('correccion').innerHTML = "Desactivar corrección ortográfica automática.";
+    } else {
+//	alert("Desactivando...");
+	document.Form2.nocorr.value = "true";
+        document.getElementById('correccion').innerHTML = "Activar corrección ortográfica automática.";
+    }
+}
+
+/* Alternar: mostrar opciones <-> traducir sin opciones */
+function alternarOpciones(sinopciones) {
+    conopc = document.getElementById("conopc");
+    sinopc = document.getElementById("sinopc");
+    document.Form2.borrar.value = true;
+    document.Form2.modo.value = {% if doc %}"doc"{% else %}"ora"{% endif %};
+    document.Form2.isdoc.value = {% if doc %}true{% else %}false{% endif %};
+    if (sinopciones) {
+	document.Form0.sinopciones.value = true;
+	document.Form2.sinopciones.value = true;
+	sinopc.style.background = "#8DEDCD";
+	sinopc.style.cursor = "default";
+	conopc.style.background = "#F5E754";
+	conopc.style.cursor = "pointer";
+        document.Form2.submit();
+//	document.getElementById("sinopciones").innerHTML = "Mostrar opciones.";
+    } else {
+	document.Form0.sinopciones.value = false;
+	document.Form2.sinopciones.value = false;
+	conopc.style.background = "#8DEDCD";
+	conopc.style.cursor = "default";
+	sinopc.style.background = "#F5E754";
+	sinopc.style.cursor = "pointer";
+        document.Form2.submit();
+//	document.getElementById("sinopciones").innerHTML = "Traducir sin opciones.";
+    }
+}
+
+/* Alternar ocultar instrucciones */
+function alternarInstrucciones() {
+    var f;
+    if (document.Form0.ocultar.value == "false") {
+//	alert("Hiding instructions");
+	document.Form0.ocultar.value = "true";
+	document.Form2.ocultar.value = "true";
+	if (document.Form3) {
+	    document.Form3.ocultar.value = "true";
+	}
+	document.getElementById("ocultar").innerHTML = "Mostrar instrucciones.";
+	f = document.getElementById("instruc_fuente");
+	if (f) {
+	    f.style.display = "none";
+	}
+	f = document.getElementById("instruc2");
+	if (f) {
+	    f.style.display = "none";
+	}
+	f = document.getElementById("instruc_trad");
+	if (f) {
+	    f.style.display = "none";
+	}
+	f = document.getElementById("advert");
+	if (f) {
+	    f.style.display = "none";
+	}
+    } else {
+//	alert("Showing instructions");
+	document.Form0.ocultar.value = "false";
+	document.Form2.ocultar.value = "false";
+	if (document.Form3) {
+	    document.Form3.ocultar.value = "false";
+	}
+	document.getElementById("ocultar").innerHTML = "Ocultar instrucciones.";
+	f = document.getElementById("instruc_fuente");
+	if (f) {
+	    f.style.display = "block";
+	}
+	f = document.getElementById("instruc2");
+	if (f) {
+	    f.style.display = "block";
+	}
+	f = document.getElementById("instruc_trad");
+	if (f) {
+	    f.style.display = "block";
+	}
+	f = document.getElementById("advert");
+	if (f) {
+	    f.style.display = "block";
+	}
+    }
+}
+
+// Buscar archivo subido y mostrar su nombre.
+function archivoSubido() {
+    borrarError();
+    ocultarDominios();
+    document.Form0.docsrc.value = "computadora";
+    var uploaded = document.getElementById("subido");
+    if (uploaded) {
+	var files = uploaded.files;
+	if (files) {
+	    var file = files[0];
+	    var size = file.size;
+	    size = size / 1000;
+	    if (!file.type.match('text.*')) {
+		if (file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
+		    mostrarDocxSubido(file, size);
+		    return true;
+		} else {
+		    error("¡" + file.name + " no es un archivo de texto válido! (tipo " + file.type + ")");
+		    return false;
+		}
+	    } else if (size > 1000) {
+		error("¡" + file.name + " es demasiado grande para Mainumby! Por favor subí otro archivo más pequeño.");
+		return false;
+	    }
+	    mostrarArchivoSubido(file, size);
+	}
+    }
+    return true;
+}
+
+function mostrarDocxSubido(file, size) {
+    // Use mammoth to extract text from docx file.
+    var name = file.name;
+    var r = new FileReader();
+    r.onload = function(e) {
+	var arrayBuffer = e.target.result;
+//	mammoth.convertToHtml({arrayBuffer: arrayBuffer})
+	mammoth.extractRawText({arrayBuffer: arrayBuffer})
+	    .then(mostrarContenido)
+	    .done();
+    };
+    r.readAsArrayBuffer(file);
+    mostrarInfoArchivo(name, size);
+}
+
+function mostrarInfoArchivo(name, size) {
+    var html = "<div class='archivo'><table><tr><td class='archivo'><span class='heading'>Archivo subido</span></td><td class='archivo'><span class='archivo'>";
+    html += name + "</span><br/>" + size;
+    html += " KB</td><td class='archivo'><button id='button' type='button' onclick='procDoc();'>Abrir</button></td>";
+    html += "<td class='archivo'><button id='button' type='button' onclick='cancelarProcDoc();'>Cancelar</button></td></tr></table></div>";
+    document.getElementById('envoltorio-subida').innerHTML = html;
+}
+
+function mostrarContenido(result) {
+    contenido = result.value;
+    document.Form0.documento.value = contenido;
+}
+
+// Mostrar el nombre de un archivo subido y un botón para abrirlo.
+function mostrarArchivoSubido(file, size) {
+    var name = file.name;
+    var r = new FileReader();
+    r.onload = function(e) {
+	contenido = e.target.result;
+	document.Form0.documento.value = contenido;
+    }
+    r.readAsText(file);
+    mostrarInfoArchivo(name, size);
+}
+
+// Mostrar archivos, organizados por dominio, que están almacenados.
+function seleccionarArchivo()
+{
+    document.Form0.docsrc.value = "almacén";
+    mostrarDominios();
+//    var html = "<div class='archivo'><table><tr><td class='archivo'>Archivo</td></tr></table></div>"; //
+//    document.getElementById('envoltorio-subida').innerHTML = html; //
+//    document.Form0.submit(); //
+}
+
+// Leer el contenido de un archivo subido y guardarlo en la variable documento.
+function procDoc() {
+//    var text = document.Form0.documento.value;
+    document.Form0.submit();
+    return true;
+}
+
+function cancelarProcDoc() {
+    document.Form0.documento.value = '';
+    document.Form0.submit();
+    return true;
+}
+
+/* Drag and drop translation buttons */
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+function drag(ev) {
+//    ev.preventDefault();
+    ev.dataTransfer.effectAllowed = "move";
+    ev.dataTransfer.setData("text/plain", ev.target.id);
+}
+function drop(ev) {
+    ev.preventDefault();
+    var src = document.getElementById(ev.dataTransfer.getData("text/plain"));
+    var srcParent = src.parentNode;
+    var tgt = ev.currentTarget.firstElementChild;
+    ev.currentTarget.replaceChild(src, tgt);
+    srcParent.appendChild(tgt);
+    // Update the sentence in the ometa textbox
+    actualTra();
+}
+
+function mostrarAyuda() {
+    var helpWin = window.open("", "Mainumby: Ayuda",
+			      "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    helpWin.document.write(
+'<html>\
+<head>\
+<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>\
+<title>Mainumby: Ayuda</title>\
+</head>\
+<body>\
+<h4 class="help">Ayuda para usar el traductor</h4>\
+<p class="help">En esta página se puede traducir palabras, frases, \
+oraciones simples, y documentos almacenados en archivos. \
+Podés elegir entre las dos opciones con los botones en la parte superior izquierda \
+de la ventana. \
+El traductor tiene dos "modos", uno que ofrece opciones al usuario para \
+la traducción de muchas palabras y frases, uno que traduce sin ofrecer opciones. \
+Podés elegir entre los dos modos con los botones en el centro superior \
+de la ventana. \
+</p>\
+<h5 class="help">Instrucciones para palabras, frases, y oraciones</h5>\
+<ol class="help">\
+  <li>Introducí una palabra, frase, u oración en el espacio a la \
+  izquierda. \
+  </li>\
+  <li>Presioná la tecla Intro/Enter.\
+  </li>\
+  <li>Si has seleccionado el modo "sin opciones", la traducción \
+  de Mainumby aparece en el espacio a la derecha. \
+  </li>\
+  <li>Por otro lado, so has seleccionado el modo "con opciones", \
+  la visualización de la oración cambia para mostrar los segmentos \
+  extraídos por Mainumby con colores diferentes. \
+  La traducción de Mainumby aparece en los espacios a la derecha. \
+  El superior muestra la traducción de los segmentos extraídos por \
+  Mainumby,  con colores que corresponden a los de los segmentos en la \
+  oración castellana. \
+  </li>\
+  <li>\
+  Si un segmento tiene el símbolo "▾", podés escoger otra traducción \
+  de la lista que aparece cuando hacés clic en el segmento. \
+  </li>\
+  <li>\
+  Podés cambiar la posición de los segmentos al arrastrar un \
+  segmento con el mouse y soltarlo sobre otro segmento. \
+  </li>\
+  <li>\
+  La traducción que corresponde a las opciones seleccionadas se \
+  muestra en el espacio inferior a la derecha. \
+  Si todavía no estás satisfecho con la traducción, podés editar el \
+  texto en este espacio. \
+  Mainumby normaliza los caracteres guaraníes que escriben en este \
+  espacio, por ejemplo, cambiando "ê" a "ẽ". \
+  Si no te gusta esta función, podés desactivarla al hacer clic en \
+  "Desactivar corrección ortográfica automática." \
+  </li>\
+  <li>Para copiar la traducción al portapapeles de tu computadora o \
+  teléfono para pegarla en otra ventana, presioná el botón "Copiar". \
+  </li>\
+  </ol>\
+<h5 class="help">Instrucciones para documentos</h5>\
+<ol class="help">\
+  <li>Si has elegido "Documentos" al presionar en el botón \
+  en la parte superior de la ventana, \
+  se presentará dos posibilidades para introducir un documento para \
+  traducir. Pod&eacute;s subir un documento de tu computadora o tel&eacute;fono \
+  o por otro lado elegir un documento de los que están almacenados \
+  en la base de datos de Mainumby. \
+  Según tu preferencia, o presioná el botón "Examinar..." \
+  o el botón "Elegir...". \
+  </li>\
+  <li>Presioná el botón "Examinar..." para subir un documento de tu \
+  computadora o telefóno. Aparecerá una nueva ventana en la que podés \
+  escoger un archivo. Ten en cuenta que Mainumby maneja solo archivos \
+  de formato .txt (o sea, archivos de texto) y de formato .docx (o \
+  sea, archivos de Microsoft Word 2007 o posterior). Además los \
+  archivos de más de 1 MB no se manejan. \
+  </li>\
+  <li>\
+  Una vez que has escogido un archivo admisible, verás en un espacio \
+  gris el nombre y el tamaño del archivo. Presioná el botón "Abrir" \
+  para continuar con la traducción de este archivo. \
+  </li>\
+  <li>\
+  Manumby segmenta el documento en oraciones, mostrando los límites \
+  entre párrafos con el simbolo "¶". \
+  Aparte de eso, descarta el formato del documento, por ejemplo, las \
+  fuentes y la sangría.\
+  </li>\
+  <li>Seleccionás oraciones para traducir al mover el mouse sobre el \
+  documento. Para traducir la oración resaltada en negrita, hacé \
+  clic. \
+  </li>\
+  <li>Como en la interfaz para oraciones, si has seleccionado \
+  el modo "sin opciones", la traducción de Mainumby aparece directamente \
+  en el espacio a la derecha. \
+  Por otro lado, si has seleccionado el modo "con opciones", se muestran los segmentos \
+  extraídos por Mainumby y sus traducciones (a la derecha) con \
+  colores. Como en la otra interfaz, se puede escoger entre las \
+  opciones ofrecidas y cambiar la posición de segmentos. \
+  </li>\
+  <li>Con el modo "con opciones", tenés que aceptar la traducción de cada oración \
+  antes de que se incluya en la traducción del documento. \
+  Cuando estés satisfecho con la traducción de la oración, \
+  presioná el botón "Aceptar" para incluirla en la traducción del \
+  documento, la que se muestra en el espacio en la parte inferior \
+  derecha.\
+  </li>\
+  <li>Cuando termines la traducción del documento, lo podés \
+  guardar como archivo en tu computadora o teléfono. Escribí un nombre \
+  para el archivo en el espacio después de "Nombre de archivo:", y \
+  presioná el botón "Guardar". \
+  El archivo será de formato ".txt" (texto), no de ".docx" (Microsoft \
+  Word).\
+  </li>\
+  <li>Para registrar la traducción en la memoria de traducción de \
+  Mainumby (así mejorando traducciones futuras que ofrece el sistema), \
+  presioná el botón "Registrar". \
+  </li>\
+</ol>\
+</body></html>'
+);
+    document.Form1.ayuda.value = true;
+}
+</script>
+
+{% endblock %}

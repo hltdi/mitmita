@@ -1,135 +1,29 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
 
-<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+{% block style %}{% endblock %}
 
-<script>
-function ShowHelp() {
-    var helpWin = window.open("", "Mit'mit'a: Help", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
-    helpWin.document.write('<html><head>' +
-'<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
-"<title>Mainumby: Ayuda</title></head><body>" +
-"<h4 class='help'>Ayuda general para la aplicación</h4>" +
-"</body></html>");
-}
-function Shortcut() {
-    form = document.getElementById("form");
-    document.getElementById("instructions").innerHTML = "";
-    document.getElementById("buttons").innerHTML = "";
-    document.getElementById("intro").innerHTML = "<span class='cargando'>Loading (could take awhile)...</span>";
-    form.action = "doc";
-    form.submit();
-}
-function Login() {
-    form = document.getElementById("form");
-    form.action = "login";
-    form.submit();
-}
-</script>
-
+<title>
+{% block title %}
+Gyez: an Assistant for Amharic to Guraginya Translation
+{% endblock %}
+</title>
 </head>
 
 <body>
 
-<form action='' id="form" method="post">
+<div class='body'>
 
-<table class="center">
-  <tr>
-    <td class="title">
-    <img class='banner' src="{{url_for('static', filename='logo.png')}}" alt="" width="300", height="52"/>
-    </td>
-    <td class="menu" style="width: 116px">
-      <a href="proyecto">PROJECT</a>
-    </td>
-    <td class="menu" style="width: 117px">
-      <a href="contacto">CONTACT</a>
-    </td>
-    <td class="menu" style="width: 120px">
-      <button class="menu" onclick="Shortcut()">SHORTCUT</button>
-    </td>
-    <td class="menu" style="width: 147px">
-      <button class="menu" onclick="Login()">START SESSION</button>
-    </td>
-    <td></td>
-  </tr>
-<tr>
-<td colspan="5" style="width:800px">
-<h1><b>Welcome to Mit'mit'a!</b> ወደ ሚጥሚጣ እንኳን ደህና መጣህ/ሽ!</h1>
+{% block body %}{% endblock %}
 
-<p class="instructions" id="instructions">
-  To login and start a session, click on "START SESSION".<br />  
-  To skip login and go directly to the page where you can use the
-  system to translate a document, click on "SHORTCUT".
-</p>
+{% block script %}{% endblock %}
+<script async="" src="{{url_for('static', filename='Misc.js')}}"></script>
 
-<div id="intro">
-<h2>What is it?</h2>
-
-<p>
-Mit'mit'a is an experimental application to help translate from
-  English to Amharic.
-In its final form, it will have two components: a rudimentary
-  automatic translator (ተርጓሚ Tergwami) and a translation memory (ማከማቻ
-  Makemacha).
-In the current version, it consists of the translator only.
-  </p>
-  <p>
-Mit'mit'a was designed to be used mainly by people who know both
-  Amharic and English.
-Users of the system enter texts that they to translate,
-  and Tergwami proposes translations for phrases in the texts.
-The users can accept or reject the suggestions of the system,
-  entering their own translations if they want.
-The system keeps a memory of the texts and the translations created by
-  the users, and users have the option of saving the text at any point
-  during the process.
-  </p>
-  <p>
-  <a href="project">Learn more about the project.</a>
-  </p>  
-
-<h2>How does it work?</h2>
-
-  <p>
-  The translator Tergwami has a bilingual dictionary of phrases and
-  basic knowledge of the grammar of English, the grammar of Amharic,
-  and the relationship between them.
-  For each English sentence entered by the user, it first analyzes the
-  words,
-  extracting their roots and grammatical properties.
-  It think searches for phrases in the analyzed sentence that match
-  phrases in its dictionary.
-  Finally, for each phrase that it matches it produces one or more Amharic translations, using
-  its knowledge of Amharic grammar and orthography.
-  In the interface to Mit'mit'a, these results are displayed for the user.
-  When the user corrects the output of the system or replaces its
-  translation with a different one, Tergwami learns from this
-  feedback, improving its dictionary and possibly also its grammatical
-  knowledge.
-  In addition, Mit'mit'a adds the translation given by the user to
-  Makemacha, its translation memory, so that the translation can be
-  used in future sessions when another user is translating a similar sentence.
-</p>
-<p>
-<a href="project">Learn more about the theory behind Mit'mit'a.</a>
-</p>
 </div>
-
-<hr/>
-
-<p id='buttons'>
-  <input type="submit" value="Start session" id="button" onclick="Login()">
-  <input type="submit" value="Shortcut" id="button" onclick="Shortcut()">
-</p>
-
-</td>
-</tr>
-
-</table>
-
-  </form>
 
 </body>
 </html>

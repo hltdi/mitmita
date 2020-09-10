@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}
+Mainumby: Ayuda para Traducción de Documentos
+{% endblock %}
+
+{% block body %}
+<form action='' id='form' target="_blank" method="post">
+
+<div class="nav">
+<table class="nav">
+  <tr class="brown">
+    <td>
+    <a href="/">
+    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300" height="52" />
+    </a>
+    </td>
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button>
+      </td>
+    <td class="menu" style="width: 200px"><a href="ayuda">AYUDA</a></td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+
+  </tr>
+</table>
+</div>
+<table class="main">
+<tr>
+<td colspan='3' style="width: 1212px">
+
+<h1>Ayuda: Documentos</h1>
+
+<h2>Temas</h2>
+  <ul>
+    <li>Introducción de documentos</li>
+    <li>Edición de la traducción</li>
+
+  </ul>
+
+  <h2>Introducción de documentos</h2>
+
+<p>
+  Si has elegido "Documentos" al presionar el botón en la parte
+superior de la ventana, se presentará dos posibilidades para
+introducir un documento para traducir. Pod&eacute;s subir un documento
+de tu computadora o tel&eacute;fono o por otro lado elegir un
+documento de los que están almacenados en la base de datos de
+Mainumby. Según tu preferencia, o presioná el botón "Examinar..." o el botón
+  "Elegir...".
+</p>
+
+<ul>
+<li>Presioná el botón "Examinar..." para subir un documento de tu 
+  computadora o telefóno.
+  Aparecerá una nueva ventana en la que podés 
+  escoger un archivo. Ten&eacute; en cuenta que Mainumby maneja solo archivos 
+  de formato .txt (o sea, archivos de texto) y de formato .docx (o 
+  sea, archivos de Microsoft Word 2007 o posterior).
+  Además los archivos de más de 1 MB no se manejan.
+  </li>
+  <li>
+  Una vez que has escogido un archivo admisible, verás en un espacio 
+  gris el nombre y el tamaño del archivo. Presioná el botón "Abrir" 
+  para continuar con la traducción de este archivo. 
+  </li>  
+  <li>
+  Manumby segmenta el documento en oraciones, mostrando los límites 
+  entre párrafos con el simbolo "¶". 
+  Aparte de eso, descarta el formato del documento, por ejemplo, las 
+  fuentes y la sangría.
+  </li>
+  <li>Seleccionás oraciones para traducir al mover el mouse sobre el 
+  documento. Para traducir la oración resaltada en negrita, hacé 
+  clic. 
+  </li>
+  <li>Como en la interfaz para oraciones, si has seleccionado 
+  el modo "sin opciones", la traducción de Mainumby aparece directamente 
+  en el espacio a la derecha. 
+  Por otro lado, si has seleccionado el modo "con opciones", se muestran los segmentos 
+  extraídos por Mainumby y sus traducciones (a la derecha) con 
+  colores. Como en la otra interfaz, se puede escoger entre las 
+  opciones ofrecidas y cambiar la posición de segmentos. 
+  </li>
+  <li>Con el modo "con opciones", tenés que aceptar la traducción de cada oración 
+  antes de que se incluya en la traducción del documento. 
+  Cuando estés satisfecho con la traducción de la oración, 
+  presioná el botón "Aceptar" para incluirla en la traducción del 
+  documento, la que se muestra en el espacio en la parte inferior 
+  derecha.
+  </li>
+  <li>Cuando termines la traducción del documento, lo podés 
+  guardar como archivo en tu computadora o teléfono. Escribí un nombre 
+  para el archivo en el espacio después de "Nombre de archivo:", y 
+  presioná el botón "Guardar". 
+  El archivo será de formato ".txt" (texto), no de ".docx" (Microsoft 
+  Word).
+  </li>
+  <li>Para registrar la traducción en la memoria de traducción de 
+  Mainumby (así mejorando traducciones futuras que ofrece el sistema), 
+  presioná el botón "Registrar". 
+  </li>
+</ul>
+<h2>Editar la traducción</h2>
+<h2>Guardar la traducción</h2>
+
+</td>
+</tr>
+</table>
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script>
+function ingresar() {
+    form = document.getElementById("form");
+    form.action = "login";
+    form.submit();
+}
+function traducir() {
+    form = document.getElementById("form");
+//    document.getElementById("cargando").innerHTML = "<p></p><span class='cargando'>Cargando base de datos (podría tardarse)...</span><p></p>";
+    form.action = "tra";
+    form.submit();
+}
+</script>
+{% endblock %}

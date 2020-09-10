@@ -1,0 +1,173 @@
+seg: a e E i I o u w y ' _
+     b bW c cW C CW d dW f fW g gW
+     h hW j jW k kW l lW m mW n nW
+     p pW P PW N NW q qW r rW s sW
+     S SW t tW T TW v vW x xW z zW Z ZW
+     K KW KY kY qY gY
+
+vowels: a e E i I o u
+consonants: h l m r s x q b t c n N ' k K w z Z y d j g T C P S f p
+punctuation: “ ‘ ” ’ – … • : ; / \ , < > ? . ! % $ ( ) [ ] { } | # @ & * - _ + = " ~
+gemination: _
+postpunc: ,=፣ .=። :=፦ ;=፤
+
+feats:
+
+  pos: n noun
+
+  def = False | True
+
+  pp = 0 | 1 | 2 | 3
+  pn = 1 | 2
+  pg = m | f
+
+  cp = 0 | 1 | 2 | 3
+  cn = 1 | 2
+  cg = m | f
+
+  tns = None | prs | pst
+
+  cnj = None | m | x | K | a
+
+  prep = None | ye | be | te
+
+  goal = False | True
+  sim = False | True
+  dir = False | True
+  assoc = False | True
+
+## infinitive
+
+  pos: inf infinitive
+
+  def = False | True
+
+  pp = 0 | 1 | 2 | 3
+  pn = 1 | 2
+  pg = m | f
+
+  cp = 0 | 3
+
+  tns = None | prs | pst
+
+  cnj = None | m | x | K | a
+
+  prep = None | ye | be | te
+
+  goal = False | True
+  sim = False | True
+  dir = False | True
+
+## perfective verbs, including prohibitive
+
+  pos: vp verb_perfective
+
+  root = cls = A | Ap | B | C | D | E | F
+
+  tm = prf
+
+  am =
+
+  sp = 3 | 2 | 1 | None
+  sn = 1 | 2
+  sg = m | f
+
+  op = None | 3 | 2 | 1
+  on = 1 | 2
+  og = m | f
+  ot = a | b | m
+
+  vc = ps = False | True;
+       cs = False | True
+
+  as = None | it | rc
+
+  neg = False | True
+
+  sub = None | t | b | y
+
+  caus = False | True
+  cmpd = False | True
+  mconv = False | True
+  link = False | True
+  m = False | True
+  x = False | True
+  proh = False | True
+  copex = False | True
+  comp = False | True
+  def = False | True
+
+## imperfective verbs, including both -tE future form
+
+  pos: vi verb_imperfective
+
+  root = cls = A | Ap | B | C | D | E | F
+
+  tm = imf
+
+  am =
+
+  sp = 3 | 2 | 1 | None
+  sn = 1 | 2
+  sg = m | f
+
+  op = None | 3 | 2 | 1
+  on = 1 | 2
+  og = m | f
+  ot = a | b | m
+
+  vc = ps = False | True;
+       cs = False | True
+
+  as = None | it | rc
+
+  neg = False | True
+
+  sub = None | t | b
+
+  fut = None | def
+
+  def = False | True
+
+  x = False | True
+  m = False | True
+  mconv = False | True
+  cmpd = False | True
+  purp = False | True
+  clft = False | True
+  link = False | True
+  comp = False | True
+
+## jussive-imperative verbs, including -xe future forms and t- converb
+
+  pos: vj verb_jussive_imperative
+
+  root = cls = A | Ap | B | C | D | E | F
+
+  tm = j_i
+
+  am =
+
+  sp = 3 | 2 | 1 | None
+  sn = 1 | 2
+  sg = m | f
+
+  op = None | 3 | 2 | 1
+  on = 1 | 2
+  og = m | f
+  ot = a | b | m
+  vc = ps = False | True;
+       cs = False | True
+
+  as = None | it | rc
+
+  neg = False | True
+  fut = None | indef
+  tconv = False | True
+  mconv = False | True
+  m = False | True
+  x = False | True
+  link = False | True
+
+trans:
+  word = ቃር

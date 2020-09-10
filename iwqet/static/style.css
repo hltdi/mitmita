@@ -1,22 +1,39 @@
 /*
 Colors:
 mit'mit'a red: #CB6027
-background blue: #C8E6FF
+background blue: #7FC8FF
 */
+span.sgw {
+	font-family: 'Gurage Zebidar';
+	font-size: '16';
+}
+span.amh {
+	font-family: 'Ethiopic Jiret,Abyssinica SIL';
+	font-size: '16';
+}
+
+html
+{
+//     display: inline-table;
+     margin-left: auto;
+     margin-right: auto;
+}
 
 body
 {
-	margin-left: 0pt;
-	margin-right: 0pt;
-	margin-top: 20pt;
-	margin-bottom: 20pt;
-	padding-left: 0;
-	padding-right: 0;
-	padding-top: 0;
-	padding-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0pt;
+	margin-bottom: auto;
+//	padding-left: 12pt;
+//	padding-right: 12pt;
+	padding-top: 0pt;
+	padding-bottom: 12pt;
         font-size: 14px;
 	font-family: verdana, geneva, arial, sans-serif;
 	background-color: #FFF;
+        display: block;
+	overflow: scroll;
 }
 a:link { color: #4B2B17; text-decoration: underline}
 span.fuzzy a:link { color: #66BB66; }
@@ -31,20 +48,39 @@ h1
 	font-size: 150%;
 	margin-top: .25em;
 	margin-bottom: 0;
-        border: thin solid;
+        border-top: thin solid;
+	border-bottom: thin solid;
 	text-align: left;
-/*	font-weight: bold; */
-	color: #FFF;
-	background-color: #000;
+	font-weight: bold;
+	color: #FFFFFF;
+	background-color: #CB6027;
+//	padding: 4px;
 }
 h2
 {
-	font-size: 130%;
-        font-weight: normal;
-	margin-top: .75em;
-	margin-bottom: .35em;
-	color: #FFF;
-	background-color: #000;
+    font-size: 130%;
+    font-weight: bold;
+    margin-top: .75em;
+    margin-bottom: .35em;
+    border-bottom-style: solid;
+    border-bottom-width: 1.5px;
+}
+h3
+{
+    border-bottom-style: solid;
+    border-bottom-width: .25px;
+    font-size: 120%;
+    font-weight: normal;
+    margin-top: .5em;
+    margin-bottom: .35em;
+}
+h4
+{
+ 	font-size: 115%;
+	font-weight: bold;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	padding: 4px;
 }
 div.user
 {
@@ -52,79 +88,171 @@ div.user
     margin-top: .75em;
     margin-bottom: .35em;
 }
-h3
-{
-        background-color: #C8E6FF;
-/*        color: #CB6027;*/
- 	font-size: 110%;
-	font-weight: bold;
-	margin-top: .5em;
-	margin-bottom: .5em;
-}
-h4
-{
- 	font-size: 110%;
-	font-weight: bold;
-	margin-top: .5em;
-	margin-bottom: .5em;
-}
 p
 {
 	margin-top: .5em;
 	margin-bottom: .5em;
         clear: left;
 }
-p.center
-{
-        margin-top: .5em;
-        margin-bottom: .5em;
-        text-align: center;
-}
 p.error
 {
     color: #f00;
     font-style: italic;
+    font-size: 110%;
 }
-p.instructions
+div.advert
 {
-    color: #00f;
-    font-style: italic;
+   vertical-align: top;
+   line-height: 1.1;
+   width: 100%;
+   font-family: "Verdana";
+   font-size: 100%;
+   color: red;
+   border: none;
+   margin: 0px;
+   padding-bottom: 6px;
 }
-table.center
+div.instruc
+{
+   vertical-align: top;
+   line-height: 1.1;
+   width: 100%;
+   font-family: "Verdana";
+   font-size: 90%;
+   border: none;
+   margin: 0px;
+}
+
+td.instruc
+{
+   vertical-align: top;
+}
+br.instruc
+{
+    margin-top: 3px;
+    content: "";
+    display: block;
+}
+br.sep
+{
+    margin-top: 10px;
+    content: "";
+    display: block;
+}
+
+.instructions
+{
+    font-size: 100%;
+}
+
+div.nav
+{
+    position: fixed;
+    top: 0;
+    overflow: hidden;
+    width: 100%;
+}
+table.main
+{
+    table-layout: fixed;
+    margin-top: 35pt;
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+table.main tr td
+{
+	vertical-align: top;
+	padding: 0pt;
+}
+table.main td p
+{
+	margin-top: 10pt;
+	margin-bottom: 5pt;
+	margin-left: 50pt;
+	margin-right: 75pt;
+	width: auto;
+}
+
+table.main td ul
+{
+	margin-top: 5pt;
+	margin-bottom: 5pt;
+	width: auto;
+}
+table.main td ul li
+{
+	margin-top: 2pt;
+	margin-bottom: 2pt;
+	width: auto;
+}
+table.main td ol
+{
+    margin-left: 50pt;
+    margin-right: 50pt;
+    margin-top: 5pt;
+}
+
+table.nav
 {
 	table-layout: fixed;
 	margin-left: auto;
 	margin-right: auto;
 	border: 0;
-	padding: 0;
 	border-collapse: collapse;
 }
-
-table.center tr
+table.nav tr td img.banner
 {
-/*	background-color: #C8E6FF; */
-    /*	border-bottom: 6pt solid #003; */
-    padding: 0pt;
-    border: 0pt;
-    margin: 0pt;
+    vertical-align: bottom;
+}
+table.nav tr td.menu
+{
+    background-color: #7FC8FF;
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 5px;
+    border-right: 0;
+    margin: 0;
+		font-weight: bold;
+		font-size: 120%;
+}
+table.nav tr td.menufuzzy
+{
+    background-color: #7FC8FF;
+    color: #999999;
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 5px;
+    border-right: 0;
+    margin: 0;
+}
+table.nav tr td.menuuser
+{
+    background-color: #7FC8FF;
+    color: #F5E754;
+    font-size: 120%;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: bottom;
+    padding-bottom: 5px;
+    border-right: 0;
+    margin: 0;
+}
+table.nav tr td.menu a
+{
+    text-decoration: none;
+}
+table.nav tr td.menu a:hover
+{
+    color: #CB6027;
+    background-color: #7FC8FF;
+}
+table.nav tr.brown
+{
+    background-color: #7FC8FF;
 }
 
-table.center tr td.title
-{
-    padding: 0pt;
-    border: 0pt;
-    margin: 0pt;
-    background-color: #C8E6FF;
-}
-table.center tr td
-{
-/*	background-color: #C8E6FF; */
-	vertical-align: bottom;
-	padding: 0pt;
-	border: 0pt;
-}
-
-table.center td p,h1,h2,h3,h4,ul
+table.main td h1,h2,h3,h4
 {
 	margin-top: 10pt;
 	margin-bottom: 10pt;
@@ -133,15 +261,24 @@ table.center td p,h1,h2,h3,h4,ul
 	width: auto;
 }
 
-table.center tr td img.banner
+img.instructions
 {
-    vertical-align: center;
-    padding: 0;
-    border: 0;
-    margin: 0;
-    width: 300px;
-    height: 52px;
+    margin-top: 10pt;
+    margin-left: 50pt;
+    padding: 5pt;
+    border-style: double;
+    vertical-align: middle;
 }
+
+video.instructions
+{
+    margin-top: 10pt;
+    margin-left: 50pt;
+    padding: 5pt;
+    border-style: double;
+    vertical-align: middle;
+}
+
 th.TM
 {
    max-width: 35%;
@@ -155,9 +292,9 @@ td.mbojereha
 td.text
 {
         vertical-align: top;
-        text-align: center;
+        text-align: left;
         width: 100%;
-        border: 1px solid black;
+/*        border: 1px solid black; */
 }
 #help
 {
@@ -190,16 +327,14 @@ span.cargando
 }
 span.username
 {
-/*    background-color: #f00;
-    color: #fff;
-*/
-    font-style: italic;
+    background-color: #4B2B17;
+    color: #F5E754;
+/*    font-style: italic; */
 }
-span.root
+span.level
 {
-   font-weight: bold;
-   color: #900;
-   border: thin solid;
+    font-weight: bold;
+    font-size: 100%;
 }
 span.sentence
 {
@@ -214,12 +349,27 @@ span.sentence
 }
 span.choice
 {
-   font-size: 100%;
+   font-size: 80%;
 }
 span.instruction
 {
    font-size: 100%;
    font-style: italic;
+}
+span.alternar
+{
+    font-size: 90%;
+    cursor: default;
+}
+span.alternar:hover
+{
+    text-decoration: underline;
+    cursor: pointer;
+}
+span.heading
+/* Generic headings */
+{
+    font-size: 110%;
 }
 input.text
 {
@@ -236,100 +386,56 @@ input.text
 }
 #button
 {
-        background-color: #C8E6FF;
+        background-color: #F5E754;
         color: #4B2B17;
         font-family: "Verdana";
         font-size: 100%;
+        text-align: center;
+        width: 120px;
+	padding: 0px 2px;
+	margin: 2px 0px;
+	border-radius: 4px;
+	border-style: outset;
+	border-color: black;
+	border-width: 2px;
+        cursor: pointer;
+}
+#mainbutton
+{
+        background-color: #F5E754;
+        color: #4B2B17;
+        font-family: "Verdana";
+	font-weight: bold;
+        font-size: 100%;
 /*        align: center; */
-        width: 200px
+        width: 150px;
+	border-radius: 4px;
+	border-style: outset;
+	border-color: black;
+	border-width: 2px;
 }
-#button:hover, #button:active
+#button:hover, #button:active, #mainbutton:hover, #mainbutton:active
 {
-    background-color: #000;
-    color: #C8E6FF;
-}
-#medbutton
-{
-        background-color: #00a;
-        color: #fff;
-        font-family: "Verdana";
-        font-size: 100%;
-        width: 30%
-}
-#medbutton:hover
-{
-        background-color: #00f;
-}
-#widebutton
-{
-        background-color: #C8E6FF;
-        color: #000;
-        font-family: "Verdana";
-        font-size: 100%;
-        align: center;
-        width: 250px;
-}
-#narrowbutton
-{
-        background-color: #C8E6FF;
-        color: #000;
-        font-family: "Verdana";
-        font-size: 100%;
-        align: center;
-        width: 100px;
-}
-#widebutton:hover, #narrowbutton:hover
-{
-    color: #8DFFEE;
-    background-color: #000;
+        background-color: #4B2B17;
+        color: #F5E754;
 }
 #altbutton
 {
-        color: #fff;
-        background-color: #CB6027;
+        color: #4B2B17;
+        background-color: #F5E754;
         font-family: "Verdana";
         font-size: 100%;
-        width: 250px;
+        width: 150px;
         align: center;
+	border-radius: 4px;
+	border-style: outset;
+	border-color: black;
+	border-width: 2px;
 }
 #altbutton:hover
 {
-    background-color: #000;
-    color: #CB6027;
-}
-#narrowlbbutton
-{
-        color: #00f;
-        font-family: "Verdana";
-        font-size: 100%;
-        width: 20%;
-        align: center;
-}
-#narrowlbbutton:hover
-{
-        background-color: #ccf;
-}
-table.center tr td.menu
-{
-/*    height: 0px;*/
-    background-color: #C8E6FF;
-    text-align: center;
-    vertical-align: bottom;
-    padding-bottom: 5px;
-    padding-top: 0px;
-    border: 0;
-}
-table.center tr td.menu a
-{
-    color: #CB6027;
-/*    font-weight: bold; */
-    font-size: 100%;
-    text-decoration: none;
-}
-table.center tr td.menu a:hover
-{
-    color: #000000;
-    background-color: #C8E6FF;
+        color: #F5E754;
+        background-color: #4B2B17;
 }
 table.title
 {
@@ -353,7 +459,7 @@ td.titleleft
     border: 0px;
     width: 70%;
     color: #000;
-    background-color: #C8E6FF;
+    background-color: #8DEDCD;
     font-size: 130%;
     font-weight: bold;
 }
@@ -369,36 +475,48 @@ td.titleright
 }
 input.menu
 {
-    background-color: #C8E6FF;
-    color: #CB6027;
+    background-color: #4B2B17;
+    color: #8DEDCD;
     font-family: "Verdana";
     font-size: 100%;
-/*    font-weight: bold; */
     text-align: right;
-    padding-right: 4pt;
+    padding-right: 10pt;
     padding-bottom: 0;
+    padding-top: 0;
     border: 0;
+    cursor: pointer;
 }
 input.menu:hover, input.menu:active, input.menu:focus
 {
-    color: #000000;
+    color: #F5E754;
+    border: none;
     outline: none;
+}
+input.trad
+{
+    color: black;
+    font-size: 90%;
+    text-align: center;
+    width: 185px;
+    height: 22px;
+    margin-top: 3px;
+    margin-bottom: 3px;
 }
 button.menu
 {
-    background-color: #C8E6FF;
-    color: #CB6027;
+    background-color: #7FC8FF;
+    color: #000000;
     font-family: "Verdana";
-/*    font-weight: bold; */
     font-size: 100%;
-    text-align: right;
-    padding-right: 4pt;
-    padding-bottom: 0;
+    text-align: center;
+    padding: 0;
     border: 0;
+    margin: 0;
+    cursor: pointer;
 }
 button.menu:hover, button.menu:active, button.menu:focus
 {
-    color: #000000;
+    color: #CB6027;
     border: 0;
     outline: none;
 }
@@ -409,16 +527,31 @@ h4.help
     font-weight: bold;
     margin-top: .5em;
     margin-bottom: .5em;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+h5.help
+{
+    font-size: 100%;
+    font-weight: normal;
+    font-style: italic;
+    margin-top: .25em;
+    margin-bottom: .1em;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 p.help
 {
     margin-top: .5em;
-    margin-bottom: .5em;
-    margin-left: 2em;
-    margin-right: 2em;
+    margin-bottom: .25em;
+    margin-left: 8px;
+    margin-right: 8px;
     clear: left;
+}
+ol.help
+{
+    margin-top: .1em;
+    margin-bottom: .1em;
 }
 textarea.doc
 {
@@ -429,4 +562,121 @@ textarea.doc
     margin: 0;
     padding: 0;
 /*    border: 0; */
+}
+.despleg-wrap {
+    float: left;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: #4B2B17;
+    color: #8DEDCD;
+    padding: none;
+    margin: 0;
+}
+button.despleg {
+    position: relative;
+    display: inline-block;
+    background-color: #4B2B17;
+    color: #8DEDCD;
+    font-family: "Verdana";
+    font-size: 100%;
+    text-align: right;
+    padding-right: 4pt;
+    padding-bottom: 0;
+    cursor: pointer;
+    border: 0;
+}
+button.despleg:hover, button.despleg:active, button.despleg:focus
+{
+    color: #F5E754;
+    border: 0;
+    outline: none;
+}
+.contenido-despleg {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 100px;
+    text-align: center;
+    overflow: auto;
+    padding: 5px 0px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.opinic {
+    color: black;
+    cursor: pointer;
+    display: block;
+    padding: 0;
+}
+.contenido-despleg span {
+    color: black;
+    padding: 3px 7px;
+    text-decoration: none;
+    display: block;
+}
+.vl {
+  border-left: 2px solid black;
+  margin-left: 6px;
+  margin-right: 8px;
+  height: 80px;
+}
+.show {display: block;}
+
+div.paso
+{
+    font-size: 110%;
+   vertical-align: top;
+   margin-top: 10pt;
+   width: auto;
+   font-style: italic;
+}
+div.paso::before
+{
+    content: "◼︎ ";
+    font-style: normal;
+}
+span.paso
+{
+    margin-left: 25pt;
+}
+
+div.subpaso
+{
+    width: auto;
+    font-size: 90%;
+    margin-top: 8pt;
+    margin-left: 50pt;
+    margin-right: 50pt;
+    margin-bottom: 8pt;
+}
+.vspace
+{
+    top: -55px;
+    position: relative;
+}
+
+#inicio {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 280px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border-radius: 4px;
+  border-style: outset;
+  border-color: black;
+  border-width: 2px;
+  outline: none; /* Remove outline */
+  background-color: #4B2B17;
+  color: #8DEDCD;
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 0px 2px; /* Some padding */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 100%; /* Increase font size */
+}
+
+#inicio:hover {
+    color: #F5E754;
+    background-color: #4B2B17;
 }

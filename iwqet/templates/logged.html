@@ -1,11 +1,26 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css')}}" />
+{% extends "base.html" %}
 
+{% block style %}
+
+<style type="text/css">
+#continuar
+{
+    clear: left;
+    font-size: 100%;
+    cursor: pointer;
+    text-decoration: underline;
+}
+#continuar:hover
+{
+    background-color: #8DEDCD;
+}
+</style>
+{% endblock%}
+
+{% block script %}
 <script>
 function ShowHelp() {
-    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
+    var helpWin = window.open("", "Mainumby: Ayuda", "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=600,height=400");
     helpWin.document.write('<html><head>' +
 '<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>' +
 "<title>Mainumby: Ayuda</title></head><body>" +
@@ -13,56 +28,57 @@ function ShowHelp() {
 "<p class='help'>" +
 "</p></body></html>");
 }
-function OnSalir() {
-    document.Form1.action = "fin"
-    document.Form1.target = "_self";     // Same window
-    document.Form1.submit();             // Submit the page
-    return true;
-}
-function loading() {
-    document.getElementById("loading").innerHTML = "<span class='cargando'>Loading database (this could take awhile)...</span>";
+function documento() {
+    cargando();
     window.location.assign("doc");
 }
+function traducir() {
+    cargando();
+    form = document.getElementById("form");
+    form.action = "tra";
+    form.submit();
+}
 </script>
+{% endblock %}
 
-<title>Mit'mit'a: an English-Amharic Translation Assistant</title>
+{% block body %}
+<form name="Form1" id='form' method=POST>
 
-</head>
-
-<body>
-
-<table class="center">
-  <tr>
+<table class="left">
+  <tr class='brown'>
     <td class="title">
+      <a href='/'>
     <img class='banner' src="{{url_for('static',
-      filename='logo.png')}}" alt="" width="300px" height="52px" />
+      filename='banner_logo.png')}}" alt="" width="300px" height="52px" />
+      </a>
     </td>
-    <td class="menu" style="width: 250px"><input class="menu"
-      type="submit" value="QUIT" name="salir" onclick="return OnSalir();"></td>
-    <td class="menu" style="width: 250px"><button class="menu"
-      onclick="ShowHelp();">HELP</button></td>
+
+    <td class="title" style="width: 100px"></td>
+
+    <td class="menu" style="width: 200px">
+      <button class="menu" onclick="traducir()">TRADUCIR</button></td>
+    <td class="menuuser" style="width: 200px">{{ user }}</td>
+    <td class="menu" style="width: 200px"><a href="acerca">ACERCA DE</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
   </tr>
 
 <tr>
-<td colspan="3" style="width:800px">
+<td colspan='6' style="width: 1200px">
+<div id="cargando">
 
-  <p class='center'>
-  You logged in as <span class="username">{{ username }}</span>.
-</p>
+<h1>Identificarte</h1>
+    
+<h4>
+  ¡Ingresaste como <span class="username">{{ user }}</span>!
+  <span id="continuar" onclick="traducir()">Continuar...</di#8DEDCDhttps://doodle.com/poll/v9355xvtpzwudz76v>
+</h4>
 
-<hr>
-
-<p class="center">
-<button onclick="loading()" id="button">Continue</button><br/>
-</p>
-
-<p class="center" id="loading">
-  </p>
+</div>
 
 </td>
 </tr>
 </table>
 
-</body>
+</form>
 
-</html>
+{% endblock %}

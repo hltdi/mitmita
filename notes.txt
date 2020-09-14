@@ -1,2 +1,4 @@
-Winter 17-18
-sentence-final punctuation for translations (. -> ።)
+2020.9
+Converted to Gyez.
+Passwords: admin: wsa, anon: ''
+

@@ -7,7 +7,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2016, 2017, 2018 PLoGS <gasser@indiana.edu>
+#   Copyleft 2016, 2017, 2018, 2020 PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -102,7 +102,8 @@ class Record:
     def make_id(self):
         print("make_id() not implemented...")
 
-    def record(self, sentrecord, translation=None, segtrans=None, comments=None):
+    def record(self, sentrecord, translation=None, segtrans=None,
+               comments=None):
         print("record() not implemented...")
 
     def quit(self):
@@ -205,14 +206,19 @@ class Memory(Record):
         self.running = False
 
 class Session(Record):
-    """A record of a single user's responses to a set of sentences."""
+    """
+    A record of a single user's responses to a set of sentences.
+    NEEDS TO BE UPDATED TO TAKE INTO ACCOUNT DB Humans (IN PLACE
+    OF Users). FOR NOW, IT JUST KEEPS TRACK OF USER, START AND
+    END TIMES, AND LANGUGES.
+    """
 
     def __init__(self, user=None, source=None, target=None):
         self.user = user
         # List of SentRecord objects
         self.sentences = []
         Record.__init__(self, source=source, target=target, user=user)
-        print("Creando sesión {}".format(self))
+        print("Creating session {} with user {}".format(self, user))
 
     def __repr__(self):
         return "{}::{}".format(SESSION_PRE, self.id)
@@ -232,7 +238,9 @@ class Session(Record):
 
     @staticmethod
     def get_sessions(sessions, time_feat_dict):
-        """Get all session dicts in session dict list matching time features."""
+        """
+        Get all session dicts in session dict list matching time features.
+        """
         filt = Session.filter_time_func(time_feat_dict)
         return [s for s in sessions if filt(shortstr2time(s['start']))]
 
@@ -243,7 +251,10 @@ class Session(Record):
 
     @staticmethod
     def filter_time_func(time_feat_dict):
-        """Boolean function taking a time: whether it matches the constraints in time_feat_dict."""
+        """
+        Boolean function taking a time: whether it matches the constraints
+        in time_feat_dict.
+        """
         return lambda feature: all([Session.filter_feature(feature, typ, time_feat_dict.get(typ, None)) for typ in ['year', 'month', 'day', 'hour', 'minute']])
 
     def make_id(self):
@@ -265,7 +276,9 @@ class Session(Record):
 #        return self.target.ortho_clean(string)
 
     def quit(self):
-        """Save new users, set the end time, save the session, and stop running."""
+        """
+        Save new users, set the end time, save the session, and stop running.
+        """
         # Save any new users (can there be more than 1?)
         User.write_new()
         User.new_users.clear()
@@ -277,7 +290,8 @@ class Session(Record):
 #        """Only record a verbatim translation of the sentence."""
 #        sentrecord.translation = translation
 
-    def record(self, sentrecord, translation=None, segtrans=None, comments=None):
+    def record(self, sentrecord, translation=None, segtrans=None,
+               comments=None):
         """Record feedback about a sentence's translation."""
         print("{} recording translation for sentence {} with translation {} and seg trans {}".format(self, sentrecord, translation, segtrans))
         segrecord = None
@@ -569,7 +583,9 @@ class SegRecord:
 # ACCEPT = Feedback()
 
 class User:
-    """User of the system who is registered and whose feedback is saved."""
+    """
+    User of the system who is registered and whose feedback is saved.
+    """
 
     # Dictionary of users, with usernames as keys.
     users = {}
@@ -582,9 +598,9 @@ class User:
     anon_name = 'anónima'
     anon_email = 'gasser@indiana.edu'
 
-    def __init__(self, username='', email='', password='', name='', level=1, pw_hash='',
-                 creation=None, nsessions=0, nsentences=0, update=None, score=0.0,
-                 new=False):
+    def __init__(self, username='', email='', password='', name='', level=1,
+                 pw_hash='', creation=None, nsessions=0, nsentences=0,
+                 update=None, score=0.0, new=False):
         """name and level are optional. Other fields are required."""
         self.username = username
         self.email = email

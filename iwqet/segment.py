@@ -59,6 +59,9 @@
 # 2017.06.22
 # -- Skip group item matching for punctuation nodes.
 #    Character joining items in phrases and numerals is now ~ instead of _.
+# 2020.09
+# -- Updated generation to allow for cases where a single source POS
+#    corresponds to multiple target POSs, e.g., Amh v -> Sgw vp, vi, vj
 
 import itertools, copy, re
 from .cs import *
@@ -327,6 +330,7 @@ class Seg:
         if verbosity:
             print("Generating segment {} with cleaned trans {} and raw token str {}".format(self, self.cleaned_trans, self.raw_token_str))
         generator = self.target.generate
+        mult_generator = self.target.mult_generate
         cleaned_trans = []; morphology = []
         for translation in self.cleaned_trans:
             output1 = []; morph = []
@@ -340,21 +344,31 @@ class Seg:
                     if spec_trans:
                         output1.append(Seg.clean_spec(spec_trans))
                         morph.append(None)
-                elif isinstance(item, list):
-                    # We need to generate it
-                    token, pos, feats = item
-                    if not pos:
-                        # generator needs a POS
-                        output1.append(token); morph.append(None)
+                    continue
+                if isinstance(item, list):
+                    if isinstance(item[0], list):
+                        # multiple root, pos, feat combinations
+                        # this can happen with Amh->Sgw for multiple verb 'POS's
+#                        print("  Multiple root/POS/feats to generate")
+                        root = item[0][0]
+                        posfeats = [i[1:] for i in item]
+                        outform, outfeats =  mult_generator(root, posfeats)
                     else:
+                        # We need to generate it
+                        token, pos, feats = item
+                        if not pos:
+                            # generator needs a POS; without one just
+                            # append the token
+                            output1.append(token); morph.append(None)
+                            continue
                         outform, outfeats = generator(token, feats, pos=pos)
-                        # Include only first max_gen_forms forms
-                        if limit_forms:
-                            outform = outform[:Seg.max_gen_forms]
-                            outfeats = outfeats[:Seg.max_gen_forms]
-                        # If there are multiple gen outputs, separate by |
-                        form = '|'.join(outform)
-                        output1.append(form); morph.append(outfeats)
+                    # Include only first max_gen_forms forms
+                    if limit_forms:
+                        outform = outform[:Seg.max_gen_forms]
+                        outfeats = outfeats[:Seg.max_gen_forms]
+                    # If there are multiple gen outputs, separate by |
+                    form = '|'.join(outform)
+                    output1.append(form); morph.append(outfeats)
                     generated = True
                 else:
                     output1.append(item); morph.append(None)
@@ -806,7 +820,7 @@ class Segment(Seg):
                  treetrans=None, sfeats=None, tgroups=None,
                  head=None, tok=None, spec_indices=None, session=None, gname=None, is_punc=False):
         Seg.__init__(self, segmentation)
-        print("Creating Segment with translation: {}".format(translation))
+#        print("Creating Segment with translation: {}".format(translation))
         if sfeats:
             sfeat_dict = sfeats[0]
             self.shead_index = 0
@@ -1527,6 +1541,9 @@ class TreeTrans:
                 out.append(wl0)
                 if isinstance(wl0, list):
                     generated = False
+            elif isinstance(word_list[0], list):
+                generated = False
+                out.append(word_list)
             else:
                 out.append('|'.join(word_list))
         if generated:
@@ -1556,24 +1573,36 @@ class TreeTrans:
         return None
 
     def record_ind_feats(self, token='', tnode_index=-1, t_indices=None,
-                         targ_feats=None, tpos='',
+                         tposfeats=None,
+#                         targ_feats=None, tpos='',
                          snode=None, node_index_map=None, verbosity=0):
         """
         Record index and target features in TreeTrans instance.
         """
+#        print("RECORDING INDEX AND TARGET FEATURES")
+#        print(" token {}, tnodeindex {}, tindices {}".format(token, tnode_index, t_indices))
+#        print(" tposfeats {}".format(tposfeats))
+#        print(" nodeindexmap {}".format(node_index_map))
         node_index_map[snode.index] = tnode_index
         if not t_indices:
             t_indices = []
         if not token:
             token = snode.token
-        self.node_features.append([token, targ_feats, t_indices, tpos])
+#        for tpos, targ_feats in tposfeats:
+        self.node_features.append([token, tposfeats, t_indices])
         if t_indices:
+            targ_feats = tposfeats[0][0]
             feat_index = len(self.node_features) if token else []
             for t_index in t_indices:
+                # NOTE: THIS IS WRONG BECAUSE IT ONLY USES ONE SET OF
+                # TARGET FEATURES
                 self.group_nodes[t_index] = [token, targ_feats, feat_index]
+#            print(" group nodes {}".format(self.group_nodes))
 
-    def cache_gnodes(self, cache_key=None, token="", tnode_index=-1, t_indices=None, tg_merger_groups=None, targ_feats=None):
-        self.cache[cache_key] = (token, tnode_index, t_indices, tg_merger_groups, targ_feats)
+    def cache_gnodes(self, cache_key=None, token="", tnode_index=-1,
+                     t_indices=None, tg_merger_groups=None, targ_feats=None):
+        self.cache[cache_key] = \
+           (token, tnode_index, t_indices, tg_merger_groups, targ_feats)
 
     def merge_agr_feats(self, agrs, targ_feats, features, verbosity=0):
         """
@@ -1597,23 +1626,26 @@ class TreeTrans:
 
     def adapt_feats(self, spos, sfeats, tfeats, verbosity=0):
         """
-        Adapt source features to target based on conversions in
+        Adapt source features to target based on POS and features conversions in
         POS.posconv and POS.featconv.
         """
         if verbosity:
             print("Adapt sfeats {} (spos: {}) to tfeats {}".format(sfeats.__repr__(),
             spos, tfeats.__repr__()))
-        tfeats = self.source.adapt(spos, self.target.abbrev, sfeats, tfeats)
+        tposfeatlist = \
+            self.source.adapt(spos, self.target.abbrev, sfeats, tfeats)
         if verbosity:
-            print("Adapted {}".format(tfeats.__repr__()))
-        return tfeats
+            print("Adapted {}".format(tposfeatlist))
+        return tposfeatlist
 
-    def build(self, tg_groups=None, tg_tnodes=None, verbosity=0):
+    def build(self, tg_groups=None, tg_tnodes=None, cache=False,
+              verbosity=0):
         """Unify translation features for merged nodes, map agr features from
         source to target,
         generate surface target forms from resulting roots and features.
         tg_groups is a combination of target groups.
         2019.5.27: Changed to reflect the disappearance of merge nodes.
+        2020.9: Added POS and feature adaptation. Turning off caching for now.
         """
         if verbosity:
             print('BUILDING {} with tgroups {} and tnodes {}'.format(self, tg_groups, tg_tnodes))
@@ -1641,48 +1673,51 @@ class TreeTrans:
                 # snode is not covered by any group
                 self.record_ind_feats(tnode_index=tnode_index, snode=snode, node_index_map=node_index_map)
                 tnode_index += 1
-            else:
-                if gnode not in self.gnode_dict:
-                    if verbosity > 1:
-                        print("   not in gnode dict, skipping")
-                    continue
-                gnode_tuple_list = self.gnode_dict[gnode]
-                gnode_tuple = firsttrue(lambda x: x[0] in tg_groups, gnode_tuple_list)
+                continue
+            if gnode not in self.gnode_dict:
                 if verbosity > 1:
-                    print("   gnode_tuple: {}, list {}".format(gnode_tuple, gnode_tuple_list))
-                if not gnode_tuple and verbosity:
-                    print("Something wrong with snode {}, gnodes {}, gnode_tuple_list {}, tg_groups {}".format(snode, gnodes, gnode_tuple_list, tg_groups))
-                cache_key = self.make_cache_key(gnode_tuple)
-                cached = self.get_cached(gnode_tuple, cache_key=cache_key, verbosity=verbosity)
-                if cached:
-                    # translation already in local cache
-                    tok, tn_i, t_i, x, t_feats = cached
-                    self.record_ind_feats(token=tok, tnode_index=tn_i,
-                                          t_indices=t_i,
-                                          targ_feats=t_feats, snode=snode,
-                                          node_index_map=node_index_map)
+                    print("   not in gnode dict, skipping")
+                continue
+            gnode_tuple_list = self.gnode_dict[gnode]
+            gnode_tuple = firsttrue(lambda x: x[0] in tg_groups, gnode_tuple_list)
+            if verbosity > 1:
+                print("   gnode_tuple: {}, list {}".format(gnode_tuple, gnode_tuple_list))
+            if not gnode_tuple and verbosity:
+                print("Something wrong with snode {}, gnodes {}, gnode_tuple_list {}, tg_groups {}".format(snode, gnodes, gnode_tuple_list, tg_groups))
+            cache_key = self.make_cache_key(gnode_tuple)
+            cached = self.get_cached(gnode_tuple, cache_key=cache_key, verbosity=verbosity)
+            if cache and cached:
+                # DISABLED FOR NOW (record_ind_feats doesn't work like this)
+                # translation already in local cache
+                tok, tn_i, t_i, x, t_feats = cached
+                self.record_ind_feats(token=tok, tnode_index=tn_i,
+                                      t_indices=t_i,
+                                      targ_feats=t_feats, snode=snode,
+                                      node_index_map=node_index_map)
+            else:
+                # translation not in local cache
+                tgroup, token, targ_feats, agrs, t_index = gnode_tuple
+                if len(tgroup.tokens) > 1:
+                    t_indices.append((tgroup, t_index))
                 else:
-                    # translation not in local cache
-                    tgroup, token, targ_feats, agrs, t_index = gnode_tuple
-                    if len(tgroup.tokens) > 1:
-                        t_indices.append((tgroup, t_index))
-                    else:
-                        t_indices = [(tgroup, 0)]
-                    # Make target and source features agree as required
-                    targ_feats = self.merge_agr_feats(agrs, targ_feats, features,
-                                                      verbosity=verbosity)
-                    # Adapt source to target features
-                    tpos, targ_feats = self.adapt_feats(pos, features, targ_feats,
-                                                        verbosity=0)
-                    self.record_ind_feats(token=token, tnode_index=tnode_index,
-                                          t_indices=t_indices, tpos=tpos,
-                                          targ_feats=targ_feats, snode=snode,
-                                          node_index_map=node_index_map)
-                    self.cache_gnodes(cache_key=cache_key, token=token,
-                                      tnode_index=tnode_index,
-                                      t_indices=t_indices, targ_feats=targ_feats)
+                    t_indices = [(tgroup, 0)]
+                # Make target and source features agree as required
+                targ_feats = self.merge_agr_feats(agrs, targ_feats, features,
+                                                  verbosity=verbosity)
+                # Adapt source to target features
+                tposfeats = self.adapt_feats(pos, features, targ_feats,
+                                             verbosity=0)
+                self.record_ind_feats(token=token, tnode_index=tnode_index,
+                                      t_indices=t_indices,
+                                      tposfeats=tposfeats,
+#                                      tpos=tpos, targ_feats=targ_feats,
+                                      snode=snode,
+                                      node_index_map=node_index_map)
+                self.cache_gnodes(cache_key=cache_key, token=token,
+                                  tnode_index=tnode_index,
+                                  t_indices=t_indices, targ_feats=targ_feats)
 
-                tnode_index += 1
+            tnode_index += 1
 
         # Make indices for tgroup trees
         for src_index in self.tree:
@@ -1708,7 +1743,7 @@ class TreeTrans:
             self.ttree.add(src_index)
             index = [(tginst, tnode.index)]
             feat_index = len(self.node_features)
-            self.node_features.append([tnode.token, features, index, ''])
+            self.node_features.append([tnode.token, ('', features), index])
             self.group_nodes[index[0]] = [tnode.token, features, feat_index]
         # TNodes in subTTs
         for tnode in subtnodes:
@@ -1717,7 +1752,7 @@ class TreeTrans:
             self.ttree.add(src_index)
             index = [(tnode.group, tnode.index)]
             feat_index = len(self.node_features)
-            self.node_features.append([tnode.token, features, index, ''])
+            self.node_features.append([tnode.token, ('', features), index])
 
     @staticmethod
     def get_root_POS(token):
@@ -1757,23 +1792,24 @@ class TreeTrans:
                 agr_node1[1], agr_node2[1] = af1, af2
                 self.node_features[feat_index1][1] = af1
                 self.node_features[feat_index2][1] = af2
-        for token, features, index, pos in self.node_features:
+        for token, features, index in self.node_features:
+            pos, feats = features[0]
             root, rpos = TreeTrans.get_root_POS(token)
             if not pos:
-                # There coulb be a POS specified
+                # There could be a POS specified
                 pos = rpos
-            if verbosity:
-                print("  Token {}, features {}, index {}, root {}, pos {}".format(token, features.__repr__(), index, root, pos))
+#            if verbosity:
             output = [token]
             if not pos:
                 if self.target.postsyll:
                     token = self.target.syll_postproc(token)
                     output = [token]
             else:
-                output = [[root, pos, features]]
+                output = [[root, pf[0], pf[1]] for pf in features]
+#                output = [[root, pos, features]]
             self.nodes.append([output, index])
             if verbosity:
-                print(" Target node {}: {}".format(index, output))
+                print("TT NODE {}: {}".format(index, output))
 
     def make_order_pairs(self, verbosity=0):
         """Convert group/index pairs to integer (index) order pairs.
@@ -1785,10 +1821,12 @@ class TreeTrans:
             print(" mergers {}, nodes {}".format(self.mergers, self.nodes))
         tgroup_dict = {}
         for index, (forms, constraints) in enumerate(self.nodes):
+#            print("NODE I {}, F {}, C {}".format(index, forms, constraints))
             for tgroup, tg_index in constraints:
                 if tgroup not in tgroup_dict:
                     tgroup_dict[tgroup] = []
                 tgroup_dict[tgroup].append((index, tg_index))
+#                print("TGROUP {}, TGROUP DICT {}".format(tgroup, tgroup_dict))
         for pairs in tgroup_dict.values():
             for pairpair in itertools.combinations(pairs, 2):
                 pairpair = list(pairpair)

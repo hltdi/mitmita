@@ -1,7 +1,7 @@
 /*
 Colors:
 mit'mit'a red: #CB6027
-background blue: #7FC8FF
+background blue: #ABD4F2
 */
 span.sgw {
 	font-family: 'Gurage Zebidar';
@@ -192,7 +192,6 @@ table.main td ol
     margin-right: 50pt;
     margin-top: 5pt;
 }
-
 table.nav
 {
 	table-layout: fixed;
@@ -207,7 +206,7 @@ table.nav tr td img.banner
 }
 table.nav tr td.menu
 {
-    background-color: #7FC8FF;
+    background-color: #ABD4F2;
     text-align: center;
     vertical-align: bottom;
     padding-bottom: 5px;
@@ -218,7 +217,7 @@ table.nav tr td.menu
 }
 table.nav tr td.menufuzzy
 {
-    background-color: #7FC8FF;
+    background-color: #ABD4F2;
     color: #999999;
     text-align: center;
     vertical-align: bottom;
@@ -228,7 +227,7 @@ table.nav tr td.menufuzzy
 }
 table.nav tr td.menuuser
 {
-    background-color: #7FC8FF;
+    background-color: #ABD4F2;
     color: #F5E754;
     font-size: 120%;
     font-weight: bold;
@@ -245,11 +244,11 @@ table.nav tr td.menu a
 table.nav tr td.menu a:hover
 {
     color: #CB6027;
-    background-color: #7FC8FF;
+    background-color: #ABD4F2;
 }
 table.nav tr.brown
 {
-    background-color: #7FC8FF;
+    background-color: #ABD4F2;
 }
 
 table.main td h1,h2,h3,h4
@@ -279,16 +278,6 @@ video.instructions
     vertical-align: middle;
 }
 
-th.TM
-{
-   max-width: 35%;
-   color: silver;
-}
-td.mbojereha
-{
-   text-align: center;
-   padding: 20px;
-}
 td.text
 {
         vertical-align: top;
@@ -301,7 +290,7 @@ td.text
         background-color: #c00;
         color: #fff;
         font-family: "Verdana";
-        font-size: 100%;
+        font-size: 110%;
         width: 20%
 }
 #help:hover
@@ -314,14 +303,14 @@ span.label
 }
 span.document
 {
-   font-size: 100%;
+   font-size: 110%;
    font-weight: bold;
    color: #F00;
    border: thin solid;
 }
 span.cargando
 {
-    font-size: 125%;
+    font-size: 135%;
     font-weight: bold;
     font-style: italic;
 }
@@ -334,31 +323,26 @@ span.username
 span.level
 {
     font-weight: bold;
-    font-size: 100%;
+    font-size: 110%;
 }
 span.sentence
 {
-   font-size: 120%;
+   font-size: 130%;
    font-weight: bold;
    border: thin solid;
 }
-#parenthetical
-{
-    font-weight: normal;
-    color: LightGray;
-}
 span.choice
 {
-   font-size: 80%;
+   font-size: 90%;
 }
 span.instruction
 {
-   font-size: 100%;
+   font-size: 110%;
    font-style: italic;
 }
 span.alternar
 {
-    font-size: 90%;
+    font-size: 100%;
     cursor: default;
 }
 span.alternar:hover
@@ -369,62 +353,48 @@ span.alternar:hover
 span.heading
 /* Generic headings */
 {
-    font-size: 110%;
+    font-size: 120%;
 }
 input.text
 {
         font-family: "Verdana";
-        font-size: 100%;
+        font-size: 110%;
         height: 20px;
 	width: 500px;
 }
 #medtext
 {
         font-family: "Verdana";
-        font-size: 100%;
+        font-size: 110%;
         width: 40%
 }
 #button
 {
-        background-color: #F5E754;
-        color: #4B2B17;
-        font-family: "Verdana";
-        font-size: 100%;
-        text-align: center;
-        width: 120px;
+  background-color: #ABD4F2;
+  color: #000000;
+  font-family: "Verdana";
+  font-size: 110%;
+  text-align: center;
+  width: 120px;
 	padding: 0px 2px;
 	margin: 2px 0px;
 	border-radius: 4px;
 	border-style: outset;
 	border-color: black;
 	border-width: 2px;
-        cursor: pointer;
+  cursor: pointer;
 }
-#mainbutton
+#button:hover, #button:active
 {
-        background-color: #F5E754;
-        color: #4B2B17;
-        font-family: "Verdana";
-	font-weight: bold;
-        font-size: 100%;
-/*        align: center; */
-        width: 150px;
-	border-radius: 4px;
-	border-style: outset;
-	border-color: black;
-	border-width: 2px;
-}
-#button:hover, #button:active, #mainbutton:hover, #mainbutton:active
-{
-        background-color: #4B2B17;
-        color: #F5E754;
+	background-color: #CB6027;
+  color: #FFFFFF;
 }
 #altbutton
 {
         color: #4B2B17;
         background-color: #F5E754;
         font-family: "Verdana";
-        font-size: 100%;
+        font-size: 110%;
         width: 150px;
         align: center;
 	border-radius: 4px;
@@ -452,33 +422,12 @@ table.title tr
 {
     border: 0px;
 }
-td.titleleft
-{
-    text-align: left;
-    padding: 0px;
-    border: 0px;
-    width: 70%;
-    color: #000;
-    background-color: #8DEDCD;
-    font-size: 130%;
-    font-weight: bold;
-}
-td.titleright
-{
-    text-align: center;
-    font-size: 110%;
-    padding: 0px;
-    border: 0px;
-    width: 30%;
-    background-color: #000;
-    color: #8DEDCD;
-}
 input.menu
 {
-    background-color: #4B2B17;
-    color: #8DEDCD;
+    background-color: #ABD4F2;
+    color: #000000;
     font-family: "Verdana";
-    font-size: 100%;
+    font-size: 110%;
     text-align: right;
     padding-right: 10pt;
     padding-bottom: 0;
@@ -488,14 +437,14 @@ input.menu
 }
 input.menu:hover, input.menu:active, input.menu:focus
 {
-    color: #F5E754;
+    color: #CB6027;
     border: none;
     outline: none;
 }
 input.trad
 {
     color: black;
-    font-size: 90%;
+    font-size: 88%;
     text-align: center;
     width: 185px;
     height: 22px;
@@ -504,10 +453,10 @@ input.trad
 }
 button.menu
 {
-    background-color: #7FC8FF;
+    background-color: #ABD4F2;
     color: #000000;
     font-family: "Verdana";
-    font-size: 100%;
+    font-size: 110%;
     text-align: center;
     padding: 0;
     border: 0;
@@ -523,7 +472,7 @@ button.menu:hover, button.menu:active, button.menu:focus
 /* Help windows */
 h4.help
 {
-    font-size: 110%;
+    font-size: 120%;
     font-weight: bold;
     margin-top: .5em;
     margin-bottom: .5em;
@@ -532,7 +481,7 @@ h4.help
 }
 h5.help
 {
-    font-size: 100%;
+    font-size: 110%;
     font-weight: normal;
     font-style: italic;
     margin-top: .25em;
@@ -556,7 +505,7 @@ ol.help
 textarea.doc
 {
     font-family: "Verdana";
-    font-size: 100%;
+    font-size: 110%;
     width: 798px;
     height: 300px;
     margin: 0;
@@ -580,7 +529,7 @@ button.despleg {
     background-color: #4B2B17;
     color: #8DEDCD;
     font-family: "Verdana";
-    font-size: 100%;
+    font-size: 110%;
     text-align: right;
     padding-right: 4pt;
     padding-bottom: 0;
@@ -626,7 +575,7 @@ button.despleg:hover, button.despleg:active, button.despleg:focus
 
 div.paso
 {
-    font-size: 110%;
+    font-size: 120%;
    vertical-align: top;
    margin-top: 10pt;
    width: auto;
@@ -645,7 +594,7 @@ span.paso
 div.subpaso
 {
     width: auto;
-    font-size: 90%;
+    font-size: 100%;
     margin-top: 8pt;
     margin-left: 50pt;
     margin-right: 50pt;
@@ -673,7 +622,7 @@ div.subpaso
   cursor: pointer; /* Add a mouse pointer on hover */
   padding: 0px 2px; /* Some padding */
   border-radius: 4px; /* Rounded corners */
-  font-size: 100%; /* Increase font size */
+  font-size: 110%; /* Increase font size */
 }
 
 #inicio:hover {

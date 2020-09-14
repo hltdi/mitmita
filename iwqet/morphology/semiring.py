@@ -117,9 +117,12 @@ class FSSet(set, FS):
             return FSSet(*filter(lambda x: x != 'fail', result1))
 
     def unify_FS(self, fs, strict=False, verbose=False):
-        """Attempt to unify this FSSet with a simple FeatStruct instance,
+        """
+        Attempt to unify this FSSet with a simple FeatStruct instance,
         basically filter the FeatStructs in the set by their unification
-        with fs. Pretty much like FSSet.unify()."""
+        with fs. Pretty much like FSSet.unify(). If list is True,
+        return a list of matching FeatStructs or 'fail'.
+        """
         # This is a list of the unifications of the elements of self with fs
         result1 = [simple_unify(f1, fs, strict=strict, verbose=verbose) for f1 in list(self)]
         if every(lambda x: x == TOP, result1):
@@ -132,6 +135,8 @@ class FSSet(set, FS):
             if not result2:
                 # None of the FeatStructs in self unifies with fs
                 return 'fail'
+#            print("result1 {}".format(result1.__repr__()))
+#            print("result2 {}".format(result2.__repr__()))
             return FSSet(*result2)
 
     @staticmethod
@@ -176,10 +181,23 @@ class FSSet(set, FS):
                         else:
                             vals.append((targ_feat, u))
             for f, v in vals:
-                target[f] = v
+                if isinstance(target, dict):
+                    target[f] = v
+                else:
+                    new_target = set()
+                    for i, fs in enumerate(target):
+                        fs = fs.unfreeze()
+                        fs[f] = v
+                        fs.freeze()
+                        new_target.add(fs)
+                    target = FSSet(new_target)
+        return target
 
     def agree_with(self, source, force=False):
-        """Force self (actually return a changed copy) to agree with source (a FeatStruct)."""
+        """
+        Force self (actually return a changed copy) to agree with source
+        (a FeatStruct).
+        """
         fss = set()
         for fs in list(self):
             for srcfeat, srcval in source.items():
@@ -271,11 +289,26 @@ class FSSet(set, FS):
                 return value
         return default
 
+    ### Type conversion
+
     def to_featstruct(self):
         """Convert this FSSet to a FeatStruct instance by taking the first element in it."""
         if len(self) > 0:
             return list(self)[0]
         return TOP
+
+    # @staticmethod
+    # def from_FS(fs, length=1):
+    #     """
+    #     Return a FSSet instance of length length with a copy of
+    #     FeatStruct fs as each element.
+    #     """
+    #     if length == 1:
+    #         return FSSet(fs)
+    #     fslist = []
+    #     for index in range(length):
+    #         fslist.append(fs.copy())
+    #     return FSSet(fslist)
 
     def inherit(self):
         """Inherit feature values for all members of set, returning new set."""
@@ -299,6 +332,12 @@ class FSSet(set, FS):
         else:
             return TOPFSS
 
+    def upd(self, features=None):
+        """
+        Return an updated FSSet agreeing with features in features.
+        """
+        return FSSet.update(self, features)
+
     @staticmethod
     def update(fsset, feats):
         """Return a new fsset with feats updated to match each fs in fsset."""
@@ -307,6 +346,11 @@ class FSSet(set, FS):
             fs_copy = feats.copy()
             fs_copy.update(fs)
             fslist.append(fs_copy)
+        for index, fs in enumerate(fslist):
+            if isinstance(fs, dict):
+                fslist[index] = FeatStruct(fs)
+            else:
+                fs.freeze()
         return FSSet(*fslist)
 
     @staticmethod

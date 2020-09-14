@@ -71,8 +71,9 @@ from .database import *
 #app.config.from_object(__name__)
 
 def start(gui, use_anon=True, create_memory=False):
-    """Iniciar una ejecución. Crear una sesión si hay un usuario y si no
-    se está usando una Memory."""
+    """
+    Initiate. Create a session if there's a user.
+    """
     if not gui.source:
         load(gui=gui)
     # set GUI.user
@@ -91,7 +92,7 @@ def start(gui, use_anon=True, create_memory=False):
     elif gui.user:
         gui.session = iwqet.Session(source=gui.source, target=gui.target, user=gui.user)
 
-def load(source='spa', target='grn', gui=None):
+def load(source='amh', target='sgw', gui=None):
     """Cargar lenguas fuente y meta para traducción."""
     s, t = iwqet.Language.load_trans(source, target)
     if gui:
@@ -156,8 +157,10 @@ def doc_trans(doc=None, textobj=None, text='', textid=-1, docpath='',
 
 def gui_trans(gui, session=None, choose=False, return_string=False,
               sentence=None, terse=True, verbosity=0):
-    """Traducir oración (accesible en gui) y devuelve la oración marcada (HTML) con
-    segmentos coloreados."""
+    """
+    Translate sentence (accessible in gui) and return the marked-up
+    sentence (HTML) with colored segments.
+    """
     return አረፍተነገር(sentence=sentence or gui.sentence, src=gui.source,
                    targ=gui.target, session=gui.session,
                    html=True, return_string=return_string, choose=choose,
@@ -235,16 +238,17 @@ def quit(session=None):
     db.session.commit()
 
 def make_session(source, target, user, create_memory=False, use_anon=True):
-    """Create an instance of the Session or Memory class for the given user."""
-    User.read_all()
-    if isinstance(user, str):
-        # Get the user from their username
-        user = User.users.get(user)
+    """
+    Create an instance of the Session or Memory class for the given user.
+    """
+#    User.read_all()
+#    if isinstance(user, str):
+#        # Get the user from their username
+#        user = User.users.get(user)
     if use_anon and not user:
-        user = User.get_anon()
-    username = ''
-    if user:
-        username = user.username
+        user = get_human('anon')
+#        user = User.get_anon()
+    username = user.username
     if create_memory:
         session = iwqet.Memory.recreate(user=username)
     elif user:
@@ -356,11 +360,13 @@ def get_human(username):
     humans = db.session.query(Human).filter_by(username=username).all()
     if humans:
         if len(humans) > 1:
-            print("Advertencia: ¡{} usuarios con el nombre de usuario {}!".format(len(humans), username))
+            print("Warning: {} users with username {}!".format(len(humans), username))
         return humans[0]
 
 def get_domains_texts():
-    """Return a list of domains and associated texts and a dict of texts by id."""
+    """
+    Return a list of domains and associated texts and a dict of texts by id.
+    """
     dom = dict([(d, []) for d in DOMAINS])
     for text in db.session.query(Text).all():
         d1 = text.domain

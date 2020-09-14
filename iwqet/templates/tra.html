@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Mainumby: Traducción
+Gyez: Translation
 {% endblock %}
 
 {% block style %}
@@ -11,20 +11,21 @@ Mainumby: Traducción
 .modo
 {
     clear: left;
-    font-size: 120%;
+    font-size: 130%;
     margin-top: .75em;
     margin-bottom: .35em;
-    background-color: #F5E754;
+    background-color: #CB6027;
+    color: #FFFFFF;
     padding: 8px;
 }
 label#subir
  {
     display: inline-block;
     position: relative;
-    background-color: #F5E754;
+    background-color: #ABD4F2;
     color: #4B2B17;
     font-family: "Verdana";
-    font-size: 100%;
+    font-size: 110%;
     text-align: center;
     padding: 0px;
     width: 116px;
@@ -37,12 +38,12 @@ label#subir
 label#subir:hover, label#subir:active
 {
     background-color: #4B2B17;
-    color: #F5E754;
+    color: #ABD4F2;
 }
 td.subir
 {
     vertical-align: top;
-    font-size: 100%;
+    font-size: 110%;
     width: 125px;
 }
 td.ocultar
@@ -52,7 +53,7 @@ td.ocultar
 }
 td.opciones
 {
-    font-size: 80%;
+    font-size: 90%;
     font-style: italic;
     text-align: center;
     border: 1px solid white;
@@ -60,7 +61,7 @@ td.opciones
 }
 td.sinopciones
 {
-    font-size: 80%;
+    font-size: 90%;
     font-style: italic;
     text-align: center;
     border: 1px solid white;
@@ -72,7 +73,7 @@ td.sep
 }
 .envoltorio-subida {
     position: relative;
-    font-size: 100%;
+    font-size: 110%;
     padding-bottom: 6px;
 }
 
@@ -86,7 +87,7 @@ td.sep
     padding: 0px;
 }
 .subir-label:hover {
-    background-color: #4B2B17;
+    background-color: #ABD4F2;
     color: #8DEDCD;
 }
 div.archivo {
@@ -96,7 +97,7 @@ div.archivo {
 }
 span.archivo {
     font-style: italic;
-    color: #4B2B17;
+    color: #ABD4F2;
 }
 
 div.archivo table td {
@@ -109,7 +110,7 @@ div#fuente
 {
     font-family: "Verdana";
     font-size: {% if props.tfuente %} {{props.tfuente}} {% else %} 115% {% endif %};
-    font-weight: {% if documento %}normal{% else %}bold{% endif %};
+#    font-weight: {% if documento %}normal{% else %}bold{% endif %};
     resize: none;
     padding: 8px 8px;
     margin: 0px;
@@ -126,7 +127,7 @@ span.fuente
 }
 div#meta
 {
-    font-family: "Verdana";
+    font-family: "Zebidar";
     font-size: {% if props.tfuente and not props.isdoc %} {{props.tfuente}} {% else %} 100% {% endif %};
     resize: none;
     padding: 8px 0px 8px 8px;
@@ -142,17 +143,17 @@ div#meta
 div#doc
 {
 }
-div.oradoc
+div.sentdoc
 {
 }
-div.oradoc:hover
+div.sentdoc:hover
 {
     cursor: pointer;
     background-color: #8DEDCD;
 }
-span.lengua
+span.language
 {
-    font-size: 115%;
+    font-size: 125%;
 /*    font-weight: bold; */
 }
 div#instruc_fuente, div#instruc2, div#instruc_trad
@@ -165,9 +166,9 @@ div.comentario
 }
 textarea.ometa
 {
-    font-family: "Verdana";
+    font-family: "Zebidar";
     resize: none;
-    font-size: 100%;
+    font-size: 110%;
     padding: 4px 0px 4px 4px;
     margin: 0px;
     width: 100%;
@@ -176,9 +177,9 @@ textarea.ometa
 }
 textarea.dmeta
 {
-    font-family: "Verdana";
+    font-family: "Zebidar";
     resize: none;
-    font-size: 100%;
+    font-size: 110%;
     padding: 4px 0px 4px 4px;
     margin: 0px;
     width: 100%;
@@ -190,7 +191,7 @@ textarea.comentario
 {
     font-family: "Verdana";
     resize: none;
-    font-size: 100%;
+    font-size: 110%;
     padding: 4px 0px 4px 4px;
     margin-top: 15px;
     margin-bottom: 0px;
@@ -204,10 +205,10 @@ input.filename
    width: 50pt;
 }
 div.despleg {
-    font-family: "Verdana";
-    background-color: #4B2B17;
+    font-family: "Zebidar";
+    background-color: #ABD4F2;
     color: white;
-    font-size: 100%;
+    font-size: 110%;
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 2px;
@@ -223,7 +224,7 @@ div.despleg {
 /*    padding-bottom: 5px; */
 }
 div.opcion {
-    font-size: 100%;
+    font-size: 110%;
     padding-bottom: 5px;
     cursor: pointer;
     padding-left: 22px ;
@@ -256,7 +257,7 @@ div.despleg-derecha {
     font-family: "Verdana";
 /*    background-color: #4B2B17; */
     color: #4B2B17;
-    font-size: 110%;
+    font-size: 120%;
     line-height: 1.5;
     padding-left: 5px;
     padding-right: 5px;
@@ -268,7 +269,7 @@ div.despleg-derecha {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    font-size: 85%;
+    font-size: 90%;
     min-width: 225px;
     overflow: auto;
     padding: 4px 0px;
@@ -283,7 +284,7 @@ div.despleg-derecha {
     left: 125px;
     bottom: 25px;
     background-color: #8DEDCD;
-    font-size: 100%;
+    font-size: 110%;
     /*    min-width: 160px; */
     width: 35%;
     overflow: auto;
@@ -309,23 +310,23 @@ div.despleg-derecha {
 <tr class="brown">
     <td class="title">
     <a href="/">
-    <img class='banner' src="{{url_for('static', filename='banner_logo.png')}}" alt="" width="300px"
+    <img class='banner' src="{{url_for('static', filename='gyez_logo.png')}}" alt="" width="400px"
       height="52px" />
     </a>
     </td>
 
-    <td class="title" style="width: 100px"></td>
+    <td class="title" style="width: 0px"></td>
 
     <td class="menu" style="width: 200px">
-      <input class="menu" type="submit" value="SALIR" name="salir" onclick="return alSalir();">
+      <input class="menu" type="submit" value="መጨረስ" name="salir" onclick="return alSalir();">
     </td>
-    <td class="menu" style="width: 200px"><a href="acerca">ACERCA</a></td>
+    <td class="menu" style="width: 200px"><a href="acerca">ስለ ፕሮጄክቱ</a></td>
     <td class="menu" style="width: 200px"><a
-      href="ayuda">AYUDA</a></td>
-    <td class="menu" style="width: 200px"><a href="contacto">CONTACTO</a></td>
+      href="ayuda">እርዳታ</a></td>
+    <td class="menu" style="width: 200px"><a href="contacto">አግኙን</a></td>
 
     <input type="hidden" name="ayuda" value="">
-    <input type="hidden" name="modo" value="ora">
+    <input type="hidden" name="modo" value="sent">
 </tr>
 </form>
 </table>
@@ -345,25 +346,37 @@ div.despleg-derecha {
     <tr>
     {#    <td class='subir'>Traducción de </td> #}
     <td class='opciones'>
-    Traducción de...<br/>
+    ...ለመተርጐም<br/>
 {% if doc %}
-    <input type="button" class="trad" id="tradora" style="background-color: #F5E754; cursor: pointer" value="Palabras/frases/oraciones" onclick="alternarPalDoc(false);">
-    <input type="button" class="trad" id="traddoc" style="background-color: #8DEDCD" value="Documentos">
+    <input type="button" class="trad" id="tradsent"
+     style="background-color: #FFFFFF; cursor: pointer"
+     value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች" onclick="alternarPalDoc(false);">
+    <input type="button" class="trad" id="traddoc"
+     style="background-color: #ABD4F2" value="ሰነዶች">
 {% else %}
-    <input type="button" class="trad" id="tradora" style="background-color: #8DEDCD" value="Palabras/frases/oraciones">
-    <input type="button" class="trad" id="traddoc" style="background-color: #F5E754; cursor: pointer" value="Documentos" onclick="alternarPalDoc(true);">
+    <input type="button" class="trad" id="tradsent"
+     style="background-color: #ABD4F2" value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች">
+    <input type="button" class="trad" id="traddoc"
+     style="background-color: #FFFFFF; cursor: pointer"
+     value="ሰነዶች" onclick="alternarPalDoc(true);">
 {% endif %}
 {#    <span class='vl'></span> #}
     </td>
     <td style="width: 25px"></td>
     <td class='sinopciones'>
-    ¿Opciones de traducción?<br/>
+    የመተርጐም ምርጫዎች?<br/>
     {% if choose %}
-    <input type="button" class="trad" id="conopc" style="background-color: #F5E754; cursor: pointer" value="Con opciones" onclick="alternarOpciones(false);">
-    <input type="button" class="trad" id="sinopc" style="background-color: #8DEDCD" value="Sin opciones">
+    <input type="button" class="trad" id="conopc"
+     style="background-color: #FFFFFF; cursor: pointer"
+     value="ምርቻዎች ይታዩ" onclick="alternarOpciones(false);">
+    <input type="button" class="trad" id="sinopc"
+     style="background-color: #ABD4F2" value="ምርጫዎች ይደበቁ">
     {% else %}
-    <input type="button" class="trad" id="conopc" style="background-color: #8DEDCD" value="Con opciones">
-    <input type="button" class="trad" id="sinopc" style="background-color: #F5E754; cursor: pointer" value="Sin opciones" onclick="alternarOpciones(true);">
+    <input type="button" class="trad" id="conopc"
+     style="background-color: #ABD4F2" value="ምርጫዎች ይታዩ">
+    <input type="button" class="trad" id="sinopc"
+     style="background-color: #FFFFFF; cursor: pointer"
+     value="ምርጭዎች ይደበቁ" onclick="alternarOpciones(true);">
     {% endif %}
     </td>
     <td class='ocultar'>
@@ -373,7 +386,7 @@ div.despleg-derecha {
      </span><br/>
 #}
     <span id="ocultar" class="alternar" onclick="alternarInstrucciones();">
-    {% if props.ocultar %}Mostrar instrucciones. {% else %}Ocultar instrucciones.{% endif %}
+    {% if props.ocultar %}መምሪያ ይታይ። {% else %}መምሪያ ይደበቅ።{% endif %}
     </span>
     </td>
     </tr>
@@ -393,11 +406,11 @@ div.despleg-derecha {
     {% endif %}
 #}
   <label id="subir" for="subido">
-  <div class="subir-label">Examinar...</div>
+  <div class="subir-label">ያስሱ...</div>
   <input id='subido' type='file' class="btn-subir" onchange="archivoSubido();" name='subido'>
   </label>
   <span class='instructions'>
-    Subí un archivo (formato .txt o .docx) de tu computadora.
+    ከኮምፕዩተርዎ ፋይል ይስቀሉ።
   </span>
 </div>
 </td>
@@ -405,9 +418,9 @@ div.despleg-derecha {
 <tr>
 <td>
   <div id="seleccionBoton">
-  <input type="button" value="Elegir..." id="button" onclick="seleccionarArchivo();">
+  <input type="button" value="ይምረጡ..." id="button" onclick="seleccionarArchivo();">
   <span class'instructions'>
-    Elegí un archivo de la base de datos de Mainumby.
+    ከወሂብ ጎታው ፋይል ይምረጡ።
   </span>
     </div>
 </td></tr>
@@ -428,7 +441,7 @@ div.despleg-derecha {
 <input type="hidden" name="sinopciones" value={% if choose %}true{% else %}false{% endif %}>
 <input type="hidden" name="docsrc" value="computadora">
 <input type="hidden" name="textid" value="">
-<input type="hidden" name="modo" value="ora">
+<input type="hidden" name="modo" value="sent">
 
 </form>
 
@@ -438,11 +451,11 @@ div.despleg-derecha {
 
   <tr>
     <td style="width: 590px">
-      <span class="lengua">Castellano</span>
+      <span class="language">አማርኛ</span>
     </td>
     <td style="width: 20px"></td>
     <td style="width: 590px">
-      <span class="lengua">Guaraní</span>
+      <span class="language">ጉራጊና</span>
   </tr>
 
   <tr>
@@ -458,14 +471,14 @@ div.despleg-derecha {
   {% if documento %}
     <div class="instruc" id="instruc_fuente">
     {% if not tradtodo %}
-    Para seleccionar una oración para traducir, hacé clic sobre la oración.
+    የሚተረጐም እረፍተ ነገር ለመምረጥ ጠቅ ያድርጉ።
     {% if choose %}
     <br />
-    Para traducir todo el documento, presioná "Traducir todo" abajo.
+    ሰነዱን ሁሉ ለመተርጐም "ሁሉንም ይተርጐም" ይጫኑ።
     {% endif %}
     <br />
     {% endif %}
-    Para abandonar este documento, presioná "Abandonar" abajo.
+    To abandon this document, press "Abandon" below.
     </div>
     <br class='sep'/>
     <input type="button" value="Abandonar" id="button" onclick="abandonarDoc();">
@@ -475,14 +488,15 @@ div.despleg-derecha {
     </span>
     {% endif %}
   {% elif oracion %}
-    <div class="instruc" id="instruc_fuente">Para traducir otra oración,
-    primero presioná 'Borrar' o hacé clic en el espacio de arriba.
+    <div class="instruc" id="instruc_fuente">
+      ሌላ አረፍተ ነገር ለመተርጐም፣ መጀመሪያ "ይሰረዝ" ይጫኑ ወይም ደግሞ
+      እላይ ያለው ቦታ ጠቅ ይበሉ።
     </div>
     <br class='instruc'/>
-    <input type="button" value="Borrar" id="button" onclick="borrar()">
+    <input type="button" value="ይሰረዝ" id="button" onclick="borrar()">
   {% elif not doc %}
-    <div class="instruc" id="instruc_fuente">Escribí una palabra,
-    frase, u oración, y luego presioná Intro/Enter para traducirla.</div>
+    <div class="instruc" id="instruc_fuente">
+      ቃል፣ ሐረግ ወይም አረፍተ ነገር ጽፈው አስገቢ ቁልፍ ይጫኑ።
   {% endif %}
     </td>
 
@@ -490,7 +504,7 @@ div.despleg-derecha {
 
     <td>
   {% if doc and not tradtodo %}
-<span class="level">Oración actual</span>
+<span class="level">የሚተረጐም አረፍተ ነገር</span>
   {% endif %}
   {% if not choose %}
 <div id='meta'>
@@ -537,11 +551,11 @@ div.despleg-derecha {
     <br class='instruc'/>
 
     {% if doc %}
-    <input type="button" value="Aceptar" id="button" onclick="aceptarTrad();">
+    <input type="button" value="መቀበል" id="button" onclick="aceptarTrad();">
     {% else %}
-    <input type="button" value="Copiar" id="button" onclick="copiar();">
+    <input type="button" value="መገልበጥ" id="button" onclick="copiar();">
 {#    {% if user %} #}
-    <input type="button" value="Registrar" id="button" onclick="registrar();">
+    <input type="button" value="መመዝገብ" id="button" onclick="registrar();">
 {#    {% endif %}   #}
     {% endif %}
     {% endif %}
@@ -556,8 +570,8 @@ div.despleg-derecha {
     <form name="Form3" id="text-options">
     <textarea class='dmeta' id='aceptado'>{% if aceptado %}{{aceptado|safe}}{% endif %}</textarea>
     <br class='instruc' />
-    <input type="submit" value="Guardar" id="button"/>
-    <label>Nombre de archivo:<input type="text" class="filename" id="text-filename" placeholder="doc.txt" size="50"/></label>
+    <input type="submit" value="ማስቀመጥ" id="button"/>
+    <label>የፋይል ስም:<input type="text" class="filename" id="text-filename" placeholder="doc.txt" size="50"/></label>
     <input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
 {#   {% if user %} #}
     <br class='sep' />
@@ -572,9 +586,9 @@ div.despleg-derecha {
   <tr>
     <td colspan='3' align='center'>
 {#    <div class="comentario"> #}
-      <textarea class="comentario" id="comentario"
-      placeholder='Si ten&eacute;s sugerencias o correcciones, escribilas aquí y luego presioná "Entrar".'></textarea><br class='sep' />
-    <input type="button" value="Entrar" id="button" onclick="comentario();">
+      <textarea class="comentario" id="comentario" placeholder='ፕሮግራሙን እንዲሻሻል ሐሳብ ወይም ደግሞ እርማት ለማቅረብ፣ በዝህ ቦታ ጽፈውት አዝራሩን ይጫኑ።'>
+      </textarea><br class='sep' />
+    <input type="button" value="ማስገባት" id="button" onclick="comentario();">
 {#    </div> #}
     </td>
   </tr>
@@ -584,7 +598,7 @@ div.despleg-derecha {
 {% endif %}
 
 <form name="Form2" method=POST action='tra'>
-<input type="hidden" name="modo" value={% if isdoc %}"doc"{% else %}"ora"{% endif %}>
+<input type="hidden" name="modo" value={% if isdoc %}"doc"{% else %}"sent"{% endif %}>
 <input type="hidden" name="ofuente" value="">
 <input type="hidden" name="oindex" value={% if oindex %}{{oindex}}{% else %}"0"{% endif %}>
 <input type="hidden" name="tacept" value="">
@@ -640,7 +654,7 @@ document.getElementById("textmeta").addEventListener("keyup", function(event) {
 	key = event.key;
 	code = event.which || event.keyCode;
         if (code > 47 && code != 224) {
-	    corregirGn();
+	    correctSgw();
 	}
     }
 });
@@ -819,7 +833,7 @@ function limpiarMeta(string) {
     return string;
 }
 
-function corregirGn() {
+function correctSgw() {
     textmeta = document.getElementById("textmeta");
     text = textmeta.value;
     if (text) {
@@ -886,8 +900,8 @@ function cambiarMeta(button, choiceid) {
 }
 
 /* What happens when the user clicks on a sentence in the document window.*/
-function seleccionarOra(oraid, index) {
-    var oracion = document.getElementById(oraid).innerHTML;
+function seleccionarOra(sentid, index) {
+    var oracion = document.getElementById(sentid).innerHTML;
     var scrolltop = getDocScrollTop();
     document.Form2.docscrolltop.value = scrolltop;
 //    alert("Scrolltop " + scrolltop);
@@ -970,22 +984,22 @@ function ingresar() {
 
 function alternarPalDoc(doc) {
     if (doc) {
-	ora = document.getElementById("tradora");
+	sent = document.getElementById("tradsent");
 	tdoc = document.getElementById("traddoc");
         document.Form0.modo.value = "doc";
         document.Form2.isdoc.value = true;
 	tdoc.style.background = "#8DEDCD";
 	tdoc.style.cursor = "default";
-	ora.style.background = "#F5E754";
-	ora.style.cursor = "pointer";
+	sent.style.background = "#F5E754";
+	sent.style.cursor = "pointer";
         document.Form0.submit();
     } else {
-	ora = document.getElementById("tradora");
+	sent = document.getElementById("tradsent");
 	tdoc = document.getElementById("traddoc");
-        document.Form0.modo.value = "ora";
+        document.Form0.modo.value = "sent";
         document.Form2.isdoc.value = false;
-	ora.style.background = "#8DEDCD";
-	ora.style.cursor = "default";
+	sent.style.background = "#8DEDCD";
+	sent.style.cursor = "default";
 	tdoc.style.background = "#F5E754";
 	tdoc.style.cursor = "pointer";
         document.Form0.submit();
@@ -998,11 +1012,11 @@ function alternarCorreccion() {
     if (document.Form2.nocorr.value) {
 //	alert("Activando...");
 	document.Form2.nocorr.value = "";
-        document.getElementById('correccion').innerHTML = "Desactivar corrección ortográfica automática.";
+        document.getElementById('correccion').innerHTML = "አጻጻፍ እንዳይታረም።";
     } else {
 //	alert("Desactivando...");
 	document.Form2.nocorr.value = "true";
-        document.getElementById('correccion').innerHTML = "Activar corrección ortográfica automática.";
+        document.getElementById('correccion').innerHTML = "አጻጻፍ ይታረም።";
     }
 }
 
@@ -1011,7 +1025,7 @@ function alternarOpciones(sinopciones) {
     conopc = document.getElementById("conopc");
     sinopc = document.getElementById("sinopc");
     document.Form2.borrar.value = true;
-    document.Form2.modo.value = {% if doc %}"doc"{% else %}"ora"{% endif %};
+    document.Form2.modo.value = {% if doc %}"doc"{% else %}"sent"{% endif %};
     document.Form2.isdoc.value = {% if doc %}true{% else %}false{% endif %};
     if (sinopciones) {
 	document.Form0.sinopciones.value = true;
@@ -1044,7 +1058,7 @@ function alternarInstrucciones() {
 	if (document.Form3) {
 	    document.Form3.ocultar.value = "true";
 	}
-	document.getElementById("ocultar").innerHTML = "Mostrar instrucciones.";
+	document.getElementById("ocultar").innerHTML = "መምሪያ ይታይ።";
 	f = document.getElementById("instruc_fuente");
 	if (f) {
 	    f.style.display = "none";
@@ -1068,7 +1082,7 @@ function alternarInstrucciones() {
 	if (document.Form3) {
 	    document.Form3.ocultar.value = "false";
 	}
-	document.getElementById("ocultar").innerHTML = "Ocultar instrucciones.";
+	document.getElementById("ocultar").innerHTML = "መምሪያ ይደበቅ።";
 	f = document.getElementById("instruc_fuente");
 	if (f) {
 	    f.style.display = "block";

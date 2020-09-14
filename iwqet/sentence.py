@@ -541,32 +541,32 @@ class Document(list):
 
     def initialize(self, constrain_groups=True, verbose=False):
         """Initialize all the sentences in the document. If biling, initialize in both languges."""
-        print("Iniciando oraciones en documento")
-        print("  Oraciones fuente ...", end='')
+        print("Initializing sentences in document")
+        print("  Source sentences ...", end='')
         count = 0
         for sentence in self:
             count += 1
             if verbose:
-                print("Iniciando oración fuente {}".format(sentence))
+                print("Initializing source sentence {}".format(sentence))
             elif count % 10 == 0:
                 print("{}...".format(count), end='')
             sentence.initialize(constrain_groups=constrain_groups, terse=True)
         if not verbose:
             print()
-            print("  Inició {} oraciones".format(count))
+            print("  Initialized {} sentences".format(count))
         if self.biling:
-            print("  Oraciones meta ...", end='')
+            print("  Target sentences ...", end='')
             count = 0
             for sentence in self.target_sentences:
                 count += 1
                 if verbose:
-                    print("Iniciando oración meta {}".format(sentence))
+                    print("Initializing target sentence {}".format(sentence))
                 elif count % 10 == 0:
                     print("{}...".format(count), end='')
                 sentence.initialize(constrain_groups=constrain_groups, terse=True)
             if not verbose:
                 print()
-                print("  Inició {} oraciones".format(count))
+                print("  Initialized {} sentences".format(count))
         self.initialized = True
 
     def get_sentence_pair(self, index):
@@ -584,8 +584,8 @@ class Document(list):
         for index, sentence in enumerate(self):
             shtml = ""
             stext = sentence.original
-            ident = "ora{}".format(index)
-            shtml += "<div class='oradoc' id='{}' onclick='seleccionarOra(".format(ident)
+            ident = "sent{}".format(index)
+            shtml += "<div class='sentdoc' id='{}' onclick='seleccionarOra(".format(ident)
             shtml += "\"{}\", {})'".format(ident, index)
             shtml += ">{}</div>".format(stext)
             html_list.append(shtml)
@@ -797,7 +797,7 @@ class Sentence:
             sanal, tanal = Sentence.biling_anal(s, t, verbosity=verbosity)
             result.append((sanal, tanal))
             if (i + 1) % report_every == 0:
-                print("{} pares de oraciones procesados".format(i + 1))
+                print("{} pairs of sentences processed".format(i + 1))
         return result
 
     @staticmethod
@@ -1244,6 +1244,8 @@ class Sentence:
         """Create nodes for sentence.
         2015.10.17: Split off from tokenize().
         2019.05.25: Added Token instances.
+        2020.09.09: Fixed issue with deleted tokens following head
+          ('target' required in .ms file)
         """
         self.nodes = []
         index = 0
@@ -1255,7 +1257,7 @@ class Sentence:
             for tokindex, (tokobj, anals) in \
                 enumerate(zip(self.toks, [a[1] for a in self.analyses])):
                 if tokobj.delete:
-                    print(" Not creating node for {} {} {}".format(tokindex, tokobj, anals))
+#                    print(" Not creating node for {} {} {}".format(tokindex, tokobj, anals))
                     # Ignore elements deleted by MorphoSyns
                     if anals and 'target' in anals[0]:
                         target_index = tokindex + anals[0]['target']
@@ -1268,16 +1270,13 @@ class Sentence:
                             else:
                                 dist += 1
                         target_index = tokindex + dist
-                    print("  target index {}".format(target_index))
                     if target_index in del_indices:
                         del_indices[target_index].append(tokindex)
                     else:
                         del_indices[target_index] = [tokindex]
-                    print("  del indices {}".format(del_indices))
         # Now create the SNodes
         for tokindex, (tokobj, anals) in \
             enumerate(zip(self.toks, [a[1] for a in self.analyses])):
-            print("Nodifying {} -- {}".format(tokindex, tokobj))
             fulltok = tokobj.fullname
             if self.toktypes:
                 toktype = self.toktypes[tokindex]
@@ -1314,7 +1313,7 @@ class Sentence:
                 raw_indices = del_indices.get(tokindex, [])
                 raw_indices.append(tokindex)
                 raw_indices.sort()
-                print("  raw indices: {}".format(raw_indices))
+#                print("  raw indices: {}".format(raw_indices))
                 self.nodes.append(SNode(index, anals, self, raw_indices,
                                         toks=tokobjs, tok=tokobj, toktype=toktype))
                 tokobjs = []
@@ -2435,12 +2434,12 @@ class Segmentation:
         tokens = [a[0] for a in sentence.analyses]
         indices_covered = []
         for treetrans, raw_indices, thead in tt:
-            print("tt {}, raw i {}, thead {}".format(treetrans, raw_indices, thead))
             forms = treetrans.output_strings
             gname = treetrans.ginst.group.name
             head_index = treetrans.ginst.ghead_index
             tgroups = treetrans.ordered_tgroups
             start, end = raw_indices[0], raw_indices[-1]
+#            print("TT {}, RAW I {}, THEAD {}, FORMS {}".format(treetrans, raw_indices, thead, forms))
             if start > max_index+1:
 #                print("  tokens {}, end+1 {}, start {}".format(tokens, end_index+1, start))
                 # there's a gap between the farthest segment to the right and this one; make one or more untranslated segments
@@ -2479,10 +2478,8 @@ class Segmentation:
             end_index = end
         if max_index+1 < len(tokens):
             # Some word(s) at end not translated; use source forms
-            print("Extra words at end: {}, {}".format(max_index, tokens))
             src_tokens = tokens[max_index+1:len(tokens)]
             src_nodes = [sentence.get_node_by_raw(index) for index in range(max_index+1, len(tokens))]
-            print(" src_nodes {}".format(src_nodes))
             src_feats = [(s.analyses if s else None) for s in src_nodes]
             src_toks = [s.tok for s in src_nodes]
 #            print("Words at end: {}, {}".format(src_tokens, src_toks))
@@ -2491,8 +2488,6 @@ class Segmentation:
                                   terse=terse)
         # Sort the segments by start indices in case they're not in order (because of parentheticals)
         self.segments.sort(key=lambda s: s.indices[0])
-#        if html:
-#            self.finalize_segments()
 
     #######
     ###    FINALIZING SEGMENT TRANSLATIONS IN SEGMENTATION.

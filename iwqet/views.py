@@ -6,7 +6,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2017 PLoGS <gasser@indiana.edu>
+#   Copyleft 2019, 2020 PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -34,6 +34,8 @@
 # 2019.03
 # -- GUI class holds variables that used to be global. The one
 #    global is the instance of GUI.
+# 2020.9
+# -- Changed to reflect changes in mainumby.
 
 from flask import request, session, g, redirect, url_for, abort, render_template, flash
 from iwqet import app, make_document, make_text, gui_trans, doc_trans, quit, start, get_human, create_human, sentence_from_textseg
@@ -58,8 +60,10 @@ def end_gui():
         GUI = None
 
 def trad_doc():
-    """Traducir todas las oraciones en el documento, devolviendo una lista
-    de 'cadenas finales' de de cada oración."""
+    """
+    Translate all the sentences in the document, returning a list
+    of segmentations for each sentence.
+    """
     return doc_trans(doc=GUI.doc, textid=GUI.textid, gui=GUI)
 
 def solve(isdoc=False, choose=False, index=0, source=''):
@@ -195,9 +199,9 @@ def tra():
     # No document loaded from file or from DB
     no_doc = isdoc and not GUI.doc and not GUI.doc_html
     # No sentence entered in sentence UI
-    no_ora = not isdoc and not 'ofuente' in form
-#    print("nodoc {}, noora {}".format(no_doc, no_ora))
-    if no_doc or no_ora and 'modo' in form and form['modo']:
+    no_sent = not isdoc and not 'ofuente' in form
+#    print("nodoc {}, nosent {}".format(no_doc, no_sent))
+    if no_doc or no_sent and 'modo' in form and form['modo']:
 #        print("modo in form: {}".format(form.get('modo')))
         # Mode (sentence vs. document) has changed
         isdoc = form.get('modo') == 'doc'
@@ -305,11 +309,11 @@ def tra():
 
     # Here's where a sentence or a whole document gets translated
     if tradtodo:
-        print("TRADUCIENDO EL DOCUMENTO ENTERO, documento: {}".format(GUI.doc))
+        print("TRANSLATING THE WHOLE DOCUMENT: {}".format(GUI.doc))
 #        sentences = doc_sentences(doc=GUI.doc, textid=GUI.textid, gui=GUI)
         all_trans = trad_doc()
         doctrans = '\n'.join(all_trans)
-        print("Traducciones: {}".format(doctrans[:100]))
+        print("Translations: {}".format(doctrans[:100]))
         GUI.props['tfuente'] = '100%'
 #        translations = ''
 #        for sentence in sentences:
@@ -329,10 +333,11 @@ def tra():
                                                  textid=GUI.textid, oindex=oindex)
         else:
             GUI.sentence = GUI.doc[oindex]
-        print("ORACIÓN ACTUAL {}".format(GUI.sentence))
+        print("CURRENT SENTENCE {}".format(GUI.sentence))
         # Translate and segment the sentence, assigning GUI.segs
         source = form.get('ofuente', '')
         solve(isdoc=isdoc, index=oindex, choose=choose, source=source)
+#        print(GUI.tra_seg_html)
         oracion = source if choose else GUI.fue_seg_html
         return render_template('tra.html', oracion=oracion,
                                tra_seg_html=GUI.tra_seg_html, tra=GUI.tra,

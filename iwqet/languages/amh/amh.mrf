@@ -12,20 +12,24 @@ gemination: _
 postpunc: ,=፣ .=። :=፦ ;=፤
 
 posconv:
-  v:: sgw: pos=v,tm=prf -> vp; pos=v,tm=imf -> vi; pos=v,tm=j_i -> vj
+  v:: sgw: pos=v,tm=prf -> vp,tm=prf; pos=v,tm=imf -> vi,tm=imf; pos=v,tm=j_i -> vj,tm=j_i
   v:: sgw: pos=n_dv -> inf
 
 featcopy:
   n:: sgw: cp, cn, cg, tns
-  v:: sgw: neg, as, rel
+  v:: sgw: neg, rel
 
 featconv:
-  v:: sgw: sb=[+p1] -> sp=1; sb=[+p2] -> sp=2
+  v:: sgw: sb=[+p1] -> sp=1
+  v:: sgw: sb=[+p2],tm=j_i -> sp=2,tm=j_i
+  v:: sgw: sb=[+p2],tm=imf -> sp=2,tm=imf
+  v:: sgw: sb=[+p2],tm=prf -> sp=2,tm=prf
   v:: sgw: sb=[+plr] -> sn=2; sb=[+fem] -> sg=f; sb=[-fem] -> sg=m
   v:: sgw: vc=smp -> vc=[-ps,-cs]; vc=ps -> vc=[+ps,-cs]
   v:: sgw: vc=tr -> vc=[-ps,+cs]; vc=cs -> vc=[+ps,+cs]
-  v:: sgw: ob=[+expl,+p1] -> op=1; ob=[+expl,+p2] -> op=2
-  v:: sgw: ob=[+expl,+plr] -> on=2; ob=[+expl,+fem] -> og=f
+  v:: sgw: as=smp -> as=None; as=it ->; as=rc ->
+  v:: sgw: ob=[+expl,+p1] -> op=1; ob=[+expl,+p2] -> op=2; ob=[+expl,-p1,-p2] -> op=3
+  v:: sgw: ob=[+expl,+plr] -> on=2; ob=[+expl,-plr] -> on=1; ob=[+expl,+fem] -> og=f
   v:: sgw: ob=[+expl,+prp,+l] -> ot=b; ob=[+expl,+prp,+b] -> ot=m
   n:: sgw: poss=[+expl,+p1] -> pp=1; poss=[+expl,+p2] -> pp=2
   n:: sgw: poss=[+expl,-p1,-p2] -> pp=3

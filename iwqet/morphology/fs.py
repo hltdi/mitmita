@@ -1,13 +1,14 @@
 """
-This file is part of the L3Morpho and Mainumby projects.
-    Copyright (C) 2014, 2015, 2016, 2017; HLTDI, PLoGS <gasser@indiana.edu>
+This file is part of the Mainumby, Mit'mit'a, and Gyez project.
+    Copyleft (C) 2014, 2015, 2016, 2017, 2020; HLTDI, PLoGS
+    <gasser@indiana.edu>
 
-    L3Morpho is free software: you can redistribute it and/or modify
+    Mit'mit'a is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    L3Morpho is distributed in the hope that it will be useful,
+    Mit'mit'a is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
@@ -52,6 +53,13 @@ class FS:
         print("Not defined")
 
     def agree(self, target, agrs, force=False):
+        print("Not defined")
+
+    def upd(self, fs):
+        """
+        Return an FS/FSSet with features updated to agree with
+        fs.
+        """
         print("Not defined")
 
 
@@ -190,6 +198,14 @@ class FeatStruct(FS):
             fs = fs.unfreeze()
         fs[feature] = value
         return fs
+
+    def upd(self, features=None):
+        """
+        Return an updated FeatStruct agreeing with features in features.
+        """
+        fs_copy = self.copy()
+        fs_copy.update(features=features)
+        return fs_copy
 
     def update(self, features=None, **morefeatures):
         """
@@ -377,6 +393,7 @@ class FeatStruct(FS):
                             return 'fail'
                     else:
                         target[targ_feat] = u
+        return target
 #                if not force and targ_feat in target and target[targ_feat] != src_value:
 #                    # Clash; fail!
 #                    return 'fail'
@@ -1459,7 +1476,9 @@ class FeatureValueConcat(SubstituteBindingsSequence, tuple):
 ######################################################################
 
 def simple_unify(x, y, strict=False, verbose=False):
-    """Unify the expressions x and y, returning the result or 'fail'."""
+    """
+    Unify the expressions x and y, returning the result or 'fail'.
+    """
     # If either expression doesn't exist, return the other, unless this
     # is the top-level. If they're the same, return one.
     if x == y:

@@ -51,8 +51,8 @@ TEXT_DIR = os.path.join(os.path.dirname(__file__), 'texts')
 TEXT_EXT = ".txt"
 DOCX_EXT = '.docx'
 
-DOMAINS = ["Miscelánea", "Cuentos", "Ciencia", "Entrenamiento",
-           "Historia", "Lengua", "Infantil", "Ley", "Política", "Cultura"]
+DOMAINS = ["በያይነቱ", "ተረቶች", "ሥነ ፍጥረት",
+           "ታሪክ", "ቋንቋ", "ፖለቲካ", "ባህል"]
 
 class Human(db.Model):
     """User of the system who is registered and whose feedback is saved."""
@@ -86,7 +86,7 @@ class Human(db.Model):
             self.pw_hash = ''
 
     def __repr__(self):
-        return "<Human({}, {})>".format(self.id, self.username)
+        return "<Human({}, {}, {})>".format(self.id, self.username, self.name)
 
     def set_password(self, password):
         self.pw_hash = generate_password_hash(password)
@@ -96,11 +96,10 @@ class Human(db.Model):
         return res
 
     @staticmethod
-    def user2human(string):
-        """Convert an old User into a Human object, using the string representation of the User."""
-        username, pw_hash, email, name, level = string.split(';')
-        human = Human(username=username, email=email, name=name, level=level, pw_hash=pw_hash)
-        return human
+    def delete_all():
+        """Remove all Human objects from the database."""
+        for t in db.session.query(Human).all():
+            db.session.delete(t)
 
 class Text(db.Model):
     """A source-language document stored in a file."""
@@ -116,11 +115,11 @@ class Text(db.Model):
     description = db.Column(db.String)
     creation = db.Column(db.String)
 
-    def __init__(self, name='', domain='Miscelánea', content='', title='',
+    def __init__(self, name='', domain='በያይነቱ', content='', title='',
                  language=None, description='', segment=False):
         """Either name or title or both should be specified."""
         if domain not in DOMAINS:
-            print("Advertencia: ¡{} no pertenece a la actual lista de dominios!".format(domain))
+            print("ማስጠንቀቂያ: {} የሚባል መደብ የለም!".format(domain))
         self.name = name or title
         self.domain = domain
         self.content = content
@@ -151,7 +150,7 @@ class Text(db.Model):
 
     def set_language(self):
         if not self.language:
-            s, t = Language.load_trans('spa', 'grn', train=False)
+            s, t = Language.load_trans('amh', 'sgw', train=False)
             self.language = s
 
     ### Database methods
@@ -174,7 +173,7 @@ class Text(db.Model):
         return os.path.join(TEXT_DIR, name + ext)
 
     @staticmethod
-    def read(name, domain="Miscelánea", title='', segment=True):
+    def read(name, domain="በያይነቱ", title='', segment=True):
         """Read a file in the 'texts' directory and create a Text object
         from its contents."""
         content = ''
@@ -187,13 +186,13 @@ class Text(db.Model):
                 with open(path, encoding='utf8') as f:
                     content = f.read()
             except IOError:
-                print("No se pudo encontrar el archivo {}".format(path))
+                print("በ {} ፋይል አልተገኘም!".format(path))
         elif any([f.endswith(DOCX_EXT) for f in files]):
             content = Text.docx2txt(name)
         if content:
             return Text(name=name, domain=domain, content=content, title=title,
                         segment=segment)
-        print("No existe un archivo con nombre {}".format(name))
+        print("{} የሚባል ፋይል የለም!".format(name))
 
     @staticmethod
     def docx2txt(name, path=''):
@@ -207,7 +206,7 @@ class Text(db.Model):
             text = '\n\n'.join(text)
             return text
         except docx.opc.exceptions.PackageNotFoundError:
-            print("No se pudo encontrar el archivo {}".format(path))
+            print("በ {} ፋይል አልተገኘም".format(path))
 
 class TextSeg(db.Model):
     """A sentence or similar unit within a Text."""

@@ -188,6 +188,7 @@ def አረፍተነገር(text='', src=None, targ=None, user=None, session=None,
                                             agree_dflt=False, choose=choose,
                                             connect=connect, html=html,
                                             terse=terse)
+    print("SEGMENTATIONS: {}".format(segmentations))
     if choose:
         if segmentations:
             # there's already only one of these anyway
@@ -258,7 +259,7 @@ def make_session(source, target, user, create_memory=False, use_anon=True):
 ## DB functions
 
 def make_dbtext(content, language,
-                name='', domain='Miscelánea', title='',
+                name='', domain='በያይነቱ', title='',
                 description='', segment=False):
     """
     Create a Text database object with the given content and

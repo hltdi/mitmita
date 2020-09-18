@@ -1992,8 +1992,7 @@ class Sentence:
                                     trees=trees, dstore=dstore, session=self.session,
                                     score=score)
         if not terse:
-            print('SEGMENTATION FOUND')
-#         {} para {}'.format(segmentation, self))
+            print('SEGMENTATION FOUND: {}'.format(segmentation))
         return segmentation
 
     def get_all_segmentations(self, translate=True, generate=True,
@@ -2213,6 +2212,7 @@ class Segmentation:
             # Not really a merged node
             features = []
             gnode = gnodes[0]
+            pos = ''
             snode_indices = gnode.snode_indices
             snode_index = snode_indices.index(snode.index)
             snode_anal = gnode.snode_anal[snode_index]

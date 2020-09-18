@@ -180,17 +180,22 @@ class FSSet(set, FS):
                                 continue
                         else:
                             vals.append((targ_feat, u))
+#            print("vals {}".format(vals))
+#            print("target {}, type {}".format(target.__repr__(), type(target)))
             for f, v in vals:
-                if isinstance(target, dict):
+                if isinstance(target, FeatStruct):
                     target[f] = v
                 else:
+                    # target is an FSSet
                     new_target = set()
                     for i, fs in enumerate(target):
                         fs = fs.unfreeze()
                         fs[f] = v
                         fs.freeze()
                         new_target.add(fs)
+#                    print(" added {}".format(v))
                     target = FSSet(new_target)
+#                    print(" new target {}".format(target))
         return target
 
     def agree_with(self, source, force=False):

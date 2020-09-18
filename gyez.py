@@ -122,9 +122,7 @@ def ሰነድ(ቋንቋ, ዱካ, session=None, ተጠቃሚ=None, proc=False):
 
 def db_texts():
     texts = \
-          [iwqet.Text.read("ነብርናፍየል", domain="ተረቶች", title="የነብር ግልገልና የፍየል ግልገል", segment=True),
-           iwqet.Text.read(),
-           iwqet.Text.read()]
+          [iwqet.Text.read("ነብርናፍየል", domain="ተረቶች", title="የነብር ግልገልና የፍየል ግልገል", segment=True)]
     iwqet.db.session.add_all(texts)
 
 def db_add_text(file='', title='', domain=''):

@@ -179,7 +179,6 @@ def tra():
     # Initialize various window parameters
     GUI.set_props(form, ['ocultar', 'sinopciones', 'nocorr'], ['tfuente'])
     GUI.props['isdoc'] = isdoc
-    print("GUI props: {}".format(GUI.props))
     # We may need to clear the doc if we've changed mode
     if isdoc and 'documento' in form and not form['documento']:
         GUI.doc = None

@@ -565,10 +565,13 @@ class Language:
 #    get_syn_groups = get_complex_groups
 
     def get_from_MWEs(self, tokens, mwes=None):
-        """If list of tokens is in tree, return the leaf (its POS). Otherwise return False."""
+        """
+        If list of tokens is in tree, return the leaf (its POS).
+        Otherwise return False.
+        """
         if not mwes:
             mwes = self.mwe
-        if not tokens:
+        if not tokens or not mwes:
             return False
         next_token = tokens.pop(0)
         if next_token in mwes:
@@ -1672,16 +1675,22 @@ class Language:
         Adapt a target FS or FSSet according to conditions specified
         in .mrf file, returning an updated target FSSet.
         """
+#        print("Adapting {}, {}".format(spos, sfeats.__repr__()))
         if tfeats:
             if isinstance(tfeats, FeatStruct):
                 tfeats = FSSet(tfeats)
+        if not sfeats:
+            return [[spos, tfeats]]
         # List of POS, features combinations for target
         tposfeats = self.adapt_POS(spos, target, sfeats, tfeats=tfeats)
         sfeatlist = list(sfeats)
         for index, (tp, tf) in enumerate(tposfeats):
+#            print("tf {} type {}".format(tf.__repr__(), type(tf)))
             tf = self.copy_feats(spos, target, sfeats, tfeats=tf)
+#            print("tf {} type {}".format(tf.__repr__(), type(tf)))
             tf = self.adapt_feats(spos, target, sfeatlist, list(tf))
             tposfeats[index][1] = tf
+#        print("Adapted: {}".format(tposfeats.__repr__()))
         return tposfeats
 
     def adapt_POS(self, spos, target, sfeats, tfeats=None):
@@ -1690,6 +1699,8 @@ class Language:
         """
         if tfeats == None:
             tfeats = FSSet()
+        elif isinstance(tfeats, FeatStruct):
+            tfeats = FSSet(tfeats)
         if spos in self.morphology:
             posconv = self.morphology[spos].posconv
             if target in posconv:
@@ -2253,6 +2264,7 @@ class Language:
     def read_mwe(abbrev='spa', name='1', verbosity=0):
         path = Language.get_mwe_file(abbrev, name=name)
         mwes = []
+#        print("Reading MWE")
         try:
             with open(path, encoding='utf8') as f:
                 for line in f:

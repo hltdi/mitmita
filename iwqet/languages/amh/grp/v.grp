@@ -216,3 +216,7 @@
 ->sgw zrb_v[root=[cls=A]]
 ** zwr_v[cls=A]
 ->sgw zwr_v[root=[cls=B]]
+** nbr_v[cls=A,tm=prf]
+->sgw nr_v[tns=pst,+copex]
+** hlw_v[cls=B,tm=prs]
+->sgw nr_v[tns=prs,+copex]

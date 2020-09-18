@@ -694,7 +694,8 @@ class Seg:
         if string[0] == '~':
             string = string[1:]
         # connecting _ and ~
-        string = string.replace('  ', ' ').replace('_', ' ').replace('~', ' ')
+        for c in ['  ', '_', '~', '+']:
+            string = string.replace(c, ' ')
         return string
 
     @staticmethod
@@ -858,9 +859,9 @@ class Segment(Seg):
                 tgroups = [spec_toks]
             self.token_str = Seg.clean_spec(self.token_str)
             self.original_token_str = Seg.clean_spec(self.original_token_str)
-        if '~' in self.original_token_str:
+        if '~' in self.original_token_str or '+' in self.original_token_str:
             self.original_token_str = Seg.clean_spec(self.original_token_str)
-        if '~' in self.token_str:
+        if '~' in self.token_str or '+' in self.token_str:
             self.token_str = Seg.clean_spec(self.token_str)
         if not self.cleaned_trans:
             self.cleaned_trans = self.translation[:]

@@ -8,7 +8,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2014, 2015, 2016, 2017 HLTDI, PLoGS <gasser@indiana.edu>
+#   Copyleft 2014, 2015, 2016, 2017, 2020 HLTDI, PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -116,14 +116,14 @@ ATTRIB_SEP = ';'
 WITHIN_ATTRIB_SEP = ','
 ## Regular expressions for reading groups from text files
 # non-empty form string followed by possibly empty FS string
-FORM_FEATS = re.compile("([$%~<'`^*.¿?¡!|()\-\w̃]+)\s*((?:\[.+\])?)$")
+FORM_FEATS = re.compile("([$%~+<'`^*.¿?¡!|()\-\w̃]+)\s*((?:\[.+\])?)$")
 # !FS(#1-#2), representing a sequence of #1 to #2 negative FS matches
 NEG_FEATS = re.compile("\s*!(\[.+\])(\(\d-\d\))$")
 # fail if category or feature matches an item that otherwise fails (before cat token)
 # FAILIF = re.compile("\s*!(.+)$")
 ## fail if category matches an item that otherwise fails
 #FAILIF_CAT = re.compile("\s*(!\$\w+)$")
-HEAD = re.compile("\s*\^\s*([$~<'¿?¡!|\-\w]+)\s+(\d)\s*$")
+HEAD = re.compile("\s*\^\s*([$~+<'¿?¡!|\-\w]+)\s+(\d)\s*$")
 # Within agreement spec
 # 1=3 n,p
 WITHIN_AGR = re.compile("\s*(\d)\s*=\s*(\d)\s*(.+)$")
@@ -174,7 +174,7 @@ class Entry:
     ID = 1
     dflt_dep = 'dflt'
     # also appears in Document
-    mwe_sep = '~'
+    mwe_sep = '+'
 
     def __init__(self, name, language, id=0, trans=None, comment='', pos=''):
         """Initialize name and basic features: language, trans, count, id."""
@@ -1046,7 +1046,8 @@ class Group(Entry):
             # Create target (translation) groups
             tgroups = []
             for tstring in trans_strings:
-                tgroup, tagr, alg, tc = Group.from_string(tstring, target, trans_strings=None, trans=True,
+                tgroup, tagr, alg, tc = Group.from_string(tstring, target,
+                                                          trans_strings=None, trans=True,
                                                           shead_index=head_index,
                                                           n_src_tokens=len(realtokens))
                 tattribs = {'agr': tagr}

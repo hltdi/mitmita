@@ -318,12 +318,12 @@ div.despleg-derecha {
     <td class="title" style="width: 0px"></td>
 
     <td class="menu" style="width: 200px">
-      <input class="menu" type="submit" value="መጨረስ" name="salir" onclick="return alSalir();">
+      <input class="menu" type="submit" value="ይውጡ" name="salir" onclick="return alSalir();">
     </td>
-    <td class="menu" style="width: 200px"><a href="acerca">ስለ ፕሮጄክቱ</a></td>
+    <td class="menu" style="width: 200px"><a href="">ስለ ፕሮጄክቱ</a></td>
     <td class="menu" style="width: 200px"><a
-      href="ayuda">እርዳታ</a></td>
-    <td class="menu" style="width: 200px"><a href="contacto">አግኙን</a></td>
+      href="">እርዳታ</a></td>
+    <td class="menu" style="width: 200px"><a href="">አግኙን</a></td>
 
     <input type="hidden" name="ayuda" value="">
     <input type="hidden" name="modo" value="sent">
@@ -478,13 +478,13 @@ div.despleg-derecha {
     {% endif %}
     <br />
     {% endif %}
-    To abandon this document, press "Abandon" below.
+    ይህንን ሰነድ ለመተው እ"ይተው" ይጫኑ።
     </div>
     <br class='sep'/>
-    <input type="button" value="Abandonar" id="button" onclick="abandonarDoc();">
+    <input type="button" value="ይተው" id="button" onclick="abandonarDoc();">
     {% if choose %}
     <span id="tradtodo">
-    <input type="button" value="Traducir todo" id="button" onclick="traducirTodo();">
+    <input type="button" value="ሁሉንም ይተርጐም" id="button" onclick="traducirTodo();">
     </span>
     {% endif %}
   {% elif oracion %}
@@ -521,8 +521,8 @@ div.despleg-derecha {
     <br class='instruc'/>
 <div class='instruc'>
     <div id='instruc2'>
-    • Para segmentos marcados con "▾", pod&eacute;s seleccionar otra opción.<br />
-    • Para cambiar la posición de un segmento, arrastralo sobre otro segmento.</div>
+    • "▾" ለተደረገበት ክፋይ ሌላ ምርጫ መምረጥ ይቻላል።<br />
+    • የክፋዮቹን ቦታ ለመለዋዋጥ አንድ ክፋይ በማይሱ ይዘው በሌላ ክፋይ ላይ ይልቀቁት።</div>
 </div>
   {% endif %}
   {% if not tradtodo %}
@@ -535,14 +535,14 @@ div.despleg-derecha {
     {% if tra %}
     <br class='instruc' />
     <div class="instruc" id="instruc_trad">
-    • Si no estás satisfecho con la traducción, pod&eacute;s editarla.<br />
+    • በትርጉሙ ካልተስማሙበት ሊያርሙት ይችላሉ።<br />
     {% if doc %}
-    • Para incluir esta oración en la traducción del documento, presioná "Aceptar".<br />
+    • ይህንን አረፍተነገር እሰነዱ ትርጉም ለማካተት በ"ይካተት" ይጫኑ።
     {% else %}
-    • Para copiar la traducción al portapapeles, presioná "Copiar".
+    • ትርጉሙን እቅነጥብ ሳሌዳ ለመገልበጥ በ"ይገልበጥ" ይጫኑ።
 {#    {% if user %} #}
     <br />
-    • Para registrar la traducción en la memoria de Mainumby, presioná "Registrar".
+    • ትርጉሙን በጘዝ ማጠራቀሚያ ለመጨመር በ"ይገንዘብ" ይጫኑ።
 {#    {% endif %}   #}
     {% endif %}
     {% endif %}
@@ -551,11 +551,11 @@ div.despleg-derecha {
     <br class='instruc'/>
 
     {% if doc %}
-    <input type="button" value="መቀበል" id="button" onclick="aceptarTrad();">
+    <input type="button" value="ይካተት" id="button" onclick="aceptarTrad();">
     {% else %}
-    <input type="button" value="መገልበጥ" id="button" onclick="copiar();">
+    <input type="button" value="ይገልበጥ" id="button" onclick="copiar();">
 {#    {% if user %} #}
-    <input type="button" value="መመዝገብ" id="button" onclick="registrar();">
+    <input type="button" value="ይመዝገብ" id="button" onclick="registrar();">
 {#    {% endif %}   #}
     {% endif %}
     {% endif %}
@@ -588,7 +588,7 @@ div.despleg-derecha {
 {#    <div class="comentario"> #}
       <textarea class="comentario" id="comentario" placeholder='ፕሮግራሙን እንዲሻሻል ሐሳብ ወይም ደግሞ እርማት ለማቅረብ፣ በዝህ ቦታ ጽፈውት አዝራሩን ይጫኑ።'>
       </textarea><br class='sep' />
-    <input type="button" value="ማስገባት" id="button" onclick="comentario();">
+    <input type="button" value="ይግባ" id="button" onclick="comentario();">
 {#    </div> #}
     </td>
   </tr>
@@ -688,14 +688,14 @@ function longFuente()
 
 function alSalir()
 {
-    document.Form2.borrar.value = true;
-    document.Form2.ofuente.value = '';
-    document.Form2.ometa.value = '';
-    document.Form2.tfuente.value = "115%";
-    document.Form1.action = "fin";
-    document.Form1.target = "_self";     // Misma ventana
-    document.Form1.submit();             // Enviar la página
-    document.getElementById("aceptado").innerHTML = "";
+//    document.Form2.borrar.value = true;
+//    document.Form2.ofuente.value = '';
+//    document.Form2.ometa.value = '';
+//    document.Form2.tfuente.value = "115%";
+//    document.Form1.action = "fin";
+//    document.Form1.target = "_self";     // Misma ventana
+//    document.Form1.submit();             // Enviar la página
+//    document.getElementById("aceptado").innerHTML = "";
     return true;
 }
 
@@ -1213,131 +1213,6 @@ function drop(ev) {
     srcParent.appendChild(tgt);
     // Update the sentence in the ometa textbox
     actualTra();
-}
-
-function mostrarAyuda() {
-    var helpWin = window.open("", "Mainumby: Ayuda",
-			      "titlebar=yes,scrollbars=yes,status=no,top=200,left=200,width=700,height=400");
-    helpWin.document.write(
-'<html>\
-<head>\
-<link rel="stylesheet" type=text/css href={{url_for("static", filename="style.css")}}/>\
-<title>Mainumby: Ayuda</title>\
-</head>\
-<body>\
-<h4 class="help">Ayuda para usar el traductor</h4>\
-<p class="help">En esta página se puede traducir palabras, frases, \
-oraciones simples, y documentos almacenados en archivos. \
-Podés elegir entre las dos opciones con los botones en la parte superior izquierda \
-de la ventana. \
-El traductor tiene dos "modos", uno que ofrece opciones al usuario para \
-la traducción de muchas palabras y frases, uno que traduce sin ofrecer opciones. \
-Podés elegir entre los dos modos con los botones en el centro superior \
-de la ventana. \
-</p>\
-<h5 class="help">Instrucciones para palabras, frases, y oraciones</h5>\
-<ol class="help">\
-  <li>Introducí una palabra, frase, u oración en el espacio a la \
-  izquierda. \
-  </li>\
-  <li>Presioná la tecla Intro/Enter.\
-  </li>\
-  <li>Si has seleccionado el modo "sin opciones", la traducción \
-  de Mainumby aparece en el espacio a la derecha. \
-  </li>\
-  <li>Por otro lado, so has seleccionado el modo "con opciones", \
-  la visualización de la oración cambia para mostrar los segmentos \
-  extraídos por Mainumby con colores diferentes. \
-  La traducción de Mainumby aparece en los espacios a la derecha. \
-  El superior muestra la traducción de los segmentos extraídos por \
-  Mainumby,  con colores que corresponden a los de los segmentos en la \
-  oración castellana. \
-  </li>\
-  <li>\
-  Si un segmento tiene el símbolo "▾", podés escoger otra traducción \
-  de la lista que aparece cuando hacés clic en el segmento. \
-  </li>\
-  <li>\
-  Podés cambiar la posición de los segmentos al arrastrar un \
-  segmento con el mouse y soltarlo sobre otro segmento. \
-  </li>\
-  <li>\
-  La traducción que corresponde a las opciones seleccionadas se \
-  muestra en el espacio inferior a la derecha. \
-  Si todavía no estás satisfecho con la traducción, podés editar el \
-  texto en este espacio. \
-  Mainumby normaliza los caracteres guaraníes que escriben en este \
-  espacio, por ejemplo, cambiando "ê" a "ẽ". \
-  Si no te gusta esta función, podés desactivarla al hacer clic en \
-  "Desactivar corrección ortográfica automática." \
-  </li>\
-  <li>Para copiar la traducción al portapapeles de tu computadora o \
-  teléfono para pegarla en otra ventana, presioná el botón "Copiar". \
-  </li>\
-  </ol>\
-<h5 class="help">Instrucciones para documentos</h5>\
-<ol class="help">\
-  <li>Si has elegido "Documentos" al presionar en el botón \
-  en la parte superior de la ventana, \
-  se presentará dos posibilidades para introducir un documento para \
-  traducir. Pod&eacute;s subir un documento de tu computadora o tel&eacute;fono \
-  o por otro lado elegir un documento de los que están almacenados \
-  en la base de datos de Mainumby. \
-  Según tu preferencia, o presioná el botón "Examinar..." \
-  o el botón "Elegir...". \
-  </li>\
-  <li>Presioná el botón "Examinar..." para subir un documento de tu \
-  computadora o telefóno. Aparecerá una nueva ventana en la que podés \
-  escoger un archivo. Ten en cuenta que Mainumby maneja solo archivos \
-  de formato .txt (o sea, archivos de texto) y de formato .docx (o \
-  sea, archivos de Microsoft Word 2007 o posterior). Además los \
-  archivos de más de 1 MB no se manejan. \
-  </li>\
-  <li>\
-  Una vez que has escogido un archivo admisible, verás en un espacio \
-  gris el nombre y el tamaño del archivo. Presioná el botón "Abrir" \
-  para continuar con la traducción de este archivo. \
-  </li>\
-  <li>\
-  Manumby segmenta el documento en oraciones, mostrando los límites \
-  entre párrafos con el simbolo "¶". \
-  Aparte de eso, descarta el formato del documento, por ejemplo, las \
-  fuentes y la sangría.\
-  </li>\
-  <li>Seleccionás oraciones para traducir al mover el mouse sobre el \
-  documento. Para traducir la oración resaltada en negrita, hacé \
-  clic. \
-  </li>\
-  <li>Como en la interfaz para oraciones, si has seleccionado \
-  el modo "sin opciones", la traducción de Mainumby aparece directamente \
-  en el espacio a la derecha. \
-  Por otro lado, si has seleccionado el modo "con opciones", se muestran los segmentos \
-  extraídos por Mainumby y sus traducciones (a la derecha) con \
-  colores. Como en la otra interfaz, se puede escoger entre las \
-  opciones ofrecidas y cambiar la posición de segmentos. \
-  </li>\
-  <li>Con el modo "con opciones", tenés que aceptar la traducción de cada oración \
-  antes de que se incluya en la traducción del documento. \
-  Cuando estés satisfecho con la traducción de la oración, \
-  presioná el botón "Aceptar" para incluirla en la traducción del \
-  documento, la que se muestra en el espacio en la parte inferior \
-  derecha.\
-  </li>\
-  <li>Cuando termines la traducción del documento, lo podés \
-  guardar como archivo en tu computadora o teléfono. Escribí un nombre \
-  para el archivo en el espacio después de "Nombre de archivo:", y \
-  presioná el botón "Guardar". \
-  El archivo será de formato ".txt" (texto), no de ".docx" (Microsoft \
-  Word).\
-  </li>\
-  <li>Para registrar la traducción en la memoria de traducción de \
-  Mainumby (así mejorando traducciones futuras que ofrece el sistema), \
-  presioná el botón "Registrar". \
-  </li>\
-</ol>\
-</body></html>'
-);
-    document.Form1.ayuda.value = true;
 }
 </script>
 

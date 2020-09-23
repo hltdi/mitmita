@@ -1,4 +1,4 @@
-# Mainumby. Parsing and translation with minimal dependency grammars.
+# Mit'mit'a. Parsing and translation with minimal dependency grammars.
 #
 ########################################################################
 #
@@ -86,7 +86,7 @@ class GUI:
         self.tra_seg_html = None
         # Translation of the current sentence
         self.tra = None
-        # TOGGLES: isdoc, nocorr, ocultar, sinopciones
+        # TOGGLES: isdoc, nocorr, hide, sinopciones
         self.props = {}
         # Default
         self.props['tfuente'] = "115%"
@@ -270,16 +270,16 @@ class GUI:
         """HTML for a menu listing Text docs available, grouped by domain.
         domain_texts is list of (domain, (id, title)) pairs."""
         domain_texts = get_domains_texts()
-        html = "<div class='desplegable-derecha' id='textos'>"
+        html = "<div class='dropdownable-right' id='texts'>"
         for dindex, (domain, texts) in enumerate(domain_texts):
             if not texts:
                 # no texts for this domain
-                html += "<div id='button{}' class='despleg-derecha'>{}</div>".format(dindex, domain)
+                html += "<div id='button{}' class='dropdown-right'>{}</div>".format(dindex, domain)
             else:
-                html += "<div onclick=\"desplegarDerecha('despleg{}', 'button{}')\" id='button{}' class='despleg-derecha' style='cursor:context-menu'>{} ▸</div>".format(dindex, dindex, dindex, domain)
-                html += "<div id='despleg{}' class='textos-desplegable'>".format(dindex)
+                html += "<div onclick=\"dropdownifyRight('dropdown{}', 'button{}')\" id='button{}' class='dropdown-right' style='cursor:context-menu'>{} ▸</div>".format(dindex, dindex, dindex, domain)
+                html += "<div id='dropdown{}' class='texts-dropdownable'>".format(dindex)
                 for tindex, (id, title) in enumerate(texts):
-                    html += "<div class='opcion' id='opcion{}.{}' onclick='abrirSeleccionado({})'>{}</div>".format(dindex, tindex, id, title)
+                    html += "<div class='opcion' id='opcion{}.{}' onclick='openSelected({})'>{}</div>".format(dindex, tindex, id, title)
                 html += "</div>"
         html += "</div>"
         self.text_select_html = html

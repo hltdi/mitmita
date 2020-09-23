@@ -8,17 +8,7 @@ Gyez: Translation
 
 <style type="text/css">
 
-.modo
-{
-    clear: left;
-    font-size: 130%;
-    margin-top: .75em;
-    margin-bottom: .35em;
-    background-color: #CB6027;
-    color: #FFFFFF;
-    padding: 8px;
-}
-label#subir
+label#upload
  {
     display: inline-block;
     position: relative;
@@ -35,18 +25,18 @@ label#subir
     border-width: 2px;
     cursor: pointer;
 }
-label#subir:hover, label#subir:active
+label#upload:hover, label#upload:active
 {
-    background-color: #4B2B17;
-    color: #ABD4F2;
+    background-color: #CB6027;
+    color: white;
 }
-td.subir
+td.upload
 {
     vertical-align: top;
     font-size: 110%;
     width: 125px;
 }
-td.ocultar
+td.hide
 {
     text-align: right;
     font-size: 90%;
@@ -71,36 +61,37 @@ td.sep
 {
     text-align: left;
 }
-.envoltorio-subida {
+.wrapper-uploaded {
+    {% if DB %}display: none;{% endif %}
     position: relative;
     font-size: 110%;
     padding-bottom: 6px;
 }
 
-.btn-subir {
+.btn-upload {
     padding: 0px;
     position: absolute;
     left: 0;
     opacity: 0;
 }
-.subir-label {
+.upload-label {
     padding: 0px;
 }
-.subir-label:hover {
-    background-color: #ABD4F2;
-    color: #8DEDCD;
+.upload-label:hover {
+    background-color: #CB6027;
+    color: white;
 }
-div.archivo {
+div.file {
     padding-top: 8px;
     padding-bottom: 8px;
     background-color: LightGray;
 }
-span.archivo {
+span.file {
     font-style: italic;
     color: #ABD4F2;
 }
 
-div.archivo table td {
+div.file table td {
     vertical-align: middle;
     padding-left: 8px;
     padding-right: 18px;
@@ -110,7 +101,7 @@ div#fuente
 {
     font-family: "Verdana";
     font-size: {% if props.tfuente %} {{props.tfuente}} {% else %} 115% {% endif %};
-#    font-weight: {% if documento %}normal{% else %}bold{% endif %};
+//   font-weight: {% if documento %}normal{% else %}bold{% endif %};
     resize: none;
     padding: 8px 8px;
     margin: 0px;
@@ -158,9 +149,9 @@ span.language
 }
 div#instruc_fuente, div#instruc2, div#instruc_trad
 {
-    {% if props.ocultar %} display: none; {% endif %}
+    {% if props.hide %} display: none; {% endif %}
 }
-div.comentario
+div.comments
 {
     text-align: left;
 }
@@ -187,7 +178,7 @@ textarea.dmeta
     border: thin solid;
     height: {% if tradtodo %}260pt{% else %}100pt{% endif %};
 }
-textarea.comentario
+textarea.comments
 {
     font-family: "Verdana";
     resize: none;
@@ -203,17 +194,6 @@ textarea.comentario
 input.filename
 {
    width: 50pt;
-}
-div.despleg {
-    font-family: "Zebidar";
-    background-color: #ABD4F2;
-    color: white;
-    font-size: 110%;
-    padding-left: 5px;
-    padding-right: 5px;
-    padding-bottom: 2px;
-    margin: none;
-    border: none;
 }
 .segopcion {
     cursor: pointer;
@@ -236,27 +216,74 @@ div.opcion {
 .opcion:hover {
     text-decoration: underline;
 }
-.desplegable {
+.dropdownable {
     position: relative;
     display: inline-block;
 }
-#dominios {
-    display: none;
+.modo
+{
+    clear: left;
+    font-size: 130%;
+/*    text-align: center; */
+    margin-top: .75em;
+    margin-bottom: .35em;
+/*    border-width: 1px; */
+/*    border-color: black; */
+/*    border-style: solid; */
+    width: 100%;
+}
+.mode-table {
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #CB6027;
+/*  border: 2px solid blue; */
+}
+td.mode
+{
+    font-size: 100%;
+    text-align: center;
+    background-color: #CB6027;
+    color: white;
+    border-left: 4px solid #CB6027;
+    border-right: 4px solid #CB6027;
+    border-bottom: 4px solid #CB6027;
+    width: 100%;
+}
+div.dropdown {
+    font-family: "Ethiopic Jiret,Abyssinica SIL";
+    background-color: #ABD4F2;
+    color: white;
+    font-size: 110%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 2px;
+    margin: none;
+    border: none;
+}
+#domains {
+    {% if not DB %}display: none;{% endif %}
     border: 1px;
     border-style: solid;
-    background-color: #F5E754;
+    background-color: #ABD4F2;
 }
-div.desplegable-derecha {
+.dropdownMode {
+  cursor: pointer;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+div.dropdownable-right {
     position: relative;
     display: inline-block;
     /*    background-color: #4B2B17; */
     border: none;
     width: 100%;
 }
-div.despleg-derecha {
-    font-family: "Verdana";
-/*    background-color: #4B2B17; */
-    color: #4B2B17;
+div.dropdown-right {
+    font-family: 'Ethiopic Jiret,Abyssinica SIL';
+    background-color: #ABD4F2;
+    color: black;
     font-size: 120%;
     line-height: 1.5;
     padding-left: 5px;
@@ -265,7 +292,7 @@ div.despleg-derecha {
     margin: none;
     border: 0;
 }
-.contenido-desplegable {
+.content-dropdownable {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -278,12 +305,12 @@ div.despleg-derecha {
     box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4);
     z-index: 1;
 }
-.textos-desplegable {
+.texts-dropdownable {
     display: none;
     position: relative;
     left: 125px;
     bottom: 25px;
-    background-color: #8DEDCD;
+    background-color: #ABD4F2;
     font-size: 110%;
     /*    min-width: 160px; */
     width: 35%;
@@ -291,8 +318,26 @@ div.despleg-derecha {
     padding: 2px 2px;
     z-index: 1;
 }
-#seleccionBoton
+.mode-dropdownable {
+    display: none;
+    position: relative;
+    background-color: #CB6027;
+    color: white;
+    top: 0px;
+    font-size: 80%;
+/*    bottom: 25px; */
+    min-width: 100px;
+    overflow: auto;
+/*    padding: 2px 2px; */
+    cursor: pointer;
+/*    border: 1pt; */
+/*    border-style: solid; */
+/*    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4); */
+    z-index: 1;
+}
+#DBSelect
 {
+    {% if not DB %}display: none;{% endif %}
     padding-top: 6px;
 }
 .show {display: block;}
@@ -321,8 +366,7 @@ div.despleg-derecha {
       <input class="menu" type="submit" value="ይውጡ" name="salir" onclick="return alSalir();">
     </td>
     <td class="menu" style="width: 200px"><a href="">ስለ ፕሮጄክቱ</a></td>
-    <td class="menu" style="width: 200px"><a
-      href="">እርዳታ</a></td>
+    <td class="menu" style="width: 200px"><a href="">እርዳታ</a></td>
     <td class="menu" style="width: 200px"><a href="">አግኙን</a></td>
 
     <input type="hidden" name="ayuda" value="">
@@ -342,15 +386,38 @@ div.despleg-derecha {
 
 <form id="modo" name="Form0" method="post">
 <div class="modo">
-    <table style="width:100%">
-    <tr>
-    {#    <td class='subir'>Traducción de </td> #}
-    <td class='opciones'>
+<table class="mode-table">
+<tr>
+<td class='mode'>
+   <span style="font-style:italic">...ለመተርጐም</span><br/>
+   <div id="modeWrap">
+     <div onclick="dropdownifyMode()" id='mode0' class='dropdownMode'>
+       {% if doc %}
+        {% if DB %}
+        ሰነድ (ከጘዝ ጥርቅም)
+        {% else %}
+        ሰነድ (ከኮምፕዩተርዎ)
+        {% endif %}
+       {% else %}ቃል፣ ሐረግ፣ አረፍተ ነገር
+       {% endif %} ▾
+     </div>
+     <div id='dropdownMode' class='mode-dropdownable'>
+       <div class='modeOption' id='mode1' onclick='changeMode("mode1")'>
+         {% if doc %}ቃል፣ ሐረግ፣ አረፍተ ነገር{% else %}ሰነድ (ከኮምፕዩተርዎ){% endif %}
+       </div>
+       <div class='modeOption' id='mode2' onclick='changeMode("mode2")'>
+         {% if doc and DB %}ሰነድ (ከኮምፕዩተርዎ){% else %}ሰነድ (ከጘዝ ጥርቅም){% endif %}
+       </div>
+    </div>
+   </div>
+</td>
+{#
+<td class='opciones'>
     ...ለመተርጐም<br/>
 {% if doc %}
     <input type="button" class="trad" id="tradsent"
      style="background-color: #FFFFFF; cursor: pointer"
-     value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች" onclick="alternarPalDoc(false);">
+     value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች" onclick="alternateSentDoc(false);">
     <input type="button" class="trad" id="traddoc"
      style="background-color: #ABD4F2" value="ሰነዶች">
 {% else %}
@@ -358,56 +425,36 @@ div.despleg-derecha {
      style="background-color: #ABD4F2" value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች">
     <input type="button" class="trad" id="traddoc"
      style="background-color: #FFFFFF; cursor: pointer"
-     value="ሰነዶች" onclick="alternarPalDoc(true);">
+     value="ሰነዶች" onclick="alternateSentDoc(true);">
 {% endif %}
-{#    <span class='vl'></span> #}
-    </td>
-    <td style="width: 25px"></td>
-    <td class='sinopciones'>
-    የመተርጐም ምርጫዎች?<br/>
-    {% if choose %}
-    <input type="button" class="trad" id="conopc"
-     style="background-color: #FFFFFF; cursor: pointer"
-     value="ምርቻዎች ይታዩ" onclick="alternarOpciones(false);">
-    <input type="button" class="trad" id="sinopc"
-     style="background-color: #ABD4F2" value="ምርጫዎች ይደበቁ">
-    {% else %}
-    <input type="button" class="trad" id="conopc"
-     style="background-color: #ABD4F2" value="ምርጫዎች ይታዩ">
-    <input type="button" class="trad" id="sinopc"
-     style="background-color: #FFFFFF; cursor: pointer"
-     value="ምርጭዎች ይደበቁ" onclick="alternarOpciones(true);">
-    {% endif %}
-    </td>
-    <td class='ocultar'>
-{#
-    <span id="sinopciones" class="alternar" onclick="alternarOpciones();">
-    {% if choose %}Mostrar opciones. {% else %}Traducir sin opciones.{% endif %}
-     </span><br/>
+</td>
 #}
-    <span id="ocultar" class="alternar" onclick="alternarInstrucciones();">
-    {% if props.ocultar %}መምሪያ ይታይ። {% else %}መምሪያ ይደበቅ።{% endif %}
+{#
+<td class='hide'>
+    <span id="hide" class="alternar" onclick="alternarInstrucciones();">
+    {% if props.hide %}መምሪያ ይታይ። {% else %}መምሪያ ይደበቅ።{% endif %}
     </span>
-    </td>
-    </tr>
-    </table>
+</td>
+#}
+ </tr>
+</table>
 </div>
 
 {% if doc and not documento %}
 <table style="width:100%">
-<tr>
 
+<tr>
 <td>
-<div class="envoltorio-subida" id="envoltorio-subida">
+<div class="wrapper-uploaded" id="wrapper-uploaded">
 {#
   {% if not user %}
   <div class="advert" id="advert">Notá que no es posible registrar una traducción
     en la base de datos de Mainumby sin identificarte.</div>
     {% endif %}
 #}
-  <label id="subir" for="subido">
-  <div class="subir-label">ያስሱ...</div>
-  <input id='subido' type='file' class="btn-subir" onchange="archivoSubido();" name='subido'>
+  <label id="upload" for="subido">
+  <div class="upload-label">ይፈልጉ...</div>
+  <input id='subido' type='file' class="btn-upload" onchange="fileUploaded();" name='subido'>
   </label>
   <span class='instructions'>
     ከኮምፕዩተርዎ ፋይል ይስቀሉ።
@@ -415,17 +462,22 @@ div.despleg-derecha {
 </div>
 </td>
 </tr>
+
 <tr>
 <td>
-  <div id="seleccionBoton">
-  <input type="button" value="ይምረጡ..." id="button" onclick="seleccionarArchivo();">
+<div id="DBSelect">
+{#
+  <input type="button" value="ይምረጡ..." id="button" onclick="selectFile();">
+#}
   <span class'instructions'>
-    ከወሂብ ጎታው ፋይል ይምረጡ።
+    ከጘዝ ጥርቅሙ ፋይል ይምረጡ።
   </span>
-    </div>
-</td></tr>
+</div>
+</td>
+</tr>
+
 <tr>
-<td id="dominios">
+<td id="domains">
 {% if text_html %}
 {{ text_html|safe }}
 {% endif %}
@@ -437,9 +489,8 @@ div.despleg-derecha {
 {% endif %}
 
 <input type="hidden" name="documento" value=''>
-<input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
-<input type="hidden" name="sinopciones" value={% if choose %}true{% else %}false{% endif %}>
-<input type="hidden" name="docsrc" value="computadora">
+<input type="hidden" name="hide" value={% if props.hide %}"true"{% else %}"false"{% endif %}>
+<input type="hidden" name="docsrc" value="computer">
 <input type="hidden" name="textid" value="">
 <input type="hidden" name="modo" value="sent">
 
@@ -472,31 +523,22 @@ div.despleg-derecha {
     <div class="instruc" id="instruc_fuente">
     {% if not tradtodo %}
     የሚተረጐም እረፍተ ነገር ለመምረጥ ጠቅ ያድርጉ።
-    {% if choose %}
-    <br />
-    ሰነዱን ሁሉ ለመተርጐም "ሁሉንም ይተርጐም" ይጫኑ።
-    {% endif %}
     <br />
     {% endif %}
     ይህንን ሰነድ ለመተው እ"ይተው" ይጫኑ።
     </div>
     <br class='sep'/>
     <input type="button" value="ይተው" id="button" onclick="abandonarDoc();">
-    {% if choose %}
-    <span id="tradtodo">
-    <input type="button" value="ሁሉንም ይተርጐም" id="button" onclick="traducirTodo();">
-    </span>
-    {% endif %}
   {% elif oracion %}
     <div class="instruc" id="instruc_fuente">
       ሌላ አረፍተ ነገር ለመተርጐም፣ መጀመሪያ "ይሰረዝ" ይጫኑ ወይም ደግሞ
       እላይ ያለው ቦታ ጠቅ ይበሉ።
     </div>
     <br class='instruc'/>
-    <input type="button" value="ይሰረዝ" id="button" onclick="borrar()">
+    <input type="button" value="ይሰረዝ" id="button" onclick="erase()">
   {% elif not doc %}
     <div class="instruc" id="instruc_fuente">
-      ቃል፣ ሐረግ ወይም አረፍተ ነገር ጽፈው አስገቢ ቁልፍ ይጫኑ።
+      ቃል፣ ሐረግ ወይም አረፍተ ነገር ጽፈው አስገቢ ቁልፍ ("Enter") ይጫኑ።
   {% endif %}
     </td>
 
@@ -506,7 +548,6 @@ div.despleg-derecha {
   {% if doc and not tradtodo %}
 <span class="level">የሚተረጐም አረፍተ ነገር</span>
   {% endif %}
-  {% if not choose %}
 <div id='meta'>
   {% if tra_seg_html %}
       {% for tra in tra_seg_html %}
@@ -514,17 +555,14 @@ div.despleg-derecha {
       {% endfor %}
   {% endif %}
 </div>
-  {% endif %}
 
-  {% if tra or choose %}
-  {% if not choose %}
+  {% if tra %}
     <br class='instruc'/>
 <div class='instruc'>
     <div id='instruc2'>
     • "▾" ለተደረገበት ክፋይ ሌላ ምርጫ መምረጥ ይቻላል።<br />
     • የክፋዮቹን ቦታ ለመለዋዋጥ አንድ ክፋይ በማይሱ ይዘው በሌላ ክፋይ ላይ ይልቀቁት።</div>
 </div>
-  {% endif %}
   {% if not tradtodo %}
 {#
     <br class="sep" />
@@ -532,7 +570,7 @@ div.despleg-derecha {
     <br class='instruc'/>
 #}
 <textarea class='ometa' id='textmeta'>{{tra|safe}}</textarea>
-    {% if tra %}
+{% if tra %}
     <br class='instruc' />
     <div class="instruc" id="instruc_trad">
     • በትርጉሙ ካልተስማሙበት ሊያርሙት ይችላሉ።<br />
@@ -540,27 +578,23 @@ div.despleg-derecha {
     • ይህንን አረፍተነገር እሰነዱ ትርጉም ለማካተት በ"ይካተት" ይጫኑ።
     {% else %}
     • ትርጉሙን እቅነጥብ ሳሌዳ ለመገልበጥ በ"ይገልበጥ" ይጫኑ።
-{#    {% if user %} #}
     <br />
     • ትርጉሙን በጘዝ ማጠራቀሚያ ለመጨመር በ"ይገንዘብ" ይጫኑ።
-{#    {% endif %}   #}
     {% endif %}
-    {% endif %}
+{% endif %}
     </div>
 
     <br class='instruc'/>
 
-    {% if doc %}
+  {% if doc %}
     <input type="button" value="ይካተት" id="button" onclick="aceptarTrad();">
-    {% else %}
+  {% else %}
     <input type="button" value="ይገልበጥ" id="button" onclick="copiar();">
-{#    {% if user %} #}
     <input type="button" value="ይመዝገብ" id="button" onclick="registrar();">
-{#    {% endif %}   #}
-    {% endif %}
-    {% endif %}
-
   {% endif %}
+{% endif %}
+
+{% endif %}
 
   {% if documento %}
    {% if not tradtodo %}
@@ -572,11 +606,9 @@ div.despleg-derecha {
     <br class='instruc' />
     <input type="submit" value="ማስቀመጥ" id="button"/>
     <label>የፋይል ስም:<input type="text" class="filename" id="text-filename" placeholder="doc.txt" size="50"/></label>
-    <input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
-{#   {% if user %} #}
+    <input type="hidden" name="hide" value={% if props.hide %}"true"{% else %}"false"{% endif %}>
     <br class='sep' />
     <input type="button" value="Registrar" id="button" onclick="registrar();">
-{#   {% endif %} #}
     </form>
   {% endif %}
 
@@ -585,11 +617,9 @@ div.despleg-derecha {
   {% if tra_seg_html %}
   <tr>
     <td colspan='3' align='center'>
-{#    <div class="comentario"> #}
-      <textarea class="comentario" id="comentario" placeholder='ፕሮግራሙን እንዲሻሻል ሐሳብ ወይም ደግሞ እርማት ለማቅረብ፣ በዝህ ቦታ ጽፈውት አዝራሩን ይጫኑ።'>
+      <textarea class="comments" id="comments" placeholder='ፕሮግራሙን እንዲሻሻል ሐሳብ ወይም ደግሞ እርማት ለማቅረብ፣ በዝህ ቦታ ጽፈውት አዝራሩን ይጫኑ።'>
       </textarea><br class='sep' />
-    <input type="button" value="ይግባ" id="button" onclick="comentario();">
-{#    </div> #}
+    <input type="button" value="ይግባ" id="button" onclick="comments();">
     </td>
   </tr>
   {% endif %}
@@ -603,13 +633,12 @@ div.despleg-derecha {
 <input type="hidden" name="oindex" value={% if oindex %}{{oindex}}{% else %}"0"{% endif %}>
 <input type="hidden" name="tacept" value="">
 <input type="hidden" name="isdoc" value=false>
-<input type="hidden" name="borrar" value=false>
+<input type="hidden" name="erase" value=false>
 <input type="hidden" name="registrar" value=false>
 <input type="hidden" name="tfuente" value="115%">
 <input type="hidden" name="ometa" value="">
 <input type="hidden" name="nocorr" value="">
-<input type="hidden" name="sinopciones" value={% if choose %}true{% else %}false{% endif %}>
-<input type="hidden" name="ocultar" value={% if props.ocultar %}"true"{% else %}"false"{% endif %}>
+<input type="hidden" name="hide" value={% if props.hide %}"true"{% else %}"false"{% endif %}>
 <input type="hidden" name="tradtodo" value={% if tradtodo %}true{% else %}false{% endif %}>
 <input type="hidden" name="docscrolltop" value=0>
 <input type="hidden" name="abandonardoc" value=false>
@@ -635,7 +664,8 @@ document.getElementById("fuente").scrollTop = {{docscrolltop}};
 </script>
 {% endif %}
 
-<script>
+<script charset="utf-8">
+
 document.getElementById("fuente").focus();
 
 // Detectar nueva línea (Intro) en el espacio 'fuente' para iniciar traducción.
@@ -644,25 +674,25 @@ document.getElementById("fuente").addEventListener("keypress", function(event) {
    longFuente();
    if (key == 13) {
        event.preventDefault();
-       fuenteNuevaLinea();
+       fuenteNewline();
    }
 });
 
 // Detectar ediciones del espacio 'textmeta' para corregir errores ortográficos.
 document.getElementById("textmeta").addEventListener("keyup", function(event) {
     if (!document.Form2.nocorr.value) {
-	key = event.key;
-	code = event.which || event.keyCode;
-        if (code > 47 && code != 224) {
-	    correctSgw();
-	}
+      key = event.key;
+      code = event.which || event.keyCode;
+      if (code > 47 && code != 224) {
+        correctSgw();
+      }
     }
-});
+  });
 
 {% if not doc %}
 document.getElementById("fuente").addEventListener("click", function(event) {
     if (document.getElementById("textmeta").value) {
-        borrar();
+        erase();
     }
 });
 {% endif %}
@@ -688,7 +718,7 @@ function longFuente()
 
 function alSalir()
 {
-//    document.Form2.borrar.value = true;
+//    document.Form2.erase.value = true;
 //    document.Form2.ofuente.value = '';
 //    document.Form2.ometa.value = '';
 //    document.Form2.tfuente.value = "115%";
@@ -699,13 +729,13 @@ function alSalir()
     return true;
 }
 
-function borrarFuente() {
+function eraseFuente() {
     document.getElementById("fuente").innerHTML = "";
 }
 
-function borrar()
+function erase()
 {
-    document.Form2.borrar.value = true;
+    document.Form2.erase.value = true;
     document.Form2.ofuente.value = '';
     document.Form2.ometa.value = '';
     document.Form2.tfuente.value = "115%";
@@ -734,7 +764,7 @@ function registrar()
       isdoc = false;
     }
     document.Form2.ometa.value = meta;
-    document.Form2.borrar.value = true;
+    document.Form2.erase.value = true;
     document.Form2.registrar.value = true;
     document.Form2.ofuente.value = '';
     document.Form2.tfuente.value = "115%";
@@ -755,17 +785,17 @@ function aceptarTrad()
     document.getElementById("aceptado").value = '';
 }
 
-function comentario()
+function comments()
 {
-    com = document.getElementById("comentario").value;
+    com = document.getElementById("comments").value;
 //    index = document.Form2.oindex.value;
-    alert("Registrando " + com);
+    alert("Recording " + com);
 //    user_location();
 //    document.Form2.tacept.value = trad;
 //    document.Form2.isdoc.value = true;
 //    document.Form2.tfuente.value = "100%";
 //    document.Form2.submit();
-    document.getElementById("comentario").value = '';
+    document.getElementById("comments").value = '';
 }
 
 function user_location() {
@@ -790,25 +820,23 @@ function abandonarDoc()
     document.getElementById("aceptado").value = '';
 }
 
-function traducirTodo()
-{
-    document.Form2.tradtodo.value = true;
-/*    document.Form2.borrar.value = true; */
-    document.Form2.isdoc.value = true;
-    document.Form2.modo.value = '';
-/*    document.style.cursor = "wait"; */
-    document.Form2.submit();
-}
+//function traducirTodo()
+//{
+//    document.Form2.tradtodo.value = true;
+//    document.Form2.isdoc.value = true;
+//    document.Form2.modo.value = '';
+//    document.Form2.submit();
+//}
 
-function mayuscula(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+//function mayuscula(string) {
+//    return string.charAt(0).toUpperCase() + string.slice(1);
+//}
 
-function agregarTri(string) {
+function addTri(string) {
     return string + " \u25BE";
 }
 
-function eliminarTri(string) {
+function removeTri(string) {
     return string.replace(/ \u25BE/g, '');
 }
 
@@ -828,7 +856,7 @@ function limpiarMeta(string) {
     string = string.replace(/ \;/g, ";");
     string = string.replace(" ?", "?");
     {% if props.cap %}
-    string = mayuscula(string);
+//    string = mayuscula(string);
     {% endif %}
     return string;
 }
@@ -879,7 +907,7 @@ function fuente() {
     return f;
 }
 
-function fuenteNuevaLinea() {
+function fuenteNewline() {
     f = fuente();
     document.getElementById("fuente").innerHTML = f;
     document.Form2.ofuente.value = f;
@@ -887,16 +915,44 @@ function fuenteNuevaLinea() {
     document.Form2.submit();
 }
 
-function cambiarMeta(button, choiceid) {
+function changeTarget(button, choiceid) {
     // Swap items at the top with selected menu item.
     newitem = document.getElementById(choiceid).innerHTML;
     olditem = document.getElementById(button).innerHTML;
     // Add and remove the menu dropdown triangle.
-    newitem = agregarTri(newitem);
-    olditem = eliminarTri(olditem);
+    newitem = addTri(newitem);
+    olditem = removeTri(olditem);
     document.getElementById(button).innerHTML = newitem;
     document.getElementById(choiceid).innerHTML = olditem;
     actualTra();
+}
+
+function changeMode(choiceid) {
+    // Swap mode at the top with selected menu item.
+    newitem = document.getElementById(choiceid).innerHTML;
+    olditem = document.getElementById('mode0').innerHTML;
+    // Add and remove the menu dropdown triangle.
+    newitem = addTri(newitem);
+    olditem = removeTri(olditem);
+    document.getElementById('mode0').innerHTML = newitem;
+    document.getElementById(choiceid).innerHTML = olditem;
+    // Update mode
+//    selectedText = document.getElementById('mode0').innerHTML;
+    if (newitem.includes("\u1243\u120d")) {
+      document.Form0.modo.value = "sent";
+      document.Form2.isdoc.value = false;
+      document.Form0.submit();
+    } else if (newitem.includes("\u1325\u122d\u1245\u121d")) {
+      document.Form0.modo.value = "doc";
+      document.Form2.isdoc.value = true;
+      document.Form0.docsrc.value = "DB";
+      document.Form0.submit();
+//      selectFile();
+    } else {
+      document.Form0.modo.value = "doc";
+      document.Form2.isdoc.value = true;
+      document.Form0.submit();
+    }
 }
 
 /* What happens when the user clicks on a sentence in the document window.*/
@@ -913,35 +969,41 @@ function seleccionarOra(sentid, index) {
 }
 
 /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
-function desplegar(button) {
+function dropdownify(button) {
     element = document.getElementById(button);
     element.classList.toggle("show");
 }
 
 /* When the user clicks on the button, toggle between hiding and showing the dropdown content */
-function desplegarDerecha(childid, parentid) {
+function dropdownifyMode() {
+    element = document.getElementById("dropdownMode");
+    element.classList.toggle("show");
+}
+
+/* When the user clicks on the button, toggle between hiding and showing the dropdown content */
+function dropdownifyRight(childid, parentid) {
     child = document.getElementById(childid);
     parent = document.getElementById(parentid);
     parentLabel = parent.innerHTML;
     if (!child.style.display || child.style.display === "none") {
-	child.style.display = "block";
-	parent.innerHTML = triAbajo(parentLabel);
+      child.style.display = "block";
+      parent.innerHTML = triDown(parentLabel);
     } else {
-	child.style.display = "none";
-	parent.innerHTML = triDerecha(parentLabel);
+      child.style.display = "none";
+      parent.innerHTML = triRight(parentLabel);
     }
 }
 
 /* Arregla el triángulo que sigue el nombre de un dominio */
-function triAbajo(string) {
+function triDown(string) {
     return string.replace(/\u25B8/g, "\u25BE");
 }
 
-function triDerecha(string) {
+function triRight(string) {
     return string.replace(/\u25BE/g, "\u25B8");
 }
 
-function abrirSeleccionado(textid) {
+function openSelected(textid) {
     // Open the selected Text from the DB.
     document.Form0.modo.value = "doc";
     document.Form2.isdoc.value = true;
@@ -949,22 +1011,22 @@ function abrirSeleccionado(textid) {
     document.Form0.submit();
 }
 
-function ocultarDominios() {
-    var texttd = document.getElementById("dominios");
+function hideDomains() {
+    var texttd = document.getElementById("domains");
     texttd.style.display = "none";
 }
 
-function mostrarDominios() {
-    var texttd = document.getElementById("dominios");
+function showDomains() {
+    var texttd = document.getElementById("domains");
     texttd.style.display = "block";
-    var selBot = document.getElementById("seleccionBoton");
-    selBot.style.display = "none";
+//    var selBot = document.getElementById("DBSelect");
+//    selBot.style.display = "none";
 }
 
 /* Encuentra las traducciones de segmentos actualmente seleccionados */
 function actualTra() {
     var trans = "";
-    var dropdowns = document.getElementsByClassName("despleg");
+    var dropdowns = document.getElementsByClassName("dropdown");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
       var dropdown = dropdowns[i];
@@ -982,107 +1044,74 @@ function ingresar() {
     form.submit();
 }
 
-function alternarPalDoc(doc) {
+function alternateSentDoc(doc) {
     if (doc) {
-	sent = document.getElementById("tradsent");
-	tdoc = document.getElementById("traddoc");
-        document.Form0.modo.value = "doc";
-        document.Form2.isdoc.value = true;
-	tdoc.style.background = "#8DEDCD";
-	tdoc.style.cursor = "default";
-	sent.style.background = "#F5E754";
-	sent.style.cursor = "pointer";
-        document.Form0.submit();
+      sent = document.getElementById("tradsent");
+      tdoc = document.getElementById("traddoc");
+      document.Form0.modo.value = "doc";
+      document.Form2.isdoc.value = true;
+      tdoc.style.background = "#8DEDCD";
+      tdoc.style.cursor = "default";
+      sent.style.background = "#F5E754";
+      sent.style.cursor = "pointer";
+      document.Form0.submit();
     } else {
-	sent = document.getElementById("tradsent");
-	tdoc = document.getElementById("traddoc");
-        document.Form0.modo.value = "sent";
-        document.Form2.isdoc.value = false;
-	sent.style.background = "#8DEDCD";
-	sent.style.cursor = "default";
-	tdoc.style.background = "#F5E754";
-	tdoc.style.cursor = "pointer";
-        document.Form0.submit();
+      sent = document.getElementById("tradsent");
+      tdoc = document.getElementById("traddoc");
+      document.Form0.modo.value = "sent";
+      document.Form2.isdoc.value = false;
+      sent.style.background = "#8DEDCD";
+      sent.style.cursor = "default";
+      tdoc.style.background = "#F5E754";
+      tdoc.style.cursor = "pointer";
+      document.Form0.submit();
     }
 }
 
 /* Alternar corrección automática */
 function alternarCorreccion() {
-//    alert("Alternando " + document.Form2.nocorr.value);
     if (document.Form2.nocorr.value) {
-//	alert("Activando...");
-	document.Form2.nocorr.value = "";
-        document.getElementById('correccion').innerHTML = "አጻጻፍ እንዳይታረም።";
+      document.Form2.nocorr.value = "";
+      document.getElementById('correccion').innerHTML = "አጻጻፍ እንዳይታረም።";
     } else {
-//	alert("Desactivando...");
-	document.Form2.nocorr.value = "true";
-        document.getElementById('correccion').innerHTML = "አጻጻፍ ይታረም።";
+      document.Form2.nocorr.value = "true";
+      document.getElementById('correccion').innerHTML = "አጻጻፍ ይታረም።";
     }
 }
 
-/* Alternar: mostrar opciones <-> traducir sin opciones */
-function alternarOpciones(sinopciones) {
-    conopc = document.getElementById("conopc");
-    sinopc = document.getElementById("sinopc");
-    document.Form2.borrar.value = true;
-    document.Form2.modo.value = {% if doc %}"doc"{% else %}"sent"{% endif %};
-    document.Form2.isdoc.value = {% if doc %}true{% else %}false{% endif %};
-    if (sinopciones) {
-	document.Form0.sinopciones.value = true;
-	document.Form2.sinopciones.value = true;
-	sinopc.style.background = "#8DEDCD";
-	sinopc.style.cursor = "default";
-	conopc.style.background = "#F5E754";
-	conopc.style.cursor = "pointer";
-        document.Form2.submit();
-//	document.getElementById("sinopciones").innerHTML = "Mostrar opciones.";
-    } else {
-	document.Form0.sinopciones.value = false;
-	document.Form2.sinopciones.value = false;
-	conopc.style.background = "#8DEDCD";
-	conopc.style.cursor = "default";
-	sinopc.style.background = "#F5E754";
-	sinopc.style.cursor = "pointer";
-        document.Form2.submit();
-//	document.getElementById("sinopciones").innerHTML = "Traducir sin opciones.";
-    }
-}
-
-/* Alternar ocultar instrucciones */
+/* Alternar hide instrucciones */
 function alternarInstrucciones() {
     var f;
-    if (document.Form0.ocultar.value == "false") {
-//	alert("Hiding instructions");
-	document.Form0.ocultar.value = "true";
-	document.Form2.ocultar.value = "true";
+    if (document.Form0.hide.value == "false") {
+      document.Form0.hide.value = "true";
+      document.Form2.hide.value = "true";
+    if (document.Form3) {
+	    document.Form3.hide.value = "true";
+    }
+    document.getElementById("hide").innerHTML = "መምሪያ ይታይ።";
+    f = document.getElementById("instruc_fuente");
+    if (f) {
+	    f.style.display = "none";
+    }
+    f = document.getElementById("instruc2");
+    if (f) {
+	    f.style.display = "none";
+    }
+    f = document.getElementById("instruc_trad");
+    if (f) {
+	    f.style.display = "none";
+    }
+    f = document.getElementById("advert");
+    if (f) {
+	    f.style.display = "none";
+    }
+  } else {
+	document.Form0.hide.value = "false";
+	document.Form2.hide.value = "false";
 	if (document.Form3) {
-	    document.Form3.ocultar.value = "true";
+	    document.Form3.hide.value = "false";
 	}
-	document.getElementById("ocultar").innerHTML = "መምሪያ ይታይ።";
-	f = document.getElementById("instruc_fuente");
-	if (f) {
-	    f.style.display = "none";
-	}
-	f = document.getElementById("instruc2");
-	if (f) {
-	    f.style.display = "none";
-	}
-	f = document.getElementById("instruc_trad");
-	if (f) {
-	    f.style.display = "none";
-	}
-	f = document.getElementById("advert");
-	if (f) {
-	    f.style.display = "none";
-	}
-    } else {
-//	alert("Showing instructions");
-	document.Form0.ocultar.value = "false";
-	document.Form2.ocultar.value = "false";
-	if (document.Form3) {
-	    document.Form3.ocultar.value = "false";
-	}
-	document.getElementById("ocultar").innerHTML = "መምሪያ ይደበቅ።";
+	document.getElementById("hide").innerHTML = "መምሪያ ይደበቅ።";
 	f = document.getElementById("instruc_fuente");
 	if (f) {
 	    f.style.display = "block";
@@ -1102,11 +1131,11 @@ function alternarInstrucciones() {
     }
 }
 
-// Buscar archivo subido y mostrar su nombre.
-function archivoSubido() {
-    borrarError();
-    ocultarDominios();
-    document.Form0.docsrc.value = "computadora";
+// Buscar file subido y show su nombre.
+function fileUploaded() {
+    eraseError();
+    hideDomains();
+    document.Form0.docsrc.value = "computer";
     var uploaded = document.getElementById("subido");
     if (uploaded) {
 	var files = uploaded.files;
@@ -1116,80 +1145,76 @@ function archivoSubido() {
 	    size = size / 1000;
 	    if (!file.type.match('text.*')) {
 		if (file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document") {
-		    mostrarDocxSubido(file, size);
+		    showDocxUploaded(file, size);
 		    return true;
 		} else {
-		    error("¡" + file.name + " no es un archivo de texto válido! (tipo " + file.type + ")");
+		    error("¡" + file.name + " no es un file de texto válido! (tipo " + file.type + ")");
 		    return false;
 		}
 	    } else if (size > 1000) {
-		error("¡" + file.name + " es demasiado grande para Mainumby! Por favor subí otro archivo más pequeño.");
+		error("¡" + file.name + " es demasiado grande para Mainumby! Por favor subí otro file más pequeño.");
 		return false;
 	    }
-	    mostrarArchivoSubido(file, size);
+	    showFileUploaded(file, size);
 	}
     }
     return true;
 }
 
-function mostrarDocxSubido(file, size) {
+function showDocxUploaded(file, size) {
     // Use mammoth to extract text from docx file.
     var name = file.name;
     var r = new FileReader();
     r.onload = function(e) {
 	var arrayBuffer = e.target.result;
-//	mammoth.convertToHtml({arrayBuffer: arrayBuffer})
 	mammoth.extractRawText({arrayBuffer: arrayBuffer})
-	    .then(mostrarContenido)
+	    .then(showContenido)
 	    .done();
     };
     r.readAsArrayBuffer(file);
-    mostrarInfoArchivo(name, size);
+    showInfoFile(name, size);
 }
 
-function mostrarInfoArchivo(name, size) {
-    var html = "<div class='archivo'><table><tr><td class='archivo'><span class='heading'>Archivo subido</span></td><td class='archivo'><span class='archivo'>";
+function showInfoFile(name, size) {
+    var html = "<div class='file'><table><tr><td class='file'><span class='heading'>የሰቀለው ፋይል</span></td><td class='file'><span class='file'>";
     html += name + "</span><br/>" + size;
-    html += " KB</td><td class='archivo'><button id='button' type='button' onclick='procDoc();'>Abrir</button></td>";
-    html += "<td class='archivo'><button id='button' type='button' onclick='cancelarProcDoc();'>Cancelar</button></td></tr></table></div>";
-    document.getElementById('envoltorio-subida').innerHTML = html;
+    html += " KB</td><td class='file'><button id='button' type='button' onclick='procDoc();'>ይክፈቱት</button></td>";
+    html += "<td class='file'><button id='button' type='button' onclick='cancelProcDoc();'>ይተዉት</button></td></tr></table></div>";
+    document.getElementById('wrapper-uploaded').innerHTML = html;
 }
 
-function mostrarContenido(result) {
-    contenido = result.value;
-    document.Form0.documento.value = contenido;
+function showContenido(result) {
+    content = result.value;
+    document.Form0.documento.value = content;
 }
 
-// Mostrar el nombre de un archivo subido y un botón para abrirlo.
-function mostrarArchivoSubido(file, size) {
+// Mostrar el nombre de un file subido y un botón para abrirlo.
+function showFileUploaded(file, size) {
     var name = file.name;
     var r = new FileReader();
     r.onload = function(e) {
-	contenido = e.target.result;
-	document.Form0.documento.value = contenido;
+	content = e.target.result;
+	document.Form0.documento.value = content;
     }
     r.readAsText(file);
-    mostrarInfoArchivo(name, size);
+    showInfoFile(name, size);
 }
 
-// Mostrar archivos, organizados por dominio, que están almacenados.
-function seleccionarArchivo()
-{
-    document.Form0.docsrc.value = "almacén";
-    mostrarDominios();
-//    var html = "<div class='archivo'><table><tr><td class='archivo'>Archivo</td></tr></table></div>"; //
-//    document.getElementById('envoltorio-subida').innerHTML = html; //
-//    document.Form0.submit(); //
-}
+// Mostrar files, organizados por dominio, que están almacenados.
+// function selectFile()
+// {
+//     document.Form0.docsrc.value = "DB";
+//     showDomains();
+// }
 
-// Leer el contenido de un archivo subido y guardarlo en la variable documento.
+// Leer el content de un file subido y guardarlo en la variable documento.
 function procDoc() {
 //    var text = document.Form0.documento.value;
     document.Form0.submit();
     return true;
 }
 
-function cancelarProcDoc() {
+function cancelProcDoc() {
     document.Form0.documento.value = '';
     document.Form0.submit();
     return true;
@@ -1214,6 +1239,32 @@ function drop(ev) {
     // Update the sentence in the ometa textbox
     actualTra();
 }
+// Close the dropdown if the user clicks outside of it
+window.addEventListener("click", function(event) {
+    // Dropdowns in segment translations
+    if (!event.target.matches('.dropdown')) {
+      var dropdowns = document.getElementsByClassName("content-dropdownable");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+    // Translation mode dropdown
+    if (!event.target.matches('.dropdownMode')) {
+      dropdowns = document.getElementsByClassName("mode-dropdownable");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+)
 </script>
 
 {% endblock %}

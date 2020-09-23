@@ -49,6 +49,9 @@ def _flatten(lst, cls):
 
 class FS:
 
+    def delete(self, features):
+        print("delete() not defined")
+
     def unify_FS(self, fs, strict=False, verbose=False):
         print("Not defined")
 
@@ -189,6 +192,22 @@ class FeatStruct(FS):
         """Remove all features from this C{FeatStruct}."""
         if self._frozen: raise ValueError(self._FROZEN_ERROR)
         self._features.clear()
+
+    def delete(self, features, freeze=False):
+        """
+        Return a copy of this FeatStruct with each feature in features
+        removed. features is a list of feature names or feature paths
+        (tuples of feature names).
+        """
+        fs = self.copy()
+        for feat_or_path in features:
+            try:
+                del fs[feat_or_path]
+            except KeyError:
+                print("Warning: {} not in {}".format(feat_or_path, fs.__repr__()))
+        if freeze:
+            fs.freeze()
+        return fs
 
     @staticmethod
     def force_set(fs, feature, value):

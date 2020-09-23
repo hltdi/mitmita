@@ -94,6 +94,8 @@ GEM_RE = re.compile(r'\s*gem.*?:\s*(.*)')
 POSTPROC_RE = re.compile(r'\s*postproc:\s*(.*)\s*=\s*(.*)')
 POSTSYLL_RE = re.compile(r'\s*postsyll.*?:\s*(.*)')
 POSTPUNC_RE = re.compile(r'\s*postpunc.*?:\s*(.*)')
+# Features to be ignored during generation
+DELFEAT_RE = re.compile(r'\s*delfeats:\s*(.*)')
 # POS conversion
 POSCONV_RE = re.compile(r'\s*posconv:\s*(.*)')
 # feature conversion
@@ -968,6 +970,7 @@ class Language:
         posconv = []
         featconv = []
         featcopy = []
+        delfeats = []
         with open(path, encoding='utf8') as data:
             contents = data.read()
             lines = contents.split('\n')[::-1]
@@ -1074,6 +1077,16 @@ class Language:
                     for pair in pairs:
                         source, target = pair.split('=')
                         self.postpunc[source] = target
+                    continue
+
+                m = DELFEAT_RE.match(line)
+                if m:
+                    delposfeats = m.group(1).split(';')
+                    for delposfeat in delposfeats:
+                        delpos, delfeatures = delposfeat.split('::')
+                        delpos = delpos.strip()
+                        delfeatures = delfeatures.strip().split(',')
+                        delfeats.append((delpos, delfeatures))
                     continue
 
                 m = POSCONV_RE.match(line)
@@ -1327,6 +1340,11 @@ class Language:
                 self.morphology[p].explicit_feats = explicit[p]
                 self.morphology[p].feat_list = feats[p]
                 self.morphology[p].make_rev_abbrevs()
+
+        if delfeats:
+            # Assign delfeats to POS instances
+            for pos, feats in delfeats:
+                self.morphology[pos].delfeats = feats
 
         if featconv:
             for pos, fc in featconv:
@@ -1723,26 +1741,6 @@ class Language:
                 return result
         return [[spos, tfeats]]
 
-    # def adapt_feats(self, spos, target, sfeats, tfeats=None):
-    #     """
-    #     Convert source features to target features.
-    #     """
-    #     if tfeats == None:
-    #         tfeats = FSSet()
-    #     if spos in self.morphology:
-    #         featconv = self.morphology[spos].featconv
-    #         if target in featconv:
-    #             conversions = featconv[target]
-    #             for condition, tf in conversions:
-    #                 u = sfeats.unify_FS(condition, strict=True)
-    #                 if u and u != 'fail':
-    #                     if not tf:
-    #                         # No change to source feature
-    #                         tfeats = tfeats.upd(condition)
-    #                     else:
-    #                         tfeats = tfeats.upd(tf)
-    #     return tfeats
-
     def adapt_feats(self, spos, target, sfeatlist, tfeatlist):
         """
         Convert source features to target features.
@@ -1930,8 +1928,10 @@ class Language:
         return dicts
 
     def disambiguate_POS(self, word, context, index, n=50, verbosity=0):
-        """Use stored POS collocations to prefer one tag over another,
-        given lists of tags preceding and following word, output of tagger."""
+        """
+        Use stored POS collocations to prefer one tag over another,
+        given lists of tags preceding and following word, output of tagger.
+        """
 #        print("Disambiguating {} in context {}".format(word, context))
         entry = self.POSambig.get(word)
         if not entry:
@@ -1982,9 +1982,11 @@ class Language:
         return highestcopy
 
     def disambiguate_cache(self, word, tag):
-        """Try disambiguating using ordered cached analyses and tag from tagger.
+        """
+        Try disambiguating using ordered cached analyses and tag from tagger.
         If the tag agrees with the POS tag for the first cached analysis,
-        accept it (only)."""
+        accept it (only).
+        """
         cached = self.get_cached_anal(word)
         if not cached:
             return
@@ -2007,9 +2009,12 @@ class Language:
         return sum(values)
 
     def disambig_score(self, precontext, postcontext, tag, n=50):
-        """Given a word and its preceding and following context tags (lists of word, tag pairs)
-        and pre- and post-collocations for a given POS tag, calculate a score:
-        index of perfect matches and number of single (one tag) matches."""
+        """
+        Given a word and its preceding and following context tags
+        (lists of word, tag pairs) and pre- and post-collocations for a
+        given POS tag, calculate a score: index of perfect matches and
+        number of single (one tag) matches.
+        """
         collocs = self.collocs.get(tag)
         if not collocs:
             return
@@ -2057,10 +2062,12 @@ class Language:
         return gf
 
     def form2fvs(self, selpos, form):
-        """Convert a dict of feature, value pairs from web form to L3Morpho feat val dicts,
-        one for the form, one for generation.
-        Record only those features belonging to the selected POS. Features are those keys
-        containing ':'."""
+        """
+        Convert a dict of feature, value pairs from web form to L3Morpho
+        feat val dicts, one for the form, one for generation.
+        Record only those features belonging to the selected POS. Features
+        are those keys containing ':'.
+        """
         fvs = {}
         longfvs = {}
         for f, v in form.items():
@@ -2093,7 +2100,10 @@ class Language:
     ### End of morphology stuff
 
     def to_dict(self):
-        """Convert the language to a dictionary to be serialized as a yaml file. This is old and needs to be updated."""
+        """
+        Convert the language to a dictionary to be serialized as a yaml file.
+        This is old and needs to be updated.
+        """
         d = {}
         d['name'] = self.name
         d['abbrev'] = self.abbrev
@@ -2114,7 +2124,9 @@ class Language:
     def read_group(self, gfile, gname=None, target=None,
                    source_groups=None, target_groups=None, target_abbrev=None,
                    groupcats=None, posindex=0, verbosity=0):
-        """Read in a single group type from a file with path gfile and name gname."""
+        """
+        Read in a single group type from a file with path gfile and name gname.
+        """
         with open(gfile, encoding='utf8') as file:
             gname = gname or gfile.rpartition('/')[-1].split('.')[0]
             groupdefaults = []
@@ -2189,8 +2201,10 @@ class Language:
                                   cat=gname, posindex=posindex)
 
     def read_groups(self, posnames=None, target=None, verbosity=0):
-        """Read in groups from .grp files. If target is not None (must be a language), read in translation groups
-        and cross-lingual features as well."""
+        """
+        Read in groups from .grp files. If target is not None (must be a
+        language), read in translation groups and cross-lingual features as well.
+        """
         target_abbrev = target.abbrev if target else None
         source_groups = []
         target_groups = []
@@ -2654,13 +2668,14 @@ class Language:
             if verbosity:
                 print(" Generating with {}".format(posmorph))
             output = posmorph.gen(root, update_feats=features,
+                                  del_feats=True,
                                   guess=guess, cache=cache)
         else:
             for posmorph in list(morf.values()):
                 if verbosity:
                     print(" Generating with {}".format(posmorph))
                 output.extend(posmorph.gen(root, update_feats=features,
-                                           guess=guess))
+                                           del_feats=True, guess=guess))
         if output:
             # separate output strings from features
             output_strings = [o[0] for o in output]

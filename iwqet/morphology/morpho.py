@@ -273,6 +273,8 @@ class POS:
         self.seg_guess = None
         # Default FS for generation
         self.defaultFS = TOP
+        # Alternate default FS without delfeats
+        self.alt_defaultFS = TOP
         # Default FS for citation
         self.citationFS = TOP
         # Dictionary of FS implications
@@ -317,6 +319,7 @@ class POS:
         self.posconv = {}
         self.featconv = {}
         self.featcopy = {}
+        self.delfeats = None
 
     def quit(self):
         """Save new_gens in gen_cache."""
@@ -376,6 +379,8 @@ class POS:
         # Also assign the defaultFS if the FST has one
         if fst._defaultFS:
             self.defaultFS = fst._defaultFS
+            if self.delfeats:
+                self.alt_defaultFS = self.delete_from_FS(freeze=True)
 
     def fst_name(self, generate=False, guess=False, segment=False):
         """Make a name for the FST satisfying the parameters."""
@@ -609,7 +614,8 @@ class POS:
         return result
 
     def gen(self, root, features=None, update_feats=None,
-            guess=False, segment=False, fst=None, timeit=False, only_one=False, cache=True,
+            del_feats=None, guess=False, segment=False,
+            fst=None, timeit=False, only_one=False, cache=True,
             # Return only word forms
             sort=True, trace=False):
         """Generate word from root and features."""
@@ -618,29 +624,35 @@ class POS:
             update_feats = FeatStruct(update_feats)
         # See if there are already cached wordforms for the root and features
         # Note: we have to find all of the cached keys
-        cache_keys = []
-        if isinstance(update_feats, FSSet):
-            cache_keys = list(update_feats)
-        else:
-            cache_keys.append(update_feats)
-        all_cached = []
-        all_found = True
-        for cache_key in cache_keys:
-#            print("cache key {}".format(cache_key.__repr__()))
-            cached = self.get_cached_gen(root, cache_key)
-            if cached:
-                all_cached.extend(cached)
+        if cache:
+            cache_keys = []
+            if isinstance(update_feats, FSSet):
+                cache_keys = list(update_feats)
             else:
-                all_found = False
-                break
-        if all_found:
-            if trace:
-                print("Found {}:{} in cached generations".format(root, cache_keys))
-            if self.language.disambig_feats:
-                all_cached = [(g[0], self.get_disambig(g[1])) for g in all_cached]
-            return all_cached
-        features = features or self.defaultFS
+                cache_keys.append(update_feats)
+            all_cached = []
+            all_found = True
+            for cache_key in cache_keys:
+    #            print("cache key {}".format(cache_key.__repr__()))
+                cached = self.get_cached_gen(root, cache_key)
+                if cached:
+                    all_cached.extend(cached)
+                else:
+                    all_found = False
+                    break
+            if all_found:
+                if trace:
+                    print("Found {}:{} in cached generations".format(root, cache_keys))
+                if self.language.disambig_feats:
+                    all_cached = [(g[0], self.get_disambig(g[1])) for g in all_cached]
+                return all_cached
+        if del_feats:
+            dflt = self.alt_defaultFS
+        else:
+            dflt = self.defaultFS
+        features = features or dflt
         upd_features = features
+#        print("Update features {}".format(upd_features.__repr__()))
         if update_feats:
             if isinstance(update_feats, FSSet):
                 upd_features = self.update_FSS(FeatStruct(features), update_feats)
@@ -815,6 +827,22 @@ class POS:
                                 fs[f] = v
         return fs
 
+    def delete_from_FS(self, featpaths=None, fs=None, freeze=False):
+        """
+        Return a copy of the FeatStruct (by default this POS's defaultFS)
+        with value for feature removed.
+        featlists is a list of feature path lists, one for each feature
+        to be deleted.
+        """
+        if not featpaths or not isinstance(featpaths, list):
+            featpaths = self.delfeats
+        if not featpaths:
+            return
+        fs = fs or self.defaultFS
+        if isinstance(fs, str):
+            fs = FeatStruct(fs)
+        return fs.delete(featpaths, freeze=freeze)
+
     def gen_citation(self, root, fs):
         if self.citationFS == '[]':
             return root
@@ -944,44 +972,43 @@ class POS:
         return self.pos + '_morphology'
 
     def score_gen_output(self, root, output):
-        """Given multiple outputs from gen(), score them on the features that distinguish
-        them."""
+        """
+        Given multiple outputs from gen(), score them on the features that
+        distinguish them.
+        """
         forms = [o[0] for o in output]
         feats = [o[1] for o in output]
         diffs = FSSet.compareFSS(feats)
         root_scores = [0.0] * len(forms)
         feat_scores = [0.0] * len(forms)
-        disambig_pen = self.language.disambig_penalties
-        def get_freq(feat, freqs, value):
-            freq = freqs.get(value, 0.0)
-            if disambig_pen and feat in disambig_pen and not value:
-                return disambig_pen[feat] * freq
-            return freq
+#        print("Scoring {}".format(output))
+#        print(" diffs {}".format(diffs.__repr__()))
         # root-feature frequencies
         if self.root_freqs and root in self.root_freqs:
             root_freqs = self.root_freqs[root]
             for feat, values in diffs.items():
-#                print("feat {}, values {}".format(feat, values))
                 if feat in root_freqs:
                     root_feat_freqs = root_freqs[feat]
-#                    print(" root feat {}, value {}".format(feat, root_feat_freqs))
-                    root_feat_values = [get_freq(feat, root_feat_freqs, value) for value in values]
-#                    print(" values {}".format(root_feat_values))
+                    root_feat_values = [root_feat_freqs.get(value, 0.0) for value in values]
                     root_scores = [(x + y) for x, y in zip(root_scores, root_feat_values)]
-#        # total feature frequencies
-#        if self.feat_freqs:
-#            for feat, values in diffs.items():
-#                if feat in self.feat_freqs:
-#                    feat_freqs = self.feat_freqs[feat]
-#                    feat_values = [feat_freqs.get(value, 0.0) for value in values]
-#                    feat_scores = [(x + y) for x, y in zip(feat_scores, feat_values)]
-#        # scale the feat_scores by the proportion of the total root_scores to the feat_scores
-#        feat_sum = sum(feat_scores)
-#        if feat_sum:
-#            root_sum = sum(root_scores)
-#            scaling = root_sum / feat_sum
-#            scores = [(r + f * scaling) for r, f in zip(root_scores, feat_scores)]
-#        else:
-        scores = root_scores
+        # total feature frequencies
+        if self.feat_freqs:
+            for feat, values in diffs.items():
+                if feat in self.feat_freqs:
+                    feat_freqs = self.feat_freqs[feat]
+                    feat_values = [feat_freqs.get(value, 0.0) for value in values]
+                    feat_scores = [(x + y) for x, y in zip(feat_scores, feat_values)]
+        # scale the feat_scores by the proportion of the total root_scores to the feat_scores
+        rootsum = sum(root_scores)
+        featsum = sum(feat_scores)
+        if featsum:
+            if rootsum:
+                scaling = rootsum/featsum
+                scores = [(r + f * scaling) for r, f in zip(root_scores, feat_scores)]
+            else:
+                scores = feat_scores
+        else:
+            scores = root_scores
+#        print("scores {}".format(scores))
         # return the outputs with scores appended
         return [o + [s] for o, s in zip(output, scores)]

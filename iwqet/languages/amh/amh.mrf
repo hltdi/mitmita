@@ -25,7 +25,7 @@ featconv:
   v:: sgw: sb=[+p2],tm=j_i -> sp=2,tm=j_i
   v:: sgw: sb=[+p2],tm=imf -> sp=2,tm=imf
   v:: sgw: sb=[+p2],tm=prf -> sp=2,tm=prf
-  v:: sgw: sb=[+plr] -> sn=2; sb=[+fem] -> sg=f; sb=[-fem] -> sg=m
+  v:: sgw: sb=[+plr] -> sn=2; sb=[+fem] -> sg=f; sb=[-fem,-p1,-plr] -> sg=m
   v:: sgw: vc=smp -> vc=[-ps,-cs]; vc=ps -> vc=[+ps,-cs]
   v:: sgw: vc=tr -> vc=[-ps,+cs]; vc=cs -> vc=[+ps,+cs]
   v:: sgw: as=smp -> as=None; as=it ->; as=rc ->

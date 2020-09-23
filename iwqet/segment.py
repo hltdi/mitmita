@@ -600,8 +600,8 @@ class Seg:
         if not minimal:
             Seg.color_index += 1
         self.set_source_html(first)
-        transhtml = "<div class='desplegable' ondrop='drop(event);' ondragover='allowDrop(event);'>"
-        despleg = "despleg{}".format(index)
+        transhtml = "<div class='dropdownable' ondrop='drop(event);' ondragover='allowDrop(event);'>"
+        dropdown = "dropdown{}".format(index)
         boton = "boton{}".format(index)
         wrap = "wrap{}".format(index)
         trans_choice_index = 0
@@ -617,7 +617,7 @@ class Seg:
             trans1 = trans
             if '"' in trans:
                 trans = trans.replace('"', '\"')
-            transhtml += "<div class='despleg' id='{}' style='cursor:default'>".format(boton)
+            transhtml += "<div class='dropdown' id='{}' style='cursor:default'>".format(boton)
             transhtml += trans + "</div></div>"
             self.html = (tokens, self.color, transhtml, index, trans1, self.source_html)
             return
@@ -635,19 +635,19 @@ class Seg:
                 trans1 = tchoice
                 if not multtrans:
                     # Only translation; no dropdown menu
-                    transhtml += "<div class='despleg' id='{}' ".format(boton)
+                    transhtml += "<div class='dropdown' id='{}' ".format(boton)
                     transhtml += "style='background-color:{};cursor:grab' draggable='true' ondragstart='drag(event);'>{}</div>".format(self.color, tchoice)
                 else:
                     # First translation of multiple translations; make dropdown menu
                     transhtml += '<div draggable="true" id="{}" ondragstart="drag(event);">'.format(wrap)
-                    transhtml += '<div onclick="desplegar(' + "'{}')\"".format(despleg)
-                    transhtml += " id='{}' class='despleg' style='background-color:{};cursor:context-menu'>{} ▾</div>".format(boton, self.color, tchoice)
+                    transhtml += '<div onclick="dropdownify(' + "'{}')\"".format(dropdown)
+                    transhtml += " id='{}' class='dropdown' style='background-color:{};cursor:context-menu'>{} ▾</div>".format(boton, self.color, tchoice)
             else:
                 # Choice in menu under button
                 if trans_choice_index == 1:
                     # Start menu list
-                    transhtml += "<div id='{}' class='contenido-desplegable'>".format(despleg)
-                transhtml += "<div class='segopcion' id='{}' onclick='cambiarMeta(".format(choiceid)
+                    transhtml += "<div id='{}' class='content-dropdownable'>".format(dropdown)
+                transhtml += "<div class='segopcion' id='{}' onclick='changeTarget(".format(choiceid)
                 transhtml += "\"{}\", \"{}\")'".format(boton, choiceid)
                 transhtml += ">{}</div>".format(tchoice)
             trans_choice_index += 1
@@ -655,7 +655,7 @@ class Seg:
             trans1 = orig_tokens
             # No translations suggested: button for translating as source
             multtrans = False
-            transhtml += "<div class='despleg' id='{}'  style='cursor:grab' draggable='true' ondragstart='drag(event);'>".format(boton)
+            transhtml += "<div class='dropdown' id='{}'  style='cursor:grab' draggable='true' ondragstart='drag(event);'>".format(boton)
             transhtml += orig_tokens
             transhtml += "</div>"
         if multtrans:

@@ -2561,6 +2561,8 @@ class FST:
                   result_limit=5, timeit=False, timeout=TIMEOUT):
         """Return the output for all paths through the FST for the input and initial weight. (MG)"""
 #        print("{} transducing {}".format(self.__repr__(), input))
+#        print(" init weight {}".format(init_weight.__repr__()))
+#        print(" result limit {}".format(result_limit))
         if timeit:
             time1 = time.time()
         words = []

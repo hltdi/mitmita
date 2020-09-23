@@ -512,7 +512,7 @@ textarea.doc
     padding: 0;
 /*    border: 0; */
 }
-.despleg-wrap {
+.dropdown-wrap {
     float: left;
     overflow: hidden;
     cursor: pointer;
@@ -523,7 +523,7 @@ textarea.doc
     padding: none;
     margin: 0;
 }
-button.despleg {
+button.dropdown {
     position: relative;
     display: inline-block;
     background-color: #4B2B17;
@@ -536,13 +536,13 @@ button.despleg {
     cursor: pointer;
     border: 0;
 }
-button.despleg:hover, button.despleg:active, button.despleg:focus
+button.dropdown:hover, button.dropdown:active, button.dropdown:focus
 {
     color: #F5E754;
     border: 0;
     outline: none;
 }
-.contenido-despleg {
+/* .content-dropdown {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
@@ -552,19 +552,19 @@ button.despleg:hover, button.despleg:active, button.despleg:focus
     padding: 5px 0px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-}
+} */
 .opinic {
     color: black;
     cursor: pointer;
     display: block;
     padding: 0;
 }
-.contenido-despleg span {
+/* .content-dropdown span {
     color: black;
     padding: 3px 7px;
     text-decoration: none;
     display: block;
-}
+} */
 .vl {
   border-left: 2px solid black;
   margin-left: 6px;

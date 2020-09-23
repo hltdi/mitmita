@@ -99,6 +99,12 @@ class FSSet(set, FS):
             fsset.remove(fs)
         return fsset
 
+    def delete(self, features, freeze=False):
+        fslist = self.unfreeze()
+        for index, fs in enumerate(fslist):
+            fslist[index] = fs.delete(features)
+        return FSSet(fslist)
+
     def u(self, f, strict=False, verbose=False):
         """Unify this FSSet with either another FSSet or a FeatStruct."""
         if isinstance(f, FSSet):

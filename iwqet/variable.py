@@ -1,4 +1,4 @@
-#   
+#
 #   Mit'mit'a variables and domain stores: required for constraint satisfaction.
 #
 ########################################################################
@@ -8,17 +8,17 @@
 #   human translation.
 #
 #   Copyleft (C) 2014, 2015, 2016, 2018 PLoGS <gasser@indiana.edu>
-#   
+#
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
 #   published by the Free Software Foundation, either version 3 of
 #   the License, or (at your option) any later version.
-#   
+#
 #   This program is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #   GNU General Public License for more details.
-#   
+#
 #   You should have received a copy of the GNU General Public License
 #   along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
@@ -70,7 +70,7 @@ class DStore:
                 print('{} has {} undetermined variables'.format(self, len(self.undetermined)))
             return False
         return True
-    
+
     def clone(self, constraint=None, name='', project=False, verbosity=0):
         """Create a new dstore by applying the basic constraint
         to the bindings in this store."""
@@ -79,8 +79,13 @@ class DStore:
         self.children.append(new_store)
         new_store.undetermined = self.undetermined[:]
         new_store.ess_undet = self.ess_undet[:]
+#        for var in new_store.ess_undet:
+#            print("CLONED VAR")
+#            var.pprint(dstore=new_store)
         constraint.infer(dstore=new_store, verbosity=0, tracevar=[])
         for var in constraint.variables:
+#            print("IS {} DETERMINED in {}".format(var, new_store))
+#            var.pprint(dstore=new_store)
             # See if the new variable(?s) is now determined
             var.determined(dstore=new_store, verbosity=0)
         return new_store
@@ -202,7 +207,7 @@ class Var:
             if value == var_val:
                 return True
         return False
-        
+
     ## How constraints on a variable can fail
 
     def bound_fail(self, dstore=None):
@@ -220,7 +225,7 @@ class Var:
     def lower_bound_card_fail(self, dstore=None):
         """Fail if length of lower bound > upper card."""
         return len(self.get_lower(dstore=dstore)) > self.get_upper_card(dstore=dstore)
-        
+
     def fail(self, dstore=None):
         """Fail in one of three ways."""
         return self.bound_fail(dstore=dstore) or self.card_fail(dstore=dstore)
@@ -276,14 +281,16 @@ class Var:
                 dstore.ess_undet.remove(self)
 
     def determined(self, dstore=None, constraint=None, verbosity=0):
-        """Attempt to determine the variable, returning the value if this is possible,
-        False if it's not."""
-        if verbosity > 1:
+        """
+        Attempt to determine the variable, returning the value if this is possible,
+        False if it's not.
+        """
+        if verbosity > 1 and self.essential:
             print("Attempting to determine {} in {}".format(self, dstore))
         val = self.get_value(dstore=dstore)
         if val != None:
-            if verbosity > 1:
-                print("{} is already determined".format(self))
+            if verbosity > 1 and self.essential:
+                print("{} is already determined with value {}".format(self, self.get_value(dstore)))
             return val
         def determined_help(value, dst, verb):
             value_card = len(value)
@@ -300,14 +307,14 @@ class Var:
             self.set_upper(value, dstore=dst)
             self.set_lower_card(value_card, dstore=dst)
             self.set_upper_card(value_card, dstore=dst)
-            if verb > 1:
+            if verb > 1 and self.essential:
                 print('  {} is determined at {}'.format(self, value))
             self.det_update(dstore=dst)
             return value
         lower = self.get_lower(dstore=dstore)
         upper = self.get_upper(dstore=dstore)
         if lower == None or upper == None:
-            if verbosity > 1:
+            if verbosity > 1 and self.essential:
                 print("  Failed to determine because upper or lower bound is None")
             return False
         # If upper and lower bounds are equal, determine at either
@@ -320,12 +327,12 @@ class Var:
             return determined_help(upper, dstore, verbosity)
         if len(lower) >= self.get_upper_card(dstore=dstore):
             return determined_help(lower, dstore, verbosity)
-        if verbosity > 1:
+        if verbosity > 1 and self.essential:
             print("  Failed to determine, upper {}, lower {}".format(self.get_upper(dstore=dstore), self.get_lower(dstore=dstore)))
         return False
 
     ## Methods that can change the variable's set bounds or cardinality bounds
-        
+
     def determine(self, value, dstore=None, constraint=None):
         """Attempt to determine the variable as value, returning False it can't be
         or if it's already determined."""
@@ -358,6 +365,8 @@ class Var:
         If det is True, attempt to determine variable.
         """
         upper = self.get_upper(dstore=dstore)
+        upper_card = self.get_upper_card(dstore=dstore)
+#        print("{} strengthen upper, {}, {}".format(self, upper, upper_card))
         if not isinstance(upper, set):
             print("{}'s upper {} is not set".format(self, upper))
         if not upper.issubset(upper2):
@@ -394,7 +403,8 @@ class Var:
                         self.det_update(dstore)
             else:
                 new_upper_card = len(new_upper)
-                self.set_upper_card(new_upper_card, dstore=dstore)
+                if new_upper_card < upper_card:
+                    self.set_upper_card(new_upper_card, dstore=dstore)
             return True
         return False
 
@@ -535,8 +545,10 @@ class IVar(Var):
         return False
 
     def determined(self, dstore=None, constraint=None, verbosity=0):
-        """Attempt to determine the variable, returning the value if this is possible,
-        False if it's not."""
+        """
+        Attempt to determine the variable, returning the value if this is possible,
+        False if it's not.
+        """
         val = self.get_value(dstore=dstore)
         if val != None:
             return val

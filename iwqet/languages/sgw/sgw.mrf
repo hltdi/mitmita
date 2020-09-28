@@ -10,7 +10,7 @@ consonants: h l m r s x q b t c n N ' k K w z Z y d j g T C P S f p
 punctuation: “ ‘ ” ’ – … • : ; / \ , < > ? . ! % $ ( ) [ ] { } | # @ & * - _ + = " ~
 gemination: _
 postpunc: ,=፣ .=። :=፦ ;=፤
-delfeats: vp::sg,og; vi::sg,og; vj::sg,og
+delfeats: vp::sg,og; vi::sg,og; vj::sg,og; n::cg,pg
 
 feats:
 

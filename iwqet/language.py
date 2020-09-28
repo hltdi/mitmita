@@ -2296,7 +2296,7 @@ class Language:
         grouping = []
         try:
             with open(path, encoding='utf8') as f:
-                print("Leyendo patrones para juntar segmentos para {}".format(target))
+                print("Reading patterns for joining segments for {}".format(target))
                 lines = f.read().split('\n')[::-1]
                 # the order of Joins matters
                 while lines:

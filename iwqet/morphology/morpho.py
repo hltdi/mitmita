@@ -381,6 +381,8 @@ class POS:
             self.defaultFS = fst._defaultFS
             if self.delfeats:
                 self.alt_defaultFS = self.delete_from_FS(freeze=True)
+            else:
+                self.alt_defaultFS = self.defaultFS
 
     def fst_name(self, generate=False, guess=False, segment=False):
         """Make a name for the FST satisfying the parameters."""
@@ -619,7 +621,7 @@ class POS:
             # Return only word forms
             sort=True, trace=False):
         """Generate word from root and features."""
-#        print("{} generating {} with update feats {}".format(self, root, update_feats.__repr__()))
+#        print("{} generating {} with update feats {} and features {}".format(self, root, update_feats.__repr__(), features.__repr__()))
         if isinstance(update_feats, str):
             update_feats = FeatStruct(update_feats)
         # See if there are already cached wordforms for the root and features
@@ -652,7 +654,6 @@ class POS:
             dflt = self.defaultFS
         features = features or dflt
         upd_features = features
-#        print("Update features {}".format(upd_features.__repr__()))
         if update_feats:
             if isinstance(update_feats, FSSet):
                 upd_features = self.update_FSS(FeatStruct(features), update_feats)
@@ -666,7 +667,6 @@ class POS:
             return []
         # Up to this point, features may be a FeatStruct instance; cast in case
         fsset = FSSet.cast(upd_features)
-#        print("Updated features: {}".format(fsset.__repr__()))
         if fst:
             gens = fst.transduce(root, fsset, seg_units=self.language.seg_units,
                                  trace=trace, timeit=timeit)

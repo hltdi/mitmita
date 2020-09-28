@@ -1018,7 +1018,8 @@ class SNode:
                           [], features, 1, 1)
             else:
                 # Only one choice so features are determined for this SNode
-                self.variables['features'] = DetLVar('w{}f'.format(self.index), features)
+                self.variables['features'] = \
+                   DetLVar('w{}f'.format(self.index), features)
 
     def get_cats(self):
         """The set of categories for the node's token, or None."""

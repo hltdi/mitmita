@@ -1,0 +1,5 @@
+## Nouns and noun phrases
+>> n1
+# ያለ already translates as ኤባር
+# yale :: yale &n ; ^1 ; >1 0
+NnaN :: [pos=n,cnj=na] [pos=n] ; 0[cnj=m] ; 1[cnj=m] ; ^0

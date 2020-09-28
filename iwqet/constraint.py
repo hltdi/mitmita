@@ -245,7 +245,6 @@ class Superset(Constraint):
         var = self.get_var()
         if var.strengthen_lower(self.subset, dstore=dstore,
                                 constraint=(verbosity>1 or var in tracevar) and self):
-#            print("Superset strengthening lower for {} to {} in {}".format(var, var.get_lower(dstore=dstore), dstore))
             return Constraint.entailed, {var}
         return Constraint.entailed, set()
 
@@ -277,8 +276,10 @@ class Subset(Constraint):
         """The variable's values are restricted to be a subset of the intersection
         of the current upper bound and superset."""
         var = self.get_var()
-        if var.strengthen_upper(self.superset, dstore=dstore, constraint=(verbosity>1 or var in tracevar) and self):
+        if var.strengthen_upper(self.superset, dstore=dstore,
+                                constraint=(verbosity>1 or var in tracevar) and self):
 #            print("Subset strengthening upper for {} to {} in {}".format(var, var.get_upper(dstore=dstore), dstore))
+            var.pprint(dstore=dstore)
             return Constraint.entailed, {var}
         return Constraint.entailed, set()
 

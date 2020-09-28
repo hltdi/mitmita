@@ -30,14 +30,17 @@ featconv:
   v:: sgw: vc=tr -> vc=[-ps,+cs]; vc=cs -> vc=[+ps,+cs]
   v:: sgw: as=smp -> as=None; as=it ->; as=rc ->
   v:: sgw: ob=[+expl,+p1] -> op=1; ob=[+expl,+p2] -> op=2; ob=[+expl,-p1,-p2] -> op=3
-  v:: sgw: ob=[+expl,+plr] -> on=2; ob=[+expl,-plr] -> on=1; ob=[+expl,+fem] -> og=f
+  v:: sgw: ob=[+expl,+plr] -> on=2; ob=[+expl,-plr] -> on=1
+  v:: sgw: ob=[+expl,+fem] -> og=f; ob=[+expl,-fem] -> og=m
   v:: sgw: ob=[+expl,+prp,+l] -> ot=b; ob=[+expl,+prp,+b] -> ot=m
   v:: sgw: +rel,tm=prf -> sub=y; +rel,tm=prs -> sub=y; +rel,tm=pst -> sub=y
   n:: sgw: poss=[+expl,+p1] -> pp=1; poss=[+expl,+p2] -> pp=2
   n:: sgw: poss=[+expl,-p1,-p2] -> pp=3
   n:: sgw: poss=[+expl,+fem] -> pg=f; poss=[+expl,-fem] -> pg=m
   n:: sgw: poss=[+expl,+plr] -> pn=2
-  n:: sgw: +def,poss=[-expl] -> +def; pp=Inde -> +sim
+  n:: sgw: +def,poss=[-expl] -> +def
+  n:: sgw: +gen,+def -> prep=ye; prep=le -> prep=ye; +acc,+def -> prep=ye
+  n:: sgw: prep=Inde -> +sim,prep=ye; prep=be -> ; prep=ke -> prep=te
 
 feats:
 

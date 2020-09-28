@@ -1465,10 +1465,10 @@ class Sentence:
             # Create a GInst object and GNodes for each surviving group
             self.groups.append(GInst(group, self, head_i, snodes, group_index))
             group_index += 1
-        if not terse or verbosity:
-            print("{} grupo(s) encontrado(s) para {}".format(len(self.groups), self))
-            for g in self.groups:
-                print("  {}".format(g))
+#        if not terse or verbosity:
+        print("{} group(s) found for {}".format(len(self.groups), self))
+        for g in self.groups:
+            print("  {}".format(g))
         # Assign sentence-level indices to each GNode; store gnodes in list
         sent_index = 0
         for group in self.groups:
@@ -1497,8 +1497,10 @@ class Sentence:
         self.get_incompat_groups()
 
     def get_group_sindices(self):
-        """Set the possible snode indices for each GInst, grouping them according to whether
-        they're lexical or category nodes."""
+        """
+        Set the possible snode indices for each GInst, grouping them according
+        to whether they're lexical or category nodes.
+        """
         for gnode in self.gnodes:
             ginst = gnode.ginst
             si = gnode.snode_indices
@@ -1508,8 +1510,11 @@ class Sentence:
                 ginst.sindices[0].extend(si)
 
     def get_incompat_groups(self):
-        """Find pairs of groups that are incompatible because of a "merger loop": one SNode with an associated
-        cat GNode in group A and lex node in group B and another SNode with the reverse."""
+        """
+        Find pairs of groups that are incompatible because of a "merger loop":
+        one SNode with an associated cat GNode in group A and lex node in
+        group B and another SNode with the reverse.
+        """
         for i1, ginst1 in enumerate(self.groups[:-1]):
             lex_sn1, cat_sn1 = ginst1.sindices
             for ginst2 in self.groups[i1:]:
@@ -1518,7 +1523,10 @@ class Sentence:
                     self.incompat_groups.append((ginst1, ginst2))
 
     def get_group_conflicts(self):
-        """Find group conflicts, lists of GInst indices, only one of which can be part of a segmentation."""
+        """
+        Find group conflicts, lists of GInst indices, only one of which can be
+        part of a segmentation.
+        """
         s2g = {}
         for ginst in self.groups:
             slexi = ginst.sindices[0]
@@ -1531,8 +1539,10 @@ class Sentence:
         self.group_conflicts = [g for g in s2g.values() if len(g) > 1]
 
     def get_group_dependencies(self):
-        """After GInsts and GNodes are created, check to see which GInsts with cat nodes depend on
-        other GInsts."""
+        """
+        After GInsts and GNodes are created, check to see which GInsts with
+        cat nodes depend on other GInsts.
+        """
         dependencies = {}
         for gnode1 in self.gnodes:
             if not gnode1.cat:
@@ -1563,26 +1573,34 @@ class Sentence:
     ## As of 2018.12, "solutions" are really initial "segmentations".
 
     def solve(self, translate=True, all_sols=False, all_trans=True, interactive=False,
-              limit_trans=True, choose=False, max_sols=0, verbosity=0, tracevar=None, terse=True):
+              limit_trans=True, choose=False, max_sols=0, verbosity=0,
+              tracevar=None, terse=True):
         """Generate segmentations, for all analyses if all_sols is True
         and translations (if translate is True)."""
         if not terse:
             print("SOLVING main sentence {}".format(self))
-        self.solve1(translate=translate, all_sols=all_sols, all_trans=all_trans, interactive=interactive,
+        self.solve1(translate=translate, all_sols=all_sols, all_trans=all_trans,
+                    interactive=interactive,
                     limit_trans=limit_trans, choose=choose, max_sols=max_sols,
                     verbosity=verbosity, tracevar=tracevar, terse=terse)
         if all_sols or (len(self.segmentations) < max_sols):
             for s in self.altsyns:
                 if not terse:
                     print("SOLVING alternative sentence {}".format(s))
-                s.solve1(translate=translate, all_sols=all_sols, all_trans=all_trans, interactive=interactive,
-                         limit_trans=limit_trans, max_sols=max_sols, verbosity=verbosity, tracevar=tracevar,
+                s.solve1(translate=translate,
+                         all_sols=all_sols, all_trans=all_trans,
+                         interactive=interactive,
+                         limit_trans=limit_trans, max_sols=max_sols,
+                         verbosity=verbosity, tracevar=tracevar,
                          terse=terse)
 
-    def solve1(self, translate=True, all_sols=False, all_trans=True, interactive=False,
+    def solve1(self, translate=True, all_sols=False, all_trans=True,
+               interactive=False,
                limit_trans=True, choose=False, max_sols=0,
                verbosity=0, tracevar=None, terse=True):
-        """Generate segmentations and translations (if translate is true)."""
+        """
+        Generate segmentations and translations (if translate is true).
+        """
         if not self.groups:
             if not terse or verbosity:
                 print("NO GROUPS found for {}, so NO SEGMENTATION POSSIBLE".format(self))
@@ -1590,7 +1608,8 @@ class Sentence:
         if not terse or verbosity:
             print(" Solving {}".format(self))
         ds = None
-        generator = self.solver.generator(test_verbosity=verbosity, expand_verbosity=verbosity,
+        generator = self.solver.generator(test_verbosity=verbosity,
+                                          expand_verbosity=verbosity,
                                           tracevar=tracevar)
         try:
             proceed = True
@@ -1600,16 +1619,17 @@ class Sentence:
                 segmentation = self.create_segmentation(dstore=ds, verbosity=verbosity, terse=terse)
                 if translate and self.target:
                     # Translating
-                    translated = segmentation.translate(limit_trans=limit_trans, choose=choose,
+                    translated = segmentation.translate(limit_trans=limit_trans,
+                                                        choose=choose,
                                                         all_trans=all_trans,
-                                                        interactive=interactive, verbosity=verbosity)
+                                                        interactive=interactive,
+                                                        verbosity=verbosity)
                     if not translated:
                         if not terse:
                             print("Translation failed; trying next segmentation!")
                         continue
-                    else:
-                        # Store the translation segmentation
-                        self.segmentations.append(segmentation)
+                    # Store the translation segmentation
+                    self.segmentations.append(segmentation)
                 else:
                     # Parsing; store the segmentation and display the parse
                     self.segmentations.append(segmentation)
@@ -1648,21 +1668,22 @@ class Sentence:
 
     def create_variables(self, verbosity=0):
         # All abstract (category) and instance (word or lexeme) gnodes
+        # covered snodes
+        covered_snodes = {sn.index for sn in self.nodes if sn.gnodes}
         instnodes = set()
         for group in self.groups:
             for node in group.nodes:
                 instnodes.add(node.sent_index)
 
         self.svar('groups', set(), set(range(len(self.groups))),
-                  # At least 1, at most all groups
-                  1, len(self.groups),
+                  # At least 1, at most all groups or the number of
+                  # nodes
+                  1, min(len(self.groups), len(covered_snodes)),
                   ess=True)
         self.svar('gnodes', set(), set(range(self.ngnodes)),
                   # At least size of smallest group, at most all
                   min([len(g.nodes) for g in self.groups]),
                   self.ngnodes)
-        # covered snodes
-        covered_snodes = {sn.index for sn in self.nodes if sn.gnodes}
         self.variables['snodes'] = DetVar('snodes', covered_snodes)
         # Position pairs
         pos_pairs = set()
@@ -1709,9 +1730,10 @@ class Sentence:
         gn2s = [gn.variables['snodes'] for gn in self.gnodes]
         s2gn = [s.variables['gnodes'] for s in self.nodes]
         snode_mainvars = [DetVar("sn{}".format(snode.index), {snode.index}) for snode in self.nodes]
-        snode_gnode_union_constraint = ComplexUnionSelection(selvar=self.variables['covered_snodes'],
-                                                             selvars=s2gn, seqvars=gn2s,
-                                                             mainvars=snode_mainvars)
+        snode_gnode_union_constraint = \
+          ComplexUnionSelection(selvar=self.variables['covered_snodes'],
+                                selvars=s2gn, seqvars=gn2s,
+                                mainvars=snode_mainvars)
         self.constraints.append(snode_gnode_union_constraint)
         # Union of all gnodes used snodes is all gnodes used
         self.constraints.append(UnionSelection(self.variables['gnodes'], self.variables['snodes'], s2gn))
@@ -1935,8 +1957,10 @@ class Sentence:
 
     def create_segmentation(self, dstore=None, verbosity=0, terse=False):
         """
-        Assuming essential variables are determined in a domain store, make a Segmentation object.
-        Adds segmentation to self.segmentations and also returns the segmentation.
+        Assuming essential variables are determined in a domain store,
+        make a Segmentation object.
+        Adds segmentation to self.segmentations and also returns the
+        segmentation.
         """
         dstore = dstore or self.dstore
         # Get the indices of the selected groups
@@ -1946,9 +1970,19 @@ class Sentence:
         covered_snodes = self.variables['covered_snodes'].get_value(dstore=dstore)
         ginsts = [self.groups[g] for g in groupindices]
         s2gnodes = []
+#        print()
+#        print("DSTORE {}, determined {}".format(dstore, dstore.is_determined()))
+#        print("GROUPS {}".format(groups))
+#        print("GINSTS {}".format(ginsts))
+#        print("COVERED SNODES {}".format(covered_snodes))
+#        print("SNODES {}".format(self.nodes))
+#        print("GNODES {}".format(self.gnodes))
         # For each snode, find which gnodes are associated with it in this dstore. This becomes the value of
         # the s2gnodes field in the segmentation created.
         for node in self.nodes:
+            gnvar = node.variables['gnodes']
+            gnval = gnvar.get_value(dstore=dstore)
+#            print(" GNODE VAR for {}: {}; VALUE: {}".format(node, gnvar, gnval))
             if node.index in covered_snodes:
                 gnodes = list(node.variables['gnodes'].get_value(dstore=dstore))
             else:
@@ -2009,8 +2043,11 @@ class Sentence:
                     segmentations.extend(sa.segmentations)
         if segmentations:
             Segmentation.rank(segmentations)
-            if choose or connect:
+#            if choose or connect:
+            if choose:
                 # match joins and further groups only for best segmentation
+                if verbosity:
+                    print("Selecting best segmentation")
                 segmentations = segmentations[:1]
             if translate:
                 for segmentation in segmentations:
@@ -2206,6 +2243,7 @@ class Segmentation:
             feats_unified = None
             # gn_indices is either one or two ints indexing gnodes in self.gnodes
             gnodes = [self.sentence.gnodes[index] for index in gn_indices]
+#            print("Adding gnodes {}".format(gnodes))
             if not gnodes:
                 self.gnodes_feats.append((gnodes, None, ''))
                 continue
@@ -2272,8 +2310,10 @@ class Segmentation:
                             gnode_dict[tgnode] = [(tgroup, tokens, feats, agrs, t_index)]
                     group_attribs.append((tgroup, tnodes, tgroup.agr, tgnodes))
 
-                treetrans = TreeTrans(self, tree=tree.copy(), ginst=ginst, gnode_dict=gnode_dict,
-                                      group_attribs=group_attribs, any_anode=any_anode,
+                treetrans = TreeTrans(self, tree=tree.copy(),
+                                      ginst=ginst, gnode_dict=gnode_dict,
+                                      group_attribs=group_attribs,
+                                      any_anode=any_anode,
                                       index=ttindex, top=is_top)
                 treetranss.append(treetrans)
                 ttindex += 1
@@ -2301,13 +2341,15 @@ class Segmentation:
                     tt.all_tgroups.append(list(zip(stt.tgroups, stt.tnodes)))
                 # Find all combinations of the target groups involved in this TT (at any level)
                 tgroup_combs = allcombs(tt.all_tgroups)
-                if verbosity:
-                    print(" TT group combs")
-                    for tgc in tgroup_combs:
-                        print("  {}".format(tgc))
+#                if verbosity:
+#                for tgc in tgroup_combs:
+#                    print("  {}".format(tgc))
                 for tgroup_comb in tgroup_combs:
                     tgroups = [t[0] for t in tgroup_comb]
                     tnodes = [t[1] for t in tgroup_comb]
+#                    print(" tgroups {}".format(tgroups))
+#                    print(" tnodes {}".format(tnodes))
+#                    print(" gnodes feats {}".format(tt.sol_gnodes_feats))
                     tt.build(tg_groups=tgroups, tg_tnodes=tnodes, verbosity=verbosity)
                     # Used to be generate_words()
                     tt.do_agreements(limit_forms=limit_trans)

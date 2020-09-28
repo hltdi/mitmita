@@ -53,7 +53,8 @@ class Solver:
     distributable = 3
     skipped = 4
 
-    def __init__(self, constraints, dstore, name='', evaluator=None, varselect=None,
+    def __init__(self, constraints, dstore, name='', evaluator=None,
+                 varselect=None,
                  description='', verbosity=0):
         self.constraints = constraints
         # Used in solver's printname
@@ -133,9 +134,11 @@ class Solver:
             print('>>>> HALTED AT SEARCH STATE', n, '<<<<')
 
     def split_var_values(self, variable, dstore=None, verbosity=0):
-        """For a selected variable, select a value by calling the value selection function,
-        and return two sets of values: the selected value and the other values. Assumes
-        variable is a set or int variable."""
+        """
+        For a selected variable, select a value by calling the value selection
+        function, and return two sets of values: the selected value and the
+        other values. Assumes variable is a set or int variable.
+        """
         undecided = variable.get_undecided(dstore=dstore)
         # Split undecided into two non-empty subsets
         if not undecided:
@@ -152,6 +155,8 @@ class Solver:
             if verbosity:
                 print("Var sel function failed")
             variable = sorted(variables, key=lambda v: len(v.get_upper(dstore=dstore)))[0]
+            print("SELECTED")
+            variable.pprint(dstore=dstore)
             undecided = variable.get_undecided(dstore=dstore)
             # Split undecided into two non-empty subsets
             if not undecided:
@@ -174,13 +179,12 @@ class Solver:
         value_list.sort()
         return value_list[0]
 
-    def make_constraints(self, variable, subset1=None, subset2=None, dstore=None, verbosity=0):
+    def make_constraints(self, variable, subset1=None, subset2=None,
+                         dstore=None, verbosity=0):
         """Return a pair of constraints for the selected variable."""
         # There should always be subsets, but for some reason if there isn't...
         if not subset1:
             subset1, subset2 = self.split_var_values(variable, verbosity=verbosity)
-#        print("Make constraints: subset1 {}, subset2 {}".format(subset1, subset2))
-#        print("{} lower {}, upper {}".format(variable, variable.get_lower(dstore=dstore), variable.get_upper(dstore=dstore)))
         if isinstance(variable, IVar):
             if verbosity:
                 print(' making member constraints for {} with values: {}, {}'.format(variable, subset1, subset2))
@@ -188,8 +192,10 @@ class Solver:
         else:
             # For a set Var, add subset1 to the lower bound, subtract subset1
             # from the upper bound
-            v1 = variable.get_lower(dstore=dstore) | subset1
-            v2 = variable.get_upper(dstore=dstore) - subset1
+            vlower = variable.get_lower(dstore=dstore)
+            vupper = variable.get_upper(dstore=dstore)
+            v1 = vlower | subset1
+            v2 = vupper - subset1
             if verbosity:
                 print(' making superset/subset constraints for {} with values: {}, {}'.format(variable, v1, v2))
             return Superset(variable, v1, record=False), Subset(variable, v2, record=False)
@@ -214,9 +220,12 @@ class Solver:
                                                        func=self.varselect, verbosity=verbosity)
         if verbosity > 1:
             print('Selected variable {} and value sets {},{}'.format(var, values1, values2))
-        constraint1, constraint2 = self.make_constraints(var, dstore=state.dstore,
-                                                         subset1=values1, subset2=values2,
-                                                         verbosity=verbosity)
+        constraint1, constraint2 = \
+           self.make_constraints(var, dstore=state.dstore,
+                                 subset1=values1, subset2=values2,
+                                 verbosity=verbosity)
+#        print("SELECTED CONSTRAINTS FOR VAR")
+#        var.pprint(dstore=state.dstore)
 #        print('Selected constraints {}, {}'.format(constraint1, constraint2))
         if verbosity > 1:
             print('Distribution constraints: a -- {}, b -- {}'.format(constraint1, constraint2))
@@ -228,18 +237,24 @@ class Solver:
 #        # Selected variable is determined in dstore2; try to determine it in dstore1
 #        var.determined(dstore=new_dstore1, verbosity=2)
         # Create a new SearchState for each dstore, increasing the depth
-        state1 = SearchState(constraints=constraints, dstore=new_dstore1, solver=self,
-                             name=state.name+'a', depth=state.depth+1, parent=state, verbosity=verbosity)
-        state2 = SearchState(constraints=constraints, dstore=new_dstore2, solver=self,
-                             name=state.name+'b', depth=state.depth+1, parent=state, verbosity=verbosity)
+        state1 = SearchState(constraints=constraints, dstore=new_dstore1,
+                             solver=self,
+                             name=state.name+'a', depth=state.depth+1,
+                             parent=state, verbosity=verbosity)
+        state2 = SearchState(constraints=constraints, dstore=new_dstore2,
+                             solver=self,
+                             name=state.name+'b', depth=state.depth+1,
+                             parent=state, verbosity=verbosity)
         state.children.extend([state1, state2])
         if verbosity:
-            print("DISTRIBUYENDO desde {}; variable: {}, estado 1: {}, valor {}; estado 2: {}, valores {}".format(state, var, state1, values1, state2, values2))
+            print("DISTRIBUTING from {}; variable: {}, state 1: {}, va;ie {}; state 2: {}, value {}".format(state, var, state1, values1, state2, values2))
         return [((var, values1), state1), ((var, values2), state2)]
 
 class SearchState:
-    """A single state in the search space, created either when the Solver is initialized
-    or during distribution."""
+    """
+    A single state in the search space, created either when the Solver is initialized
+    or during distribution.
+    """
 
     # Class variables representing different outcomes for running a SearchState
     running = 0
@@ -248,8 +263,8 @@ class SearchState:
     distributable = 3
     skipped = 4
 
-    def __init__(self, solver=None, name='', dstore=None, constraints=None, parent=None,
-                 depth=0, verbosity=0):
+    def __init__(self, solver=None, name='', dstore=None, constraints=None,
+                 parent=None, depth=0, verbosity=0):
         self.solver = solver
         self.name = name
         self.dstore = dstore
@@ -262,14 +277,27 @@ class SearchState:
         self.status = SearchState.running
         self.verbosity = verbosity
         self.value = 0.0
+#        print("CREATED {}".format(self))
+#        self.show_variables()
+#        print("CREATED SSTATE with DS {}, UNDET {}".format(dstore, dstore.ess_undet))
 
     def __repr__(self):
         return "<SS {}/{}>".format(self.name, self.depth)
 
+    def show_variables(self):
+        if not self.dstore.undetermined:
+            return
+        print("STATE {} VARIABLES".format(self))
+        for var in self.dstore.undetermined:
+            if var.essential:
+                var.pprint(dstore=self.dstore)
+
     def get_value(self, evaluator=None, var_value=None):
-        """A measure of how promising this state is. Unless there is an explicit evaluator
-        for the solver, by default this is how many undetermined essential variables there are.
-        (The lower the score, the better.)"""
+        """
+        A measure of how promising this state is. Unless there is an explicit
+        evaluator for the solver, by default this is how many undetermined
+        essential variables there are. (The lower the score, the better.)
+        """
         par_value = self.parent.value if self.parent else 0.0
         if evaluator:
             value = evaluator(self.dstore, var_value, par_value)

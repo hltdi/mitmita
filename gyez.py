@@ -61,7 +61,7 @@ def document(text, process=True):
     d = iwqet.Document(a, s, text=text, proc=process)
     return d
 
-def sent(text, user=None, max_sols=2, translate=True,
+def sent(text, user=None, max_sols=3, translate=True,
         connect=True, generate=False, html=False, choose=False, verbosity=0):
     return iwqet.አረፍተነገር(text, user=user, max_sols=max_sols, translate=translate,
                         connect=connect, generate=generate, html=html, choose=choose,

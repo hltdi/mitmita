@@ -279,7 +279,7 @@ class Subset(Constraint):
         if var.strengthen_upper(self.superset, dstore=dstore,
                                 constraint=(verbosity>1 or var in tracevar) and self):
 #            print("Subset strengthening upper for {} to {} in {}".format(var, var.get_upper(dstore=dstore), dstore))
-            var.pprint(dstore=dstore)
+#            var.pprint(dstore=dstore)
             return Constraint.entailed, {var}
         return Constraint.entailed, set()
 

@@ -134,7 +134,10 @@ class Seg:
 
     def get_tokens(self):
         """Returns a set of all possible tokens for this segment."""
-        toks = self.get_shead_tokens() or self.get_untrans_token() or [self.token_str]
+        toks = \
+           self.get_shead_tokens() or \
+           [self.get_untrans_token()] or \
+           [self.token_str]
         raw = self.get_shead_raw()
         if raw and raw not in toks:
             toks.append(raw)
@@ -222,8 +225,10 @@ class Seg:
         print("Error: has_child not defined for {}".format(self))
 
     def match_join(self, join_elem, join_pos, verbosity=0):
-        """Does this Segment match a pattern element in a Join? join_elem
-        is either a FSSet or a string."""
+        """
+        Does this Segment match a pattern element in a Join? join_elem
+        is either a FSSet or a string.
+        """
         if verbosity:
             print("  Matching item {} with join elem {} and pos {}".format(self, join_elem, join_pos))
         if join_pos:
@@ -445,36 +450,10 @@ class Seg:
             if self.record:
                 self.record.choice_tgroups = choice_tgroups
 
-#    def capitalize_first(self, tokens):
-#        """Capitalize tokens if in first place."""
-#        capitalized = False
-#        if ' ' in tokens:
-#            toks = []
-#            tok_list = tokens.split()
-#            for tok in tok_list:
-#                if capitalized:
-#                    toks.append(tok)
-#                elif self.source.is_punc(tok):
-#                    toks.append(tok)
-#                else:
-#                    toks.append(tok.capitalize())
-#                    capitalized = True
-#            tokens = ' '.join(toks)
-#        else:
-#            tokens = tokens.capitalize()
-
     @staticmethod
     def postproc_tstring(string):
         """Make final replacements to translation string."""
         return string.replace("'", "’").replace('_', ' ')
-
-#    @staticmethod
-#    def postproc_punc(string):
-#        """Make final replacements to punctuation (a string with possibly multiple
-#        punctuation characters."""
-#        if '"' in string:
-#            return string.replace('"', '\"')
-#        return string
 
     def agree_disambig(self, combination, morph, disamb_agree):
         """Check that disamb_agree constraints are matched in combining
@@ -814,19 +793,29 @@ class SuperSeg(Seg):
         self.join.apply(self, verbosity=verbosity)
 
 class Segment(Seg):
-    """Sentence segmentation segment, realization of a Group, possibly
-    merged with another. Displayed in GUI."""
+    """
+    Segment with a sentence segmentation, realization of a Group, possibly
+    merged with another. Displayed in GUI.
+    """
 
-    def __init__(self, segmentation, indices, translation, tokens, color=None, space_before=1,
+    def __init__(self, segmentation, indices, translation, tokens,
                  treetrans=None, sfeats=None, tgroups=None,
-                 head=None, tok=None, spec_indices=None, session=None, gname=None, is_punc=False):
+                 head=None, tok=None, spec_indices=None, session=None,
+                 color=None, space_before=1,
+                 gname=None, is_punc=False):
         Seg.__init__(self, segmentation)
-#        print("Creating Segment with translation: {}".format(translation))
-        if sfeats:
-            sfeat_dict = sfeats[0]
+#        print("Creating Segment with tt {}, translation: {}".format(treetrans, translation))
+        TT_sgf = treetrans.sol_gnodes_feats[0]
+        ttgnodes, ttfeats, ttpos, ttcats, ttroot = TT_sgf
+        if ttfeats:
             self.shead_index = 0
-            self.shead = [(sfeat_dict.get('root'), sfeat_dict.get('features'), sfeat_dict.get('pos'))]
-            self.scats = sfeat_dict.get('cats', set())
+            self.shead = [(ttroot, ttfeats, ttpos)]
+            self.scats = ttcats or set()
+#        if sfeats:
+#            sfeat_dict = sfeats[0]
+#            self.shead_index = 0
+#            self.shead = [(sfeat_dict.get('root'), sfeat_dict.get('features'), sfeat_dict.get('pos'))]
+#            self.scats = sfeat_dict.get('cats', set())
         else:
             self.shead_index = -1
             self.shead = None
@@ -1168,13 +1157,13 @@ class SNode:
                         u_features = simple_unify(node_features, grp_feats, strict=True)
                     if u_features != 'fail':
                         # SUCCEED: matched token and features
-                        results.append((node_root, u_features, node_pos))
+                        results.append((node_root, u_features, node_pos, node_cats))
                 else:
                     # SUCCEED: matched token and no group features to match
-                    results.append((node_root, node_features, node_pos))
+                    results.append((node_root, node_features, node_pos, node_cats))
             else:
                 # SUCCEED: group has features but node doesn't
-                results.append((grp_item, grp_feats, node_pos))
+                results.append((grp_item, grp_feats, node_pos, node_cats))
         if results:
             if verbosity > 1 or debug:
                 print("  Returning match results: {}".format(results))
@@ -1446,12 +1435,13 @@ class TNode:
         return "~{}|{}".format(self.ginst, self.token)
 
 class TreeTrans:
-    """Translation of a tree: a group or two or more groups joined by merged nodes."""
+    """
+    Translation of a tree: a group or two or more groups joined by merged nodes.
+    """
 
     def __init__(self, segmentation, tree=None, ginst=None,
                  gnode_dict=None, group_attribs=None,
-                 # Whether the tree has any abstract nodes (to merge with concrete nodes)
-                 any_anode=False, index=0, top=False, verbosity=0):
+                 index=0, top=False, verbosity=0):
         # The segmentation generating this translation
         self.segmentation = segmentation
         self.source = segmentation.source
@@ -1484,7 +1474,6 @@ class TreeTrans:
         # Save this TreeTrans in the GInst
         ginst.treetrans = self
         self.index = index
-        self.any_anode = any_anode
         self.group_attribs = group_attribs or []
         # Translation groups
         self.tgroups = [g[0] for g in group_attribs]
@@ -1664,10 +1653,10 @@ class TreeTrans:
         top_group_attribs = list(itertools.filterfalse(lambda x: x[0] not in tg_groups, self.group_attribs))[0]
         if verbosity:
             print('Top group attribs: {}'.format(top_group_attribs))
-        for snode, (gnodes, features, pos) in zip(self.snodes, self.sol_gnodes_feats):
+        for snode, (gnodes, features, pos, cats, root) in zip(self.snodes, self.sol_gnodes_feats):
             if verbosity:
-                fstring = "   snode {}, gnodes {}, features {}, pos {}"
-                print(fstring.format(snode, gnodes, features.__repr__(), pos))
+                fstring = "   snode {}, gnodes {}, features {}, pos {}, cats {}"
+                print(fstring.format(snode, gnodes, features.__repr__(), pos, cats))
             cache_key, token, targ_feats, agrs = None, None, None, None
             t_indices = []
             gnode = gnodes[0]

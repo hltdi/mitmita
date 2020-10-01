@@ -2169,7 +2169,7 @@ class Segmentation:
     is found for a sentence."""
 
     # Maximum number of group translations permitted
-    max_group_trans = 2
+    max_group_trans = 3
 
     def __init__(self, sentence, ginsts, s2gnodes, index, trees=None, dstore=None, session=None,
                  score=0, terse=True):
@@ -2245,36 +2245,42 @@ class Segmentation:
             gnodes = [self.sentence.gnodes[index] for index in gn_indices]
 #            print("Adding gnodes {}".format(gnodes))
             if not gnodes:
-                self.gnodes_feats.append((gnodes, None, ''))
+                self.gnodes_feats.append((gnodes, None, '', None, ''))
                 continue
             # Not really a merged node
             features = []
             gnode = gnodes[0]
             pos = ''
+            cat = None
+            root = ''
             snode_indices = gnode.snode_indices
             snode_index = snode_indices.index(snode.index)
             snode_anal = gnode.snode_anal[snode_index]
             if snode_anal and snode_anal[0] and snode_anal[0][1]:
+                roots = [a[0] for a in snode_anal]
                 features = [a[1] for a in snode_anal]
-                poss = [a[-1] for a in snode_anal]
+                poss = [a[-2] for a in snode_anal]
+                cats = [a[-1] for a in snode_anal]
             # Use the first (preferred) analysis.
             if features:
                 feature = features[0]
                 pos = poss[0]
+                cat = cats[0]
+                root = roots[0]
                 if not isinstance(feature, bool):
                     # Preferred feature may be True
                     feats_unified = FSSet(feature)
             if verbosity:
                 s = "  Unification result for {}: snode {}, gn_indices {} features {} feats unified {}"
                 print(s.format(self, snode, gn_indices, features, feats_unified))
-            self.gnodes_feats.append((gnodes, feats_unified, pos))
+            self.gnodes_feats.append((gnodes, feats_unified, pos, cat, root))
         return True
 
     def make_translations(self, verbosity=0, display=True, all_trans=False,
                           interactive=False,
                           limit_trans=True, choose=False):
-        """Create a TreeTrans object for each GInst and tree. build() each top
-        TreeTrans and realize translation. Whew."""
+        """Create a TreeTrans object for each GInst and tree.
+        build() each top TreeTrans and realize translation. Whew."""
         if verbosity:
             print("Making translations for {} with ginsts {}".format(self, self.ginsts))
             for g in self.ginsts:
@@ -2295,7 +2301,6 @@ class Segmentation:
                 # Figure the various features for the next TreeTrans instance.
                 is_top = not any([(tree < other_tree) for other_tree in self.trees])
                 group_attribs = []
-                any_anode = False
                 # This is the first place we can limit the number of translations allowed
                 ginsttrans = ginst.translations
                 if choose:
@@ -2313,7 +2318,6 @@ class Segmentation:
                 treetrans = TreeTrans(self, tree=tree.copy(),
                                       ginst=ginst, gnode_dict=gnode_dict,
                                       group_attribs=group_attribs,
-                                      any_anode=any_anode,
                                       index=ttindex, top=is_top)
                 treetranss.append(treetrans)
                 ttindex += 1
@@ -2466,7 +2470,8 @@ class Segmentation:
         return newsegs
 
     def get_segs(self, terse=False):
-        """Set the initial segments (instances of Segment) for the segmentation,
+        """
+        Set the initial segments (instances of Segment) for the segmentation,
         including their translations.
         """
         tt = self.get_ttrans_outputs()
@@ -2507,8 +2512,11 @@ class Segmentation:
             src_tokens = pre_paren
             src_nodes = [sentence.get_node_by_raw(index) for index in range(start, end+1)]
             src_feats = [(s.analyses if s else None) for s in src_nodes]
-#            print("Creating seg for {}, {}".format(src_tokens, src_nodes))
-            seg = Segment(self, raw_indices, forms, src_tokens, treetrans=treetrans,
+#            for sf in src_feats:
+#                for ssff in sf:
+#                    print("** {}".format(ssff))
+            seg = Segment(self, raw_indices, forms, src_tokens,
+                          treetrans=treetrans,
                           session=self.session, gname=gname,
                           sfeats=src_feats[head_index],
                           tgroups=tgroups, head=thead, tok=thead[-1])
@@ -2718,7 +2726,7 @@ class Segmentation:
         return all_matches
 
     def join(self, iters=6, joingroupings=None, makesuper=True, generate=False,
-             verbosity=1, terse=False):
+             verbosity=0, terse=False):
         """Iteratively match Join instances where possible, create supersegs
         for matches, and optionally finish by generating morphological
         surface forms for final segments."""
@@ -2872,7 +2880,7 @@ class Segmentation:
         features = [s[2] for s in seglist]
         superseg = SuperSeg(self, segs, features=features, join=join, verbosity=verbosity)
         if not terse:
-            print("CREANDO SUPERSEG PARA {} Y {} en posiciones {}".format(segs, join, positions))
+            print("CREATING SUPERSEG FOR {} AND {} in positions {}".format(segs, join, positions))
         # replace the joined segments in the segmentation with the superseg
         self.segments[positions[0]:positions[-1]+1] = [superseg]
 

@@ -2125,7 +2125,8 @@ class Join(Entry):
             nsegments += nsegments1
             if nsegments >= seglimit:
                 return False
-            match2 = segment.match_join(patelem, patpos1, verbosity=verbosity)
+            match2 = segment.match_join(patelem, patpos1,
+                                        verbosity=2 if self.debug else verbosity)
             if match2:
                 if verbosity or self.debug:
                     print(" {} matched {} in {}".format(segment, patelem, self))

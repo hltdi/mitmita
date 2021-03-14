@@ -2,3 +2,7 @@
 Converted to Gyez.
 Passwords: admin: wsa, anon: ''
 
+ATTE -> 'at_e
+MMTT -> mIt_I
+METTE -> met_e
+TTT -> T_

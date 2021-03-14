@@ -7,7 +7,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2014, 2015, 2016, 2017; HLTDI, PLoGS <gasser@indiana.edu>
+#   Copyleft 2014, 2015, 2016, 2017, 2021; HLTDI, PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -67,7 +67,8 @@ import itertools, copy, re
 from .cs import *
 from .morphology.semiring import FSSet
 # needed for a few static methods
-from .entry import Group, Token, JoinToken
+from .entry import Group
+from .token import Token, JoinToken
 from .record import SegRecord
 from .utils import *
 from iwqet.morphology.utils import reduce_lists
@@ -142,6 +143,8 @@ class Seg:
         if raw and raw not in toks:
             toks.append(raw)
         to_add = []
+        if not toks or not toks[0]:
+            return set()
         for tok in toks:
             if '_' in tok:
                 to_add.append(tok.split('_')[0])
@@ -574,6 +577,9 @@ class Seg:
     def make_html(self, index, first=False, verbosity=0):
         # T Group strings associated with each choice
         choice_tgroups = []
+        # needed in <span class=target_abbrev>text</span> to get the right
+        # font for target text (see style.css)
+        target_abbrev = self.target.abbrev
         minimal = self.is_punc or (not self.translation and not self.special)
         self.color = Seg.tt_notrans_color if minimal else Seg.tt_colors[Seg.color_index % 5]
         if not minimal:
@@ -615,12 +621,12 @@ class Seg:
                 if not multtrans:
                     # Only translation; no dropdown menu
                     transhtml += "<div class='dropdown' id='{}' ".format(boton)
-                    transhtml += "style='background-color:{};cursor:grab' draggable='true' ondragstart='drag(event);'>{}</div>".format(self.color, tchoice)
+                    transhtml += "style='background-color:{};cursor:grab' draggable='true' ondragstart='drag(event);'><span class={}>{}</span></div>".format(self.color, target_abbrev, tchoice)
                 else:
                     # First translation of multiple translations; make dropdown menu
                     transhtml += '<div draggable="true" id="{}" ondragstart="drag(event);">'.format(wrap)
                     transhtml += '<div onclick="dropdownify(' + "'{}')\"".format(dropdown)
-                    transhtml += " id='{}' class='dropdown' style='background-color:{};cursor:context-menu'>{} ▾</div>".format(boton, self.color, tchoice)
+                    transhtml += " id='{}' class='dropdown' style='background-color:{};cursor:context-menu'><span class={}>{}</span> ▾</div>".format(boton, self.color, target_abbrev, tchoice)
             else:
                 # Choice in menu under button
                 if trans_choice_index == 1:
@@ -628,7 +634,7 @@ class Seg:
                     transhtml += "<div id='{}' class='content-dropdownable'>".format(dropdown)
                 transhtml += "<div class='segopcion' id='{}' onclick='changeTarget(".format(choiceid)
                 transhtml += "\"{}\", \"{}\")'".format(boton, choiceid)
-                transhtml += ">{}</div>".format(tchoice)
+                transhtml += "><span class={}>{}</span></div>".format(target_abbrev, tchoice)
             trans_choice_index += 1
         if not self.translation and not self.special:
             trans1 = orig_tokens
@@ -805,8 +811,10 @@ class Segment(Seg):
                  gname=None, is_punc=False):
         Seg.__init__(self, segmentation)
 #        print("Creating Segment with tt {}, translation: {}".format(treetrans, translation))
-        TT_sgf = treetrans.sol_gnodes_feats[0]
-        ttgnodes, ttfeats, ttpos, ttcats, ttroot = TT_sgf
+        ttgnodes = ttfeats = ttpos = ttcats = ttroot = None
+        if treetrans:
+            TT_sgf = treetrans.sol_gnodes_feats[0]
+            ttgnodes, ttfeats, ttpos, ttcats, ttroot = TT_sgf
         if ttfeats:
             self.shead_index = 0
             self.shead = [(ttroot, ttfeats, ttpos)]
@@ -1319,6 +1327,7 @@ class GInst:
                 for ia, a in enumerate(alignment):
                     if a >= nttokens:
                         alignment[ia] = -1
+#            print("ALIGNMENT {}".format(alignment))
             if isinstance(tgroup, str):
                 # First find the target Group object
                 tgroup = self.target.groupnames[tgroup]
@@ -1622,7 +1631,7 @@ class TreeTrans:
         """
         if verbosity:
             print("Adapt sfeats {} (spos: {}) to tfeats {}".format(sfeats.__repr__(),
-            spos, tfeats.__repr__()))
+                  spos, tfeats.__repr__()))
         tposfeatlist = \
             self.source.adapt(spos, self.target.abbrev, sfeats, tfeats)
         if verbosity:
@@ -1662,12 +1671,13 @@ class TreeTrans:
             gnode = gnodes[0]
             if not gnode:
                 # snode is not covered by any group
-                self.record_ind_feats(tnode_index=tnode_index, snode=snode, node_index_map=node_index_map)
+                self.record_ind_feats(tnode_index=tnode_index, snode=snode,
+                                      node_index_map=node_index_map)
                 tnode_index += 1
                 continue
             if gnode not in self.gnode_dict:
                 if verbosity > 1:
-                    print("   not in gnode dict, skipping")
+                    print("   gnode {} not in gnode dict, skipping".format(gnode))
                 continue
             gnode_tuple_list = self.gnode_dict[gnode]
             gnode_tuple = firsttrue(lambda x: x[0] in tg_groups, gnode_tuple_list)
@@ -1688,6 +1698,8 @@ class TreeTrans:
             else:
                 # translation not in local cache
                 tgroup, token, targ_feats, agrs, t_index = gnode_tuple
+#                print("tgroup {}, token {}, targ_feats {}, t_index {}".format(tgroup, token, targ_feats, t_index))
+#                print("source features {}".format(features.__repr__()))
                 if len(tgroup.tokens) > 1:
                     t_indices.append((tgroup, t_index))
                 else:
@@ -1876,8 +1888,10 @@ class TreeTrans:
         self.constraints.append(Order(order_vars))
 
     def realize(self, verbosity=0, display=False, all_trans=False, interactive=False):
-        """Run constraint satisfaction on the order and disjunction constraints,
-        and convert variable values to sentence positions."""
+        """
+        Run constraint satisfaction on the order and disjunction constraints,
+        and convert variable values to sentence positions.
+        """
         generator = self.solver.generator(test_verbosity=verbosity, expand_verbosity=verbosity)
         try:
             proceed = True

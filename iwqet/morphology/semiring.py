@@ -2,7 +2,7 @@
 #
 #   This file is part of the MDT project.
 #
-#   Copyleft 2014, 2016, 2017; HLTDI, PLoGS <gasser@indiana.edu>
+#   Copyleft 2014, 2016, 2017, 2021; HLTDI, PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -126,8 +126,7 @@ class FSSet(set, FS):
         """
         Attempt to unify this FSSet with a simple FeatStruct instance,
         basically filter the FeatStructs in the set by their unification
-        with fs. Pretty much like FSSet.unify(). If list is True,
-        return a list of matching FeatStructs or 'fail'.
+        with fs. Pretty much like FSSet.unify().
         """
         # This is a list of the unifications of the elements of self with fs
         result1 = [simple_unify(f1, fs, strict=strict, verbose=verbose) for f1 in list(self)]
@@ -186,8 +185,8 @@ class FSSet(set, FS):
                                 continue
                         else:
                             vals.append((targ_feat, u))
-#            print("vals {}".format(vals))
-#            print("target {}, type {}".format(target.__repr__(), type(target)))
+#            print(" AGREE: vals {}".format(vals))
+#            print(" AGREE: target {}, type {}".format(target.__repr__(), type(target)))
             for f, v in vals:
                 if isinstance(target, FeatStruct):
                     target[f] = v
@@ -195,13 +194,18 @@ class FSSet(set, FS):
                     # target is an FSSet
                     new_target = set()
                     for i, fs in enumerate(target):
+#                        print("  AGREE: target FS {}".format(fs.__repr__()))
+#                        print("         f {} v {}".format(f, v))
+                        if f in fs and not force:
+                            new_target.add(fs)
+                            continue
                         fs = fs.unfreeze()
                         fs[f] = v
                         fs.freeze()
                         new_target.add(fs)
 #                    print(" added {}".format(v))
                     target = FSSet(new_target)
-#                    print(" new target {}".format(target))
+#                    print(" AGREE: new target {}".format(target.__repr__()))
         return target
 
     def agree_with(self, source, force=False):

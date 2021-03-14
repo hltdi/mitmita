@@ -1510,10 +1510,11 @@ def simple_unify(x, y, strict=False, verbose=False):
         return 'fail'
 
 def unify_dicts(x, y, strict=False, verbose=False):
-    '''Try to unify two dicts in the context of bindings, returning the merged result.
-    If strict is True, all features in y must appear explictly in x for success (unless the
-    feature's value is False)."""
-#    only succeed if there are explicit matching values in both FSs.'''
+    '''
+    Try to unify two dicts in the context of bindings, returning the merged result.
+    If strict is True, all features in y must appear explictly in x for success
+    (unless the feature's value is False).
+    '''
     # Make an empty dict of the type of x
     if verbose:
         print('Unifying dicts {} {}'.format(x.__repr__(), y.__repr__()))
@@ -1522,7 +1523,7 @@ def unify_dicts(x, y, strict=False, verbose=False):
         # Check all of the keys of x and y
         x_val, y_val = x.get(k, 'nil'), y.get(k, 'nil')
         if verbose:
-            print("For key {}, x value {}, y value {}".format(k, x_val, y_val))
+            print("For key {}, x value {}, y value {}".format(k, x_val.__repr__(), y_val.__repr__()))
         if strict and x_val == 'nil' and y_val is not False:
             # (x_val == 'nil' or y_val == 'nil'):
             return 'fail'

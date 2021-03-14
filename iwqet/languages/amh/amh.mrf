@@ -14,33 +14,40 @@ postpunc: ,=፣ .=። :=፦ ;=፤
 posconv:
   v:: sgw: pos=v,tm=prf -> vp,tm=prf; pos=v,tm=imf -> vi,tm=imf; pos=v,tm=j_i -> vj,tm=j_i
   v:: sgw: pos=v,tm=prs -> vp,tm=prf,tns=prs; pos=v,tm=pst -> vp,tm=prf,tns=pst
-  v:: sgw: pos=n_dv -> inf
+  v:: sgw: pos=v,v=inf -> inf
+  n:: sgw: pos=nm_pl -> nm; pos=nm_prs -> nm
 
 featcopy:
   n:: sgw: cp, cn, cg, tns
-  v:: sgw: neg
+  v:: sgw: neg, sp, sn, sg, op, on, og, ot
 
 featconv:
-  v:: sgw: sb=[+p1] -> sp=1
-  v:: sgw: sb=[+p2],tm=j_i -> sp=2,tm=j_i
-  v:: sgw: sb=[+p2],tm=imf -> sp=2,tm=imf
-  v:: sgw: sb=[+p2],tm=prf -> sp=2,tm=prf
-  v:: sgw: sb=[+plr] -> sn=2; sb=[+fem] -> sg=f; sb=[-fem,-p1,-plr] -> sg=m
   v:: sgw: vc=smp -> vc=[-ps,-cs]; vc=ps -> vc=[+ps,-cs]
   v:: sgw: vc=tr -> vc=[-ps,+cs]; vc=cs -> vc=[+ps,+cs]
   v:: sgw: as=smp -> as=None; as=it ->; as=rc ->
-  v:: sgw: ob=[+expl,+p1] -> op=1; ob=[+expl,+p2] -> op=2; ob=[+expl,-p1,-p2] -> op=3
-  v:: sgw: ob=[+expl,+plr] -> on=2; ob=[+expl,-plr] -> on=1
-  v:: sgw: ob=[+expl,+fem] -> og=f; ob=[+expl,-fem] -> og=m
-  v:: sgw: ob=[+expl,+prp,+l] -> ot=b; ob=[+expl,+prp,+b] -> ot=m
   v:: sgw: +rel,tm=prf -> sub=y; +rel,tm=prs -> sub=y; +rel,tm=pst -> sub=y
+  v:: sgw: sb=[+p1] -> sp=1; sb=[+p2] -> sp=2
+  v:: sgw: sb=[-p1,-p2] -> sp=3
+  v:: sgw: sb=[+fem] -> sg=f; sb=[-plr,-fem] -> sg=m
+  v:: sgw: sb=[+plr] -> sn=2
+  v:: sgw: ob=[+expl,+p1] -> op=1; ob=[+expl,+p2] -> op=2
+  v:: sgw: ob=[+expl,-p1,-p2] -> op=3
+  v:: sgw: ob=[+expl,+fem] -> og=f; ob=[+expl,-plr,-fem] -> og=m
+  v:: sgw: ob=[+expl,+plr] -> on=2
   n:: sgw: poss=[+expl,+p1] -> pp=1; poss=[+expl,+p2] -> pp=2
   n:: sgw: poss=[+expl,-p1,-p2] -> pp=3
-  n:: sgw: poss=[+expl,+fem] -> pg=f; poss=[+expl,-fem] -> pg=m
+  n:: sgw: poss=[+expl,+fem] -> pg=f; poss=[+expl,-plr,-fem] -> pg=m
   n:: sgw: poss=[+expl,+plr] -> pn=2
-  n:: sgw: +def,poss=[-expl] -> +def
-  n:: sgw: +gen,+def -> prep=ye; prep=le -> prep=ye; +acc,+def -> prep=ye
+  n:: sgw: +def,poss=[-expl],+fem -> +def,+fem; +def,poss=[-expl],-fem -> +def,-fem
+  n:: sgw: +gen -> prep=ye; prep=le -> prep=ye; +acc,+def -> prep=ye
   n:: sgw: prep=Inde -> +sim,prep=ye; prep=be -> ; prep=ke -> prep=te
+  v:: sgw: poss=[+expl,+p1] -> pp=1; poss=[+expl,+p2] -> pp=2
+  v:: sgw: poss=[+expl,-p1,-p2] -> pp=3
+  v:: sgw: poss=[+expl,+fem] -> pg=f; poss=[+expl,-fem] -> pg=m
+  v:: sgw: poss=[+expl,+plr] -> pn=2
+  v:: sgw: +def,poss=[-expl] -> +def
+  v:: sgw: +gen -> prep=ye; prep=le -> prep=ye; +acc,+def -> prep=ye
+  v:: sgw: prep=Inde -> +sim,prep=ye; prep=be -> ; prep=ke -> prep=te
 
 feats:
 
@@ -60,20 +67,15 @@ feats:
   tm = imf | j_i | ger | prf
   rel = True | False
   ax = al
-  sb = p2 = True | False;
-       fem = True | False;
-       p1 = True | False;
-       frm = True | False;
-       plr = True | False
-  ob = p2 = True | False;
-       p1 = True | False;
-       plr = True | False;
-       fem = True | False;
-       l = True | False;
-       frm = True | False;
-       b = True | False;
-       prp = True | False;
-       expl = True | False
+  sp = 3 | 2 | 1
+  sn = 1 | 2
+  sg = m | f
+  sf = False | True
+  op = None | 3 | 2 | 1
+  on = 1 | 2
+  og = m | f
+  ot = a | b | m
+  of = False | True
 
   pos: cop copula
 
@@ -115,6 +117,15 @@ feats:
   v = agt | ins | inf | man
   def = True | False
   dis = True | False
+
+  pos: nm ስም
+
+  pos = nm
+  pp = le | be | Iske | I | Inde | ke | wede | sIle
+  fem = True | False
+  cnj = m | na | s
+  acc = True | False
+  gen = True | False
 
 trans:
   word = ቃል

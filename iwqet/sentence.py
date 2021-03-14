@@ -152,7 +152,7 @@ import copy, re, random, itertools, os
 from .ui import *
 from .segment import *
 from .record import SentRecord, Session
-from .entry import Token
+from .token import Token
 from .utils import remove_control_characters, firsttrue, is_capitalized, clean_sentence
 
 class Document(list):
@@ -913,7 +913,8 @@ class Sentence:
             self.tokens = tokens
 
     @staticmethod
-    def join_from_tree(tokens, tree, position=0, subtree=None, result=None, to_join=None, previous_end=None):
+    def join_from_tree(tokens, tree, position=0, subtree=None, result=None,
+                       to_join=None, previous_end=None):
         """Return tokens list with any sub-sequence joined with _ if found in tree.
         Searches for longest sequence when there are multiple possibilities beginning with the same sequence
         of tokens, but may fail to find the longest sequence when sequences overlap, because it searches left-to-right only.
@@ -974,12 +975,14 @@ class Sentence:
                 return Sentence.join_from_tree(tokens, tree, position=position, result=result)
 
     def lowercase(self):
-        """Make capitalized tokens lowercase.
+        """
+        Make capitalized tokens lowercase.
         2016.05.08: only do this for the first word.
-        2017.03.19: do it for all words but keep a record of raw capitalization in self.isupper.
+        2017.03.19: do it for all words but keep a record of raw capitalization
+         in self.isupper.
         2018.02.15: do this only for the first word, unless a word is uppercase.
-        Still need to figure out what to do for words that are capitalized by convention within
-        sentences, for example, at the beginning of quotations.
+        Still need to figure out what to do for words that are capitalized by
+        convention within sentences, for example, at the beginning of quotations.
         2019: more adjustments...
         """
         if not self.language.upper:
@@ -1050,7 +1053,8 @@ class Sentence:
             return True
 
     def tokenize(self, ambig=True, verbosity=0, terse=True):
-        """Segment the sentence string into tokens, analyze them morphologically,
+        """
+        Segment the sentence string into tokens, analyze them morphologically,
         and create a SNode object for each.
         2015.06.07: Save the analyzed tokens as well as nodes.
         2015.06.10: Apply MorphoSyns before creating nodes.
@@ -1076,6 +1080,8 @@ class Sentence:
                 # Split at spaces by default.
                 if not self.tokens:
                     self.tokens = self.raw.split()
+                if verbosity:
+                    print("Tokens {}".format(self.tokens))
                 # Lowercase capitalized words, segment contractions, join numerals and other fixed sequences.
                 self.preprocess()
                 self.instantiate_tokens()
@@ -1139,8 +1145,10 @@ class Sentence:
                     tags[index] = token, newtag
 
     def morph_anal(self, tagged=None):
-        """Morphological analysis of the tokens in the sentence. Use POS disambiguator
-        if appropriate."""
+        """
+        Morphological analysis of the tokens in the sentence. Use POS disambiguator
+        if appropriate.
+        """
         analyses = []
         for index, tok in enumerate(self.toks):
             tokstring = tok.fullname
@@ -1256,6 +1264,7 @@ class Sentence:
         if not incl_del:
             for tokindex, (tokobj, anals) in \
                 enumerate(zip(self.toks, [a[1] for a in self.analyses])):
+#                print("tokindex {} tokobj {} anals {}".format(tokindex, tokobj, anals))
                 if tokobj.delete:
 #                    print(" Not creating node for {} {} {}".format(tokindex, tokobj, anals))
                     # Ignore elements deleted by MorphoSyns
@@ -1431,8 +1440,8 @@ class Sentence:
             snodes = group.match_nodes(self.nodes, head_i, verbosity=verbosity)
             if not snodes:
                 # This group is out
-#                if verbosity > 1 or group.debug:
-                print("Group {} failed to match".format(group))
+                if verbosity > 1 or group.debug:
+                    print("Group {} failed to match".format(group))
                 continue
             matched_keys.append(matched_key)
             if verbosity > 1 or group.debug:
@@ -2303,11 +2312,13 @@ class Segmentation:
                 group_attribs = []
                 # This is the first place we can limit the number of translations allowed
                 ginsttrans = ginst.translations
+#                print("GINSTTRANS {}".format(ginsttrans))
                 if choose:
                     ginsttrans = [ginsttrans[0]]
                 elif limit_trans:
                     ginsttrans = ginsttrans[:Segmentation.max_group_trans]
                 for tgroup, tgnodes, tnodes in ginsttrans:
+#                    print("TGROUP {}, TGNODES {}, TNODES {}".format(tgroup, tgnodes, tnodes))
                     for tgnode, tokens, feats, agrs, t_index in tgnodes:
                         if tgnode in gnode_dict:
                             gnode_dict[tgnode].append((tgroup, tokens, feats, agrs, t_index))

@@ -218,9 +218,13 @@ class Morphology(dict):
             return casc
 
     def sort_analyses(self, analyses):
-        """Each analysis is a root, fs pair. Sort by the list of values for each feature that has such a list.
-        SEVERAL THINGS DON'T WORK HERE. FIRST ANALYSES SHOULD BE SORTED BY THE *SUM* OF THE SCORES FOR EACH
-        FEATURE. SECOND, EMBEDDED FEATURE VALUES DON'T WORK YET."""
+        """
+        Each analysis is a root, fs pair. Sort by the list of values
+        for each feature that has such a list.
+        SEVERAL THINGS DON'T WORK HERE. FIRST ANALYSES SHOULD BE SORTED
+        BY THE *SUM* OF THE SCORES FOR EACH FEATURE. SECOND, EMBEDDED FEATURE
+        VALUES DON'T WORK YET.
+        """
         for pos, morph in self.items():
             feat_list = morph.feat_list
             for feat, values in feat_list:
@@ -381,6 +385,7 @@ class POS:
             self.defaultFS = fst._defaultFS
             if self.delfeats:
                 self.alt_defaultFS = self.delete_from_FS(freeze=True)
+#                print("Setting alt default FS {}".format(self.alt_defaultFS.__repr__()))
             else:
                 self.alt_defaultFS = self.defaultFS
 
@@ -545,6 +550,7 @@ class POS:
                  verbose=False):
         '''Load FST.'''
         fst = None
+        guesser = None
         if verbose:
             s1 = '\nAttempting to load {0} FST for {1} {2}{3}{4}'
             print(s1.format(('GENERATION' if generate else 'ANALYSIS'),
@@ -556,10 +562,18 @@ class POS:
                           fst_directory=self.language.get_fst_dir(),
                           seg_units=self.language.seg_units,
                           create_weights=False, generate=generate,
-                          empty=guess, segment=segment, verbose=verbose)
+                          empty=False, segment=segment, verbose=verbose)
+        if guess:
+            guesser = FST.restore(self.pos,
+                              fst_directory=self.language.get_fst_dir(),
+                              seg_units=self.language.seg_units,
+                              create_weights=False, generate=generate,
+                              empty=True, segment=segment, verbose=verbose)
         if fst:
             if verbose: print("Found FST")
-            self.set_fst(fst, generate, guess, segment=segment)
+            self.set_fst(fst, generate, False, segment=segment)
+        if guesser:
+            self.set_fst(guesser, generate, True, segment=segment)
         else:
             if verbose: print("Found no FST")
         if self.get_fst(generate, guess, segment=segment):
@@ -586,15 +600,19 @@ class POS:
                 timeit=False, trace=False, tracefeat='',
                 # whether to replace FSs with "pretty" feature-value lists
                 pretty=False):
-        """Analyze form."""
+        """
+        Analyze form.
+        """
         fst = self.get_fst(generate=False, guess=guess, segment=segment)
         if fst:
+            reslimit = 6 if guess else 5
 #            if preproc:
 #                # For languages with non-roman orthographies
 #                form = self.morphology.language.preprocess(form)
             # If result is same as form and guess is True, reject
             anals = fst.transduce(form, seg_units=self.language.seg_units,
                                   reject_same=guess,
+                                  result_limit=reslimit,
                                   trace=trace, tracefeat=tracefeat,
                                   timeit=timeit)
             if sep_anals:

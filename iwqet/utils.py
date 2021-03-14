@@ -52,6 +52,7 @@ ISCAP_RE = re.compile(r"^[-–¿¡(\"\'‶“‘$]*[A-ZÀ-Ⱬ]")
 # Capitalize the string
 CAP_RE = re.compile(r"^([-–¿¡(\"\'‶“‘$]*)(\w)")
 CLEAN_RE = re.compile(r"\s+([.,;:?!)”″’%¶])")
+TAG_RE = re.compile(r"<.+?>([^<>/]+)</.+?>")
 
 ## Documents
 def text_from_doc(path):
@@ -84,6 +85,12 @@ def clean_sentence(string, capitalize=True):
     if capitalize:
         string = capitalize_string(string)
     return string
+
+def remove_tags(string):
+    """
+    Remove HTML tag from the string.
+    """
+    return TAG_RE.sub(r"\1", string)
 
 def is_capitalized(string):
     """True if the first non-punctuation character in the string is capitalized."""

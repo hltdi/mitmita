@@ -6,7 +6,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2015, 2016, 2017, 2020 HLTDI, PLoGS <gasser@indiana.edu>
+#   Copyleft 2015, 2016, 2017, 2020, 2021 HLTDI, PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -23,7 +23,9 @@
 #
 # =========================================================================
 
-__all__ = ['language', 'entry', 'constraint', 'views', 'variable', 'sentence', 'cs', 'utils', 'record', 'train', 'tag', 'gui', 'text', 'database']
+__all__ = ['language', 'entry', 'constraint', 'views', 'variable', \
+           'sentence', 'cs', 'utils', 'record', 'train', 'tag', 'gui', \
+           'text', 'database', 'token']
 #  not needed for now: 'learn'
 
 from flask import Flask, url_for, render_template

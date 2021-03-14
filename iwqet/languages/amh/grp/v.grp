@@ -42,8 +42,8 @@
 ->sgw TfWy_v[root=[cls=A]]
 ** TqWr_v[cls=A]
 ->sgw TqWr_v[root=[cls=A]]
-** b'l_v[cls=A]
-->sgw bhr_v[root=[cls=A]]
+** b'l_v[cls=A,vc=smp]
+->sgw bhr_v[root=[cls=A],vc=[-ps,-cs]]
 ** b's_v[cls=A]
 ->sgw bhs_v[root=[cls=A]]
 ** bd'_v[cls=A]
@@ -62,8 +62,6 @@
 ->sgw mry_v[root=[cls=A]]
 ** drs_v[cls=A]
 ->sgw srh_v[root=[cls=A]]
-** dst_v[cls=B,vc=ps]
-->sgw shr_v[root=[cls=A]]
 ** flg_v[cls=B]
 ->sgw sy_v[root=[cls=B]]
 ** fr'_v[cls=A]
@@ -97,7 +95,7 @@
 ** l'k_v[cls=A]
 ->sgw rhK_v[root=[cls=A]]
 ** lbs_v[cls=A]
-->sgw kdr_v[root=[cls=A],vc=[vc=ps]]
+->sgw Kdr_v[root=[cls=A],vc=[+ps]]
 ** lmd_v[cls=A]
 ->sgw rwsy_v[root=[cls=E]]
 ** lqq_v[cls=A]
@@ -106,7 +104,7 @@
 ->sgw bKy_v[root=[cls=A]]
 ** ly*_v[cls=B]
 ->sgw btr_v[root=[cls=B]]
-** mT'_v[cls=A]
+** mT'_v[cls=A,vc=smp,ob=[-expl]]
 ->sgw try_v[root=[cls=B]]
 ** mls_v[cls=B]
 ->sgw zbr_v[root=[cls=B]]
@@ -155,7 +153,7 @@
 ->sgw sgr_v[root=[cls=B]]
 ** r'b_v[cls=A]
 ->sgw ghd_v[root=[cls=A]]
-** rj*_v[cls=A]
+** rj*_v[cls=A,vc=tr]
 ->sgw grz_v[root=[cls=A]]
 ** rwT_v[cls=A]
 ->sgw rwT_v[root=[cls=A]]
@@ -219,3 +217,11 @@
 ->sgw nr_v[tns=pst,+copex]
 ** hlw_v[cls=B,tm=prs]
 ->sgw nr_v[tns=prs,+copex]
+** des b'l_v[cls=A]; ^ b'l_v 1
+->sgw shr_v[root=[cls=A]] ; || -1, 0
+# ተደሰተ disagrees with ሳረ: SB->OB
+** dst_v[cls=B,vc=ps]
+->sgw shr_v[sp=3,sg=m,sn=1,root=[cls=A],vc=[-ps,-cs]] ; 0==0 sp:op,sn:on,sg:og
+# Testing SGW "impersonal"
+** b'l_v[cls=A,vc=ps]
+->sgw bhr_v[root=[cls=A],vc=[-ps,-cs],sp=None,sn=None,sg=None,ot=a] ; 0==0 sp:op,sn:on,sg:og

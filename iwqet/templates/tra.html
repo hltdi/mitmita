@@ -429,13 +429,11 @@ div.dropdown-right {
 {% endif %}
 </td>
 #}
-{#
 <td class='hide'>
     <span id="hide" class="alternar" onclick="alternarInstrucciones();">
     {% if props.hide %}መምሪያ ይታይ። {% else %}መምሪያ ይደበቅ።{% endif %}
     </span>
 </td>
-#}
  </tr>
 </table>
 </div>
@@ -561,7 +559,7 @@ div.dropdown-right {
 <div class='instruc'>
     <div id='instruc2'>
     • "▾" ለተደረገበት ክፋይ ሌላ ምርጫ መምረጥ ይቻላል።<br />
-    • የክፋዮቹን ቦታ ለመለዋዋጥ አንድ ክፋይ በማይሱ ይዘው በሌላ ክፋይ ላይ ይልቀቁት።</div>
+    • የክፋዮቹን ቦታ ለመለዋዋጥ አንድ ክፋይ በማውሱ ይዘው በሌላ ክፋይ ላይ ይልቀቁት።</div>
 </div>
   {% if not tradtodo %}
 {#
@@ -668,7 +666,7 @@ document.getElementById("fuente").scrollTop = {{docscrolltop}};
 
 document.getElementById("fuente").focus();
 
-// Detectar nueva línea (Intro) en el espacio 'fuente' para iniciar traducción.
+// Decect new line en the 'fuente' area to initiate translation.
 document.getElementById("fuente").addEventListener("keypress", function(event) {
    key = event.which || event.keyCode;
    longFuente();
@@ -678,7 +676,7 @@ document.getElementById("fuente").addEventListener("keypress", function(event) {
    }
 });
 
-// Detectar ediciones del espacio 'textmeta' para corregir errores ortográficos.
+// Detect edits in 'textmeta' to correct spelling errors.
 document.getElementById("textmeta").addEventListener("keyup", function(event) {
     if (!document.Form2.nocorr.value) {
       key = event.key;
@@ -840,7 +838,7 @@ function removeTri(string) {
     return string.replace(/ \u25BE/g, '');
 }
 
-function limpiarMeta(string) {
+function cleanTarget(string) {
     // Remove line breaks.
     string = string.replace(/(\r\n|\n|\r)/gm, "");
     string = string.trim();
@@ -855,11 +853,22 @@ function limpiarMeta(string) {
     string = string.replace(/ \,/g, ",");
     string = string.replace(/ \;/g, ";");
     string = string.replace(" ?", "?");
-    {% if props.cap %}
+    string = removeTags(string);
+//    {% if props.cap %}
 //    string = mayuscula(string);
-    {% endif %}
+//    {% endif %}
     return string;
 }
+
+function removeTags(str) {
+    // Remove HTML tags from str.
+    if ((str===null) || (str==='')) {
+      return false;
+    } else {
+      str = str.toString();
+      return str.replace( /(<([^>]+)>)/ig, '');
+    }
+ }
 
 function correctSgw() {
     textmeta = document.getElementById("textmeta");
@@ -871,33 +880,33 @@ function correctSgw() {
       changed = '';
       c = text.slice(position-1, position);
 //	alert("char " + c + " before " + before + " after " + after);
-    if (["â", "ä"].indexOf(c) >= 0) {
-	    changed = "ã";
-    } else if (["ê", "ë"].indexOf(c) >= 0) {
-	    changed = "ẽ";
-    } else if (["î", "ï"].indexOf(c) >= 0) {
-	    changed = "ĩ";
-    } else if (["ô", "ö"].indexOf(c) >= 0) {
-	    changed = "õ";
-    } else if (["û", "ü"].indexOf(c) >= 0) {
-	    changed = "ũ";
-    } else if (["ŷ", "ÿ"].indexOf(c) >= 0) {
-	    changed = "ỹ";
-    } else if ("ĝ" == c) {
-	    changed = "g̃";
-	    // Two characters so insert character one position forward.
-	    insertion += 1;
-	} else if (["`", "´", "°", "‘", "'", "ʼ"].indexOf(c) >= 0) {
-	    changed = "’";
-	}
+//    if (["â", "ä"].indexOf(c) >= 0) {
+//	    changed = "ã";
+//    } else if (["ê", "ë"].indexOf(c) >= 0) {
+//	    changed = "ẽ";
+//    } else if (["î", "ï"].indexOf(c) >= 0) {
+//	    changed = "ĩ";
+//    } else if (["ô", "ö"].indexOf(c) >= 0) {
+//	    changed = "õ";
+//    } else if (["û", "ü"].indexOf(c) >= 0) {
+//	    changed = "ũ";
+//    } else if (["ŷ", "ÿ"].indexOf(c) >= 0) {
+//	    changed = "ỹ";
+//    } else if ("ĝ" == c) {
+//	    changed = "g̃";
+//	    // Two characters so insert character one position forward.
+//	    insertion += 1;
+//	} else if (["`", "´", "°", "‘", "'", "ʼ"].indexOf(c) >= 0) {
+//	    changed = "’";
+//	}
 	if (changed) {
 	    before = text.slice(0, position-1);
 	    after = text.slice(position);
 	    text = before + changed + after;
 	    document.getElementById("textmeta").value = text;
 	    textmeta.selectionEnd = insertion;
-	}
-}
+    }
+  }
 }
 
 function fuente() {
@@ -1023,7 +1032,7 @@ function showDomains() {
 //    selBot.style.display = "none";
 }
 
-/* Encuentra las traducciones de segmentos actualmente seleccionados */
+/* Find the segment translations currently selected */
 function actualTra() {
     var trans = "";
     var dropdowns = document.getElementsByClassName("dropdown");
@@ -1033,7 +1042,7 @@ function actualTra() {
       var trans1 = dropdown.innerHTML;
       trans = trans + " " + trans1;
     }
-    trans = limpiarMeta(trans);
+    trans = cleanTarget(trans);
     document.getElementById('textmeta').value = trans;
     document.Form2.tmeta.value = trans;
 }

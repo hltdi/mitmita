@@ -308,9 +308,11 @@ class Language:
         else:
             self.tagger = None
         if not exttag or self.tagger.morph:
-            self.load_morpho(generate=use in (GENERATION, TARGET, TRAIN),
-                             analyze=use in (ANALYSIS, SOURCE, TRAIN),
-                             segment=False, guess=False, verbose=False)
+            generate = use in (GENERATION, TARGET, TRAIN)
+            analyze = use in (ANALYSIS, SOURCE, TRAIN)
+            self.load_morpho(generate=generate,analyze=analyze,
+                             segment=False, guess=analyze,
+                             verbose=False)
         self.orthographize = None
         self.romanize = None
         self.upper = True
@@ -1348,20 +1350,22 @@ class Language:
 
         if featconv:
             for pos, fc in featconv:
-                P = self.morphology[pos]
-                fcdict = P.featconv
-                targ, ffcc = fc.split(':')
-                targ = targ.strip()
-                if targ not in fcdict:
-                    fcdict[targ] = []
-#                    fcdict[targ] = []
-                for fffccc in ffcc.strip().split(';'):
-                    if not fffccc:
-                        continue
-                    conds, targfeats = fffccc.split('->')
-                    conds = FeatStruct("[{}]".format(conds.strip()))
-                    targfeats = FeatStruct("[{}]".format(targfeats.strip()))
-                    fcdict[targ].append((conds, targfeats))
+                # there may be more than one POS separated by |
+                for p in pos.split('|'):
+                    P = self.morphology[p]
+                    fcdict = P.featconv
+                    targ, ffcc = fc.split(':')
+                    targ = targ.strip()
+                    if targ not in fcdict:
+                        fcdict[targ] = []
+        #                    fcdict[targ] = []
+                    for fffccc in ffcc.strip().split(';'):
+                        if not fffccc:
+                            continue
+                        conds, targfeats = fffccc.split('->')
+                        conds = FeatStruct("[{}]".format(conds.strip()))
+                        targfeats = FeatStruct("[{}]".format(targfeats.strip()))
+                        fcdict[targ].append((conds, targfeats))
 
         if featcopy:
             for pos, fc in featcopy:
@@ -1501,12 +1505,14 @@ class Language:
                 posmorph.read_gen_cache()
             # Load FST
             if generate:
-                posmorph.load_fst(generate=True, guess=guess, segment=segment, verbose=verbose)
+                posmorph.load_fst(generate=True, guess=guess, segment=segment,
+                                  verbose=verbose)
                 # Load statistics for generation
                 posmorph.set_root_freqs()
                 posmorph.set_feat_freqs()
             if analyze:
-                posmorph.load_fst(generate=False, guess=guess, segment=segment, verbose=verbose)
+                posmorph.load_fst(generate=False, guess=guess, segment=segment,
+                                  verbose=verbose)
             # Do others later
         if generate:
             self.gen_loaded = True
@@ -1688,12 +1694,14 @@ class Language:
 
     ### POS and feat conversion
 
-    def adapt(self, spos, target, sfeats, tfeats):
+    def adapt(self, spos, target, sfeats, tfeats, verbosity=0):
         """
         Adapt a target FS or FSSet according to conditions specified
         in .mrf file, returning an updated target FSSet.
         """
-#        print("Adapting {}, {}".format(spos, sfeats.__repr__()))
+        if verbosity:
+            print("Adapting {}, {}".format(spos, sfeats.__repr__()))
+            print(" {}, {}".format(target, tfeats.__repr__()))
         if tfeats:
             if isinstance(tfeats, FeatStruct):
                 tfeats = FSSet(tfeats)
@@ -1703,12 +1711,19 @@ class Language:
         tposfeats = self.adapt_POS(spos, target, sfeats, tfeats=tfeats)
         sfeatlist = list(sfeats)
         for index, (tp, tf) in enumerate(tposfeats):
-#            print("tf {} type {}".format(tf.__repr__(), type(tf)))
-            tf = self.copy_feats(spos, target, sfeats, tfeats=tf)
-#            print("tf {} type {}".format(tf.__repr__(), type(tf)))
-            tf = self.adapt_feats(spos, target, sfeatlist, list(tf))
+#            if verbosity:
+#                print("0  tf {} type {}".format(tf.__repr__(), type(tf)))
+            tf = self.copy_feats(spos, target, sfeats, tfeats=tf,
+                                 verbosity=verbosity)
+#            if verbosity:
+#                print("1  tf {} type {}".format(tf.__repr__(), type(tf)))
+            tf = self.adapt_feats(spos, target, sfeatlist, list(tf),
+                                  verbosity=verbosity)
+#            if verbosity:
+#                print("2  tf {} type {}".format(tf.__repr__(), type(tf)))
             tposfeats[index][1] = tf
-#        print("Adapted: {}".format(tposfeats.__repr__()))
+        if verbosity:
+            print("Adapted: {}".format(tposfeats.__repr__()))
         return tposfeats
 
     def adapt_POS(self, spos, target, sfeats, tfeats=None):
@@ -1738,29 +1753,47 @@ class Language:
                     if tf:
                         tf1 = tf1.upd(tf)
                     result.append([p, tf1])
-                return result
+                if result:
+                    return result
         return [[spos, tfeats]]
 
-    def adapt_feats(self, spos, target, sfeatlist, tfeatlist):
+    def adapt_feats(self, spos, target, sfeatlist, tfeatlist,
+                    verbosity=0):
         """
         Convert source features to target features.
         """
         if spos in self.morphology:
             featconv = self.morphology[spos].featconv
             if target in featconv:
+                if verbosity:
+                    print(" adapt_feats {}, {}, {}, {}".format(spos, target, sfeatlist, tfeatlist))
                 if isinstance(tfeatlist, FSSet):
                     tfeatlist = list(tfeatlist)
                 tfeats = tfeatlist[0] if len(tfeatlist) > 0 else FeatStruct()
                 while len(tfeatlist) < len(sfeatlist):
                     tfeatlist.append(tfeats.copy())
                 conversions = featconv[target]
+                if verbosity:
+                    print("ADAPT_FEATS tfeatlist {}".format(tfeatlist))
+                if verbosity:
+                    print("  conversions {}".format(conversions))
                 for condition, tf in conversions:
                     for findex, sfeats in enumerate(sfeatlist):
                         u = sfeats.unify_FS(condition, strict=True)
                         if u and u != 'fail':
+                            # Condition is satisfied for sfeats
+                            if verbosity:
+                                print(" {} UNIFIED WITH {}".format(sfeats.__repr__(),
+                                                               condition.__repr__()))
+                                print("  tf {}, tfeats {}".format(tf.__repr__(),
+                                                              tfeats.__repr__()))
                             tfeats = tfeatlist[findex]
-#                            print("{} UNIFIED WITH {}".format(sfeats.__repr__(),
-#                                  condition.__repr__()))
+                            tunify = tfeats.unify_FS(tf)
+                            if tunify == 'fail':
+                                # Don't update tfeats with a new feature
+                                # that would conflict with an existing one
+#                                print(" Skipping {}->{}".format(condition.__repr__(), tf.__repr__()))
+                                continue
 #                            print("  UPDATING {}".format(tfeats.__repr__()))
                             if not tf:
                                 # No change to source feature
@@ -1770,17 +1803,21 @@ class Language:
                             tfeatlist[findex] = tfeats
         return FSSet(tfeatlist)
 
-    def copy_feats(self, spos, target, sfeats, tfeats=None):
+    def copy_feats(self, spos, target, sfeats, tfeats=None,
+                   verbosity=0):
         """
         Copy source features to target features.
         """
-        if tfeats == None:
+        if verbosity:
+            print(" copy_feats: {}, {}, {}, {}".format(spos, target, sfeats, tfeats))
+        if not tfeats:
             tfeats = FSSet()
         if spos in self.morphology:
             featcopy = self.morphology[spos].featcopy
             if target in featcopy:
                 copyfeats = featcopy[target]
                 copydct = dict([(f, f) for f in copyfeats])
+#                print(" COPY FEATS dct {}".format(copydct))
                 tfeats = sfeats.agree(tfeats, copydct, force=False)
         return tfeats
 
@@ -1801,7 +1838,8 @@ class Language:
                   # Whether to normalize orthography before analysis
                   clean=True,
                   verbosity=0):
-        '''Morphologically analyze a single word, trying all existing POSs,
+        '''
+        Morphologically analyze a single word, trying all existing POSs,
         both lexical and guesser FSTs.
         '''
         # First make sure the analysis FSTs are loaded for this language
@@ -2044,6 +2082,8 @@ class Language:
         """Add the _ expected for roots."""
         if not root.endswith("_{}".format(pos)):
 #        if '_' not in root:
+            if pos == 'nadj' or pos == 'adj':
+                pos = 'n'
             root = root + '_' + pos
         return root
 
@@ -2537,7 +2577,7 @@ class Language:
             try:
                 srcpath = os.path.join(Language.get_language_dir(lang), lang + '.lg')
                 srclang = Language.read(srcpath, use=ANALYSIS)
-                print("Lengua {} cargada".format(srclang))
+                print("Language {} loaded".format(srclang))
             except IOError:
                 print("Language doesn't exist.")
                 return
@@ -2629,6 +2669,8 @@ class Language:
         When a single root has multiple POS/feature combinations to
         generate, use this.
         """
+        if verbosity:
+            print("Mult gen {} {}".format(root, posfeats))
         outstrings = []
         outfeats = []
         for pos, feats in posfeats:
@@ -2649,8 +2691,8 @@ class Language:
         """
         # In Amharic features may override the POS provided
         # (needed for verbal nouns), but this doesn't apply
-        if verbosity:
-            print("Generating {}:{} with POS {}".format(root, features.__repr__(), pos))
+#        if verbosity:
+        print("Generating {}:{} with POS {}".format(root, features.__repr__(), pos))
         if not pos:
             # generate() shouldn't have been called in this case!
             print("Warning: no POS for generation of {}:{}".format(root, features.__repr__()))

@@ -107,6 +107,7 @@ import copy, itertools
 import yaml
 import re
 
+from .token import *
 from iwqet.morphology.fs import *
 from iwqet.morphology.semiring import FSSet
 
@@ -116,7 +117,8 @@ ATTRIB_SEP = ';'
 WITHIN_ATTRIB_SEP = ','
 ## Regular expressions for reading groups from text files
 # non-empty form string followed by possibly empty FS string
-FORM_FEATS = re.compile("([$%~+<'`^*.¿?¡!|()\-\w̃]+)\s*((?:\[.+\])?)$")
+#FORM_FEATS = re.compile("([$%~+<'`^*.¿?¡!|()\-\w̃]+)\s*((?:\[.+\])?)$")
+FORM_FEATS = re.compile("([^\s^[^\]]+)\s*((?:\[.+\])?)$")
 # !FS(#1-#2), representing a sequence of #1 to #2 negative FS matches
 NEG_FEATS = re.compile("\s*!(\[.+\])(\(\d-\d\))$")
 # fail if category or feature matches an item that otherwise fails (before cat token)
@@ -177,7 +179,9 @@ class Entry:
     mwe_sep = '+'
 
     def __init__(self, name, language, id=0, trans=None, comment='', pos=''):
-        """Initialize name and basic features: language, trans, count, id."""
+        """
+        Initialize name and basic features: language, trans, count, id.
+        """
         self.name = name
         self.language = language
         self.trans = trans
@@ -197,8 +201,10 @@ class Entry:
         return '<{}:{}>'.format(self.name, self.id)
 
     def specificity(self):
-        """Score based on how specific the tokens in the entry are and how many
-        tokens there are."""
+        """
+        Score based on how specific the tokens in the entry are and how many
+        tokens there are.
+        """
         if self.tokens:
             total = 0.0
             for token in self.tokens:
@@ -310,13 +316,17 @@ class Entry:
         raise NotImplementedError()
 
 class Group(Entry):
-    """Primitive multi-word expression. Default is a head with unlabeled dependencies
-    to all other tokens and translations, including alignments, to one or more
-    other languages."""
+    """
+    Primitive multi-word expression.
+    Default is a head with unlabeled dependencies
+    to all other tokens and translations, including alignments,
+    to one or more other languages.
+    """
 
     def __init__(self, tokens, head_index=-1, head='', language=None, name='',
                  features=None, agr=None, trans=None, count=0, posindex=0,
-                 string=None, trans_strings=None, cat='', comment='', intervening=None):
+                 string=None, trans_strings=None, cat='',
+                 comment='', intervening=None):
         """Either head_index or head (a string) must be specified."""
         # tokens is a list of strings
         # name may be specified explicitly or not
@@ -341,7 +351,8 @@ class Group(Entry):
             self.root = self.head
 
         name = name or Group.make_name(tokens)
-        Entry.__init__(self, name, language, trans=trans, comment=comment, pos=self.pos)
+        Entry.__init__(self, name, language, trans=trans, comment=comment,
+                       pos=self.pos)
         # Index of the POS group grouping that this group is part of
         self.posindex = posindex
         # POS, 'misc', or other
@@ -560,13 +571,17 @@ class Group(Entry):
 
     @staticmethod
     def reverse_alignment(alignment, length):
-        """For a sequence of elements x of length length and an alignment associating positions in another sequence
+        """
+        For a sequence of elements x of length length and an alignment associating positions in another sequence
         y with positions in x, return a reverse alignment. Positions with no associated element in the other sequence
-        are represented by -1."""
+        are represented by -1.
+        """
         return [(alignment.index(i) if i in alignment else -1) for i in range(length)]
 
     def apply(self, superseg, verbosity=1):
-        """Make changes specified in group to superseg containing segments matching it."""
+        """
+        Make changes specified in group to superseg containing segments matching it.
+        """
         if verbosity or self.debug:
             print("Applying {} to {}".format(self, superseg))
         hindex = self.head_index
@@ -730,7 +745,7 @@ class Group(Entry):
     def match_nodes(self, snodes, head_sindex, verbosity=0):
         """
         Bottom-level matching. Attempt to match the group tokens
-        (and features) with tokens from a sentence,
+        (and features) with SNodes from a sentence,
         returning the snode indices and root and unified features if any.
         """
         if verbosity > 1 or self.debug:
@@ -1060,10 +1075,20 @@ class Group(Entry):
         # if so, use it
         gname = Group.make_name(name_toks)
         existing_group = language.get_group(gname, key=head, posindex=posindex)
-        g = existing_group or Group(realtokens, head_index=head_index, head=head, features=features, agr=within_agrs,
-#                                    failif=failif,
-                                    name=gname, count=count, string=string, posindex=posindex,
-                                    trans_strings=tstrings, cat=cat, comment=comment, intervening=intervening)
+#        print("Creating group: realtokens {}, hi {}, head {}, s {}".format(realtokens, head_index, head, string))
+        if existing_group:
+            g = existing_group
+        elif Token.is_pos(head):
+            g = NameGroup(realtokens, head=head, features=features,
+                          name=gname, trans_strings=tstrings,
+                          comment=comment)
+        else:
+            g = \
+            Group(realtokens, head_index=head_index, head=head,
+                  features=features, agr=within_agrs,
+                  name=gname, count=count, string=string, posindex=posindex,
+                  trans_strings=tstrings, cat=cat, comment=comment,
+                  intervening=intervening)
         if target and not trans:
             # Add translation to source group
             g.trans = tgroups
@@ -1125,8 +1150,10 @@ class Group(Entry):
 
     @staticmethod
     def write_groups(language, cat, groups=None, path=''):
-        """Write the groups belonging to a given category to the file at path.
-        If groups is None, use all of language's groups belonging to cat."""
+        """
+        Write the groups belonging to a given category to the file at path.
+        If groups is None, use all of language's groups belonging to cat.
+        """
         groups = groups or Group.get_cat_groups(language, cat)
         path = path or cat + '.grp'
         with open(path, 'w', encoding='utf8') as file:
@@ -1148,7 +1175,10 @@ class Group(Entry):
 
     @staticmethod
     def get_cat_groups(language, cat, position=0, filt=None):
-        """Return all groups in language with category cat that satisfy filter function."""
+        """
+        Return all groups in language with category cat that satisfy
+        filter function.
+        """
         cat_groups = []
         for groups in language.groups[position].values():
             for group in filter(filt, groups):
@@ -1168,27 +1198,36 @@ class Group(Entry):
         else:
             return ''
 
-    ### Translations
-
-    ## Alignments: position correspondences, agreement constraints
-    ## አድርጎ አያውቅም -> godhe hin beeku
-    ## a: {positions: (1, 2),
-    ##     agreements: {gen: gen},
-    ##     featmaps: {((pers, 2), (num, 2)): ((pers, 3), (num, 2))}
-    ##     }
-
-#    def add_alignment(self, trans):
-#        pass
-
     @staticmethod
     def sort_trans(translations):
-        """Sort translations by their translation frequency. translations is a list of pairs: group, feature dict."""
+        """
+        Sort translations by their translation frequency. translations is
+        a list of pairs: group, feature dict.
+        """
         if len(translations) > 1:
             translations.sort(key=lambda x: x[1].get('count', 0), reverse=True)
 
+class NameGroup(Group):
+    """
+    Subclass of Group for handling names, either those recognized in analysis
+    or new ones found by guesser analyzer.
+    There may be only one instance of this class for a given language.
+    """
+
+    def __init__(self, tokens, head='', language=None, name='',
+                 features=None, trans=None, string=None, trans_strings=None,
+                 comment=''):
+        Group.__init__(self, tokens, head_index=0, head=head,
+                       language=language, name=name,
+                       features=features, agr=None, trans=trans,
+                       count=0, posindex=0,
+                       string=head, trans_strings=trans_strings,
+                       cat='', comment=comment, intervening=None)
+
 class MorphoSyn(Entry):
-    """Within-language patterns that modify morphology and can delete words on the basis of
-    the occurrence of other words or features.
+    """
+    Within-language patterns that modify morphology and can delete words
+    on the basis of the occurrence of other words or features.
     """
 
     def __init__(self, language, name=None, tokens=None,
@@ -2451,223 +2490,6 @@ class Match:
     def sort_by_weight(matches):
         """Sort matches by the sum of the weight of their tokens."""
         matches.sort(key=lambda m: m.entry.get_weight())
-
-class Token:
-    """Word or punctuation or category or POS within a sentence or entry."""
-
-    spec_char = '%'
-    cat_char = '$'
-    set_char = '$$'
-    pos_char = '&'
-    spec_sep_char = '~'
-    del_char = '~'
-    ungen_char = '*'
-
-    def __init__(self, name='', prefix='', parent=None):
-        self.name = name
-        self.prefix = prefix
-        self.parent = parent
-        if prefix:
-            self.fullname = prefix + Token.spec_sep_char + name
-        else:
-            self.fullname = name
-
-    def __repr__(self):
-        return self.name
-
-    ## Static methods operating on strings that include the prefixes and
-    ## names of Tokens.
-
-    @staticmethod
-    def is_special(token):
-        """token is the prefix+name of a Token (not necessarily
-        instantiated), or just the prefix.
-        True if this is a 'special' token (name, number, etc.)"""
-        return token and token[0] == Token.spec_char
-
-    @staticmethod
-    def is_cat(token):
-        """Is this the name of a category?"""
-        return Token.cat_char in token
-
-    @staticmethod
-    def is_set(token):
-        """Is this the name of a set (implemented as a category)?"""
-        return Token.set_char in token
-
-    @staticmethod
-    def is_pos(token):
-        """Is this the name of a POS?"""
-        return token[0] == Token.pos_char
-
-    @staticmethod
-    def is_ungen(token):
-        """Is this the root of a failed morphological generation?"""
-        return token[0] == Token.ungen_char
-
-    @staticmethod
-    def special_prefix(token, check=False):
-        """If this is a special token, return its prefix (what precedes ~)."""
-        if not check or Token.is_special(token):
-            return Token.split_token(token)[0]
-        return ''
-
-    @staticmethod
-    def del_token(token):
-        return token and token[0] == Token.del_char
-
-    @staticmethod
-    def special_cat(prefix):
-        """Return the category of a special prefix: C or N."""
-        if Token.is_special(prefix):
-            return prefix.split(Token.spec_char)[-1]
-        return None
-
-    @staticmethod
-    def split_token(token):
-        """Separate the prefix and the name from the token string.
-        The first instance of ~ connects the prefix to the name for a special token.
-        There can be more than one ~ in numerals."""
-        if Token.spec_sep_char in token:
-            prefix, x, name = token.partition(Token.spec_sep_char)
-        else:
-            prefix = ''
-            name = token
-        return prefix, name
-
-class SentToken(Token):
-    """Sentence tokens."""
-
-    def __init__(self, name='', prefix='', parent=None,
-                 punc=False, upper=True):
-        Token.__init__(self, name=name, prefix=prefix, parent=parent)
-        if Token.spec_char in prefix:
-            self.special = True
-            self.raw_prefix = prefix[1:]
-        else:
-            self.special = False
-            self.raw_prefix = prefix
-        self.in_sentence = True
-        self.in_entry = False
-        self.cat = False
-        self.set = False
-        self.punc = punc
-        self.delete = False
-        self.upper = upper
-
-    def __repr__(self):
-        prechar = "<"
-        postchar = ">"
-#        if self.prefix:
-#            return prechar + self.fullname + postchar
-#        else:
-        return prechar + self.fullname + postchar
-
-    @staticmethod
-    def is_name_token(token):
-        """Name tokens are capitalized but not all uppercase."""
-        if not self.upper:
-            return False
-        if len(token) > 0:
-            if token[0].isupper():
-                if len(token) == 1 or not token.isupper():
-                    return True
-        return False
-
-    def get_keys(self, index=0):
-        """Keys for finding group candidates."""
-        keys = {self.name}
-        if self.special:
-            # Not sure if any groups are indexed by the fullname?
-            keys.add(self.fullname)
-        if index == 0 and self.upper:
-            # First word in sentence
-            keys.add(self.name.capitalize())
-        return keys
-
-class JoinToken(Token):
-    """Token in join."""
-
-    def __init__(self, name='', prefix='', parent=None, punc=False):
-        Token.__init__(self, name=name, prefix=prefix, parent=parent)
-        self.raw_prefix = prefix
-        self.special = False
-        self.pos = False
-        self.cat = False
-        if Token.spec_char in prefix:
-            self.special = True
-            self.raw_prefix = prefix[1:]
-        elif Token.pos_char in prefix:
-            self.pos = True
-        elif Token.cat_char in prefix:
-            self.cat = True
-        self.in_sentence = False
-        self.in_entry = True
-        self.set = False
-        self.punc = punc
-        self.delete = False
-
-    def __repr__(self):
-        prechar = "<"
-        postchar = ">"
-        if self.prefix:
-            return prechar + self.prefix + Token.spec_sep_char + self.name + postchar
-        else:
-            return prechar + self.name + postchar
-
-    @staticmethod
-    def match_pos(join_pos, seg_poss):
-        """Does Join element POS match at least one of segment POSs?"""
-#        print("Does joinpos {} match segposs {}".format(join_pos, seg_poss))
-        for seg_pos in seg_poss:
-            # seg_pos may include a sub_pos
-            if '.' in seg_pos:
-                seg_pos = seg_pos.split('.')[0]
-            if join_pos == seg_pos:
-                return True
-        return False
-
-##class IntervalTree:
-##    """Implementation of interval trees, from brentp: https://bpbio.blogspot.com/2008/11/python-interval-tree.html.
-##    Intervals are instances of Match."""
-##
-##    def __init__(self, intervals, depth=16, minbucket=96, _extent=None, maxbucket=4096):
-##
-##        depth -= 1
-##        if (depth == 0 or len(intervals) < minbucket) and len(intervals) > maxbucket:
-##            self.intervals = intervals
-##            self.left = self.right = None
-##            return
-##
-##        left, right = _extent or (min(i.first for i in intervals), max(i.last for i in intervals))
-##        center = (left + right) / 2.0
-##
-##        self.intervals = []
-##        lefts, rights  = [], []
-##
-##        for interval in intervals:
-##            if interval.last < center:
-##                lefts.append(interval)
-##            elif interval.first > center:
-##                rights.append(interval)
-##            else: # overlapping.
-##                self.intervals.append(interval)
-##
-##        self.left   = lefts  and IntervalTree(lefts,  depth, minbucket, (left,  center)) or None
-##        self.right  = rights and IntervalTree(rights, depth, minbucket, (center, right)) or None
-##        self.center = center
-##
-##    def find(self, start, stop):
-##        """find all elements between (or overlapping) start and stop"""
-##        overlapping = [i for i in self.intervals if i.last >= start and i.first <= stop]
-##
-##        if self.left and start <= self.center:
-##            overlapping += self.left.find(start, stop)
-##
-##        if self.right and stop >= self.center:
-##            overlapping += self.right.find(start, stop)
-##
-##        return overlapping
 
 class EntryError(Exception):
     '''Class for errors encountered when attempting to update an entry.'''

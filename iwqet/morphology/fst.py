@@ -1644,10 +1644,12 @@ class FST:
                 # Features determining which FST
                 empty=True, phon=False, segment=False, generate=False, simplified=False,
                 create_weights=True, verbose=False):
-        '''Restore an FST from a file, in some cases creating the cascade first.
+        '''
+        Restore an FST from a file, in some cases creating the cascade first.
 
         If empty is true, look for the empty (guesser) FST only.  Otherwise, look first for the
-        lexical one, then the empty one.'''
+        lexical one, then the empty one.
+        '''
         empty_name = fst_name + '0'
         if empty:
             name = empty_name
@@ -2559,7 +2561,10 @@ class FST:
                   seg_units=[], reject_same=False,
                   trace=0, tracefeat='',
                   result_limit=5, timeit=False, timeout=TIMEOUT):
-        """Return the output for all paths through the FST for the input and initial weight. (MG)"""
+        """
+        Return the output for all paths through the FST for the input and
+        initial weight. (MG)
+        """
 #        print("{} transducing {}".format(self.__repr__(), input))
 #        print(" init weight {}".format(init_weight.__repr__()))
 #        print(" result limit {}".format(result_limit))
@@ -2587,8 +2592,17 @@ class FST:
             # output[1] is output string (if success)
             # output[2] is accumulated weight (if success)
             # There can be failures and duplicate successes
-            if len(result) >= result_limit:
+#            anals = set()
+#            for res in result:
+#                anals.add(res[1])
+#            if words:
+#                print("words {}".format(words))
+            if len(words) >= result_limit:
+                # Changed 2020.10.11 so that the list of unique words is
+                # checked instead of the list of results (which could include
+                # lots of duplication)
 #                print("Exceeded {}".format(result_limit))
+#                print("Words {}".format(words))
 #                print("Result {}".format(result))
                 break
             if output[1] and (output not in result):
@@ -2627,8 +2641,10 @@ class FST:
             else:
                 # no weight, just (joined) output string
                 res.append(r[1])
+#        print("sorted {}".format(res))
         # Group results by output string before returning
         res = self.consolidate(res)
+#        print("consolidated {}".format(res))
         if timeit:
             print('Transduction took {} seconds'.format(time.time()-t1))
 #        if self.cascade and self.cascade.reverse:
@@ -2637,8 +2653,10 @@ class FST:
         return res
 
     def print_output(self, word, prefixes=None):
-        """For generation, we may want to print output words, possibly with other words
-        or morphemes prefixed to them, immediately."""
+        """
+        For generation, we may want to print output words, possibly with other words
+        or morphemes prefixed to them, immediately.
+        """
         if prefixes:
             for p in print_prefixes:
                 print(p + word)
@@ -2646,7 +2664,9 @@ class FST:
             print(word)
 
     def consolidate(self, out_weights):
-        """For transduction output list, consolidate weights for the same output (MG)."""
+        """
+        For transduction output list, consolidate weights for the same output (MG).
+        """
         if len(out_weights) > 1 and every(lambda x: isinstance(x, list), out_weights):
             dct = {}
             for out, weight in out_weights:

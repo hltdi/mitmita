@@ -8,18 +8,18 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2020; PLoGS <gasser@indiana.edu>
-#   
+#   Copyleft 2020, 2021; PLoGS <gasser@indiana.edu>
+#
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
 #   published by the Free Software Foundation, either version 3 of
 #   the License, or (at your option) any later version.
-#   
+#
 #   This program is distributed in the hope that it will be useful,
 #   but WITHOUT ANY WARRANTY; without even the implied warranty of
 #   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #   GNU General Public License for more details.
-#   
+#
 #   You should have received a copy of the GNU General Public License
 #   along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
@@ -43,9 +43,15 @@ def load(train=False):
     return amh, sgw
 
 def tra(oracion, html=False, user=None, choose=False, verbosity=0):
-    return ora(oracion, user=user, max_sols=2, translate=True,
+    return sent(oracion, user=user, max_sols=2, translate=True,
                connect=True, generate=True, html=html, choose=choose,
                verbosity=verbosity)
+
+# test sentences, including named entities
+T1 = "በቀለም ደረሰ።"
+T2 = "እደብረ ብርሃን ደረስን።"
+T3 = "በጊ መጣች።"
+T4 = "የበጊ ቤት ነው።"
 
 ## Creation (and optionally translation) of simple sentences.
 

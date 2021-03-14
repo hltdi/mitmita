@@ -6,7 +6,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2019 PLoGS <gasser@indiana.edu>
+#   Copyleft 2019, 2021 PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -29,7 +29,7 @@
 
 import re
 
-from .utils import clean_sentence
+from .utils import clean_sentence, remove_tags
 
 from . import get_domains_texts
 
@@ -201,7 +201,8 @@ class GUI:
             self.doc_tra[index] = self.tra
         else:
             self.fue_seg_html = ''.join([s[-1] for s in self.tra_seg_html])
-            self.tra = clean_sentence(' '.join([s[4] for s in self.tra_seg_html]), cap)
+            self.tra = \
+            clean_sentence(' '.join([s[4] for s in self.tra_seg_html]), cap)
 #        GUI.clean_sentence(' '.join([s[4] for s in self.tra_seg_html]), cap)
             if isdoc:
                 self.doc_tra_html[index] = self.tra_seg_html

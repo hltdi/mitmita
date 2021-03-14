@@ -6,7 +6,7 @@
 #   for parsing, generation, translation, and computer-assisted
 #   human translation.
 #
-#   Copyleft 2019, 2020 PLoGS <gasser@indiana.edu>
+#   Copyleft 2019, 2020, 2021 PLoGS <gasser@indiana.edu>
 #
 #   This program is free software: you can redistribute it and/or
 #   modify it under the terms of the GNU General Public License as
@@ -76,7 +76,7 @@ def solve(isdoc=False, choose=False, index=0, source=''):
         GUI.init_sent(index, choose=False, isdoc=isdoc, trans=trans, source=source)
     else:
         GUI.segs, GUI.tra_seg_html = gui_trans(GUI, choose=False)
-#    print("Solved segs: {}, html: {}".format(SEGS, SEG_HTML))
+#        print("Solved segs: {}, html: {}".format(GUI.segs, GUI.tra_seg_html))
         GUI.init_sent(index, choose=False, isdoc=isdoc)
     if isdoc and not choose:
         GUI.update_doc(index, choose=False)

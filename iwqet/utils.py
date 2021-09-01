@@ -148,6 +148,12 @@ def firsttrue(predicate, seq):
         if  px:
             return x
 
+def flatten(list_of_lists):
+    """
+    Flatten a list of lists. Returns a list.
+    """
+    return list(chain.from_iterable(list_of_lists))
+
 ### Measure the size of an object (recursively)
 
 def total_size(o, handlers={}, verbose=False):

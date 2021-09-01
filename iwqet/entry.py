@@ -1806,6 +1806,17 @@ class MorphoSyn(Entry):
         if verbosity > 1 or self.debug:
             print(" {} enforcing constraints for match {}/{} {}, {}".format(self, start, end, elements, tokens))
         # Exclude the source features
+        if self.add_items:
+#            print("Warning: Adding items in Morphosyn not yet implemented!")
+            for i, item in self.add_items:
+                if verbosity > 1 or self.debug:
+                    print(" Adding item {} in position {}".format(item, i))
+                if tokens:
+                    tokens.insert(i, item)
+                    new_feats = TOPFSS.copyFSS()
+                    new_elem = ['+' + item, [new_feats], [{'features': new_feats, 'root': item}]]
+                    elements.insert(i, new_elem)
+
         if self.agr:
             srci, trgi, feats = self.agr
 #            print(" Agr {} {} {}".format(srci, trgi, feats))
@@ -1836,6 +1847,7 @@ class MorphoSyn(Entry):
                             print("    Result of agreement: {}".format(trg_feats.__repr__()))
                         # Only do this for the first set of src_feats that succeeds
                         break
+
         if self.del_indices:
             for i, j in self.del_indices:
                 elements[i][0] = Token.del_char + elements[i][0]
@@ -1845,11 +1857,6 @@ class MorphoSyn(Entry):
                     tokens[i].delete = True
                 if j != -1:
                     elements[i][2][0]['target'] = j-i
-
-        if self.add_items:
-            print("Warning: Adding items in Morphosyn not yet implemented!")
-            for i, item in self.add_items:
-                print("Adding item {} in position {}".format(item, i))
 
         if self.featmod:
             # Modify features in indexed element
@@ -1888,13 +1895,37 @@ class MorphoSyn(Entry):
         m_index = 0
         s_index = start
         negindices = self.neg_matches
-        for s_elem in sentence.analyses[start:end]:
+        # Elements to be added to sentence.analyses: (index, element)
+        to_insert = []
+        while s_index < end:
+#        for s_elem in sentence.analyses[start:end]:
+            m_elem = m_elements[m_index]
+            m_token = m_elem[0]
+            if m_token[0] == '+':
+                print("  M element {} is to be added".format(m_elem))
+                print("  before S element in position {}".format(s_index))
+#                m_feats_list = m_elem[1]
+                m_anals = m_elem[2]
+                # Replace the features with the possibly changed second
+                # element of match elements (UGLY!)
+                m_anals[0]['features'] = m_elem[1][0]
+                # Remove the +
+                mtok = m_token[1:]
+                new_s_elem = [mtok, m_anals]
+                new_s_token = SentToken(mtok, Token.add_char, sentence, False)
+                print("  New S element {}, S token {}".format(new_s_elem, new_s_token))
+                # append to the beginning of to_insert
+                to_insert.insert(0, (s_index, new_s_elem, new_s_token))
+                m_index += 1
+                continue
+            s_elem = sentence.analyses[s_index]
+#            print ("  M index {}, s index {}, m elem {}".format(m_index, s_index, m_elem))
+#        for s_elem in sentence.analyses[start:end]:
             s_token = s_elem[0]
             if Token.del_token(s_token):
                 s_index += 1
                 # Skip this sentence element; don't increment m_index
                 continue
-            m_elem = m_elements[m_index]
             if m_index in negindices:
                 if verbosity > 1 or self.debug:
                     print(" Negative match: m_elem {}, s_elem {}, m_index {}".format(m_elem, s_elem, m_index))
@@ -1932,6 +1963,13 @@ class MorphoSyn(Entry):
                 new_s_anals = s_anals
             s_elem[1] = new_s_anals
             s_index += 1
+        # If any elements are to be inserted, do that now
+        # Indices are in reverse order so indices aren't messed up during insertion
+        for s_index, new_s_elem, new_s_token in to_insert:
+#            print("  Inserting {}; {}".format(new_s_elem, new_s_token))
+            sentence.analyses.insert(s_index, new_s_elem)
+            sentence.tokens.insert(s_index, new_s_token.fullname)
+            sentence.toks.insert(s_index, new_s_token)
         # Swap sentence.analyses and tokens elements if there are swap_indices in the MS
         # This has to take into consideration deleted elements, so it's a little ugly.
         # Basically swapping should be avoided in Morphosyns if at all possible.

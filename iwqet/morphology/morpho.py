@@ -111,7 +111,7 @@ class Morphology(dict):
         text = self.punc_before_re.sub(self.punc_sub, text)
         return text
 
-    def is_word(self, word, simple=False, ortho=True):
+    def is_unal_word(self, word, simple=False, ortho=True):
         """Is word an unanalyzable word?"""
         if ortho and word in self.punctuation:
             return word
@@ -579,6 +579,26 @@ class POS:
         if self.get_fst(generate, guess, segment=segment):
             # FST found one way or another
             return True
+
+    def pickle_all(self, replace=True):
+        """
+        Pickle the FSTs for this POS. If replace is False, don't
+        replace existing pickles.
+        """
+        directory = self.morphology.get_fst_dir()
+        anal = self.anal_fst
+        gen = self.gen_fst
+        guesser = self.anal_guess
+#        anals = self.fsts[0]
+#        gens = self.fsts[1]
+#        for fst in anals:
+        if anal:
+            FST.pickle(anal, directory=directory, replace=replace)
+#        for fst in gens:
+        if gen:
+            FST.pickle(gen, directory=directory, replace=replace)
+        if guesser:
+            FST.pickle(guesser, directory=directory, replace=replace)
 
     def save_fst(self, generate=False, guess=False,
                  phon=False, segment=False, features=True):

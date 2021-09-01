@@ -340,12 +340,12 @@ span.instruction
    font-size: 110%;
    font-style: italic;
 }
-span.alternar
+span.alternate
 {
     font-size: 100%;
     cursor: default;
 }
-span.alternar:hover
+span.alternate:hover
 {
     text-decoration: underline;
     cursor: pointer;
@@ -440,16 +440,6 @@ input.menu:hover, input.menu:active, input.menu:focus
     color: #CB6027;
     border: none;
     outline: none;
-}
-input.trad
-{
-    color: black;
-    font-size: 88%;
-    text-align: center;
-    width: 185px;
-    height: 22px;
-    margin-top: 3px;
-    margin-bottom: 3px;
 }
 button.menu
 {

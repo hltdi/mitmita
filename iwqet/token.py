@@ -37,6 +37,7 @@ class Token:
     spec_sep_char = '~'
     del_char = '~'
     ungen_char = '*'
+    add_char = "+"
 
     def __init__(self, name='', prefix='', parent=None):
         self.name = name
@@ -81,6 +82,19 @@ class Token:
         return token[0] == Token.ungen_char
 
     @staticmethod
+    def is_target(token):
+        """Is this an introduced target language token?"""
+        return token[0] == Token.add_char
+
+    @staticmethod
+    def is_root(token):
+        """
+        Is this a noun, verb, or adjective root?
+        Does it contain '_', and is the part after '_' non-empty?
+        """
+        return '_' in token and token.split('_')[-1]
+
+    @staticmethod
     def special_prefix(token, check=False):
         """If this is a special token, return its prefix (what precedes ~)."""
         if not check or Token.is_special(token):
@@ -109,6 +123,22 @@ class Token:
             prefix = ''
             name = token
         return prefix, name
+
+class RootToken(Token):
+    """
+    Root tokens, e.g., sbr_v.
+    """
+
+    @staticmethod
+    def get_POS(token):
+        """Token may be something like guata_, guata_v, ber__n."""
+        if Token.is_special(token) or '_' not in token:
+            return token, None
+        for pos in ['v', 'a', 'n', 'nm', 'n_v', 'cop', 'nm_pl', 'nm_prs']:
+            if token.endswith('_' + pos):
+                root, p, x = token.rpartition('_' + pos)
+                return root, pos
+        return token, None
 
 class SentToken(Token):
     """Sentence tokens."""

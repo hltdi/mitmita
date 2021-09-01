@@ -68,7 +68,7 @@ from .cs import *
 from .morphology.semiring import FSSet
 # needed for a few static methods
 from .entry import Group
-from .token import Token, JoinToken
+from .token import Token, JoinToken, RootToken
 from .record import SegRecord
 from .utils import *
 from iwqet.morphology.utils import reduce_lists
@@ -566,10 +566,10 @@ class Seg:
         cap = first and self.sentence.capitalized
         tokstr = self.original_token_str
         tokstr = clean_sentence(tokstr, capitalize=cap)
-        self.source_html = "<span class='fuente' style='color:{};'> {} </span>".format(self.color, tokstr)
+        self.source_html = "<span class='source' style='color:{};'> {} </span>".format(self.color, tokstr)
 
     def get_gui_source(self, paren_color='Silver'):
-        return "<span class='fuente' style='color:{};'> {} </span>".format(self.color, self.token_str)
+        return "<span class='source' style='color:{};'> {} </span>".format(self.color, self.token_str)
 
 #    def get_trans_strings(self, index, first=False, choose=False, verbosity=0):
 #        """Get the final translation strings for this Seg."""
@@ -614,7 +614,7 @@ class Seg:
             multtrans = False
         for tcindex, tchoice in enumerate(self.final):
             # ID for the current choice item
-            choiceid = 'opcion{}.{}'.format(index, trans_choice_index)
+            choiceid = 'option{}.{}'.format(index, trans_choice_index)
             # The button itself
             if tcindex == 0:
                 trans1 = tchoice
@@ -632,7 +632,7 @@ class Seg:
                 if trans_choice_index == 1:
                     # Start menu list
                     transhtml += "<div id='{}' class='content-dropdownable'>".format(dropdown)
-                transhtml += "<div class='segopcion' id='{}' onclick='changeTarget(".format(choiceid)
+                transhtml += "<div class='segoption' id='{}' onclick='changeTarget(".format(choiceid)
                 transhtml += "\"{}\", \"{}\")'".format(boton, choiceid)
                 transhtml += "><span class={}>{}</span></div>".format(target_abbrev, tchoice)
             trans_choice_index += 1
@@ -805,8 +805,10 @@ class Segment(Seg):
     """
 
     def __init__(self, segmentation, indices, translation, tokens,
-                 treetrans=None, sfeats=None, tgroups=None,
-                 head=None, tok=None, spec_indices=None, session=None,
+                 treetrans=None, tgroups=None,
+#                 sfeats=None, head=None,
+                 tok=None, spec_indices=None, session=None,
+                 shead=None, scats=None,
                  color=None, space_before=1,
                  gname=None, is_punc=False):
         Seg.__init__(self, segmentation)
@@ -819,6 +821,11 @@ class Segment(Seg):
             self.shead_index = 0
             self.shead = [(ttroot, ttfeats, ttpos)]
             self.scats = ttcats or set()
+        if shead:
+#            print("*shead {}".format(shead))
+            self.shead_index = 0
+            self.shead = shead
+            self.scats = scats
 #        if sfeats:
 #            sfeat_dict = sfeats[0]
 #            self.shead_index = 0
@@ -952,6 +959,12 @@ class SNode:
         self.translations = []
         ## Groups found during candidate search
         self.group_cands = []
+        self.target = False
+        self.root = False
+        if self.is_target():
+            self.target = True
+        if self.is_root():
+            self.root = True
 
     def __repr__(self):
         """Print name."""
@@ -976,6 +989,14 @@ class SNode:
     def is_special(self):
         """Is this 'special' (for example, a number)?"""
         return Token.is_special(self.token)
+
+    def is_target(self):
+        """Is this a node with a target token (added by a Morphosyn)?"""
+        return self.token and Token.is_target(self.token)
+
+    def is_root(self):
+        """Is this a target adj/n/v root node?"""
+        return self.token and Token.is_root(self.token)
 
     def get_pos(self):
         """Get the POSs for the analyses."""
@@ -1038,6 +1059,20 @@ class SNode:
                 else:
                     features.append(FeatStruct({}))
         return features
+
+    def get_translation(self):
+        """For 'target' SNodes, find the root and features for the translation."""
+        if not self.target:
+            return []
+        if self.analyses:
+            analysis = self.analyses[0]
+            root = analysis.get('root', '')
+            features = analysis.get('features', '')
+            if root and features and self.root:
+                root, pos = root.split('_')
+                return [root, pos, features]
+            return [root]
+        return []
 
     def neg_match(self, grp_specs, verbosity=0, debug=False):
         """Does this node match a negative group condition, with grp_spec
@@ -1757,16 +1792,21 @@ class TreeTrans:
             feat_index = len(self.node_features)
             self.node_features.append([tnode.token, ('', features), index])
 
-    @staticmethod
-    def get_root_POS(token):
-        """Token may be something like guata_, guata_v, Ty_q_v."""
-        if Token.is_special(token) or '_' not in token:
-            return token, None
-        root, x, pos = token.rpartition("_")
-        if pos not in ['v', 'a', 'n']: # other POS categories possible?
-            # the '_' is part of the word itself
-            return token, None
-        return root, pos
+    # @staticmethod
+    # def get_root_POS(token):
+    #     """Token may be something like guata_, guata_v, ber__n."""
+    #     if Token.is_special(token) or '_' not in token:
+    #         return token, None
+    #     for pos in ['v', 'a', 'n', 'nm', 'n_v']:
+    #         if token.endswith('_' + pos):
+    #             root, x, pos = token.rpartition('_' + pos)
+    #             return root, pos
+    #     return token, None
+#        root, x, pos = token.rpartition("_")
+#        if pos not in ['v', 'a', 'n', 'nm', 'n_v']: # other POS categories possible?
+#            # the '_' is part of the word itself
+#            return token, None
+#        return root, pos
 
     def do_agreements(self, limit_forms=True, verbosity=0):
         """Do intra-group agreement constraints."""
@@ -1797,7 +1837,7 @@ class TreeTrans:
                 self.node_features[feat_index2][1] = af2
         for token, features, index in self.node_features:
             pos, feats = features[0]
-            root, rpos = TreeTrans.get_root_POS(token)
+            root, rpos = RootToken.get_POS(token)
             if not pos:
                 # There could be a POS specified
                 pos = rpos

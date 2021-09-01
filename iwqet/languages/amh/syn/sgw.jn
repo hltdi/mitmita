@@ -1,5 +1,0 @@
-## Nouns and noun phrases
->> n1
-# ያለ precedes, ኤባር follows noun
-Ebar :: ኤባር &n ; ^1 ; >1 0
-NnaN :: [pos=n,cnj=na] [pos=n] ; 0[cnj=m] ; 1[cnj=m] ; ^0

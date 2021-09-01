@@ -95,7 +95,9 @@ def start(gui, use_anon=True, create_memory=False):
         gui.session = iwqet.Session(source=gui.source, target=gui.target, user=gui.user)
 
 def load(source='amh', target='sgw', gui=None):
-    """Cargar lenguas fuente y meta para traducción."""
+    """
+    Load source and target languages for translation.
+    """
     s, t = iwqet.Language.load_trans(source, target)
     if gui:
         gui.source = s
@@ -104,8 +106,8 @@ def load(source='amh', target='sgw', gui=None):
 def doc_sentences(doc=None, textobj=None, text='', textid=-1,
                   gui=None, src=None, targ=None, user=None, verbosity=0):
     """
-    Recopilar oraciones (instancias de Sentence) de una instancia
-    de Document o Text.
+    Collect sentences (instances of Sentence) from an instance
+    of Document or Text.
     """
     if not src and not targ:
         if gui:
@@ -121,9 +123,11 @@ def doc_trans(doc=None, textobj=None, text='', textid=-1, docpath='',
               gui=None, src=None, targ=None, session=None, user=None,
               terse=True):
     """
-    Traducir todas las oraciones en un documento sin ofrecer opciones
-    al usuario. O doc es una instancia de Documento o textobj es una instancia
-    de Text o un Documento es creado con text como contenido."""
+    Translate all the sentences in a document without offering
+    options to the user.
+    doc is either an instance of Document or textobj is an instance
+    of Text or a Document is created with text as content.
+    """
     if not src and not targ:
         if gui:
             src = gui.source; targ = gui.target
@@ -174,9 +178,12 @@ def አረፍተነገር(text='', src=None, targ=None, user=None, session=None,
             html=False, choose=False,
             return_string=False, verbosity=0, terse=False):
     """
-    Analizar y talvez también traducir una oración del castellano al guaraní.
+    Analyze and possibly also translate a sentence from Amharic to Chaha.
     """
     if not src and not targ:
+#        src = iwqet.Language.languages.get('amh')
+#        targ = iwqet.Language.languages.get('sgw')
+#        if not src:
         src, targ = Language.load_trans('amh', 'sgw', train=False)
     if not session:
         session = make_session(src, targ, user, create_memory=True)
@@ -217,7 +224,7 @@ def አረፍተነገር(text='', src=None, targ=None, user=None, session=None,
 
 def make_document(gui, text, html=False):
     """
-    Create a Mainumby Document object with the source text, which
+    Create a Mitmita Document object with the source text, which
     could be a word, sentence, or document.
     """
     print("CREATING NEW Document INSTANCE.")

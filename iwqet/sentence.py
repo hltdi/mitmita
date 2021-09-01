@@ -152,7 +152,7 @@ import copy, re, random, itertools, os
 from .ui import *
 from .segment import *
 from .record import SentRecord, Session
-from .token import Token
+from .token import Token, RootToken
 from .utils import remove_control_characters, firsttrue, is_capitalized, clean_sentence
 
 class Document(list):
@@ -1106,6 +1106,10 @@ class Sentence:
                     # Then run MorphoSyns on analyses to collapse syntax into morphology where relevant for target
             if verbosity:
                 print("Running Morphosyns for {} on {}".format(self.language, self))
+
+            # Before checking Morphosyns, adjust POSs if applicable
+            self.adjust_pos()
+
             for mi, ms in enumerate(self.language.ms):
                 # If ms applies and is "ambiguous", create a new copy of the sentence and add to altsyns
                 # (this happens in MorphoSyn)
@@ -1117,9 +1121,42 @@ class Sentence:
                     for ms1 in self.language.ms[mi+1:]:
                         ms1.apply(scopy, ambig=ambig, verbosity=verbosity, terse=terse)
 
+    def adjust_pos(self):
+        """
+        Adjust source POSs if necessary.
+        """
+        for token, analyses in self.analyses:
+            for index, analysis in enumerate(analyses):
+                anal = analysis.get('features')
+                if anal:
+                    root = analysis.get('root')
+                    spos = RootToken.get_POS(root)[1]
+                    # Assume that only the first POS matters
+                    new_pos = self.language.adapt_POS(spos, self.target, anal)[0][0]
+                    if new_pos != anal.get('pos'):
+#                        print("Adjusting POS for {}:{}:{}".format(root, spos, anal.__repr__()))
+#                        print("Found new_pos {}".format(new_pos))
+                        new_anal = set()
+                        change = False
+                        for fs in anal:
+                            if 'pos' in fs and fs['pos'] == new_pos:
+                                new_anal.add(fs)
+                                continue
+                            fs = fs.unfreeze()
+                            fs['pos'] = new_pos
+                            fs.freeze()
+                            change = True
+                            new_anal.add(fs)
+                        if change:
+                            new_anal = FSSet(new_anal)
+    #                        print("New anal {}".format(new_anal.__repr__()))
+                            analysis['features'] = new_anal
+
     def adjust_tags(self, tags):
-        """Add noun tags to capitalized words and maybe other stuff.
-        THIS SHOULD BE LANGUAGE/TAGGER SPECIFIC."""
+        """
+        Add noun tags to capitalized words and maybe other stuff.
+        THIS SHOULD BE LANGUAGE/TAGGER SPECIFIC.
+        """
         for index, (token, tag) in enumerate(tags):
             newtag = None
             if not tag:
@@ -1179,8 +1216,11 @@ class Sentence:
         return analyses
 
     def merge_POS(self, tagged, analyzed, verbosity=0):
-        """Merge the output of an external tagger and the morfo analyzer. Use the tagger to
-        disambiguate analyses, preferring the analysis if there's only one."""
+        """
+        Merge the output of an external tagger and the morfo analyzer.
+        Use the tagger to
+        disambiguate analyses, preferring the analysis if there's only one.
+        """
         if verbosity:
             print("Merging tagger and analyzer results for {}".format(self))
         results = []
@@ -1249,7 +1289,8 @@ class Sentence:
         return results
 
     def nodify(self, incl_del=False, verbosity=0):
-        """Create nodes for sentence.
+        """
+        Create nodes for sentence.
         2015.10.17: Split off from tokenize().
         2019.05.25: Added Token instances.
         2020.09.09: Fixed issue with deleted tokens following head
@@ -1382,6 +1423,8 @@ class Sentence:
             return
         candidates = []
         for index, node in enumerate(self.nodes):
+            if node.target:
+                continue
             # Get keys into lexicon for this node
             keys = node.tok.get_keys(index)
             # Add root key
@@ -1488,22 +1531,89 @@ class Sentence:
         # Number of GNodes
         self.ngnodes = sent_index
         # Record uncovered snodes
-        covered = {}
+#        covered = {}
+        covered_gnodes = {}
         for gnode in self.gnodes:
             si = gnode.snode_indices
+#            print("Associated gnode {} with snodes {}".format(gnode, si))
+#            print(" GNode anals: {}".format(gnode.snode_anal))
+#            print(" GNode features: {}".format(gnode.features.__repr__()))
             for i in si:
-                if i not in covered:
-                    covered[i] = []
-                covered[i].append(gnode.sent_index)
+                if i not in covered_gnodes:
+#                    covered[i] = []
+                    covered_gnodes[i] = []
+#                covered[i].append(gnode.sent_index)
+                covered_gnodes[i].append(gnode)
+        # for gnode in self.gnodes:
+        #     si = gnode.snode_indices
+        #     for i in si:
+        #         if i not in covered:
+        #             covered[i] = []
+        #         covered[i].append(gnode.sent_index)
         for snode in self.nodes:
-            gnodes = covered.get(snode.index, [])
-            snode.gnodes = gnodes
+#            gnode_indices = covered.get(snode.index, [])
+            gnodes = covered_gnodes.get(snode.index, [])
+            snode.gnodes = [gnode.sent_index for gnode in gnodes] #gnode_indices
+#            print("Associated snode {} with gnodes {}".format(snode, gnodes))
+#            if gnode_indices:
             if gnodes:
                 self.covered_indices.append(snode.index)
+                self.filter_snode_anals(snode, gnodes)
+        # for snode in self.nodes:
+        #     gnodes = covered.get(snode.index, [])
+        #     snode.gnodes = gnodes
+        #     if gnodes:
+        #         self.covered_indices.append(snode.index)
+        #         self.filter_snode_anals(snode, gnodes)
+            else:
+                nanals = snode.analyses
+                nfeats = []
+                for nanal in nanals:
+#                    print(nanal)
+                    a = nanal['features']
+                    if a:
+                        aroot = nanal['root']
+                        apos = nanal.get('pos')
+                        if apos == 'n':
+                            nfeats.append(nanal)
+                if nfeats:
+                    print("SNode {} has no group but N analysis {}".format(snode, nfeats))
         self.get_group_dependencies()
         self.get_group_sindices()
         self.get_group_conflicts()
         self.get_incompat_groups()
+
+    def filter_snode_anals(self, snode, gnodes):
+        """
+        Remove any analyses from SNode that are not compatible with the
+        associated GNodes.
+        """
+#        print("Filtering {} by {}".format(snode, gnodes))
+        snode_anals = snode.analyses
+        gnode_anals = [gnode.snode_anal for gnode in gnodes]
+        filtered = []
+        for sanal in snode_anals:
+            # this is a dict with keys 'root' 'features', and 'pos'
+            sroot = sanal.get('root')
+            sfeats = sanal.get('features')
+            spos = sanal.get('pos')
+            for ganals in gnode_anals:
+#                print("ganals {}".format(ganals))
+                for ganal1 in ganals:
+                    for ganal in ganal1:
+                        # this is a tuple: root, features, gpos, gcats
+                        groot, gfeats, gpos, gcats = ganal
+                        if groot != sroot:
+#                            print("{} fails to match {}".format(sroot, groot))
+                            continue
+#                        print("Comparing {} ({}) with {} ({})".format(sfeats.__repr__(),
+#                                                                  type(sfeats),
+#                                                                  gfeats.__repr__(),
+#                                                                  type(gfeats)))
+                        if sfeats.unify(gfeats):
+#                            print(" MATCH")
+                            filtered.append(sanal)
+        snode.analyses = filtered
 
     def get_group_sindices(self):
         """
@@ -2397,7 +2507,8 @@ class Segmentation:
                 tsnode = tt.snodes[thindex]
                 ttok = tsnode.tok
                 tcats = tsnode.cats
-                head = (thindex, ttoken, tcats, ttok)
+                tgnodefeats = [x[1] for x in tt.sol_gnodes_feats]
+                head = (thindex, ttoken, tcats, ttok, tgnodefeats)
                 raw_indices = []
                 for index in indices:
                     node = self.sentence.nodes[index]
@@ -2424,6 +2535,9 @@ class Segmentation:
         if not src_toks:
             src_toks = [None] * len(src_tokens)
         for stoken, stok, sfeats in zip(src_tokens, src_toks, src_feats):
+            # *** for some reason we only need the first one
+            if sfeats:
+                sfeats = sfeats[0]
             if not stoken:
                 # empty sentence final token
                 continue
@@ -2462,19 +2576,43 @@ class Segmentation:
                 translation = [self.target.punc_postproc(stok_group[0])]
             else:
                 translation = []
+            is_target = False
             start = i0
             end = i0+len(stok_group)-1
-            indices = list(range(start, end+1))
-            node_toktype = [self.sentence.get_node_by_raw(i).toktype for i in range(start, end+1)][0]
+            g_range = range(start, end+1)
+            indices = list(g_range)
+            snodes = [self.sentence.get_node_by_raw(i) for i in g_range]
+            node_toktype = [node.toktype for node in snodes][0]
             space_before = 1
             if node_toktype == 2:
                 space_before = 0
+            if len(snodes) == 1 and snodes[0].target:
+#                print("**Creating target Segment for {}".format(snodes[0]))
+                snode = snodes[0]
+                translation = [snode.get_translation()]
+                if snode.root:
+                    translation = [translation]
+                is_target = True
+#            print("** sfeat_group {}".format(sfeat_group))
+            sfeats=sfeat_group[0]
+            if sfeats:
+#                print("** sfeats {}".format(sfeats))
+                shead = [(sfeats.get('root'), None, sfeats.get('pos'))]
+                scats = sfeats.get('cats', set())
+            else:
+                shead = scats = None
             seg = Segment(self, indices, translation, stok_group, session=self.session,
-                          gname=None, sfeats=sfeat_group[0], tok=stokhead,
-                          space_before=space_before,
+                          gname=None,
+                          shead=shead, scats=scats,
+#                          sfeats=sfeat_group[0],
+                          tok=stokhead, space_before=space_before,
                           is_punc=is_punc)
             if not terse:
-                print("Segment (untranslated) {}->{}: {}={} ({})".format(start, end, stok_group, seg.translation, seg.head_tok))
+                if is_target:
+                    s = "Segmento (sin palabra fuente) {}->{}: {}={} ({})"
+                else:
+                    s = "Segmento (no traducido) {}->{}: {}={} ({})"
+                print(s.format(start, end, stok_group, seg.translation, seg.head_tok))
             self.segments.append(seg)
             newsegs.append(seg)
             i0 += len(stok_group)
@@ -2522,15 +2660,16 @@ class Segmentation:
                     print("Something wrong with position {}, should be in {}".format(tokindex, raw_indices))
             src_tokens = pre_paren
             src_nodes = [sentence.get_node_by_raw(index) for index in range(start, end+1)]
-            src_feats = [(s.analyses if s else None) for s in src_nodes]
-#            for sf in src_feats:
-#                for ssff in sf:
-#                    print("** {}".format(ssff))
+#            src_feats = [(s.analyses if s else None) for s in src_nodes][head_index][0]
+            src_feats = [(s.analyses if s else None) for s in src_nodes][head_index][0]
+            shead = [(src_feats.get('root'), thead[-1], src_feats.get('pos'))]
+            scats = src_feats.get('cats', set())
             seg = Segment(self, raw_indices, forms, src_tokens,
                           treetrans=treetrans,
                           session=self.session, gname=gname,
-                          sfeats=src_feats[head_index],
-                          tgroups=tgroups, head=thead, tok=thead[-1])
+                          shead=shead, scats=scats,
+#                          sfeats=src_feats[head_index], head=thead,
+                          tgroups=tgroups, tok=thead[-2])
             if not terse:
                 print("Segment (translated) {}->{}: {}={} ({})".format(start, end, src_tokens, seg.translation, seg.head_tok))
             self.segments.append(seg)

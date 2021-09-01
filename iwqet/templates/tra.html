@@ -13,7 +13,7 @@ label#upload
     display: inline-block;
     position: relative;
     background-color: #ABD4F2;
-    color: #4B2B17;
+    color: #black;
     font-family: "Verdana";
     font-size: 110%;
     text-align: center;
@@ -39,15 +39,33 @@ td.upload
 td.hide
 {
     text-align: right;
-    font-size: 90%;
+    font-size: 75%;
 }
-td.opciones
+input.trans-mode
+{
+    color: black;
+    font-size: 100%;
+    text-align: center;
+    width: 185px;
+    height: 22px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+td.options
 {
     font-size: 90%;
     font-style: italic;
-    text-align: center;
-    border: 1px solid white;
-    width: 38%;
+//    text-align: center;
+//    padding: 4px;
+//    border: 1px solid #ABD4F2;
+    width: 50%;
+}
+.options-table {
+    width: 100%;
+//  margin-left: auto;
+//  margin-right: auto;
+//  background-color: #CB6027;
+//  border: 2px solid blue;
 }
 td.sinopciones
 {
@@ -100,7 +118,7 @@ div.file table td {
 div#fuente
 {
     font-family: "Verdana";
-    font-size: {% if props.tfuente %} {{props.tfuente}} {% else %} 115% {% endif %};
+    font-size: {% if props.tfuente %} {{props.tfuente}} {% else %} 125% {% endif %};
 //   font-weight: {% if documento %}normal{% else %}bold{% endif %};
     resize: none;
     padding: 8px 8px;
@@ -112,14 +130,14 @@ div#fuente
     border: thin solid;
     overflow-y: auto;
 }
-span.fuente
+span.source
 {
     font-weight: bold;
 }
 div#meta
 {
     font-family: "Zebidar";
-    font-size: {% if props.tfuente and not props.isdoc %} {{props.tfuente}} {% else %} 100% {% endif %};
+    font-size: {% if props.tfuente and not props.isdoc %} {{props.tfuente}} {% else %} 125% {% endif %};
     resize: none;
     padding: 8px 0px 8px 8px;
     line-height: 125%;
@@ -195,7 +213,7 @@ input.filename
 {
    width: 50pt;
 }
-.segopcion {
+.segoption {
     cursor: pointer;
     text-indent: -8px;
     padding-left: 16px;
@@ -210,7 +228,7 @@ div.opcion {
     padding-left: 22px ;
     text-indent: -22px ;
 }
-.segopcion:hover {
+.segoption:hover {
     text-decoration: underline;
 }
 .opcion:hover {
@@ -232,13 +250,6 @@ div.opcion {
 /*    border-style: solid; */
     width: 100%;
 }
-.mode-table {
-  width: 25%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #CB6027;
-/*  border: 2px solid blue; */
-}
 td.mode
 {
     font-size: 100%;
@@ -254,7 +265,7 @@ div.dropdown {
     font-family: "Ethiopic Jiret,Abyssinica SIL";
     background-color: #ABD4F2;
     color: white;
-    font-size: 110%;
+    font-size: 100%;
     padding-left: 5px;
     padding-right: 5px;
     padding-bottom: 2px;
@@ -363,7 +374,7 @@ div.dropdown-right {
     <td class="title" style="width: 0px"></td>
 
     <td class="menu" style="width: 200px">
-      <input class="menu" type="submit" value="ይውጡ" name="salir" onclick="return alSalir();">
+      <input class="menu" type="submit" value="ይውጡ" name="quit" onclick="return quitting();">
     </td>
     <td class="menu" style="width: 200px"><a href="">ስለ ፕሮጄክቱ</a></td>
     <td class="menu" style="width: 200px"><a href="">እርዳታ</a></td>
@@ -386,10 +397,11 @@ div.dropdown-right {
 
 <form id="modo" name="Form0" method="post">
 <div class="modo">
-<table class="mode-table">
+<table class="options-table">
 <tr>
+{#
 <td class='mode'>
-   <span style="font-style:italic">...ለመተርጐም</span><br/>
+   <span style="font-style:italic">...ለማስተርጐም</span><br/>
    <div id="modeWrap">
      <div onclick="dropdownifyMode()" id='mode0' class='dropdownMode'>
        {% if doc %}
@@ -411,29 +423,32 @@ div.dropdown-right {
     </div>
    </div>
 </td>
-{#
-<td class='opciones'>
-    ...ለመተርጐም<br/>
-{% if doc %}
-    <input type="button" class="trad" id="tradsent"
-     style="background-color: #FFFFFF; cursor: pointer"
-     value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች" onclick="alternateSentDoc(false);">
-    <input type="button" class="trad" id="traddoc"
-     style="background-color: #ABD4F2" value="ሰነዶች">
-{% else %}
-    <input type="button" class="trad" id="tradsent"
-     style="background-color: #ABD4F2" value="ቃላት፣ ሐረጎች፣ አረፈተ ነግሮች">
-    <input type="button" class="trad" id="traddoc"
-     style="background-color: #FFFFFF; cursor: pointer"
-     value="ሰነዶች" onclick="alternateSentDoc(true);">
-{% endif %}
-</td>
 #}
+
+<td class='options'>
+{#    ...ለመተርጐም<br/> #}
+{% if doc %}
+    <input type="button" class="trans-mode" id="tradsent"
+     style="background-color: #FFFFFF; cursor: pointer"
+     value="ጽሑፍ" onclick="alternateSentDoc(false);">
+    <input type="button" class="trans-mode" id="traddoc"
+     style="background-color: #ABD4F2; font-weight: bold" value="ሰነድ">
+{% else %}
+    <input type="button" class="trans-mode" id="tradsent"
+     style="background-color: #ABD4F2; font-weight: bold" value="ጽሑፍ">
+    <input type="button" class="trans-mode" id="traddoc"
+     style="background-color: #FFFFFF; cursor: pointer"
+     value="ሰነድ" onclick="alternateSentDoc(true);">
+{% endif %}
+ለማስተርጐም።
+</td>
+
 <td class='hide'>
-    <span id="hide" class="alternar" onclick="alternarInstrucciones();">
+    <span id="hide" class="alternate" onclick="alternateInstructions();">
     {% if props.hide %}መምሪያ ይታይ። {% else %}መምሪያ ይደበቅ።{% endif %}
     </span>
 </td>
+
  </tr>
 </table>
 </div>
@@ -529,7 +544,7 @@ div.dropdown-right {
     <input type="button" value="ይተው" id="button" onclick="abandonarDoc();">
   {% elif oracion %}
     <div class="instruc" id="instruc_fuente">
-      ሌላ አረፍተ ነገር ለመተርጐም፣ መጀመሪያ "ይሰረዝ" ይጫኑ ወይም ደግሞ
+      ሌላ አረፍተ ነገር ለማስተርጐም፣ መጀመሪያ "ይሰረዝ" ይጫኑ ወይም ደግሞ
       እላይ ያለው ቦታ ጠቅ ይበሉ።
     </div>
     <br class='instruc'/>
@@ -564,7 +579,7 @@ div.dropdown-right {
   {% if not tradtodo %}
 {#
     <br class="sep" />
-    <span id="correccion" class="alternar" onclick="alternarCorreccion();">Desactivar corrección ortográfica automática.</span>
+    <span id="correction" class="alternate" onclick="alternateCorrection();">Desactivar corrección ortográfica automática.</span>
     <br class='instruc'/>
 #}
 <textarea class='ometa' id='textmeta'>{{tra|safe}}</textarea>
@@ -588,7 +603,7 @@ div.dropdown-right {
     <input type="button" value="ይካተት" id="button" onclick="aceptarTrad();">
   {% else %}
     <input type="button" value="ይገልበጥ" id="button" onclick="copiar();">
-    <input type="button" value="ይመዝገብ" id="button" onclick="registrar();">
+    <input type="button" value="ይመዝገብ" id="button" onclick="record();">
   {% endif %}
 {% endif %}
 
@@ -597,16 +612,16 @@ div.dropdown-right {
   {% if documento %}
    {% if not tradtodo %}
     <br class="sep" />
-    <span class="level">Documento</span><br />
+    <span class="level">ሰነድ</span><br />
    {% endif %}
     <form name="Form3" id="text-options">
-    <textarea class='dmeta' id='aceptado'>{% if aceptado %}{{aceptado|safe}}{% endif %}</textarea>
+    <textarea class='dmeta' id='accepted'>{% if accepted %}{{accepted|safe}}{% endif %}</textarea>
     <br class='instruc' />
     <input type="submit" value="ማስቀመጥ" id="button"/>
     <label>የፋይል ስም:<input type="text" class="filename" id="text-filename" placeholder="doc.txt" size="50"/></label>
     <input type="hidden" name="hide" value={% if props.hide %}"true"{% else %}"false"{% endif %}>
     <br class='sep' />
-    <input type="button" value="Registrar" id="button" onclick="registrar();">
+    <input type="button" value="Registrar" id="button" onclick="record();">
     </form>
   {% endif %}
 
@@ -632,8 +647,8 @@ div.dropdown-right {
 <input type="hidden" name="tacept" value="">
 <input type="hidden" name="isdoc" value=false>
 <input type="hidden" name="erase" value=false>
-<input type="hidden" name="registrar" value=false>
-<input type="hidden" name="tfuente" value="115%">
+<input type="hidden" name="record" value=false>
+<input type="hidden" name="tfuente" value="125%">
 <input type="hidden" name="ometa" value="">
 <input type="hidden" name="nocorr" value="">
 <input type="hidden" name="hide" value={% if props.hide %}"true"{% else %}"false"{% endif %}>
@@ -650,7 +665,7 @@ div.dropdown-right {
 <script src="{{url_for('static', filename='mammoth.browser.js')}}"></script>
 {% endif %}
 
-{% if aceptado %}
+{% if accepted %}
 <script async="" src="{{url_for('static', filename='FileSaver.js')}}"></script>
 <script async="" src="{{url_for('static', filename='Blob.js')}}"></script>
 <script async="" src="{{url_for('static', filename='SaveDoc.js')}}"></script>
@@ -709,21 +724,21 @@ function longFuente()
     t = t.replace(/<br>/g, "");
     l = t.length;
     if (l > 40) {
-        f.style.fontSize = "115%";
-        document.Form2.tfuente.value = "115%";
+        f.style.fontSize = "125%";
+        document.Form2.tfuente.value = "125%";
     }
 }
 
-function alSalir()
+function quitting()
 {
 //    document.Form2.erase.value = true;
 //    document.Form2.ofuente.value = '';
 //    document.Form2.ometa.value = '';
-//    document.Form2.tfuente.value = "115%";
+//    document.Form2.tfuente.value = "125%";
 //    document.Form1.action = "fin";
 //    document.Form1.target = "_self";     // Misma ventana
 //    document.Form1.submit();             // Enviar la página
-//    document.getElementById("aceptado").innerHTML = "";
+//    document.getElementById("accepted").innerHTML = "";
     return true;
 }
 
@@ -736,9 +751,9 @@ function erase()
     document.Form2.erase.value = true;
     document.Form2.ofuente.value = '';
     document.Form2.ometa.value = '';
-    document.Form2.tfuente.value = "115%";
+    document.Form2.tfuente.value = "125%";
     document.Form2.submit();
-    document.getElementById("aceptado").value = '';
+    document.getElementById("accepted").value = '';
     return true;
 }
 
@@ -749,12 +764,12 @@ function copiar()
     document.execCommand("copy");
 }
 
-function registrar()
+function record()
 {
-    if (document.getElementById("aceptado"))
+    if (document.getElementById("accepted"))
     {
       // Registrar traducción de documento
-      meta = document.getElementById("aceptado").innerHTML;
+      meta = document.getElementById("accepted").innerHTML;
       isdoc = true;
     } else {
       // Registrar traducción de oración
@@ -763,9 +778,9 @@ function registrar()
     }
     document.Form2.ometa.value = meta;
     document.Form2.erase.value = true;
-    document.Form2.registrar.value = true;
+    document.Form2.record.value = true;
     document.Form2.ofuente.value = '';
-    document.Form2.tfuente.value = "115%";
+    document.Form2.tfuente.value = "125%";
     document.Form2.isdoc.value = isdoc;
     document.Form2.action = "tra";
     document.Form2.submit();
@@ -778,9 +793,9 @@ function aceptarTrad()
 //    alert("Aceptando oración " + index + " :: " + trad);
     document.Form2.tacept.value = trad;
     document.Form2.isdoc.value = true;
-    document.Form2.tfuente.value = "100%";
+    document.Form2.tfuente.value = "125%";
     document.Form2.submit();
-    document.getElementById("aceptado").value = '';
+    document.getElementById("accepted").value = '';
 }
 
 function comments()
@@ -791,7 +806,7 @@ function comments()
 //    user_location();
 //    document.Form2.tacept.value = trad;
 //    document.Form2.isdoc.value = true;
-//    document.Form2.tfuente.value = "100%";
+//    document.Form2.tfuente.value = "125%";
 //    document.Form2.submit();
     document.getElementById("comments").value = '';
 }
@@ -815,7 +830,7 @@ function abandonarDoc()
     document.Form2.ofuente.value = '';
     document.Form2.ometa.value = '';
     document.Form2.submit();
-    document.getElementById("aceptado").value = '';
+    document.getElementById("accepted").value = '';
 }
 
 //function traducirTodo()
@@ -972,7 +987,7 @@ function seleccionarOra(sentid, index) {
 //    alert("Scrolltop " + scrolltop);
     document.Form2.ofuente.value = oracion;
     document.Form2.oindex.value = index;
-    document.Form2.tfuente.value = "100%";
+    document.Form2.tfuente.value = "125%";
     document.Form2.isdoc.value = true;
     document.Form2.submit();
 }
@@ -1059,37 +1074,41 @@ function alternateSentDoc(doc) {
       tdoc = document.getElementById("traddoc");
       document.Form0.modo.value = "doc";
       document.Form2.isdoc.value = true;
-      tdoc.style.background = "#8DEDCD";
+      tdoc.style.background = "#ABD4F2";
       tdoc.style.cursor = "default";
-      sent.style.background = "#F5E754";
+      tdoc.style.fontWeight = "normal";
+      sent.style.background = "#FFFFFF";
       sent.style.cursor = "pointer";
+      sent.style.fontWeight = "bold";
       document.Form0.submit();
     } else {
       sent = document.getElementById("tradsent");
       tdoc = document.getElementById("traddoc");
       document.Form0.modo.value = "sent";
       document.Form2.isdoc.value = false;
-      sent.style.background = "#8DEDCD";
+      sent.style.background = "#ABD4F2";
       sent.style.cursor = "default";
-      tdoc.style.background = "#F5E754";
+      sent.style.fontWeight = "normal";
+      tdoc.style.background = "#FFFFFF";
       tdoc.style.cursor = "pointer";
+      tdoc.style.fontWeight = "bold";
       document.Form0.submit();
     }
 }
 
 /* Alternar corrección automática */
-function alternarCorreccion() {
+function alternateCorrection() {
     if (document.Form2.nocorr.value) {
       document.Form2.nocorr.value = "";
-      document.getElementById('correccion').innerHTML = "አጻጻፍ እንዳይታረም።";
+      document.getElementById('correction').innerHTML = "አጻጻፍ እንዳይታረም።";
     } else {
       document.Form2.nocorr.value = "true";
-      document.getElementById('correccion').innerHTML = "አጻጻፍ ይታረም።";
+      document.getElementById('correction').innerHTML = "አጻጻፍ ይታረም።";
     }
 }
 
 /* Alternar hide instrucciones */
-function alternarInstrucciones() {
+function alternateInstructions() {
     var f;
     if (document.Form0.hide.value == "false") {
       document.Form0.hide.value = "true";

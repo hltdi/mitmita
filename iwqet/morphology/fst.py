@@ -22,7 +22,7 @@
 #   WEIGHTED FINITE STATE TRANSDUCERS (copies from HornMorpho and morfo)
 #
 
-import re, os, copy, time, functools, glob
+import re, os, copy, time, functools, glob, pickle
 from collections import deque
 # Required for weights.
 from .semiring import *
@@ -1551,77 +1551,110 @@ class FST:
                         feats[feat].append(value)
 
     @staticmethod
-    def stringify_weights(fst):
-        '''Convert each weight to a string (MG).'''
-        print('Stringifying weights')
-        for arc, weight in fst._weight.items():
-            fst._weight[arc] = weight.__str__()
+    def get_dir(language):
+        """
+        The directory where FSTs, compiled and uncompiled, are stored.
+        """
+        return os.path.join(language.directory, 'fst')
 
     @staticmethod
-    def write(fst, filename=None, directory='',
-              defaultFS='', stringsets=False,
-              features=False, exclude_features=[]):
-        """Write an FST to a file."""
-        if not filename:
-            extension = '.fst'
-            filename = os.path.join(directory, fst + extension)
+    def pickle(fst, language=None, directory='', replace=False):
+        """
+        Dump the FST to a pickle.
+        """
+        directory = directory or FST.get_dir(language)
+        path = os.path.join(directory, fst.label + ".pkl")
+        if not replace and os.path.exists(path):
+            print("Pickle {} exists, not replacing".format(path))
+            return
+        file = open(path, 'wb')
+        pickle.dump(fst, file)
 
-        print('Writing FST to {}'.format(filename))
-        out = open(filename, 'w', encoding='utf-8')
-        # Write the features and values, defaultFS, and stringsets; whether FST is reversed (right-to-left)
-        if fst.r2l():
-            out.write("r2l\n")
-        if features:
-            out.write('features=' + str(fst.get_features(exclude=exclude_features)) + '\n')
-        if defaultFS:
-            out.write('defaultFS=' + defaultFS + '\n')
-        if stringsets:
-            out.write(fst._stringsets.__repr__() + '\n')
-            #            print(fst._stringsets.__repr__(), file=out)
-        # Write the initial and final states
-        out.write('->' + str(fst._initial_state) + '\n')
-        for state in fst.states():
-            if fst.is_final(state):
-                out.write(str(state) + '->\n')
-                # Still need finalizing string and weight
-        for arc in fst.arcs():
-            ## Arc source and dest
-            src_label = str(fst._src[arc])
-            dest_label = str(fst._dst[arc])
-            out.write(src_label + '->' + dest_label)
-            in_string = fst._in_string[arc]
-            out_string = fst._out_string[arc]
-            out.write(' [')
-            if in_string == out_string:
-                if in_string:
-                    out.write(in_string)
-                else:
-                    out.write(':')
-            else:
-                if in_string:
-                    out.write(in_string)
-                out.write(':')
-                if out_string:
-                    out.write(out_string)
-            out.write('] ')
-            ## Arc weights
-            if fst.weighting():
-                weight = fst.arc_weight(arc)
-                weight_repr = weight.__repr__()
-#                Here because there was a problem with strings including commas in FSs
-#                if weight_repr != '[]':
-#                    print("Writing weight for arc {}, {}, {}".format(arc, weight, weight_repr))
-                if isinstance(weight, str):
-                    # String weight
-                    if weight != '':
-                        out.write(weight)
-                elif weight != fst._weighting.one:
-                    # FSSet weight
-#                    if '"' in weight_repr:
-#                        print(weight_repr)
-                    out.write(weight_repr)
-            out.write('\n')
-        out.close()
+    @staticmethod
+    def unpickle(label, language=None, directory=''):
+        """
+        Load the FST from a .pkl file.
+        """
+        directory = directory or FST.get_fst_dir(language)
+        path = os.path.join(directory, label + ".pkl")
+        if not os.path.exists(path):
+#            print("Pickle {} not found!".format(path))
+            return
+        file = open(path, "rb")
+        return pickle.load(file)
+
+#     @staticmethod
+#     def stringify_weights(fst):
+#         '''Convert each weight to a string (MG).'''
+#         print('Stringifying weights')
+#         for arc, weight in fst._weight.items():
+#             fst._weight[arc] = weight.__str__()
+#
+#     @staticmethod
+#     def write(fst, filename=None, directory='',
+#               defaultFS='', stringsets=False,
+#               features=False, exclude_features=[]):
+#         """Write an FST to a file."""
+#         if not filename:
+#             extension = '.fst'
+#             filename = os.path.join(directory, fst + extension)
+#
+#         print('Writing FST to {}'.format(filename))
+#         out = open(filename, 'w', encoding='utf-8')
+#         # Write the features and values, defaultFS, and stringsets; whether FST is reversed (right-to-left)
+#         if fst.r2l():
+#             out.write("r2l\n")
+#         if features:
+#             out.write('features=' + str(fst.get_features(exclude=exclude_features)) + '\n')
+#         if defaultFS:
+#             out.write('defaultFS=' + defaultFS + '\n')
+#         if stringsets:
+#             out.write(fst._stringsets.__repr__() + '\n')
+#             #            print(fst._stringsets.__repr__(), file=out)
+#         # Write the initial and final states
+#         out.write('->' + str(fst._initial_state) + '\n')
+#         for state in fst.states():
+#             if fst.is_final(state):
+#                 out.write(str(state) + '->\n')
+#                 # Still need finalizing string and weight
+#         for arc in fst.arcs():
+#             ## Arc source and dest
+#             src_label = str(fst._src[arc])
+#             dest_label = str(fst._dst[arc])
+#             out.write(src_label + '->' + dest_label)
+#             in_string = fst._in_string[arc]
+#             out_string = fst._out_string[arc]
+#             out.write(' [')
+#             if in_string == out_string:
+#                 if in_string:
+#                     out.write(in_string)
+#                 else:
+#                     out.write(':')
+#             else:
+#                 if in_string:
+#                     out.write(in_string)
+#                 out.write(':')
+#                 if out_string:
+#                     out.write(out_string)
+#             out.write('] ')
+#             ## Arc weights
+#             if fst.weighting():
+#                 weight = fst.arc_weight(arc)
+#                 weight_repr = weight.__repr__()
+# #                Here because there was a problem with strings including commas in FSs
+# #                if weight_repr != '[]':
+# #                    print("Writing weight for arc {}, {}, {}".format(arc, weight, weight_repr))
+#                 if isinstance(weight, str):
+#                     # String weight
+#                     if weight != '':
+#                         out.write(weight)
+#                 elif weight != fst._weighting.one:
+#                     # FSSet weight
+# #                    if '"' in weight_repr:
+# #                        print(weight_repr)
+#                     out.write(weight_repr)
+#             out.write('\n')
+#         out.close()
 
     @staticmethod
     def get_fst_files(fst_name, fst_directory, parts=True):
@@ -1640,6 +1673,7 @@ class FST:
 
     @staticmethod
     def restore(fst_name, cas_directory='', fst_directory='',
+                pickle=True,
                 cascade=None, weighting=UNIFICATION_SR, seg_units=[],
                 # Features determining which FST
                 empty=True, phon=False, segment=False, generate=False, simplified=False,
@@ -1666,6 +1700,10 @@ class FST:
         if generate:
             name += 'G'
             empty_name += 'G'
+        if pickle:
+            fst = FST.unpickle(name, directory=fst_directory)
+            if fst:
+                return fst
         # Look for the full, explicit FST
         explicit = FST.get_fst_files(name, fst_directory)
 #        filename = name + '.fst'

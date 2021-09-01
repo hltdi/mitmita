@@ -89,7 +89,7 @@ class GUI:
         # TOGGLES: isdoc, nocorr, hide, sinopciones
         self.props = {}
         # Default
-        self.props['tfuente'] = "115%"
+        self.props['tfuente'] = "125%"
 
     def init_doc(self):
 #        self.doc_html = self.doc.select_html(index, self.fue_seg_html)
@@ -105,7 +105,7 @@ class GUI:
         self.doc_html = self.doc.html
         self.doc_html_list = self.doc.html_list
         self.props['isdoc'] = True
-        self.props['tfuente'] = "100%" if nsent > 1 else "115%"
+        self.props['tfuente'] = "115%" if nsent > 1 else "125%"
 
     def init_text(self, textid, nsent, html, html_list):
 #        print("Initializing text, nsent: {}".format(nsent))
@@ -125,7 +125,7 @@ class GUI:
         # List of HTML for each source sentence
         self.doc_html_list = html_list
         self.props['isdoc'] = True
-        self.props['tfuente'] = "100%" if nsent > 1 else "115%"
+        self.props['tfuente'] = "115%" if nsent > 1 else "125%"
 
     def doc_unselect_sent(self):
         # Revert to version of doc html with nothing segmented.
@@ -168,7 +168,7 @@ class GUI:
 #        "\n".join([t for t in self.doc_tra_acep if t]).strip()
         self.doc_unselect_sent()
         print("+++New trans string: {}".format(self.doc_tra_acep_str))
-        self.props['tfuente'] = "100%"
+        self.props['tfuente'] = "115%"
 
     def stringify_doc_tra(self):
         """Create a string representation of the currently accepted sentence translations.
@@ -249,7 +249,7 @@ class GUI:
         self.doc_tra_acep_str = ''
         self.doc_select_html = []
         self.props['isdoc'] = isdoc
-        self.props['tfuente'] = "100%" if isdoc else "115%"
+        self.props['tfuente'] = "115%" if isdoc else "125%"
 #        if self.session:
 #            self.session.record(sentrec, translation=translation)
 #        else:

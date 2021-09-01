@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-# Gyez: CAT for Amharic-Guraginya.
+# Gyez: CAT for Amharic-Guragina.
 #
 ########################################################################
 #
@@ -173,11 +173,6 @@ def db_commit():
     Commit all changes during this session.
     """
     iwqet.db.session.commit()
-
-# Load a language for analysis.
-def load_lang(lang='eng'):
-    eng = iwqet.Language.load_lang(lang)
-    return eng
 
 if __name__ == "__main__":
     print("ወደ ጘዝ እንኳን ደህና መጡ! version {}\n".format(__version__))

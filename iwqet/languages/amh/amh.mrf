@@ -16,6 +16,7 @@ posconv:
   v:: sgw: pos=v,tm=prs -> vp,tm=prf,tns=prs; pos=v,tm=pst -> vp,tm=prf,tns=pst
   v:: sgw: pos=v,v=inf -> inf
   n:: sgw: pos=nm_pl -> nm; pos=nm_prs -> nm
+  n:: sgw: pos=nadj -> n ; pos=adj -> n
 
 featcopy:
   n:: sgw: cp, cn, cg, tns
@@ -34,6 +35,7 @@ featconv:
   v:: sgw: ob=[+expl,-p1,-p2] -> op=3
   v:: sgw: ob=[+expl,+fem] -> og=f; ob=[+expl,-plr,-fem] -> og=m
   v:: sgw: ob=[+expl,+plr] -> on=2
+  v:: sgw: ob=[+expl,+b,+prp] -> ot=m; ob=[+expl,+l,+prp] -> ot=b
   n:: sgw: poss=[+expl,+p1] -> pp=1; poss=[+expl,+p2] -> pp=2
   n:: sgw: poss=[+expl,-p1,-p2] -> pp=3
   n:: sgw: poss=[+expl,+fem] -> pg=f; poss=[+expl,-plr,-fem] -> pg=m
@@ -41,13 +43,7 @@ featconv:
   n:: sgw: +def,poss=[-expl],+fem -> +def,+fem; +def,poss=[-expl],-fem -> +def,-fem
   n:: sgw: +gen -> prep=ye; prep=le -> prep=ye; +acc,+def -> prep=ye
   n:: sgw: prep=Inde -> +sim,prep=ye; prep=be -> ; prep=ke -> prep=te
-  v:: sgw: poss=[+expl,+p1] -> pp=1; poss=[+expl,+p2] -> pp=2
-  v:: sgw: poss=[+expl,-p1,-p2] -> pp=3
-  v:: sgw: poss=[+expl,+fem] -> pg=f; poss=[+expl,-fem] -> pg=m
-  v:: sgw: poss=[+expl,+plr] -> pn=2
-  v:: sgw: +def,poss=[-expl] -> +def
-  v:: sgw: +gen -> prep=ye; prep=le -> prep=ye; +acc,+def -> prep=ye
-  v:: sgw: prep=Inde -> +sim,prep=ye; prep=be -> ; prep=ke -> prep=te
+  n:: sgw: prep=wede -> +dir
 
 feats:
 
@@ -118,14 +114,13 @@ feats:
   def = True | False
   dis = True | False
 
-  pos: nm ስም
+#  pos: nm ስም
 
-  pos = nm
-  pp = le | be | Iske | I | Inde | ke | wede | sIle
-  fem = True | False
-  cnj = m | na | s
-  acc = True | False
-  gen = True | False
+#  pp = le | be | Iske | I | Inde | ke | wede | sIle
+#  fem = True | False
+#  cnj = m | na | s
+#  acc = True | False
+#  gen = True | False
 
 trans:
   word = ቃል

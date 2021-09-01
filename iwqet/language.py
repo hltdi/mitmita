@@ -1860,7 +1860,7 @@ class Language:
         to_cache = [] if cache else None
         if self.romanize:
             word = self.romanize(word)
-        unal_word = self.morphology.is_word(word)
+        unal_word = self.morphology.is_unal_word(word)
         # unal_word is a form, POS pair
         if unal_word:
             # Don't cache these
@@ -2082,7 +2082,7 @@ class Language:
         """Add the _ expected for roots."""
         if not root.endswith("_{}".format(pos)):
 #        if '_' not in root:
-            if pos == 'nadj' or pos == 'adj':
+            if pos == 'nadj' or pos == 'adj' or pos.startswith('nm'):
                 pos = 'n'
             root = root + '_' + pos
         return root
@@ -2691,8 +2691,8 @@ class Language:
         """
         # In Amharic features may override the POS provided
         # (needed for verbal nouns), but this doesn't apply
-#        if verbosity:
-        print("Generating {}:{} with POS {}".format(root, features.__repr__(), pos))
+        if verbosity:
+            print("Generating {}:{} with POS {}".format(root, features.__repr__(), pos))
         if not pos:
             # generate() shouldn't have been called in this case!
             print("Warning: no POS for generation of {}:{}".format(root, features.__repr__()))

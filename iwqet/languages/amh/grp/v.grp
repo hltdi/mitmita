@@ -104,7 +104,7 @@
 ->sgw bKy_v[root=[cls=A]]
 ** ly*_v[cls=B]
 ->sgw btr_v[root=[cls=B]]
-** mT'_v[cls=A,vc=smp,ob=[-expl]]
+** mT'_v[cls=A,vc=smp]
 ->sgw try_v[root=[cls=B]]
 ** mls_v[cls=B]
 ->sgw zbr_v[root=[cls=B]]

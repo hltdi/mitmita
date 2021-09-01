@@ -287,17 +287,17 @@ def tra():
         # A new translation to be added to the accepted sentence translations.
 #        print("ACCEPTING NEW TRANSLATION {}".format(form['tacept']))
         GUI.accept_sent(oindex, form['tacept'])
-        aceptado = GUI.doc_tra_acep_str
+        accepted = GUI.doc_tra_acep_str
         return render_template('tra.html', oracion='', doc=True,
                                tra_seg_html='', tra='', oindex=-1,
-                               documento=GUI.doc_html, aceptado=aceptado,
+                               documento=GUI.doc_html, accepted=accepted,
                                user=username, props=GUI.props, choose=False,
                                tradtodo=tradtodo)
     if GUI.doc_tra_acep and GUI.doc_tra_acep[oindex]:
         error = "¡Ya aceptaste una traducción para esta oración; por favor seleccioná otra oración para traducir!"
         return render_template('tra.html', oracion='', doc=True, error=error,
                                tra_seg_html='', tra='',
-                               aceptado=GUI.doc_tra_acep_str,
+                               accepted=GUI.doc_tra_acep_str,
                                docscrolltop=docscrolltop,
                                documento=GUI.doc_html, user=username,
                                props=GUI.props, choose=False, tradtodo=tradtodo)
@@ -313,7 +313,7 @@ def tra():
                                tra_seg_html=tra_seg_html, tra=tra,
                                documento=GUI.doc_html, doc=True, oindex=oindex,
                                docscrolltop=docscrolltop,
-                               aceptado=GUI.doc_tra_acep_str, user=username,
+                               accepted=GUI.doc_tra_acep_str, user=username,
                                props=GUI.props,
                                choose=False, tradtodo=tradtodo)
 
@@ -331,7 +331,7 @@ def tra():
 #            translation = gui_trans(GUI, choose=False, return_string=True, sentence=sentence)
 #            translations += translations + "\n" + translation
         return render_template('tra.html', documento=GUI.doc_html, doc=True,
-                               aceptado=doctrans, docscrolltop=docscrolltop,
+                               accepted=doctrans, docscrolltop=docscrolltop,
                                choose=False,
                                user=username, props=GUI.props, tradtodo=True)
     else:
@@ -352,7 +352,7 @@ def tra():
         return render_template('tra.html', oracion=oracion,
                                tra_seg_html=GUI.tra_seg_html, tra=GUI.tra,
                                documento=GUI.doc_html, doc=isdoc, oindex=oindex,
-                               aceptado=GUI.doc_tra_acep_str,
+                               accepted=GUI.doc_tra_acep_str,
                                docscrolltop=docscrolltop, choose=False,
                                user=username, props=GUI.props, tradtodo=False)
 

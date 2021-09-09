@@ -1598,7 +1598,6 @@ class Sentence:
             sfeats = sanal.get('features')
             spos = sanal.get('pos')
             for ganals in gnode_anals:
-#                print("ganals {}".format(ganals))
                 for ganal1 in ganals:
                     for ganal in ganal1:
                         # this is a tuple: root, features, gpos, gcats
@@ -2374,7 +2373,7 @@ class Segmentation:
             root = ''
             snode_indices = gnode.snode_indices
             snode_index = snode_indices.index(snode.index)
-            snode_anal = gnode.snode_anal[snode_index]
+            snode_anal = gnode.snode_anal[snode_index] if gnode.snode_anal else None
             if snode_anal and snode_anal[0] and snode_anal[0][1]:
                 roots = [a[0] for a in snode_anal]
                 features = [a[1] for a in snode_anal]
@@ -2503,7 +2502,7 @@ class Segmentation:
                 thead = tt.ginst.head
                 thindex = thead.index
                 tfeats = thead.snode_anal
-                ttoken = tfeats[0] or [thead.token]
+                ttoken = (tfeats and tfeats[0]) or [thead.token]
                 tsnode = tt.snodes[thindex]
                 ttok = tsnode.tok
                 tcats = tsnode.cats
@@ -2660,15 +2659,17 @@ class Segmentation:
                     print("Something wrong with position {}, should be in {}".format(tokindex, raw_indices))
             src_tokens = pre_paren
             src_nodes = [sentence.get_node_by_raw(index) for index in range(start, end+1)]
-#            src_feats = [(s.analyses if s else None) for s in src_nodes][head_index][0]
-            src_feats = [(s.analyses if s else None) for s in src_nodes][head_index][0]
-            shead = [(src_feats.get('root'), thead[-1], src_feats.get('pos'))]
-            scats = src_feats.get('cats', set())
+            src_feats = [(s.analyses if s else None) for s in src_nodes][head_index]
+            if src_feats:
+                src_feats = src_feats[0]
+                shead = [(src_feats.get('root'), thead[-1][0], src_feats.get('pos'))]
+                scats = src_feats.get('cats', set())
+            else:
+                shead = scats = None
             seg = Segment(self, raw_indices, forms, src_tokens,
                           treetrans=treetrans,
                           session=self.session, gname=gname,
                           shead=shead, scats=scats,
-#                          sfeats=src_feats[head_index], head=thead,
                           tgroups=tgroups, tok=thead[-2])
             if not terse:
                 print("Segment (translated) {}->{}: {}={} ({})".format(start, end, src_tokens, seg.translation, seg.head_tok))

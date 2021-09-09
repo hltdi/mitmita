@@ -113,7 +113,7 @@ def doc_sentences(doc=None, textobj=None, text='', textid=-1,
         if gui:
             src = gui.source; targ = gui.target
         else:
-            src, targ = Language.load_trans('spa', 'grn', train=False)
+            src, targ = Language.load_trans('spa', 'grn', bidir=False)
     if doc:
         return doc
     else:
@@ -132,7 +132,7 @@ def doc_trans(doc=None, textobj=None, text='', textid=-1, docpath='',
         if gui:
             src = gui.source; targ = gui.target
         else:
-            src, targ = Language.load_trans('spa', 'grn', train=False)
+            src, targ = Language.load_trans('spa', 'grn', bidir=False)
     if not session:
         session = make_session(src, targ, user, create_memory=True)
     if not doc:
@@ -184,7 +184,7 @@ def አረፍተነገር(text='', src=None, targ=None, user=None, session=None,
 #        src = iwqet.Language.languages.get('amh')
 #        targ = iwqet.Language.languages.get('sgw')
 #        if not src:
-        src, targ = Language.load_trans('amh', 'sgw', train=False)
+        src, targ = Language.load_trans('amh', 'sgw', bidir=False)
     if not session:
         session = make_session(src, targ, user, create_memory=True)
     s = Sentence.solve_sentence(src, targ, text=text, session=session,

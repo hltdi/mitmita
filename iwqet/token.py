@@ -224,6 +224,8 @@ class JoinToken(Token):
     def match_pos(join_pos, seg_poss):
         """Does Join element POS match at least one of segment POSs?"""
 #        print("Does joinpos {} match segposs {}".format(join_pos, seg_poss))
+        if not seg_poss:
+            return False
         for seg_pos in seg_poss:
             # seg_pos may include a sub_pos
             if '.' in seg_pos:

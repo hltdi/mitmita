@@ -184,7 +184,7 @@ class Entry:
         """
         self.name = name
         self.language = language
-        self.trans = trans
+        self.trans = trans or []
         self.count = 1
         self.comment = comment
         self.debug = False
@@ -569,14 +569,67 @@ class Group(Entry):
             print("{} matched segments {} starting from {}".format(self, segments, startindex))
         return Match(self, matches)
 
+    def reverse_trans(self, sgroup, sfeats):
+        rev_feats = sgroup.reverse_feats(self, sfeats)
+        self.trans.append((sgroup, rev_feats))
+
+    def reverse_feats(self, tgroup, tfeats):
+        """
+        Return a new translation feature dict,
+        reversing the agr and align features in tfeats.
+        """
+        rev_feats = {}
+        if 'agr' in tfeats:
+            rev_feats['agr'] = self.reverse_agrs(tgroup, tfeats['agr'])
+        if 'align' in tfeats:
+            revalign = Group.reverse_alignment(tfeats['align'], len(tgroup.tokens))
+            rev_feats['align'] = revalign
+        return rev_feats
+
     @staticmethod
-    def reverse_alignment(alignment, length):
+    def reverse_alignment(alignment, ntoks):
         """
-        For a sequence of elements x of length length and an alignment associating positions in another sequence
-        y with positions in x, return a reverse alignment. Positions with no associated element in the other sequence
-        are represented by -1.
+        Reverse the alignment (a list), creating a new
+        alignment of length ntoks.
+        -1 represents no correspondence with a target token.
         """
-        return [(alignment.index(i) if i in alignment else -1) for i in range(length)]
+        talign = [-1] * ntoks
+        for spos, tpos in enumerate(alignment):
+            if tpos != -1:
+                talign[tpos] = spos
+        return talign
+
+    def reverse_agrs(self, tgroup, tagrs):
+        """
+        tagrs is a list of tuples, one for each token in self.
+        Each tuple consists of a pair:
+          target_token_index, <tuple of (source_feat, target_feat) pairs>
+        """
+        # Start with a dict with tindex keys, to convert to a list
+        # of length of target tokens
+        rev_agr_dct = {}
+        for stok_index, tagr in enumerate(tagrs):
+            if not tagr:
+                # No agreement constraint for this source token
+                continue
+            tindex, featpairs = tagr
+            rev_agr_dct[tindex] = tuple([(tfeat, sfeat) for sfeat, tfeat in featpairs])
+        rev_agrs = []
+        for tindex in range(len(tgroup.tokens)):
+            if tindex not in rev_agr_dct:
+                rev_agrs.append(False)
+            else:
+                rev_agrs.append((tindex, rev_agr_dct[tindex]))
+        return rev_agrs
+
+    # @staticmethod
+    # def reverse_alignment(alignment, length):
+    #     """
+    #     For a sequence of elements x of length length and an alignment associating positions in another sequence
+    #     y with positions in x, return a reverse alignment. Positions with no associated element in the other sequence
+    #     are represented by -1.
+    #     """
+    #     return [(alignment.index(i) if i in alignment else -1) for i in range(length)]
 
     def apply(self, superseg, verbosity=1):
         """
@@ -1061,10 +1114,11 @@ class Group(Entry):
             # Create target (translation) groups
             tgroups = []
             for tstring in trans_strings:
-                tgroup, tagr, alg, tc = Group.from_string(tstring, target,
-                                                          trans_strings=None, trans=True,
-                                                          shead_index=head_index,
-                                                          n_src_tokens=len(realtokens))
+                tgroup, tagr, alg, tc = \
+                Group.from_string(tstring, target,
+                                  trans_strings=None, trans=True,
+                                  shead_index=head_index,
+                                  n_src_tokens=len(realtokens))
                 tattribs = {'agr': tagr}
                 if alg:
                     tattribs['align'] = alg
@@ -1091,7 +1145,7 @@ class Group(Entry):
                   intervening=intervening)
         if target and not trans:
             # Add translation to source group
-            g.trans = tgroups
+            g.trans = tgroups or []
         if not existing_group:
             # Add group to its language in the appropriate POS groups
             language.add_group(g, posindex=posindex, cat=cat)

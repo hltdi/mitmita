@@ -117,7 +117,7 @@ class Seg:
         # source and target strings and features
         self.original_token_str = ''
         self.token_string = ''
-        self.clean_trans = None
+        self.cleaned_trans = None
         # set during generation (no need to copy between Seg levels)
         self.morphology = None
         # set during finalization, using self.morphology
@@ -1416,7 +1416,7 @@ class GNode:
         self.index = index
         self.sentence = ginst.sentence
         self.snode_indices = [s[0] for s in snodes]
-        self.snode_anal = [s[1] for s in snodes]
+        self.snode_anal = [s[1] for s in snodes if s[1]]
         self.snode_tokens = [s[2] for s in snodes]
         # Whether this is the head of the group
         self.head = index == ginst.group.head_index

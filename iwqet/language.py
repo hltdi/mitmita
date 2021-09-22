@@ -1492,7 +1492,7 @@ class Language:
         Load words and FSTs for morphological analysis and/or generation.
         """
         if verbose:
-            print('Loading morphological data for {} {}'.format(self.name, "(gen)" if generate else "(anal)"))
+            print('Loading morphological data for {} (anal:{}, gen:{})'.format(self.name, analyze, generate))
         # Load pre-analyzed words
         self.set_analyzed()
         if analyze:
@@ -2557,7 +2557,7 @@ class Language:
         targlang = Language.languages.get(target)
         src_loaded = False
         targ_loaded = False
-        srcuse = SOURCE
+        srcuse = BIDIR if bidir else SOURCE
         targuse = BIDIR if bidir else TARGET
         if srclang:
 #            print("Srclang use: {}".format(srclang.use))

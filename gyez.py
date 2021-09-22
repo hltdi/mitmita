@@ -46,10 +46,10 @@ def load(reverse=False, bidir=False):
     s, t = iwqet.Language.load_trans(src, targ, bidir=bidir)
     return s, t
 
-def tra(oracion, reverse=False, html=False, user=None, choose=False, verbosity=0):
-    return sent(oracion, user=user, max_sols=2, translate=True,
-               connect=True, generate=True, html=html, choose=choose,
-               verbosity=verbosity)
+def tra(sentence, reverse=False, html=False, user=None, choose=False, verbosity=0):
+    return sent(sentence, user=user, max_sols=2, translate=True, reverse=reverse,
+                connect=True, generate=True, html=html, choose=choose,
+                verbosity=verbosity)
 
 # test sentences, including named entities
 T1 = "በቀለም ደረሰ።"
@@ -74,8 +74,9 @@ def document(text, process=True):
 def sent(text, reverse=False, user=None, max_sols=3, translate=True,
         connect=True, generate=False, html=False, choose=False, verbosity=0):
     return iwqet.አረፍተነገር(text, user=user, max_sols=max_sols, translate=translate,
-                        connect=connect, generate=generate, html=html, choose=choose,
-                        verbosity=verbosity)
+                         reverse=reverse,
+                         connect=connect, generate=generate, html=html, choose=choose,
+                         verbosity=verbosity)
 
 def sentence(sentence, ambig=False, solve=True, user=None, segment=True,
              max_sols=1, verbosity=0):

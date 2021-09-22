@@ -570,6 +570,11 @@ class Group(Entry):
         return Match(self, matches)
 
     def reverse_trans(self, sgroup, sfeats):
+        if not self.trans:
+            self.trans = []
+        if any([sgroup == sg for sg, ft in self.trans]):
+#            print("*** {} already has trans {}".format(self, sgroup))
+            return
         rev_feats = sgroup.reverse_feats(self, sfeats)
         self.trans.append((sgroup, rev_feats))
 
@@ -1144,8 +1149,17 @@ class Group(Entry):
                   trans_strings=tstrings, cat=cat, comment=comment,
                   intervening=intervening)
         if target and not trans:
-            # Add translation to source group
-            g.trans = tgroups or []
+            if not g.trans:
+                g.trans = []
+            gt = g.trans
+            if tgroups:
+                if gt:
+                    existing_tg = [t[0] for t in gt]
+                    tgroups = [tg for tg in tgroups if tg[0] not in existing_tg]
+                gt.extend(tgroups)
+#        if target and not trans:
+#            # Add translation to source group
+#            g.trans = tgroups or []
         if not existing_group:
             # Add group to its language in the appropriate POS groups
             language.add_group(g, posindex=posindex, cat=cat)

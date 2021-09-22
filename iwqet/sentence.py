@@ -2117,28 +2117,29 @@ class Sentence:
                 gnode = self.gnodes[gn]
                 gn_group = gnode.ginst.index
                 if gn_group not in tree_attribs:
-                    tree_attribs[gn_group] = [[], []]
-                tree_attribs[gn_group][0].append(snindex)
-            if len(sg) == 2:
-                # Record group merger when an snode is associated with two gnodes
-                gn0, gn1 = self.gnodes[sg[0]], self.gnodes[sg[1]]
-                group0, group1 = gn0.ginst.index, gn1.ginst.index
-                if gn0.cat:
-                    # Group for gnode0 is merged with group for gnode1
-                    tree_attribs[group0][1].append(group1)
-                else:
-                    tree_attribs[group1][1].append(group0)
-        for gindex, sn in tree_attribs.items():
-            # First store the group's own tree as a set of sn indices and
-            # the third element of sn
-            sn.append(set(sn[0]))
-            # Next check for mergers
-            Sentence.update_tree(tree_attribs, gindex, sn[2])
-        # Convert the dict to a list and sort by group indices
-        trees = list(tree_attribs.items())
-        trees.sort(key=lambda x: x[0])
-        # Just keep the snode indices in each tree
-        trees = [x[1][2] for x in trees]
+                    tree_attribs[gn_group] = [] # [[]] # [[], []]
+                tree_attribs[gn_group].append(snindex)
+            # if len(sg) == 2:
+            #     # Record group merger when an snode is associated with two gnodes
+            #     gn0, gn1 = self.gnodes[sg[0]], self.gnodes[sg[1]]
+            #     group0, group1 = gn0.ginst.index, gn1.ginst.index
+            #     if gn0.cat:
+            #         # Group for gnode0 is merged with group for gnode1
+            #         tree_attribs[group0][1].append(group1)
+            #     else:
+            #         tree_attribs[group1][1].append(group0)
+        # for gindex, sn in tree_attribs.items():
+        #     # First store the group's own tree as a set of sn indices and
+        #     # the third element of sn
+        #     sn.append(set(sn[0]))
+        #     # Next check for mergers
+        #     Sentence.update_tree(tree_attribs, gindex, sn[2])
+        # # Convert the dict to a list and sort by group indices
+        # trees = list(tree_attribs.items())
+        # trees.sort(key=lambda x: x[0])
+        # # Just keep the snode indices in each tree
+        # trees = [x[1][2] for x in trees]
+        trees = [set(x) for x in tree_attribs.values()]
         # Get the indices of the GNodes for each SNode
         segmentation = Segmentation(self, ginsts, s2gnodes, len(self.segmentations),
                                     trees=trees, dstore=dstore, session=self.session,
@@ -2148,7 +2149,8 @@ class Sentence:
         return segmentation
 
     def get_all_segmentations(self, translate=True, generate=True,
-                              connect=False, html=False, agree_dflt=True, choose=False,
+                              connect=False, html=False, agree_dflt=True,
+                              choose=False, finalize=False,
                               verbosity=0, terse=False):
         """After a sentence has been translated and segmented, collect all the
         segmentations, including those resulting from altsyn sentences."""
@@ -2178,7 +2180,8 @@ class Sentence:
                         # Realize target morphology
                         segmentation.generate()
                         # Generate the final translation strings and HTML for the GUI
-                        segmentation.finalize_segments(html=html, agree_dflt=agree_dflt, choose=choose)
+                        segmentation.finalize_segments(html=html, agree_dflt=agree_dflt,
+                                                       choose=choose, finalize=finalize)
                 if generate and choose:
                     # Set the final output sentence string.
                     final = ' '.join([seg.final for seg in segmentation.segments])
@@ -2695,7 +2698,7 @@ class Segmentation:
     #######
 
     def finalize_segments(self, html=True, user_input=None, agree_dflt=True,
-                          choose=False, verbosity=0):
+                          choose=False, finalize=False, verbosity=0):
         """Set the final strings and morphology for each segment in this
         segmentation and the HTML too if html is True."""
         for i, segment in enumerate(self.segments):
@@ -2711,7 +2714,7 @@ class Segmentation:
                     first = False
         self.do_seg_feat_agreement(user_input=user_input, agree_dflt=agree_dflt,
                                    verbosity=verbosity)
-        if choose:
+        if choose or finalize:
             self.choose_final(html=html, verbosity=verbosity)
 
     def choose_final(self, html=True, verbosity=0):

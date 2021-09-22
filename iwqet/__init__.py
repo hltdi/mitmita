@@ -173,18 +173,22 @@ def gui_trans(gui, session=None, choose=False, return_string=False,
                    verbosity=verbosity, terse=terse)
 
 def አረፍተነገር(text='', src=None, targ=None, user=None, session=None,
-            sentence=None,
-            max_sols=2, translate=True, connect=True, generate=True,
-            html=False, choose=False,
+            sentence=None, reverse=False,
+            max_sols=3, translate=True, connect=True, generate=True,
+            html=False, choose=False, finalize=False,
             return_string=False, verbosity=0, terse=False):
     """
     Analyze and possibly also translate a sentence from Amharic to Chaha.
     """
     if not src and not targ:
+        if reverse:
+            s, t = 'sgw','amh'
+        else:
+            s, t = 'amh', 'sgw'
 #        src = iwqet.Language.languages.get('amh')
 #        targ = iwqet.Language.languages.get('sgw')
 #        if not src:
-        src, targ = Language.load_trans('amh', 'sgw', bidir=False)
+        src, targ = Language.load_trans(s, t, bidir=False)
     if not session:
         session = make_session(src, targ, user, create_memory=True)
     s = Sentence.solve_sentence(src, targ, text=text, session=session,
@@ -195,6 +199,7 @@ def አረፍተነገር(text='', src=None, targ=None, user=None, session=None,
     segmentations = s.get_all_segmentations(translate=translate,
                                             generate=generate,
                                             agree_dflt=False, choose=choose,
+                                            finalize=finalize,
                                             connect=connect, html=html,
                                             terse=terse)
     print("SEGMENTATIONS: {}".format(segmentations))

@@ -1133,7 +1133,7 @@ class Sentence:
                     spos = RootToken.get_POS(root)[1]
                     # Assume that only the first POS matters
                     new_pos = self.language.adapt_POS(spos, self.target, anal)[0][0]
-                    if new_pos != anal.get('pos'):
+                    if new_pos and new_pos != anal.get('pos'):
 #                        print("Adjusting POS for {}:{}:{}".format(root, spos, anal.__repr__()))
 #                        print("Found new_pos {}".format(new_pos))
                         new_anal = set()
@@ -2152,8 +2152,10 @@ class Sentence:
                               connect=False, html=False, agree_dflt=True,
                               choose=False, finalize=False,
                               verbosity=0, terse=False):
-        """After a sentence has been translated and segmented, collect all the
-        segmentations, including those resulting from altsyn sentences."""
+        """
+        After a sentence has been translated and segmented, collect all the
+        segmentations, including those resulting from altsyn sentences.
+        """
         segmentations = []
         if self.segmentations:
             segmentations.extend(self.segmentations)
@@ -2198,7 +2200,10 @@ class Sentence:
     ### Various ways of displaying translation outputs.
 
     def set_trans_outputs(self):
-        """Combine the tree trans outputs from all segmentations, excluding repeated ones."""
+        """
+        Combine the tree trans outputs from all segmentations, excluding
+        repeated ones.
+        """
         if not self.segmentations:
             return
         for segmentation in self.segmentations:
@@ -2209,8 +2214,10 @@ class Sentence:
         self.trans_outputs.sort()
 
     def get_complete_trans(self, capfirst=True):
-        """Produce complete translations (list of lists of strings) from tree trans outputs for segmentations, filling
-        in gaps with source words where necessary."""
+        """
+        Produce complete translations (list of lists of strings) from tree trans outputs for segmentations, filling
+        in gaps with source words where necessary.
+        """
         if self.complete_trans:
             return self.complete_trans
         trans = []
@@ -2269,9 +2276,11 @@ class Sentence:
 
     ## Analyzing the sentence without creating segments
     def analyze(self, translate=True, choose=False, verbosity=0):
-        """Analyze the sentence without creating Segs (or TreeTrans instances).
+        """
+        Analyze the sentence without creating Segs (or TreeTrans instances).
         Match all Groups simultaneously, and do not apply any Joins.
-        Useful for bitext corpus processing."""
+        Useful for bitext corpus processing.
+        """
         if verbosity:
             print("Analizando {}".format(self))
         self.initialize(ambig=False, constrain_groups=False, verbosity=verbosity)

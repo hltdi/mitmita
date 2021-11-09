@@ -1952,8 +1952,8 @@ class Language:
             analysis = (analysis[0], self.postproc(analysis[1]))
 #        if segment:
 #            return analysis
-        pos, form = analysis
-        analysis = [form, {'pos': pos}]
+        form, pos = analysis
+        analysis = [form, FSSet({'pos': pos})]
         # 100000 makes it likely these will appear first in ranked analyses
         return analysis #pos, form, None, None, None, 100000
 
@@ -1962,6 +1962,7 @@ class Language:
         and convert roots to _ form."""
         dicts = []
         for root, anal in anals:
+#            print("root {}, anals {}".format(root, anals))
             pos = anal.get('pos', '')
             dicts.append({'root': Language.make_root(root, pos), 'features': anal})
         return dicts

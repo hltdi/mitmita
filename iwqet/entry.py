@@ -1953,7 +1953,8 @@ class MorphoSyn(Entry):
                         feats.update_inside(fm_feats)
 
     def insert_match(self, start, end, m_elements, sentence, verbosity=0):
-        """Replace matched portion of sentence with elements in match.
+        """
+        Replace matched portion of sentence with elements in match.
         Works by mutating sentence elements (tokens and analyses).
         """
         if verbosity > 1 or self.debug:
@@ -1997,6 +1998,8 @@ class MorphoSyn(Entry):
             if m_index in negindices:
                 if verbosity > 1 or self.debug:
                     print(" Negative match: m_elem {}, s_elem {}, m_index {}".format(m_elem, s_elem, m_index))
+                m_index += 1
+                s_index += 1
                 continue
             m_index += 1
             # Replace the token (could have ~ now)

@@ -59,7 +59,9 @@ class FSSet(set, FS):
                     itm.freeze()
                 else:
                     # itm must be a dict
-                    items[index] = FeatStruct(itm)
+                    itm = FeatStruct(itm)
+                    itm.freeze()
+                    items[index] = itm #FeatStruct(itm)
         set.__init__(self, items)
 
     def __repr__(self):
